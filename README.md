@@ -1,9 +1,9 @@
 # Telemetrie
 
-[Nützliche Informationen](#nützliche-informationen)
-[Nützliche Informationen](#platinendesign-und-bauteilauswahl)
-[Nützliche Informationen](#antennendesign)
-[Nützliche Informationen](#antennenmessungen)
+[Nützliche Informationen](#nützliche-informationen)<br>
+[Platinendesign und Bauteilauswahl](#platinendesign-und-bauteilauswahl)
+[Antennendesign](#antennendesign)
+[Antennenmessungen](#antennenmessungen)
 
 ## Nützliche Informationen
 
