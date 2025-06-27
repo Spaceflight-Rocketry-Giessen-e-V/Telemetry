@@ -2,6 +2,36 @@
 
 ## Nützliche Informationen
 
+### Platinendesign und Bauteilauswahl
+
+Datenblatt RC1180HP
+
+Datenblatt RC1780HP
+
+...
+
+### Antennendesign
+
+Viele Informationen zu Antennen:
+[antenna-theory.com](https://www.antenna-theory.com/)
+
+Informationen zu QFH-Antennen:
+[jcoppens.com](https://jcoppens.com/ant/qfh/index.en.php)
+
+QFH-Antennen Online-Rechner:
+[jcoppens.com](https://jcoppens.com/ant/qfh/calc.en.php)
+
+Informationen zu Helixantennen:
+[jcoppens.com](https://jcoppens.com/ant/helix/index.en.php)
+
+Helixantennen Online-Rechner:
+[jcoppens.com](https://jcoppens.com/ant/helix/calc.en.php)
+
+### Antennenmessungen
+
+Viele Informationen zu Antennenmessungen:
+[antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
+
 Grundlagen zu Messgrößen bei Messungen mit einem VNA (S-Parameter):
 [Youtube](https://youtu.be/-Pi0UbErHTY?si=Z9UQJC-R-1Vzc-xW)
 
