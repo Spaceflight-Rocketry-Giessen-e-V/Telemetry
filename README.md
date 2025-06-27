@@ -9,9 +9,32 @@
 
 ### Platinendesign und Bauteilauswahl
 
-Datenblatt RC1180HP
+Übersicht über RC232-Produkte von Radiocrafts:
+[radiocrafts.com](https://radiocrafts.com/products/rc232/)
 
-Datenblatt RC1780HP
+Radiocrafts RC232 Bedienungsanleitung:
+[radiocrafts.com](https://radiocrafts.com/uploads/RC232_user_manual.pdf)
+
+Radiocrafts Application Notes (AN):
+[radiocrafts.com](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes)
+
+Radiocrafts AN001: Hints And Tips When Using RC1XX0 RF Modules:
+[radiocrafts.com](https://radiocrafts.com/uploads/AN001_Hints_and_Tips__Using_RC1xx0.pdf)
+
+Radiocrafts AN020: RF Module Troubleshotting:
+[radiocrafts.com](https://radiocrafts.com/uploads/AN020_RF_Module_Troubleshooting_Guide.pdf)
+
+Radiocrafts AN026: One Commong Footprint For Many Technologies:
+[radiocrafts.com](https://radiocrafts.com/uploads/AN026_One_Common_Footprint_For_Many_Technologies.pdf)
+
+Radiocrafts AN061: RF PCB Layout Recommendations:
+[radiocrafts.com](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
+
+Datenblatt Radiocrafts RC1180HP-RC232:
+[radiocrafts.com](https://radiocrafts.com/uploads/RC11xxHP-RC232_Data_Sheet.pdf)
+
+Datenblatt Radiocrafts RC1780HP-RC232:
+[radiocrafts.com](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf)
 
 ...
 
