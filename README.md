@@ -1,9 +1,9 @@
 # Telemetrie
 
-[Nützliche Informationen}(#nützliche-informationen)
-[Nützliche Informationen}(#antennendesign)
-[Nützliche Informationen}(#nützliche-informationen)
-[Nützliche Informationen}(#nützliche-informationen)
+[Nützliche Informationen](#nützliche-informationen)
+[Nützliche Informationen](#antennendesign)
+[Nützliche Informationen](#nützliche-informationen)
+[Nützliche Informationen](#nützliche-informationen)
 
 ## Nützliche Informationen
 
