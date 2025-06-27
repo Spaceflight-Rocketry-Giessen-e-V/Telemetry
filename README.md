@@ -34,9 +34,7 @@ Datenblatt Radiocrafts RC1180HP-RC232:
 [radiocrafts.com](https://radiocrafts.com/uploads/RC11xxHP-RC232_Data_Sheet.pdf)
 
 Datenblatt Radiocrafts RC1780HP-RC232:
-[radiocrafts.com](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf)
-
-...
+[radiocrafts.com](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf
 
 ### Antennendesign
 
