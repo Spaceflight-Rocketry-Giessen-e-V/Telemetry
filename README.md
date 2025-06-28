@@ -1,40 +1,37 @@
 # Telemetrie
 
 [Nützliche Informationen](#nützliche-informationen)<br>
-- [Platinendesign und Bauteilauswahl](#platinendesign-und-bauteilauswahl)<br>
+- [Radiomodul](#radiomodul)<br>
+- [Platinendesign](#platinendesign)<br>
 - [Antennendesign](#antennendesign)<br>
 - [Antennenmessungen](#antennenmessungen)
 
 ## Nützliche Informationen
 
-### Platinendesign und Bauteilauswahl
+### Radiomodul
 
-Übersicht über RC232-Produkte von Radiocrafts:
-[radiocrafts.com](https://radiocrafts.com/products/rc232/)
+Wir verwenden mehrere ähnliche Radiomodule der RC232-Produktfamilie des Herstellers Radiocrafts.
+Die gesamte Produktfamilie ist [hier](https://radiocrafts.com/products/rc232/) zu finden.
 
-Radiocrafts RC232 Bedienungsanleitung:
-[radiocrafts.com](https://radiocrafts.com/uploads/RC232_user_manual.pdf)
+Der Frequenzbereich zwischen 869,40 MHz und 869,65 MHz erlaubt eine hohe Sendeleistung, nachzulesen [hier](https://www.bundesnetzagentur.de/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Frequenzen/Allgemeinzuteilungen/FunkanlagenGeringerReichweite/2018_05_SRD_pdf.pdf?__blob=publicationFile&v=2).
 
-Radiocrafts Application Notes (AN):
-[radiocrafts.com](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes)
+Relevant sind für uns vor allem die RC1180HP und RC1780HP Module, die die zulässige Sendeleistung von 500 mW (27 dBm) vollständig ausreizen.
+Die entsprechenden Datenblätter sind unter folgenden Links zu finden:
+[RC1180HP-RC232](https://radiocrafts.com/uploads/RC11xxHP-RC232_Data_Sheet.pdf)
+[RC1780HP-RC232](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf)
 
-Radiocrafts AN001: Hints And Tips When Using RC1XX0 RF Modules:
-[radiocrafts.com](https://radiocrafts.com/uploads/AN001_Hints_and_Tips__Using_RC1xx0.pdf)
+Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgang mit dem Modulen an.
+- Radiocrafts RC232 Bedienungsanleitung: [Link](https://radiocrafts.com/uploads/RC232_user_manual.pdf)
+- Radiocrafts Application Notes (AN) Übersicht: [Link](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes)
+- Radiocrafts AN001: Hints And Tips When Using RC1XX0 RF Modules: [Link](https://radiocrafts.com/uploads/AN001_Hints_and_Tips__Using_RC1xx0.pdf)
+- Radiocrafts AN020: RF Module Troubleshotting: [Link](https://radiocrafts.com/uploads/AN020_RF_Module_Troubleshooting_Guide.pdf)
+- Radiocrafts AN026: One Commong Footprint For Many Technologies: [Link](https://radiocrafts.com/uploads/AN026_One_Common_Footprint_For_Many_Technologies.pdf)
 
-Radiocrafts AN020: RF Module Troubleshotting:
-[radiocrafts.com](https://radiocrafts.com/uploads/AN020_RF_Module_Troubleshooting_Guide.pdf)
+### Platinendesign
 
-Radiocrafts AN026: One Commong Footprint For Many Technologies:
-[radiocrafts.com](https://radiocrafts.com/uploads/AN026_One_Common_Footprint_For_Many_Technologies.pdf)
-
+Der Hersteller des Radiomoduls, Radiocrafts, bietet eine Application Note über das Design von RF-Platinen an:
 Radiocrafts AN061: RF PCB Layout Recommendations:
 [radiocrafts.com](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
-
-Datenblatt Radiocrafts RC1180HP-RC232:
-[radiocrafts.com](https://radiocrafts.com/uploads/RC11xxHP-RC232_Data_Sheet.pdf)
-
-Datenblatt Radiocrafts RC1780HP-RC232:
-[radiocrafts.com](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf
 
 ### Antennendesign
 
