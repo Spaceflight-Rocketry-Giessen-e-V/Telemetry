@@ -17,8 +17,8 @@ Der Frequenzbereich zwischen 869,40 MHz und 869,65 MHz erlaubt eine hohe Sendele
 
 Relevant sind für uns vor allem die RC1180HP und RC1780HP Module, die die zulässige Sendeleistung von 500 mW (27 dBm) vollständig ausreizen.
 Die entsprechenden Datenblätter sind unter folgenden Links zu finden:
-[RC1180HP-RC232](https://radiocrafts.com/uploads/RC11xxHP-RC232_Data_Sheet.pdf)
-[RC1780HP-RC232](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf)
+- RC1180HP-RC232: [Link](https://radiocrafts.com/uploads/RC11xxHP-RC232_Data_Sheet.pdf)
+- RC1780HP-RC232: [Link](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf)
 
 Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgang mit dem Modulen an.
 - Radiocrafts RC232 Bedienungsanleitung: [Link](https://radiocrafts.com/uploads/RC232_user_manual.pdf)
