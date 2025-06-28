@@ -1,9 +1,9 @@
 # Telemetrie
 
-[Nützliche Informationen](#nützliche-informationen)<br>
-- [Radiomodul](#radiomodul)<br>
-- [Platinendesign](#platinendesign)<br>
-- [Antennendesign](#antennendesign)<br>
+[Nützliche Informationen](#nützliche-informationen)
+- [Radiomodul](#radiomodul)
+- [Platinendesign](#platinendesign)
+- [Antennendesign](#antennendesign)
 - [Antennenmessungen](#antennenmessungen)
 
 ## Nützliche Informationen
@@ -30,8 +30,7 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 ### Platinendesign
 
 Der Hersteller des Radiomoduls, Radiocrafts, bietet eine Application Note über das Design von RF-Platinen an:
-Radiocrafts AN061: RF PCB Layout Recommendations:
-[radiocrafts.com](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
+- Radiocrafts AN061: RF PCB Layout Recommendations: [Link](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
 
 ### Antennendesign
 
