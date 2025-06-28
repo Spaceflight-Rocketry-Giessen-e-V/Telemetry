@@ -29,8 +29,9 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 
 ### Platinendesign
 
-Der Hersteller des Radiomoduls, Radiocrafts, bietet eine Application Note über das Design von RF-Platinen an:
-- Radiocrafts AN061: RF PCB Layout Recommendations: [Link](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
+Radiocrafts bietet eine Application Note über das Design von RF-Platinen an, die AN061 (RF PCB Layout Recommendations): [Link]https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
+
+Weitere Richtlinien zum Design von RF-Platinen: [Link](https://www.proto-electronics.com/blog/routing-guidelines-rf-pcb)
 
 ### Antennendesign
 
