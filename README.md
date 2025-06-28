@@ -54,6 +54,8 @@ Informationen zu Helixantennen:
 Helixantennen Online-Rechner:
 [jcoppens.com](https://jcoppens.com/ant/helix/calc.en.php)
 
+Artikel zu Helixantennen: [Link](https://www.microwaves101.com/encyclopedias/helix-antennas)
+
 ### Antennenmessungen
 
 Viele Informationen zu Antennenmessungen:
