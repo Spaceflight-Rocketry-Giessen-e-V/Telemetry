@@ -5,6 +5,7 @@
 - [Platinendesign](#platinendesign)
 - [Antennendesign](#antennendesign)
 - [Antennenmessungen](#antennenmessungen)
+- [Impedanzanpassung von Antennen](#impedanzanpassung-von-antennen)
 
 ## Nützliche Informationen
 
@@ -75,3 +76,17 @@ Grundlagen zur Benutzung eines VNAs:
 
 Design eines L-Matching Netzwerks mit einem VNA und einem Smith-Chart:
 [Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
+
+Simulationsprogramm (4NEC2): [Link](https://www.qsl.net/4nec2/)
+
+Programm für die graphische Ausgabe der VNA-Messungen (NanoVNA-App): [Link](https://nanovna.com/?page_id=141)
+
+### Impedanzanpassung von Antennen
+
+Mehrteiliger Artikel zur Impedanzanpassung: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matching)
+
+Kurzer Artikel zur Impedanzanpassung: [Link](https://www.escatec.com/blog/antenna-matching)
+
+Programm für die automatische Berechnung von Anpassungsschaltungen (Atyune): [Link](https://www.atyune.com/)
+
+
