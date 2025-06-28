@@ -29,7 +29,7 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 
 ### Platinendesign
 
-Radiocrafts bietet eine Application Note über das Design von RF-Platinen an, die AN061 (RF PCB Layout Recommendations): [Link]https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
+Radiocrafts bietet eine Application Note über das Design von RF-Platinen an, die AN061 (RF PCB Layout Recommendations): [Link](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
 
 Weitere Richtlinien zum Design von RF-Platinen: [Link](https://www.proto-electronics.com/blog/routing-guidelines-rf-pcb)
 
@@ -43,6 +43,9 @@ Informationen zu QFH-Antennen:
 
 QFH-Antennen Online-Rechner:
 [jcoppens.com](https://jcoppens.com/ant/qfh/calc.en.php)
+
+Informationen zum Anschluss von QFH-Antennen:
+[jcoppens.com](https://jcoppens.com/ant/qfh/adapt.en.php)
 
 Informationen zu Helixantennen:
 [jcoppens.com](https://jcoppens.com/ant/helix/index.en.php)
