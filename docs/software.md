@@ -1,7 +1,7 @@
 # Entwicklungsumgebungen für Embedded Programming mit C/C++:
 
-- Arduino IDE (simpel, einsteigerfreundlich): [Link](https://www.arduino.cc/en/software/)
-File > Preferences > Additional Boards Manager URLs: http://drazzy.com/package_drazzy.com_index.json
+- Arduino IDE (simpel, einsteigerfreundlich): [Link](https://www.arduino.cc/en/software/) <br>
+File > Preferences > Additional Boards Manager URLs: http://drazzy.com/package_drazzy.com_index.json <br>
 Tools > Boards > Boards Manager: DxCore by Spence Konde
 - Visual Studio Code (etwas komplexer, mehr Funktionen): [Link](https://code.visualstudio.com/download)
 Erweiterungen: PlatformIO IDE
