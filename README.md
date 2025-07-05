@@ -10,5 +10,6 @@ Links zu den von uns verwendeten Softwares sind [hier](docs/software.md) aufgeli
 
 ### Features
 
-- bla
-- bla
+- 868 MHz Radio Transceiver
+- 18 km Reichweite bei mindestens 1,2 kbps Datenrate
+- L-Netzwerk zur Anpassung der Antenne
