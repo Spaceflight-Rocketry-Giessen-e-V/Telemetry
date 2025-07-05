@@ -1,6 +1,7 @@
 # Inhaltsverzeichnis
 
 - [Radiomodul](#radiomodul)
+- [Link Budget](#link-budget)
 - [Platinendesign](#platinendesign)
 - [Antennendesign](#antennendesign)
 - [Antennenmessungen](#antennenmessungen)
