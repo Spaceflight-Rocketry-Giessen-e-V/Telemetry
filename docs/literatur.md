@@ -25,6 +25,10 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 - Radiocrafts AN020: RF Module Troubleshotting: [Link](https://radiocrafts.com/uploads/AN020_RF_Module_Troubleshooting_Guide.pdf)
 - Radiocrafts AN026: One Commong Footprint For Many Technologies: [Link](https://radiocrafts.com/uploads/AN026_One_Common_Footprint_For_Many_Technologies.pdf)
 
+# Link Budget
+
+*Links und Beispielrechnung*
+
 # Platinendesign
 
 Radiocrafts bietet eine Application Note über das Design von RF-Platinen an, die AN061 (RF PCB Layout Recommendations): [Link](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
