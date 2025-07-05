@@ -458,7 +458,7 @@
     ]
   },
   "meta": {
-    "filename": "Telemetrie v2.0.0.kicad_pro",
+    "filename": "Telemetrie v2.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -492,7 +492,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "Telemetrie v2.0.0.net",
+      "netlist": "Telemetrie v2.net",
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
