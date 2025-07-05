@@ -6,6 +6,10 @@ Tools > Boards > Boards Manager: DxCore by Spence Konde
 - *Visual Studio Code* (etwas komplexer, mehr Funktionen): [Link](https://code.visualstudio.com/download) <br>
 Erweiterungen: PlatformIO IDE
 
+# Software für das Entwerfen von Schaltplänen und Platinen:
+
+- *KiCAD*: [Link](https://www.kicad.org/download/)
+
 # Software für die Auslegung von Antennen:
 
 - *QFH-Antennen Online-Rechner* (Berechnung der Antennengeometrie): [Link](https://jcoppens.com/ant/qfh/calc.en.php)
