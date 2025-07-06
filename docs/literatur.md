@@ -31,7 +31,7 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 Mithilfe einer Link Budget Berechnung (Leistungsübertragungsbilanz) lassen sich wahlweise die maximale Reichweite oder einzelne Parameter bei fester Reichweite berechnen.
 Theorie zum Link Budget ist [hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und im Detail [hier](https://www.sss-mag.com/pdf/an9804.pdf) und [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) zu finden.
 
-Allgemeine Formel (alle Größen in dB) für ein Link Budget beschreibt die Signalstärke am Empfänger:
+Allgemeine Formel (alle Größen in dB) für ein Link Budget beschreibt die Signalstärke am Empfänger und beinhaltet Größen, die die Empfangsstärke erhöhen (positives Vorzeichen) oder verringern (negatives Vorzeichen):
 
 $P_\text{RX} = P_\text{TX} + G_\text{TX} - L_\text{TX} - L_\text{FS} - L_\text{M} + G_\text{RX} - L_\text{RX}$
 
