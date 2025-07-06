@@ -32,7 +32,8 @@ Mithilfe einer Link Budget Berechnung (Leistungsübertragungsbilanz) lassen sich
 Theorie zum Link Budget ist [hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und im Detail [hier](https://www.sss-mag.com/pdf/an9804.pdf) und [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) zu finden.
 
 Allgemeine Formel für ein Link Budget:
-$P_RX = P_TX$
+
+$P_\text{RX} = P_\mathrm{TX}$
 
 # Platinendesign
 
