@@ -29,7 +29,8 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 # Link Budget
 
 Mithilfe einer Link Budget Berechnung (Leistungsübertragungsbilanz) lassen sich wahlweise die maximale Reichweite oder einzelne Parameter bei fester Reichweite berechnen.
-Theorie zum Link Budget ist [hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und im Detail [hier](https://www.sss-mag.com/pdf/an9804.pdf) und [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) zu finden.
+Theorie zum Link Budget ist im Detail [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) beschrieben.
+[Hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und [hier](https://www.sss-mag.com/pdf/an9804.pdf) sind weitere Infors zu finden.
 
 Allgemeine Formel (alle Größen in dB) für ein Link Budget beschreibt die Signalstärke am Empfänger und beinhaltet Größen, die die Empfangsstärke erhöhen (positives Vorzeichen) oder verringern (negatives Vorzeichen):
 
@@ -50,7 +51,7 @@ Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleri
 $L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
 
 Folgende Größen sind durch das Datenblatt des Radiomoduls gegeben:
-$P_\text{TX} = 27\,\text{dBm}$, $P_\text{RX} = -118 \text{dBm}$ ($P_{\text{RX}_\text{min}} = -114 \text{dBm}$)
+$P_\text{TX} = 27\,\text{dBm}$, $P_{\text{RX}_\text{typ}} = -118 \text{dBm}$ ($P_{\text{RX}_\text{min}} = -114 \text{dBm}$)
 
 Eine QFH-Antenne, die gewählte Sendeantenne, hat keinen nennenswerten Gewinn:
 $G_\text{TX} = 0$
@@ -62,7 +63,11 @@ $G_\text{RX} = 10 \text{dBi}$
 Die Freiraumdämpfung für die gewünschte maximale Reichweite von $18 \text{km}$ beträgt nach der oben gegebenen Formel:
 $L_\text{FS} \approx 116 \text{dB}$
 
-Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39 \text{dB}$, was einem recht großen Puffer entspricht.
+Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39 \text{dB}$.
+
+Dieser Wert abzüglich der realen $L_\text{TX}$, $L_\text{RX}$ und $L_\text{M}$ wird als Fade Margin bezeichnet und ist eine Art Puffer
+
+, was einem recht großen Puffer entspricht.
 
 Ist das Ergebnis zu klein oder sogar negativ, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
 Ist das Ergebnis groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden, was weniger Anforderungen an die Ausrichtung zur Folge hätte.
