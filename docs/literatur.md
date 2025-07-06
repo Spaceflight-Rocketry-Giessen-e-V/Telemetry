@@ -28,7 +28,11 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 
 # Link Budget
 
-*Links und Beispielrechnung*
+Mithilfe einer Link Budget Berechnung (Leistungsübertragungsbilanz) lassen sich wahlweise die maximale Reichweite oder einzelne Parameter bei fester Reichweite berechnen.
+Theorie zum Link Budget ist [hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und im Detail [hier](https://www.sss-mag.com/pdf/an9804.pdf) und [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) zu finden.
+
+Allgemeine Formel für ein Link Budget:
+$P_RX = P_TX$
 
 # Platinendesign
 
