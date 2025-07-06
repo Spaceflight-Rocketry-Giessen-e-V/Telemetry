@@ -2,6 +2,8 @@
 
 <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/pcb/Telemetrie%20v2.png" width="400">
 
+## 868 MHz Telemetriesystem mit einer Reichweite >10 km für den bidirektionalen Datenaustausch zwischen einer Experimentalrakete und einer Bodenstation
+
 Das Telemetriesystem ist für den bidirektionalen Datenaustausch zwischen dem ASCENT II Flugcomputer und der Bodenstation ausgelegt.
 Einerseits werden Sensor- und Statusdaten der Rakete in möglichst hoher Quantität übertragen, während in die andere Richtung zuverlässig Telekommandos empfangen und ausgeführt werden können.
 
