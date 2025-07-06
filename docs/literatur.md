@@ -44,7 +44,7 @@ Diese anderen Verluste sind z.B. Absorptionsverluste in der Atmosphäre, Verlust
 
 Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle:
 
-$L_\text{FS} = 20 \cdot \text{log}_{0}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
+$L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
 
 Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleriebaren Verluste durch die Übertragung auf Sender- und Empfängerseite, sowie die Verluste durch die Übertragung berechnet werden können:
 
