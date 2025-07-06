@@ -43,7 +43,26 @@ Diese anderen Verluste sind z.B. Absorptionsverluste in der Atmosphäre, Verlust
 
 Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle:
 
-$L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)^2$
+$L_\text{FS} = 20 \cdot \text{log}_{0}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
+
+Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleriebaren Verluste durch die Übertragung auf Sender- und Empfängerseite, sowie die Verluste durch die Übertragung berechnet werden können:
+
+$L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
+
+Folgende Größen sind durch das Datenblatt des Radiomoduls gegeben:
+$P_\text{TX} = 27\,\text{dBm}$, $P_\text{RX} = -118\,\text{dBm}$
+
+Eine QFH-Antenne, die gewählte Sendeantenne, hat keinen nennenswerten Gewinn:
+$G_\text{TX} = 0$
+
+Die für die Bodenstation gewählte Helixantenne kann je nach Bedarf angepasst werden, wobei ein höherer Gewinn eine genauere Ausrichtung der Antenne bedingt. 
+Ein guter Startpunkt ist:
+$G_\text{RX} = 10\,\text{dBi}$
+
+Die Freiraumdämpfung für die gewünschte maximale Reichweite von $18\,\text{km}$ beträgt nach der oben gegebenen Formel:
+$L_\text{FS} \approx 116\,\text{dB}$
+
+Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39\,\text{dB}$, was einem recht großen Puffer entspricht.
 
 # Platinendesign
 
