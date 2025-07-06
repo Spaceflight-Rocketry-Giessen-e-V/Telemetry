@@ -1,6 +1,7 @@
 /*
     RC232.h - Library for using Radiocrafts RC232 RF modules.
     Created by ..., xx.xx.2025.
+    Spaceflight Rocketry Giessen e.V.
     Licence...
 */
 
@@ -13,23 +14,35 @@ class RC232
 {
     public:
         RC232();
-        void begin();
+        void begin(uint32_t baud_module, uint32_t baud_ttl, uint32_t baud_header);
 
     private:
-        int ledpin1;
-        int ledpin2;
-        int ledpin3;
-        int ledpin4;
-        int ledpin5;
-        int ledpin6;
-        int ledpin7;
-        int ledpin8;
-        HardwareSerial SerialModule;
-        HardwareSerial SerialTTL;
-        HardwareSerial SerialHeader;
-        int serial_module_wait(uint32_t delay_microsecond);
-        int serial_ttl_wait(uint32_t delay_microsecond);
-        int serial_header_wait(uint32_t delay_microsecond);
+        uint8_t ledpin1;
+        uint8_t ledpin2;
+        uint8_t ledpin3;
+        uint8_t ledpin4;
+        uint8_t ledpin5;
+        uint8_t ledpin6;
+        uint8_t ledpin7;
+        uint8_t ledpin8;
+        uint8_t d1pin;
+        uint8_t d2pin;
+        uint8_t d3pin;
+        uint8_t armpin;
+        uint8_t slppin;
+        uint8_t rstpin;
+        uint8_t ctspin;
+        uint8_t cfgpin;
+        uint8_t rtspin;
+        uint32_t baud_module;
+        uint32_t baud_ttl;
+        uint32_t baud_header;
+        HardwareSerial* SerialModule;
+        HardwareSerial* SerialTTL;
+        HardwareSerial* SerialHeader;
+        uint16_t serial_wait(HardwareSerial* SerialTmp, uint32_t delay_microsecond);
+        uint8_t enter_config_mode();
+        uint8_t exit_config_mode();
 };
 
 #endif
