@@ -72,9 +72,9 @@ Die realen Werte für  $L_\text{TX}$, $L_\text{RX}$ und $L_\text{M}$ können dur
 Ist die Fade Margin zu klein, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
 Ist die Fade Margin groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden.
 
-[Hier}(linkbudget_beispiel.py) steht ein Python-Skript zur Verfügung, das die Berechnung des Link Budgets für einen exemplarischen Flugverlauf inklusive einer [graphischen Ausgabe](linkbudget_beispiel.png) zeigt.
+[Hier](linkbudget_beispiel.py) steht ein Python-Skript zur Verfügung, das die Berechnung des Link Budgets für einen exemplarischen Flugverlauf inklusive einer [graphischen Ausgabe](linkbudget_beispiel.png) zeigt.
 
-Anmerkung: Reflexionsverluste als Teil von $L_\text{M}$ können wie in Kapitel 5.3 [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) berechnet werden.
+Anmerkung: Reflexionsverluste als Teil von $L_\text{M}$ können evtl. wie in Kapitel 5.3 [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) berechnet werden.
 
 # Platinendesign
 
