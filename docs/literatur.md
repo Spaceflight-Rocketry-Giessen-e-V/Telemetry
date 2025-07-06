@@ -50,7 +50,7 @@ Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleri
 $L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
 
 Folgende Größen sind durch das Datenblatt des Radiomoduls gegeben:
-$P_\text{TX} = 27\,\text{dBm}$, $P_\text{RX} = -118 \text{dBm}$ ($P_\text{RX_{min}} = -114 \text{dBm}$
+$P_\text{TX} = 27\,\text{dBm}$, $P_\text{RX} = -118 \text{dBm}$ ($P_\text{RX}_\text{min} = -114 \text{dBm}$)
 
 Eine QFH-Antenne, die gewählte Sendeantenne, hat keinen nennenswerten Gewinn:
 $G_\text{TX} = 0$
