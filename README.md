@@ -4,14 +4,21 @@
 
 ## 868 MHz Telemetriesystem mit einer Reichweite >10 km für den bidirektionalen Datenaustausch zwischen einer Experimentalrakete und einer Bodenstation
 
-Das Telemetriesystem ist für den bidirektionalen Datenaustausch zwischen dem ASCENT II Flugcomputer und der Bodenstation ausgelegt.
-Einerseits werden Sensor- und Statusdaten der Rakete in möglichst hoher Quantität übertragen, während in die andere Richtung zuverlässig Telekommandos empfangen und ausgeführt werden können.
-
-Informationen zum theoretischen Hintergrund, den verwendeten Bauteilen und mehr findet man [hier](docs/literatur.md).
-Links zu den von uns verwendeten Softwares sind [hier](docs/software.md) aufgelistet.
+Das Telemetriesystem ist Teil des ASCENT II Flugcomputers des studentischen Raketenbauvereins Spaceflight Rocketry Gießen e.V., der für die ARCHER Experimentalrakete entwickelt wird.
+Mit diesem System kann der ASCENT II Flugcomputer Sensor- und Statusdaten in hoher Quantität an die Bodenstation übertragen sowie zuverlässig Telekommandos empfangen und ausführen.
 
 ### Features
 
 - 868 MHz Radio Transceiver
-- 18 km Reichweite bei mindestens 1,2 kbps Datenrate
+- Mindestens 18 km Reichweite
+- Mindestens 1,2 kbps Datenrate
+- Auf Anforderungen angepasste QFH-Antenne
 - L-Netzwerk zur Anpassung der Antenne
+- Software mit eigener Befehlsbibliothek
+
+### Dokumentation
+
+Informationen zum theoretischen Hintergrund, den verwendeten Bauteilen und mehr findet man [hier](docs/literatur.md).
+Links zu den von uns verwendeten Softwarelösungen sind [hier](docs/software.md) aufgelistet.
+
+Die Dokumentation zur Software inklusive der Befehlsbibliothek ist [hier](docs/documentation.md) zu finden.
