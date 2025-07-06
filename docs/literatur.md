@@ -64,6 +64,9 @@ $L_\text{FS} \approx 116\,\text{dB}$
 
 Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39\,\text{dB}$, was einem recht großen Puffer entspricht.
 
+Ist das Ergebnis zu klein oder sogar negativ, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
+Ist das Ergebnis groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden, was weniger Anforderungen an die Ausrichtung zur Folge hätte.
+
 # Platinendesign
 
 Radiocrafts bietet eine Application Note über das Design von RF-Platinen an, die AN061 (RF PCB Layout Recommendations): [Link](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf)
