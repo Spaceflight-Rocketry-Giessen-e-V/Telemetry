@@ -10,6 +10,7 @@
 
 RC232::RC232()
 {  
+    // Pinbelegungen könnten auch als Argument übergeben werden
     ledpin1 = PIN_PG3;
     ledpin2 = PIN_PG2;
     ledpin3 = PIN_PG1;
