@@ -31,9 +31,19 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 Mithilfe einer Link Budget Berechnung (Leistungsübertragungsbilanz) lassen sich wahlweise die maximale Reichweite oder einzelne Parameter bei fester Reichweite berechnen.
 Theorie zum Link Budget ist [hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und im Detail [hier](https://www.sss-mag.com/pdf/an9804.pdf) und [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) zu finden.
 
-Allgemeine Formel für ein Link Budget beschreibt die Signalstärke am Empfänger:
+Allgemeine Formel (alle Größen in dB) für ein Link Budget beschreibt die Signalstärke am Empfänger:
 
 $P_\text{RX} = P_\text{TX} + G_\text{TX} - L_\text{TX} - L_\text{FS} - L_\text{M} + G_\text{RX} - L_\text{RX}$
+
+Die Sendeleistung $P_\text{TX}$, der Gewinn der Sendeantenne $G_\text{TX}$ und die Übertragungsverluste (bspw. durch Kabeldämpfung) auf Sendeseite $L_\text{TX}$ sind sogenannte Senderparameter.
+Die Signalstärke am Empfänger $P_\text{RX}$, der Gewinn der Empfangsantenne $G_\text{RX}$ und die Übertragungsverluste auf Empfangsseite $L_\text{RX}$ sind Empfängerparameter.
+Die Freiraumdämpfung $L_\text{FS}$ und die übrigen Verluste während der Ausbreitung $L_\text{M}$ werden im Begriff Pfadverlust zusammengefasst.
+
+Diese anderen Verluste sind z.B. Absorptionsverluste in der Atmosphäre, Verluste durch Diffraktion und Abschattung sowie Verluste durch Beugung an Hindernissen innerhalb der Fresnelzone (evtl. als Fading auftretend).
+
+Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle:
+
+$L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)^2$
 
 # Platinendesign
 
