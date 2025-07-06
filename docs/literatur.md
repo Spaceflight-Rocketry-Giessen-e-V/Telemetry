@@ -50,19 +50,19 @@ Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleri
 $L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
 
 Folgende Größen sind durch das Datenblatt des Radiomoduls gegeben:
-$P_\text{TX} = 27\,\text{dBm}$, $P_\text{RX} = -118\,\text{dBm}$
+$P_\text{TX} = 27\,\text{dBm}$, $P_\text{RX} = -118 \text{dBm}$ ($P_\text{RX_{min}} = -114 \text{dBm}$
 
 Eine QFH-Antenne, die gewählte Sendeantenne, hat keinen nennenswerten Gewinn:
 $G_\text{TX} = 0$
 
 Die für die Bodenstation gewählte Helixantenne kann je nach Bedarf angepasst werden, wobei ein höherer Gewinn eine genauere Ausrichtung der Antenne bedingt. 
 Ein guter Startpunkt ist:
-$G_\text{RX} = 10\,\text{dBi}$
+$G_\text{RX} = 10 \text{dBi}$
 
 Die Freiraumdämpfung für die gewünschte maximale Reichweite von $18\,\text{km}$ beträgt nach der oben gegebenen Formel:
 $L_\text{FS} \approx 116\,\text{dB}$
 
-Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39\,\text{dB}$, was einem recht großen Puffer entspricht.
+Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39 \text{dB}$, was einem recht großen Puffer entspricht.
 
 Ist das Ergebnis zu klein oder sogar negativ, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
 Ist das Ergebnis groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden, was weniger Anforderungen an die Ausrichtung zur Folge hätte.
