@@ -1,4 +1,4 @@
-# Telemetriesystem für den ASCENT II Flugcomputer für Experimentalraketen
+# ASCENT II Experimentalraketen-Telemetriesystem
 
 <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/pcb/Telemetrie%20v2.png" width="400">
 
