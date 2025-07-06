@@ -51,7 +51,7 @@ Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleri
 $L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
 
 Folgende Größen sind durch das Datenblatt des Radiomoduls gegeben:
-$P_\text{TX} = 27 \text{dBm}$, $P_\text{RX, typ} = -118 \text{dBm}$ ($P_\text{RX, min} = -114 \text{dBm}$)
+$P_\text{TX} = 27 \text{dBm}$, $P_\text{RX, typ} = -118 \text{dBm}$, $P_\text{RX, min} = -114 \text{dBm}$
 
 Eine QFH-Antenne, die gewählte Sendeantenne, hat keinen nennenswerten Gewinn:
 $G_\text{TX} = 0$
@@ -63,7 +63,7 @@ $G_\text{RX} = 10 \text{dBi}$
 Die Freiraumdämpfung für die gewünschte maximale Reichweite von $18 \text{km}$ beträgt nach der oben gegebenen Formel:
 $L_\text{FS} \approx 116 \text{dB}$
 
-Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 35 \text{dB}$.
+Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39 \text{dB}$ für $P_\text{RX, typ}$ und $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 35 \text{dB}$ für $P_\text{RX, min}$.
 
 Dieser Wert abzüglich der realen $L_\text{TX}$, $L_\text{RX}$ und $L_\text{M}$ wird als Fade Margin bezeichnet und ist eine Art Puffer.
 Für zuverlässige Verbindungen, sollte dieser Wert größer als 20 oder 30 dB sein, nie jedoch kleiner als 10 dB.
@@ -71,6 +71,8 @@ Die realen Werte für  $L_\text{TX}$, $L_\text{RX}$ und $L_\text{M}$ können dur
 
 Ist die Fade Margin zu klein, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
 Ist die Fade Margin groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden.
+
+Anmerkung: Reflexionsverluste als Teil von $L_\text{M}$ können wie in Kapitel 5.3 [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) berechnet werden.
 
 # Platinendesign
 
