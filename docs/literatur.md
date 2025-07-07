@@ -4,8 +4,7 @@
 - [Link Budget](#link-budget)
 - [Platinendesign](#platinendesign)
 - [Antennendesign](#antennendesign)
-- [Antennenmessungen](#antennenmessungen)
-- [Impedanzanpassung von Antennen](#impedanzanpassung-von-antennen)
+- [Antennenmessungen und Impedanzanpassung](#antennenmessungen-und-impedanzanpassung)
 
 # Radiomodul
 
@@ -98,7 +97,7 @@ Informationen zu Helixantennen:
 
 Artikel zu Helixantennen: [Link](https://www.microwaves101.com/encyclopedias/helix-antennas)
 
-# Antennenmessungen
+# Antennenmessungen und Impedanzanpassung
 
 Viele Informationen zu Antennenmessungen:
 [antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
@@ -120,8 +119,6 @@ Grundlagen zur Benutzung eines VNAs:
 
 Design eines L-Matching Netzwerks mit einem VNA und einem Smith-Chart:
 [Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
-
-# Impedanzanpassung von Antennen
 
 Mehrteiliger Artikel zur Impedanzanpassung: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matching)
 
