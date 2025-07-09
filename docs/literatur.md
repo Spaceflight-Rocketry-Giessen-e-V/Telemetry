@@ -38,7 +38,7 @@ $P_\text{RX} = P_\text{TX} + G_\text{TX} - L_\text{TX} - L_\text{FS} - L_\text{M
 
 Senderparameter: <br>
 - Sendeleistung $P_\text{TX}$ <br>
-Angegeben im Datenblatt des Radiomoduls:  $P_\text{TX} = 27 $dBm
+Angegeben im Datenblatt des Radiomoduls:  $P_\text{TX} = 27 $ dBm
 - Gewinn der Sendeantenne $G_\text{TX}$ <br>
 Die gewählte Sendeantenne, eine QFH-Antenne, hat keinen nennenswerten Gewinn: $G_\text{TX} = 0$
 - Übertragungsverluste auf Sendeseite $L_\text{TX}$ <br>
