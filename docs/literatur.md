@@ -47,7 +47,7 @@ Diese Verluste hängen vom verwendeten Koaxialkabel, den Steckern und vielem meh
 
 **Empfängerparameter:** <br>
 - Signalstärke am Empfänger $P_\text{RX}$ <br>
-Die minimale Signalstärke des Radiomoduls ist im Datenblatt angegeben: $P_\text{RX, typ} = -118 $dBm, $P_\text{RX, min} = -114$ dBm
+Die minimale Signalstärke des Radiomoduls ist im Datenblatt angegeben: $P_\text{RX, typ} = -118$ dBm, $P_\text{RX, min} = -114$ dBm
 - Gewinn der Empfangsantenne $G_\text{RX}$ <br>
 Die gewählte Empfangsantenne, eine Helixantenne, kann je nach benötigtem Gewinn konstruiert werden, wobei ein höherer Gewinn eine genauere Ausrichtung der Antenne bedingt. 
 Ein guter Schätzwert ist: $G_\text{RX} = 10$ dBi
