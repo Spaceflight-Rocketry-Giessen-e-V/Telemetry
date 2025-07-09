@@ -36,52 +36,54 @@ Alle Größen sind in dB (bzw. dBm und dBi) angegeben.
 
 $P_\text{RX} = P_\text{TX} + G_\text{TX} - L_\text{TX} - L_\text{FS} - L_\text{M} + G_\text{RX} - L_\text{RX}$
 
-Senderparameter: <br>
+**Senderparameter:** <br>
 - Sendeleistung $P_\text{TX}$ <br>
-Angegeben im Datenblatt des Radiomoduls:  $P_\text{TX} = 27 $ dBm
+Angegeben im Datenblatt des Radiomoduls:  $P_\text{TX} = 27$ dBm
 - Gewinn der Sendeantenne $G_\text{TX}$ <br>
 Die gewählte Sendeantenne, eine QFH-Antenne, hat keinen nennenswerten Gewinn: $G_\text{TX} = 0$
 - Übertragungsverluste auf Sendeseite $L_\text{TX}$ <br>
 Beinhaltet Dämpfungen in Kabeln und Leiterbahnen sowie Übergangsverluste bei Verbindungsstücken oder anderen Komponenten.
-Diese Verluste hängen vom verwendeten Koaxialkabel, den Steckern und vielem mehr ab und können nur abgeschätzt oder gemessen werden: $L_\text{TX} < 5\ $dB
+Diese Verluste hängen vom verwendeten Koaxialkabel, den Steckern und vielem mehr ab und können nur abgeschätzt oder gemessen werden: $L_\text{TX} < 5$ dB
 
-Empfängerparameter: <br>
+**Empfängerparameter:** <br>
 - Signalstärke am Empfänger $P_\text{RX}$ <br>
-Die minimale Signalstärke des Radiomoduls ist im Datenblatt angegeben: $P_\text{RX, typ} = -118 $dBm, $P_\text{RX, min} = -114 $dBm
+Die minimale Signalstärke des Radiomoduls ist im Datenblatt angegeben: $P_\text{RX, typ} = -118 $dBm, $P_\text{RX, min} = -114$ dBm
 - Gewinn der Empfangsantenne $G_\text{RX}$ <br>
 Die gewählte Empfangsantenne, eine Helixantenne, kann je nach benötigtem Gewinn konstruiert werden, wobei ein höherer Gewinn eine genauere Ausrichtung der Antenne bedingt. 
-Ein guter Schätzwert ist: $G_\text{RX} = 10 $dBi
+Ein guter Schätzwert ist: $G_\text{RX} = 10$ dBi
 - Übertragungsverluste auf Empfangsseite $L_\text{RX}$ <br>
-Siehe $L_\text{TX}$: $L_\text{RX} < 5 $dB
+Siehe $L_\text{TX}$: $L_\text{RX} < 5$ dB
 
-Pfadverlust: <br>
+**Pfadverlust:** <br>
 - Freiraumdämpfung $L_\text{FS}$ <br>
 Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle.
-Die Formel lautet: $L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
-Für eine maximale Reichweite von $18 $km ergibt sich: $L_\text{FS} \approx 116 $dB
-- Weitere Verluste während der Ausbreitung $L_\text{M}$ <br>$
+Die Formel lautet: $L_\text{FS} = 20 \cdot \text{log}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz).
+Für eine maximale Reichweite von $18$ km ergibt sich: $L_\text{FS} \approx 116$ dB
+- Weitere Verluste während der Ausbreitung $L_\text{M}$ <br>
 Diese Verluste beinhalten u.a. Absorptionsverluste in der Atmosphäre, Verluste durch Diffraktion und Abschattung sowie Verluste durch Beugung an Hindernissen innerhalb der Fresnelzone (evtl. als Fading auftretend).
 Sie sind schwierig abzuschätzen und können nur durch Messungen verifiziert werden.
 
-
-
-Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleriebaren Verluste durch die Übertragung auf Sender- und Empfängerseite, sowie die Verluste durch die Übertragung berechnet werden können:
+Die Formel für das Link Budget kann umgestellt werden, um die maximal toleriebaren Verluste durch die Übertragung für die maximale gewünschte Reichweite zu berechnen. 
+$L_\text{TX} + L_\text{RX} + L_\text{M}$ sind hierbei die unbekannten Verluste.
 
 $L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
 
+Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39$ dB für $P_\text{RX, typ}$ und $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 35$ dB für $P_\text{RX, min}$.
 
-Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39 \text{dB}$ für $P_\text{RX, typ}$ und $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 35 \text{dB}$ für $P_\text{RX, min}$.
+Die realen Werte für  $L_\text{TX}$, $L_\text{RX}$ können durch Messungen bestimmmt werden und wie die gesamte Formel schrittweise verifiziert und nachjustiert werden.
+Wenn $L_\text{TX}$ und $L_\text{RX}$ entweder konkret abgeschätzt oder real gemessen werden, verbleibt lediglich $L_\text{M}$.
 
-Dieser Wert abzüglich der realen $L_\text{TX}$, $L_\text{RX}$ und $L_\text{M}$ wird als Fade Margin bezeichnet und ist eine Art Puffer.
-Für zuverlässige Verbindungen, sollte dieser Wert größer als 20 oder 30 dB sein, nie jedoch kleiner als 10 dB.
-Die realen Werte für  $L_\text{TX}$, $L_\text{RX}$ und $L_\text{M}$ können durch Messungen bestimmmt werden und wie die gesamte Formel schrittweise verifiziert und nachjustiert werden.
+Für $L_\text{TX} = L_\text{RX} = 3$ dB sowie $P_\text{RX, min}$ ergibt sich $L_\text{M} \approx 29$ dB.
+Dieser Wert kann als eine Art Sicherheitspuffer (Link Margin) für ungünstige atmosphärische Bedingungen, schlechte Schätzungen oder Messungen der anderen Größen verstanden werden und garantiert eine zuverlässige Verbindung.
+Dieser Puffer sollte nie kleiner als $10$ dB sein und für zuverlässige Verbindungen größer als $20$ dB oder $30$ dB sein.
 
-Ist die Fade Margin zu klein, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
-Ist die Fade Margin groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden.
+Ist die Link Margin zu klein, kann mithilfe einer stärkeren Richtwirkung der Empfangsantenne oder dem Einbau eines Verstärkers das Empfangssignal verstärkt werden.
+Ist die Link Margin vergleichsweise groß, kann beispielsweise die Datenrate erhöht werden oder die Richtwirkung der Empfangsantenne verringert werden.
 
 [Hier](linkbudget_beispiel.py) steht ein Python-Skript zur Verfügung, das die Berechnung des Link Budgets für einen exemplarischen Flugverlauf inklusive einer [graphischen Ausgabe](linkbudget_beispiel.png) zeigt.
 
-Anmerkung: Reflexionseffekte können evtl. wie in Kapitel 5.3 [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) berechnet werden. (Wahrscheinlich kein Effekt?)
+Reflexionseffekte können evtl. wie [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) in Kapitel 5.3 berechnet und einbezogen werden. 
+Bei uns haben diese wahrscheinlich keinen Effekt aufgrund der großer Antennenhöhe.
 
 # Platinendesign
 
