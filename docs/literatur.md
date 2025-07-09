@@ -27,15 +27,23 @@ Radiocrafts bietet verschiedene Anleitungen und Application Notes (AN) zum Umgan
 
 # Link Budget
 
-Mithilfe einer Link Budget Berechnung (Leistungsübertragungsbilanz) lassen sich wahlweise die maximale Reichweite oder einzelne Parameter bei fester Reichweite berechnen.
-Theorie zum Link Budget ist im Detail [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) beschrieben.
-[Hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und [hier](https://www.sss-mag.com/pdf/an9804.pdf) sind weitere Infors zu finden.
+Durch die Berechnung des Link Budgets (Leistungsübertragunsbilanz) des Telemetriesystems lassen sich wahlweise die maximale Reichweite des Systems oder einzelne Größen, wie z.B. die Sendeleistung, bei fester Reichweite berechnen.
+Eine ausführliche Erklärung des Link Budgets ist [hier](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf) zu finden.
+Weitere Informationen gibt es [hier](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [hier](https://en.wikipedia.org/wiki/Link_budget) und [hier](https://www.sss-mag.com/pdf/an9804.pdf).
 
-Allgemeine Formel (alle Größen in dB) für ein Link Budget beschreibt die Signalstärke am Empfänger und beinhaltet Größen, die die Empfangsstärke erhöhen (positives Vorzeichen) oder verringern (negatives Vorzeichen):
+Die allgemeine Formel für ein Link Budget beschreibt die Signalstärke am Empfänger und beinhaltet Größen, die die Empfangsstärke erhöhen (positives Vorzeichen) oder verringern (negatives Vorzeichen).
+Alle Größen sind in dB (bzw. dBm und dBi) angegeben.
 
 $P_\text{RX} = P_\text{TX} + G_\text{TX} - L_\text{TX} - L_\text{FS} - L_\text{M} + G_\text{RX} - L_\text{RX}$
 
-Die Sendeleistung $P_\text{TX}$, der Gewinn der Sendeantenne $G_\text{TX}$ und die Übertragungsverluste (bspw. durch Kabeldämpfung) auf Sendeseite $L_\text{TX}$ sind sogenannte Senderparameter.
+Senderparameter: <br>
+- Sendeleistung $P_\text{TX}$
+- Gewinn der Sendeantenne $G_\text{TX}$
+- Übertragungsverluste (bspw. durch Kabeldämpfung) auf Sendeseite $L_\text{TX}$
+
+
+
+
 Die Signalstärke am Empfänger $P_\text{RX}$, der Gewinn der Empfangsantenne $G_\text{RX}$ und die Übertragungsverluste auf Empfangsseite $L_\text{RX}$ sind Empfängerparameter.
 Die Freiraumdämpfung $L_\text{FS}$ und die übrigen Verluste während der Ausbreitung $L_\text{M}$ werden im Begriff Pfadverlust zusammengefasst.
 
