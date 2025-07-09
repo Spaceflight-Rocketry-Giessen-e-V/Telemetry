@@ -135,7 +135,7 @@ uint8_t RC1780HP::setChannel(uint8_t channel)
         {
             if(sendConfigCommand('C') == 0)
             {
-                if(sendConfigCommand(channel == 0))
+                if(sendConfigCommand(channel) == 0)
                 {
                     _channel = channel;
                     if(exitConfig() == 0)
