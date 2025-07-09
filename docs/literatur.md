@@ -37,38 +37,38 @@ Alle Größen sind in dB (bzw. dBm und dBi) angegeben.
 $P_\text{RX} = P_\text{TX} + G_\text{TX} - L_\text{TX} - L_\text{FS} - L_\text{M} + G_\text{RX} - L_\text{RX}$
 
 Senderparameter: <br>
-- Sendeleistung $P_\text{TX}$
-- Gewinn der Sendeantenne $G_\text{TX}$
-- Übertragungsverluste (bspw. durch Kabeldämpfung) auf Sendeseite $L_\text{TX}$
+- Sendeleistung $P_\text{TX}$ <br>
+Angegeben im Datenblatt des Radiomoduls:  $P_\text{TX} = 27 $dBm
+- Gewinn der Sendeantenne $G_\text{TX}$ <br>
+Die gewählte Sendeantenne, eine QFH-Antenne, hat keinen nennenswerten Gewinn: $G_\text{TX} = 0$
+- Übertragungsverluste auf Sendeseite $L_\text{TX}$ <br>
+Beinhaltet Dämpfungen in Kabeln und Leiterbahnen sowie Übergangsverluste bei Verbindungsstücken oder anderen Komponenten.
+Diese Verluste hängen vom verwendeten Koaxialkabel, den Steckern und vielem mehr ab und können nur abgeschätzt oder gemessen werden: $L_\text{TX} < 5\ $dB
+
+Empfängerparameter: <br>
+- Signalstärke am Empfänger $P_\text{RX}$ <br>
+Die minimale Signalstärke des Radiomoduls ist im Datenblatt angegeben: $P_\text{RX, typ} = -118 $dBm, $P_\text{RX, min} = -114 $dBm
+- Gewinn der Empfangsantenne $G_\text{RX}$ <br>
+Die gewählte Empfangsantenne, eine Helixantenne, kann je nach benötigtem Gewinn konstruiert werden, wobei ein höherer Gewinn eine genauere Ausrichtung der Antenne bedingt. 
+Ein guter Schätzwert ist: $G_\text{RX} = 10 $dBi
+- Übertragungsverluste auf Empfangsseite $L_\text{RX}$ <br>
+Siehe $L_\text{TX}$: $L_\text{RX} < 5 $dB
+
+Pfadverlust: <br>
+- Freiraumdämpfung $L_\text{FS}$ <br>
+Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle.
+Die Formel lautet: $L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
+Für eine maximale Reichweite von $18 $km ergibt sich: $L_{FS} \approx 116 $dB
+- Weitere Verluste während der Ausbreitung $L_\text{M}$ <br>
+Diese Verluste beinhalten u.a. Absorptionsverluste in der Atmosphäre, Verluste durch Diffraktion und Abschattung sowie Verluste durch Beugung an Hindernissen innerhalb der Fresnelzone (evtl. als Fading auftretend).
+Sie sind schwierig abzuschätzen und können nur durch Messungen verifiziert werden.
 
 
-
-
-Die Signalstärke am Empfänger $P_\text{RX}$, der Gewinn der Empfangsantenne $G_\text{RX}$ und die Übertragungsverluste auf Empfangsseite $L_\text{RX}$ sind Empfängerparameter.
-Die Freiraumdämpfung $L_\text{FS}$ und die übrigen Verluste während der Ausbreitung $L_\text{M}$ werden im Begriff Pfadverlust zusammengefasst.
-
-Diese anderen Verluste sind z.B. Absorptionsverluste in der Atmosphäre, Verluste durch Diffraktion und Abschattung sowie Verluste durch Beugung an Hindernissen innerhalb der Fresnelzone (evtl. als Fading auftretend).
-
-Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle:
-
-$L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
 
 Die Formel für das Link Budget kann umgestellt werden, damit die maximal toleriebaren Verluste durch die Übertragung auf Sender- und Empfängerseite, sowie die Verluste durch die Übertragung berechnet werden können:
 
 $L_\text{TX} + L_\text{RX} + L_\text{M} = P_\text{TX} - P_\text{RX} + G_\text{TX} + G_\text{RX} - L_\text{FS}$
 
-Folgende Größen sind durch das Datenblatt des Radiomoduls gegeben:
-$P_\text{TX} = 27 \text{dBm}$, $P_\text{RX, typ} = -118 \text{dBm}$, $P_\text{RX, min} = -114 \text{dBm}$
-
-Eine QFH-Antenne, die gewählte Sendeantenne, hat keinen nennenswerten Gewinn:
-$G_\text{TX} = 0$
-
-Die für die Bodenstation gewählte Helixantenne kann je nach Bedarf angepasst werden, wobei ein höherer Gewinn eine genauere Ausrichtung der Antenne bedingt. 
-Ein guter Startpunkt ist:
-$G_\text{RX} = 10 \text{dBi}$
-
-Die Freiraumdämpfung für die gewünschte maximale Reichweite von $18 \text{km}$ beträgt nach der oben gegebenen Formel:
-$L_\text{FS} \approx 116 \text{dB}$
 
 Somit gilt $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 39 \text{dB}$ für $P_\text{RX, typ}$ und $L_\text{TX} + L_\text{RX} + L_\text{M} \approx 35 \text{dB}$ für $P_\text{RX, min}$.
 
