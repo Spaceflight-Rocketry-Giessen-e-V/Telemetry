@@ -57,9 +57,9 @@ Siehe $L_\text{TX}$: $L_\text{RX} < 5 $dB
 Pfadverlust: <br>
 - Freiraumdämpfung $L_\text{FS}$ <br>
 Die Freiraumdämpfung beschreibt die reduzierte Leistungsdichte einer EM-Welle bei steigendem Abstand zur Quelle.
-Die Formel lautet: $L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
-Für eine maximale Reichweite von $18 $km ergibt sich: $L_{FS} \approx 116 $dB
-- Weitere Verluste während der Ausbreitung $L_\text{M}$ <br>
+Die Formel lautet: $'L_\text{FS} = 20 \cdot \text{log}_{10}\left(\frac{4 \pi r f}{c}\right)'$ (mit $r$ als Abstand zur Sendeantenne und $f$ als verwendete Frequenz)
+Für eine maximale Reichweite von $18 $km ergibt sich: $'L_\text{FS} \approx 116 '$dB
+- Weitere Verluste während der Ausbreitung $L_\text{M}$ <br>$
 Diese Verluste beinhalten u.a. Absorptionsverluste in der Atmosphäre, Verluste durch Diffraktion und Abschattung sowie Verluste durch Beugung an Hindernissen innerhalb der Fresnelzone (evtl. als Fading auftretend).
 Sie sind schwierig abzuschätzen und können nur durch Messungen verifiziert werden.
 
