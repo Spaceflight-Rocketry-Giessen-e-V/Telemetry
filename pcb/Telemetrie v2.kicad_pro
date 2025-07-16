@@ -496,7 +496,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "Telemetrie v2.0.0.step",
+      "step": "../../../Telemetrie v2.0.0.step",
       "svg": "",
       "vrml": ""
     },
