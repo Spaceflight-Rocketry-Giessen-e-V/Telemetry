@@ -50237,7 +50237,7 @@
 			(justify left)
 		)
 	)
-	(gr_text "Designed by\nFelix Seene\nBenjamin Bauersfeld\n???"
+	(gr_text "Designed by\nFelix Seene\nBenjamin Bauersfeld"
 		(at 1.500011 21.49996 0)
 		(layer "F.SilkS")
 		(uuid "5c06d294-7132-4121-bfe8-ca92f4a861a3")
@@ -50538,7 +50538,7 @@
 			)
 		)
 	)
-	(gr_text "Giessen, xx.xx.2025"
+	(gr_text "Giessen, 18.07.2025"
 		(at 1.500011 26.99996 0)
 		(layer "F.SilkS")
 		(uuid "ad3ceb3b-f9e3-4c73-bfbf-dddb8e2ca627")
