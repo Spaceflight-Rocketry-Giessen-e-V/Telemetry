@@ -40,7 +40,7 @@ cd Ordnerpfad
 git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie
 ```
 ### Dateien bearbeiten und synchronisieren:
-- Repository auf den neuesten Stand bringen
+- Lokalen Repository Klon auf den neuesten Stand bringen
 ```
 git pull
 ```
