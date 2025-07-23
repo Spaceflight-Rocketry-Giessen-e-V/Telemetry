@@ -16,10 +16,38 @@ Mit diesem System kann der ASCENT II Flugcomputer Sensor- und Statusdaten in hoh
 - L-Netzwerk zur Anpassung der Antenne
 - Software mit eigener Befehlsbibliothek
 
-### Dokumentation
+## Dokumentation
 
 Informationen zum theoretischen Hintergrund, den verwendeten Bauteilen und mehr findet man [hier](docs/literatur.md).
 
 Links zu den von uns verwendeten Softwarelösungen sind [hier](docs/apps.md) aufgelistet.
 
 Die Dokumentation zur Software inklusive der Befehlsbibliothek ist [hier](docs/documentation.md) zu finden.
+
+## Verwendung
+
+### Repository lokal klonen:
+- Git herunterladen und installieren: [Download](https://git-scm.com/downloads)
+- Git CMD öffnen (z.B. über Windows Suche)
+- Git Username und Email konfigurieren
+```
+git config --global user.name "Vorname Nachname"
+git config --global user.email "Mailadresse"
+```
+- Repository lokal klonen
+```
+cd Ordnerpfad
+git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie
+```
+### Dateien bearbeiten und synchronisieren:
+- Repository auf den neuesten Stand bringen
+```
+git pull
+```
+- Dateien bearbeiten/hinzufügen/löschen
+- Updates online synchronisieren
+```
+git add Dateiname / git add --all
+git commit -m "Kurze Beschreibung des Updates"
+git push
+```
