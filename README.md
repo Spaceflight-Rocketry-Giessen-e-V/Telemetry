@@ -1,6 +1,6 @@
 # ASCENT II Experimentalraketen-Telemetriesystem
 
-<img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/pcb/Telemetrie%20v2.png" width="400">
+<img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/onboard/pcb/Telemetrie%20v2.png" width="400">
 
 ## 868 MHz Telemetriesystem mit einer Reichweite >10 km für den bidirektionalen Datenaustausch zwischen einer Experimentalrakete und einer Bodenstation
 
@@ -37,7 +37,7 @@ git config --global user.email "Mailadresse"
 - Repository lokal klonen
 ```
 cd Ordnerpfad
-git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie
+git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry
 ```
 ### Dateien bearbeiten und synchronisieren:
 - Lokalen Repository Klon auf den neuesten Stand bringen
