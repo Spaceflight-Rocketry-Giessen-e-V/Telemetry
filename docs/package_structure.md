@@ -7,7 +7,7 @@ This document describes the specific use of the 13 Byte and thus the data struct
 ## Package Structure
 
 The following table lists the structure and components of each data package:
-| Byte(s) | Use | Size |
+| Byte position | Use | Size |
 | --- | --- | --- |
 | 1 | [Start byte](#Start-byte) | 8 bit |
 | 2 | [COBS](#COBS) | 4 bit |
