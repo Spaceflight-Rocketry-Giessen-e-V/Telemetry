@@ -93,7 +93,7 @@ For our radio module, the RC1780HP-RC232, that means we have 1.2 kbps available 
 As a compromise between sampling rate and package size, we choose a sampling rate of 10 Hz which leaves 120 bit or 15 Byte per package.
 Since the data link should run at 100 % capacity, a 10 % buffer is retained, which leads to a package size of 13 Byte.
 
-The data protocol and thus the specific use of the 13 Byte per package is described [here](radio_protocol.md).
+The data protocol and thus the specific use of the 13 Byte per package is described [here](package_structure.md).
 
 # Platinendesign
 
@@ -143,4 +143,5 @@ Design eines L-Matching Netzwerks mit einem VNA und einem Smith-Chart:
 Mehrteiliger Artikel zur Impedanzanpassung: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matching)
 
 Kurzer Artikel zur Impedanzanpassung: [Link](https://www.escatec.com/blog/antenna-matching)
+
 
