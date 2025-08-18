@@ -9,8 +9,8 @@ This document describes the specific use of the 13 Byte and thus the data struct
 The following table lists the components of each data package:
 | Byte position | Use | Size |
 | --- | --- | --- |
-| 0 | [COBS](#COBS) | 4 bit |
 | 0 | [Address](#Address) | 4 bit |
+| 0 | [COBS](#COBS) | 4 bit |
 | 1 | [Status](#Status) | 4 bit |
 | 1 | [Battery level](#Battery-level) | 4 bit |
 | 2 to 3 | [Height](#Height) | 16 bit |
@@ -20,40 +20,62 @@ The following table lists the components of each data package:
 
 ## Data Components
 
-### COBS
-4 bit <br>
-Consistent Overhead Byte Stuffing ([Link](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing))
-
 ### Address
-4 bit <br>
-0 to 15 <br>
-Unique destination ID
+- component size: 4 bits
+- value range: 16 unique destination addresses
+
+### COBS
+- component size: 4 bits
+- value range: 0 to 11
+
+Consistent Overhead Byte Stuffing ([Link](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)) is used to avoid multiple occurances of the unique end byte 0xDD.
+If there is no occurance of 0xDD in the data bytes, the COBS value is set to 0x0.
+If there is one or mulitple occurances, the COBS value is set to the byte position of the first occurance.
+Then the value of the first occurance (formerly 0xDD) is set to the byte position of the second occurance and so on.
+This is repeated until no 0xDD except the end byte is left. 
+The last occurance will be replaced by the value 0x00 to signal the end of the COBS chain. 
+
+The following table shows an example package with many occurances of 0xDD being modified using the described method. 
+All changes are marked in italic in the modified package.
+The modified package only includes one 0xDD in the end and can easily be converted back to its original shape.
+Note: The byte 0 which includes the COBS value also includes the destination address (in this case 0x8)
+| Byte position | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | A | B | C |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Original Package | 80 | 56 | DD | A8 | 9B | DD | 77 | 1F | DD | 0E | DD | B6 | DD |
+| Modified Package | ***82*** | 56 | ***05*** | A8 | 9B | ***08*** | 77 | 1F | ***0A*** | 0E | ***00*** | B6 | DD |
  
 ### Status
-4 bit <br>
-16 different statuses
+- component size: 4 bits
+- value range: 16 different statuses
  
 ### Battery level
-4 bit <br>
--50 % to 100 %, 10 % resolution
+- component size: 4 bits
+- value range: -50 % to 100 %
+- resolution: 10 % resolution
 
 ### Height
-16 bit <br>
-0 m to 16400 m, 0.25 m resolution <br><br>
+- component size: 16 bits
+- value range: 0 m to 16400 m
+- resolution: 0.25 m
+
 A 16 bit integer stores values from 0 to $2^{16} - 1 = 65535$.
 With our desired resolution of 0.25 m, heights from 0 m to $\approx$ 16400 m can be stored.
 Since we don't expect large negative heights, all values below 0 m are set to 0 m.
 
 ### Acceleration
-8 bit <br>
-0 to tbd. g, tbd. g resolution <br><br>
+- component size: 8 bits
+- value range: 0 g to tbd. g
+- resolution: tbd. g
+
 An 8 bit integer stores values from 0 to $2^{8} - 1 = 255$.
 With our desired resolution of tbd. g, accelerations from 0 g to $\approx$ g can be stored.
 > Negative Accelerations?
 
 ### GNSS
-56 bit <br>
-Global scope with around 10 cm resolution <br><br>
+- component size: 56 bits (28 bits each for latitude and longitude)
+- value range: -90 ° to 90 ° (latitude) and -180 ° to 180 ° (longitude)
+- resolution: 7.5 cm (latitude) and 9.5 cm (longitude)
+
 Latitude and Longitude are stored in two seperate 28 bit integers. 
 The resolutions can be calculated using the following formula: <br> 
 $\Delta x = 2 \cdot \pi \cdot R \cdot \frac{\Delta \varphi}{360 °} \cdot \frac{1}{2^{28}}$ <br>
@@ -65,8 +87,9 @@ $\Delta \varphi$ is the angular range and equals 180 ° for latitude and 360 ° 
 Thus the achievable resolution is $\Delta x \approx 7.5$ cm for latitude and $\Delta x \approx 9.5$ cm for longitude.
 
 ### End byte
-8 bit <br>
-0xDD <br><br>
+- component size: 8 bits
+- value: 0xDD
+
 The unique end byte is used to identify the end of each package.
 If there are multiple occurances of the end byte, the COBS method is used to encode all except the real end byte.
 To avoid having the same end byte and byte 0 (COBS and adress), 0xDD was chosen as the unique end byte.
