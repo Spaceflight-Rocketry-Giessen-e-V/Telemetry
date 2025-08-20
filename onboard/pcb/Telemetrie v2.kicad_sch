@@ -3885,6 +3885,289 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Library:CMT-0525-75-SMT-TR"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LS"
+				(at -3.81 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "CMT-0525-75-SMT-TR"
+				(at -3.81 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "CMT-0525-75-SMT-TR:XDCR_CMT-0525-75-SMT-TR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PARTREV" "1.0"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendations"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MAXIMUM_PACKAGE_HEIGHT" "2.80mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "CUI Inc."
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(symbol "CMT-0525-75-SMT-TR_0_0"
+				(polyline
+					(pts
+						(xy -0.635 1.905) (xy -0.635 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 1.905) (xy 0 1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 -1.905) (xy 0 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.905) (xy 1.27 1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.905) (xy 1.27 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.905) (xy 3.81 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.905) (xy 1.27 1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.905) (xy 3.81 -5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -5.08) (xy 3.81 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "+"
+					(at -2.54 3.81 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left top)
+					)
+				)
+				(text "-"
+					(at -2.54 -2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left top)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "P"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "N"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Library:CONSMA001-SMD-G-T"
 			(pin_names
 				(offset 1.016)
@@ -6666,6 +6949,12 @@
 		(uuid "b201442d-ad59-422c-892c-b91b399dea9c")
 	)
 	(junction
+		(at 269.24 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b6218345-1117-4650-8834-0c757a751fcf")
+	)
+	(junction
 		(at 170.18 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6852,10 +7141,6 @@
 	(no_connect
 		(at 208.28 95.25)
 		(uuid "b776e217-65b6-4d19-bd0d-0bf6d31f8673")
-	)
-	(no_connect
-		(at 254 87.63)
-		(uuid "bcca90e3-eff8-46a5-90f2-84963e07120c")
 	)
 	(no_connect
 		(at 208.28 118.11)
@@ -7056,6 +7341,16 @@
 			(type default)
 		)
 		(uuid "08d1f3b1-37aa-4226-b49f-1b0add0f5558")
+	)
+	(wire
+		(pts
+			(xy 269.24 138.43) (xy 274.32 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0af1a3c9-c3c2-4830-a7c5-615a738d38e1")
 	)
 	(wire
 		(pts
@@ -7519,6 +7814,16 @@
 	)
 	(wire
 		(pts
+			(xy 254 87.63) (xy 256.54 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "341c3ff7-8b2d-4b07-8e64-9844995ae235")
+	)
+	(wire
+		(pts
 			(xy 261.62 109.22) (xy 261.62 107.95)
 		)
 		(stroke
@@ -7939,7 +8244,7 @@
 	)
 	(wire
 		(pts
-			(xy 254 138.43) (xy 256.54 138.43)
+			(xy 254 138.43) (xy 269.24 138.43)
 		)
 		(stroke
 			(width 0)
@@ -8099,6 +8404,16 @@
 	)
 	(wire
 		(pts
+			(xy 298.45 87.63) (xy 298.45 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6376522f-8307-4282-9407-690d57cfd347")
+	)
+	(wire
+		(pts
 			(xy 46.99 107.95) (xy 46.99 87.63)
 		)
 		(stroke
@@ -8136,6 +8451,16 @@
 			(type default)
 		)
 		(uuid "69f27795-01f6-4275-abfc-3b0ac01bf583")
+	)
+	(wire
+		(pts
+			(xy 256.54 72.39) (xy 298.45 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a4ee424-5cca-4e0a-84fb-ccad8a531b45")
 	)
 	(wire
 		(pts
@@ -8369,6 +8694,16 @@
 	)
 	(wire
 		(pts
+			(xy 298.45 72.39) (xy 298.45 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81a125fd-2d30-45a8-a086-00b32b75c6ce")
+	)
+	(wire
+		(pts
 			(xy 31.75 138.43) (xy 34.29 138.43)
 		)
 		(stroke
@@ -8556,6 +8891,16 @@
 			(type default)
 		)
 		(uuid "95e080ea-98fb-4aac-9efd-6548f0318b52")
+	)
+	(wire
+		(pts
+			(xy 269.24 138.43) (xy 269.24 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "961fe772-c298-4acd-af17-d807f216e506")
 	)
 	(wire
 		(pts
@@ -9006,6 +9351,16 @@
 			(type default)
 		)
 		(uuid "bd7bec23-4487-4318-acc7-93029e985305")
+	)
+	(wire
+		(pts
+			(xy 256.54 87.63) (xy 256.54 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "befab831-f86a-4d5e-9ec5-8b1d1518b2a7")
 	)
 	(wire
 		(pts
@@ -9576,6 +9931,16 @@
 			(type default)
 		)
 		(uuid "f4dadf5f-14ca-43ca-95e8-6df197241abb")
+	)
+	(wire
+		(pts
+			(xy 269.24 148.59) (xy 269.24 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f525e7d3-155c-4c31-99e1-05026206b180")
 	)
 	(wire
 		(pts
@@ -10477,7 +10842,7 @@
 	)
 	(global_label "ARM"
 		(shape bidirectional)
-		(at 256.54 138.43 0)
+		(at 274.32 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -10487,7 +10852,7 @@
 		)
 		(uuid "9645a49b-ae89-4140-a2c5-a13006175991")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 264.4465 138.43 0)
+			(at 282.2265 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16625,6 +16990,73 @@
 		)
 	)
 	(symbol
+		(lib_name "GND_2")
+		(lib_id "power:GND")
+		(at 269.24 151.13 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "862c91d1-83a8-4bef-80a8-239b2c4059b5")
+		(property "Reference" "#PWR063"
+			(at 269.24 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 269.24 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 269.24 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 269.24 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 269.24 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f11111f3-d02c-404d-b302-eb47f026a625")
+		)
+		(instances
+			(project "Telemetrie v2"
+				(path "/f407b7fa-6471-4b54-a07f-cfd3c9d0d328"
+					(reference "#PWR063")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_name "+3V3_1")
 		(lib_id "power:+3V3")
 		(at 231.14 36.83 0)
@@ -17972,6 +18404,117 @@
 		)
 	)
 	(symbol
+		(lib_id "Library:CMT-0525-75-SMT-TR")
+		(at 298.45 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ac3bba3f-c396-4969-93ec-10f721daa1ed")
+		(property "Reference" "LS1"
+			(at 303.53 78.7399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CMT-0525-75-SMT-TR"
+			(at 303.53 81.2799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Footprints:XDCR_CMT-0525-75-SMT-TR"
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" "1.0"
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "2.80mm"
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "CUI Inc."
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "N"
+			(uuid "9d85e6a2-79e5-4c46-8ce6-8283e7cfc57f")
+		)
+		(pin "P"
+			(uuid "488c992c-1cd6-402e-9b93-5916ce724c49")
+		)
+		(instances
+			(project ""
+				(path "/f407b7fa-6471-4b54-a07f-cfd3c9d0d328"
+					(reference "LS1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x04_Pin")
 		(at 24.13 219.71 0)
 		(unit 1)
@@ -18377,6 +18920,73 @@
 			(project "Telemetrie v2"
 				(path "/f407b7fa-6471-4b54-a07f-cfd3c9d0d328"
 					(reference "#PWR054")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 269.24 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b1be7919-cf62-4137-bfba-62e98db7df78")
+		(property "Reference" "R21"
+			(at 271.78 144.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5k6"
+			(at 269.24 144.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 267.462 144.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 269.24 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 269.24 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ecde2c55-2cf8-4e17-970a-34ae0489da9d")
+		)
+		(pin "2"
+			(uuid "d06b37c8-d4f6-4e3f-88b6-fa7ffe69b48c")
+		)
+		(instances
+			(project "Telemetrie v2"
+				(path "/f407b7fa-6471-4b54-a07f-cfd3c9d0d328"
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -18852,6 +19462,73 @@
 			(project "Telemetrie v2"
 				(path "/f407b7fa-6471-4b54-a07f-cfd3c9d0d328"
 					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "GND_2")
+		(lib_id "power:GND")
+		(at 298.45 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b90ca1cb-8dce-4685-b8e7-2cf1133611af")
+		(property "Reference" "#PWR064"
+			(at 298.45 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 298.45 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 298.45 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 298.45 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 298.45 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d13a03ea-19c5-4dbe-9618-33d7d846988d")
+		)
+		(instances
+			(project "Telemetrie v2"
+				(path "/f407b7fa-6471-4b54-a07f-cfd3c9d0d328"
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)

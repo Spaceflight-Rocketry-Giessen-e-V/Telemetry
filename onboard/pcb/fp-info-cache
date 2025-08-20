@@ -1,4 +1,4 @@
-26431501217740354
+26433256929918687
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -61487,6 +61487,13 @@ test point SMD pad
 0
 1
 1
+Footprints
+XDCR_CMT-0525-75-SMT-TR
+
+
+0
+3
+3
 Footprints
 m4hole
 
