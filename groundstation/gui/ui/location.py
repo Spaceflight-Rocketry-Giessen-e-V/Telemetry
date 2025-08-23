@@ -1,5 +1,7 @@
 import dearpygui.dearpygui as dpg
 
+import ui.map_view
+
 
 class Location:
     lat = 0.0
@@ -15,22 +17,12 @@ class Location:
         return degrees, minutes, seconds
 
     @classmethod
-    def draw_ui(cls):
-        with dpg.child_window(label="GPS", width=600, height=400):
+    def draw_ui(cls, width, height):
+        with dpg.child_window(label="GPS", width=width, height=height):
             # Two-column horizontal layout
             with dpg.group(horizontal=True):
-                # Map view
-                with dpg.group():
-                    dpg.add_text("Map", color=[0, 255, 0])
-                    with dpg.drawlist(width=400, height=400, tag="map_canvas"):
-                        dpg.draw_rectangle((0, 0), (400, 400),
-                                           color=(200, 200, 200, 255),
-                                           fill=(240, 240, 240, 255))
-                        dpg.draw_text((10, 10), "OpenStreetMap tiles coming soon...",
-                                      size=15, color=(0, 0, 0, 255))
-
                 # GPS coordinates
-                with dpg.group():
+                with dpg.group(horizontal=False):
                     dpg.add_text("GPS Coordinates", color=[255, 255, 0])
 
                     dpg.add_text("Decimal:", color=[200, 200, 200])
@@ -61,3 +53,6 @@ class Location:
         lon_d, lon_m, lon_s = cls.decimal_to_dms(lon)
         dpg.set_value("lat_dms_value", f"{lat_d}°{lat_m}'{lat_s:.2f}\"")
         dpg.set_value("lon_dms_value", f"{lon_d}°{lon_m}'{lon_s:.2f}\"")
+
+        # Update map view
+        ui.map_view.Map.update_location(lat, lon)

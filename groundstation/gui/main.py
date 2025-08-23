@@ -10,7 +10,7 @@ import simulation
 import ui.location
 import ui.altitude
 import ui.battery
-
+import ui.map_view
 
 # ---------- Cross-platform Screen Resolution ----------
 def get_screen_resolution():
@@ -30,6 +30,7 @@ def get_screen_resolution():
 
 
 def start_simulation():
+    ui.map_view.Map.update_location(ui.location.Location.lat, ui.location.Location.lon)
     simulation.init_simulation()
     threading.Thread(target=simulation.update_fake_data, daemon=True).start()
 
@@ -39,15 +40,22 @@ def shutdown():
 
 
 # ---------- UI Build ----------
-def draw_telemetry_ui():
+def draw_main_ui():
     with dpg.group(horizontal=True):
-        ui.location.Location.draw_ui()
-        ui.altitude.Altitude.draw_ui()
-        ui.battery.Battery.draw_ui()
+        with dpg.group(horizontal=False):
+            # Altitude View
+            ui.altitude.Altitude.draw_ui()
 
-        with dpg.child_window(width=300, height=400):
-            dpg.add_text("Flight Events")
-            dpg.add_listbox(items=[], tag="event_list", width=250, num_items=10)
+            with dpg.group(horizontal=True):
+                # Battery status view
+                ui.battery.Battery.draw_ui()
+
+                # Flight events view
+                with dpg.child_window(width=300, height=400):
+                    dpg.add_text("Flight Events")
+                    dpg.add_listbox(items=[], tag="event_list", width=250, num_items=10)
+        # Location view
+        ui.map_view.Map.draw_ui()
 
         # Right panel
         # with dpg.child_window(width=300, height=400):
@@ -93,7 +101,7 @@ def build_ui():
     ):
         with dpg.tab_bar():
             with dpg.tab(label="Flight Data"):
-                draw_telemetry_ui()
+                draw_main_ui()
 
                 dpg.add_button(label="Start Simulation",
                                callback=lambda: start_simulation())
