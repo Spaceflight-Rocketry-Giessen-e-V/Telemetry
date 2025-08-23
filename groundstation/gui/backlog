@@ -1,0 +1,5 @@
+fix close button
+add custom font to support unicode (f.e. delta in altitude)
+implement second graph for barometer/gps differentiation
+implement time
+implement telemetry health view
