@@ -20,6 +20,20 @@ class RC1780HP
         void reset();
 
         uint8_t setChannel(uint8_t channel);
+        
+        uint8_t setAddress_mode(uint8_t address);
+
+        uint8_t readVoltage(float* result);
+
+        uint8_t readRSSI(float* result);
+
+        uint8_t readTemperature(int8_t* result);
+
+        uint8_t readNon_Voltile_Memory(float* result);
+
+        uint8_t readMemoryByte(uint8_t address, uint8_t* result);       // Private oder Public?
+
+        
 
     private:
         uint8_t _rstpin;
@@ -38,8 +52,7 @@ class RC1780HP
         uint8_t enterConfig();
         uint8_t exitConfig();
         uint8_t sendConfigCommand(uint8_t command);
-
-        uint8_t readMemoryByte(uint8_t address, uint8_t* result);       // Private oder Public?
+        unit8_t writeMemoryByte(uint8_t memory_address, uint8_t value);
 };
 
 #endif
