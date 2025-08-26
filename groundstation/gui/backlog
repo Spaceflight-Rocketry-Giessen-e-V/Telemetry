@@ -1,0 +1,8 @@
+tuen launchen das raketen
+fix close button
+implement prepare_flight, enter mission data (est. apogee, battery voltages, launch site coords for downloading and caching map data)
+add custom font to support unicode (f.e. delta in altitude)
+implement second graph for barometer/gps differentiation
+implement time
+implement telemetry health view
+outsource acceleration data into own class and implement simulation

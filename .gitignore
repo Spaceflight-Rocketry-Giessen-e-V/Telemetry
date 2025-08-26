@@ -1,3 +1,7 @@
-pcb/Telemetrie*v2-backups/
-pcb/blueprint1.png
-pcb/blueprint2.png
+**/pcb/*-backups/
+**/pcb/blueprint1.png
+**/pcb/blueprint2.png
+/groundstation/gui/ui/__pycache__
+/groundstation/gui/.venv
+/groundstation/gui/.idea
+/groundstation/gui/__pycache__

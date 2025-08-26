@@ -1,53 +1,54 @@
-# ASCENT II Experimentalraketen-Telemetriesystem
+# ASCENT II Experimental Rocket Telemetry System
 
 <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/onboard/pcb/Telemetrie%20v2.png" width="400">
 
-## 868 MHz Telemetriesystem mit einer Reichweite >10 km für den bidirektionalen Datenaustausch zwischen einer Experimentalrakete und einer Bodenstation
+## 868 MHz telemetry system with a range of >10 km for bidirectional data exchange between an experimental rocket and a ground station
 
-Das Telemetriesystem ist Teil des ASCENT II Flugcomputers des studentischen Raketenbauvereins Spaceflight Rocketry Gießen e.V., der für die ARCHER Experimentalrakete entwickelt wird.
-Mit diesem System kann der ASCENT II Flugcomputer Sensor- und Statusdaten in hoher Quantität an die Bodenstation übertragen sowie zuverlässig Telekommandos empfangen und ausführen.
+The telemetry system is part of the ASCENT II flight computer of the student rocketry association *Spaceflight Rocketry Gießen e.V.*, developed for the ARCHER experimental rocket.  
+With this system, the ASCENT II flight computer can transmit sensor and status data in high quantity to the ground station as well as reliably receive and execute telecommands.
 
 ### Features
 
-- 868 MHz Radio Transceiver
-- Mindestens 18 km Reichweite
-- Mindestens 1,2 kbps Datenrate
-- Auf Anforderungen angepasste QFH-Antenne
-- L-Netzwerk zur Anpassung der Antenne
-- Software mit eigener Befehlsbibliothek
+- 868 MHz radio transceiver  
+- Minimum range of 18 km  
+- Minimum data rate of 1.2 kbps  
+- QFH antenna adapted to requirements  
+- L-network for antenna matching  
+- Software with a custom command library  
 
-## Dokumentation
+## Documentation
 
-Informationen zum theoretischen Hintergrund, den verwendeten Bauteilen und mehr findet man [hier](docs/literatur.md).
+Information about the theoretical background, the components used, and more can be found [here](docs/literatur.md).  
 
-Links zu den von uns verwendeten Softwarelösungen sind [hier](docs/apps.md) aufgelistet.
+Links to the software solutions we use are listed [here](docs/apps.md).  
 
-Die Dokumentation zur Software inklusive der Befehlsbibliothek ist [hier](docs/documentation.md) zu finden.
+The software documentation, including the command library, can be found [here](docs/documentation.md).  
 
-## Verwendung
+## Usage
 
-### Repository lokal klonen:
-- Git herunterladen und installieren: [Download](https://git-scm.com/downloads)
-- Git CMD öffnen (z.B. über Windows Suche)
-- Git Username und Email konfigurieren
+### Clone repository locally:
+- Download and install Git: [Download](https://git-scm.com/downloads)  
+- Open Git CMD (e.g., via Windows Search)  
+- Configure Git username and email  
 ```
-git config --global user.name "Vorname Nachname"
-git config --global user.email "Mailadresse"
+git config --global user.name "First Last"
+git config --global user.email "Email address"
 ```
-- Repository lokal klonen
+- Clone repository locally  
 ```
-cd Ordnerpfad
+cd folderpath
 git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry
 ```
-### Dateien bearbeiten und synchronisieren:
-- Lokalen Repository Klon auf den neuesten Stand bringen
+
+### Edit and synchronize files:
+- Update local repository clone to the latest version  
 ```
 git pull
 ```
-- Dateien bearbeiten/hinzufügen/löschen
-- Updates online synchronisieren
+- Edit/add/delete files  
+- Synchronize updates online  
 ```
-git add Dateiname / git add --all
-git commit -m "Kurze Beschreibung des Updates"
+git add filename / git add --all
+git commit -m "Short description of the update"
 git push
 ```
