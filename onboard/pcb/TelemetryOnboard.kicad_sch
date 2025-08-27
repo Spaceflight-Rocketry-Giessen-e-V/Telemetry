@@ -11572,7 +11572,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 157.48 88.9 0)
 			(effects
 				(font
@@ -11659,7 +11659,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.cree.com/led-components/media/documents/CLS6B-FKW.pdf"
+		(property "Datasheet" "~"
 			(at 44.45 161.29 0)
 			(effects
 				(font
@@ -11722,12 +11722,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 201.93 120.65 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -11857,7 +11858,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 27.305 114.3 0)
 			(effects
 				(font
@@ -11924,7 +11925,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 203.2 246.6976 90)
 			(effects
 				(font
@@ -12194,12 +12195,13 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 49.53 186.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -12261,7 +12263,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 190.5 113.03 0)
 			(effects
 				(font
@@ -12329,7 +12331,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "Socket 01x06 2.54mm"
 			(at 80.645 92.71 0)
 			(effects
 				(font
@@ -12545,7 +12547,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 190.5 90.17 0)
 			(effects
 				(font
@@ -13019,7 +13021,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 190.5 118.11 0)
 			(effects
 				(font
@@ -13223,12 +13225,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 154.94 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -13359,7 +13362,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "Socket 01x08 2.54mm"
 			(at 80.645 21.59 0)
 			(effects
 				(font
@@ -13580,7 +13583,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 37.7825 186.69 0)
 			(effects
 				(font
@@ -13648,7 +13651,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 280.67 49.53 0)
 			(effects
 				(font
@@ -13784,12 +13787,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 274.32 58.42 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -15132,7 +15136,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 276.86 49.53 0)
 			(effects
 				(font
@@ -15402,12 +15406,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 201.93 87.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -15668,7 +15673,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 53.34 171.45 90)
 			(effects
 				(font
@@ -15803,7 +15808,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "Socket 01x08 2.54mm"
 			(at 27.305 46.99 0)
 			(effects
 				(font
@@ -15889,7 +15894,7 @@
 				)
 			)
 		)
-		(property "Value" "SMA SMD"
+		(property "Value" "CONSMA001-SMD-G-T"
 			(at 153.8605 173.99 0)
 			(effects
 				(font
@@ -15908,7 +15913,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 154.94 177.8 0)
 			(effects
 				(font
@@ -16053,7 +16058,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Jumper_2_Bridged"
+		(property "Value" "~"
 			(at 179.07 237.4899 90)
 			(effects
 				(font
@@ -16190,12 +16195,13 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 49.53 181.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -16323,7 +16329,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 33.9725 156.21 0)
 			(effects
 				(font
@@ -16381,7 +16387,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "751056de-ec68-4dd1-8d24-42ce2b786c9a")
 		(property "Reference" "J5"
 			(at 24.892 229.87 0)
@@ -16540,7 +16546,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 45.72 156.21 90)
 			(effects
 				(font
@@ -16610,7 +16616,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "~"
 			(at 170.18 196.8499 0)
 			(effects
 				(font
@@ -16815,7 +16821,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 27.305 137.16 0)
 			(effects
 				(font
@@ -17147,7 +17153,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "Socket 01x06 2.54mm"
 			(at 27.305 92.71 0)
 			(effects
 				(font
@@ -17363,12 +17369,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 201.93 115.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -17567,7 +17574,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "Socket 01x08 2.54mm"
 			(at 80.645 46.99 0)
 			(effects
 				(font
@@ -17653,7 +17660,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 53.34 168.91 90)
 			(effects
 				(font
@@ -17787,7 +17794,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "Socket 01x06 2.54mm"
 			(at 80.645 72.39 0)
 			(effects
 				(font
@@ -18003,12 +18010,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 148.59 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -18070,7 +18078,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "Socket 01x08 2.54mm"
 			(at 27.305 21.59 0)
 			(effects
 				(font
@@ -18291,7 +18299,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "~"
 			(at 161.29 185.42 90)
 			(effects
 				(font
@@ -18448,7 +18456,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 298.45 80.01 0)
 			(effects
 				(font
@@ -18528,7 +18536,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "acbe4d06-e44b-4886-9246-4378ad369747")
 		(property "Reference" "J4"
 			(at 24.892 214.63 0)
@@ -18538,7 +18546,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x04_Pin"
+		(property "Value" "Socket 01x04 2.54mm"
 			(at 24.765 214.63 0)
 			(effects
 				(font
@@ -18679,12 +18687,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 278.13 58.42 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -19219,7 +19228,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 190.5 123.19 0)
 			(effects
 				(font
@@ -19627,13 +19636,14 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 218.44 237.4899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -19697,7 +19707,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 213.36 246.6976 90)
 			(effects
 				(font
@@ -19831,7 +19841,7 @@
 				)
 			)
 		)
-		(property "Value" "RC1780HP"
+		(property "Value" "RC1780HP-RC232"
 			(at 210.058 195.326 0)
 			(effects
 				(font
@@ -19848,7 +19858,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 218.44 227.33 0)
 			(effects
 				(font
@@ -20018,7 +20028,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 53.34 166.37 90)
 			(effects
 				(font
@@ -20222,7 +20232,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 27.305 129.54 0)
 			(effects
 				(font
@@ -20507,7 +20517,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://ww1.microchip.com/downloads/en/DeviceDoc/AVR128DB28-32-48-64-DataSheet-DS40002247A.pdf"
+		(property "Datasheet" "~"
 			(at 231.14 97.79 0)
 			(effects
 				(font
@@ -20811,7 +20821,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 37.7825 181.61 0)
 			(effects
 				(font
@@ -21014,12 +21024,13 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "150R"
 			(at 201.93 110.49 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -21071,7 +21082,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "e617ae31-7c92-45a1-acd4-f743f4c857de")
 		(property "Reference" "J2"
@@ -21355,7 +21366,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 27.305 121.92 0)
 			(effects
 				(font
@@ -21556,7 +21567,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "Socket 01x06 2.54mm"
 			(at 27.305 72.39 0)
 			(effects
 				(font
@@ -21839,13 +21850,14 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "150R"
 			(at 208.28 237.4899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
@@ -22039,7 +22051,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805"
 			(at 151.13 88.9 0)
 			(effects
 				(font
