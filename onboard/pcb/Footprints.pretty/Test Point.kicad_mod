@@ -1,7 +1,7 @@
-(footprint "TestPoint"
-	(version 20240108)
+(footprint "Test Point"
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "SMD pad as test Point, diameter 2.0mm")
 	(tags "test point SMD pad")
@@ -17,7 +17,7 @@
 			)
 		)
 	)
-	(property "Value" "TestPoint"
+	(property "Value" "Test Point"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -25,19 +25,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "c35f134a-c821-4574-bb69-18e515c0eb89")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -76,7 +63,7 @@
 			(width 0.12)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.SilkS")
 		(uuid "b5b6e09d-9944-4950-8fb1-281d00dc9306")
 	)
@@ -87,7 +74,7 @@
 			(width 0.05)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "efb1b4c8-d2ab-4de8-a462-72ec395048a8")
 	)
@@ -109,4 +96,5 @@
 		(layers "F.Cu" "F.Mask")
 		(uuid "66dd818e-46c3-4cc6-8165-861578cda9d2")
 	)
+	(embedded_fonts no)
 )

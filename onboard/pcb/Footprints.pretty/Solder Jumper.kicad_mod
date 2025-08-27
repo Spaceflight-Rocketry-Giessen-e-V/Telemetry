@@ -1,7 +1,7 @@
-(footprint "Jumper"
-	(version 20240108)
+(footprint "Solder Jumper"
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -0.5 0)
@@ -16,25 +16,12 @@
 			)
 		)
 	)
-	(property "Value" "Jumper"
+	(property "Value" "Solder Jumper"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
 		(uuid "f3d9270a-ffca-40b4-a4cc-51a957fa49d8")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "f4ae98d5-a4d4-4305-b003-512b192aab25")
 		(effects
 			(font
 				(size 1 1)
@@ -271,4 +258,5 @@
 		)
 		(uuid "2eed74ed-c324-4358-acc3-6cd7c8f7ef9a")
 	)
+	(embedded_fonts no)
 )

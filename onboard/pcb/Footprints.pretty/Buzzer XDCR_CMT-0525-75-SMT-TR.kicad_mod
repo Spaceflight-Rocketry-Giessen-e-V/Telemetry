@@ -1,4 +1,4 @@
-(footprint "XDCR_CMT-0525-75-SMT-TR"
+(footprint "Buzzer XDCR_CMT-0525-75-SMT-TR"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -14,7 +14,7 @@
 			)
 		)
 	)
-	(property "Value" "XDCR_CMT-0525-75-SMT-TR"
+	(property "Value" "Buzzer XDCR_CMT-0525-75-SMT-TR"
 		(at 6.8072 4.2164 0)
 		(layer "F.Fab")
 		(uuid "4adabe41-9b28-4e0a-9866-c2c118c5aa79")
@@ -256,4 +256,15 @@
 		(uuid "4184dae7-d27b-4edc-a691-5e47ea6fd5a9")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/Buzzer CMT-0525-75-SMT-TR.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -90)
+		)
+	)
 )

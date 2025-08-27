@@ -1,8 +1,7 @@
-(footprint "m4hole"
-	(version 20240108)
+(footprint "M4 Mounting Hole"
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
-	(locked yes)
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "M2"
 		(at 0 -0.5 0)
@@ -26,18 +25,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" "Library:m4hole"
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "00b4cf6e-039c-43c6-8ef6-120447ab58fb")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -74,7 +61,7 @@
 			(width 0.05)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "B.CrtYd")
 		(uuid "2eeed4a5-59cc-4e5d-823a-07fa911706ff")
 	)
@@ -85,22 +72,9 @@
 			(width 0.05)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "3af9f6e4-0768-498e-ac09-3afc8a294c42")
-	)
-	(fp_text user "${REFERENCE}"
-		(at 0 2.5 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "25ccbba2-bd23-40b4-8256-15fa1b803249")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
 	)
 	(pad "1" thru_hole circle
 		(at 0 0)
@@ -122,4 +96,5 @@
 		(layers "B.Cu" "B.Mask")
 		(uuid "e365839c-123a-4061-8922-2b03ad646fd0")
 	)
+	(embedded_fonts no)
 )

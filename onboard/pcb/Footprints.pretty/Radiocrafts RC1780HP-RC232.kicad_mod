@@ -1,4 +1,4 @@
-(footprint "RC1780HP"
+(footprint "Radiocrafts RC1780HP-RC232"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -15,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "RC1780HP"
+	(property "Value" "Radiocrafts RC1780HP-RC232"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -525,7 +525,7 @@
 		(uuid "bacfc5b1-1d94-4de9-99d7-71e654003112")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3dmodels/RC1191-TM.STEP"
+	(model "${KIPRJMOD}/3dmodels/Radiocrafts RC1780HP-RC232.STEP"
 		(offset
 			(xyz 12.7 -6.35 0)
 		)

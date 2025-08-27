@@ -3885,7 +3885,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Library:CMT-0525-75-SMT-TR"
+		(symbol "Library:Buzzer CMT-0525-75-SMT-TR"
 			(pin_names
 				(offset 1.016)
 			)
@@ -3901,7 +3901,7 @@
 					(justify left bottom)
 				)
 			)
-			(property "Value" "CMT-0525-75-SMT-TR"
+			(property "Value" "Buzzer CMT-0525-75-SMT-TR"
 				(at -3.81 -10.16 0)
 				(effects
 					(font
@@ -3910,7 +3910,7 @@
 					(justify left top)
 				)
 			)
-			(property "Footprint" "CMT-0525-75-SMT-TR:XDCR_CMT-0525-75-SMT-TR"
+			(property "Footprint" "Footprints:Buzzer XDCR_CMT-0525-75-SMT-TR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3978,7 +3978,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "CMT-0525-75-SMT-TR_0_0"
+			(symbol "Buzzer CMT-0525-75-SMT-TR_0_0"
 				(polyline
 					(pts
 						(xy -0.635 1.905) (xy -0.635 -1.905)
@@ -4168,327 +4168,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Library:CONSMA001-SMD-G-T"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at -3.81 1.524 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Value" "CONSMA001-SMD-G-T"
-				(at -4.064 -6.858 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-					(hide yes)
-				)
-			)
-			(property "Footprint" "CONSMA001-SMD-G-T:LINX_CONSMA001-SMD-G-T"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "SnapEDA_Link" "https://www.snapeda.com/parts/CONSMA001-SMD-G-T/Linx/view-part/?ref=snap"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Check_prices" "https://www.snapeda.com/parts/CONSMA001-SMD-G-T/Linx/view-part/?ref=eda"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Package" "None"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Price" "None"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MF" "Linx Technologies"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MP" "CONSMA001-SMD-G-T"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=5003765&manufacturer=Linx Technologies&part_name=CONSMA001-SMD-G-T&search_term=None"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Availability" "In Stock"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Description_1" "SMA Jack 50 Ohm PCB Surface Mount"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(symbol "CONSMA001-SMD-G-T_0_0"
-				(arc
-					(start -3.175 0.635)
-					(mid -2.5427 0)
-					(end -3.175 -0.635)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -3.175 -1.905)
-					(mid -2.5427 -2.54)
-					(end -3.175 -3.175)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 -1.016) (xy 1.016 -1.016)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.762 -3.302) (xy -1.27 -4.064)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 1.016)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.016) (xy 0 -3.302)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 -2.54)
-					(radius 0.254)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -3.302) (xy -0.508 -4.064)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -3.302) (xy -0.762 -3.302)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -3.302) (xy 0.254 -4.064)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at 2.54 0 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -2.54 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "S1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -2.54 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "S2"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Library:RC1780"
+		(symbol "Library:Radiocrafts RC1780HP-RC232"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4508,7 +4188,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Footprints:Radiocrafts RC1780HP-RC232"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4535,7 +4215,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "RC1780_0_1"
+			(symbol "Radiocrafts RC1780HP-RC232_0_1"
 				(rectangle
 					(start 2.54 -2.54)
 					(end 45.72 -25.4)
@@ -4548,7 +4228,7 @@
 					)
 				)
 			)
-			(symbol "RC1780_1_1"
+			(symbol "Radiocrafts RC1780HP-RC232_1_1"
 				(pin power_in line
 					(at 0 -6.35 0)
 					(length 2.54)
@@ -5301,6 +4981,326 @@
 						(effects
 							(font
 								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Library:SMA Connector CONSMA001-SMD-G-T"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -3.81 1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "SMA Connector CONSMA001-SMD-G-T"
+				(at -4.064 -6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+					(hide yes)
+				)
+			)
+			(property "Footprint" "Footprints:SMA Connector CONSMA001-SMD-G-T"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SnapEDA_Link" "https://www.snapeda.com/parts/CONSMA001-SMD-G-T/Linx/view-part/?ref=snap"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Check_prices" "https://www.snapeda.com/parts/CONSMA001-SMD-G-T/Linx/view-part/?ref=eda"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Package" "None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Price" "None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MF" "Linx Technologies"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MP" "CONSMA001-SMD-G-T"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=5003765&manufacturer=Linx Technologies&part_name=CONSMA001-SMD-G-T&search_term=None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Availability" "In Stock"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Description_1" "SMA Jack 50 Ohm PCB Surface Mount"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(symbol "SMA Connector CONSMA001-SMD-G-T_0_0"
+				(arc
+					(start -3.175 0.635)
+					(mid -2.5427 0)
+					(end -3.175 -0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.175 -1.905)
+					(mid -2.5427 -2.54)
+					(end -3.175 -3.175)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -1.016) (xy 1.016 -1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.762 -3.302) (xy -1.27 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.016) (xy 0 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -2.54)
+					(radius 0.254)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.302) (xy -0.508 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -3.302) (xy -0.762 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -3.302) (xy 0.254 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -2.54 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "S1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -2.54 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "S2"
+						(effects
+							(font
+								(size 1.016 1.016)
 							)
 						)
 					)
@@ -11860,7 +11860,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:m4hole"
+		(property "Footprint" "Footprints:M4 Mounting Hole"
 			(at 26.67 115.57 0)
 			(effects
 				(font
@@ -11996,7 +11996,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 265.43 109.22 0)
 			(effects
 				(font
@@ -13855,7 +13855,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 161.29 215.9 0)
 			(effects
 				(font
@@ -14529,7 +14529,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 279.4 88.9 0)
 			(effects
 				(font
@@ -14662,7 +14662,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 139.7 106.68 0)
 			(effects
 				(font
@@ -15473,7 +15473,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 265.43 63.5 0)
 			(effects
 				(font
@@ -15539,7 +15539,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 273.05 63.5 0)
 			(effects
 				(font
@@ -15867,7 +15867,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Library:CONSMA001-SMD-G-T")
+		(lib_id "Library:SMA Connector CONSMA001-SMD-G-T")
 		(at 154.94 177.8 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15892,7 +15892,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:SMA_connector_smd"
+		(property "Footprint" "Footprints:SMA Connector CONSMA001-SMD-G-T"
 			(at 154.94 177.8 0)
 			(effects
 				(font
@@ -16057,7 +16057,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:Jumper"
+		(property "Footprint" "Footprints:Solder Jumper"
 			(at 176.53 236.22 0)
 			(effects
 				(font
@@ -16261,7 +16261,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 212.09 53.34 0)
 			(effects
 				(font
@@ -16818,7 +16818,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:m4hole"
+		(property "Footprint" "Footprints:M4 Mounting Hole"
 			(at 26.67 138.43 0)
 			(effects
 				(font
@@ -16884,7 +16884,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 256.54 109.22 0)
 			(effects
 				(font
@@ -16950,7 +16950,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 293.37 104.14 0)
 			(effects
 				(font
@@ -17725,7 +17725,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 284.48 104.14 0)
 			(effects
 				(font
@@ -18228,7 +18228,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 273.05 88.9 0)
 			(effects
 				(font
@@ -18404,7 +18404,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Library:CMT-0525-75-SMT-TR")
+		(lib_id "Library:Buzzer CMT-0525-75-SMT-TR")
 		(at 298.45 80.01 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18429,9 +18429,10 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:XDCR_CMT-0525-75-SMT-TR"
+		(property "Footprint" "Footprints:Buzzer XDCR_CMT-0525-75-SMT-TR"
 			(at 298.45 80.01 0)
 			(effects
 				(font
@@ -19768,7 +19769,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 265.43 128.27 0)
 			(effects
 				(font
@@ -19808,7 +19809,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Library:RC1780")
+		(lib_id "Library:Radiocrafts RC1780HP-RC232")
 		(at 218.44 227.33 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -19832,7 +19833,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Footprints:RC1780HP"
+		(property "Footprint" "Footprints:Radiocrafts RC1780HP-RC232"
 			(at 218.44 227.33 0)
 			(effects
 				(font
@@ -20224,7 +20225,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:m4hole"
+		(property "Footprint" "Footprints:M4 Mounting Hole"
 			(at 26.67 130.81 0)
 			(effects
 				(font
@@ -20358,7 +20359,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 265.43 115.57 0)
 			(effects
 				(font
@@ -20424,7 +20425,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 149.86 101.6 0)
 			(effects
 				(font
@@ -21357,7 +21358,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Footprints:m4hole"
+		(property "Footprint" "Footprints:M4 Mounting Hole"
 			(at 26.67 123.19 0)
 			(effects
 				(font
@@ -21639,7 +21640,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 265.43 123.19 0)
 			(effects
 				(font
@@ -21910,7 +21911,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 165.1 93.98 0)
 			(effects
 				(font
@@ -21976,7 +21977,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:TestPoint"
+		(property "Footprint" "Footprints:Test Point"
 			(at 265.43 88.9 0)
 			(effects
 				(font

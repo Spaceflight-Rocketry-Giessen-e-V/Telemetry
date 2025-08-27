@@ -1,0 +1,235 @@
+(footprint "RGB LED Cree-PLCC-6_6x5mm_P2.1mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "http://www.farnell.com/datasheets/2003905.pdf")
+	(tags "LED RGB PLCC-6 CLP6C-FBK")
+	(property "Reference" "D2"
+		(at 0 0 90)
+		(layer "F.SilkS")
+		(uuid "5207f33c-d2d7-4b24-bbed-4d869f843ad4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CLS6B-FKW"
+		(at 0 4 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d1da48c5-0fa2-4c8c-acdd-0ad13b925733")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.cree.com/led-components/media/documents/CLS6B-FKW.pdf"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "72ed25f5-1e00-43fc-8896-4a454d96a1dd")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0b52c2d2-505b-466c-bb42-314d2ba7a1f9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -4.05 -3.15)
+		(end 4 -3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9d6bbb96-c9b0-4401-9fcb-753c5b282349")
+	)
+	(fp_line
+		(start -4.05 -2.15)
+		(end -4.05 -3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f901610c-1ccd-46a3-9d1a-0b48ac46418a")
+	)
+	(fp_line
+		(start -4.05 3.15)
+		(end 4 3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "525a9dce-1f69-4eed-915a-620c55af0945")
+	)
+	(fp_line
+		(start -4 -3.25)
+		(end -4 3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b78857ce-285c-4fb7-a8ca-8be17c6fc1ec")
+	)
+	(fp_line
+		(start -4 3.25)
+		(end 4 3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "21e17389-7ca6-4e1b-8456-887f21e8c43f")
+	)
+	(fp_line
+		(start 4 -3.25)
+		(end -4 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "5117fb28-f8d5-4265-8e53-ececfcc01179")
+	)
+	(fp_line
+		(start 4 3.25)
+		(end 4 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "1cfb973f-054e-4409-918e-00a4888ab945")
+	)
+	(fp_line
+		(start -2.5 -1.9)
+		(end -1.5 -3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e6e66596-9f77-4fbd-b684-4c2324ae9752")
+	)
+	(fp_line
+		(start -2.5 3)
+		(end -2.5 -1.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9074e4c6-721c-4adb-8cb8-6bc2010654f9")
+	)
+	(fp_line
+		(start -1.5 -3)
+		(end 2.5 -3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "43583824-6e2f-427f-82d8-a7d9a18c211d")
+	)
+	(fp_line
+		(start 2.5 -3)
+		(end 2.5 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "de71411c-bd02-4bcc-8cb2-bda402c3d597")
+	)
+	(fp_line
+		(start 2.5 3)
+		(end -2.5 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f860fbf4-14b4-4c5f-93c4-fce2d647a605")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 0 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "29acb14c-a65b-49be-9929-a7d8d83e243e")
+	)
+	(pad "1" smd rect
+		(at -2.45 -2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "fbee4643-77f3-4c9b-8177-80aed243e04d")
+	)
+	(pad "2" smd rect
+		(at -2.45 0)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8835eb8c-b14c-401d-a1af-265e2a18dae4")
+	)
+	(pad "3" smd rect
+		(at -2.45 2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "421908eb-30c6-4daf-977f-20bea721bb00")
+	)
+	(pad "4" smd rect
+		(at 2.45 2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4be63cd9-14aa-4f4d-8fc9-101f4585086c")
+	)
+	(pad "5" smd rect
+		(at 2.45 0)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "820e26d7-b677-4317-8f45-3deb41baa4af")
+	)
+	(pad "6" smd rect
+		(at 2.45 -2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "077a765b-7575-4fda-92d8-3f899b53a7d1")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/RGB LED PLCC6_CLP6C-FKB_CRW.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
