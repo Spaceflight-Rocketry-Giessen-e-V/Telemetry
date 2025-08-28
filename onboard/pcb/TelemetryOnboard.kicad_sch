@@ -11758,7 +11758,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 201.93 120.65 90)
 			(effects
 				(font
@@ -12286,7 +12286,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 49.53 186.69 90)
 			(effects
 				(font
@@ -13406,7 +13406,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "0805 1k"
 			(at 154.94 95.25 90)
 			(effects
 				(font
@@ -13665,7 +13665,7 @@
 				)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "0805 1uF"
 			(at 247.65 35.56 90)
 			(effects
 				(font
@@ -14058,7 +14058,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "0805 1k"
 			(at 274.32 58.42 90)
 			(effects
 				(font
@@ -14285,7 +14285,7 @@
 				)
 			)
 		)
-		(property "Value" "2k7"
+		(property "Value" "0805 2k7"
 			(at 147.32 215.9 90)
 			(effects
 				(font
@@ -14371,7 +14371,7 @@
 				)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "0805 1uF"
 			(at 262.89 25.4 90)
 			(effects
 				(font
@@ -15776,7 +15776,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 201.93 87.63 90)
 			(effects
 				(font
@@ -16079,7 +16079,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 53.34 171.45 90)
 			(effects
 				(font
@@ -16165,7 +16165,7 @@
 				)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "0805 1uF"
 			(at 240.03 40.64 90)
 			(effects
 				(font
@@ -16673,7 +16673,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 49.53 181.61 90)
 			(effects
 				(font
@@ -16908,7 +16908,7 @@
 		(at 24.13 232.41 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp yes)
 		(uuid "751056de-ec68-4dd1-8d24-42ce2b786c9a")
@@ -17105,7 +17105,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 45.72 156.21 90)
 			(effects
 				(font
@@ -18009,7 +18009,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 201.93 115.57 90)
 			(effects
 				(font
@@ -18336,7 +18336,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 53.34 168.91 90)
 			(effects
 				(font
@@ -18731,7 +18731,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "0805 1k"
 			(at 148.59 95.25 90)
 			(effects
 				(font
@@ -19336,7 +19336,7 @@
 		(at 24.13 219.71 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp yes)
 		(uuid "acbe4d06-e44b-4886-9246-4378ad369747")
@@ -19507,7 +19507,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "0805 1k"
 			(at 278.13 58.42 90)
 			(effects
 				(font
@@ -19594,7 +19594,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5k6"
+		(property "Value" "0805 5k6"
 			(at 170.18 86.36 90)
 			(effects
 				(font
@@ -19814,7 +19814,7 @@
 				)
 			)
 		)
-		(property "Value" "5k6"
+		(property "Value" "0805 5k6"
 			(at 269.24 144.78 90)
 			(effects
 				(font
@@ -20257,7 +20257,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1nF"
+		(property "Value" "0805 1nF"
 			(at 156.21 226.06 0)
 			(effects
 				(font
@@ -20477,7 +20477,7 @@
 				)
 			)
 		)
-		(property "Value" "5k6"
+		(property "Value" "0805 5k6"
 			(at 278.13 87.63 90)
 			(effects
 				(font
@@ -20564,7 +20564,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 218.44 237.4899 0)
 			(effects
 				(font
@@ -21020,7 +21020,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 53.34 166.37 90)
 			(effects
 				(font
@@ -22097,7 +22097,7 @@
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 201.93 110.49 90)
 			(effects
 				(font
@@ -22171,7 +22171,7 @@
 		(at 201.93 191.77 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -22272,7 +22272,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5k6"
+		(property "Value" "0805 5k6"
 			(at 287.02 58.42 90)
 			(effects
 				(font
@@ -22358,7 +22358,7 @@
 				)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "0805 1uF"
 			(at 255.27 30.48 90)
 			(effects
 				(font
@@ -23031,7 +23031,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "0805 270R"
 			(at 208.28 237.4899 0)
 			(effects
 				(font

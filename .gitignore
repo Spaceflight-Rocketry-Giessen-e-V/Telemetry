@@ -4,7 +4,6 @@
 **/pcb/*.net
 **/pcb/place_footprints.log
 **/pcb/fp-info-cache
-**/pcb/sym-lib-table
 **/pcb/blueprint1.png
 **/pcb/blueprint2.png
 /groundstation/gui/ui/__pycache__
