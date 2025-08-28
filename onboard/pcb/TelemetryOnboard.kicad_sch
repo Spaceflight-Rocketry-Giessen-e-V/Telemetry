@@ -11572,7 +11572,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 red"
 			(at 157.48 88.9 0)
 			(effects
 				(font
@@ -11600,6 +11600,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 154.94 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+			(at 154.94 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
 			(at 154.94 87.63 0)
 			(effects
 				(font
@@ -11678,6 +11696,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/cree-led/CLP6C-FKB-CK1P1G1BB7R3R3/2341952"
+			(at 39.37 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/cree-led/CLP6C-FKB-CK1P1G1BB7R3R3/2341952"
+			(at 39.37 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "aa2f150c-55af-4fd7-9298-6e11b127533b")
 		)
@@ -11722,7 +11758,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 201.93 120.65 90)
 			(effects
 				(font
@@ -11751,6 +11787,24 @@
 		)
 		(property "Description" ""
 			(at 201.93 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 120.65 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11846,7 +11900,7 @@
 		(at 26.67 115.57 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "0a010863-420a-4d99-a4b8-4b8480f02d64")
@@ -11894,6 +11948,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 26.67 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8c38e18a-b0f0-4111-9d7b-538c8197a486")
 		)
@@ -11925,13 +11988,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 green"
 			(at 203.2 246.6976 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
@@ -11961,6 +12025,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+			(at 205.74 246.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+			(at 205.74 246.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "90a2ffb9-268a-4039-8248-37241a542424")
 		)
@@ -11981,7 +12063,7 @@
 		(at 270.51 109.22 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "10d69c6e-b66f-442b-a1a4-965f5cc98274")
@@ -12022,6 +12104,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 270.51 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 270.51 109.22 0)
 			(effects
 				(font
@@ -12195,7 +12286,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 49.53 186.69 90)
 			(effects
 				(font
@@ -12224,6 +12315,24 @@
 		)
 		(property "Description" ""
 			(at 49.53 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 49.53 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 49.53 189.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12263,7 +12372,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 orange"
 			(at 190.5 113.03 0)
 			(effects
 				(font
@@ -12299,6 +12408,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 191.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 191.77 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "27d18d75-fa96-4458-9ff5-ee845a49c5dd")
 		)
@@ -12319,9 +12446,9 @@
 		(at 80.01 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "18f27df2-6f6e-401e-9c65-b4dac40af25d")
 		(property "Reference" "JR4"
 			(at 80.518 93.218 0)
@@ -12331,7 +12458,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x06 2.54mm"
+		(property "Value" "~"
 			(at 80.645 92.71 0)
 			(effects
 				(font
@@ -12359,6 +12486,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 80.01 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 80.01 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 80.01 100.33 0)
 			(effects
 				(font
@@ -12547,7 +12692,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 orange"
 			(at 190.5 90.17 0)
 			(effects
 				(font
@@ -12575,6 +12720,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 191.77 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 191.77 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
 			(at 191.77 87.63 0)
 			(effects
 				(font
@@ -13021,7 +13184,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 orange"
 			(at 190.5 118.11 0)
 			(effects
 				(font
@@ -13049,6 +13212,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 191.77 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 191.77 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
 			(at 191.77 115.57 0)
 			(effects
 				(font
@@ -13225,7 +13406,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "1k"
 			(at 154.94 95.25 90)
 			(effects
 				(font
@@ -13254,6 +13435,24 @@
 		)
 		(property "Description" ""
 			(at 154.94 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 154.94 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 154.94 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13362,7 +13561,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x08 2.54mm"
+		(property "Value" "Stackable Header 01x08 2.54mm"
 			(at 80.645 21.59 0)
 			(effects
 				(font
@@ -13390,6 +13589,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 80.01 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 80.01 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 80.01 31.75 0)
 			(effects
 				(font
@@ -13476,6 +13693,24 @@
 		)
 		(property "Description" ""
 			(at 247.65 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 247.65 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 247.65 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13583,7 +13818,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 green"
 			(at 37.7825 186.69 0)
 			(effects
 				(font
@@ -13611,6 +13846,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 39.37 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+			(at 39.37 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
 			(at 39.37 189.23 0)
 			(effects
 				(font
@@ -13651,7 +13904,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 red"
 			(at 280.67 49.53 0)
 			(effects
 				(font
@@ -13679,6 +13932,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 278.13 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+			(at 278.13 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
 			(at 278.13 48.26 0)
 			(effects
 				(font
@@ -13787,7 +14058,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "1k"
 			(at 274.32 58.42 90)
 			(effects
 				(font
@@ -13823,6 +14094,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 274.32 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 274.32 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3cb90509-3b04-42cc-9364-11714d0dbc65")
 		)
@@ -13843,7 +14132,7 @@
 		(at 156.21 215.9 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "3b9049a4-19be-4eb9-b36e-e05f57705ee0")
@@ -13884,6 +14173,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 156.21 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 156.21 215.9 0)
 			(effects
 				(font
@@ -14022,6 +14320,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-072K7L/728277"
+			(at 147.32 215.9 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-072K7L/728277"
+			(at 147.32 215.9 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4d6a4d42-addf-47a0-af4a-e8856edb82af")
 		)
@@ -14083,6 +14399,24 @@
 		)
 		(property "Description" ""
 			(at 262.89 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 262.89 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 262.89 29.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14517,7 +14851,7 @@
 		(at 274.32 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "490303c7-d56a-4de1-af62-f0320d7c4e69")
@@ -14558,6 +14892,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 274.32 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 274.32 88.9 0)
 			(effects
 				(font
@@ -14650,7 +14993,7 @@
 		(at 144.78 106.68 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "4a36870b-9fba-4b06-92ed-d9a46902add5")
@@ -14691,6 +15034,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 144.78 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 144.78 106.68 0)
 			(effects
 				(font
@@ -15136,7 +15488,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 red"
 			(at 276.86 49.53 0)
 			(effects
 				(font
@@ -15164,6 +15516,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 274.32 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+			(at 274.32 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
 			(at 274.32 48.26 0)
 			(effects
 				(font
@@ -15406,7 +15776,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 201.93 87.63 90)
 			(effects
 				(font
@@ -15442,6 +15812,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b8e05183-e56f-4b8b-86a6-882b7055e3bc")
 		)
@@ -15462,7 +15850,7 @@
 		(at 260.35 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "637a95bb-23fa-4741-8c3f-f3f2bd68b1cc")
@@ -15511,6 +15899,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 260.35 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2628b525-fe8e-4085-85da-1d3287fc5c67")
 		)
@@ -15528,7 +15925,7 @@
 		(at 267.97 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "641c5a0b-40d6-4e3d-9b8b-7986574e712e")
@@ -15569,6 +15966,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 267.97 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 267.97 63.5 0)
 			(effects
 				(font
@@ -15673,7 +16079,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 53.34 171.45 90)
 			(effects
 				(font
@@ -15702,6 +16108,24 @@
 		)
 		(property "Description" ""
 			(at 53.34 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 53.34 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 53.34 173.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15776,6 +16200,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 240.03 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 240.03 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "16b05aeb-cb25-421a-a0bd-988a43514e90")
 		)
@@ -15796,9 +16238,9 @@
 		(at 26.67 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "6625e308-24aa-4970-84c7-d438fad80c90")
 		(property "Reference" "JL3"
 			(at 27.178 47.498 0)
@@ -15808,7 +16250,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x08 2.54mm"
+		(property "Value" "~"
 			(at 27.305 46.99 0)
 			(effects
 				(font
@@ -15836,6 +16278,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 26.67 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 26.67 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 26.67 57.15 0)
 			(effects
 				(font
@@ -15991,7 +16451,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=5003765&manufacturer=Linx Technologies&part_name=CONSMA001-SMD-G-T&search_term=None"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA001-SMD-G-T/10524519"
 			(at 154.94 177.8 0)
 			(effects
 				(font
@@ -16021,6 +16481,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA001-SMD-G-T/10524519"
+			(at 154.94 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "S1"
 			(uuid "3a0255b4-2b4f-4f4c-83aa-18fac9e951dc")
 		)
@@ -16044,7 +16513,7 @@
 		(at 176.53 236.22 270)
 		(unit 1)
 		(exclude_from_sim yes)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -16088,6 +16557,15 @@
 		)
 		(property "Description" "Jumper, 2-pole, closed/bridged"
 			(at 176.53 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 176.53 236.22 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16195,7 +16673,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 49.53 181.61 90)
 			(effects
 				(font
@@ -16231,6 +16709,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 49.53 184.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 49.53 184.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "970da724-1b9d-4f6f-ae48-6142a6d74bb9")
 		)
@@ -16251,7 +16747,7 @@
 		(at 207.01 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "7449046b-8082-46bc-96d8-ed9c0a285c21")
@@ -16300,6 +16796,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 207.01 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dc3784ea-a2f6-4296-82ee-8f1cb35f8387")
 		)
@@ -16329,7 +16834,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 orange"
 			(at 33.9725 156.21 0)
 			(effects
 				(font
@@ -16365,6 +16870,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 35.56 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 35.56 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c2afce30-9b11-4d89-8bb4-0266086d2c16")
 		)
@@ -16385,7 +16908,7 @@
 		(at 24.13 232.41 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "751056de-ec68-4dd1-8d24-42ce2b786c9a")
@@ -16397,7 +16920,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x02_Pin"
+		(property "Value" "Socket 01x02 2.54mm"
 			(at 24.765 229.87 0)
 			(effects
 				(font
@@ -16425,6 +16948,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 24.13 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 24.13 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 24.13 232.41 0)
 			(effects
 				(font
@@ -16466,7 +17007,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_02x03_Odd_Even"
+		(property "Value" "90 Deg. Socket 02x03 2.54mm"
 			(at 35.56 143.51 0)
 			(effects
 				(font
@@ -16494,6 +17035,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 36.83 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/sullins-connector-solutions/PPPC032LJBN-RC/776014"
+			(at 36.83 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/sullins-connector-solutions/PPPC032LJBN-RC/776014"
 			(at 36.83 148.59 0)
 			(effects
 				(font
@@ -16546,7 +17105,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 45.72 156.21 90)
 			(effects
 				(font
@@ -16575,6 +17134,24 @@
 		)
 		(property "Description" ""
 			(at 45.72 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 45.72 158.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 45.72 158.75 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16645,6 +17222,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 167.64 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 167.64 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 167.64 195.58 0)
 			(effects
 				(font
@@ -16809,7 +17404,7 @@
 		(at 26.67 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "81055b4c-4532-446c-997b-e29bae924764")
@@ -16857,6 +17452,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 26.67 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "37ec3fa3-9caf-456d-bbc2-7868e9aeb2d8")
 		)
@@ -16874,7 +17478,7 @@
 		(at 261.62 109.22 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "82e0caa0-2a72-430e-85a1-4263bf8ed453")
@@ -16923,6 +17527,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 261.62 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "78b9a574-a497-4d51-939d-c0331aa6279d")
 		)
@@ -16940,7 +17553,7 @@
 		(at 298.45 104.14 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "832cbeeb-5ccc-4509-9a0a-0f72c95e0e54")
@@ -16981,6 +17594,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 298.45 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 298.45 104.14 0)
 			(effects
 				(font
@@ -17141,9 +17763,9 @@
 		(at 26.67 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8a5f69f5-75d4-45c7-8b66-8885f1f4c944")
 		(property "Reference" "JL4"
 			(at 26.924 93.218 0)
@@ -17153,7 +17775,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x06 2.54mm"
+		(property "Value" "~"
 			(at 27.305 92.71 0)
 			(effects
 				(font
@@ -17181,6 +17803,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 26.67 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 26.67 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 26.67 100.33 0)
 			(effects
 				(font
@@ -17369,7 +18009,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 201.93 115.57 90)
 			(effects
 				(font
@@ -17398,6 +18038,24 @@
 		)
 		(property "Description" ""
 			(at 201.93 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 115.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17562,9 +18220,9 @@
 		(at 80.01 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "95e1d8b6-eb67-421a-8715-c04754261077")
 		(property "Reference" "JR3"
 			(at 80.518 47.498 0)
@@ -17574,7 +18232,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x08 2.54mm"
+		(property "Value" "~"
 			(at 80.645 46.99 0)
 			(effects
 				(font
@@ -17602,6 +18260,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 80.01 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 80.01 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 80.01 57.15 0)
 			(effects
 				(font
@@ -17660,7 +18336,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 53.34 168.91 90)
 			(effects
 				(font
@@ -17696,6 +18372,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 53.34 171.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 53.34 171.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e68991ae-7c4d-43ef-9d14-3b010e3f5bc0")
 		)
@@ -17716,7 +18410,7 @@
 		(at 289.56 104.14 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "9e656191-1bb0-4bdf-9f44-367850abec5d")
@@ -17765,6 +18459,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 289.56 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2921c836-7e48-41d6-a75a-45c7541df2fd")
 		)
@@ -17794,7 +18497,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x06 2.54mm"
+		(property "Value" "Stackable Header 01x06 2.54mm"
 			(at 80.645 72.39 0)
 			(effects
 				(font
@@ -17822,6 +18525,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 80.01 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 80.01 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 80.01 80.01 0)
 			(effects
 				(font
@@ -18010,7 +18731,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "1k"
 			(at 148.59 95.25 90)
 			(effects
 				(font
@@ -18039,6 +18760,24 @@
 		)
 		(property "Description" ""
 			(at 148.59 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 148.59 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 148.59 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18078,7 +18817,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x08 2.54mm"
+		(property "Value" "Stackable Header 01x08 2.54mm"
 			(at 27.305 21.59 0)
 			(effects
 				(font
@@ -18106,6 +18845,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 26.67 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 26.67 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 26.67 31.75 0)
 			(effects
 				(font
@@ -18220,7 +18977,7 @@
 		(at 267.97 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "a8a9cdc7-38b6-415f-9412-94f5f3d7a1e0")
@@ -18261,6 +19018,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 267.97 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 267.97 88.9 0)
 			(effects
 				(font
@@ -18328,6 +19094,24 @@
 		)
 		(property "Description" "Resistor"
 			(at 161.29 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 161.29 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
+			(at 161.29 189.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18514,6 +19298,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/same-sky-formerly-cui-devices/CMT-0525-75-SMT-TR/10326240"
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/same-sky-formerly-cui-devices/CMT-0525-75-SMT-TR/10326240"
+			(at 298.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "N"
 			(uuid "9d85e6a2-79e5-4c46-8ce6-8283e7cfc57f")
 		)
@@ -18534,7 +19336,7 @@
 		(at 24.13 219.71 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "acbe4d06-e44b-4886-9246-4378ad369747")
@@ -18574,6 +19376,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 24.13 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 24.13 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 24.13 219.71 0)
 			(effects
 				(font
@@ -18687,7 +19507,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "1k"
 			(at 278.13 58.42 90)
 			(effects
 				(font
@@ -18716,6 +19536,24 @@
 		)
 		(property "Description" ""
 			(at 278.13 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 278.13 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+			(at 278.13 58.42 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18783,6 +19621,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 170.18 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 170.18 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
 			(at 170.18 86.36 0)
 			(effects
 				(font
@@ -18986,6 +19842,24 @@
 		)
 		(property "Description" ""
 			(at 269.24 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 269.24 144.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 269.24 144.78 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19228,7 +20102,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 orange"
 			(at 190.5 123.19 0)
 			(effects
 				(font
@@ -19256,6 +20130,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 191.77 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 191.77 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
 			(at 191.77 120.65 0)
 			(effects
 				(font
@@ -19365,7 +20257,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1n0"
+		(property "Value" "1nF"
 			(at 156.21 226.06 0)
 			(effects
 				(font
@@ -19393,6 +20285,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 153.67 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
+			(at 153.67 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
 			(at 153.67 222.25 0)
 			(effects
 				(font
@@ -19602,6 +20512,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 278.13 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 278.13 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3a90a7be-9cba-494c-bb4f-70b1e8b73861")
 		)
@@ -19636,7 +20564,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 218.44 237.4899 0)
 			(effects
 				(font
@@ -19665,6 +20593,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 215.9 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 215.9 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
 			(at 215.9 236.22 0)
 			(effects
 				(font
@@ -19707,13 +20653,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 yellow"
 			(at 213.36 246.6976 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
@@ -19743,6 +20690,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171YKT/386807"
+			(at 215.9 246.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171YKT/386807"
+			(at 215.9 246.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b892893c-2eae-45c8-81ee-aabb03086af5")
 		)
@@ -19763,7 +20728,7 @@
 		(at 270.51 128.27 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "c4610bf7-f01d-46a4-8592-dad4fd3dcacd")
@@ -19804,6 +20769,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 270.51 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 270.51 128.27 0)
 			(effects
 				(font
@@ -19868,6 +20842,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 218.44 227.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/radiocrafts-as/RC1780HP-RC232/7100620"
+			(at 218.44 227.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/radiocrafts-as/RC1780HP-RC232/7100620"
 			(at 218.44 227.33 0)
 			(effects
 				(font
@@ -20028,7 +21020,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 53.34 166.37 90)
 			(effects
 				(font
@@ -20057,6 +21049,24 @@
 		)
 		(property "Description" ""
 			(at 53.34 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 53.34 168.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 53.34 168.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20220,7 +21230,7 @@
 		(at 26.67 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "cb5a7cac-4f1c-4999-9ab2-cd51bfde8ff4")
@@ -20260,6 +21270,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 26.67 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 26.67 130.81 0)
 			(effects
 				(font
@@ -20353,7 +21372,7 @@
 		(at 270.51 115.57 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "d0b22361-54cd-43b3-b137-5cc08237d7a8")
@@ -20402,6 +21421,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 270.51 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "06122673-de89-447b-8c01-ee51dc8b4801")
 		)
@@ -20419,7 +21447,7 @@
 		(at 144.78 101.6 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "d57940f6-9a3f-4bd4-81aa-22b4d396774f")
@@ -20460,6 +21488,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 144.78 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 144.78 101.6 0)
 			(effects
 				(font
@@ -20527,6 +21564,24 @@
 			)
 		)
 		(property "Description" "24MHz, 128kB Flash, 16kB SRAM, EEPROM with Op Amps and Multi-Voltage I/O, TQFP-64"
+			(at 231.14 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/microchip-technology/AVR128DB64T-I-PT/12807279"
+			(at 231.14 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/microchip-technology/AVR128DB64T-I-PT/12807279"
 			(at 231.14 97.79 0)
 			(effects
 				(font
@@ -20821,7 +21876,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 green"
 			(at 37.7825 181.61 0)
 			(effects
 				(font
@@ -20849,6 +21904,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 39.37 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+			(at 39.37 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
 			(at 39.37 184.15 0)
 			(effects
 				(font
@@ -21024,7 +22097,7 @@
 				)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 201.93 110.49 90)
 			(effects
 				(font
@@ -21060,6 +22133,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 201.93 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "57937079-536c-402a-8d12-712cb8f99630")
 		)
@@ -21080,7 +22171,7 @@
 		(at 201.93 191.77 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -21094,7 +22185,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "Conn_01x02_Pin"
+		(property "Value" "Socket 01x02 2.54mm"
 			(at 204.47 192.405 0)
 			(effects
 				(font
@@ -21122,6 +22213,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 201.93 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 201.93 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 201.93 191.77 0)
 			(effects
 				(font
@@ -21198,6 +22307,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 287.02 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+			(at 287.02 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "81c570e5-4f0b-4a70-bbef-cdf292d34f3c")
 		)
@@ -21259,6 +22386,24 @@
 		)
 		(property "Description" ""
 			(at 255.27 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 255.27 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+			(at 255.27 34.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21354,7 +22499,7 @@
 		(at 26.67 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "eb11f40c-f282-4188-82d4-ecf341398240")
@@ -21394,6 +22539,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 26.67 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 26.67 123.19 0)
 			(effects
 				(font
@@ -21567,7 +22721,7 @@
 				)
 			)
 		)
-		(property "Value" "Socket 01x06 2.54mm"
+		(property "Value" "Stackable Header 01x06 2.54mm"
 			(at 27.305 72.39 0)
 			(effects
 				(font
@@ -21595,6 +22749,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 26.67 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
+			(at 26.67 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 26.67 80.01 0)
 			(effects
 				(font
@@ -21635,7 +22807,7 @@
 		(at 270.51 123.19 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "f55f4c19-49ac-4467-9e61-6aac21661851")
@@ -21676,6 +22848,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 270.51 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "~"
 			(at 270.51 123.19 0)
 			(effects
 				(font
@@ -21850,7 +23031,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "150R"
+		(property "Value" "270R"
 			(at 208.28 237.4899 0)
 			(effects
 				(font
@@ -21887,6 +23068,24 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 205.74 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 205.74 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0a907a01-93e4-49c4-9b34-bf22d48d2c99")
 		)
@@ -21907,7 +23106,7 @@
 		(at 170.18 93.98 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "fa694f3b-8acf-4eef-8852-0d8f8161673d")
@@ -21956,6 +23155,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 170.18 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2be96cce-0def-4693-b500-e0d72bf8054f")
 		)
@@ -21973,7 +23181,7 @@
 		(at 260.35 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "fe439ae6-2231-4b36-b056-f468d12d3dd3")
@@ -22022,6 +23230,15 @@
 				(hide yes)
 			)
 		)
+		(property "Digikey Link" "~"
+			(at 260.35 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c5ff666a-fb1f-4fa4-910a-78a500e13b56")
 		)
@@ -22051,7 +23268,7 @@
 				)
 			)
 		)
-		(property "Value" "LED 0805"
+		(property "Value" "LED 0805 red"
 			(at 151.13 88.9 0)
 			(effects
 				(font
@@ -22079,6 +23296,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 148.59 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+			(at 148.59 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
 			(at 148.59 87.63 0)
 			(effects
 				(font

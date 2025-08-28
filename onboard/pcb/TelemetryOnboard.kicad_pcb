@@ -7,6 +7,12 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(title "Onboard Telemetry")
+		(date "2025-08-28")
+		(rev "v0.0.1")
+		(company "Spaceflight Rocketry Giessen e.V.")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(4 "In1.Cu" signal)
@@ -318,7 +324,7 @@
 		(path "/82e0caa0-2a72-430e-85a1-4263bf8ed453")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -381,7 +387,7 @@
 				)
 			)
 		)
-		(property "Value" "1n0"
+		(property "Value" "1nF"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -785,7 +791,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "1k"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -988,7 +994,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_02x03_Odd_Even"
+		(property "Value" "90 Deg. Socket 02x03 2.54mm"
 			(at -5.65 7.85 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1448,7 +1454,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 green"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1702,7 +1708,7 @@
 		(path "/d57940f6-9a3f-4bd4-81aa-22b4d396774f")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -1765,7 +1771,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1806,7 +1812,7 @@
 		(path "/0a010863-420a-4d99-a4b8-4b8480f02d64")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 4.2 0)
@@ -1877,7 +1883,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 0 1 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1918,7 +1924,7 @@
 		(path "/cb5a7cac-4f1c-4999-9ab2-cd51bfde8ff4")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 4.2 0)
@@ -1991,7 +1997,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "Stackable Header 01x08 2.54mm"
 			(at 0 20.55 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2321,7 +2327,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2566,7 +2572,7 @@
 		(path "/490303c7-d56a-4de1-af62-f0320d7c4e69")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -2672,7 +2678,7 @@
 		(path "/7449046b-8082-46bc-96d8-ed9c0a285c21")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -2778,7 +2784,7 @@
 		(path "/4a36870b-9fba-4b06-92ed-d9a46902add5")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -2841,7 +2847,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 red"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3108,7 +3114,7 @@
 		(path "/f55f4c19-49ac-4467-9e61-6aac21661851")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -3428,7 +3434,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x02_Pin"
+		(property "Value" "Socket 01x02 2.54mm"
 			(at 0 5.31 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3470,7 +3476,7 @@
 		(path "/e617ae31-7c92-45a1-acd4-f743f4c857de")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start -1.33 -1.33)
 			(end -1.33 3.87)
@@ -3665,7 +3671,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "270R"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3910,7 +3916,7 @@
 		(path "/641c5a0b-40d6-4e3d-9b8b-7986574e712e")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -3974,7 +3980,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x02_Pin"
+		(property "Value" "Socket 01x02 2.54mm"
 			(at 0 5.31 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4016,7 +4022,7 @@
 		(path "/751056de-ec68-4dd1-8d24-42ce2b786c9a")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start -1.33 -1.33)
 			(end -1.33 3.87)
@@ -4203,7 +4209,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "~"
 			(at 0 15.47 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4243,7 +4249,7 @@
 		(path "/8a5f69f5-75d4-45c7-8b66-8885f1f4c944")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start -1.33 -1.33)
 			(end 1.33 -1.33)
@@ -4692,7 +4698,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -4895,7 +4901,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5140,7 +5146,7 @@
 		(path "/a8a9cdc7-38b6-415f-9412-94f5f3d7a1e0")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -5203,7 +5209,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "270R"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5405,7 +5411,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 orange"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5631,7 +5637,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "~"
 			(at 0 15.47 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5671,7 +5677,7 @@
 		(path "/18f27df2-6f6e-401e-9c65-b4dac40af25d")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start -1.33 -1.33)
 			(end -1.33 14.03)
@@ -6120,7 +6126,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6322,7 +6328,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 0 1 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6363,7 +6369,7 @@
 		(path "/81055b4c-4532-446c-997b-e29bae924764")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 4.2 0)
@@ -6434,7 +6440,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 red"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6658,7 +6664,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 green"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8191,7 +8197,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 orange"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8617,7 +8623,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8819,7 +8825,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 red"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9043,7 +9049,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 yellow"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9310,7 +9316,7 @@
 		(path "/c4610bf7-f01d-46a4-8592-dad4fd3dcacd")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -9374,7 +9380,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9576,7 +9582,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 red"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -9802,7 +9808,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "~"
 			(at 0 20.55 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9842,7 +9848,7 @@
 		(path "/6625e308-24aa-4970-84c7-d438fad80c90")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start -1.33 -1.33)
 			(end 1.33 -1.33)
@@ -10112,7 +10118,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "Stackable Header 01x08 2.54mm"
 			(at 0 20.55 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -10462,7 +10468,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 green"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -10673,7 +10679,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 orange"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -11097,7 +11103,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "1k"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -11299,7 +11305,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "~"
 			(at 0 1.65 270)
 			(layer "F.Fab")
 			(uuid "0a286818-3c1a-4082-a5bd-7efcb36cb94d")
@@ -11502,7 +11508,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "Stackable Header 01x06 2.54mm"
 			(at 0 15.47 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -11872,7 +11878,7 @@
 		(path "/637a95bb-23fa-4741-8c3f-f3f2bd68b1cc")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -11978,7 +11984,7 @@
 		(path "/d0b22361-54cd-43b3-b137-5cc08237d7a8")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -12084,7 +12090,7 @@
 		(path "/fe439ae6-2231-4b36-b056-f468d12d3dd3")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -12423,7 +12429,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "270R"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -12668,7 +12674,7 @@
 		(path "/832cbeeb-5ccc-4509-9a0a-0f72c95e0e54")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -12733,7 +12739,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Pin"
+		(property "Value" "~"
 			(at 0 20.55 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -12773,7 +12779,7 @@
 		(path "/95e1d8b6-eb67-421a-8715-c04754261077")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start -1.33 -1.33)
 			(end -1.33 19.11)
@@ -13041,7 +13047,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "270R"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -13243,7 +13249,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "1k"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -13443,7 +13449,7 @@
 				)
 			)
 		)
-		(property "Value" "SMA SMD"
+		(property "Value" "CONSMA001-SMD-G-T"
 			(at 10.22 4.925 0)
 			(layer "F.Fab")
 			(uuid "ad739b44-01ce-4f34-88f8-9cf481efb1ad")
@@ -13773,7 +13779,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -13976,7 +13982,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x04_Pin"
+		(property "Value" "Socket 01x04 2.54mm"
 			(at 0 10.39 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -14018,7 +14024,7 @@
 		(path "/acbe4d06-e44b-4886-9246-4378ad369747")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom dnp)
 		(fp_line
 			(start 1.33 -1.33)
 			(end 1.33 8.95)
@@ -14235,7 +14241,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 orange"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -14502,7 +14508,7 @@
 		(path "/9e656191-1bb0-4bdf-9f44-367850abec5d")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -14565,7 +14571,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -14810,7 +14816,7 @@
 		(path "/10d69c6e-b66f-442b-a1a4-965f5cc98274")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -14875,7 +14881,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x06_Pin"
+		(property "Value" "Stackable Header 01x06 2.54mm"
 			(at 0 15.47 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -15202,7 +15208,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "~"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(uuid "4df801d6-0920-48e5-91b4-b719095888bd")
@@ -15605,7 +15611,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x01_Pin"
+		(property "Value" "~"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15646,7 +15652,7 @@
 		(path "/eb11f40c-f282-4188-82d4-ecf341398240")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 4.2 0)
@@ -15717,7 +15723,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "1k"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -15918,7 +15924,7 @@
 				)
 			)
 		)
-		(property "Value" "RC1780HP"
+		(property "Value" "RC1780HP-RC232"
 			(at 0 1 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16807,7 +16813,7 @@
 		(path "/3b9049a4-19be-4eb9-b36e-e05f57705ee0")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -16913,7 +16919,7 @@
 		(path "/fa694f3b-8acf-4eef-8852-0d8f8161673d")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr exclude_from_pos_files)
+		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 0 1.2)
@@ -16977,7 +16983,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "LED 0805 orange"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -17390,7 +17396,7 @@
 				)
 			)
 		)
-		(property "Value" "Jumper_2_Bridged"
+		(property "Value" "~"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17433,7 +17439,7 @@
 		(path "/6e763870-9c39-4d3e-ae71-ffd75572c6b6")
 		(sheetname "/")
 		(sheetfile "TelemetryOnboard.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom)
 		(fp_line
 			(start -1.415 0.3)
 			(end -1.415 -0.3)
@@ -49905,7 +49911,7 @@
 			)
 		)
 	)
-	(gr_text "Giessen, 2025/08/27"
+	(gr_text "Giessen, 2025/08/28"
 		(at 11 27 0)
 		(layer "F.SilkS")
 		(uuid "ad3ceb3b-f9e3-4c73-bfbf-dddb8e2ca627")
@@ -51215,18 +51221,6 @@
 				(bold yes)
 			)
 			(justify mirror)
-		)
-	)
-	(gr_text "1. SDA & SCL ist für die Komunikatoion mit Telemetrie Resaviert\n2. SDA2 & SCL2 ist noch Verfügbar. Bitte Andere Informieren wenn genutzt wird!\n3. D1-D3 noch offen. Bitte Andere Informieren wenn genutzt wird.\n4. ARM ist der Arming PIN\n5. SLP Sleep mode PIN\n6. RX_L & TX_L ist für die Kommunikation zwischen Sensorik und Landesystem Resaviert.\n\n7. RGB LED zur freien verfügung. Zwingend erforderlich ist dass die RGB LED Grün anzeigt sobald das System bereit und funktionstüchtig ist.\n8. Status LED. Soll anzeigen sobald microcontroller im Setup oder Loop ist.\n9. UPDI Pin am Header muss mit UPDI Pin vom AVR verbunden werden.\n10. Der am Header verbundene RX TX darf nicht **invertiert** mit RX0 & TX0 Pin vom AVR verbunden werden \n11. am unteren rad ist die Adress Nummer anzugeben (wird durch Telemetrie bestimmt)\n\n12. Alle Kommunikationspins müssen abgreifbar sein.\n13. Alle Bauteile Beschriften!\n	13a. Pins Beschriften\n14. OHM Werte angeben!\n15. AVR Komplett Beschriften\n15. Pins die die Platine durchstoßen sind von beiden Seiten zu beschriften"
-		(at 7.947484 182.92494 0)
-		(layer "F.Adhes")
-		(uuid "df423380-880f-4940-bb15-0aa0183c5766")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.125)
-			)
-			(justify left bottom)
 		)
 	)
 	(segment

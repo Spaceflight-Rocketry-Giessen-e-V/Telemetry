@@ -649,7 +649,7 @@
           "group_by": false,
           "label": "Purchase-URL",
           "name": "Purchase-URL",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -667,6 +667,12 @@
           "group_by": false,
           "label": "Beschreibung",
           "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Digikey Link",
+          "name": "Digikey Link",
           "show": false
         }
       ],
