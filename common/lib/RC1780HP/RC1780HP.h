@@ -19,21 +19,45 @@ class RC1780HP
         
         void reset();
 
-        uint8_t setChannel(uint8_t channel);
         
-        uint8_t setAddress_mode(uint8_t address);
-
-        uint8_t readVoltage(float* result);
-
-        uint8_t readRSSI(float* result);
-
-        uint8_t readTemperature(int8_t* result);
-
-        uint8_t readNon_Voltile_Memory(float* result);
-
-        uint8_t readMemoryByte(uint8_t address, uint8_t* result);       // Private oder Public?
-
+        uint8_t set_Address_mode(uint8_t address);
         
+        uint8_t set_RSSI_Mode(uint8_t RSSI);
+
+        uint8_t set_Packet_Length(uint8_t length);
+
+        uint8_t set_Packet_Timeout(uint8_t time);
+
+        uint8_t set_CRC_Mode(uint8_t CRC);
+
+        uint8_t set_LED_Control(uint8_t LED);
+
+        uint8_t set_Channel(uint8_t channel);
+
+
+
+        uint8_t read_Address_mode(uint8_t* result);
+
+        uint8_t read_RSSI_Mode(uint8_t* result);
+
+        uint8_t read_Packet_Length(uint8_t* result);
+
+        uint8_t read_Packet_Timeout(uint16_t* result);
+
+        uint8_t read_CRC_Mode(uint8_t* result);
+
+        uint8_t read_LED_Control(uint8_t* result);
+
+        uint8_t read_Voltage(float* result);
+
+        uint8_t read_Signal_Strength(float* result);
+
+        uint8_t read_Temperature(int8_t* result);
+
+        uint8_t read_Non_Voltile_Memory(float* result);
+
+        uint8_t read_Memory_Byte(uint8_t address, uint8_t* result);
+
 
     private:
         uint8_t _rstpin;
@@ -46,13 +70,13 @@ class RC1780HP
         uint8_t _output_power;
         uint8_t _destination_address;
 
-        uint16_t serialWait(uint32_t delay_microsecond);
-        void serialFlush();
+        uint16_t serial_Wait(uint32_t delay_microsecond);
+        void serial_Flush();
 
-        uint8_t enterConfig();
-        uint8_t exitConfig();
-        uint8_t sendConfigCommand(uint8_t command);
-        unit8_t writeMemoryByte(uint8_t memory_address, uint8_t value);
+        uint8_t enter_Config();
+        uint8_t exit_Config();
+        uint8_t send_Config_Command(uint8_t command);
+        unit8_t write_Memory_Byte(uint8_t memory_address, uint8_t value);
 };
 
 #endif
