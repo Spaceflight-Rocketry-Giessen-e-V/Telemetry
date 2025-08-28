@@ -19,14 +19,17 @@ class RC1780HP
         
         void reset();
 
+        void soft_Reset();
+
+    
         
-        uint8_t set_Address_mode(uint8_t address);
+        uint8_t set_Address_Mode(uint8_t address);
         
         uint8_t set_RSSI_Mode(uint8_t RSSI);
 
         uint8_t set_Packet_Length(uint8_t length);
 
-        uint8_t set_Packet_Timeout(uint8_t time);
+        uint8_t set_Packet_Timeout(uint16_t time);
 
         uint8_t set_CRC_Mode(uint8_t CRC);
 
@@ -36,7 +39,7 @@ class RC1780HP
 
 
 
-        uint8_t read_Address_mode(uint8_t* result);
+        uint8_t read_Address_Mode(uint8_t* result);
 
         uint8_t read_RSSI_Mode(uint8_t* result);
 
@@ -58,6 +61,15 @@ class RC1780HP
 
         uint8_t read_Memory_Byte(uint8_t address, uint8_t* result);
 
+
+        uint8_t test_Mode_01();  //ggf. Übergabeparameter--> nochmal überprüfen
+
+        uint8_t test_Mode_02();
+
+        uint8_t test_Mode_03();
+
+        uint8_t test_Mode_04();
+        
 
     private:
         uint8_t _rstpin;
