@@ -1,6 +1,7 @@
 # ASCENT II Experimental Rocket Telemetry System
 
-<img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/TelemetryOnboard.png" width="400">
+<img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/images/Onboard_PCB_Front.png" width="400">
+<img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/images/Onboard_PCB_Back.png" width="400">
 
 ## 868 MHz telemetry system with a range of >10 km for bidirectional data exchange between an experimental rocket and a ground station
 
