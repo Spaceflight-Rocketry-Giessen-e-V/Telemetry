@@ -9,7 +9,7 @@
 	(paper "A4")
 	(title_block
 		(title "Onboard Telemetry")
-		(date "2025-08-28")
+		(date "2025-09-01")
 		(rev "v0.0.1")
 		(company "Spaceflight Rocketry Giessen e.V.")
 	)
@@ -1982,7 +1982,7 @@
 		(locked yes)
 		(layer "F.Cu")
 		(uuid "17ba9f5b-50ae-40f2-bacd-11d6305ff353")
-		(at -35.000016 -17.78006)
+		(at -35 -17.78006)
 		(descr "Through hole straight socket strip, 1x08, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x08 2.54mm single row")
 		(property "Reference" "JL1"
@@ -2298,6 +2298,7 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD6_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x08_P2.54mm_Vertical.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2306,6 +2307,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "${KIPRJMOD}/3dmodels/SSQ-108.step"
+			(offset
+				(xyz 0 -8.89 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -90)
 			)
 		)
 	)
@@ -10439,6 +10451,7 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD6_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x08_P2.54mm_Vertical.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10447,6 +10460,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "${KIPRJMOD}/3dmodels/SSQ-108.step"
+			(offset
+				(xyz 0 -8.89 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -90)
 			)
 		)
 	)
@@ -11493,14 +11517,14 @@
 		(locked yes)
 		(layer "F.Cu")
 		(uuid "9d3a4720-243c-4ab4-9c2e-240971b2184b")
-		(at -35.000016 5.07994)
+		(at -35 5.07994)
 		(descr "Through hole straight socket strip, 1x06, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x06 2.54mm single row")
 		(property "Reference" "JL2"
 			(at 0 -2.77 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "a2e04db8-675f-4d9e-9918-d96b6ca0ced8")
+			(uuid "80e2d5df-0e2e-4ced-88a5-1367dacd5ad7")
 			(effects
 				(font
 					(size 1 1)
@@ -11512,7 +11536,7 @@
 			(at 0 15.47 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cee136b6-5c66-4732-9cb0-6be894ce5f7f")
+			(uuid "82999dd0-d9cf-4fe5-8071-83ad72c02c14")
 			(effects
 				(font
 					(size 1 1)
@@ -11524,7 +11548,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "af235e80-3610-4645-b123-6cc86dc703f8")
+			(uuid "d9fec149-c649-496f-94b5-c1a9879df88a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11536,7 +11560,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "09e5c717-83e9-45a8-9aea-2f9ba6f3d5a7")
+			(uuid "fc5754c6-ab8f-41a1-87f7-c18a1ab84a14")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11807,6 +11831,7 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD6_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Vertical.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11815,6 +11840,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "${KIPRJMOD}/3dmodels/SSQ-106.step"
+			(offset
+				(xyz 0 -6.35 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -90)
 			)
 		)
 	)
@@ -15183,6 +15219,7 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD6_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Vertical.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -15191,6 +15228,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "${KIPRJMOD}/3dmodels/SSQ-106.step"
+			(offset
+				(xyz 0 -6.35 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -90)
 			)
 		)
 	)

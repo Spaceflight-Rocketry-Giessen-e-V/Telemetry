@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "Onboard Telemetry")
-		(date "2025-08-27")
+		(date "2025-09-01")
 		(rev "v0.0.1")
 		(company "Spaceflight Rocketry Giessen e.V.")
 	)

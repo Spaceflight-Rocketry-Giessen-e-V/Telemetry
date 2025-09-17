@@ -520,7 +520,7 @@
       "plot": "Production Files/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../img/3dmodels/TelemetryOnboard.step",
+      "step": "../../media/3dmodels/Onboard_PCB_NoSilkscreen.step",
       "svg": "",
       "vrml": ""
     },
