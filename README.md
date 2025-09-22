@@ -2,7 +2,6 @@
 
 <img src="media/images/Onboard_PCB_Rendering_3.png" width="400" />
 
-
 ## Overview
 The ASCENT II telemetry system is part of the ASCENT II flight computer of the student rocketry association **Spaceflight Rocketry Gießen e.V.**, developed for the ARCHER experimental rocket.  
 This 868 MHz telemetry system allows bidirectional data exchange between rockets and ground stations with a minimum range of **18 km** and a minimum data rate of **1.2 kbps**.  
@@ -33,8 +32,8 @@ When designing our telemetry system, we focused on:
 This repository contains all files necessary to reproduce the telemetry system, including hardware, firmware, and software.
 
 ### 1. Antenna Hardware
-  <img src="media/images/OnboardAntenna_radiation_pattern.png" width="400" />
-  <img src="media/images/GroundstationAntenna_radiation_pattern.png" width="400" />
+<img src="media/images/OnboardAntenna_radiation_pattern.png" width="400" />
+<img src="media/images/GroundstationAntenna_radiation_pattern.png" width="400" />
   
 - **Description:** Designs for telemetry antennas
 
@@ -78,13 +77,7 @@ Please note that radio systems may be subject to local regulations. Ensure that 
 
 Copyright SPROG – Spaceflight Rocketry Giessen e.V. 2025.<br />
 This source describes Open Hardware and is licensed under the CERN-OHL-S v2.<br />
-You may redistribute and modify this source and make products using it<br />
-under the terms of the [CERN-OHL-S v2 or any later version](LICENSE).<br />
-This source is distributed WITHOUT ANY EXPRESS OR IMPLIED<br />
-WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY<br />
-QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see<br />
-the CERN-OHL-S v2 for applicable conditions.<br />
+You may redistribute and modify this source and make products using it under the terms of the [CERN-OHL-S v2 or any later version](LICENSE).<br />
+This source is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN-OHL-S v2 for applicable conditions.<br />
 Source location: https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry<br />
-As per CERN-OHL-S v2 section 4, should you produce hardware based<br />
-on this source, you must where practicable maintain the Source Location<br />
-in its documentation or license information.<br />
+As per CERN-OHL-S v2 section 4, should you produce hardware based on this source, you must where practicable maintain the Source Location in its documentation or license information.<br />
