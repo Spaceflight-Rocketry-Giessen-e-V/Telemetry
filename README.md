@@ -34,10 +34,12 @@ This repository contains all files necessary to reproduce the telemetry system, 
 ### 1. Antenna Hardware
   <img src="media/images/OnboardAntenna_radiation_pattern.png" width="400" />
   <img src="media/images/GroundstationAntenna_radiation_pattern.png" width="400" />
+  
 - **Description:** Designs for telemetry antennas
 
 ### 2. Electronics Hardware
 <img src="media/images/Onboard_PCB_Rendering_3.png" width="400" />
+
 - **Description:** Circuit and PCB designs for onboard and ground station electronics
 - **Included:** 
 	- Schematics
@@ -69,15 +71,16 @@ This repository contains all files necessary to reproduce the telemetry system, 
 Please note that radio systems may be subject to local regulations. Ensure that any testing or deployment of these antennas complies with national and regional laws regarding RF transmission. The project maintainers are not responsible for misuse or regulatory violations.  
 
 ## License
-Copyright SPROG – Spaceflight Rocketry Giessen e.V. 2025.
-This source describes Open Hardware and is licensed under the CERN-OHL-S v2.
-You may redistribute and modify this source and make products using it
-under the terms of the [CERN-OHL-S v2 or any later version](LICENSE).
-This source is distributed WITHOUT ANY EXPRESS OR IMPLIED
-WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY
-QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see
-the CERN-OHL-S v2 for applicable conditions.
-Source location: https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry
-As per CERN-OHL-S v2 section 4, should you produce hardware based
-on this source, you must where practicable maintain the Source Location
-in its documentation or license information.
+
+Copyright SPROG – Spaceflight Rocketry Giessen e.V. 2025.<br />
+This source describes Open Hardware and is licensed under the CERN-OHL-S v2.<br />
+You may redistribute and modify this source and make products using it<br />
+under the terms of the [CERN-OHL-S v2 or any later version](LICENSE).<br />
+This source is distributed WITHOUT ANY EXPRESS OR IMPLIED<br />
+WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY<br />
+QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see<br />
+the CERN-OHL-S v2 for applicable conditions.<br />
+Source location: https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry<br />
+As per CERN-OHL-S v2 section 4, should you produce hardware based<br />
+on this source, you must where practicable maintain the Source Location<br />
+in its documentation or license information.<br />
