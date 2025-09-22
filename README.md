@@ -1,6 +1,7 @@
 # ASCENT II Experimental Rocket Telemetry System
 
-<img src="media/images/Onboard_PCB_Rendering_QFH.png" width="400" />
+<img src="media/images/Onboard_PCB_Rendering_3.png" width="400" />
+
 
 ## Overview
 The ASCENT II telemetry system is part of the ASCENT II flight computer of the student rocketry association **Spaceflight Rocketry Gießen e.V.**, developed for the ARCHER experimental rocket.  
@@ -38,7 +39,10 @@ This repository contains all files necessary to reproduce the telemetry system, 
 - **Description:** Designs for telemetry antennas
 
 ### 2. Electronics Hardware
-<img src="media/images/Onboard_PCB_Rendering_3.png" width="400" />
+<p align="center">
+  <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/images/Onboard_PCB_Front.png" width="400" />
+  <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/images/Onboard_PCB_Back.png" width="400" />
+</p>
 
 - **Description:** Circuit and PCB designs for onboard and ground station electronics
 - **Included:** 
