@@ -1,6 +1,6 @@
 # ASCENT II Experimental Rocket Telemetry System
 
-<img src="media/images/Onboard_PCB_Rendering_3.png" width="400" />
+<p align="center"><img src="media/images/Onboard_PCB_Rendering_3.QFH" width="400" /></p>
 
 ## Overview
 The ASCENT II telemetry system is part of the ASCENT II flight computer of the student rocketry association **Spaceflight Rocketry Gießen e.V.**, developed for the ARCHER experimental rocket.  
