@@ -1,0 +1,16 @@
+{
+  "name": "RC1780HP",
+  "authors":
+  [
+    {
+      "name": "Felix Seene"
+    },
+    {
+      "name": "Benjamin Bauersfeld"
+    }
+  ],
+  "license": "CERN OHL-S v2",
+  "homepage": "https://www.spaceflight-rocketry-giessen.de/",
+  "frameworks": "*",
+  "platforms": "*"
+}
