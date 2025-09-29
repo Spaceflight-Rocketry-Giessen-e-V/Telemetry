@@ -1,5 +1,5 @@
 /*
-    RC1780HP.h - Library for using Radiocrafts RC1780HP-RC232 RF modules.
+    RC1780HP - Library for using Radiocrafts RC1780HP-RC232 RF modules.
     Created by Felix Seene and Benjamin Bauersfeld
     Spaceflight Rocketry Giessen e.V.
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
@@ -35,6 +35,18 @@ void RC1780HP::begin(uint32_t baud_module)
 }
 
 // Public
+
+uint8_t RC1780HP::ping()
+{
+    if(enter_Config() == 0)
+    {
+        if(exit_Config() == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 uint8_t RC1780HP::hard_reset()
 {

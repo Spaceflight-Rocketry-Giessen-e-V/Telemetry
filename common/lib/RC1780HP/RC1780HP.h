@@ -1,5 +1,5 @@
 /*
-    RC1780HP.h - Library for using Radiocrafts RC1780HP-RC232 RF modules.
+    RC1780HP - Library for using Radiocrafts RC1780HP-RC232 RF modules.
     Created by Felix Seene and Benjamin Bauersfeld
     Spaceflight Rocketry Giessen e.V.
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
@@ -16,6 +16,10 @@ class RC1780HP
         RC1780HP(HardwareSerial* serialModule, uint8_t cfgpin, uint8_t rstpin, uint8_t ctspin, uint8_t rtspin);
 
         void begin(uint32_t baud_module);
+
+        void serial_Flush();
+
+        uint8_t ping();
         
         uint8_t hard_reset();
 
@@ -72,7 +76,6 @@ class RC1780HP
         HardwareSerial* serialModule;
 
         uint16_t serial_Wait(uint32_t delay_microsecond);
-        void serial_Flush();
 
         uint8_t enter_Config();
         uint8_t exit_Config();
