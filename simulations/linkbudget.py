@@ -51,4 +51,4 @@ plt.legend()
 
 plt.tight_layout()
 
-# plt.savefig('linkbudget_beispiel.png', bbox_inches = 'tight')
+# plt.savefig('../media/images/linkbudget.png', bbox_inches = 'tight')
