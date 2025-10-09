@@ -8,3 +8,5 @@
 /groundstation/gui/.venv
 /groundstation/gui/.idea
 /groundstation/gui/__pycache__
+/common/lib/Packet/examples/*
+!/common/lib/Packet/examples/*.cpp

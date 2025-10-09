@@ -83,7 +83,7 @@ The same calculation as for the pressure height applies.
 ### GNSS (Lat+Lon)
 - component size: 52 bits (26 bits each for latitude and longitude)
 - value range: -90 ° to 90 ° (latitude) and -180 ° to 180 ° (longitude)
-- resolution: 7.5 cm (latitude) and 9.5 cm (longitude)
+- resolution: 29.9 cm (latitude) and 37.9 cm (longitude)
 
 Latitude and Longitude are stored in two seperate 28 bit integers. 
 The resolutions can be calculated using the following formula: <br> 

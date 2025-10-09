@@ -42,7 +42,7 @@ uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
 uint8_t i2c_connections = 0b000;
 uint8_t subsystem_status = 0b000;
-uint8_t status_event = 0;
+uint8_t status_events = 0;
 float height_pressure = 0;
 float height_gnss = 0;
 float lat_gnss = 0;
@@ -320,7 +320,7 @@ void get_packet_data()
 
     subsystem_status = (subsystem_status & 0b011) | (result[0] << 2);
 
-    status_event = result[1];
+    status_events = result[1];
   }
 
   // Batteriespannung
@@ -330,8 +330,8 @@ void get_packet_data()
 void send_packet()
 {
   uint8_t packet[15];
-  Packet::encode(packet, 0x01, flight_mode, low_power_mode, subsystem_status == 0b111, status_event, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
-  for(int i = 0; i < 15; i++)
+  Packet::encode(packet, 0x01, flight_mode, low_power_mode, subsystem_status == 0b111, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
+  for(uint8_t i = 0; i < 15; i++)
   {
     SerialModule->write(packet[i]);
   }
