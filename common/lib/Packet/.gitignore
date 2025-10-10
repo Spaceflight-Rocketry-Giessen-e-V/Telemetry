@@ -1,0 +1,4 @@
+examples/*
+!examples/*.cpp
+!examples/*.c
+!examples/*.h
