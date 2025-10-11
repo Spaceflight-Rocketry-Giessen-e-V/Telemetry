@@ -28,6 +28,7 @@ HardwareSerial* SerialModule = &Serial0;
 RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
 // Data components
+uint8_t address = 0;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
 uint8_t subsystem_status = 0;
@@ -39,6 +40,11 @@ float lon_gnss = 0;
 float acceleration = 0;
 float battery_voltage = 0;
 float rssi = 0;
+
+//incoming Data
+uint8_t packet[15] = 0;
+uint8_t incoming_Byte = 0;
+uint8_t index = 0;
 
 void setup()
 {
@@ -94,5 +100,79 @@ void loop()
     SerialModule->write(SerialTTL->read());
   }
 
+  if(Serial.available() != 0)
+  {
+    while(incoming_Byte != 0xEE)
+    {
+      incoming_Byte = Serial.read();
+      packet[index] = incoming_Byte;
+      index++;
+    }
+    incoming_Byte = Serial.read();
+    packet[index] = incoming_Byte;
+
+    if(packet[index - 1] == 0xEE)
+    {
+      Packet::decode(packet, &address, &flight_mode, &low_power_mode, &subsystem_status, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
+      SerialTTL->print("address:");            SerialTTL->println(address);
+      SerialTTL->print("flight_mode:");        SerialTTL->println(flight_mode);
+      SerialTTL->print("low_power_mode:");     SerialTTL->println(low_power_mode);
+      SerialTTL->print("subsystem_status:");   SerialTTL->println(subsystem_status);
+      SerialTTL->print("status_events:");      SerialTTL->println(status_events);
+      SerialTTL->print("acceleration:");       SerialTTL->println(acceleration);
+      SerialTTL->print("height_pressure:");    SerialTTL->println(height_pressure);
+      SerialTTL->print("height_gnss:");        SerialTTL->println(height_gnss);
+      SerialTTL->print("lat_gnss:");           SerialTTL->println(lat_gnss);
+      SerialTTL->print("lon_gnss:");           SerialTTL->println(lon_gnss);
+      SerialTTL->print("battery_voltage:");    SerialTTL->println(battery_voltage);
+      SerialTTL->print("rssi:");               SerialTTL->println(rssi);
+
+      //LED5 (subsystem_status)
+      if(subsystem_status == 0b111)
+      {
+        digitalWrite(ledpin5, HIGH);
+      }
+      else
+      {
+        digitalWrite(ledpin5, LOW);
+      }
+
+      //LED6 (battery_voltage)
+      if(battery_voltage > 7.2)
+      {
+        digitalWrite(ledpin6, HIGH);
+      }
+      else
+      {
+        digitalWrite(ledpin6, LOW);
+      }
+      
+      //Main LED (RSSI)
+      if(rssi > -50 )
+      {
+        digitalWrite(ledpinG, HIGH);
+        digitalWrite(ledpinB, LOW);
+        digitalWrite(ledpinR, LOW);
+      }
+
+      else if(rssi > -80)
+      {
+        digitalWrite(ledpinG, LOW);
+        digitalWrite(ledpinB, HIGH);
+        digitalWrite(ledpinR, LOW); 
+      }
+
+      else
+      {
+        digitalWrite(ledpinG, LOW);
+        digitalWrite(ledpinB, LOW);
+        digitalWrite(ledpinR, HIGH);
+      }
+
+    }
+    index = 0;
+    incoming_Byte = 0;
+    memset(packet, 0, sizeof(packet));
+  }
   
 }
