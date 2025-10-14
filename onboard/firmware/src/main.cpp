@@ -1,13 +1,23 @@
+/*
+    onboard - main.cpp of the board computer for the ASCENT II telemetry system.
+    Created by Felix Seene and Benjamin Bauersfeld
+    Spaceflight Rocketry Giessen e.V.
+    Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
+*/
+
+
+
 #include "Arduino.h"
 #include "Wire.h"
 #include "RC1780HP.h"
 #include "Packet.h"
 
 // Configuration
-const uint8_t time_between_packets_standby = 30;                                              // in seconds               
-const uint8_t hz = 8;                                                                         // in Hz
-const uint16_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds
+const uint8_t time_between_packets_standby = 30;                                              // in seconds   In standby, data packets are sent every 30 s   
+const uint8_t hz = 8;                                                                         // in Hz        During flight, 8 Hz (125 ms interval)
+const uint16_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds   6 min (360s) is max sending time
 
+// Pin assignment
 uint8_t ledpin1 = PIN_PG3;
 uint8_t ledpinR = PIN_PG2;
 uint8_t ledpinG = PIN_PG1;
@@ -52,20 +62,21 @@ float battery_voltage = 0;
 
 void setup()
 {
-  pinMode(ledpin1, OUTPUT);
-  pinMode(ledpinR, OUTPUT);
-  pinMode(ledpinG, OUTPUT);
-  pinMode(ledpinB, OUTPUT);
-  pinMode(ledpin5, OUTPUT);
-  pinMode(ledpin6, OUTPUT);
-  pinMode(ledpin7, OUTPUT);
-  pinMode(ledpin8, OUTPUT);
+  pinMode(ledpin1, OUTPUT); // Power on
+  pinMode(ledpinR, OUTPUT); // Red
+  pinMode(ledpinG, OUTPUT); // Green
+  pinMode(ledpinB, OUTPUT); // Blue
+  pinMode(ledpin5, OUTPUT); // Flight mode
+  pinMode(ledpin6, OUTPUT); // Sensor circuit board 1
+  pinMode(ledpin7, OUTPUT); // Sensor circuit board 2
+  pinMode(ledpin8, OUTPUT); // Landing systems
   pinMode(d1pin, INPUT);
   pinMode(d2pin, INPUT);
   pinMode(d3pin, INPUT);
   pinMode(armpin, OUTPUT);
   pinMode(slppin, OUTPUT);
 
+   // Only LED1 (power indicator) and RGB LED are turned on
   digitalWrite(ledpin1, HIGH);
   digitalWrite(ledpinR, HIGH);
   digitalWrite(ledpinG, LOW);
@@ -77,14 +88,17 @@ void setup()
 
   // SerialTTL->begin(19200);
   // SerialHeader->begin(19200);
-  SerialModule->swap(1);
-
+  SerialModule->swap(1);// Swap RX/TX pins for module
+ 
   Wire.swap(2);
   Wire.begin();
   
+  // Initialize radio transceiver and wait until communication is established
   rc1780hp.begin(19200);
   while(rc1780hp.ping() != 0);
 
+
+  // Before each flight memory is reset and non-standard settings are reconfigured
   rc1780hp.memory_Reset();
   while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
@@ -105,10 +119,13 @@ void loop()
 {
   loop_start_time = millis();
 
+  // Update variables from i2c connected systems at the beginning of each cycle
   get_packet_data();
 
+  // Check for incoming data from groundstation
   if(SerialModule->available() != 0)
   {
+    // Process incoming serial commands from the groundstation
     switch (SerialModule->read())
     {
       // Flight mode
@@ -128,7 +145,7 @@ void loop()
         }
         break;
       
-      // Low power mode
+      // Low power mode 
       case 'l': 
         if(low_power_mode == 1)
         {
@@ -141,13 +158,12 @@ void loop()
           digitalWrite(slppin, HIGH);
           digitalWrite(ledpin1, LOW);
           digitalWrite(ledpinR, LOW);
-          digitalWrite(ledpinG, LOW);
+          digitalWrite(ledpinG, LOW); 
           digitalWrite(ledpinB, LOW);
-          digitalWrite(ledpin5, LOW);
-          digitalWrite(ledpin6, LOW);
-          digitalWrite(ledpin7, LOW);
-          digitalWrite(ledpin8, LOW);
-          low_power_mode = 1;
+          digitalWrite(ledpin5, LOW); 
+          digitalWrite(ledpin6, LOW); 
+          digitalWrite(ledpin7, LOW); 
+          digitalWrite(ledpin8, LOW); 
           send_packet();
         }
         break;
@@ -162,7 +178,8 @@ void loop()
         break;
     }
   }
-
+ 
+  // Check if the other boards are connected and ready (When a system is connected or ready, a 1 is written to the respective position. E.g. 0b111 then means that all are connected)
   if(low_power_mode == 0)
   {
     if(flight_mode == 1)
@@ -172,7 +189,7 @@ void loop()
 
     digitalWrite(ledpin1, 1 - led_switch);
 
-    // Sensorik 1
+    // Sensor circuit board 1
     if(i2c_connections & 0b001 != 0)
     {
       if(subsystem_status & 0b001 != 0)
@@ -189,7 +206,7 @@ void loop()
       digitalWrite(ledpin6, LOW);
     }
 
-    // Sensorik 2
+    // Sensor circuit board 2
     if(i2c_connections & 0b010 != 0)
     {
       if(subsystem_status & 0b010 != 0)
@@ -206,7 +223,7 @@ void loop()
       digitalWrite(ledpin7, LOW);
     }
 
-    // Landesysteme
+    // Landing systems
     if(i2c_connections & 0b100 != 0)
     {
       if(subsystem_status & 0b100 != 0)
@@ -223,12 +240,14 @@ void loop()
       digitalWrite(ledpin8, LOW);
     }
 
+    // All boards connected but not ready (RGB_LED turns blue)
     if(i2c_connections == 0b111 && subsystem_status != 0b111)
     {
       digitalWrite(ledpinR, LOW);
       digitalWrite(ledpinG, LOW);
       digitalWrite(ledpinB, HIGH);
     }
+    // All connected and ready (RGB_LED turns green)
     else if(i2c_connections == 0b111 && subsystem_status == 0b111)
     {
       digitalWrite(ledpinR, LOW);
@@ -239,9 +258,10 @@ void loop()
     led_switch = 1 - led_switch;
   }
 
+  // Send data to groundstation
   if(flight_mode == 1)
   {
-    if(millis() - flight_mode_start_time > flight_mode_max_duration * 1000)
+    if(millis() - flight_mode_start_time > flight_mode_max_duration * 1000) // If the maximum legal transmission time is reached, the flight mode must be turned off
     {
       // Sollte Arming Pin auf Low?
       flight_mode = 0;
@@ -253,35 +273,36 @@ void loop()
       send_packet();
     }
   }
-  else if(loop_count % (time_between_packets_standby * hz) == 0)
+  else if(loop_count % (time_between_packets_standby * hz) == 0) // Sending in non-flight mode
   {
-    send_packet;
+    send_packet();
     loop_count = 0;
   }
   
-  delay(1000 / hz - (millis() - loop_start_time));
+  delay(1000 / hz - (millis() - loop_start_time)); // Waits until the iteration has taken 125ms
   loop_count++;
 }
 
 void get_packet_data()
 {
+  // If sensor board not yet confirmed connected, test I²C response
   if(i2c_connections & 0b001 == 0)
   {
-      Wire.beginTransmission(0x20);                       // Sensorik 1
+      Wire.beginTransmission(0x20);                       // Sensor circuit board 1
       i2c_connections |= (Wire.endTransmission() == 0) << 0; 
   }
   if(i2c_connections & 0b010 == 0)
   {
-      Wire.beginTransmission(0x30);                       // Sensorik 2
+      Wire.beginTransmission(0x30);                       // Sensor circuit board 2
       i2c_connections |= (Wire.endTransmission() == 0) << 1; 
   }
   if(i2c_connections & 0b100 == 0)
   {
-      Wire.beginTransmission(0x40);                       // Landesysteme
+      Wire.beginTransmission(0x40);                       // Landing systems
       i2c_connections |= (Wire.endTransmission() == 0) << 2; 
   }
 
-  // Sensorik 1: Status (1 Byte), Druckhöhe (4 Bytes), GNSS Höhe (4 Bytes), GNSS Lat (4 Bytes) + Lon (4 Bytes)
+  // Sensor circuit board 1: status (1 Byte), height pressure (4 Bytes), GNSS height (4 Bytes), GNSS Lat (4 Bytes) + Lon (4 Bytes)
   if(i2c_connections & 0b001 != 0)
   {
     Wire.requestFrom(0x20, 17); 
@@ -291,13 +312,14 @@ void get_packet_data()
 
     subsystem_status = (subsystem_status & 0b110) | (result[0] << 0);
 
+    // Turns 4-Byte data (int) into float
     height_pressure = (float)((int32_t)result[1] << 8*0 | (int32_t)result[2] << 8*1 | (int32_t)result[3] << 8*2 | (int32_t)result[4] << 8*3) / 100;
     height_gnss = (float)((int32_t)result[5] << 8*0 | (int32_t)result[6] << 8*1 | (int32_t)result[7] << 8*2 | (int32_t)result[8] << 8*3) / 100;
     lat_gnss = (float)((int32_t)result[9] << 8*0 | (int32_t)result[10] << 8*1 | (int32_t)result[11] << 8*2 | (int32_t)result[12] << 8*3) / 1000000;
     lon_gnss = (float)((int32_t)result[13] << 8*0 | (int32_t)result[14] << 8*1 | (int32_t)result[15] << 8*2 | (int32_t)result[16] << 8*3) / 1000000;
   }
 
-  // Sensorik 2: Status (1 Byte), Beschleunigung (2 Bytes)
+  // Sensor circuit board 2: status (1 Byte), acceleration (2 Bytes)
   if(i2c_connections & 0b010 != 0)
   {
     Wire.requestFrom(0x30, 3); 
@@ -310,7 +332,7 @@ void get_packet_data()
     acceleration = (float)((int16_t)result[1] << 8*0 | (int16_t)result[2] << 8*1) / 100;
   }
 
-  // Landesysteme: Status (1 Byte), Statusereignisse (1 Byte)
+  // Landing systems: status (1 Byte), status events (1 Byte)
   if(i2c_connections & 0b100 != 0)
   {
     Wire.requestFrom(0x40, 2); 
@@ -323,10 +345,11 @@ void get_packet_data()
     status_events = result[1];
   }
 
-  // Batteriespannung
+  // Battery_voltage
   battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
 }
 
+// Encodes current data into 15-Byte packet and transmits it
 void send_packet()
 {
   uint8_t packet[15];

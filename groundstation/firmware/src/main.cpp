@@ -1,7 +1,16 @@
+/*
+    groundstation - main.cpp of the groundstation for the ASCENT II telemetry system.
+    Created by Felix Seene and Benjamin Bauersfeld
+    Spaceflight Rocketry Giessen e.V.
+    Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
+*/
+
+
 #include "Arduino.h"
 #include "RC1780HP.h"
 #include "Packet.h"
 
+// Pin assignment
 uint8_t ledpin1 = PIN_PG3;
 uint8_t ledpinR = PIN_PG2;
 uint8_t ledpinG = PIN_PG1;
@@ -27,7 +36,7 @@ HardwareSerial* SerialModule = &Serial0;
 
 RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
-// Data components
+// Data components received from sensors
 uint8_t address = 0;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
@@ -41,27 +50,28 @@ float acceleration = 0;
 float battery_voltage = 0;
 float rssi = 0;
 
-//incoming Data
+// Incoming Data
 uint8_t packet[15] = 0;
 uint8_t incoming_Byte = 0;
 uint8_t index = 0;
 
 void setup()
 {
-  pinMode(ledpin1, OUTPUT);
-  pinMode(ledpinR, OUTPUT);
-  pinMode(ledpinG, OUTPUT);
-  pinMode(ledpinB, OUTPUT);
-  pinMode(ledpin5, OUTPUT);
-  pinMode(ledpin6, OUTPUT);
-  pinMode(ledpin7, OUTPUT);
-  pinMode(ledpin8, OUTPUT);
+  pinMode(ledpin1, OUTPUT); // Power on
+  pinMode(ledpinR, OUTPUT); // Red
+  pinMode(ledpinG, OUTPUT); // Green
+  pinMode(ledpinB, OUTPUT); // Blue
+  pinMode(ledpin5, OUTPUT); // Flight mode
+  pinMode(ledpin6, OUTPUT); // Low-power-mode
+  pinMode(ledpin7, OUTPUT); // Subsystem status
+  pinMode(ledpin8, OUTPUT); // Battery voltage
   pinMode(d1pin, INPUT);
   pinMode(d2pin, INPUT);
   pinMode(d3pin, INPUT);
   pinMode(armpin, OUTPUT);
   pinMode(slppin, OUTPUT);
 
+  // Only LED1 (power indicator) and RGB LED are turned on
   digitalWrite(ledpin1, HIGH);
   digitalWrite(ledpinR, HIGH);
   digitalWrite(ledpinG, LOW);
@@ -71,13 +81,14 @@ void setup()
   digitalWrite(ledpin7, LOW);
   digitalWrite(ledpin8, LOW);
 
-  SerialTTL->begin(19200);
+  SerialTTL->begin(19200);// Connection to PC
   // SerialHeader->begin(19200);
-  SerialModule->swap(1);
+  SerialModule->swap(1);// Swap RX/TX pins for module
 
   rc1780hp.begin(19200);
-  while(rc1780hp.ping() != 0);
+  while(rc1780hp.ping() != 0); // Waits until module responds
 
+  // Before each flight memory is reset and non-standard settings are reconfigured
   rc1780hp.memory_Reset();
   while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
@@ -95,22 +106,26 @@ void setup()
 
 void loop()
 {
+  // Send data to rocket
   if(SerialTTL->available() != 0)
   {
     SerialModule->write(SerialTTL->read());
   }
 
+  // Receive data from rocket
   if(Serial.available() != 0)
   {
+    // Store incoming packet on array until endbyte (0xEE) is received
     while(incoming_Byte != 0xEE)
     {
       incoming_Byte = Serial.read();
       packet[index] = incoming_Byte;
       index++;
     }
-    incoming_Byte = Serial.read();
+    incoming_Byte = Serial.read(); // After the endbyte, the radio modul adds the RSSI value
     packet[index] = incoming_Byte;
 
+    // 15-Byte packet gets decoded and written on screen
     if(packet[index - 1] == 0xEE)
     {
       Packet::decode(packet, &address, &flight_mode, &low_power_mode, &subsystem_status, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
@@ -127,8 +142,8 @@ void loop()
       SerialTTL->print("battery_voltage:");    SerialTTL->println(battery_voltage);
       SerialTTL->print("rssi:");               SerialTTL->println(rssi);
 
-      //LED5 (subsystem_status)
-      if(subsystem_status == 0b111)
+      // LED5 glows wenn flight-mode is active
+      if(flight_mode == 1)
       {
         digitalWrite(ledpin5, HIGH);
       }
@@ -137,8 +152,8 @@ void loop()
         digitalWrite(ledpin5, LOW);
       }
 
-      //LED6 (battery_voltage)
-      if(battery_voltage > 7.2)
+      // LED6 glows wenn low-power-mode is active
+      if(low_power_mode == 1)
       {
         digitalWrite(ledpin6, HIGH);
       }
@@ -146,23 +161,43 @@ void loop()
       {
         digitalWrite(ledpin6, LOW);
       }
+
+      // LED7 glows wenn subsystems are ready
+      if(subsystem_status == 0b111)
+      {
+        digitalWrite(ledpin7, HIGH);
+      }
+      else
+      {
+        digitalWrite(ledpin7, LOW);
+      }
+
+      // LED8 glows until battery-voltage gets lower than 7.2V
+      if(battery_voltage > 7.2)
+      {
+        digitalWrite(ledpin8, HIGH);
+      }
+      else
+      {
+        digitalWrite(ledpin8, LOW);
+      }
       
-      //Main LED (RSSI)
-      if(rssi > -50 )
+      // RGB LED (RSSI)
+      if(rssi > -50 )// High signal strength --> LED glows green
       {
         digitalWrite(ledpinG, HIGH);
         digitalWrite(ledpinB, LOW);
         digitalWrite(ledpinR, LOW);
       }
 
-      else if(rssi > -80)
+      else if(rssi > -80)// Medium signal strength --> LED glows blue
       {
         digitalWrite(ledpinG, LOW);
         digitalWrite(ledpinB, HIGH);
         digitalWrite(ledpinR, LOW); 
       }
 
-      else
+      else // Low signal strength --> LED glows red
       {
         digitalWrite(ledpinG, LOW);
         digitalWrite(ledpinB, LOW);
@@ -170,6 +205,7 @@ void loop()
       }
 
     }
+    // Reset variables for next packet
     index = 0;
     incoming_Byte = 0;
     memset(packet, 0, sizeof(packet));
