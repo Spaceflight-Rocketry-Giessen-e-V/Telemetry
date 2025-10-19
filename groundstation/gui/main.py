@@ -11,6 +11,8 @@ import ui.location
 import ui.altitude
 import ui.battery
 import ui.map_view
+from ui.com_monitor import ComMonitor
+
 
 # ---------- Cross-platform Screen Resolution ----------
 def get_screen_resolution():
@@ -105,6 +107,10 @@ def build_ui():
 
                 dpg.add_button(label="Start Simulation",
                                callback=lambda: start_simulation())
+
+            with dpg.tab(label="COM Monitor"):
+                com_monitor = ComMonitor()
+                com_monitor.draw_ui()
     # demo.show_demo()
 
     dpg.setup_dearpygui()
