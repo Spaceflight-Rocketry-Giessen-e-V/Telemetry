@@ -13,7 +13,7 @@
 #include "Packet.h"
 
 // Configuration
-const uint8_t time_between_packets_standby = 30;                                              // in seconds   In standby, data packets are sent every 30 s   
+const uint8_t time_between_packets_standby = 15;                                              // in seconds   In standby, data packets are sent every 30 s   
 const uint8_t hz = 8;                                                                         // in Hz        During flight, 8 Hz (125 ms interval)
 const uint16_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds   6 min (360s) is max sending time
 
@@ -312,24 +312,35 @@ void get_packet_data()
 
     subsystem_status = (subsystem_status & 0b110) | (result[0] << 0);
 
-    // Turns 4-Byte data (int) into float
-    height_pressure = (float)((int32_t)result[1] << 8*0 | (int32_t)result[2] << 8*1 | (int32_t)result[3] << 8*2 | (int32_t)result[4] << 8*3) / 100;
-    height_gnss = (float)((int32_t)result[5] << 8*0 | (int32_t)result[6] << 8*1 | (int32_t)result[7] << 8*2 | (int32_t)result[8] << 8*3) / 100;
-    lat_gnss = (float)((int32_t)result[9] << 8*0 | (int32_t)result[10] << 8*1 | (int32_t)result[11] << 8*2 | (int32_t)result[12] << 8*3) / 1000000;
-    lon_gnss = (float)((int32_t)result[13] << 8*0 | (int32_t)result[14] << 8*1 | (int32_t)result[15] << 8*2 | (int32_t)result[16] << 8*3) / 1000000;
+    // Turns 4-Byte data into float
+
+    uint32_t tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
+    height_pressure = *(float*)&d;
+
+    uint32_t tmp = ((uint32_t)result[8] << 24) | ((uint32_t)result[7] << 16) | ((uint32_t)result[6] << 8) | ((uint32_t)result[5]);
+    height_gnss = *(float*)&d;
+
+    uint32_t tmp = ((uint32_t)result[12] << 24) | ((uint32_t)result[11] << 16) | ((uint32_t)result[10] << 8) | ((uint32_t)result[9]);
+    lat_gnss = *(float*)&d;
+
+    uint32_t tmp = ((uint32_t)result[16] << 24) | ((uint32_t)result[15] << 16) | ((uint32_t)result[14] << 8) | ((uint32_t)result[13]);
+    lon_gnss = *(float*)&d;
   }
 
-  // Sensor circuit board 2: status (1 Byte), acceleration (2 Bytes)
+  // Sensor circuit board 2: status (1 Byte), acceleration (4 Bytes)
   if(i2c_connections & 0b010 != 0)
   {
-    Wire.requestFrom(0x30, 3); 
-    uint8_t result[3];
-    for(int i = 0; i < 3; i++)
+    Wire.requestFrom(0x30, 5); 
+    uint8_t result[5];
+    for(int i = 0; i < 5; i++)
       result[i] = Wire.read();
 
     subsystem_status = (subsystem_status & 0b101) | (result[0] << 1);
 
-    acceleration = (float)((int16_t)result[1] << 8*0 | (int16_t)result[2] << 8*1) / 100;
+    // Turns 4-Byte data into float
+
+    uint32_t tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
+    acceleration = *(float*)&d;
   }
 
   // Landing systems: status (1 Byte), status events (1 Byte)
