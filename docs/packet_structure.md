@@ -31,7 +31,7 @@ The addressing can be used, when multiple flight computers or ground stations ar
 
 ### COBS
 - component size: 4 bits
-- value range: 0 to 11
+- value range: 0 to 13
 
 Consistent Overhead Byte Stuffing ([Link](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)) is used to avoid multiple occurances of the unique end byte 0xEE.
 If there is no occurance of 0xEE in the data bytes, the COBS value is set to 0x0.
