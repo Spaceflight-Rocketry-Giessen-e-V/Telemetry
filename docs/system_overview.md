@@ -2,7 +2,7 @@
 
 This document provides detailed information about our electronics, firmware, antenna, and GUI systems.
 
-<p align="center"><img src="media/images/System_Block_Diagram.svg" width="400" /></p>
+<p align="center"><img src="../media/images/System_Block_Diagram.svg" width="400" /></p>
 
 The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.md) ensures that our system meets this requirement.
 
