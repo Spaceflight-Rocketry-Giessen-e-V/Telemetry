@@ -2,6 +2,10 @@
 
 This document provides detailed information about our electronics, firmware, antenna, and GUI systems.
 
+<p align="center"><img src="media/images/System_Block_Diagram.svg" width="400" /></p>
+
+The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.md) ensures that our system meets this requirement.
+
 ## Electronics
 
 **Note:** So far, the ground station and the flight computer use the same electronics hardware. We plan to design dedicated ground station hardware in the future.
@@ -31,9 +35,9 @@ A T-network is also included to match the antenna's impedance to 50 Ohms.
 
 ### General
 
-In the setup function, pin declarations and starting conditions are established. The radio module is initialized, and the desired configurations are applied after a configuration reset. Additionally, the flight computer initializes the I2C connection to the other subsystems of the flight computer (such as sensorics).
+In the setup function, pin declarations and starting conditions are established. The radio module is initialized, and the desired configurations are applied after a configuration reset. Additionally, the flight computer initializes the I2C connection to the other subsystems of the flight computer (such as sensorics) and the ground station initializes the UART connection to the ground station computer.
 
-In the loop function, radio commands (such as ping, toggle flight mode, toggle low power mode) are exchanged, and data from the subsystems is collected and transmitted. 
+In the loop function, radio commands (such as ping, toggle flight mode, toggle low power mode) are exchanged, and data from the subsystems is collected and also exchanged. 
 The low power mode toggles the LEDs on the board.
 
 ### Radio module library
