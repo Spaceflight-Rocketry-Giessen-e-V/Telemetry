@@ -7,16 +7,19 @@
 
 #include "Packet.h"
 
-void Packet::encode(uint8_t* packet, uint8_t address, uint8_t flight_mode, uint8_t low_power_mode, uint8_t subsystem_status, uint8_t status_events, float acceleration, float height_pressure, float height_gnss, float lat_gnss, float lon_gnss, float battery_voltage)
+void Packet::encode(uint8_t* packet, float temperature, uint8_t subsystem_status, uint8_t flight_mode, uint8_t low_power_mode, uint8_t status_events, float acceleration, float height_pressure, float height_gnss, float lat_gnss, float lon_gnss, float battery_voltage)
 {
-    // Address
-    packet[0] |= (0x0F & address) << 4;
-
+    // Temperature
+    if (temperature > 80)
+    {
+        packet[0] |= 0x01 << 3;
+    }
+    
     // Status
+    packet[0] |= (0x07 & subsystem_status);
     packet[1] |= (0x01 & flight_mode) << 7;
     packet[1] |= (0x01 & low_power_mode) << 6;
-    packet[1] |= (0x01 & subsystem_status) << 5;
-    packet[1] |= (0x07 & status_events) << 2;
+    packet[1] |= (0x0F & status_events) << 2;
 
     // Acceleration
     if (acceleration < 0)
@@ -98,13 +101,13 @@ void Packet::encode(uint8_t* packet, uint8_t address, uint8_t flight_mode, uint8
         if (packet[i] == 0xEE)
         {
             packet[i] = 0;
-            packet[cobs_byte] |= 0x0F & i;
+            packet[cobs_byte] |= (0x0F & i) << 4;
             cobs_byte = i;
         }
     }
 }
 
-void Packet::decode(uint8_t* packet, uint8_t* address, uint8_t* flight_mode, uint8_t* low_power_mode, uint8_t* subsystem_status, uint8_t* status_events, float* acceleration, float* height_pressure, float* height_gnss, float* lat_gnss, float* lon_gnss, float* battery_voltage, float* rssi)
+void Packet::decode(uint8_t* packet, uint8_t* temperature, uint8_t* subsystem_status, uint8_t* flight_mode, uint8_t* low_power_mode, uint8_t* status_events, float* acceleration, float* height_pressure, float* height_gnss, float* lat_gnss, float* lon_gnss, float* battery_voltage, float* rssi)
 {
     // End Byte
     if (packet[14] != 0xEE)
@@ -112,23 +115,23 @@ void Packet::decode(uint8_t* packet, uint8_t* address, uint8_t* flight_mode, uin
 
     // COBS
     uint8_t tmp1 = 0;
-    uint8_t tmp2 = packet[tmp1] & 0x0F;
+    uint8_t tmp2 = (packet[tmp1] & 0xF0) >> 4;
     while (tmp2 != 0x00)
     {
         tmp1 = tmp2;
-        tmp2 = packet[tmp1] & 0x0F;
+        tmp2 = (packet[tmp1] & 0xF0) >> 4;
         packet[tmp1] = 0xEE;
     }
 
-    *address = (packet[0] & 0xF0) >> 4;
+    *temperature = (packet[0] & 0x08) >> 3;
+
+    *subsystem_status = (packet[0] & 0x07);
 
     *flight_mode = (packet[1] & 0x80) >> 7;
 
     *low_power_mode = (packet[1] & 0x40) >> 6;
 
-    *subsystem_status = (packet[1] & 0x20) >> 5;
-
-    *status_events = (packet[1] & 0x1C) >> 2;
+    *status_events = (packet[1] & 0x3C) >> 2;
 
     *acceleration = (float)((uint16_t)(packet[1] & 0x01) << 8 | (uint16_t)(packet[2])) * 0.0625;
     if ((packet[1] & (0x01 << 1)) != 0)

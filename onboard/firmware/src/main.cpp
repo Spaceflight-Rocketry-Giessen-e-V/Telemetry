@@ -48,10 +48,11 @@ void get_packet_data();
 void send_packet();
 
 // Data components
+float temperature = 0;
+uint8_t subsystem_status = 0b000;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
 uint8_t i2c_connections = 0b000;
-uint8_t subsystem_status = 0b000;
 uint8_t status_events = 0;
 float height_pressure = 0;
 float height_gnss = 0;
@@ -358,15 +359,17 @@ void get_packet_data()
 
   // Battery_voltage
   battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
+
+  // Temperature
+  int8_t tmp = 0;
+  rc1780hp.read_Temperature(&tmp);
+  temperature = (float)tmp;
 }
 
 // Encodes current data into 15-Byte packet and transmits it
 void send_packet()
 {
   uint8_t packet[15];
-  Packet::encode(packet, 0x01, flight_mode, low_power_mode, subsystem_status == 0b111, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
-  for(uint8_t i = 0; i < 15; i++)
-  {
-    SerialModule->write(packet[i]);
-  }
+  Packet::encode(packet, temperature, subsystem_status, flight_mode, low_power_mode, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
+  SerialModule->write(packet, 15);
 }

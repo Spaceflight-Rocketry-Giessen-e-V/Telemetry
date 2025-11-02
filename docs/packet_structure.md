@@ -10,9 +10,9 @@ The following table lists the components of each data package.
 The 16th byte (#15), the received signal strength, is appended after receiving the packet and is thus not transmitted.
 | Byte position | Use | Size |
 | --- | --- | --- |
-| 0 | [Address](#Address) | 4 bits |
 | 0 | [COBS](#COBS) | 4 bits |
-| 1 | [Status](#Status) | 6 bits |
+| 0 | [Temperature](#Temperature) | 1 bit |
+| 0 to 1 | [Status](#Status) | 9 bits |
 | 1 to 2 | [Acceleration](#Acceleration) | 10 bits |
 | 3 to 4 | [Height (Pressure)](#Height-(Pressure)) | 16 bits |
 | 5 to 6 | [Height (GNSS)](#Height-(GNSS)) | 16 bits |
@@ -22,12 +22,6 @@ The 16th byte (#15), the received signal strength, is appended after receiving t
 | 15 | [RSSI](#RSSI) | 8 bits |
 
 ## Data Components
-
-### Address
-- component size: 4 bits
-- value range: 16 unique destination addresses
-
-The addressing can be used, when multiple flight computers or ground stations are in operation simultaneously.
 
 ### COBS
 - component size: 4 bits
@@ -49,12 +43,18 @@ Note: The byte 0 which includes the COBS value also includes the destination add
 | Original Package | 80 | 56 | EE | A8 | 9B | EE | 77 | 1F | EE | 0E | EE | B6 | 2A | 5C | EE |
 | Modified Package | ***82*** | 56 | ***05*** | A8 | 9B | ***08*** | 77 | 1F | ***0A*** | 0E | ***00*** | B6 | 2A | 5C | EE |
  
-### Status
-- component size: 6 bits
-- value range: indication for flight mode, low power mode, overall status and 8 individual launch events
+### Temperature
+- component size: 1 bit
+- value range: flight computer temperature higher or lower than 80 °C
 
-The status component includes one bit for indicating the flight mode (rocket is armed and telemetry starts sending data at 8 Hz), low power mode (all LEDs are turned off) and overall flight computer status (all subsystems are good) respectively.
-The remaining 3 bits are used to represent 8 individual launch events like *standby*, *launch detected*, *apogee detected*, *landing detected*.
+If the temperature bit is 1, the flight computer has a temperature of more than 80 °C. Above this temperature, safe operation may not be guaranteed.
+ 
+### Status
+- component size: 9 bits
+- value range: indication for the status of the three subsystems, flight mode, low power mode and 16 individual launch events. 
+
+The status component includes one bit for the status of each subsystem (three in total) and one bit each to indicate flight mode (rocket is armed and telemetry starts sending data at 8 Hz) and low power mode (all LEDs are turned off).
+The remaining 4 bits are used to represent 16 individual launch events like *standby*, *launch detected*, *apogee detected*, *landing detected*.
 
 ### Acceleration
 - component size: 10 bits

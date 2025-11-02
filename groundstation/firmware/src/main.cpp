@@ -37,10 +37,10 @@ HardwareSerial* SerialModule = &Serial0;
 RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
 // Data components received from sensors
-uint8_t address = 0;
+uint8_t temperature = 0;
+uint8_t subsystem_status = 0;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
-uint8_t subsystem_status = 0;
 uint8_t status_events = 0;
 float height_pressure = 0;
 float height_gnss = 0;
@@ -128,11 +128,11 @@ void loop()
     // 15-Byte packet gets decoded and written on screen
     if(packet[index - 1] == 0xEE)
     {
-      Packet::decode(packet, &address, &flight_mode, &low_power_mode, &subsystem_status, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
-      SerialTTL->print("address:");            SerialTTL->println(address);
+      Packet::decode(packet, &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
+      SerialTTL->print("temperature > 80C:");  SerialTTL->println(temperature);
+      SerialTTL->print("subsystem_status:");   SerialTTL->println(subsystem_status);
       SerialTTL->print("flight_mode:");        SerialTTL->println(flight_mode);
       SerialTTL->print("low_power_mode:");     SerialTTL->println(low_power_mode);
-      SerialTTL->print("subsystem_status:");   SerialTTL->println(subsystem_status);
       SerialTTL->print("status_events:");      SerialTTL->println(status_events);
       SerialTTL->print("acceleration:");       SerialTTL->println(acceleration);
       SerialTTL->print("height_pressure:");    SerialTTL->println(height_pressure);

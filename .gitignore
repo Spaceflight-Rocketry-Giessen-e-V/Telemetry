@@ -8,3 +8,4 @@
 /groundstation/gui/.venv
 /groundstation/gui/.idea
 /groundstation/gui/__pycache__
+/.vscode/
