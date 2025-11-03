@@ -8,6 +8,8 @@
 #ifndef Packet_h
 #define Packet_h
 
+#include "Arduino.h"
+
 class Packet
 {
     public:

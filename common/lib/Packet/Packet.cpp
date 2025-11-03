@@ -5,6 +5,7 @@
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
 */
 
+#include "Arduino.h"
 #include "Packet.h"
 
 void Packet::encode(uint8_t* packet, float temperature, uint8_t subsystem_status, uint8_t flight_mode, uint8_t low_power_mode, uint8_t status_events, float acceleration, float height_pressure, float height_gnss, float lat_gnss, float lon_gnss, float battery_voltage)

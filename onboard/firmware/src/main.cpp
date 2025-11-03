@@ -303,6 +303,8 @@ void get_packet_data()
       i2c_connections |= (Wire.endTransmission() == 0) << 2; 
   }
 
+  uint32_t tmp;
+
   // Sensor circuit board 1: status (1 Byte), height pressure (4 Bytes), GNSS height (4 Bytes), GNSS Lat (4 Bytes) + Lon (4 Bytes)
   if(i2c_connections & 0b001 != 0)
   {
@@ -315,17 +317,17 @@ void get_packet_data()
 
     // Turns 4-Byte data into float
 
-    uint32_t tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
-    height_pressure = *(float*)&d;
+    tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
+    height_pressure = *(float*)&tmp;
 
-    uint32_t tmp = ((uint32_t)result[8] << 24) | ((uint32_t)result[7] << 16) | ((uint32_t)result[6] << 8) | ((uint32_t)result[5]);
-    height_gnss = *(float*)&d;
+    tmp = ((uint32_t)result[8] << 24) | ((uint32_t)result[7] << 16) | ((uint32_t)result[6] << 8) | ((uint32_t)result[5]);
+    height_gnss = *(float*)&tmp;
 
-    uint32_t tmp = ((uint32_t)result[12] << 24) | ((uint32_t)result[11] << 16) | ((uint32_t)result[10] << 8) | ((uint32_t)result[9]);
-    lat_gnss = *(float*)&d;
+    tmp = ((uint32_t)result[12] << 24) | ((uint32_t)result[11] << 16) | ((uint32_t)result[10] << 8) | ((uint32_t)result[9]);
+    lat_gnss = *(float*)&tmp;
 
-    uint32_t tmp = ((uint32_t)result[16] << 24) | ((uint32_t)result[15] << 16) | ((uint32_t)result[14] << 8) | ((uint32_t)result[13]);
-    lon_gnss = *(float*)&d;
+    tmp = ((uint32_t)result[16] << 24) | ((uint32_t)result[15] << 16) | ((uint32_t)result[14] << 8) | ((uint32_t)result[13]);
+    lon_gnss = *(float*)&tmp;
   }
 
   // Sensor circuit board 2: status (1 Byte), acceleration (4 Bytes)
@@ -340,8 +342,8 @@ void get_packet_data()
 
     // Turns 4-Byte data into float
 
-    uint32_t tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
-    acceleration = *(float*)&d;
+    tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
+    acceleration = *(float*)&tmp;
   }
 
   // Landing systems: status (1 Byte), status events (1 Byte)
@@ -361,9 +363,9 @@ void get_packet_data()
   battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
 
   // Temperature
-  int8_t tmp = 0;
-  rc1780hp.read_Temperature(&tmp);
-  temperature = (float)tmp;
+  int8_t temp = 0;
+  rc1780hp.read_Temperature(&temp);
+  temperature = (float)temp;
 }
 
 // Encodes current data into 15-Byte packet and transmits it
