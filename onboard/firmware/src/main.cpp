@@ -15,7 +15,7 @@
 // Configuration
 const uint8_t time_between_packets_standby = 15;                                              // in seconds   In standby, data packets are sent every 30 s   
 const uint8_t hz = 8;                                                                         // in Hz        During flight, 8 Hz (125 ms interval)
-const uint16_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds   6 min (360s) is max sending time
+const uint32_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds   6 min (360s) is max sending time
 
 // Pin assignment
 uint8_t ledpin1 = PIN_PG3;
@@ -87,6 +87,9 @@ void setup()
   digitalWrite(ledpin7, LOW);
   digitalWrite(ledpin8, LOW);
 
+  // Set ADC resolution to 8 bits
+  analogReadResolution(8);
+
   // SerialTTL->begin(19200);
   // SerialHeader->begin(19200);
   SerialModule->swap(1);// Swap RX/TX pins for module
@@ -96,11 +99,11 @@ void setup()
   
   // Initialize radio transceiver and wait until communication is established
   rc1780hp.begin(19200);
+  rc1780hp.hard_reset();
   while(rc1780hp.ping() != 0);
 
-
   // Before each flight memory is reset and non-standard settings are reconfigured
-  rc1780hp.memory_Reset();
+  while(rc1780hp.memory_Reset() != 0);
   while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
   while(rc1780hp.set_Packet_End_Character(0xEE) != 0);
@@ -108,6 +111,7 @@ void setup()
   while(rc1780hp.set_CRC_Mode(0x00) != 0);
   while(rc1780hp.set_LED_Control(0x01) != 0);
 
+  rc1780hp.hard_reset();
   rc1780hp.serial_Flush();
 }
 
@@ -122,7 +126,7 @@ void loop()
 
   // Update variables from i2c connected systems at the beginning of each cycle
   get_packet_data();
-
+  
   // Check for incoming data from groundstation
   if(SerialModule->available() != 0)
   {
@@ -141,6 +145,7 @@ void loop()
         else
         {
           digitalWrite(armpin, HIGH);
+          digitalWrite(ledpin5, HIGH);
           flight_mode_start_time = millis();
           flight_mode = 1;
         }
@@ -165,6 +170,7 @@ void loop()
           digitalWrite(ledpin6, LOW); 
           digitalWrite(ledpin7, LOW); 
           digitalWrite(ledpin8, LOW); 
+          low_power_mode = 1;
           send_packet();
         }
         break;
@@ -179,7 +185,7 @@ void loop()
         break;
     }
   }
- 
+
   // Check if the other boards are connected and ready (When a system is connected or ready, a 1 is written to the respective position. E.g. 0b111 then means that all are connected)
   if(low_power_mode == 0)
   {
@@ -359,8 +365,8 @@ void get_packet_data()
     status_events = result[1];
   }
 
-  // Battery_voltage
-  battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
+  // Battery_voltage (Voltage divider)
+  battery_voltage = (float)analogRead(d2pin) / 255 * 3.3 * (18 + 10) / 10;
 
   // Temperature
   int8_t temp = 0;
@@ -371,7 +377,7 @@ void get_packet_data()
 // Encodes current data into 15-Byte packet and transmits it
 void send_packet()
 {
-  uint8_t packet[15];
+  uint8_t packet[15] = { 0 };
   Packet::encode(packet, temperature, subsystem_status, flight_mode, low_power_mode, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
   SerialModule->write(packet, 15);
 }

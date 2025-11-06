@@ -88,17 +88,9 @@ uint8_t RC1780HP::memory_Reset()
                 {
                     return 0;
                 }
-                else
-                    return 15;
             }
-            else
-                return 14;
         }
-        else
-            return 13;
     }
-    else
-        return 12;
     return 1;
 }
 
@@ -318,6 +310,7 @@ uint8_t RC1780HP::exit_Config()
     {
         return 0;
     }
+    serial_Flush();
     return 1;
 }
 
