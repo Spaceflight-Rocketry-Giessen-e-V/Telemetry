@@ -5,8 +5,6 @@
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
 */
 
-
-
 #include "Arduino.h"
 #include "Wire.h"
 #include "RC1780HP.h"
@@ -37,18 +35,19 @@ uint8_t rstpin = PIN_PF4;
 uint8_t ctspin = PIN_PB5;
 uint8_t rtspin = PIN_PB7;
 
-HardwareSerial* SerialTTL = &Serial4;
-HardwareSerial* SerialHeader = &Serial1;
+HardwareSerial* SerialPC1 = &Serial4;
+HardwareSerial* SerialPC2 = &Serial1;
 HardwareSerial* SerialModule = &Serial0;
 
+// Radio module initialisation
 RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
+// Functions declaration
 void get_packet_data();
-
 void send_packet();
 
 // Data components
-float temperature = 0;
+int8_t temperature = 0;
 uint8_t subsystem_status = 0b000;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
@@ -77,7 +76,7 @@ void setup()
   pinMode(armpin, OUTPUT);
   pinMode(slppin, OUTPUT);
 
-   // Only LED1 (power indicator) and RGB LED are turned on
+  // Only LED1 (power indicator) and RGB LED are turned on
   digitalWrite(ledpin1, HIGH);
   digitalWrite(ledpinR, HIGH);
   digitalWrite(ledpinG, LOW);
@@ -87,20 +86,20 @@ void setup()
   digitalWrite(ledpin7, LOW);
   digitalWrite(ledpin8, LOW);
 
-  // Set ADC resolution to 8 bits
-  analogReadResolution(8);
+  delay(100);
 
-  // SerialTTL->begin(19200);
-  // SerialHeader->begin(19200);
-  SerialModule->swap(1);// Swap RX/TX pins for module
+  // Initialize UART
+  //SerialPC1->begin(115200);
+  //SerialPC2->begin(115200);
+  SerialModule->swap(1);// Swap RX/TX pins for radio module uart connection
  
+  // Initialize I2C
   Wire.swap(2);
   Wire.begin();
   
   // Initialize radio transceiver and wait until communication is established
   rc1780hp.begin(19200);
-  rc1780hp.hard_reset();
-  while(rc1780hp.ping() != 0);
+  rc1780hp.ping();
 
   // Before each flight memory is reset and non-standard settings are reconfigured
   while(rc1780hp.memory_Reset() != 0);
@@ -110,7 +109,6 @@ void setup()
   while(rc1780hp.set_Address_Mode(0x00) != 0);
   while(rc1780hp.set_CRC_Mode(0x00) != 0);
   while(rc1780hp.set_LED_Control(0x01) != 0);
-
   rc1780hp.hard_reset();
   rc1780hp.serial_Flush();
 }
@@ -138,16 +136,32 @@ void loop()
         if(flight_mode == 1)
         {
           digitalWrite(armpin, LOW);
-          digitalWrite(ledpin5, LOW);
-          flight_mode = 0;
+          delay(1);
+          if(digitalRead(d3pin) == LOW)
+          {
+            digitalWrite(ledpin5, LOW);
+            flight_mode = 0;
+          }
+          else
+          {
+            digitalWrite(armpin, HIGH);
+          }
           send_packet();
         }
         else
         {
           digitalWrite(armpin, HIGH);
-          digitalWrite(ledpin5, HIGH);
-          flight_mode_start_time = millis();
-          flight_mode = 1;
+          delay(1);
+          if(digitalRead(d3pin) == HIGH)
+          {
+            digitalWrite(ledpin5, HIGH);
+            flight_mode_start_time = millis();
+            flight_mode = 1;
+          }
+          else
+          {
+            digitalWrite(armpin, LOW);
+          }
         }
         break;
       
@@ -197,9 +211,9 @@ void loop()
     digitalWrite(ledpin1, 1 - led_switch);
 
     // Sensor circuit board 1
-    if(i2c_connections & 0b001 != 0)
+    if((i2c_connections & 0b001) != 0)
     {
-      if(subsystem_status & 0b001 != 0)
+      if((subsystem_status & 0b001) != 0)
       {
         digitalWrite(ledpin6, HIGH);
       }
@@ -214,9 +228,9 @@ void loop()
     }
 
     // Sensor circuit board 2
-    if(i2c_connections & 0b010 != 0)
+    if((i2c_connections & 0b010) != 0)
     {
-      if(subsystem_status & 0b010 != 0)
+      if((subsystem_status & 0b010) != 0)
       {
         digitalWrite(ledpin7, HIGH);
       }
@@ -231,9 +245,9 @@ void loop()
     }
 
     // Landing systems
-    if(i2c_connections & 0b100 != 0)
+    if((i2c_connections & 0b100) != 0)
     {
-      if(subsystem_status & 0b100 != 0)
+      if((subsystem_status & 0b100) != 0)
       {
         digitalWrite(ledpin8, HIGH);
       }
@@ -293,33 +307,33 @@ void loop()
 void get_packet_data()
 {
   // If sensor board not yet confirmed connected, test I²C response
-  if(i2c_connections & 0b001 == 0)
+  if((i2c_connections & 0b001) == 0)
   {
       Wire.beginTransmission(0x20);                       // Sensor circuit board 1
-      i2c_connections |= (Wire.endTransmission() == 0) << 0; 
+      i2c_connections |= ((Wire.endTransmission() == 0) << 0); 
   }
-  if(i2c_connections & 0b010 == 0)
+  if((i2c_connections & 0b010) == 0)
   {
       Wire.beginTransmission(0x30);                       // Sensor circuit board 2
-      i2c_connections |= (Wire.endTransmission() == 0) << 1; 
+      i2c_connections |= ((Wire.endTransmission() == 0) << 1); 
   }
-  if(i2c_connections & 0b100 == 0)
+  if((i2c_connections & 0b100) == 0)
   {
       Wire.beginTransmission(0x40);                       // Landing systems
-      i2c_connections |= (Wire.endTransmission() == 0) << 2; 
+      i2c_connections |= ((Wire.endTransmission() == 0) << 2); 
   }
 
   uint32_t tmp;
 
   // Sensor circuit board 1: status (1 Byte), height pressure (4 Bytes), GNSS height (4 Bytes), GNSS Lat (4 Bytes) + Lon (4 Bytes)
-  if(i2c_connections & 0b001 != 0)
+  if((i2c_connections & 0b001) != 0)
   {
     Wire.requestFrom(0x20, 17); 
     uint8_t result[17];
     for(int i = 0; i < 17; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b110) | (result[0] << 0);
+    subsystem_status = (subsystem_status & 0b110) | ((result[0] == 0x01) << 0);
 
     // Turns 4-Byte data into float
 
@@ -337,14 +351,14 @@ void get_packet_data()
   }
 
   // Sensor circuit board 2: status (1 Byte), acceleration (4 Bytes)
-  if(i2c_connections & 0b010 != 0)
+  if((i2c_connections & 0b010) != 0)
   {
     Wire.requestFrom(0x30, 5); 
     uint8_t result[5];
     for(int i = 0; i < 5; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b101) | (result[0] << 1);
+    subsystem_status = (subsystem_status & 0b101) | ((result[0] == 0x01) << 1);
 
     // Turns 4-Byte data into float
 
@@ -353,31 +367,31 @@ void get_packet_data()
   }
 
   // Landing systems: status (1 Byte), status events (1 Byte)
-  if(i2c_connections & 0b100 != 0)
+  if((i2c_connections & 0b100) != 0)
   {
     Wire.requestFrom(0x40, 2); 
     uint8_t result[2];
     for(int i = 0; i < 2; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b011) | (result[0] << 2);
+    subsystem_status = (subsystem_status & 0b011) | ((result[0] == 0x01) << 2);
 
     status_events = result[1];
   }
 
   // Battery_voltage (Voltage divider)
-  battery_voltage = (float)analogRead(d2pin) / 255 * 3.3 * (18 + 10) / 10;
+  battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
 
+  #if(0)
   // Temperature
-  int8_t temp = 0;
-  rc1780hp.read_Temperature(&temp);
-  temperature = (float)temp;
+  rc1780hp.read_Temperature(&temperature);
+  #endif
 }
 
 // Encodes current data into 15-Byte packet and transmits it
 void send_packet()
 {
   uint8_t packet[15] = { 0 };
-  Packet::encode(packet, temperature, subsystem_status, flight_mode, low_power_mode, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
+  Packet::encode(packet, (float)temperature, subsystem_status, flight_mode, low_power_mode, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
   SerialModule->write(packet, 15);
 }
