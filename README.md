@@ -22,6 +22,9 @@ When designing our telemetry system, we focused on:
 - **Low production cost**
 - **Reliable and confident** data transfer
 
+Initial design proposal:
+<p align="center"><img src="../media/images/System_Block_Diagram.svg" /></p>
+
 ## General Design Specs
 - **Frequency:** 869.5 MHz  
 - **Range:** Minimum 18 km  
@@ -32,10 +35,11 @@ When designing our telemetry system, we focused on:
 This repository contains all files necessary to reproduce the telemetry system, including hardware, firmware, and software.
 
 ### 1. Antenna Hardware
-<img src="media/images/OnboardAntenna_radiation_pattern.png" width="400" />
+In the future, this repository will include simulations, design files and assembly instructions for our custom made antennas.
+<!-- <img src="media/images/OnboardAntenna_radiation_pattern.png" width="400" />
 <img src="media/images/GroundstationAntenna_radiation_pattern.png" width="400" />
   
-- **Description:** Designs for telemetry antennas
+- **Description:** Designs for telemetry antennas -->
 
 ### 2. Electronics Hardware
 <p align="center">

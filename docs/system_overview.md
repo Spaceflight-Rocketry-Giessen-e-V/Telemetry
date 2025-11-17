@@ -2,7 +2,7 @@
 
 This document provides detailed information about our electronics, firmware, antenna, and GUI systems.
 
-<p align="center"><img src="../media/images/System_Block_Diagram.svg" width="800" /></p>
+<p align="center"><img src="../media/images/System_Block_Diagram.svg" /></p>
 
 The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.md) ensures that our system meets this requirement.
 
@@ -69,47 +69,34 @@ Our plan is to use a QFH antenna with a omnidirectional pattern on the flight co
 
 ### Antenna design
 
-Viele Informationen zu Antennen:
-[antenna-theory.com](https://www.antenna-theory.com/)
+Many resources on antennas: [antenna-theory.com](https://www.antenna-theory.com/)
 
-Informationen zu QFH-Antennen:
-[jcoppens.com](https://jcoppens.com/ant/qfh/index.en.php)
+Information on QFH antennas: [jcoppens.com](https://jcoppens.com/ant/qfh/index.en.php)
 
-Informationen zum Anschluss von QFH-Antennen:
-[jcoppens.com](https://jcoppens.com/ant/qfh/adapt.en.php)
+Information on connecting QFH antennas: [jcoppens.com](https://jcoppens.com/ant/qfh/adapt.en.php)
 
-Informationen zu Helixantennen:
-[jcoppens.com](https://jcoppens.com/ant/helix/index.en.php)
+Information on helical antennas: [jcoppens.com](https://jcoppens.com/ant/helix/index.en.php)
 
-Artikel zu Helixantennen: [Link](https://www.microwaves101.com/encyclopedias/helix-antennas)
+Article on helical antennas: [Link](https://www.microwaves101.com/encyclopedias/helix-antennas)
 
-Paper zu Design von Helixantennen: [Link](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463)
+Paper on helical antenna design: [Link](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463)
 
 ### Antenna measurements and impedance matching
 
-Viele Informationen zu Antennenmessungen:
-[antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
+Many resources on antenna measurements: [antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
 
-Grundlagen zu Messgrößen bei Messungen mit einem VNA (S-Parameter):
-[Youtube](https://youtu.be/-Pi0UbErHTY?si=Z9UQJC-R-1Vzc-xW)
+Basics of measurement quantities when using a VNA (S-parameters): [Youtube](https://youtu.be/-Pi0UbErHTY?si=Z9UQJC-R-1Vzc-xW)
 
-Grundlagen zu Messgrößen bei Messungen mit einem VNA (Smith-Chart):
-[Youtube](https://youtu.be/TsXd6GktlYQ?si=DfGhaZ3w0biYOcfI)
+Basics of measurement quantities when using a VNA (Smith chart): [Youtube](https://youtu.be/TsXd6GktlYQ?si=DfGhaZ3w0biYOcfI)
 
-Antenne mit einem VNA vermessen und mit 4NEC2 simulieren:
-[Youtube](https://youtu.be/l2c46uA50zg?si=s27nZCh-ScBlFWUF)
+Measuring an antenna with a VNA and simulating with 4NEC2: [Youtube](https://youtu.be/l2c46uA50zg?si=s27nZCh-ScBlFWUF)
 
-Antenne mit einem VNA vermessen:
-[Youtube](https://youtu.be/rbXq0ZwjETo?si=DdEQ7rzXj86T0cxC)
+Measuring an antenna with a VNA: [Youtube](https://youtu.be/rbXq0ZwjETo?si=DdEQ7rzXj86T0cxC)
 
-Grundlagen zur Benutzung eines VNAs:
-[Youtube](https://youtu.be/91ZRTFZ40rw?si=-yBII5ZVjXriQ2fS)
+Basics of using a VNA: [Youtube](https://youtu.be/91ZRTFZ40rw?si=-yBII5ZVjXriQ2fS)
 
-Design eines L-Matching Netzwerks mit einem VNA und einem Smith-Chart:
-[Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
+Designing an L-matching network with a VNA and a Smith chart: [Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
 
-Mehrteiliger Artikel zur Impedanzanpassung: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matching)
-
-Kurzer Artikel zur Impedanzanpassung: [Link](https://www.escatec.com/blog/antenna-matching)
+Multi-part article on impedance matching: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matchi)
 
 ## GUI software

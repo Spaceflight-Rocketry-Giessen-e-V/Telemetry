@@ -53,8 +53,13 @@ If the temperature bit is 1, the flight computer has a temperature of more than 
 - component size: 9 bits
 - value range: indication for the status of the three subsystems, flight mode, low power mode and 16 individual launch events. 
 
-The status component includes one bit for the status of each subsystem (three in total) and one bit each to indicate flight mode (rocket is armed and telemetry starts sending data at 8 Hz) and low power mode (all LEDs are turned off).
-The remaining 4 bits are used to represent 16 individual launch events like *standby*, *launch detected*, *apogee detected*, *landing detected*.
+
+| Bit position | Use | Size | Description |
+| --- | --- | --- | --- |
+| 0 to 2 | Subsystem status | 3 bits | Indication of status of each subsystem |
+| 3 | Flight mode | 1 bit | Indication whether flight mode is activated |
+| 4 | Low power mode | 1 bit | Indication whether low power mode is activated |
+| 5 to 8 | Status events | 4 bits | Representation of 16 different launch events like *standby*, *launch detected*, *apogee detected*, *landing detected* |
 
 ### Acceleration
 - component size: 10 bits
