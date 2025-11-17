@@ -63,7 +63,6 @@ In the future, this repository will include simulations, design files and assemb
 
 ### 4. Software (Groundstation UI)
   <img src="media/images/meerkat_demo_1.png" width="600" />
-  <img src="media/images/meerkat_demo_2.png" width="600" />
 
 - **Description:** Python-based software to display telemetry data on a modern, minimalistic interface  
 - **Current Features:**  
