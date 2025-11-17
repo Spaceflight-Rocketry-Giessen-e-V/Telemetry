@@ -10,7 +10,25 @@ current_altitude = 0.0
 ascending = True
 gps_lat, gps_lon = 50.0, 8.0
 gps_drift = 0.0
-event_triggered = {"launch": False, "stagesep": False, "airbrake": False, "chute": False, "landing": False}
+event_triggered = {"launch": False, "stagesep": False, "airbrake": False, "chute": False, "landing": False,"launch": False, "stagesep": False, "airbrake": False, "chute": False, "landing": False}
+"""
+00 - Pad Idle
+01 - Main Chute Altitude Set
+02 - Armed
+03 - Pyros Continuity Check
+04 - Liftoff
+05 - Booster Burnout
+06 - Apogee detected 
+07 - Pyro 1 signal sent (drogue)
+08 - Pyro2 signal sent (drogue)
+09 - Drogue deployment detected
+10 - Pyro3 signal sent (main)
+11 - Pyro4 signal sent (main)
+12 - Main deployment detected
+13 - Landed
+14 - ABORT -Failed to initialize
+15 - ABORT - No Continuity
+"""
 
 
 def init_simulation():
