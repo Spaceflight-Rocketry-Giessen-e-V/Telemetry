@@ -86,8 +86,6 @@ void setup()
   digitalWrite(ledpin7, LOW);
   digitalWrite(ledpin8, LOW);
 
-  delay(100);
-
   // Initialize UART
   //SerialPC1->begin(115200);
   //SerialPC2->begin(115200);
@@ -98,7 +96,9 @@ void setup()
   Wire.begin();
   
   // Initialize radio transceiver and wait until communication is established
+  delay(3.2 * 2); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 2
   rc1780hp.begin(19200);
+  delay(3.2 * 2); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 2
   rc1780hp.ping();
 
   // Before each flight memory is reset and non-standard settings are reconfigured
@@ -124,56 +124,55 @@ void loop()
 
   // Update variables from i2c connected systems at the beginning of each cycle
   get_packet_data();
+
+  // MISSING: De-arming after landing (status_event == 13)
   
   // Check for incoming data from groundstation
   if(SerialModule->available() != 0)
   {
+    // MISSING: Parity check
+
     // Process incoming serial commands from the groundstation
+    // The command reference can be found under docs/commands.md
     switch (SerialModule->read())
     {
-      // Flight mode
-      case 'f': 
-        if(flight_mode == 1)
-        {
-          digitalWrite(armpin, LOW);
-          delay(1);
-          if(digitalRead(d3pin) == LOW)
-          {
-            digitalWrite(ledpin5, LOW);
-            flight_mode = 0;
-          }
-          else
-          {
-            digitalWrite(armpin, HIGH);
-          }
-          send_packet();
-        }
-        else
-        {
-          digitalWrite(armpin, HIGH);
-          delay(1);
-          if(digitalRead(d3pin) == HIGH)
-          {
-            digitalWrite(ledpin5, HIGH);
-            flight_mode_start_time = millis();
-            flight_mode = 1;
-          }
-          else
-          {
-            digitalWrite(armpin, LOW);
-          }
-        }
+
+      // Flight computer ping
+
+      case 'p':
+        send_packet();
+        break;
+
+      // Main parachute height adjustment
+
+      case 'a': // 50 m
+        Wire.beginTransmission(0x40);
+        Wire.write('a');
+        Wire.endTransmission();
+        break;
+      
+      case 'b': // 100 m
+        Wire.beginTransmission(0x40);
+        Wire.write('b');
+        Wire.endTransmission();
+        break;
+
+      case 'c': // 150 m
+        Wire.beginTransmission(0x40);
+        Wire.write('c');
+        Wire.endTransmission();
+        break;
+
+      case 'd': // 200 m
+        Wire.beginTransmission(0x40);
+        Wire.write('d');
+        Wire.endTransmission();
         break;
       
       // Low power mode 
-      case 'l': 
-        if(low_power_mode == 1)
-        {
-          digitalWrite(slppin, LOW);
-          low_power_mode = 0;
-          send_packet();
-        }
-        else
+
+      case 'l': // activation
+        if(low_power_mode == 0)
         {
           digitalWrite(slppin, HIGH);
           digitalWrite(ledpin1, LOW);
@@ -189,12 +188,77 @@ void loop()
         }
         break;
       
-      // Flight computer ping
-      case 'p':
-        send_packet();
+      case 'm': // deactivation
+        if(low_power_mode == 1)
+        {
+          digitalWrite(slppin, LOW);
+          low_power_mode = 0;
+          send_packet();
+        }
+        break;
+      
+      // Flight mode 
+
+      case 'f': // activation
+        if(flight_mode == 0)
+        {
+          digitalWrite(armpin, HIGH);
+          delay(1);
+          if(digitalRead(d3pin) == HIGH)
+          {
+            digitalWrite(ledpin5, HIGH);
+            flight_mode_start_time = millis();
+            flight_mode = 1;
+            Wire.beginTransmission(0x40);
+            Wire.write('f');
+            Wire.endTransmission();
+          }
+          else
+          {
+            digitalWrite(armpin, LOW);
+          }
+        }
+        break;
+      
+      case 'g': // deactivation
+        if(flight_mode == 1)
+        {
+          digitalWrite(armpin, LOW);
+          delay(1);
+          if(digitalRead(d3pin) == LOW)
+          {
+            digitalWrite(ledpin5, LOW);
+            flight_mode = 0;
+            Wire.beginTransmission(0x40);
+            Wire.write('g');
+            Wire.endTransmission();
+          }
+          else
+          {
+            digitalWrite(armpin, HIGH);
+          }
+          send_packet();
+        }
+        break;
+
+      // Drogue parachute ejection
+
+      case 'q':
+        Wire.beginTransmission(0x40);
+        Wire.write('q');
+        Wire.endTransmission();
+        break;
+
+      // Main parachute ejection
+
+      case 'r':
+        Wire.beginTransmission(0x40);
+        Wire.write('r');
+        Wire.endTransmission();
         break;
       
       // Unknown command
+
       default: 
         break;
     }
