@@ -23,7 +23,7 @@ When designing our telemetry system, we focused on:
 - **Reliable and confident** data transfer
 
 Initial design proposal:
-<p align="center"><img src="../media/images/System_Block_Diagram.svg" /></p>
+<p align="center"><img src="media/images/System_Block_Diagram.svg" /></p>
 
 ## General Design Specs
 - **Frequency:** 869.5 MHz  
