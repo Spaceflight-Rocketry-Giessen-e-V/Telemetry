@@ -33,6 +33,8 @@ class RC1780HP
 
         uint8_t set_Packet_Timeout(uint8_t value);
 
+        uint8_t set_Packet_Length(uint8_t value);
+
         uint8_t set_Packet_End_Character(uint8_t value);
         
         uint8_t set_Address_Mode(uint8_t value);
@@ -48,6 +50,8 @@ class RC1780HP
         uint8_t read_Packet_Timeout(uint8_t* result);
 
         uint8_t read_Packet_End_Character(uint8_t* result);
+
+        uint8_t read_Packet_Length(uint8_t* result);
 
         uint8_t read_Address_Mode(uint8_t* result);
 

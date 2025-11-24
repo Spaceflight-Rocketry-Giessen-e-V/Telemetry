@@ -111,6 +111,11 @@ uint8_t RC1780HP::set_Packet_End_Character(uint8_t value)
     return write_Memory_Byte(0x11, value);
 }
 
+uint8_t RC1780HP::set_Packet_Length(uint8_t value)
+{
+    return write_Memory_Byte(0x0F, value); 
+}
+
 uint8_t RC1780HP::set_Address_Mode(uint8_t value)
 {
     return write_Memory_Byte(0x14, value);    
@@ -141,6 +146,11 @@ uint8_t RC1780HP::read_Packet_Timeout(uint8_t* result)
 uint8_t RC1780HP::read_Packet_End_Character(uint8_t* result)
 {
     return read_Memory_Byte(0x11, result);
+}
+
+uint8_t RC1780HP::read_Packet_Length(uint8_t* result)
+{
+    return read_Memory_Byte(0x0F, result);   
 }
 
 uint8_t RC1780HP::read_Address_Mode(uint8_t* result)

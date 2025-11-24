@@ -51,7 +51,7 @@ float battery_voltage = 0;
 float rssi = 0;
 
 // Incoming Data
-uint8_t packet[15] = 0;
+uint8_t packet[16] = {0};
 uint8_t incoming_Byte = 0;
 uint8_t index = 0;
 
@@ -72,7 +72,7 @@ void setup()
   pinMode(slppin, OUTPUT);
 
   // Only LED1 (power indicator) and RGB LED are turned on
-  digitalWrite(ledpin1, HIGH);
+  digitalWrite(ledpin1, LOW);
   digitalWrite(ledpinR, HIGH);
   digitalWrite(ledpinG, LOW);
   digitalWrite(ledpinB, LOW);
@@ -81,18 +81,32 @@ void setup()
   digitalWrite(ledpin7, LOW);
   digitalWrite(ledpin8, LOW);
 
-  SerialTTL->begin(19200);// Connection to PC
+  SerialTTL->begin(115200);// Connection to PC
   // SerialHeader->begin(19200);
   SerialModule->swap(1);// Swap RX/TX pins for module
-
+  delay(100);
   rc1780hp.begin(19200);
-  while(rc1780hp.ping() != 0); // Waits until module responds
-
+  delay(100);
+  // SerialTTL->write(SerialModule->available());
+  // rc1780hp.hard_reset();
+  // delay(500);
+  // SerialTTL->write(SerialModule->available());
+  // while(SerialModule->available())
+  // {
+  // SerialTTL->write(SerialModule->read());
+  // }
+  // rc1780hp.serial_Flush();
+    //digitalWrite(ledpin8, HIGH);
+  //SerialModule->write(0xEE);
+  //while(rc1780hp.ping() != 0); // Waits until module responds
+  rc1780hp.ping();
+   //digitalWrite(ledpin7, HIGH);
   // Before each flight memory is reset and non-standard settings are reconfigured
   rc1780hp.memory_Reset();
   while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
-  while(rc1780hp.set_Packet_End_Character(0xEE) != 0);
+  while(rc1780hp.set_Packet_Length(0x01) != 0);
+  //while(rc1780hp.set_Packet_End_Character(0xEE));
   while(rc1780hp.set_Address_Mode(0x00) != 0);
   while(rc1780hp.set_CRC_Mode(0x00) != 0);
   while(rc1780hp.set_LED_Control(0x01) != 0);
@@ -102,46 +116,51 @@ void setup()
 
   digitalWrite(ledpinR, LOW);
   digitalWrite(ledpinG, HIGH);
+  digitalWrite(ledpin1, HIGH);
 }
 
 void loop()
 {
+
   // Send data to rocket
   if(SerialTTL->available() != 0)
   {
     SerialModule->write(SerialTTL->read());
   }
+  // if(SerialModule->available())
+  // {
+  //   digitalWrite(ledpinB, HIGH);
+  // }
+  //SerialTTL->write(SerialModule->available());
 
-  // Receive data from rocket
-  if(Serial.available() != 0)
-  {
-    // Store incoming packet on array until endbyte (0xEE) is received
-    while(incoming_Byte != 0xEE)
+  while(SerialModule->available() != 0)
     {
-      incoming_Byte = Serial.read();
+      incoming_Byte = SerialModule->read();
       packet[index] = incoming_Byte;
       index++;
+
+      if(packet[index- 2] == 0xEE)
+      {
+        Packet::decode(packet, &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
+        SerialTTL->print("temperature > 80C:");  SerialTTL->println(temperature);
+        SerialTTL->print("subsystem_status:");   SerialTTL->println(subsystem_status);
+        SerialTTL->print("flight_mode:");        SerialTTL->println(flight_mode);
+        SerialTTL->print("low_power_mode:");     SerialTTL->println(low_power_mode);
+        SerialTTL->print("status_events:");      SerialTTL->println(status_events);
+        SerialTTL->print("acceleration:");       SerialTTL->println(acceleration);
+        SerialTTL->print("height_pressure:");    SerialTTL->println(height_pressure);
+        SerialTTL->print("height_gnss:");        SerialTTL->println(height_gnss);
+        SerialTTL->print("lat_gnss:");           SerialTTL->println(lat_gnss);
+        SerialTTL->print("lon_gnss:");           SerialTTL->println(lon_gnss);
+        SerialTTL->print("battery_voltage:");    SerialTTL->println(battery_voltage);
+        SerialTTL->print("rssi:");               SerialTTL->println(rssi);
+
+        index = 0;
+        memset(packet, 0, sizeof(packet));
+      }
     }
-    incoming_Byte = Serial.read(); // After the endbyte, the radio modul adds the RSSI value
-    packet[index] = incoming_Byte;
 
-    // 15-Byte packet gets decoded and written on screen
-    if(packet[index - 1] == 0xEE)
-    {
-      Packet::decode(packet, &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
-      SerialTTL->print("temperature > 80C:");  SerialTTL->println(temperature);
-      SerialTTL->print("subsystem_status:");   SerialTTL->println(subsystem_status);
-      SerialTTL->print("flight_mode:");        SerialTTL->println(flight_mode);
-      SerialTTL->print("low_power_mode:");     SerialTTL->println(low_power_mode);
-      SerialTTL->print("status_events:");      SerialTTL->println(status_events);
-      SerialTTL->print("acceleration:");       SerialTTL->println(acceleration);
-      SerialTTL->print("height_pressure:");    SerialTTL->println(height_pressure);
-      SerialTTL->print("height_gnss:");        SerialTTL->println(height_gnss);
-      SerialTTL->print("lat_gnss:");           SerialTTL->println(lat_gnss);
-      SerialTTL->print("lon_gnss:");           SerialTTL->println(lon_gnss);
-      SerialTTL->print("battery_voltage:");    SerialTTL->println(battery_voltage);
-      SerialTTL->print("rssi:");               SerialTTL->println(rssi);
-
+ 
       // LED5 glows wenn flight-mode is active
       if(flight_mode == 1)
       {
@@ -204,11 +223,8 @@ void loop()
         digitalWrite(ledpinR, HIGH);
       }
 
-    }
-    // Reset variables for next packet
-    index = 0;
-    incoming_Byte = 0;
-    memset(packet, 0, sizeof(packet));
-  }
+    
   
-}
+    }
+
+   
