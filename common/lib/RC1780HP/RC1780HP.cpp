@@ -96,6 +96,11 @@ uint8_t RC1780HP::memory_Reset()
 
 // Set functions
 
+uint8_t RC1780HP::set_RF_DATA_RATE(uint8_t value)
+{
+    return write_Memory_Byte(0x02, value);
+}
+
 uint8_t RC1780HP::set_RSSI_Mode(uint8_t value)
 {
     return write_Memory_Byte(0x05, value);
@@ -132,6 +137,11 @@ uint8_t RC1780HP::set_LED_Control(uint8_t value)
 }
 
 // Read functions
+
+uint8_t RC1780HP::read_RF_DATA_RATE(uint8_t* result)
+{
+    return read_Memory_Byte(0x02, result);
+}
 
 uint8_t RC1780HP::read_RSSI_Mode(uint8_t* result)
 {

@@ -29,6 +29,8 @@ class RC1780HP
 
         // Set functions
         
+        uint8_t set_RF_DATA_RATE(uint8_t value);
+        
         uint8_t set_RSSI_Mode(uint8_t value);
 
         uint8_t set_Packet_Timeout(uint8_t value);
@@ -44,6 +46,8 @@ class RC1780HP
         uint8_t set_LED_Control(uint8_t value);
 
         // Read functions
+
+        uint8_t read_RF_DATA_RATE(uint8_t* result);
 
         uint8_t read_RSSI_Mode(uint8_t* result);
 
