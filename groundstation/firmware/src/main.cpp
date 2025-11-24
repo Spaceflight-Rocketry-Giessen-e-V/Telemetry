@@ -30,8 +30,8 @@ uint8_t rstpin = PIN_PF4;
 uint8_t ctspin = PIN_PB5;
 uint8_t rtspin = PIN_PB7;
 
-HardwareSerial* SerialTTL = &Serial4;
-HardwareSerial* SerialHeader = &Serial1;
+HardwareSerial* SerialPC1 = &Serial4;
+HardwareSerial* SerialPC2 = &Serial1;
 HardwareSerial* SerialModule = &Serial0;
 
 RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
@@ -42,6 +42,7 @@ uint8_t subsystem_status = 0;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
 uint8_t status_events = 0;
+uint8_t send;
 float height_pressure = 0;
 float height_gnss = 0;
 float lat_gnss = 0;
@@ -49,6 +50,8 @@ float lon_gnss = 0;
 float acceleration = 0;
 float battery_voltage = 0;
 float rssi = 0;
+uint32_t packet_time = 0;
+uint32_t time_since_last_packet = 0;
 
 // Incoming Data
 uint8_t packet[16] = {0};
@@ -81,19 +84,19 @@ void setup()
   digitalWrite(ledpin7, LOW);
   digitalWrite(ledpin8, LOW);
 
-  SerialTTL->begin(115200);// Connection to PC
-  // SerialHeader->begin(19200);
+  SerialPC1->begin(115200);// Connection to PC
+  // SerialPC2->begin(19200);
   SerialModule->swap(1);// Swap RX/TX pins for module
   delay(100);
   rc1780hp.begin(19200);
   delay(100);
-  // SerialTTL->write(SerialModule->available());
+  // SerialPC1->write(SerialModule->available());
   // rc1780hp.hard_reset();
   // delay(500);
-  // SerialTTL->write(SerialModule->available());
+  // SerialPC1->write(SerialModule->available());
   // while(SerialModule->available())
   // {
-  // SerialTTL->write(SerialModule->read());
+  // SerialPC1->write(SerialModule->read());
   // }
   // rc1780hp.serial_Flush();
     //digitalWrite(ledpin8, HIGH);
@@ -103,6 +106,7 @@ void setup()
    //digitalWrite(ledpin7, HIGH);
   // Before each flight memory is reset and non-standard settings are reconfigured
   rc1780hp.memory_Reset();
+  while(rc1780hp.set_RF_DATA_RATE(0x05) != 0);
   while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
   while(rc1780hp.set_Packet_Length(0x01) != 0);
@@ -121,17 +125,34 @@ void setup()
 
 void loop()
 {
-
+  
   // Send data to rocket
-  if(SerialTTL->available() != 0)
-  {
-    SerialModule->write(SerialTTL->read());
+  if(SerialPC1->available() != 0)
+  { 
+    send = SerialPC1->read(); 
+    if(send == 'p' || send =='f')
+    {
+       SerialModule->write(send); 
+    }
+    else
+    {
+      for(int i = 0; i < 20; i++)
+      {
+        delay(5);
+      
+        SerialModule->write(send); 
+      }
+    }
   }
+
+    
+
+  
   // if(SerialModule->available())
   // {
   //   digitalWrite(ledpinB, HIGH);
   // }
-  //SerialTTL->write(SerialModule->available());
+  //SerialPC1->write(SerialModule->available());
 
   while(SerialModule->available() != 0)
     {
@@ -141,22 +162,25 @@ void loop()
 
       if(packet[index- 2] == 0xEE)
       {
-        Packet::decode(packet, &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
-        SerialTTL->print("temperature > 80C:");  SerialTTL->println(temperature);
-        SerialTTL->print("subsystem_status:");   SerialTTL->println(subsystem_status);
-        SerialTTL->print("flight_mode:");        SerialTTL->println(flight_mode);
-        SerialTTL->print("low_power_mode:");     SerialTTL->println(low_power_mode);
-        SerialTTL->print("status_events:");      SerialTTL->println(status_events);
-        SerialTTL->print("acceleration:");       SerialTTL->println(acceleration);
-        SerialTTL->print("height_pressure:");    SerialTTL->println(height_pressure);
-        SerialTTL->print("height_gnss:");        SerialTTL->println(height_gnss);
-        SerialTTL->print("lat_gnss:");           SerialTTL->println(lat_gnss);
-        SerialTTL->print("lon_gnss:");           SerialTTL->println(lon_gnss);
-        SerialTTL->print("battery_voltage:");    SerialTTL->println(battery_voltage);
-        SerialTTL->print("rssi:");               SerialTTL->println(rssi);
-
+        
+        Packet::decode(&packet[index - 16], &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
+        SerialPC1->print("\ntemperature > 80 C: ");  SerialPC1->println(temperature);
+        SerialPC1->print("subsystem_status: ");   SerialPC1->println(subsystem_status);
+        SerialPC1->print("flight_mode: ");        SerialPC1->println(flight_mode);
+        SerialPC1->print("low_power_mode: ");     SerialPC1->println(low_power_mode);
+        SerialPC1->print("status_events: ");      SerialPC1->println(status_events);
+        SerialPC1->print("acceleration: ");       SerialPC1->println(acceleration,4);
+        SerialPC1->print("height_pressure: ");    SerialPC1->println(height_pressure);
+        SerialPC1->print("height_gnss: ");        SerialPC1->println(height_gnss);
+        SerialPC1->print("lat_gnss: ");           SerialPC1->println(lat_gnss,7);
+        SerialPC1->print("lon_gnss: ");           SerialPC1->println(lon_gnss,7);
+        SerialPC1->print("battery_voltage: ");    SerialPC1->println(battery_voltage);
+        SerialPC1->print("rssi: ");               SerialPC1->println(rssi);
+        SerialPC1->print("time_since_last_packet: "); SerialPC1->println(millis() - time_since_last_packet);
         index = 0;
         memset(packet, 0, sizeof(packet));
+    
+        time_since_last_packet = millis();
       }
     }
 
