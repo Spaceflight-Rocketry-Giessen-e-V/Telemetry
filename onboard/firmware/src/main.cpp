@@ -96,14 +96,15 @@ void setup()
   Wire.begin();
   
   // Initialize radio transceiver and wait until communication is established
-  delay(3.2 * 2); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 2
+  delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
   rc1780hp.begin(19200);
-  delay(3.2 * 2); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 2
+  delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
   rc1780hp.ping();
 
   // Before each flight memory is reset and non-standard settings are reconfigured
   while(rc1780hp.memory_Reset() != 0);
-  while(rc1780hp.set_RSSI_Mode(0x01) != 0);
+  while(rc1780hp.set_RF_DATA_RATE(0x05) != 0);
+  //while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
   while(rc1780hp.set_Packet_End_Character(0xEE) != 0);
   while(rc1780hp.set_Address_Mode(0x00) != 0);
@@ -337,6 +338,13 @@ void loop()
     {
       digitalWrite(ledpinR, LOW);
       digitalWrite(ledpinG, HIGH);
+      digitalWrite(ledpinB, LOW);
+    }
+    // Else
+    else
+    {
+      digitalWrite(ledpinR, HIGH);
+      digitalWrite(ledpinG, LOW);
       digitalWrite(ledpinB, LOW);
     }
 
