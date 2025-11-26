@@ -9,3 +9,6 @@
 /groundstation/gui/.idea
 /groundstation/gui/__pycache__
 /.vscode/
+/groundstation/gui/flight_data
+/simulations/FlightData/flight_data
+/simulations/FlightData/.idea
