@@ -260,9 +260,12 @@ def make_filename(prefix="flight_data"):
     return f"{prefix}_{timestamp}"
 
 
-def write_simulation(sim_data, constants, file_path=None):
-    if file_path is None:
+def write_simulation(sim_data, constants, folder_path=None):
+    if folder_path is None:
         file_path = os.path.join(CSV_DIR, make_filename())
+    else:
+        os.makedirs(folder_path, exist_ok=True)
+        file_path = os.path.join(folder_path, make_filename())
 
     # CSV
     csv_file = file_path + ".csv"
@@ -367,7 +370,7 @@ def plot_simulation_data_to_png(sim_data, png_path, title="Flight Simulation"):
     fig.tight_layout()
     fig.savefig(png_path, bbox_inches='tight')
     plt.close(fig)
-    return png_path
+    return png_path + ".png"
 
 
 # -----------------------------
@@ -391,8 +394,8 @@ def run_simulation_callback(sender, app_data, user_data):
     sim_data = simulate(constants)
     STATE["sim_data"] = sim_data
 
-    # 3. Create unique base filename
-    base_path = os.path.join(CSV_DIR, make_filename())
+    # 3. Specify destination folder
+    base_path = os.path.join(CSV_DIR, time.strftime("%Y-%m-%d_%H-%M-%S"))
 
     # 4. Save CSV + JSON
     csv_path, json_path = write_simulation(sim_data, constants, base_path)
@@ -400,8 +403,8 @@ def run_simulation_callback(sender, app_data, user_data):
     STATE["last_json"] = json_path
 
     # 5. Save PNG plot
-    png_path = base_path + ".png"
-    plot_simulation_data_to_png(sim_data, png_path, title=os.path.basename(csv_path))
+    png_base_path = os.path.join(CSV_DIR, time.strftime("%Y-%m-%d_%H-%M-%S"), make_filename("flight_data"))
+    png_path = plot_simulation_data_to_png(sim_data, png_base_path, title=os.path.basename(csv_path))
     STATE["last_png"] = png_path
 
     # 6. Load PNG into DearPyGui
