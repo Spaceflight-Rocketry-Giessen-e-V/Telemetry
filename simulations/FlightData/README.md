@@ -34,12 +34,13 @@ python flight_simulation_ui.py
    - Generate a PNG plot from the CSV and display it in the UI.
 
 ## Output Structure
-`flight_data/
+```
+flight_data/
 └── YYYY-MM-DD_HH-MM-SS/
     ├── flight_data_YYYY-MM-DD_HH-MM-SS.csv
     ├── flight_data_YYYY-MM-DD_HH-MM-SS.json
     └── flight_data_YYYY-MM-DD_HH-MM-SS.png
-`
+```
 
 ## Notes
 - The PNG is regenerated from the CSV to avoid read/write conflicts.

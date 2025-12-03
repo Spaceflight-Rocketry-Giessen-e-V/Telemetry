@@ -6,6 +6,7 @@ import numpy as np
 # - Specification receiver antenna gain G_RX
 # - Inclusion of the real gain of the sending antenna G_TX
 # - Realistic height profile
+# - Incorporation of simulated flight data
 
 f = 869.5e+6                # 869.5 MHz radio frequency
 
@@ -17,15 +18,19 @@ P_RX = -114                 # Minimum receive signal strength RC1780HP-RC232, al
 G_RX = 10                   # Helix antenna gain, first guess
 L_RX = 3                    # Receive (cable, ...) losses (guess)
 
-displacement = np.append(np.linspace(1000, 1000, 100), np.linspace(1000, 19000, 100))       # Horizontaler Abstand
-height = np.append(np.linspace(0, 9000, 100), np.linspace(9000, 0, 100))                    # Vertikaler Abstand
-distance = np.sqrt(height**2 + displacement**2)                                             # Abstand
+h_max = 9000                # Maximum height
+d_start = 1000              # Horizontal distance at the beginning and during ascent
+d_end = 19000              # Horizontal distance at the end
 
-L_FS = 20 * np.log10((4 * np.pi * distance * f)/(2.998e+8))                                 # Freiraumdämpfung
+height = np.append(np.linspace(0, h_max, 100), np.linspace(h_max, 0, 100))                              # vertical distance
+displacement = np.append(np.linspace(d_start, d_start, 100), np.linspace(d_start, d_end, 100))          # horizontal distance
+distance = np.sqrt(height**2 + displacement**2)                                                         # total distance
 
-L_M = P_TX - P_RX + G_TX + G_RX - L_FS - L_TX - L_RX                                        # Link Margin
+L_FS = 20 * np.log10((4 * np.pi * distance * f)/(2.998e+8))                                             # Free Space Attenuation
 
-print('\nMinimal Link Margin during the flight: ' + str(np.min(L_M)) + ' dB')
+L_M = P_TX - P_RX + G_TX + G_RX - L_FS - L_TX - L_RX                                                    # Link Margin
+
+print(f'\nMinimal Link Margin during the flight: {np.min(L_M):.2f} dB')
 
 # Plot
 
