@@ -16,15 +16,36 @@ matplotlib.use("Agg")
 # ---------------------------
 DEFAULTS = {
     "GRAVITY": 10.0,
-    "V_ASCENT": 30.0,
-    "V_DESCENT": 20.0,
-    "WIND": 20.0,
+    "A_ASCENT": 35.0,
+    "V_DESCENT": 15.0,
+    "WIND": 10.0,
     "BATT_DRAIN": 0.11,
     "DT": 0.125,
-    "LAT0": 50.587249,
-    "LON0": 8.683231,
-    "POS0": 100.0,
+    "LAT0": 49.811425,
+    "LON0": 8.855205,
+    "POS0": 50.0,
     "BATT0": 8.4,
+    "V_DESCENT_DROGUE": 25.0,
+    "V_DESCENT_MAIN": 5.0,
+    "MAIN_CHUTE_DEPLOYMENT_HEIGHT": 150.0,
+}
+
+# Units for UI labels
+UNITS = {
+    "GRAVITY": "m/s^2",
+    "A_ASCENT": "m/s^2",
+    "V_DESCENT": "m/s",
+    "WIND": "m/s",
+    "BATT_DRAIN": "V/s",
+    "DT": "s",
+    "LAT0": "deg",
+    "LON0": "deg",
+    "POS0": "m",
+    "BATT0": "V",
+    "V_DESCENT_DROGUE": "m/s",
+    "V_DESCENT_MAIN": "m/s",
+    "MAIN_CHUTE_DEPLOYMENT_HEIGHT": "m",
+
 }
 
 CSV_DIR = "flight_data"
@@ -79,7 +100,7 @@ def create_phase(name, t_start, t_end, acc_func, vel_func, h_func,
 def simulate(constants):
     """Run a full rocket flight simulation with safe handling and all events."""
     GRAVITY = constants["GRAVITY"]
-    V_ASCENT = constants["V_ASCENT"]
+    A_ASCENT = constants["A_ASCENT"]
     V_DESCENT = constants["V_DESCENT"]
     WIND = constants["WIND"]
     BATT_DRAIN = constants["BATT_DRAIN"]
@@ -88,6 +109,9 @@ def simulate(constants):
     LON0 = constants["LON0"]
     POS0 = constants["POS0"]
     BATT0 = constants["BATT0"]
+    V_DESCENT_DROGUE = constants["V_DESCENT_DROGUE"]
+    V_DESCENT_MAIN = constants["V_DESCENT_MAIN"]
+    MAIN_CHUTE_DEPLOYMENT_HEIGHT = constants["MAIN_CHUTE_DEPLOYMENT_HEIGHT"]
 
     deg_m = deg_per_meter()
 
@@ -153,7 +177,7 @@ def simulate(constants):
     # Phase 2: Powered Ascent
     # -------------------------
     t2 = 3
-    net_acc = V_ASCENT - GRAVITY
+    net_acc = A_ASCENT - GRAVITY
     phase2 = create_safe_phase(
         "Powered Ascent", t1, t1 + t2,
         lambda t: np.full_like(t, net_acc),
@@ -191,58 +215,70 @@ def simulate(constants):
     )
 
     # -------------------------
-    # Phase 4: Descent (with drogue and main chutes)
+    # Phase 4A: DROGUE descent from apogee
     # -------------------------
-    h_last = safe_last(phase3.height, 0)
-    t4 = h_last / V_DESCENT if V_DESCENT and h_last > 0 else 0
-    lat_last = safe_last(phase3.lat, LAT0)
-    lon_last = safe_last(phase3.lon, LON0)
-    pos_last = safe_last(phase3.pos, POS0)
-    bat_last = safe_last(phase3.bat, BATT0)
+    apogee_height = safe_last(phase3.height, 0)
+    t_apogee = phase3.t_start + phase3.duration
 
-    # Descent phase
-    phase4 = create_safe_phase(
-        "Descent", t1 + t2 + t3, t1 + t2 + t3 + t4,
+    t4a = (apogee_height-MAIN_CHUTE_DEPLOYMENT_HEIGHT) / V_DESCENT_DROGUE if apogee_height > 0 else 0
+
+    phase4a = create_safe_phase(
+        "Drogue Descent", t_apogee, t_apogee + t4a,
         lambda t: np.zeros_like(t),
-        lambda t: np.full_like(t, -V_DESCENT),
-        lambda t: h_last - V_DESCENT * t,
-        lambda t: lat_last - WIND / np.sqrt(2) * deg_m * t,
-        lambda t: lon_last + WIND / np.sqrt(2) * deg_m * t,
-        lambda t: pos_last + WIND * t,
-        lambda t: battery_drain(bat_last, t, BATT_DRAIN),
-        EVT["PYRO1_DROGUE"]
+        lambda t: np.full_like(t, -V_DESCENT_DROGUE),
+        lambda t: apogee_height - V_DESCENT_DROGUE * t,
+        lambda t: safe_last(phase3.lat, LAT0) - WIND / np.sqrt(2) * deg_m * t,
+        lambda t: safe_last(phase3.lon, LON0) + WIND / np.sqrt(2) * deg_m * t,
+        lambda t: safe_last(phase3.pos, POS0) + WIND * t,
+        lambda t: battery_drain(safe_last(phase3.bat, BATT0), t, BATT_DRAIN),
+        EVT["DROGUE_DEPLOYMENT_DETECTED"]
     )
 
-    # Insert all relevant events within descent
-    n = len(phase4.event)
-    if n > 0:
-        # Drogue events
-        phase4.event[:n // 4] = EVT["PYRO1_DROGUE"]
-        phase4.event[n // 4:n // 2] = EVT["PYRO2_DROGUE"]
-        phase4.event[n // 2:3 * n // 4] = EVT["DROGUE_DEPLOYMENT_DETECTED"]
-        # Main chute events
-        phase4.event[3 * n // 4:] = EVT["MAIN_DEPLOYMENT_DETECTED"]
+    # Correct event at start
+    if len(phase4a.event) > 0:
+        phase4a.event[0] = EVT["DROGUE_DEPLOYMENT_DETECTED"]
+
+    # -------------------------
+    # Phase 4B: MAIN CHUTE descent (when height reaches MAIN_CHUTE_DEPLOYMENT_HEIGHT)
+    # -------------------------
+    h_start_main = MAIN_CHUTE_DEPLOYMENT_HEIGHT
+    t4b = MAIN_CHUTE_DEPLOYMENT_HEIGHT / V_DESCENT_MAIN
+
+    phase4b = create_safe_phase(
+        "Main Descent", phase4a.t_start + phase4a.duration, phase4a.t_start + phase4a.duration + t4b,
+        lambda t: np.zeros_like(t),
+        lambda t: np.full_like(t, -V_DESCENT_MAIN),
+        lambda t: h_start_main - V_DESCENT_MAIN * t,
+        lambda t: safe_last(phase4a.lat, LAT0) - WIND / np.sqrt(2) * deg_m * t,
+        lambda t: safe_last(phase4a.lon, LON0) + WIND / np.sqrt(2) * deg_m * t,
+        lambda t: safe_last(phase4a.pos, POS0) + WIND * t,
+        lambda t: battery_drain(safe_last(phase4a.bat, BATT0), t, BATT_DRAIN),
+        EVT["MAIN_DEPLOYMENT_DETECTED"]
+    )
+
+    if len(phase4b.event) > 0:
+        phase4b.event[0] = EVT["MAIN_DEPLOYMENT_DETECTED"]
 
     # -------------------------
     # Phase 5: Landing
     # -------------------------
-    t5 = 3
+    t5 = 5
     phase5 = create_safe_phase(
-        "Landing", t1 + t2 + t3 + t4, t1 + t2 + t3 + t4 + t5,
+        "Landing", t1 + t2 + t3 + t4a + t4b, t1 + t2 + t3 + t4a + t4b + t5,
         lambda t: np.zeros_like(t),
         lambda t: np.zeros_like(t),
         lambda t: np.zeros_like(t),
-        lambda t: np.full_like(t, safe_last(phase4.lat, LAT0)),
-        lambda t: np.full_like(t, safe_last(phase4.lon, LON0)),
-        lambda t: np.full_like(t, safe_last(phase4.pos, POS0)),
-        lambda t: battery_drain(safe_last(phase4.bat, BATT0), t, BATT_DRAIN),
+        lambda t: np.full_like(t, safe_last(phase4b.lat, LAT0)),
+        lambda t: np.full_like(t, safe_last(phase4b.lon, LON0)),
+        lambda t: np.full_like(t, safe_last(phase4b.pos, POS0)),
+        lambda t: battery_drain(safe_last(phase4b.bat, BATT0), t, BATT_DRAIN),
         EVT["LANDED"]
     )
 
     # -------------------------
     # Concatenate all phases
     # -------------------------
-    phases = [phase1, phase2, phase3, phase4, phase5]
+    phases = [phase1, phase2, phase3, phase4a, phase4b, phase5]
     sim_data = {
         k: np.concatenate([getattr(p, k) for p in phases])
         for k in ["acc", "vel", "height", "lat", "lon", "pos", "bat", "event"]
@@ -267,16 +303,50 @@ def write_simulation(sim_data, constants, folder_path=None):
         os.makedirs(folder_path, exist_ok=True)
         file_path = os.path.join(folder_path, make_filename())
 
+    # Prepare derived arrays
+    time_a = sim_data["time"]
+    acc_a = sim_data["acc"]
+    vel_a = sim_data["vel"]
+    height_a = sim_data["height"]
+    lat_a = sim_data["lat"]
+    lon_a = sim_data["lon"]
+    pos_a = sim_data["pos"]
+    bat_a = sim_data["bat"]
+    event_a = sim_data["event"]
+
+    height_gnss = height_a * 1.1
+    flight_mode = (event_a >= 2).astype(int)
+    low_power_mode = np.zeros_like(time_a, dtype=int)
+    temperature_c = np.full_like(time_a, 20.0, dtype=float)
+    subsystem_status = np.full_like(time_a, 7, dtype=int)
+
     # CSV
     csv_file = file_path + ".csv"
     with open(csv_file, 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(["time", "acc", "vel", "height", "lat", "lon", "pos", "bat", "event"])
-        for row in zip(sim_data["time"], sim_data["acc"], sim_data["vel"], sim_data["height"],
-                       sim_data["lat"], sim_data["lon"], sim_data["pos"], sim_data["bat"], sim_data["event"]):
+        headers = [
+            "time (s)",
+            "acceleration (m/s^2)",
+            "velocity (m/s)",
+            "height (m)",
+            "gnss_height (m)",
+            "latitude (deg)",
+            "longitude (deg)",
+            "displacement (m)",
+            "battery (V)",
+            "event_code (int)",
+            "flight_mode (0=manual/1=auto)",
+            "low_power_mode (0/1)",
+            "temperature_c (°C)",
+            "subsystem_status (int)"
+        ]
+        writer.writerow(headers)
+        for row in zip(time_a, acc_a, vel_a, height_a, height_gnss,
+                       lat_a, lon_a, pos_a, bat_a, event_a,
+                       flight_mode, low_power_mode, temperature_c, subsystem_status):
             writer.writerow(row)
 
-    # JSON
+    # JSON (constants)
     json_file = file_path + ".json"
     with open(json_file, 'w') as f:
         json.dump(constants, f, indent=4)
@@ -292,8 +362,24 @@ def read_simulation_from_csv(file_path):
         data = {k: [] for k in reader.fieldnames}
         for row in reader:
             for k, v in row.items():
-                data[k].append(float(v))
-    return {k: np.array(v) for k, v in data.items()}
+                # Try to parse floats; if fails, keep as string
+                try:
+                    data[k].append(float(v))
+                except Exception:
+                    data[k].append(v)
+    # Convert numeric columns to numpy arrays. Strings remain lists.
+    out = {}
+    for k, v in data.items():
+        # if all entries are numbers, convert to numpy array
+        if len(v) == 0:
+            out[k] = np.array([])
+        else:
+            try:
+                arr = np.array(v, dtype=float)
+                out[k] = arr
+            except Exception:
+                out[k] = np.array(v, dtype=object)
+    return out
 
 
 # -------------------------
@@ -368,9 +454,10 @@ def plot_simulation_data_to_png(sim_data, png_path, title="Flight Simulation"):
 
     fig.suptitle(title, fontsize=12)
     fig.tight_layout()
-    fig.savefig(png_path, bbox_inches='tight')
+    png_out = png_path + ".png"
+    fig.savefig(png_out, bbox_inches='tight')
     plt.close(fig)
-    return png_path + ".png"
+    return png_out
 
 
 # -----------------------------
@@ -387,7 +474,7 @@ STATE = {
 
 def run_simulation_callback(sender, app_data, user_data):
     """Run the simulation with current constants, save CSV/JSON/PNG, and display PNG in GUI."""
-    # 1. Read constants from GUI
+    # 1. Read constants from GUI (values are floats)
     constants = {k: dpg_get_value(v) for k, v in user_data["mapping"].items()}
 
     # 2. Run simulation
@@ -413,6 +500,20 @@ def run_simulation_callback(sender, app_data, user_data):
     # 7. Update status text
     dpg_set_value("status_text",
                   f"Simulation saved.\nCSV: {csv_path}\nJSON: {json_path}\nPNG: {png_path}")
+
+
+def run_sim_only_callback(sender, app_data, user_data):
+    constants = {k: dpg_get_value(v) for k, v in user_data["mapping"].items()}
+    sim_data = simulate(constants)
+    STATE["sim_data"] = sim_data
+
+    # Save only PNG
+    png_base_path = os.path.join(CSV_DIR, "temp_plot")
+    png_path = plot_simulation_data_to_png(sim_data, png_base_path)
+    STATE["last_png"] = png_path
+
+    load_png_into_dpg(png_path)
+    dpg_set_value("status_text", "Simulation executed (not saved).")
 
 
 def load_png_into_dpg(png_path):
@@ -444,9 +545,13 @@ def load_png_into_dpg(png_path):
 # Small DPG helpers to wrap API differences
 def dpg_get_value(item):
     try:
-        return dpg.get_value(item)
+        return float(dpg.get_value(item))
     except Exception:
-        return dpg.get_item_configuration(item).get("default_value")
+        # fallback: try to get default_value
+        try:
+            return float(dpg.get_item_configuration(item).get("default_value"))
+        except Exception:
+            return 0.0
 
 
 def dpg_set_value(item, value):
@@ -458,6 +563,31 @@ def dpg_set_value(item, value):
         except Exception:
             pass
 
+
+def load_json_selected(sender, app_data, user_data):
+    file_path = app_data['file_path_name']
+
+    try:
+        with open(file_path, "r") as f:
+            constants = json.load(f)
+
+        for key, tag in user_data["mapping"].items():
+            if key in constants:
+                dpg_set_value(tag, float(constants[key]))
+
+        dpg_set_value("status_text", f"Loaded constants from {file_path}")
+
+    except Exception as e:
+        dpg_set_value("status_text", f"Error loading JSON: {e}")
+
+
+def load_json_callback(sender, app_data, user_data):
+    dpg.configure_item("json_file_dialog", show=True, user_data=user_data)
+
+
+# -------------------------
+# GUI construction
+# -------------------------
 
 # Build GUI
 dpg.create_context()
@@ -477,25 +607,38 @@ with dpg.texture_registry():
         tag="plot_texture"
     )
 
+# Load JSON file dialog
+with dpg.file_dialog(directory_selector=False, show=False, callback=load_json_selected, tag="json_file_dialog"):
+    dpg.add_file_extension(".json", color=(0, 255, 0, 255))
+
+# Main view
 with dpg.window(label="Flight Simulation GUI", width=1900, height=1040, no_resize=True, no_move=True,
                 no_scrollbar=True):
     with dpg.group(horizontal=True):
         # left side
-        with dpg.child_window(width=360, height=1000):
-
+        with dpg.child_window(width=550, height=1000):
             mapping = {}
-            dpg.add_text("Editable constants:")
+            dpg.add_text("Editable constants (units shown):")
 
             for key, val in DEFAULTS.items():
                 tag = f"input_{key}"
-                if isinstance(val, int) or float(val).is_integer():
-                    dpg.add_input_int(label=key, default_value=int(val), tag=tag)
-                else:
-                    dpg.add_input_float(label=key, default_value=float(val), tag=tag)
+                unit = UNITS.get(key, "")
+                label = f"{key} [{unit}]" if unit else key
+                dpg.add_input_float(label=label, default_value=float(val), tag=tag)
                 mapping[key] = tag
 
             dpg.add_separator()
-            dpg.add_button(label="Run Simulation", callback=run_simulation_callback, user_data={"mapping": mapping})
+            with dpg.group(horizontal=True):
+                dpg.add_button(label="Load JSON Parameters",
+                               callback=load_json_callback,
+                               user_data={"mapping": mapping})
+
+                dpg.add_button(label="Run Simulation",
+                               callback=run_sim_only_callback,
+                               user_data={"mapping": mapping})
+                dpg.add_button(label="Save Simulation",
+                               callback=run_simulation_callback,
+                               user_data={"mapping": mapping})
             dpg.add_spacer()
             dpg.add_text("", tag="status_text")
 

@@ -12,3 +12,4 @@
 /groundstation/gui/flight_data
 /simulations/FlightData/flight_data
 /simulations/FlightData/.idea
+/simulations/FlightData/__pycache__
