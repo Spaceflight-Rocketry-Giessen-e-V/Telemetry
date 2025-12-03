@@ -6,7 +6,7 @@ import time
 
 
 class ComMonitor:
-    """HEX/BIN COM Monitor"""
+    """HEX/ASCII COM Monitor"""
 
     def __init__(self):
         self.monitor = None
@@ -42,8 +42,8 @@ class ComMonitor:
                     data = self.ser.read(self.ser.in_waiting)
                     for b in data:
                         hex_val = f"{b:02X}"
-                        bin_val = f"{b:08b}"
-                        line = f"{hex_val} | {bin_val}"
+                        ascii_val = chr(b) if 32 <= b <= 126 else '.'
+                        line = f"{hex_val} | {ascii_val}"
                         self.lines.append(line)
                         if len(self.lines) > 100:
                             self.lines.pop(0)
@@ -77,7 +77,7 @@ class ComMonitor:
                                            borders_innerH=True,
                                            height=0)  # let height autosize
                 dpg.add_table_column(label="HEX", parent=self.table)
-                dpg.add_table_column(label="BINARY", parent=self.table)
+                dpg.add_table_column(label="ASCII", parent=self.table)
 
     def start_monitor(self):
         port = dpg.get_value(self.port_combo)
@@ -96,8 +96,9 @@ class ComMonitor:
         while self.running and self.monitor:
             dpg.delete_item(self.table, children_only=True)
             for line in self.monitor.lines:
-                hex_val, bin_val = line.split(" | ")
+                hex_val, ascii_val = line.split(" | ")
                 with dpg.table_row(parent=self.table):
                     dpg.add_text(hex_val)
-                    dpg.add_text(bin_val)
+                    dpg.add_text(ascii_val)
             time.sleep(0.1)
+
