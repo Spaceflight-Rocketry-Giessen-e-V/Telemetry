@@ -5,7 +5,6 @@
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
 */
 
-
 #include "Arduino.h"
 #include "RC1780HP.h"
 #include "Packet.h"
@@ -90,27 +89,13 @@ void setup()
   delay(100);
   rc1780hp.begin(19200);
   delay(100);
-  // SerialPC1->write(SerialModule->available());
-  // rc1780hp.hard_reset();
-  // delay(500);
-  // SerialPC1->write(SerialModule->available());
-  // while(SerialModule->available())
-  // {
-  // SerialPC1->write(SerialModule->read());
-  // }
-  // rc1780hp.serial_Flush();
-    //digitalWrite(ledpin8, HIGH);
-  //SerialModule->write(0xEE);
-  //while(rc1780hp.ping() != 0); // Waits until module responds
   rc1780hp.ping();
-   //digitalWrite(ledpin7, HIGH);
-  // Before each flight memory is reset and non-standard settings are reconfigured
+  
   rc1780hp.memory_Reset();
   while(rc1780hp.set_RF_DATA_RATE(0x05) != 0);
   while(rc1780hp.set_RSSI_Mode(0x01) != 0);
   while(rc1780hp.set_Packet_Timeout(0x00) != 0);
   while(rc1780hp.set_Packet_Length(0x01) != 0);
-  //while(rc1780hp.set_Packet_End_Character(0xEE));
   while(rc1780hp.set_Address_Mode(0x00) != 0);
   while(rc1780hp.set_CRC_Mode(0x00) != 0);
   while(rc1780hp.set_LED_Control(0x01) != 0);
@@ -125,12 +110,19 @@ void setup()
 
 void loop()
 {
-  
   // Send data to rocket
   if(SerialPC1->available() != 0)
   { 
     send = SerialPC1->read(); 
-    if(send == 'p' || send =='f')
+
+    // Conversion of capital letters in lowercase letters
+    if(send >= 'A' && send <= 'Z')
+    {
+      send = send - 'A' + 'a';
+    }
+
+    // Spam some parameters (to guarantee exchange during flight mode)
+    if(send == 'p' || send == 'f' || send == 'a' || send == 'b' || send == 'c' || send == 'd')
     {
        SerialModule->write(send); 
     }
@@ -145,110 +137,96 @@ void loop()
     }
   }
 
-    
-
-  
-  // if(SerialModule->available())
-  // {
-  //   digitalWrite(ledpinB, HIGH);
-  // }
-  //SerialPC1->write(SerialModule->available());
-
   while(SerialModule->available() != 0)
+  {
+    incoming_Byte = SerialModule->read();
+    packet[index] = incoming_Byte;
+    index++;
+
+    if(packet[index- 2] == 0xEE)
     {
-      incoming_Byte = SerialModule->read();
-      packet[index] = incoming_Byte;
-      index++;
-
-      if(packet[index- 2] == 0xEE)
-      {
-        
-        Packet::decode(&packet[index - 16], &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
-        SerialPC1->print("\ntemperature > 80 C: ");  SerialPC1->println(temperature);
-        SerialPC1->print("subsystem_status: ");   SerialPC1->println(subsystem_status);
-        SerialPC1->print("flight_mode: ");        SerialPC1->println(flight_mode);
-        SerialPC1->print("low_power_mode: ");     SerialPC1->println(low_power_mode);
-        SerialPC1->print("status_events: ");      SerialPC1->println(status_events);
-        SerialPC1->print("acceleration: ");       SerialPC1->println(acceleration,4);
-        SerialPC1->print("height_pressure: ");    SerialPC1->println(height_pressure);
-        SerialPC1->print("height_gnss: ");        SerialPC1->println(height_gnss);
-        SerialPC1->print("lat_gnss: ");           SerialPC1->println(lat_gnss,7);
-        SerialPC1->print("lon_gnss: ");           SerialPC1->println(lon_gnss,7);
-        SerialPC1->print("battery_voltage: ");    SerialPC1->println(battery_voltage);
-        SerialPC1->print("rssi: ");               SerialPC1->println(rssi);
-        SerialPC1->print("time_since_last_packet: "); SerialPC1->println(millis() - time_since_last_packet);
-        index = 0;
-        memset(packet, 0, sizeof(packet));
-    
-        time_since_last_packet = millis();
-      }
-    }
-
- 
-      // LED5 glows wenn flight-mode is active
-      if(flight_mode == 1)
-      {
-        digitalWrite(ledpin5, HIGH);
-      }
-      else
-      {
-        digitalWrite(ledpin5, LOW);
-      }
-
-      // LED6 glows wenn low-power-mode is active
-      if(low_power_mode == 1)
-      {
-        digitalWrite(ledpin6, HIGH);
-      }
-      else
-      {
-        digitalWrite(ledpin6, LOW);
-      }
-
-      // LED7 glows wenn subsystems are ready
-      if(subsystem_status == 0b111)
-      {
-        digitalWrite(ledpin7, HIGH);
-      }
-      else
-      {
-        digitalWrite(ledpin7, LOW);
-      }
-
-      // LED8 glows until battery-voltage gets lower than 7.2V
-      if(battery_voltage > 7.2)
-      {
-        digitalWrite(ledpin8, HIGH);
-      }
-      else
-      {
-        digitalWrite(ledpin8, LOW);
-      }
+      Packet::decode(&packet[index - 16], &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
       
-      // RGB LED (RSSI)
-      if(rssi > -50 )// High signal strength --> LED glows green
-      {
-        digitalWrite(ledpinG, HIGH);
-        digitalWrite(ledpinB, LOW);
-        digitalWrite(ledpinR, LOW);
-      }
+      SerialPC1->print("\ntemperature > 80 C: ");     SerialPC1->println(temperature);
+      SerialPC1->print("subsystem_status: ");         SerialPC1->println(subsystem_status);
+      SerialPC1->print("flight_mode: ");              SerialPC1->println(flight_mode);
+      SerialPC1->print("low_power_mode: ");           SerialPC1->println(low_power_mode);
+      SerialPC1->print("status_events: ");            SerialPC1->println(status_events);
+      SerialPC1->print("acceleration: ");             SerialPC1->println(acceleration,4);
+      SerialPC1->print("height_pressure: ");          SerialPC1->println(height_pressure);
+      SerialPC1->print("height_gnss: ");              SerialPC1->println(height_gnss);
+      SerialPC1->print("lat_gnss: ");                 SerialPC1->println(lat_gnss,7);
+      SerialPC1->print("lon_gnss: ");                 SerialPC1->println(lon_gnss,7);
+      SerialPC1->print("battery_voltage: ");          SerialPC1->println(battery_voltage);
+      SerialPC1->print("rssi: ");                     SerialPC1->println(rssi);
+      SerialPC1->print("time_since_last_packet: ");   SerialPC1->println(millis() - time_since_last_packet);
 
-      else if(rssi > -80)// Medium signal strength --> LED glows blue
-      {
-        digitalWrite(ledpinG, LOW);
-        digitalWrite(ledpinB, HIGH);
-        digitalWrite(ledpinR, LOW); 
-      }
-
-      else // Low signal strength --> LED glows red
-      {
-        digitalWrite(ledpinG, LOW);
-        digitalWrite(ledpinB, LOW);
-        digitalWrite(ledpinR, HIGH);
-      }
-
-    
+      index = 0;
+      memset(packet, 0, sizeof(packet));
   
+      time_since_last_packet = millis();
     }
+  }
+ 
+  // LED5 glows wenn flight-mode is active
+  if(flight_mode == 1)
+  {
+    digitalWrite(ledpin5, HIGH);
+  }
+  else
+  {
+    digitalWrite(ledpin5, LOW);
+  }
 
-   
+  // LED6 glows wenn low-power-mode is active
+  if(low_power_mode == 1)
+  {
+    digitalWrite(ledpin6, HIGH);
+  }
+  else
+  {
+    digitalWrite(ledpin6, LOW);
+  }
+
+  // LED7 glows wenn subsystems are ready
+  if(subsystem_status == 0b111)
+  {
+    digitalWrite(ledpin7, HIGH);
+  }
+  else
+  {
+    digitalWrite(ledpin7, LOW);
+  }
+
+  // LED8 glows until battery-voltage gets lower than 7.2V
+  if(battery_voltage > 7.2)
+  {
+    digitalWrite(ledpin8, HIGH);
+  }
+  else
+  {
+    digitalWrite(ledpin8, LOW);
+  }
+  
+  // RGB LED (RSSI)
+  if(rssi > -50 )// High signal strength --> LED glows green
+  {
+    digitalWrite(ledpinG, HIGH);
+    digitalWrite(ledpinB, LOW);
+    digitalWrite(ledpinR, LOW);
+  }
+
+  else if(rssi > -80)// Medium signal strength --> LED glows blue
+  {
+    digitalWrite(ledpinG, LOW);
+    digitalWrite(ledpinB, HIGH);
+    digitalWrite(ledpinR, LOW); 
+  }
+
+  else // Low signal strength --> LED glows red
+  {
+    digitalWrite(ledpinG, LOW);
+    digitalWrite(ledpinB, LOW);
+    digitalWrite(ledpinR, HIGH);
+  }
+}
