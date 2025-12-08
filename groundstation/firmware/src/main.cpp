@@ -73,11 +73,11 @@ void setup()
   pinMode(armpin, OUTPUT);
   pinMode(slppin, OUTPUT);
 
-  // Only LED1 (power indicator) and RGB LED are turned on
+  // Only RGB LED is turned on
   digitalWrite(ledpin1, LOW);
   digitalWrite(ledpinR, HIGH);
-  digitalWrite(ledpinG, LOW);
-  digitalWrite(ledpinB, LOW);
+  digitalWrite(ledpinG, HIGH);
+  digitalWrite(ledpinB, HIGH);
   digitalWrite(ledpin5, LOW);
   digitalWrite(ledpin6, LOW);
   digitalWrite(ledpin7, LOW);
@@ -104,7 +104,8 @@ void setup()
   rc1780hp.serial_Flush();
 
   digitalWrite(ledpinR, LOW);
-  digitalWrite(ledpinG, HIGH);
+  digitalWrite(ledpinG, LOW);
+  digitalWrite(ledpinB, LOW);
   digitalWrite(ledpin1, HIGH);
 }
 
@@ -198,8 +199,8 @@ void loop()
     digitalWrite(ledpin7, LOW);
   }
 
-  // LED8 glows until battery-voltage gets lower than 7.2V
-  if(battery_voltage > 7.2)
+  // LED8 glows until battery-voltage gets lower than 6.0V
+  if(battery_voltage > 6.0)
   {
     digitalWrite(ledpin8, HIGH);
   }
