@@ -101,7 +101,7 @@ class AccelerometerWindow:
                 # initial arrow (pointing up by default when direction_deg = 90)
                 tail = cls._center
                 head = (cls._center[0], cls._center[1] - cls._radius + 20)
-                dpg.draw_arrow(p1=tail, p2=head, color=(0, 255, 0), thickness=3, size=15, tag=cls.arrow_tag)
+                dpg.draw_arrow(p1=head, p2=tail, color=(0, 255, 0), thickness=3, size=15, tag=cls.arrow_tag)
 
             # numeric g label under the drawlist
             dpg.add_spacer(height=6)
