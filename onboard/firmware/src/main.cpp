@@ -10,6 +10,9 @@
 #include "RC1780HP.h"
 #include "Packet.h"
 
+// Parity check
+uint8_t incoming_data = 0;
+uint8_t check = 0;
 // Configuration
 const uint8_t time_between_packets_standby = 15;                                              // in seconds   In standby, data packets are sent every 30 s   
 const uint8_t hz = 8;                                                                         // in Hz        During flight, 8 Hz (125 ms interval)
@@ -131,11 +134,22 @@ void loop()
   // Check for incoming data from groundstation
   if(SerialModule->available() != 0)
   {
-    // MISSING: Parity check
+    // Parity check
+    incoming_data = SerialModule->read();
 
+        for (int z = 0; z < 8; z++) {
+        if (incoming_data & (1 << i))
+        {
+            count++;
+        }
+    }
+    if (count % 2 == 0)
+    {
+        incoming_data &= 0x7F;
+    }
     // Process incoming serial commands from the groundstation
     // The command reference can be found under docs/commands.md
-    switch (SerialModule->read())
+    switch (incoming_data)
     {
 
       // Flight computer ping
@@ -374,6 +388,7 @@ void loop()
   
   delay(1000 / hz - (millis() - loop_start_time)); // Waits until the iteration has taken 125ms
   loop_count++;
+  count = 0;
 }
 
 void get_packet_data()

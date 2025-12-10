@@ -42,6 +42,7 @@ uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
 uint8_t status_events = 0;
 uint8_t send;
+uint8_t count = 0;
 float height_pressure = 0;
 float height_gnss = 0;
 float lat_gnss = 0;
@@ -125,15 +126,36 @@ void loop()
     // Spam some parameters (to guarantee exchange during flight mode)
     if(send == 'p' || send == 'f' || send == 'a' || send == 'b' || send == 'c' || send == 'd')
     {
+      for (int z = 0; z < 8; z++)
+    {
+        if (send & (1 << z))
+        {
+            count++;
+        }
+    }
+    if (count % 2 != 0)
+    {
+        send |= 0x80;
+    }
        SerialModule->write(send); 
     }
     else
     {
+        for (int z = 0; z < 8; z++)
+        {
+            if (send & (1 << z))
+            {
+                count++;
+            }
+        }
+        if (count % 2 != 0)
+        {
+            send |= 0x80;
+        }
       for(int i = 0; i < 20; i++)
       {
-        delay(5);
-      
-        SerialModule->write(send); 
+          delay(5);      
+          SerialModule->write(send); 
       }
     }
   }
@@ -230,4 +252,5 @@ void loop()
     digitalWrite(ledpinB, LOW);
     digitalWrite(ledpinR, HIGH);
   }
+  count = 0;
 }
