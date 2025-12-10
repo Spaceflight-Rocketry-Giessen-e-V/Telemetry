@@ -1,7 +1,6 @@
 import dearpygui.dearpygui as dpg
 
-
-class Battery:
+class BatteryWindow:
     voltage_min = 9.0
     voltage_max = 12.6
     voltage_critical = 10.5

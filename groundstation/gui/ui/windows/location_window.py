@@ -1,9 +1,6 @@
 import dearpygui.dearpygui as dpg
 
-import ui.map_view
-
-
-class Location:
+class LocationWindow:
     lat = 0.0
     lon = 0.0
 
@@ -53,6 +50,3 @@ class Location:
         lon_d, lon_m, lon_s = cls.decimal_to_dms(lon)
         dpg.set_value("lat_dms_value", f"{lat_d}°{lat_m}'{lat_s:.2f}\"")
         dpg.set_value("lon_dms_value", f"{lon_d}°{lon_m}'{lon_s:.2f}\"")
-
-        # Update map view
-        ui.map_view.Map.update_location(lat, lon)

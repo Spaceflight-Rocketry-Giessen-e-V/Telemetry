@@ -4,10 +4,8 @@ import io
 from PIL import Image
 import dearpygui.dearpygui as dpg
 
-import ui.location
 
-
-class Map:
+class MapViewWindow:
     zoom = 12
     lat = 49.878708
     lon = 8.646927
@@ -94,8 +92,7 @@ class Map:
                 # Attribution text outside the drawlist
                 dpg.add_text("© OpenStreetMap contributors", color=(100, 100, 100, 255))
 
-            # Location data
-            ui.location.Location.draw_ui(100, map_size + map_size_contributors_offset)
+
 
 
     @classmethod
