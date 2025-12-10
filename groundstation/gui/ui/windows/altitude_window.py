@@ -19,8 +19,8 @@ class AltitudeWindow:
     plot_active = True
 
     @classmethod
-    def draw_ui(cls):
-        with dpg.child_window(width=600, height=400):
+    def draw_ui(cls, window_width=600, window_height=400):
+        with dpg.child_window(width=window_width, height=window_height):
             dpg.add_text("Altitude")
 
             with dpg.plot(label="Altitude vs Time", height=300, width=-1, zoom_mod=1):
@@ -30,7 +30,6 @@ class AltitudeWindow:
                     pass
 
                 with dpg.plot_axis(dpg.mvYAxis, label="Altitude (m)", tag="yaxis"):
-
                     # Line 1 — Pressure altitude
                     dpg.add_line_series(
                         [], [],
@@ -81,7 +80,6 @@ class AltitudeWindow:
     def update_altitude_gnss(cls, time_value, altitude_value):
         """Updates only the GNSS-altitude line."""
         cls._update_altitude_common(time_value, altitude_value, source="gnss")
-
 
     @classmethod
     def _update_altitude_common(cls, time_value, altitude_value, source):

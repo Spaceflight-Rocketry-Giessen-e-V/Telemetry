@@ -23,8 +23,8 @@ class FlightEventMonitor:
     current_event = -1  # No event yet
 
     @classmethod
-    def draw_ui(cls):
-        with dpg.child_window(label="Flight Events", width=400, height=400):
+    def draw_ui(cls, window_width=400, window_height=400):
+        with dpg.child_window(label="Flight Events", width=window_width, height=window_height):
             dpg.add_text("Flight Event Status")
             for i, event_name in enumerate(cls.events):
                 # Add the text with a unique tag

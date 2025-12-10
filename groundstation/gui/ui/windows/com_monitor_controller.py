@@ -1,6 +1,7 @@
 import dearpygui.dearpygui as dpg
 import serial.tools.list_ports
 
+
 class ComMonitorController:
     def __init__(self, ui_manager):
         self.ui_manager = ui_manager
@@ -10,11 +11,12 @@ class ComMonitorController:
         self.receiver = None
         self.running = False
 
-    def draw_ui(self):
-        with dpg.child_window(label="COM Monitor", width=200, height=300):
+    def draw_ui(self, window_width=200, window_height=300):
+        with dpg.child_window(label="COM Monitor", width=window_width, height=window_height):
             dpg.add_text("COM Port Settings")
             self.com_ports = [port.device for port in serial.tools.list_ports.comports()]
-            self.com_port_selector = dpg.add_combo(items=self.com_ports, label="COM Port", width=100, default_value="COM3")
+            self.com_port_selector = dpg.add_combo(items=self.com_ports, label="COM Port", width=100,
+                                                   default_value="COM3")
             self.baudrate_input = dpg.add_input_int(label="Baudrate", default_value=115200, width=100)
 
             with dpg.group(horizontal=True):

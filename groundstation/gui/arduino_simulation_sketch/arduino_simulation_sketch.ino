@@ -15,30 +15,57 @@ float battery_voltage;
 float rssi;
 int time_since_last_packet;
 
+// Flight simulation parameters
+const float flight_duration = 20.0; // seconds
+const float update_interval = 0.125; // seconds per loop, deprecated
+const int steps = flight_duration / update_interval;
+
+int step_counter = 0;
+
+// GPS start/end
+const float lat_start = 49.81088894936561;
+const float lon_start = 8.854729095663512;
+const float lat_end = 49.81316897842152;
+const float lon_end = 8.849919720355352;
+
+// Heights and battery
+const float height_max = 300.0; // meters
+const float battery_start = 10.0; // volts
+const float battery_end = 6.0;    // volts
 
 void setup() {
   Serial.begin(115200);
-  randomSeed(analogRead(A0)); // Seed random generator
+  randomSeed(analogRead(A0));
 }
 
 void loop() {
-  // Generate random telemetry data
-  temperature = random(20, 90); // 20°C to 90°C
-  subsystem_status = random(0, 8); // 3-bit status
-  flight_mode = random(0, 2); // 0 or 1
-  low_power_mode = random(0, 2); // 0 or 1
-  status_events = random(0, 15);
-  acceleration = random(0, 2000) / 100.0; // 0 to 20 m/s²
-  height_pressure = random(0, 300) / 10.0; // 0 to 300 m
-  height_gnss = random(0, 300) / 10.0;
-  lat_gnss = random(-90000000, 90000000) / 1000000.0; // -90 to 90°
-  lon_gnss = random(-180000000, 180000000) / 1000000.0; // -180 to 180°
-  battery_voltage = random(500, 1200) / 100.0; // 5V to 12V
-  rssi = random(-100, -30); // dBm
-  time_since_last_packet = random(125, 127); // ms
+  float t = (float)step_counter / steps; // normalized time 0..1
 
+  // Telemetry values
+  temperature = random(20, 90);
+  subsystem_status = random(0, 8);
+  flight_mode = random(0, 2);
+  low_power_mode = random(0, 2);
 
+  // Flight events increase from 0 → 15
+  status_events = (uint8_t)(t * 15.0);
 
+  acceleration = random(-1000L, 2000L) / 100.0; //-20 to 20 g
+  Serial.println(acceleration);
+
+  // Linear interpolation for height, GPS, battery
+  height_pressure = height_gnss = t * height_max;
+
+  // Battery cycles: rise to start for next loop
+  battery_voltage = battery_start + t * (battery_end - battery_start);
+
+  lat_gnss = lat_start + t * (lat_end - lat_start);
+  lon_gnss = lon_start + t * (lon_end - lon_start);
+
+  rssi = random(-100, -30);
+  time_since_last_packet = 125 + random(0, 3);
+
+  // Print telemetry
   Serial.print("temperature > 80 C: ");     Serial.println(temperature);
   Serial.print("subsystem_status: ");      Serial.println(subsystem_status);
   Serial.print("flight_mode: ");           Serial.println(flight_mode);
@@ -53,5 +80,9 @@ void loop() {
   Serial.print("rssi: ");                  Serial.println(rssi);
   Serial.print("time_since_last_packet: ");Serial.println(time_since_last_packet);
 
-  delay(125);
+  // Update step
+  step_counter++;
+  if(step_counter > steps) step_counter = 0; // loop flight
+
+  delay(time_since_last_packet);
 }

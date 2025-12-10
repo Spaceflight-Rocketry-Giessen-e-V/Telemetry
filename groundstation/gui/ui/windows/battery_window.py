@@ -1,5 +1,6 @@
 import dearpygui.dearpygui as dpg
 
+
 class BatteryWindow:
     voltage_min = 9.0
     voltage_max = 12.6
@@ -7,8 +8,8 @@ class BatteryWindow:
     voltage_current = 12.6  # starting voltage
 
     @classmethod
-    def draw_ui(cls):
-        with dpg.child_window(label="Battery", width=300, height=200):
+    def draw_ui(cls, window_width=300, window_height=200):
+        with dpg.child_window(label="Battery", width=window_width, height=window_height):
             dpg.add_text("Battery Status")
             dpg.add_progress_bar(default_value=1.0, width=-1, height=30, tag="battery_bar")
             with dpg.group(horizontal=True):

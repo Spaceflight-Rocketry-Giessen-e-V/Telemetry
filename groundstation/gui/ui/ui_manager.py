@@ -2,7 +2,6 @@ import sys
 import time
 import dearpygui.dearpygui as dpg
 
-
 # UI windows
 from ui.windows.location_window import LocationWindow
 from ui.windows.altitude_window import AltitudeWindow
@@ -12,6 +11,7 @@ from ui.windows.com_monitor import ComMonitor
 from ui.windows.last_packet_window import LastPacketWindow
 from ui.windows.com_monitor_controller import ComMonitorController
 from ui.windows.flight_events_window import FlightEventMonitor
+from ui.windows.accelerometer_window import AccelerometerWindow
 
 start_time = time.time()
 
@@ -42,24 +42,28 @@ class UIManager:
         self.com_monitor_controller = ComMonitorController(self)
         self.last_packet = LastPacketWindow()
         self.flight_events = FlightEventMonitor()
+        self.accelerometer_window = AccelerometerWindow()
 
     def shutdown(self):
         dpg.destroy_context()
 
     def _draw_flight_data_ui(self):
-        with dpg.group(horizontal=False):
-            with dpg.group(horizontal=True):
-                self.com_monitor_controller.draw_ui()
-                self.flight_events.draw_ui()
-                with dpg.group(horizontal=True):
-                    self.altitude.draw_ui()
-
-                    with dpg.group(horizontal=False):
-                        self.battery.draw_ui()
+        with dpg.group(horizontal=True):
+            with dpg.group(horizontal=False):
                 self.last_packet.draw_ui()
+                self.battery.draw_ui()
+            with dpg.group(horizontal=False):
+                self.altitude.draw_ui()
+                self.flight_events.draw_ui()
+            with dpg.group(horizontal=True):
                 self.map_view.draw_ui()
                 self.location.draw_ui(200, 300)
-        self.com_monitor.draw_ui()
+            self.accelerometer_window.draw_ui()
+
+    def _draw_com_monitor_ui(self):
+        with dpg.group(horizontal=False):
+            self.com_monitor_controller.draw_ui()
+            self.com_monitor.draw_ui()
 
     # --------------------------------------------------------
     #  Build UI
@@ -97,6 +101,8 @@ class UIManager:
             with dpg.tab_bar():
                 with dpg.tab(label="Flight Data"):
                     self._draw_flight_data_ui()
+                with dpg.tab(label="COM Monitor"):
+                    self._draw_com_monitor_ui()
 
         dpg.setup_dearpygui()
         dpg.show_viewport()
@@ -107,7 +113,8 @@ class UIManager:
         dpg.set_value(self.last_packet.system_status_tags["temperature"], f"{t:.1f} °C")
 
     def update_subsystem(self, status: int):
-        dpg.set_value(self.last_packet.system_status_tags["subsystem"], str(status))
+
+        dpg.set_value(self.last_packet.system_status_tags["subsystem"], format(status, "03b"))
 
     def update_flight_mode(self, m: int):
         dpg.set_value(self.last_packet.system_status_tags["flight_mode"], "ON" if m else "OFF")
@@ -120,7 +127,8 @@ class UIManager:
         self.flight_events.update_event(e)
 
     def update_accel(self, a: float):
-        dpg.set_value(self.last_packet.system_status_tags["accel"], f"Current: {a:.2f} m/s²")
+        dpg.set_value(self.last_packet.system_status_tags["accel"], f"{a:.2f} g")
+        self.accelerometer_window.update_accel(a)
 
     def update_altitude(self, pressure_height: float = None, gnss_height: float = None):
         now = time.time()
@@ -182,5 +190,3 @@ class UIManager:
             self.update_rssi(data["rssi"])
         if "time_since_last_packet" in data:
             self.update_packet_delay(data["time_since_last_packet"])
-
-

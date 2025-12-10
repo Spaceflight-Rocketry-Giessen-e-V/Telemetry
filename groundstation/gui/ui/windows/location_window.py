@@ -14,8 +14,8 @@ class LocationWindow:
         return degrees, minutes, seconds
 
     @classmethod
-    def draw_ui(cls, width, height):
-        with dpg.child_window(label="GPS", width=width, height=height):
+    def draw_ui(cls, window_width=200, window_height=300):
+        with dpg.child_window(label="GPS", width=window_width, height=window_height):
             # Two-column horizontal layout
             with dpg.group(horizontal=True):
                 # GPS coordinates

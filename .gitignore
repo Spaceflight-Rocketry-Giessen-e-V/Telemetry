@@ -17,3 +17,5 @@
 *.pyc
 groundstation/gui/telemetry_log.csv
 groundstation/gui/telemetry_log.txt
+/groundstation/gui/cache/map_coords
+/groundstation/gui/cache/map_coords
