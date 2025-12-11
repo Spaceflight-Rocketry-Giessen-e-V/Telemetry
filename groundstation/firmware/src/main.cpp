@@ -48,13 +48,13 @@ float height_gnss = 0;
 float lat_gnss = 0;
 float lon_gnss = 0;
 float acceleration = 0;
-float battery_voltage = 0;
+float battery_voltage = 8.4;
 float rssi = 0;
 uint32_t packet_time = 0;
 uint32_t time_since_last_packet = 0;
 
 // Incoming Data
-uint8_t packet[16] = {0};
+uint8_t packet[32] = {0};
 uint8_t incoming_Byte = 0;
 uint8_t index = 0;
 
@@ -124,40 +124,41 @@ void loop()
     }
 
     // Spam some parameters (to guarantee exchange during flight mode)
-    if(send == 'p' || send == 'f' || send == 'a' || send == 'b' || send == 'c' || send == 'd')
+    if(send == 'p' || send == 'f' || send == 'a' || send == 'b' || send == 'c' || send == 'd' || send == 'l' || send == 'm')
     {
       for (int z = 0; z < 8; z++)
-    {
-        if (send & (1 << z))
-        {
-            count++;
-        }
-    }
-    if (count % 2 != 0)
-    {
-        send |= 0x80;
-    }
-       SerialModule->write(send); 
+      {
+          if (send & (1 << z))
+          {
+              count++;
+          }
+      }
+      if (count % 2 != 0)
+      {
+          send |= 0x80;
+      }
+      SerialModule->write(send); 
     }
     else
     {
-        for (int z = 0; z < 8; z++)
-        {
-            if (send & (1 << z))
-            {
-                count++;
-            }
-        }
-        if (count % 2 != 0)
-        {
-            send |= 0x80;
-        }
-      for(int i = 0; i < 20; i++)
+      for (int z = 0; z < 8; z++)
+      {
+          if (send & (1 << z))
+          {
+              count++;
+          }
+      }
+      if (count % 2 != 0)
+      {
+          send |= 0x80;
+      }
+      for(int i = 0; i < 25; i++)
       {
           delay(5);      
           SerialModule->write(send); 
       }
     }
+    count = 0;
   }
 
   while(SerialModule->available() != 0)
@@ -166,28 +167,34 @@ void loop()
     packet[index] = incoming_Byte;
     index++;
 
-    if(packet[index- 2] == 0xEE)
+    if(packet[index - 2] == 0xEE)
     {
-      Packet::decode(&packet[index - 16], &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
-      
-      SerialPC1->print("\ntemperature > 80 C: ");     SerialPC1->println(temperature);
-      SerialPC1->print("subsystem_status: ");         SerialPC1->println(subsystem_status);
-      SerialPC1->print("flight_mode: ");              SerialPC1->println(flight_mode);
-      SerialPC1->print("low_power_mode: ");           SerialPC1->println(low_power_mode);
-      SerialPC1->print("status_events: ");            SerialPC1->println(status_events);
-      SerialPC1->print("acceleration: ");             SerialPC1->println(acceleration,4);
-      SerialPC1->print("height_pressure: ");          SerialPC1->println(height_pressure);
-      SerialPC1->print("height_gnss: ");              SerialPC1->println(height_gnss);
-      SerialPC1->print("lat_gnss: ");                 SerialPC1->println(lat_gnss,7);
-      SerialPC1->print("lon_gnss: ");                 SerialPC1->println(lon_gnss,7);
-      SerialPC1->print("battery_voltage: ");          SerialPC1->println(battery_voltage);
-      SerialPC1->print("rssi: ");                     SerialPC1->println(rssi);
-      SerialPC1->print("time_since_last_packet: ");   SerialPC1->println(millis() - time_since_last_packet);
-
+      if(index >= 16)
+      {
+        Packet::decode(&packet[index - 16], &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
+        
+        SerialPC1->print("\ntemperature > 80 C: ");     SerialPC1->println(temperature);
+        SerialPC1->print("subsystem_status: ");         SerialPC1->println(subsystem_status);
+        SerialPC1->print("flight_mode: ");              SerialPC1->println(flight_mode);
+        SerialPC1->print("low_power_mode: ");           SerialPC1->println(low_power_mode);
+        SerialPC1->print("status_events: ");            SerialPC1->println(status_events);
+        SerialPC1->print("acceleration: ");             SerialPC1->println(acceleration,4);
+        SerialPC1->print("height_pressure: ");          SerialPC1->println(height_pressure);
+        SerialPC1->print("height_gnss: ");              SerialPC1->println(height_gnss);
+        SerialPC1->print("lat_gnss: ");                 SerialPC1->println(lat_gnss,7);
+        SerialPC1->print("lon_gnss: ");                 SerialPC1->println(lon_gnss,7);
+        SerialPC1->print("battery_voltage: ");          SerialPC1->println(battery_voltage);
+        SerialPC1->print("rssi: ");                     SerialPC1->println(rssi);
+        SerialPC1->print("time_since_last_packet: ");   SerialPC1->println(millis() - time_since_last_packet);
+      }
       index = 0;
-      memset(packet, 0, sizeof(packet));
-  
+      //memset(packet, 0, sizeof(packet));
       time_since_last_packet = millis();
+    }
+    
+    if(index == 32)
+    {
+      index = 0;
     }
   }
  
@@ -212,7 +219,7 @@ void loop()
   }
 
   // LED7 glows wenn subsystems are ready
-  if(subsystem_status == 0b111)
+  if(subsystem_status == 0b11)
   {
     digitalWrite(ledpin7, HIGH);
   }
@@ -222,7 +229,7 @@ void loop()
   }
 
   // LED8 glows until battery-voltage gets lower than 6.0V
-  if(battery_voltage > 6.0)
+  if(battery_voltage < 6.0)
   {
     digitalWrite(ledpin8, HIGH);
   }
@@ -238,19 +245,16 @@ void loop()
     digitalWrite(ledpinB, LOW);
     digitalWrite(ledpinR, LOW);
   }
-
   else if(rssi > -80)// Medium signal strength --> LED glows blue
   {
     digitalWrite(ledpinG, LOW);
     digitalWrite(ledpinB, HIGH);
     digitalWrite(ledpinR, LOW); 
   }
-
   else // Low signal strength --> LED glows red
   {
     digitalWrite(ledpinG, LOW);
     digitalWrite(ledpinB, LOW);
     digitalWrite(ledpinR, HIGH);
   }
-  count = 0;
 }
