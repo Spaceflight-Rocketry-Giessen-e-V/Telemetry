@@ -10,9 +10,26 @@
 #include "RC1780HP.h"
 #include "Packet.h"
 
+// Status events
+// 0: 50 m
+// 1: 100 m
+// 2: 150 m
+// 3: 200 m
+// 4: Armed
+// 5: Liftoff detected
+// 6: Booster burnout detected
+// 7: Drogue deployed (apogee)
+// 8: Drogue deployed (timer)
+// 9: Drogue deployed (command)
+// 10: Main deployed (altitude)
+// 11: Main deployed (timer)        // Not used
+// 12: Main deployed (command)
+// 13: Landing detected             // Not used
+
 // Parity check
 uint8_t incoming_data = 0;
-uint8_t check = 0;
+uint8_t count = 0;
+
 // Configuration
 const uint8_t time_between_packets_standby = 15;                                              // in seconds   In standby, data packets are sent every 30 s   
 const uint8_t hz = 8;                                                                         // in Hz        During flight, 8 Hz (125 ms interval)
@@ -32,6 +49,8 @@ uint8_t d2pin = PIN_PD0;
 uint8_t d3pin = PIN_PD2;
 uint8_t armpin = PIN_PD6;
 uint8_t slppin = PIN_PD4;
+uint8_t droguepin = PIN_PC0;
+uint8_t mainpin = PIN_PC1;
 
 uint8_t cfgpin = PIN_PB6;
 uint8_t rstpin = PIN_PF4;
@@ -49,13 +68,30 @@ RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 void get_packet_data();
 void send_packet();
 
+// Parachute deployment
+
+uint16_t main_deployment_altitude = 150;
+uint32_t apogee_timer = 10000;
+
+uint8_t drogue_active = 0;
+uint8_t main_active = 0;
+uint32_t drogue_time;
+uint32_t main_time;
+float height_pressure_calibration = 0;
+float height_gnss_calibration = 0;
+uint32_t liftoff_time;
+
+float max_height = 0;               // maximum height recorded
+uint8_t height_threshold_count = 0;  // How many loops over threshold
+float acceleration_last_loop = 0;      // last loop data
+
 // Data components
 int8_t temperature = 0;
-uint8_t subsystem_status = 0b000;
+uint8_t subsystem_status = 0b00;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
-uint8_t i2c_connections = 0b000;
-uint8_t status_events = 0;
+uint8_t i2c_connections = 0b00;
+uint8_t status_events = 2;
 float height_pressure = 0;
 float height_gnss = 0;
 float lat_gnss = 0;
@@ -65,6 +101,11 @@ float battery_voltage = 0;
 
 void setup()
 {
+  pinMode(droguepin, OUTPUT);
+  pinMode(mainpin, OUTPUT);
+  digitalWrite(droguepin, HIGH);
+  digitalWrite(mainpin, HIGH);
+
   pinMode(ledpin1, OUTPUT); // Power on
   pinMode(ledpinR, OUTPUT); // Red
   pinMode(ledpinG, OUTPUT); // Green
@@ -126,19 +167,14 @@ void loop()
 {
   loop_start_time = millis();
 
-  // Update variables from i2c connected systems at the beginning of each cycle
-  get_packet_data();
-
-  // MISSING: De-arming after landing (status_event == 13)
-  
   // Check for incoming data from groundstation
   if(SerialModule->available() != 0)
   {
     // Parity check
     incoming_data = SerialModule->read();
-
-        for (int z = 0; z < 8; z++) {
-        if (incoming_data & (1 << i))
+    for (int z = 0; z < 8; z++) 
+    {
+        if (incoming_data & (1 << z))
         {
             count++;
         }
@@ -147,41 +183,61 @@ void loop()
     {
         incoming_data &= 0x7F;
     }
+    count = 0;
+
     // Process incoming serial commands from the groundstation
     // The command reference can be found under docs/commands.md
     switch (incoming_data)
     {
-
       // Flight computer ping
 
       case 'p':
-        send_packet();
         break;
 
       // Main parachute height adjustment
 
       case 'a': // 50 m
-        Wire.beginTransmission(0x40);
-        Wire.write('a');
-        Wire.endTransmission();
+        // Wire.beginTransmission(0x40);
+        // Wire.write('a');
+        // Wire.endTransmission();
+        if(status_events <= 3)
+        {
+          main_deployment_altitude = 50;
+          status_events = 0;
+        }
         break;
       
       case 'b': // 100 m
-        Wire.beginTransmission(0x40);
-        Wire.write('b');
-        Wire.endTransmission();
+        // Wire.beginTransmission(0x40);
+        // Wire.write('b');
+        // Wire.endTransmission();
+        if(status_events <= 3)
+        {
+          main_deployment_altitude = 100;
+          status_events = 1;
+        }
         break;
 
       case 'c': // 150 m
-        Wire.beginTransmission(0x40);
-        Wire.write('c');
-        Wire.endTransmission();
+        // Wire.beginTransmission(0x40);
+        // Wire.write('c');
+        // Wire.endTransmission();
+        if(status_events <= 3)
+        {
+          main_deployment_altitude = 150;
+          status_events = 2;
+        }
         break;
 
       case 'd': // 200 m
-        Wire.beginTransmission(0x40);
-        Wire.write('d');
-        Wire.endTransmission();
+        // Wire.beginTransmission(0x40);
+        // Wire.write('d');
+        // Wire.endTransmission();
+        if(status_events <= 3)
+        {
+          main_deployment_altitude = 200;
+          status_events = 3;
+        }
         break;
       
       // Low power mode 
@@ -199,7 +255,6 @@ void loop()
           digitalWrite(ledpin7, LOW); 
           digitalWrite(ledpin8, LOW); 
           low_power_mode = 1;
-          send_packet();
         }
         break;
       
@@ -208,7 +263,6 @@ void loop()
         {
           digitalWrite(slppin, LOW);
           low_power_mode = 0;
-          send_packet();
         }
         break;
       
@@ -224,9 +278,9 @@ void loop()
             digitalWrite(ledpin5, HIGH);
             flight_mode_start_time = millis();
             flight_mode = 1;
-            Wire.beginTransmission(0x40);
-            Wire.write('f');
-            Wire.endTransmission();
+            // Wire.beginTransmission(0x40);
+            // Wire.write('f');
+            // Wire.endTransmission();
           }
           else
           {
@@ -244,32 +298,39 @@ void loop()
           {
             digitalWrite(ledpin5, LOW);
             flight_mode = 0;
-            Wire.beginTransmission(0x40);
-            Wire.write('g');
-            Wire.endTransmission();
+            // Wire.beginTransmission(0x40);
+            // Wire.write('g');
+            // Wire.endTransmission();
           }
           else
           {
             digitalWrite(armpin, HIGH);
           }
-          send_packet();
         }
         break;
 
       // Drogue parachute ejection
 
       case 'q':
-        Wire.beginTransmission(0x40);
-        Wire.write('q');
-        Wire.endTransmission();
+        // Wire.beginTransmission(0x40);
+        // Wire.write('q');
+        // Wire.endTransmission();
+        digitalWrite(droguepin, LOW);
+        drogue_time = millis();
+        drogue_active = 1;
+        status_events = 9;
         break;
 
       // Main parachute ejection
 
       case 'r':
-        Wire.beginTransmission(0x40);
-        Wire.write('r');
-        Wire.endTransmission();
+        // Wire.beginTransmission(0x40);
+        // Wire.write('r');
+        // Wire.endTransmission();
+        digitalWrite(mainpin, LOW);
+        main_time = millis();
+        main_active = 1;
+        status_events = 12;
         break;
       
       // Unknown command
@@ -277,8 +338,115 @@ void loop()
       default: 
         break;
     }
+    
+    send_packet();
   }
 
+  // Update variables from i2c connected systems at the beginning of each cycle
+  get_packet_data();
+
+  // Pyro Check
+  {
+    if(drogue_active == 1 && millis() - drogue_time > 2000)
+    {
+      digitalWrite(droguepin, HIGH);
+      drogue_active = 0;
+    }
+    if(main_active == 1 && millis() - main_time > 2000)
+    {
+      digitalWrite(mainpin, HIGH);
+      main_active = 0;
+    }
+  }
+
+  // Apogee timer check
+  {
+    if((status_events == 5 || status_events == 6) && millis() - liftoff_time > apogee_timer)
+    {
+        digitalWrite(droguepin, LOW);
+        drogue_time = millis();
+        drogue_active = 1;
+        status_events = 8;
+    }
+  }
+
+  // Flight loop
+  {
+    if(status_events <= 3)
+    {
+      if(digitalRead(d3pin) == HIGH)
+      {
+        status_events = 4;
+        flight_mode = 1;
+        height_pressure_calibration = height_pressure;
+        height_gnss_calibration = height_gnss;
+      }
+    }
+
+    if(status_events == 4)
+    {
+      if(digitalRead(d3pin) == LOW)
+      {
+        status_events = (main_deployment_altitude / 50 - 1); // 0, 1, 2, 3
+        flight_mode = 0;
+        height_pressure_calibration = 0;
+        height_gnss_calibration = 0;
+      }
+      else
+      {
+        if(acceleration < -2 && acceleration_last_loop < -2)
+        {
+          status_events = 5;
+          liftoff_time = millis();
+        }
+        acceleration_last_loop = acceleration;
+      }
+    }
+
+    if(status_events == 5)
+    {
+      if(acceleration > -1)
+      {
+        if(acceleration_last_loop > -1)
+        {
+          status_events = 6;
+        }
+      }
+      acceleration_last_loop = acceleration;
+    }
+
+    if(status_events == 5 || status_events == 6)
+    {
+      if(height_pressure >= max_height)
+      {
+        max_height = height_pressure;
+        height_threshold_count = 0;
+      }
+      else
+      {
+        height_threshold_count = height_threshold_count + 1;
+        if(height_threshold_count == 8)
+        {
+          digitalWrite(droguepin, LOW);
+          drogue_time = millis();
+          drogue_active = 1;
+          status_events = 7;
+        }
+      }
+    }
+
+    if(status_events == 7 || status_events == 8 || status_events == 9)
+    {
+      if(height_pressure < main_deployment_altitude)
+      {
+        digitalWrite(mainpin, LOW);
+        main_time = millis();
+        main_active = 1;
+        status_events = 10;
+      }
+    }
+  }
+  
   // Check if the other boards are connected and ready (When a system is connected or ready, a 1 is written to the respective position. E.g. 0b111 then means that all are connected)
   if(low_power_mode == 0)
   {
@@ -286,13 +454,17 @@ void loop()
     {
       digitalWrite(ledpin5, HIGH);
     }
+    else
+    {
+      digitalWrite(ledpin5, LOW);
+    }
 
     digitalWrite(ledpin1, 1 - led_switch);
 
     // Sensor circuit board 1
-    if((i2c_connections & 0b001) != 0)
+    if((i2c_connections & 0b01) != 0)
     {
-      if((subsystem_status & 0b001) != 0)
+      if((subsystem_status & 0b01) != 0)
       {
         digitalWrite(ledpin6, HIGH);
       }
@@ -307,9 +479,9 @@ void loop()
     }
 
     // Sensor circuit board 2
-    if((i2c_connections & 0b010) != 0)
+    if((i2c_connections & 0b10) != 0)
     {
-      if((subsystem_status & 0b010) != 0)
+      if((subsystem_status & 0b10) != 0)
       {
         digitalWrite(ledpin7, HIGH);
       }
@@ -323,32 +495,32 @@ void loop()
       digitalWrite(ledpin7, LOW);
     }
 
-    // Landing systems
-    if((i2c_connections & 0b100) != 0)
-    {
-      if((subsystem_status & 0b100) != 0)
-      {
-        digitalWrite(ledpin8, HIGH);
-      }
-      else
-      {
-        digitalWrite(ledpin8, led_switch);
-      }
-    }
-    else
-    {
-      digitalWrite(ledpin8, LOW);
-    }
+    // // Landing systems
+    // if((i2c_connections & 0b100) != 0)
+    // {
+    //   if((subsystem_status & 0b100) != 0)
+    //   {
+    //     digitalWrite(ledpin8, HIGH);
+    //   }
+    //   else
+    //   {
+    //     digitalWrite(ledpin8, led_switch);
+    //   }
+    // }
+    // else
+    // {
+    //   digitalWrite(ledpin8, LOW);
+    // }
 
     // All boards connected but not ready (RGB_LED turns blue)
-    if(i2c_connections == 0b111 && subsystem_status != 0b111)
+    if(i2c_connections == 0b11 && subsystem_status != 0b11)
     {
       digitalWrite(ledpinR, LOW);
       digitalWrite(ledpinG, LOW);
       digitalWrite(ledpinB, HIGH);
     }
     // All connected and ready (RGB_LED turns green)
-    else if(i2c_connections == 0b111 && subsystem_status == 0b111)
+    else if(i2c_connections == 0b11 && subsystem_status == 0b11)
     {
       digitalWrite(ledpinR, LOW);
       digitalWrite(ledpinG, HIGH);
@@ -370,15 +542,9 @@ void loop()
   {
     if(millis() - flight_mode_start_time > flight_mode_max_duration * 1000) // If the maximum legal transmission time is reached, the flight mode must be turned off
     {
-      // Sollte Arming Pin auf Low?
       flight_mode = 0;
-      digitalWrite(ledpin5, LOW);
-      send_packet();
     }
-    else
-    {
-      send_packet();
-    }
+    send_packet();
   }
   else if(loop_count % (time_between_packets_standby * hz) == 0) // Sending in non-flight mode
   {
@@ -388,47 +554,48 @@ void loop()
   
   delay(1000 / hz - (millis() - loop_start_time)); // Waits until the iteration has taken 125ms
   loop_count++;
-  count = 0;
 }
 
 void get_packet_data()
 {
   // If sensor board not yet confirmed connected, test I²C response
-  if((i2c_connections & 0b001) == 0)
+  if((i2c_connections & 0b01) == 0)
   {
       Wire.beginTransmission(0x20);                       // Sensor circuit board 1
       i2c_connections |= ((Wire.endTransmission() == 0) << 0); 
   }
-  if((i2c_connections & 0b010) == 0)
+  if((i2c_connections & 0b10) == 0)
   {
       Wire.beginTransmission(0x30);                       // Sensor circuit board 2
       i2c_connections |= ((Wire.endTransmission() == 0) << 1); 
   }
-  if((i2c_connections & 0b100) == 0)
-  {
-      Wire.beginTransmission(0x40);                       // Landing systems
-      i2c_connections |= ((Wire.endTransmission() == 0) << 2); 
-  }
+  // if((i2c_connections & 0b100) == 0)
+  // {
+  //     Wire.beginTransmission(0x40);                       // Landing systems
+  //     i2c_connections |= ((Wire.endTransmission() == 0) << 2); 
+  // }
 
   uint32_t tmp;
 
   // Sensor circuit board 1: status (1 Byte), height pressure (4 Bytes), GNSS height (4 Bytes), GNSS Lat (4 Bytes) + Lon (4 Bytes)
-  if((i2c_connections & 0b001) != 0)
+  if((i2c_connections & 0b01) != 0)
   {
     Wire.requestFrom(0x20, 17); 
     uint8_t result[17];
     for(int i = 0; i < 17; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b110) | ((result[0] == 0x01) << 0);
+    subsystem_status = (subsystem_status & 0b10) | ((result[0] == 0x01) << 0);
 
     // Turns 4-Byte data into float
 
     tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
     height_pressure = *(float*)&tmp;
+    height_pressure = height_pressure - height_pressure_calibration;
 
     tmp = ((uint32_t)result[8] << 24) | ((uint32_t)result[7] << 16) | ((uint32_t)result[6] << 8) | ((uint32_t)result[5]);
     height_gnss = *(float*)&tmp;
+    height_gnss = height_gnss - height_gnss_calibration;
 
     tmp = ((uint32_t)result[12] << 24) | ((uint32_t)result[11] << 16) | ((uint32_t)result[10] << 8) | ((uint32_t)result[9]);
     lat_gnss = *(float*)&tmp;
@@ -438,14 +605,14 @@ void get_packet_data()
   }
 
   // Sensor circuit board 2: status (1 Byte), acceleration (4 Bytes)
-  if((i2c_connections & 0b010) != 0)
+  if((i2c_connections & 0b10) != 0)
   {
     Wire.requestFrom(0x30, 5); 
     uint8_t result[5];
     for(int i = 0; i < 5; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b101) | ((result[0] == 0x01) << 1);
+    subsystem_status = (subsystem_status & 0b01) | ((result[0] == 0x01) << 1);
 
     // Turns 4-Byte data into float
 
@@ -453,26 +620,24 @@ void get_packet_data()
     acceleration = *(float*)&tmp;
   }
 
-  // Landing systems: status (1 Byte), status events (1 Byte)
-  if((i2c_connections & 0b100) != 0)
-  {
-    Wire.requestFrom(0x40, 2); 
-    uint8_t result[2];
-    for(int i = 0; i < 2; i++)
-      result[i] = Wire.read();
+  // // Landing systems: status (1 Byte), status events (1 Byte)
+  // if((i2c_connections & 0b100) != 0)
+  // {
+  //   Wire.requestFrom(0x40, 2); 
+  //   uint8_t result[2];
+  //   for(int i = 0; i < 2; i++)
+  //     result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b011) | ((result[0] == 0x01) << 2);
+  //   subsystem_status = (subsystem_status & 0b011) | ((result[0] == 0x01) << 2);
 
-    status_events = result[1];
-  }
+  //   status_events = result[1];
+  // }
 
   // Battery_voltage (Voltage divider)
   battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
 
-  #if(0)
   // Temperature
-  rc1780hp.read_Temperature(&temperature);
-  #endif
+  // rc1780hp.read_Temperature(&temperature);
 }
 
 // Encodes current data into 15-Byte packet and transmits it
