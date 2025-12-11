@@ -50,15 +50,19 @@ class UIManager:
     def _draw_flight_data_ui(self):
         with dpg.group(horizontal=True):
             with dpg.group(horizontal=False):
-                self.last_packet.draw_ui()
-                self.battery.draw_ui()
+                self.last_packet.draw_ui(200, 700)
+                self.battery.draw_ui(200, 200)
             with dpg.group(horizontal=False):
                 self.altitude.draw_ui()
                 self.flight_events.draw_ui()
-            with dpg.group(horizontal=True):
-                self.map_view.draw_ui()
-                self.location.draw_ui(200, 300)
-            self.accelerometer_window.draw_ui()
+            with dpg.group(horizontal=False):
+                with dpg.group(horizontal=True):
+                    self.map_view.draw_ui()
+                    self.location.draw_ui(200, 300)
+                self.accelerometer_window.draw_ui()
+
+
+
 
     def _draw_com_monitor_ui(self):
         with dpg.group(horizontal=False):

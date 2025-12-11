@@ -1,24 +1,10 @@
 import dearpygui.dearpygui as dpg
 
+
 class FlightEventMonitor:
     events = [
-        "Pad Idle",
-        "Main Chute Altitude Set",
-        "Armed",
-        "Pyros Continuity Check",
-        "Liftoff",
-        "Booster Burnout",
-        "Apogee detected",
-        "Pyro 1 signal sent (drogue)",
-        "Pyro2 signal sent (drogue)",
-        "Drogue deployment detected",
-        "Pyro3 signal sent (main)",
-        "Pyro4 signal sent (main)",
-        "Main deployment detected",
-        "Landed",
-        "ABORT - Failed to initialize",
-        "ABORT - No Continuity"
-    ]
+        "50 m", "100 m", "150 m", "200 m", "Armed", "Liftoff detected", "Booster burnout detected", "Drogue deployed (apogee)", "Drogue deployed (timer)",
+        "Drogue deployed (command)", "Main deployed (altitude)", "Main deployed (timer)", "Main deployed (command)", "Landing detected"]
 
     current_event = -1  # No event yet
 

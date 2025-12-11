@@ -2,10 +2,10 @@ import dearpygui.dearpygui as dpg
 
 
 class BatteryWindow:
-    voltage_min = 9.0
-    voltage_max = 12.6
-    voltage_critical = 10.5
-    voltage_current = 12.6  # starting voltage
+    voltage_min = 5.4
+    voltage_max = 8.4
+    voltage_critical = 5.6
+    voltage_current = 8.4  # starting voltage
 
     @classmethod
     def draw_ui(cls, window_width=300, window_height=200):

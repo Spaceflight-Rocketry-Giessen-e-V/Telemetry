@@ -31,7 +31,7 @@ class TelemetryReceiver:
         "flight_mode": r"flight_mode: (\d+)",
         "low_power_mode": r"low_power_mode: (\d+)",
         "status_events": r"status_events: (\d+)",
-        "acceleration": r"acceleration: (\d+\.\d+)",
+        "acceleration": r"acceleration: (-?\d+\.\d+)",
         "height_pressure": r"height_pressure: (\d+\.\d+)",
         "height_gnss": r"height_gnss: (\d+\.\d+)",
         "lat_gnss": r"lat_gnss: (-?\d+\.\d+)",
@@ -42,7 +42,7 @@ class TelemetryReceiver:
     }
 
     def __init__(self, com_port, baudrate=115200, csv_file="telemetry_log.csv",
-                 txt_file="telemetry_log.txt", log_to_txt=True, log_to_csv=True, log_to_console=True, ui_callback=None):
+                 txt_file="telemetry_log.txt", log_to_txt=True, log_to_csv=True, log_to_console=False, ui_callback=None):
         self.com_port = com_port
         self.baudrate = baudrate
         self.csv_file = csv_file
@@ -107,7 +107,7 @@ class TelemetryReceiver:
         while self._running:
             try:
                 if self.ser.in_waiting:
-                    line = self.ser.readline().decode('utf-8', errors='ignore').strip()
+                    line = self.ser.readline().decode('utf-8', errors='strict').strip()
                     if line:
                         self._process_line(line)
                 else:
