@@ -42,19 +42,49 @@ Activating the flight mode arms the rocket and activates the continous data tran
 
 ## Status events reference
 
-**0**: Pad idle
-**1**: Main deployment altitude set
-**2**: Positive continuity test
-**3**: Armed
-**4**: Liftoff detected
-**5**: Booster burnout detected
-**6**: Apogee detected
-**7**: Pyro 1 signal sent (drogue)
-**8**: Pyro 2 signal sent (drogue)
-**9**: Drogue deployment detected
-**10**: Pyro 3 signal sent (main)
-**11**: Pyro 4 signal sent (main)
-**12**: Main deployment detected
-**13**: Landing detected
-**14**: ABORT - Initialization failed
-**15**: ABORT - Negative continuity test
+**0**: Pad idle, main parachute deployment altitude: 50 m <br>
+**1**: Pad idle, main parachute deployment altitude: 100 m <br>
+**2**: Pad idle, main parachute deployment altitude: 150 m <br>
+**3**: Pad idle, main parachute deployment altitude: 200 m <br>
+**4**: System armed <br>
+**5**: Liftoff detected <br>
+**6**: Booster burnout detected <br>
+**7**: Drogue parachute deployed (apogee) <br>
+**8**: Drogue parachute deployed (timer) <br>
+**9**: Drogue parachute deployed (command) <br>
+**10**: Main parachute deployed (altitude) <br>
+**11**: Main parachute deployed (timer) (not used) <br>
+**12**: Main parachute deployed (command) <br>
+**13**: Landing detected (not used) <br>
+**14**: Not used <br>
+**15**: Not used <br>
+
+## Ground Station LED reference
+
+### LED 1 (Status LED)
+
+Is lit, when the groundstation is in operation. If it is not lit, unplug and replug the groundstation
+
+### LED 2,3,4 (RGB LED)
+
+Indicates the signal strength
+
+**Green**: Good signal strength (RSSI > -50 dB) <br>
+**Blue**: Medium signal strength (RSSI > -80 dB) <br>
+**Red**: Bad signal strength (RSSI < -80 dB) <br>
+
+### LED 5
+
+Is lit, when flight mode is active
+
+### LED 6
+
+Is lit, when low power mode is active
+
+### LED 7
+
+Is lit, when the two sensorics subsystems are operational
+
+### LED 8
+
+Is lit, when the battery voltage drops below 6.0 V
