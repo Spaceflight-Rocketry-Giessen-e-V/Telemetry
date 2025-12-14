@@ -140,10 +140,12 @@ void setup()
   Wire.begin();
   
   // Initialize radio transceiver and wait until communication is established
-  delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
+  delay(3.2 * 50); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
   rc1780hp.begin(19200);
-  delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
+  delay(3.2 * 50); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
   rc1780hp.ping();
+
+  digitalWrite(ledpinG, HIGH);
 
   // Before each flight memory is reset and non-standard settings are reconfigured
   while(rc1780hp.memory_Reset() != 0);
@@ -156,6 +158,7 @@ void setup()
   while(rc1780hp.set_LED_Control(0x01) != 0);
   rc1780hp.hard_reset();
   rc1780hp.serial_Flush();
+
 }
 
 uint32_t loop_start_time;
@@ -378,6 +381,7 @@ void loop()
       {
         status_events = 4;
         flight_mode = 1;
+        flight_mode_start_time = millis();
         height_pressure_calibration = height_pressure;
         height_gnss_calibration = height_gnss;
       }
@@ -405,12 +409,9 @@ void loop()
 
     if(status_events == 5)
     {
-      if(acceleration > -1)
+      if(acceleration > -1 && acceleration_last_loop > -1)
       {
-        if(acceleration_last_loop > -1)
-        {
-          status_events = 6;
-        }
+        status_events = 6;
       }
       acceleration_last_loop = acceleration;
     }
@@ -431,6 +432,7 @@ void loop()
           drogue_time = millis();
           drogue_active = 1;
           status_events = 7;
+          height_threshold_count = 0;
         }
       }
     }
@@ -439,10 +441,18 @@ void loop()
     {
       if(height_pressure < main_deployment_altitude)
       {
-        digitalWrite(mainpin, LOW);
-        main_time = millis();
-        main_active = 1;
-        status_events = 10;
+        height_threshold_count = height_threshold_count + 1;
+        if(height_threshold_count == 4)
+        {
+          digitalWrite(mainpin, LOW);
+          main_time = millis();
+          main_active = 1;
+          status_events = 10; 
+        }
+      }
+      else
+      {
+        height_threshold_count = 0;
       }
     }
   }
