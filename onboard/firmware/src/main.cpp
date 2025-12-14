@@ -49,8 +49,6 @@ uint8_t d2pin = PIN_PD0;
 uint8_t d3pin = PIN_PD2;
 uint8_t armpin = PIN_PD6;
 uint8_t slppin = PIN_PD4;
-uint8_t droguepin = PIN_PC0;
-uint8_t mainpin = PIN_PC1;
 
 uint8_t cfgpin = PIN_PB6;
 uint8_t rstpin = PIN_PF4;
@@ -68,30 +66,13 @@ RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 void get_packet_data();
 void send_packet();
 
-// Parachute deployment
-
-uint16_t main_deployment_altitude = 150;
-uint32_t apogee_timer = 10000;
-
-uint8_t drogue_active = 0;
-uint8_t main_active = 0;
-uint32_t drogue_time;
-uint32_t main_time;
-float height_pressure_calibration = 0;
-float height_gnss_calibration = 0;
-uint32_t liftoff_time;
-
-float max_height = 0;               // maximum height recorded
-uint8_t height_threshold_count = 0;  // How many loops over threshold
-float acceleration_last_loop = 0;      // last loop data
-
 // Data components
 int8_t temperature = 0;
-uint8_t subsystem_status = 0b00;
+uint8_t subsystem_status = 0b000;
 uint8_t flight_mode = 0;
 uint8_t low_power_mode = 0;
-uint8_t i2c_connections = 0b00;
-uint8_t status_events = 2;
+uint8_t i2c_connections = 0b000;
+uint8_t status_events = 0;
 float height_pressure = 0;
 float height_gnss = 0;
 float lat_gnss = 0;
@@ -101,11 +82,6 @@ float battery_voltage = 0;
 
 void setup()
 {
-  pinMode(droguepin, OUTPUT);
-  pinMode(mainpin, OUTPUT);
-  digitalWrite(droguepin, HIGH);
-  digitalWrite(mainpin, HIGH);
-
   pinMode(ledpin1, OUTPUT); // Power on
   pinMode(ledpinR, OUTPUT); // Red
   pinMode(ledpinG, OUTPUT); // Green
@@ -158,7 +134,6 @@ void setup()
   while(rc1780hp.set_LED_Control(0x01) != 0);
   rc1780hp.hard_reset();
   rc1780hp.serial_Flush();
-
 }
 
 uint32_t loop_start_time;
@@ -200,47 +175,27 @@ void loop()
       // Main parachute height adjustment
 
       case 'a': // 50 m
-        // Wire.beginTransmission(0x40);
-        // Wire.write('a');
-        // Wire.endTransmission();
-        if(status_events <= 3)
-        {
-          main_deployment_altitude = 50;
-          status_events = 0;
-        }
+        Wire.beginTransmission(0x40);
+        Wire.write('a');
+        Wire.endTransmission();
         break;
       
       case 'b': // 100 m
-        // Wire.beginTransmission(0x40);
-        // Wire.write('b');
-        // Wire.endTransmission();
-        if(status_events <= 3)
-        {
-          main_deployment_altitude = 100;
-          status_events = 1;
-        }
+        Wire.beginTransmission(0x40);
+        Wire.write('b');
+        Wire.endTransmission();
         break;
 
       case 'c': // 150 m
-        // Wire.beginTransmission(0x40);
-        // Wire.write('c');
-        // Wire.endTransmission();
-        if(status_events <= 3)
-        {
-          main_deployment_altitude = 150;
-          status_events = 2;
-        }
+        Wire.beginTransmission(0x40);
+        Wire.write('c');
+        Wire.endTransmission();
         break;
 
       case 'd': // 200 m
-        // Wire.beginTransmission(0x40);
-        // Wire.write('d');
-        // Wire.endTransmission();
-        if(status_events <= 3)
-        {
-          main_deployment_altitude = 200;
-          status_events = 3;
-        }
+        Wire.beginTransmission(0x40);
+        Wire.write('d');
+        Wire.endTransmission();
         break;
       
       // Low power mode 
@@ -281,9 +236,9 @@ void loop()
             digitalWrite(ledpin5, HIGH);
             flight_mode_start_time = millis();
             flight_mode = 1;
-            // Wire.beginTransmission(0x40);
-            // Wire.write('f');
-            // Wire.endTransmission();
+            Wire.beginTransmission(0x40);
+            Wire.write('f');
+            Wire.endTransmission();
           }
           else
           {
@@ -301,9 +256,9 @@ void loop()
           {
             digitalWrite(ledpin5, LOW);
             flight_mode = 0;
-            // Wire.beginTransmission(0x40);
-            // Wire.write('g');
-            // Wire.endTransmission();
+            Wire.beginTransmission(0x40);
+            Wire.write('g');
+            Wire.endTransmission();
           }
           else
           {
@@ -315,25 +270,17 @@ void loop()
       // Drogue parachute ejection
 
       case 'q':
-        // Wire.beginTransmission(0x40);
-        // Wire.write('q');
-        // Wire.endTransmission();
-        digitalWrite(droguepin, LOW);
-        drogue_time = millis();
-        drogue_active = 1;
-        status_events = 9;
+        Wire.beginTransmission(0x40);
+        Wire.write('q');
+        Wire.endTransmission();
         break;
 
       // Main parachute ejection
 
       case 'r':
-        // Wire.beginTransmission(0x40);
-        // Wire.write('r');
-        // Wire.endTransmission();
-        digitalWrite(mainpin, LOW);
-        main_time = millis();
-        main_active = 1;
-        status_events = 12;
+        Wire.beginTransmission(0x40);
+        Wire.write('r');
+        Wire.endTransmission();
         break;
       
       // Unknown command
@@ -348,115 +295,6 @@ void loop()
   // Update variables from i2c connected systems at the beginning of each cycle
   get_packet_data();
 
-  // Pyro Check
-  {
-    if(drogue_active == 1 && millis() - drogue_time > 2000)
-    {
-      digitalWrite(droguepin, HIGH);
-      drogue_active = 0;
-    }
-    if(main_active == 1 && millis() - main_time > 2000)
-    {
-      digitalWrite(mainpin, HIGH);
-      main_active = 0;
-    }
-  }
-
-  // Apogee timer check
-  {
-    if((status_events == 5 || status_events == 6) && millis() - liftoff_time > apogee_timer)
-    {
-        digitalWrite(droguepin, LOW);
-        drogue_time = millis();
-        drogue_active = 1;
-        status_events = 8;
-    }
-  }
-
-  // Flight loop
-  {
-    if(status_events <= 3)
-    {
-      if(digitalRead(d3pin) == HIGH)
-      {
-        status_events = 4;
-        flight_mode = 1;
-        flight_mode_start_time = millis();
-        height_pressure_calibration = height_pressure;
-        height_gnss_calibration = height_gnss;
-      }
-    }
-
-    if(status_events == 4)
-    {
-      if(digitalRead(d3pin) == LOW)
-      {
-        status_events = (main_deployment_altitude / 50 - 1); // 0, 1, 2, 3
-        flight_mode = 0;
-        height_pressure_calibration = 0;
-        height_gnss_calibration = 0;
-      }
-      else
-      {
-        if(acceleration < -2 && acceleration_last_loop < -2)
-        {
-          status_events = 5;
-          liftoff_time = millis();
-        }
-        acceleration_last_loop = acceleration;
-      }
-    }
-
-    if(status_events == 5)
-    {
-      if(acceleration > -1 && acceleration_last_loop > -1)
-      {
-        status_events = 6;
-      }
-      acceleration_last_loop = acceleration;
-    }
-
-    if(status_events == 5 || status_events == 6)
-    {
-      if(height_pressure >= max_height)
-      {
-        max_height = height_pressure;
-        height_threshold_count = 0;
-      }
-      else
-      {
-        height_threshold_count = height_threshold_count + 1;
-        if(height_threshold_count == 8)
-        {
-          digitalWrite(droguepin, LOW);
-          drogue_time = millis();
-          drogue_active = 1;
-          status_events = 7;
-          height_threshold_count = 0;
-        }
-      }
-    }
-
-    if(status_events == 7 || status_events == 8 || status_events == 9)
-    {
-      if(height_pressure < main_deployment_altitude)
-      {
-        height_threshold_count = height_threshold_count + 1;
-        if(height_threshold_count == 4)
-        {
-          digitalWrite(mainpin, LOW);
-          main_time = millis();
-          main_active = 1;
-          status_events = 10; 
-        }
-      }
-      else
-      {
-        height_threshold_count = 0;
-      }
-    }
-  }
-  
   // Check if the other boards are connected and ready (When a system is connected or ready, a 1 is written to the respective position. E.g. 0b111 then means that all are connected)
   if(low_power_mode == 0)
   {
@@ -472,9 +310,9 @@ void loop()
     digitalWrite(ledpin1, 1 - led_switch);
 
     // Sensor circuit board 1
-    if((i2c_connections & 0b01) != 0)
+    if((i2c_connections & 0b001) != 0)
     {
-      if((subsystem_status & 0b01) != 0)
+      if((subsystem_status & 0b001) != 0)
       {
         digitalWrite(ledpin6, HIGH);
       }
@@ -489,9 +327,9 @@ void loop()
     }
 
     // Sensor circuit board 2
-    if((i2c_connections & 0b10) != 0)
+    if((i2c_connections & 0b010) != 0)
     {
-      if((subsystem_status & 0b10) != 0)
+      if((subsystem_status & 0b010) != 0)
       {
         digitalWrite(ledpin7, HIGH);
       }
@@ -505,32 +343,32 @@ void loop()
       digitalWrite(ledpin7, LOW);
     }
 
-    // // Landing systems
-    // if((i2c_connections & 0b100) != 0)
-    // {
-    //   if((subsystem_status & 0b100) != 0)
-    //   {
-    //     digitalWrite(ledpin8, HIGH);
-    //   }
-    //   else
-    //   {
-    //     digitalWrite(ledpin8, led_switch);
-    //   }
-    // }
-    // else
-    // {
-    //   digitalWrite(ledpin8, LOW);
-    // }
+    // Landing systems
+    if((i2c_connections & 0b100) != 0)
+    {
+      if((subsystem_status & 0b100) != 0)
+      {
+        digitalWrite(ledpin8, HIGH);
+      }
+      else
+      {
+        digitalWrite(ledpin8, led_switch);
+      }
+    }
+    else
+    {
+      digitalWrite(ledpin8, LOW);
+    }
 
     // All boards connected but not ready (RGB_LED turns blue)
-    if(i2c_connections == 0b11 && subsystem_status != 0b11)
+    if(i2c_connections == 0b111 && subsystem_status != 0b111)
     {
       digitalWrite(ledpinR, LOW);
       digitalWrite(ledpinG, LOW);
       digitalWrite(ledpinB, HIGH);
     }
     // All connected and ready (RGB_LED turns green)
-    else if(i2c_connections == 0b11 && subsystem_status == 0b11)
+    else if(i2c_connections == 0b111 && subsystem_status == 0b111)
     {
       digitalWrite(ledpinR, LOW);
       digitalWrite(ledpinG, HIGH);
@@ -569,33 +407,33 @@ void loop()
 void get_packet_data()
 {
   // If sensor board not yet confirmed connected, test I²C response
-  if((i2c_connections & 0b01) == 0)
+  if((i2c_connections & 0b001) == 0)
   {
       Wire.beginTransmission(0x20);                       // Sensor circuit board 1
       i2c_connections |= ((Wire.endTransmission() == 0) << 0); 
   }
-  if((i2c_connections & 0b10) == 0)
+  if((i2c_connections & 0b010) == 0)
   {
       Wire.beginTransmission(0x30);                       // Sensor circuit board 2
       i2c_connections |= ((Wire.endTransmission() == 0) << 1); 
   }
-  // if((i2c_connections & 0b100) == 0)
-  // {
-  //     Wire.beginTransmission(0x40);                       // Landing systems
-  //     i2c_connections |= ((Wire.endTransmission() == 0) << 2); 
-  // }
+  if((i2c_connections & 0b100) == 0)
+  {
+      Wire.beginTransmission(0x40);                       // Landing systems
+      i2c_connections |= ((Wire.endTransmission() == 0) << 2); 
+  }
 
   uint32_t tmp;
 
   // Sensor circuit board 1: status (1 Byte), height pressure (4 Bytes), GNSS height (4 Bytes), GNSS Lat (4 Bytes) + Lon (4 Bytes)
-  if((i2c_connections & 0b01) != 0)
+  if((i2c_connections & 0b001) != 0)
   {
     Wire.requestFrom(0x20, 17); 
     uint8_t result[17];
     for(int i = 0; i < 17; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b10) | ((result[0] == 0x01) << 0);
+    subsystem_status = (subsystem_status & 0b110) | ((result[0] == 0x01) << 0);
 
     // Turns 4-Byte data into float
 
@@ -615,14 +453,14 @@ void get_packet_data()
   }
 
   // Sensor circuit board 2: status (1 Byte), acceleration (4 Bytes)
-  if((i2c_connections & 0b10) != 0)
+  if((i2c_connections & 0b010) != 0)
   {
     Wire.requestFrom(0x30, 5); 
     uint8_t result[5];
     for(int i = 0; i < 5; i++)
       result[i] = Wire.read();
 
-    subsystem_status = (subsystem_status & 0b01) | ((result[0] == 0x01) << 1);
+    subsystem_status = (subsystem_status & 0b101) | ((result[0] == 0x01) << 1);
 
     // Turns 4-Byte data into float
 
@@ -630,18 +468,18 @@ void get_packet_data()
     acceleration = *(float*)&tmp;
   }
 
-  // // Landing systems: status (1 Byte), status events (1 Byte)
-  // if((i2c_connections & 0b100) != 0)
-  // {
-  //   Wire.requestFrom(0x40, 2); 
-  //   uint8_t result[2];
-  //   for(int i = 0; i < 2; i++)
-  //     result[i] = Wire.read();
+  // Landing systems: status (1 Byte), status events (1 Byte)
+  if((i2c_connections & 0b100) != 0)
+  {
+    Wire.requestFrom(0x40, 2); 
+    uint8_t result[2];
+    for(int i = 0; i < 2; i++)
+      result[i] = Wire.read();
 
-  //   subsystem_status = (subsystem_status & 0b011) | ((result[0] == 0x01) << 2);
+    subsystem_status = (subsystem_status & 0b011) | ((result[0] == 0x01) << 2);
 
-  //   status_events = result[1];
-  // }
+    status_events = result[1];
+  }
 
   // Battery_voltage (Voltage divider)
   battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
