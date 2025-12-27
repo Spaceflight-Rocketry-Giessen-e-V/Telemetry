@@ -44,6 +44,6 @@ If the link margin is too small, the received signal can be amplified using a st
 
 # Link Budget Simulation
 
-[In the simulations folder](../simulations/linkbudget.py), a Python script for a simple link budget simulation based on our expected flight profile is included.
+[In the simulations folder](../simulations/linkbudget/linkbudget.py), a Python script for a simple link budget simulation based on our expected flight profile is included.
 It generates the following graphical output: <br>
 <img src="../simulations/linkbudget/linkbudget.png" width="800"/>
