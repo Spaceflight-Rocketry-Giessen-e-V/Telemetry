@@ -44,7 +44,7 @@ A lightweight library for encoding and decoding data packets according to our [d
 
 - [encode()](examples/encode.cpp)
 - [decode()](examples/decode.cpp)
-- [encoding and decoding of an example data packet](examples/encode.cpp)
+- [encoding and decoding of an example data packet](examples/example.cpp)
 
 ## Contributing
 

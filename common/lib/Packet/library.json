@@ -1,5 +1,6 @@
 {
   "name": "Packet",
+  "description": "Library for encoding and decoding telemetry data packets",
   "authors":
   [
     {
@@ -11,6 +12,11 @@
   ],
   "license": "CERN OHL-S v2",
   "homepage": "https://www.spaceflight-rocketry-giessen.de/",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://www.github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry"
+  },
   "frameworks": "*",
   "platforms": "*"
 }
