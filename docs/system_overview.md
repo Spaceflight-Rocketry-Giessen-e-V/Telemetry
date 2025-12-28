@@ -81,22 +81,4 @@ Article on helical antennas: [Link](https://www.microwaves101.com/encyclopedias/
 
 Paper on helical antenna design: [Link](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463)
 
-### Antenna measurements and impedance matching
-
-Many resources on antenna measurements: [antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
-
-Basics of measurement quantities when using a VNA (S-parameters): [Youtube](https://youtu.be/-Pi0UbErHTY?si=Z9UQJC-R-1Vzc-xW)
-
-Basics of measurement quantities when using a VNA (Smith chart): [Youtube](https://youtu.be/TsXd6GktlYQ?si=DfGhaZ3w0biYOcfI)
-
-Measuring an antenna with a VNA and simulating with 4NEC2: [Youtube](https://youtu.be/l2c46uA50zg?si=s27nZCh-ScBlFWUF)
-
-Measuring an antenna with a VNA: [Youtube](https://youtu.be/rbXq0ZwjETo?si=DdEQ7rzXj86T0cxC)
-
-Basics of using a VNA: [Youtube](https://youtu.be/91ZRTFZ40rw?si=-yBII5ZVjXriQ2fS)
-
-Designing an L-matching network with a VNA and a Smith chart: [Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
-
-Multi-part article on impedance matching: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matchi)
-
 ## GUI software
