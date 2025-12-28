@@ -1,5 +1,6 @@
 {
   "name": "RC1780HP",
+  "description": "Library for configuring and using Radiocrafts RC1780HP-RC232 radio modules",
   "authors":
   [
     {
@@ -11,6 +12,11 @@
   ],
   "license": "CERN OHL-S v2",
   "homepage": "https://www.spaceflight-rocketry-giessen.de/",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://www.github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry"
+  },
   "frameworks": "*",
   "platforms": "*"
 }
