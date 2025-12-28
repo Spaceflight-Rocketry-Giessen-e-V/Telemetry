@@ -8,6 +8,17 @@ A lightweight library for encoding and decoding data packets according to our [d
 - Decode packets back to the original data
 - Customizable for different packet structures while keeping a similar interface
 
+## Limitations
+
+- When raw data values exceed their maximum or fall below their minimum value, the maximum/minimum value is used respectively.
+- The COBS algorithm could be adapted for a 16 byte packet when using 0xFF as the unique end byte. When opting to use even bigger packets, more bits must be allocated to the COBS data component  
+
+## Examples
+
+- [encode()](examples/encode.cpp)
+- [decode()](examples/decode.cpp)
+- [encoding and decoding of an example data packet](examples/example.cpp)
+
 ## Reference
 
 ### encode()
@@ -34,17 +45,6 @@ A lightweight library for encoding and decoding data packets according to our [d
 - Notes:
     - The received signal strength (rssi) is appended after receiving a telemetry packet and is thus part of decode() but not encode().
     - All variables have to be passed as pointers.
-
-## Limitations
-
-- When raw data values exceed their maximum or fall below their minimum value, the maximum/minimum value is used respectively.
-- The COBS algorithm could be adapted for a 16 byte packet when using 0xFF as the unique end byte. When opting to use even bigger packets, more bits must be allocated to the COBS data component  
-
-## Examples
-
-- [encode()](examples/encode.cpp)
-- [decode()](examples/decode.cpp)
-- [encoding and decoding of an example data packet](examples/example.cpp)
 
 ## Contributing
 
