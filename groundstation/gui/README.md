@@ -96,7 +96,7 @@ Features include:
 - Cached map tiles for offline reuse
 - Real-time position tracking
 
-Map data is provided by **OpenStreetMap contributors**.
+Map data is provided by **[OpenStreetMap contributors](https://www.openstreetmap.org/copyright)**.
 
 ---
 
