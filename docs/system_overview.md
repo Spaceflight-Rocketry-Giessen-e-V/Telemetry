@@ -1,6 +1,6 @@
 # System overview
 
-This document provides detailed information about our electronics, firmware, antenna, and GUI systems.
+This document provides detailed information about our electronics, firmware, antenna, and GUI systems. It also covers rationales used during the design process.
 
 <p align="center"><img src="../media/images/System_Block_Diagram.svg" /></p>
 
@@ -12,15 +12,25 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 ### Radio frequency
 
-The license-free frequency bands in Germany are regulated by the Bundesnetzagentur. Frequencies between 100 MHz and 1000 MHz are of primary interest to us. The relevant regulations can be found in [this document](https://www.bundesnetzagentur.de/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Frequenzen/Allgemeinzuteilungen/FunkanlagenGeringerReichweite/2018_05_SRD_pdf). The frequency band between 869.40 MHz and 869.65 MHz can be used with an EIRP of up to 27 dBm or 500 mW, with a duty cycle of 10%.
+The license-free frequency bands in Germany are regulated by the Bundesnetzagentur. Frequencies between 100 MHz and 1000 MHz are of primary interest to us. The relevant regulations can be found in the ["Allgemeinzuteilungen von Frequenzen"](https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/start.html). In this case the regulation of SRD devices applies. The frequency band between 869.40 MHz and 869.65 MHz can be used with an EIRP of up to 27 dBm or 500 mW, with a duty cycle of 10%.
+
+<p align="center"><img src="images/frequency_regulation.png" /></p>
 
 ### Radio modules
 
 We have chosen the Radiocrafts RC1780HP-RC232 radio modules, which operate at frequencies from 869.41 MHz to 869.64 MHz and can achieve output powers of up to 27 dBm. The operation is straightforward due to the UART interface. The datasheet can be found [here](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf). Additionally, there is a separate manual for the RC232 series of radio modules that includes all configuration commands and more information, available [here](https://radiocrafts.com/uploads/RC232_user_manual.pdf). Application notes can be downloaded [here](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes).
 
+The following image shows the available data rates and high power (27 dBm) radio channels of the RC1780HP-RC232 module. The information is taken from the official datasheet.
+
+<p align="center"><img src="images/rc1780hp_rc232_specifications.png" /></p>
+
 ### Microcontroller
 
-We use the AVR128DB64 microcontroller in the 64-pin LQFP version ([datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR128DB28-32-48-64-DataSheet-DS40002247A.pdf)).
+We use the AVR128DB64 microcontroller in the 64-pin LQFP version ([datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR128DB28-32-48-64-DataSheet-DS40002247A.pdf)). It offers a decent improvement compared to beginner-friendly Arduino boards, while still being easy to use. The [AVR DB Arduino Core (DxCore)](https://github.com/SpenceKonde/DxCore) offers excellent firmware and also hardware documentation.
+
+The following image shows the pinout of the AVR128DB64 MCU and is taken from the DxCore documentation.
+
+<p align="center"><img src="images/avr128db64_pinout.png" width="600"/></p>
 
 ### PCB design
 
@@ -31,9 +41,17 @@ On one edge of the PCB, a ground strip is included, connected by numerous vias t
 
 A T-network is also included to match the antenna's impedance to 50 Ohms.
 
+The following image shows the onboard pcb.
+
+<p align="center"><img src="../media/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
+
 ## Firmware
 
 ### General
+
+The firmware structure may be seen in the image below.
+
+<p align="center"><img src="../media/images/Firmware_Block_Diagram.svg" /></p>
 
 In the setup function, pin declarations and starting conditions are established. The radio module is initialized, and the desired configurations are applied after a configuration reset. Additionally, the flight computer initializes the I2C connection to the other subsystems of the flight computer (such as sensorics) and the ground station initializes the UART connection to the ground station computer.
 

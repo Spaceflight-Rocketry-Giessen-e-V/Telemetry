@@ -13,12 +13,22 @@ The PCBs can be sourced from any PCB manufacturing service like JLCPCB or PCBWAY
 
 ### Sourcing components
 
-We source most of our electronics components from Digikey. We included a [Bill of Materials](../onboard/pcb/TelemetryOnboard_BOM.csv) where a direct link to Digikey is provided. Most of the components are also available at similar sellers like Mouser.
+We source most of our electronics components from Digikey. We included a [Bill of Materials](../onboard/pcb/TelemetryOnboard_BOM.csv) where a direct link to Digikey is provided. Most of the components are also available at similar sellers like Mouser. An [Interactive BOM](../onboard/pcb/TelemetryOnboard_Interactive_BOM.html) is also included to assist in placing the components.
 
 ### SMD component assembly
 
-First, the surface mounted components are soldered. We recommend the Chipquik TS391LT lead free, thermally stable, no-clean, low temperature solder paste, which also comes at a reasonable price. To apply the solder paste, the PCB is fixated on a table using surplus PCBs. Next, the solder paste stencil is aligned and fixated as well. A small amount of solder paste can be applied and spreaded out using a spatula or an old credit card. When completed, the stencil is removed and the components can be placed on the PCB with tweezers, starting with the smallest components.
+First, the surface mounted components are soldered. We recommend the Chipquik TS391LT lead free, thermally stable, no-clean, low temperature solder paste, which also comes at a reasonable price. 
+To apply the solder paste, the PCB should be cleaned with isopropyl alcohol and then be fixated on a table using surplus PCBs and sticky tape as mechanical stop. 
+
+<p align="center"><img src="images/solder_jig.jpg" width ="400"/></p>
+
+Next, the solder paste stencil is exactly aligned and fixated with tape as well. 
+
+<p align="center"><img src="images/solder_stencil.jpg" width ="400"/></p>
+
+A small amount of solder paste can be applied and spreaded out using a spatula or an old credit card. When completed, the stencil is removed and the components can be placed on the PCB with tweezers, starting with the smallest components.
 We recommend using a hot plate like the Uyue 946C to melt the solder, but a hot air station or a reflow oven can also be used.
+Bridged pins can be reworked with flux and a small tip on a soldering iron.
 
 ### THT component assembly
 
@@ -26,7 +36,7 @@ After the SMD components are soldered, the through hole mounted components can b
 
 ### PCB Cleaning
 
-The PCB can be gently cleaned using a soft toothbrush and isopropyl alcohol. The thereby solved flux can be rinsed with isopropyl alcohol.
+The PCB can be gently cleaned using a soft toothbrush and isopropyl alcohol. The thereby solved flux can be rinsed with isopropyl alcohol. An ultrasonic cleaner with distilled water can also be used and should be followed up by a complete drying process.
 
 ## Firmware
 
@@ -34,11 +44,32 @@ The PCB can be gently cleaned using a soft toothbrush and isopropyl alcohol. The
 
 Our firmware is designed to be used with Visual Studio Code and the PlatformIO extension. The firmware folder of either the ground station or the onboard system can be directly opened in VSCode. 
 
+<p align="center"><img src="images/pio_open_folder.png" /></p>
+
 ### Upload the firmware
 
-To upload the firmware to the system, an UPDI programmer like the Adafruit UPDI Friend is needed. The corresponding COM port has to be selected in VSCode.
+To upload the firmware to the system, an UPDI programmer like the Adafruit UPDI Friend is needed. The corresponding COM port has to be selected in VSCode in the status bar.
 
-### Antenna measurements and impedance matching
+## Operation
+
+### Powering the system
+
+For the system to be operational, both the 3.3 V and the 5 V lines have to be connected. Any of the respective positions on the pin headers can be used. To allow the full output power with a safe margin, the power supply should be able to provide 1 A at 5 V and 0.5 A at 3.3 V.
+
+Note: When using an external power supply, the 3.3 V lines of UPDI programmers or UART to USB adapters should never be connected.
+
+### Serial communication
+
+For the serial communication with the system, an UART to USB adapter has to be used. 
+We recommend using a dedicated serial monitor like [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.stc). The settings can be opened via "File" -> "Open".
+
+### Antenna
+
+The system should never be operational without a connected antenna, as otherwise the high output power can permanently damage the radio module.
+
+If testing the radio communication between the onboard system and the ground station system, a distance of at least 1.5 m should always be established.
+
+## Antenna measurements and impedance matching
 
 Many resources on antenna measurements: [antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
 
@@ -55,22 +86,3 @@ Basics of using a VNA: [Youtube](https://youtu.be/91ZRTFZ40rw?si=-yBII5ZVjXriQ2f
 Designing an L-matching network with a VNA and a Smith chart: [Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
 
 Multi-part article on impedance matching: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matchi)
-
-## Operation
-
-### Powering the system
-
-For the system to be operational, both the 3.3 V and the 5 V lines have to be connected. Any of the respective positions on the pin headers can be used. To maintain a safe margin, a current of 1 A each should be possible.
-
-Note: When using an external power supply, the 3.3 V lines of UPDI programmers or UART to USB adapters should never be connected.
-
-### Serial communication
-
-For the serial communication with the system, an UART to USB adapter has to be used. 
-We recommend using a dedicated serial monitor like [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.stc).
-
-### Antenna
-
-The system should never be operational without a connected antenna, as otherwise the high output power can permanently damage the radio module.
-
-If testing the radio communication between the onboard system and the ground station system, a distance of at least 1.5 m should always be established.
