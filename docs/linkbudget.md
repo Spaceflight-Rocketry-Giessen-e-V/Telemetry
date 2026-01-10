@@ -1,6 +1,6 @@
 # Link Budget
 
-By calculating the link budget of the telemetry system, either the maximum range of the system or individual parameters, such as transmit power, can be determined at a fixed range. A detailed explanation of the link budget can be found [here](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf). Additional informations are available [here](https://de.wikipedia.org/wiki/Leistungs%C3%BCbertragungsbilanz), [here](https://en.wikipedia.org/wiki/Link_budget), and [here](https://www.sss-mag.com/pdf/an9804.pdf).
+By calculating the link budget of the telemetry system, either the maximum range of the system or individual parameters, such as transmit power, can be determined at a fixed range. A detailed explanation of the link budget can be found [here](https://s.campbellsci.com/documents/us/technical-papers/link-budget.pdf). Additional informations are available [here](https://en.wikipedia.org/wiki/Link_budget) and [here](https://www.sss-mag.com/pdf/an9804.pdf).
 
 The general formula for a link budget describes the signal strength at the receiver and includes components that either increase (positive sign) or decrease (negative sign) the received strength. All values are given in dB (or dBm and dBi).
 
