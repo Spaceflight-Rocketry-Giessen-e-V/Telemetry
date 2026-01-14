@@ -439,11 +439,9 @@ void get_packet_data()
 
     tmp = ((uint32_t)result[4] << 24) | ((uint32_t)result[3] << 16) | ((uint32_t)result[2] << 8) | ((uint32_t)result[1]);
     height_pressure = *(float*)&tmp;
-    height_pressure = height_pressure - height_pressure_calibration;
 
     tmp = ((uint32_t)result[8] << 24) | ((uint32_t)result[7] << 16) | ((uint32_t)result[6] << 8) | ((uint32_t)result[5]);
     height_gnss = *(float*)&tmp;
-    height_gnss = height_gnss - height_gnss_calibration;
 
     tmp = ((uint32_t)result[12] << 24) | ((uint32_t)result[11] << 16) | ((uint32_t)result[10] << 8) | ((uint32_t)result[9]);
     lat_gnss = *(float*)&tmp;

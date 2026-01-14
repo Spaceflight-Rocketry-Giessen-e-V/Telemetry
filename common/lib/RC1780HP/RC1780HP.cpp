@@ -208,6 +208,7 @@ uint8_t RC1780HP::read_Voltage(float* result)
         }
     }
     return 1;                     // Failure
+}
 
 uint8_t RC1780HP::read_Signal_Strength(float* result)
 {
