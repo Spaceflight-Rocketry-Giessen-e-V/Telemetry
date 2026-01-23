@@ -3,36 +3,29 @@
 <p align="center"><img src="media/images/Onboard_PCB_Rendering_QFH.png" width="400" /></p>
 
 ## Overview
-The ASCENT II telemetry system is part of the ASCENT II flight computer of the student rocketry association **Spaceflight Rocketry Gießen e.V.**, developed for the ARCHER experimental rocket.  
-This 868 MHz telemetry system allows bidirectional data exchange between rockets and ground stations with a minimum range of **18 km** and a minimum data rate of **1.2 kbps**.  
+The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club *Spaceflight Rocketry Gießen e.V.*, developed for the PIPE 2 and ARCHER experimental rockets.  
+This 868 MHz telemetry system allows bidirectional data exchange between rockets and ground stations with a minimum range of 18 km and a minimum data rate of 1.2 kbps.
 
-With this system, the flight computer can transmit sensor and status data to the ground station and reliably receive and execute telecommands.
+The design not only applies to rocket telemetry systems, but can also be used in other areas like Smart Home or RC.
 
-## Our Team's Responsibility
-We are responsible for:
+## Design Requirements
+
 - Receiving flight data from our rockets
 - Sending radio commands to our rockets
 - Displaying live telemetry on a screen or UI
 - Storing flight data for post-flight analysis
 
-## Initial Design Requirements
-When designing our telemetry system, we focused on:
-- **Lightweight** antennas for minimal impact on rocket performance
-- **High range** communication
-- **Low production cost**
-- **Reliable and confident** data transfer
-
-Initial design proposal:
 <p align="center"><img src="media/images/System_Block_Diagram.svg" /></p>
 
-## General Design Specs
-- **Frequency:** 869.5 MHz  
-- **Range:** Minimum 18 km  
-- **Data rate:** 1.2 kbps
-- **Antennas:** Onboard QFH antenna and helix antenna at the ground station
+## Actual performance
+In January 2026, we performed our first long range test over a distance of 2 km. Despite poor weather conditions and object inside the first Fresnel zone, the received signal strength was on par with the theoretical maximum without any connection losses. This test ruled out major design flaws which could result in large losses.
+<p align="center"><img src="docs/images/long_range_test.png" width="600" /></p>
+This excellent performance was confirmed by multiple medium range tests.
 
 ## Repository Contents
 This repository contains all files necessary to reproduce the telemetry system, including hardware, firmware, and software.
+
+It also includes user manuals and design rationals which help to understand and adapt the system.
 
 ### 1. Antenna Hardware
 In the future, this repository will include simulations, design files and assembly instructions for our custom made antennas.
@@ -42,36 +35,34 @@ In the future, this repository will include simulations, design files and assemb
 - **Description:** Designs for telemetry antennas -->
 
 ### 2. Electronics Hardware
-<p align="center">
-  <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/images/Onboard_PCB_Front.png" width="400" />
-  <img src="https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetrie/blob/main/media/images/Onboard_PCB_Back.png" width="400" />
-</p>
+<p align="center"><img src="media/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
 
-- **Description:** Circuit and PCB designs for onboard and ground station electronics
-- **Included:** 
-	- Schematics
-	- PCB design files
-	- Bill of Materials
-	- 3D models
+Included: 
+- Schematics
+- PCB design files
+- Bill of Materials
+- 3D models
 
-### 3. Firmware (Electronics)
-- **Description:** Firmware for the onboard and ground station electronics written in C++  
-- **Included:** 
+In the future, there will be a separate electronics design for the groundstation system.
+
+### 3. Electronics Firmware
+
+Included:
+- Onboard and ground station electronics firmware 
 - Radiocrafts RC1780HP-RC232 code library
-- Package encoding and decoding code library
-- Onboard and ground station electronics firmware  
+- Package encoding and decoding code library 
 
-### 4. Software (Groundstation UI)
-  <img src="media/images/meerkat_demo_1.png" width="600" />
+### 4. Groundstation UI Software
+  <img src="groundstation/gui/example_images/main_view.png" width="600" />
 
-- **Description:** Python-based software to display telemetry data on a modern, minimalistic interface  
-- **Current Features:**  
-  - Position/GPS (raw data + map view)  
-  - Height (plotted over time)  
-  - Acceleration (raw data)  
-  - Battery voltage (with visual limits)  
+Python-based software to display telemetry data on a modern, minimalistic interface with the ability to store flight data. In the future, sending radio command directly in UI will be possible.
 
-## Documentation 
+Included:
+- GNSS map view
+- Height plot over time
+- Acceleration indicator
+- Battery voltage indicator with visual warnings
+- Status event indicator
 
 ## Safety
 Please note that radio systems may be subject to local regulations. Ensure that any testing or deployment of these antennas complies with national and regional laws regarding RF transmission. The project maintainers are not responsible for misuse or regulatory violations.  

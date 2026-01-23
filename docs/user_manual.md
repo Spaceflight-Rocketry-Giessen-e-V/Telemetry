@@ -1,5 +1,12 @@
 # ASCENT II Telemetry System User Manual
 
+## Repository cloning
+
+The usual process for locally cloning the repository applies:
+1. Install [Git](https://git-scm.com/install/)
+2. Open the desired destination folder in the terminal
+3. Clone the repository: `git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry` 
+
 ## Electronics assembly
 
 The process is similar for the onboard and ground station systems.
@@ -60,8 +67,9 @@ Note: When using an external power supply, the 3.3 V lines of UPDI programmers o
 
 ### Serial communication
 
-For the serial communication with the system, an UART to USB adapter has to be used. 
-We recommend using a dedicated serial monitor like [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.stc). The settings can be opened via "File" -> "Open".
+For the serial communication with the system, an UART to USB adapter has to be used. When using the (planned) integrated USB circuit or an USB adapter based on the CP2102N, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
+
+We recommend using a dedicated serial monitor like the excellent project [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings). The settings can be opened via "File" -> "Open".
 
 ### Antenna
 
@@ -71,18 +79,32 @@ If testing the radio communication between the onboard system and the ground sta
 
 ## Antenna measurements and impedance matching
 
-Many resources on antenna measurements: [antenna-theory.com](https://www.antenna-theory.com/measurements/antenna.php)
+When measuring self-built or bought antennas, vector network analyzers (VNA) like the NanoVNA-H4 or the LiteVNA 64 are necessary tools and can be bought for cheap.
 
-Basics of measurement quantities when using a VNA (S-parameters): [Youtube](https://youtu.be/-Pi0UbErHTY?si=Z9UQJC-R-1Vzc-xW)
+### Calibration
 
-Basics of measurement quantities when using a VNA (Smith chart): [Youtube](https://youtu.be/TsXd6GktlYQ?si=DfGhaZ3w0biYOcfI)
+Before each measurement, the VNA has to be calibrated for the desired frequency range, which should be centered around the frequency of interest, in our case 869.5 MHz. For the measurement of the S11 parameter, the calibration procedure is the following:
+1. Input the desired frequency range: STIMULUS -> START, STOP
+2. Calibrate with the OPEN SMA connector (no pin in the middle): CALIBRATE -> OPEN
+3. Calibrate with the SHORT SMA connector (pin in the middle, looks similar compared to OPEN): CALIBRATE -> SHORT
+4. Calibrate with the LOAD SMA connector (pin in the middle, looks different compared to OPEN): CALIBRATE -> LOAD
+The calibration data can be saved and used again.
 
-Measuring an antenna with a VNA and simulating with 4NEC2: [Youtube](https://youtu.be/l2c46uA50zg?si=s27nZCh-ScBlFWUF)
+The calibration should always be performed in the exact same way the antenna is tested afterwards. If a cable is going to be used between the VNA and the antenna, the same cable has to be used between the VNA and the OPEN/SHORT/LOAD connectors during calibration.
 
-Measuring an antenna with a VNA: [Youtube](https://youtu.be/rbXq0ZwjETo?si=DdEQ7rzXj86T0cxC)
+As an alternative, the length of the cable can also be accounted for in the VNAs software.
 
-Basics of using a VNA: [Youtube](https://youtu.be/91ZRTFZ40rw?si=-yBII5ZVjXriQ2fS)
+### Measurements
 
-Designing an L-matching network with a VNA and a Smith chart: [Youtube](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb)
+There is a range of measurements, which can be done with a VNA. [This article](https://www.antenna-theory.com/measurements/antenna.php) lists the many options.
 
-Multi-part article on impedance matching: [Link](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matchi)
+The most interesting and most feasible measurement is an impedance measurement over a frequency range. An impedance missmatch causes power losses and should be compensated via impedance matching.
+Here is a list of videos explaining [S-parameters](https://youtu.be/-Pi0UbErHTY?si=Z9UQJC-R-1Vzc-xW), [the Smith chart](https://youtu.be/TsXd6GktlYQ?si=DfGhaZ3w0biYOcfI) and the application of a VNA ([Video 1](https://youtu.be/rbXq0ZwjETo?si=DdEQ7rzXj86T0cxC) and [Video 2](https://youtu.be/91ZRTFZ40rw?si=-yBII5ZVjXriQ2fS)). [This video](https://youtu.be/l2c46uA50zg?si=s27nZCh-ScBlFWUF) also includes the comparison to a simple simulation software (4NEC2).
+
+The measurement of the radiation pattern or the gain of an antenna is more sophisticated and introduces more errors, but can be done as well.
+
+### Impedance matching
+
+Our current design includes a L-matching network to tune the antennas impedance to 50 Ohms. When no impedance matching is used, the ZS1 component should be a 0 Ohm resistor and the ZP1 component should be left open
+
+There are many articles and videos explaining the impedance matching concept. [This video](https://youtu.be/OkPVlv4wVeY?si=Ta4NVOyTLGxH_oTO) and [this video](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb) explain the matching network and matching technique used in our design, while [this article](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matchi) offers a general overview over the topic.
