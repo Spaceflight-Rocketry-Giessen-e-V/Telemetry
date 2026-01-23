@@ -6,7 +6,7 @@
 */
 
 #include "Arduino.h"
-#include "RC1780HP.h"
+#include "RC17xxHP_RC232.h"
 #include "Packet.h"
 
 // Pin assignment
@@ -33,7 +33,7 @@ HardwareSerial* SerialPC1 = &Serial4;
 HardwareSerial* SerialPC2 = &Serial1;
 HardwareSerial* SerialModule = &Serial0;
 
-RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
+RC17xxHP_RC232 rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
 // Data components received from sensors
 uint8_t temperature = 0;
@@ -92,16 +92,16 @@ void setup()
   delay(100);
   rc1780hp.ping();
   
-  rc1780hp.memory_Reset();
+  //rc1780hp.memory_Reset();
   while(rc1780hp.set_RF_DATA_RATE(0x05) != 0);
-  while(rc1780hp.set_RSSI_Mode(0x01) != 0);
-  while(rc1780hp.set_Packet_Timeout(0x00) != 0);
-  while(rc1780hp.set_Packet_Length(0x01) != 0);
-  while(rc1780hp.set_Address_Mode(0x00) != 0);
-  while(rc1780hp.set_CRC_Mode(0x00) != 0);
-  while(rc1780hp.set_LED_Control(0x01) != 0);
+  while(rc1780hp.set_RSSI_MODE(0x01) != 0);
+  while(rc1780hp.set_PACKET_TIMEOUT(0x00) != 0);
+  while(rc1780hp.set_PACKET_LENGTH(0x01) != 0);
+  while(rc1780hp.set_ADDRESS_MODE(0x00) != 0);
+  while(rc1780hp.set_CRC_MODE(0x00) != 0);
+  while(rc1780hp.set_LED_CONTROL(0x01) != 0);
 
-  rc1780hp.hard_reset();
+  rc1780hp.hard_Reset();
   rc1780hp.serial_Flush();
 
   digitalWrite(ledpinR, LOW);

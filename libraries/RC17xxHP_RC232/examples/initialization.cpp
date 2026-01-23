@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "../RC1780HP.h"
+#include "../RC17xxHP_RC232.h"
 
 // Assigning arbitrary pins
 uint8_t cfgpin = PIN_PB6;
@@ -11,7 +11,7 @@ uint8_t rtspin = PIN_PB7;
 HardwareSerial* SerialModule = &Serial0;
 
 // Radio module initialization
-RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
+RC17xxHP_RC232 rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
 // Initialize radio transceiver and wait until communication is established
 delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10

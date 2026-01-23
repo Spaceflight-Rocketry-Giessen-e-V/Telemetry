@@ -1,6 +1,6 @@
 # Telemetry Packet Library
 
-A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
+A library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules.
 
 ## Features
 
@@ -11,8 +11,8 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
 
 ## Limitations
 
-- Not all configuration commands have been implemented yet. The configuration of the volatile memory is left out and only one test mode is included.
-- Not every non-volatile memory parameter can be configured with a wrapper function yet.
+- The configuration of the volatile memory is not included.
+- The five test modes are not implemented
 - The input and output of non-volatile memory parameters is handled with their binary values and not their real-world values. 
 - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
 
@@ -23,10 +23,10 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
 
 ## Reference
 
-### RC1780HP()
+### RC17xxHP_RC232()
 
-- Initializes a RC1780HP-RC232 object
-- Function prototype: `public RC1780HP(HardwareSerial* serialModule, uint8_t cfgpin, uint8_t rstpin, uint8_t ctspin, uint8_t rtspin)`
+- Initializes a RC17xxHP-RC232 object
+- Function prototype: `public RC17xxHP_RC232(HardwareSerial* serialModule, uint8_t cfgpin, uint8_t rstpin, uint8_t ctspin, uint8_t rtspin)`
 - Parameters:  
     - `HardwareSerial* serialModule`: serial port for the communication with the microcontroller
     - `uint8_t cfgpin`: IO pin of the microcontroller connected to the configuration pin of the radio module
@@ -73,10 +73,10 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
 - Notes:
     - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
 
-### hard_reset()
+### hard_Reset()
 
 - Resets the radio module via the reset pin
-- Function prototype: `public uint8_t hard_reset()`
+- Function prototype: `public uint8_t hard_Reset()`
 - Parameters:  
     - None
 - Returns:
@@ -115,10 +115,11 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
 - Returns:
     - 0 if successful, else 1
 - Notes:
+    - The function first checks, whether the correct value is already set.
     - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
-    - The naming of the wrappers is not uniform yet.
+    - The names of the parameters (`CONFIGURATION_PARAMETER`) are listed in the [Radiocrafts RC232 User Manual](https://radiocrafts.com/uploads/RC232_user_manual.pdf).
 
-### read_CONFIGURATION_PARAMETER()
+### get_CONFIGURATION_PARAMETER()
 
 - Wrappers for reading non-volatile memory parameters.
 - Function prototype: `public uint8_t read_CONFIGURATION_PARAMETER(uint8_t* result);`
@@ -128,20 +129,9 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
     - 0 if successful, else 1
 - Notes:
     - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
-    - The naming of the wrappers is not uniform yet.
+    - The names of the parameters (`CONFIGURATION_PARAMETER`) are listed in the [Radiocrafts RC232 User Manual](https://radiocrafts.com/uploads/RC232_user_manual.pdf).
 
-### read_Voltage()
-
-- Reads the current supply voltage (output of the internal voltage regulator)
-- Function prototype: `public uint8_t read_Voltage(float* result)`
-- Parameters:  
-    - `float* result`: voltage in volts
-- Returns:
-    - 0 if successful, else 1
-- Notes:
-    - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
-
-### read_Signal_Strength()
+### read_RSSI()
 
 - Reads the current signal strength (rssi)
 - Function prototype: `public uint8_t read_Signal_Strength(float* result)`
@@ -152,7 +142,7 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
 - Notes:
     - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
 
-### read_Temperature()
+### read_TEMPERATURE()
 
 - Reads the current module temperature
 - Function prototype: `public uint8_t read_Temperature(int8_t* result)`
@@ -163,12 +153,12 @@ A library for configuring and using Radiocrafts RC1780HP-RC232 radio modules.
 - Notes:
     - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
 
-### rf_Test_Mode()
+### read_VOLTAGE()
 
-- Enters the RF test mode 2 (continous transmission) for a given time
-- Function prototype: `public uint8_t rf_Test_Mode(uint16_t time)`
+- Reads the current supply voltage (output of the internal voltage regulator)
+- Function prototype: `public uint8_t read_Voltage(float* result)`
 - Parameters:  
-    - `uint16_t time`: activation time in milliseconds
+    - `float* result`: voltage in volts
 - Returns:
     - 0 if successful, else 1
 - Notes:

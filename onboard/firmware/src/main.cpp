@@ -7,7 +7,7 @@
 
 #include "Arduino.h"
 #include "Wire.h"
-#include "RC1780HP.h"
+#include "RC17xxHP_RC232.h"
 #include "Packet.h"
 
 // Status events
@@ -60,7 +60,7 @@ HardwareSerial* SerialPC2 = &Serial1;
 HardwareSerial* SerialModule = &Serial0;
 
 // Radio module initialisation
-RC1780HP rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
+RC17xxHP_RC232 rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
 
 // Functions declaration
 void get_packet_data();
@@ -124,15 +124,14 @@ void setup()
   digitalWrite(ledpinG, HIGH);
 
   // Before each flight memory is reset and non-standard settings are reconfigured
-  while(rc1780hp.memory_Reset() != 0);
+  //while(rc1780hp.memory_Reset() != 0);
   while(rc1780hp.set_RF_DATA_RATE(0x05) != 0);
-  //while(rc1780hp.set_RSSI_Mode(0x01) != 0);
-  while(rc1780hp.set_Packet_Timeout(0x00) != 0);
-  while(rc1780hp.set_Packet_End_Character(0xEE) != 0);
-  while(rc1780hp.set_Address_Mode(0x00) != 0);
-  while(rc1780hp.set_CRC_Mode(0x00) != 0);
-  while(rc1780hp.set_LED_Control(0x01) != 0);
-  rc1780hp.hard_reset();
+  while(rc1780hp.set_PACKET_TIMEOUT(0x00) != 0);
+  while(rc1780hp.set_PACKET_END_CHARACTER(0xEE) != 0);
+  while(rc1780hp.set_ADDRESS_MODE(0x00) != 0);
+  while(rc1780hp.set_CRC_MODE(0x00) != 0);
+  while(rc1780hp.set_LED_CONTROL(0x01) != 0);
+  rc1780hp.hard_Reset();
   rc1780hp.serial_Flush();
 }
 

@@ -1,6 +1,6 @@
 {
-  "name": "RC1780HP",
-  "description": "Library for configuring and using Radiocrafts RC1780HP-RC232 radio modules",
+  "name": "RC17xxHP-RC232",
+  "description": "Library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules",
   "authors":
   [
     {
