@@ -14,6 +14,6 @@ For more informations about the link budget, please visit our dedicated [documen
 
 ## Usage
 
-1. Change the flight profile parameters in the [python script](linkbudget.py): `h_max`, `d_start`, `d_end`
+1. Change the flight profile parameters in the [python script](linkbudget.py): `h_max`, `d_start`, `d_end`, `t_ascent`
 2. Run the python script: `python linkbudget.py`
 3. The program will output a plot with a visualisation of the preset flight profile, as well as a plot with the link margin during the flight. The minimal link margin is printed.
