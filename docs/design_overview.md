@@ -72,6 +72,19 @@ The use of the onboard LEDs is the following:
 - D5 is lit when the flight mode is active
 - D6, D7 and D8 are used to indicate the detailed status of up to three subsystems. If a subsystem is responding via I2C, the respective LED blinks. If it communicates the "good" state, the LED is lit continuously. Else, it is not lit.
 
+### USB UPDI Programmer
+
+On our next-generation PCBs, an onboard UPDI programmer with an USB-C connector will be included. 
+
+The following image shows the general schematic:
+
+<p align="center"><img src="images/updi_circuit.png" width = 600/></p>
+
+The design features a CP2102N USB to UART bridge, [whose datasheet](https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf) suggests the use of an ESD protection diode (D1) for the data lines, and a voltage divider (R1, R2) for the `VBUS` input.
+Not shown in the schematic is one LED (with a 560 Ohms resistor) each at `TXT` and `RXT` and decoupling capacitors (4.7 uF and 0.1 uF) at the `VREGIN` and `VDD`.
+
+The UART to UPDI connection is based on [this guide](https://github.com/SpenceKonde/AVR-Guidance/blob/master/UPDI/jtag2updi.md). It features a Schottky diode and two protection resistors.
+
 ## Firmware
 
 ### General
