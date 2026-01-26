@@ -1,12 +1,13 @@
-# ASCENT II Experimental Rocket Telemetry System
+# ASCENT Experimental Rocket Telemetry System
 
 <p align="center"><img src="media/images/Onboard_PCB_Rendering_QFH.png" width="400" /></p>
 
 ## Overview
 The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club *Spaceflight Rocketry Gießen e.V.*, developed for the PIPE 2 and ARCHER experimental rockets.  
 This 868 MHz telemetry system allows bidirectional data exchange between rockets and ground stations with a minimum range of 18 km and a minimum data rate of 1.2 kbps.
+The design can also be used in areas outside of rocketry like Smart Home or RC.
 
-The design not only applies to rocket telemetry systems, but can also be used in other areas like Smart Home or RC.
+<p align="center"><img src="media/images/System_Block_Diagram.svg" /></p>
 
 ## Design Requirements
 
@@ -15,16 +16,15 @@ The design not only applies to rocket telemetry systems, but can also be used in
 - Displaying live telemetry on a screen or UI
 - Storing flight data for post-flight analysis
 
-<p align="center"><img src="media/images/System_Block_Diagram.svg" /></p>
-
 ## Actual performance
 In January 2026, we performed our first long range test over a distance of 2 km. Despite poor weather conditions and object inside the first Fresnel zone, the received signal strength was on par with the theoretical maximum without any connection losses. This test ruled out major design flaws which could result in large losses.
-<p align="center"><img src="docs/images/long_range_test.png" width="600" /></p>
+
 This excellent performance was confirmed by multiple medium range tests.
+
+<p align="center"><img src="docs/images/long_range_test.png" width="600" /></p>
 
 ## Repository Contents
 This repository contains all files necessary to reproduce the telemetry system, including hardware, firmware, and software.
-
 It also includes user manuals and design rationals which help to understand and adapt the system.
 
 ### 1. Antenna Hardware
@@ -64,7 +64,7 @@ Included:
 - Battery voltage indicator with visual warnings
 - Status event indicator
 
-## Safety
+## Legal notice
 Please note that radio systems may be subject to local regulations. Ensure that any testing or deployment of these antennas complies with national and regional laws regarding RF transmission. The project maintainers are not responsible for misuse or regulatory violations.  
 
 ## License
