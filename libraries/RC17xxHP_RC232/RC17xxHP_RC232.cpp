@@ -525,7 +525,7 @@ uint8_t RC17xxHP_RC232::read_VOLTAGE(float* result)
 
 // Private
 
-uint16_t RC17xxHP_RC232::serial_Wait(uint32_t delay_microsecond) // Waits for incoming serial data or until a timeout expires
+uint16_t RC17xxHP_RC232::serial_Wait(uint32_t delay_microseconds) // Waits for incoming serial data or until a timeout expires
 {
     uint32_t time_start = micros();
     while(serialModule->available() == 0 && (micros() - time_start) < delay_microseconds)

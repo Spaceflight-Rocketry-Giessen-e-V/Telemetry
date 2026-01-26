@@ -127,7 +127,7 @@ class RC17xxHP_RC232
         uint32_t _baud_module;
         HardwareSerial* serialModule;
 
-        uint16_t serial_Wait(uint32_t delay_microsecond);
+        uint16_t serial_Wait(uint32_t delay_microseconds);
 
         uint8_t enter_Config();
         uint8_t exit_Config();
