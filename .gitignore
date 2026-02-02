@@ -1,5 +1,5 @@
 **/pcb/*-backups/*
-**/pcb/symbols/*.bak
+**/pcb/*.bak
 **/pcb/*.kicad_prl
 **/pcb/*.net
 **/pcb/place_footprints.log
