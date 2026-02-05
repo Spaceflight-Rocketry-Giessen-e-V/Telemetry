@@ -20881,7 +20881,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2a26f6c4-b801-4a5e-a338-0e2bea58f99a")
-		(property "Reference" "TP41"
+		(property "Reference" "TP3"
 			(at 271.272 223.52 0)
 			(effects
 				(font
@@ -20933,7 +20933,7 @@
 		(instances
 			(project "Platinenkonzept v3.0.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP41")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -22697,7 +22697,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3bbc5d51-1577-4cc4-8552-efdaf965df5b")
-		(property "Reference" "TP18"
+		(property "Reference" "TP2"
 			(at 103.632 214.63 0)
 			(effects
 				(font
@@ -22749,7 +22749,7 @@
 		(instances
 			(project "Platinenkonzept v3.0.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP18")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -24066,7 +24066,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "468d77fb-3626-4af8-a332-fbc486380f6c")
-		(property "Reference" "TP3"
+		(property "Reference" "TP80"
 			(at 465.074 234.442 0)
 			(effects
 				(font
@@ -24126,7 +24126,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP3")
+					(reference "TP80")
 					(unit 1)
 				)
 			)
@@ -31483,7 +31483,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ab8a976c-5258-4d8d-9095-543a8a086a17")
-		(property "Reference" "TP2"
+		(property "Reference" "TP70"
 			(at 459.74 234.188 0)
 			(effects
 				(font
@@ -31543,7 +31543,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP2")
+					(reference "TP70")
 					(unit 1)
 				)
 			)
@@ -32369,7 +32369,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bddc82b7-5b2e-4e45-99ad-e3aabe162729")
-		(property "Reference" "TP19"
+		(property "Reference" "TP1"
 			(at 106.172 219.71 0)
 			(effects
 				(font
@@ -32421,7 +32421,7 @@
 		(instances
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP19")
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -36289,7 +36289,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ea12e7e1-55a9-48cb-9156-82e900d7accc")
-		(property "Reference" "TP1"
+		(property "Reference" "TP60"
 			(at 452.12 231.6479 0)
 			(effects
 				(font
@@ -36341,7 +36341,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP1")
+					(reference "TP60")
 					(unit 1)
 				)
 			)
