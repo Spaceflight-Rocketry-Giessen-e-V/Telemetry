@@ -305,7 +305,7 @@
 		(uuid "e357f438-628b-4e8a-8072-df2750cd5e15")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3dmodels/SMD Connetor CONSMA001-SMD-G-T.step"
+	(model "${KIPRJMOD}/3D Models/SMD Connetor CONSMA001-SMD-G-T.step"
 		(offset
 			(xyz 0 0 10.3)
 		)
