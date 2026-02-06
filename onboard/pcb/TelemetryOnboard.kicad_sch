@@ -29945,7 +29945,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "0805 270R"
+		(property "Value" "0805 560R"
 			(at 337.82 100.3299 0)
 			(effects
 				(font
@@ -32943,7 +32943,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "0805 270R"
+		(property "Value" "0805 560R"
 			(at 232.41 100.3299 0)
 			(effects
 				(font
@@ -33384,7 +33384,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "0805 270R"
+		(property "Value" "0805 560R"
 			(at 222.25 100.3299 0)
 			(effects
 				(font
@@ -37104,7 +37104,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "0805 270R"
+		(property "Value" "0805 560R"
 			(at 347.98 100.3299 0)
 			(effects
 				(font
