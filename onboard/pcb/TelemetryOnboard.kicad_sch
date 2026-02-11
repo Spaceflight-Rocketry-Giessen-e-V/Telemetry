@@ -9823,7 +9823,7 @@
 		)
 		(uuid "977917a9-4241-48b9-a1f6-8694d0bd5187")
 	)
-	(text "Mounting Holes"
+	(text "ESD Protection"
 		(exclude_from_sim no)
 		(at 520.7 24.13 0)
 		(effects

@@ -1,9 +1,9 @@
-**/pcb/*-backups/*
-**/pcb/*.bak
-**/pcb/*.kicad_prl
-**/pcb/*.net
-**/pcb/place_footprints.log
-**/pcb/fp-info-cache
+**/*-backups/*
+**/*.bak
+**/*.kicad_prl
+**/*.net
+**/place_footprints.log
+**/fp-info-cache
 /groundstation/gui/ui/__pycache__
 /groundstation/gui/.venv
 /groundstation/gui/.idea
