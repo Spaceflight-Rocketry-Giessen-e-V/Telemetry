@@ -122,6 +122,43 @@ The encoding and decoding of packets according to our [packet structure](packet_
 So far, we only use [dipole stick antennas](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340) for our telemetry system. In the future, we plan to design and build our own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helix antenna on the ground side.
 
 ### Antenna design
+The Antenna design process is based on this [Paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463). This paper differentiates between NB (Narrow band)designs ans WB (Wide band) antennas, we chose an NB antenna for our system, which will be useful to get the needed information via the diagram form the paper.In addition manufacturing is based on prior prototype of an helical antenna.
+
+The first step we took, was accruing the frequency of the radio module in our case it is $f=869.525$ MHz which equals to a wavelength of 344.79mm. Further more we will use a wire radius of $sr = 3$ mm. 
+
+<p align="center"><img src="images/helix_plot_1.png" width = 600/></p>
+
+From this diagram we took an ratio of $L/C=5$ which in our case was a compromise between an longer antenna, which increases performance but adds more mechanical instability. With this we got $C/\lambda=0.9$.
+
+$\Rightarrow$ $C=\lambda\cdot 0.9 = 31.051$ cm 
+
+$\Rightarrow$ $L= 5C = 1.553$ m
+
+
+We chose this parameters for the balance between length and the size of the circumference. <p align="center"><img src="images/helix_plot_2.png" width = 600/></p>
+
+To get a value for the pitch angle $\alpha$ we first have to calculate:
+$$
+r/C=0.00966 \approx 0.01    
+$$
+This values is between $0.0015$ and $0.015$, but is much larger than the first ratio, therefore we chose an angle hat $L/C=5$ a little bit lower than $0.015$ which would be $\alpha=7.25°$.
+
+With the basic parameters wen can calculate the rest of the parameters.
+
+$$
+p=\tan \alpha \cdot C =39.502 \,\text{mm}
+$$
+$$
+N=L/p=39.303
+$$
+$$
+R=C/2\pi=49.420 \text{mm}
+$$
+
+$$
+L_{wire} = N\,\sqrt{C^2+p^2} = 12.303 \text{m}
+$$
+<p align="center"><img src="images/helix_plot.svg" width = 600/></p>
 
 Many resources on antennas: [antenna-theory.com](https://www.antenna-theory.com/)
 
