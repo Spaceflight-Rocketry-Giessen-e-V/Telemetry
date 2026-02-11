@@ -517,7 +517,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "TelemetryOnboard.net",
+      "netlist": "TelemetryGroundstationDB.net",
       "plot": "Production Files/",
       "pos_files": "",
       "specctra_dsn": "",
