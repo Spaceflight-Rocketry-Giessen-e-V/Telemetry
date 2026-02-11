@@ -482,7 +482,7 @@
     ]
   },
   "meta": {
-    "filename": "TelemetryOnboard.kicad_pro",
+    "filename": "TelemetryGroundstationDB.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -517,7 +517,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "TelemetryOnboard.net",
+      "netlist": "TelemetryGroundstationDB.net",
       "plot": "Production Files/",
       "pos_files": "",
       "specctra_dsn": "",
