@@ -35,7 +35,7 @@ In the future, this repository will include simulations, design files and assemb
 - **Description:** Designs for telemetry antennas -->
 
 ### 2. Electronics Hardware
-<p align="center"><img src="media/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
+<p align="center"><img src="media/images/Onboard_PCB.png" width="600"/></p>
 
 Included: 
 - Schematics
