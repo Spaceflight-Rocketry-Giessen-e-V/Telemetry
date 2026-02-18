@@ -2,6 +2,7 @@ import sys
 import time
 import dearpygui.dearpygui as dpg
 
+from ui.windows import com_monitor_controller
 # UI windows
 from ui.windows.location_window import LocationWindow
 from ui.windows.altitude_window import AltitudeWindow
@@ -12,6 +13,7 @@ from ui.windows.last_packet_window import LastPacketWindow
 from ui.windows.com_monitor_controller import ComMonitorController
 from ui.windows.flight_events_window import FlightEventMonitor
 from ui.windows.accelerometer_window import AccelerometerWindow
+from ui.windows.commands_window import CommandsWindow
 
 start_time = time.time()
 
@@ -43,6 +45,7 @@ class UIManager:
         self.last_packet = LastPacketWindow()
         self.flight_events = FlightEventMonitor()
         self.accelerometer_window = AccelerometerWindow()
+        self.commands_window = CommandsWindow(receiver=self.com_monitor_controller)
 
     def shutdown(self):
         dpg.destroy_context()
@@ -56,18 +59,26 @@ class UIManager:
                 self.altitude.draw_ui()
                 self.flight_events.draw_ui()
             with dpg.group(horizontal=False):
-                with dpg.group(horizontal=True):
-                    self.map_view.draw_ui()
-                    self.location.draw_ui(200, 300)
+                #with dpg.group(horizontal=True):
+                #    self.map_view.draw_ui()
+                #    self.location.draw_ui(200, 300)
                 self.accelerometer_window.draw_ui()
-
-
-
 
     def _draw_com_monitor_ui(self):
         with dpg.group(horizontal=False):
-            self.com_monitor_controller.draw_ui()
-            self.com_monitor.draw_ui()
+            with dpg.group(horizontal=True):
+                self.com_monitor_controller.draw_ui(400,400)
+                self.commands_window.draw_ui(800, 400)
+        self.com_monitor.draw_ui()
+
+    def _draw_map_view_ui(self):
+        with dpg.group(horizontal=True):
+            self.map_view.draw_ui()
+            self.location.draw_ui(200, 300)
+
+    def _draw_commands_screen_ui(self):
+        pass
+
 
     # --------------------------------------------------------
     #  Build UI
@@ -76,9 +87,10 @@ class UIManager:
         dpg.create_context()
 
         # Fullscreen viewport
-        width, height = get_screen_resolution()
+        #width, height = get_screen_resolution()
+        width, height = (1920, 1080)
         dpg.create_viewport(
-            title="MeerKat Ground Station",
+            title="Ground Station GUI",
             width=width,
             height=height,
             x_pos=0,
@@ -96,7 +108,7 @@ class UIManager:
 
         # Main
         with dpg.window(
-                label="MeerKat Ground Station",
+                label="Ground Station UI",
                 width=width,
                 height=height,
                 no_move=True,
@@ -107,6 +119,10 @@ class UIManager:
                     self._draw_flight_data_ui()
                 with dpg.tab(label="COM Monitor"):
                     self._draw_com_monitor_ui()
+                with dpg.tab(label="Map View"):
+                    self._draw_map_view_ui()
+                with dpg.tab(label="Commands"):
+                    self._draw_commands_screen_ui()
 
         dpg.setup_dearpygui()
         dpg.show_viewport()

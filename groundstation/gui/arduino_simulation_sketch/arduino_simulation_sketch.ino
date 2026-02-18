@@ -80,6 +80,7 @@ void loop() {
   Serial.print("rssi: ");                  Serial.println(rssi);
   Serial.print("time_since_last_packet: ");Serial.println(time_since_last_packet);
 
+
   // Update step
   step_counter++;
   if(step_counter > steps) step_counter = 0; // loop flight
