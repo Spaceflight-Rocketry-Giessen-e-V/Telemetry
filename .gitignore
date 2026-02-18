@@ -4,6 +4,7 @@
 **/*.net
 **/place_footprints.log
 **/fp-info-cache
+**/*.lck
 /groundstation/gui/ui/__pycache__
 /groundstation/gui/.venv
 /groundstation/gui/.idea
