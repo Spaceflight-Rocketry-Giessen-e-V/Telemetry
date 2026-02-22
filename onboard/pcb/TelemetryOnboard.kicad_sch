@@ -10364,12 +10364,6 @@
 		(uuid "436e8c11-d9e4-4a63-bf8c-5a4f45f02e4b")
 	)
 	(junction
-		(at 323.85 241.3)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4457b2fb-b6bd-4a46-9fe3-1217bd59e198")
-	)
-	(junction
 		(at 57.15 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10530,12 +10524,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8f67b6b5-a50e-44d3-8b62-b0dc2c5aa8d1")
-	)
-	(junction
-		(at 328.93 238.76)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8feacebe-ab28-4f6d-ba03-8597f9a14e45")
 	)
 	(junction
 		(at 468.63 226.06)
@@ -10860,6 +10848,10 @@
 		(uuid "527bbb64-ed47-466e-84f9-eded6911ea63")
 	)
 	(no_connect
+		(at 394.97 264.16)
+		(uuid "52f27bcc-bd31-4d85-874b-f55e2abd8472")
+	)
+	(no_connect
 		(at 394.97 256.54)
 		(uuid "5bc19cbd-4420-47b0-b343-ad7f7aa8478d")
 	)
@@ -10884,6 +10876,10 @@
 		(uuid "81f12a09-71a2-4158-8544-4d49e4f26b0e")
 	)
 	(no_connect
+		(at 394.97 259.08)
+		(uuid "9045d474-72cc-4624-ad96-62f1a28f2f0d")
+	)
+	(no_connect
 		(at 77.47 184.15)
 		(uuid "9477f1ef-5a6b-40a5-af8a-d52cccdfa3d0")
 	)
@@ -10894,10 +10890,6 @@
 	(no_connect
 		(at 214.63 270.51)
 		(uuid "9b4e95fe-0124-4e22-ba99-6658db6fadc0")
-	)
-	(no_connect
-		(at 394.97 266.7)
-		(uuid "a9cff072-31d2-4c9d-bc9c-a232b197ac3c")
 	)
 	(no_connect
 		(at 349.25 193.04)
@@ -11173,7 +11165,7 @@
 	)
 	(wire
 		(pts
-			(xy 328.93 238.76) (xy 349.25 238.76)
+			(xy 320.04 238.76) (xy 349.25 238.76)
 		)
 		(stroke
 			(width 0)
@@ -11240,16 +11232,6 @@
 			(type default)
 		)
 		(uuid "114f09d1-ffcd-44fb-80d8-e02c431af872")
-	)
-	(wire
-		(pts
-			(xy 323.85 241.3) (xy 349.25 241.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12095be4-d1b8-4ae5-9009-988375f6fbea")
 	)
 	(wire
 		(pts
@@ -11493,16 +11475,6 @@
 	)
 	(wire
 		(pts
-			(xy 328.93 236.22) (xy 328.93 238.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1cbe36b6-eab0-4893-abc7-692383fcd362")
-	)
-	(wire
-		(pts
 			(xy 373.38 279.4) (xy 373.38 276.86)
 		)
 		(stroke
@@ -11670,16 +11642,6 @@
 			(type default)
 		)
 		(uuid "26b8490b-2214-455c-860b-7910ed53d5b7")
-	)
-	(wire
-		(pts
-			(xy 323.85 236.22) (xy 323.85 241.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "27847b3c-b62c-4691-8216-3f7b68fe5997")
 	)
 	(wire
 		(pts
@@ -11913,6 +11875,16 @@
 	)
 	(wire
 		(pts
+			(xy 417.83 266.7) (xy 415.29 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3476c0f8-98d9-4037-8da2-0d31f9d9c16a")
+	)
+	(wire
+		(pts
 			(xy 290.83 86.36) (xy 290.83 81.28)
 		)
 		(stroke
@@ -12143,7 +12115,7 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 241.3) (xy 323.85 241.3)
+			(xy 320.04 241.3) (xy 349.25 241.3)
 		)
 		(stroke
 			(width 0)
@@ -12220,16 +12192,6 @@
 			(type default)
 		)
 		(uuid "4057402d-19cd-4121-af79-72fd50018991")
-	)
-	(wire
-		(pts
-			(xy 397.51 264.16) (xy 394.97 264.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "415d60c2-6f1b-4661-ae8c-49bdad92a574")
 	)
 	(wire
 		(pts
@@ -12413,16 +12375,6 @@
 	)
 	(wire
 		(pts
-			(xy 407.67 259.08) (xy 405.13 259.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "474ba139-ac27-44a7-8e5c-f5ad8bc44586")
-	)
-	(wire
-		(pts
 			(xy 59.69 83.82) (xy 39.37 83.82)
 		)
 		(stroke
@@ -12480,16 +12432,6 @@
 			(type default)
 		)
 		(uuid "4879d291-0221-4f5d-a605-1283a9dd3156")
-	)
-	(wire
-		(pts
-			(xy 397.51 259.08) (xy 394.97 259.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "489c76e2-ce23-4c2b-9764-953a6ebcc35f")
 	)
 	(wire
 		(pts
@@ -13633,16 +13575,6 @@
 	)
 	(wire
 		(pts
-			(xy 407.67 264.16) (xy 405.13 264.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8e5342f6-46ff-49a3-b197-9c23667318ea")
-	)
-	(wire
-		(pts
 			(xy 299.72 81.28) (xy 290.83 81.28)
 		)
 		(stroke
@@ -14120,16 +14052,6 @@
 			(type default)
 		)
 		(uuid "a70912b0-9ce2-4069-ad29-423d40566fcd")
-	)
-	(wire
-		(pts
-			(xy 417.83 264.16) (xy 415.29 264.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a7730457-d91b-4c7c-a281-8926da6b5ff9")
 	)
 	(wire
 		(pts
@@ -14683,6 +14605,16 @@
 	)
 	(wire
 		(pts
+			(xy 407.67 266.7) (xy 405.13 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd8edf2e-acc3-4d55-a8dd-676da7491607")
+	)
+	(wire
+		(pts
 			(xy 229.87 95.25) (xy 229.87 92.71)
 		)
 		(stroke
@@ -14810,16 +14742,6 @@
 			(type default)
 		)
 		(uuid "c2f0110b-32c0-4da1-b2b5-497de086864a")
-	)
-	(wire
-		(pts
-			(xy 320.04 238.76) (xy 328.93 238.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c38d5bab-31ba-4f82-baa5-1852f008159e")
 	)
 	(wire
 		(pts
@@ -15273,16 +15195,6 @@
 	)
 	(wire
 		(pts
-			(xy 417.83 259.08) (xy 415.29 259.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "da9a5829-acb3-4972-af90-c55cac012ee8")
-	)
-	(wire
-		(pts
 			(xy 347.98 73.66) (xy 350.52 73.66)
 		)
 		(stroke
@@ -15710,6 +15622,16 @@
 			(type default)
 		)
 		(uuid "f0231c72-7f20-4ff4-a92b-a8ec43e68d72")
+	)
+	(wire
+		(pts
+			(xy 397.51 266.7) (xy 394.97 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f0e4aa1a-4de7-4830-9875-da7486b2a330")
 	)
 	(wire
 		(pts
@@ -20550,73 +20472,6 @@
 		)
 	)
 	(symbol
-		(lib_name "+3V3_1")
-		(lib_id "power:+3V3")
-		(at 328.93 220.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1abe7aeb-d3a7-46f5-9afc-1462b1f81448")
-		(property "Reference" "#PWR0117"
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 328.93 215.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 328.93 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 328.93 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 328.93 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "65b78484-fcf4-495d-9b8a-287cfa68c9c6")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "#PWR0117")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:LED")
 		(at 219.71 109.22 90)
 		(unit 1)
@@ -24832,15 +24687,15 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 411.48 259.08 180)
+		(at 411.48 266.7 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "3a59a751-d83b-4087-824e-ff649c49074e")
-		(property "Reference" "D25"
-			(at 411.48 256.54 0)
+		(property "Reference" "D27"
+			(at 411.48 264.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24848,7 +24703,7 @@
 			)
 		)
 		(property "Value" "orange"
-			(at 412.75 256.54 0)
+			(at 412.75 264.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24857,7 +24712,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24866,7 +24721,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24875,7 +24730,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24884,7 +24739,7 @@
 			)
 		)
 		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24893,7 +24748,7 @@
 			)
 		)
 		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24902,7 +24757,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24911,7 +24766,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 411.48 259.08 0)
+			(at 411.48 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24928,7 +24783,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D25")
+					(reference "D27")
 					(unit 1)
 				)
 			)
@@ -25457,110 +25312,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LED")
-		(at 323.85 224.79 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3e146c63-6195-4694-b537-84ac33c342e7")
-		(property "Reference" "D24"
-			(at 326.644 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "red"
-			(at 326.39 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ad8e5224-1f38-4426-81c1-d749a2556d9e")
-		)
-		(pin "2"
-			(uuid "da1c9cf8-a7d8-4cbb-83f2-5f2ab453cbdc")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D24")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 412.75 114.3 270)
 		(unit 1)
@@ -25899,110 +25650,6 @@
 			(project "Platinenkonzept v3.0.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR042")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 323.85 232.41 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "42e499ed-d9ed-49dc-ab29-5f06c320e307")
-		(property "Reference" "R44"
-			(at 326.39 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1k"
-			(at 323.85 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 325.628 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 323.85 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 323.85 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
-			(at 323.85 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
-			(at 323.85 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 323.85 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 323.85 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ae960921-45ad-4406-ab1b-f9c9b79d2256")
-		)
-		(pin "2"
-			(uuid "70e3bff7-c8c6-42c6-a165-08bb7643b3ec")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -27913,7 +27560,7 @@
 	(symbol
 		(lib_name "GND_2")
 		(lib_id "power:GND")
-		(at 417.83 259.08 90)
+		(at 417.83 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -27922,7 +27569,7 @@
 		(fields_autoplaced yes)
 		(uuid "5d4d6669-110f-49c6-895d-709149fc44fa")
 		(property "Reference" "#PWR0119"
-			(at 424.18 259.08 0)
+			(at 424.18 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27931,7 +27578,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 421.64 259.0801 90)
+			(at 421.64 266.7001 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27940,7 +27587,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 417.83 259.08 0)
+			(at 417.83 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27949,7 +27596,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 417.83 259.08 0)
+			(at 417.83 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27958,7 +27605,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 417.83 259.08 0)
+			(at 417.83 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28039,110 +27686,6 @@
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR091")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 411.48 264.16 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5f0e2d99-cc87-4a68-bc30-21707c888384")
-		(property "Reference" "D28"
-			(at 412.496 260.858 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "orange"
-			(at 412.75 261.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 411.48 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5783ae8f-4bd4-4a30-98f5-8d6bd0e6ad70")
-		)
-		(pin "2"
-			(uuid "e4381b5e-56a1-47f4-94fd-ec91659ecf4b")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D28")
 					(unit 1)
 				)
 			)
@@ -30811,7 +30354,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7c111275-4681-43f6-93a8-4c4d7327598d")
-		(property "Reference" "R46"
+		(property "Reference" "R45"
 			(at 401.32 215.9 90)
 			(effects
 				(font
@@ -30900,7 +30443,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R46")
+					(reference "R45")
 					(unit 1)
 				)
 			)
@@ -31389,7 +30932,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8604f348-013a-4912-8200-6201b5681bbc")
-		(property "Reference" "R47"
+		(property "Reference" "R46"
 			(at 401.32 218.186 90)
 			(effects
 				(font
@@ -31478,7 +31021,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R47")
+					(reference "R46")
 					(unit 1)
 				)
 			)
@@ -32081,110 +31624,6 @@
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR084")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 328.93 224.79 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8f3d91d9-b760-4383-a371-8e6069bfc4ab")
-		(property "Reference" "D23"
-			(at 331.47 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "red"
-			(at 331.47 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 328.93 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2455e49d-fb40-4b4f-a158-626b2e30cbf0")
-		)
-		(pin "2"
-			(uuid "2864c014-98e4-4f76-bcb5-6da5e6d9cff5")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D23")
 					(unit 1)
 				)
 			)
@@ -33441,15 +32880,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 401.32 259.08 270)
+		(at 401.32 266.7 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "a0a2b35f-31db-4c74-ab25-79a95f3bdba3")
-		(property "Reference" "R45"
-			(at 401.32 256.54 90)
+		(property "Reference" "R47"
+			(at 401.32 264.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33457,7 +32896,7 @@
 			)
 		)
 		(property "Value" "270R"
-			(at 401.32 259.08 90)
+			(at 401.32 266.7 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33466,7 +32905,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 401.32 257.302 90)
+			(at 401.32 264.922 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33475,7 +32914,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 401.32 259.08 0)
+			(at 401.32 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33484,7 +32923,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 401.32 259.08 0)
+			(at 401.32 266.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33493,7 +32932,7 @@
 			)
 		)
 		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
-			(at 401.32 259.08 90)
+			(at 401.32 266.7 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33502,7 +32941,7 @@
 			)
 		)
 		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
-			(at 401.32 259.08 90)
+			(at 401.32 266.7 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33511,7 +32950,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 401.32 259.08 90)
+			(at 401.32 266.7 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33520,7 +32959,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 401.32 259.08 90)
+			(at 401.32 266.7 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33537,7 +32976,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R45")
+					(reference "R47")
 					(unit 1)
 				)
 			)
@@ -34400,7 +33839,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ad76f2f3-295a-4902-8e38-85e6eb12feef")
-		(property "Reference" "D26"
+		(property "Reference" "D25"
 			(at 411.48 215.9 0)
 			(effects
 				(font
@@ -34489,7 +33928,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D26")
+					(reference "D25")
 					(unit 1)
 				)
 			)
@@ -35205,110 +34644,6 @@
 			(project "Platinenkonzept v2.1.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#FLG03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 401.32 264.16 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bc3dc7bf-ca5e-4860-a44c-75d142365c8b")
-		(property "Reference" "R48"
-			(at 401.32 261.62 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "270R"
-			(at 401.32 264.16 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 401.32 262.382 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 401.32 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 401.32 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
-			(at 401.32 264.16 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
-			(at 401.32 264.16 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 401.32 264.16 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 401.32 264.16 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e4476c08-efb7-4caf-be72-0bbf043f093f")
-		)
-		(pin "2"
-			(uuid "7249c761-be7e-4ead-9eba-524459881766")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R48")
 					(unit 1)
 				)
 			)
@@ -37122,74 +36457,6 @@
 		)
 	)
 	(symbol
-		(lib_name "GND_2")
-		(lib_id "power:GND")
-		(at 417.83 264.16 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cb64abdd-2ffa-40ef-a30f-993877580161")
-		(property "Reference" "#PWR0122"
-			(at 424.18 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 421.64 264.1601 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 417.83 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 417.83 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 417.83 264.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "71ff67dd-55df-43c6-892e-a9404f64f139")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "#PWR0122")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:LED")
 		(at 426.72 163.83 90)
 		(unit 1)
@@ -37630,110 +36897,6 @@
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 328.93 232.41 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ce8615e9-466c-49b8-ad97-7b56205b0b5f")
-		(property "Reference" "R43"
-			(at 331.47 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1k"
-			(at 328.93 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 327.152 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 328.93 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 328.93 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
-			(at 328.93 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
-			(at 328.93 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 328.93 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 328.93 232.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5c3297db-dd31-4f40-b7a9-69b3c88621eb")
-		)
-		(pin "2"
-			(uuid "31d0be31-f321-4921-8772-968bdb646330")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R43")
 					(unit 1)
 				)
 			)
@@ -39033,73 +38196,6 @@
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "+3V3_1")
-		(lib_id "power:+3V3")
-		(at 323.85 220.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "da4d01c0-be4d-4180-8bd6-ae23ab082915")
-		(property "Reference" "#PWR0118"
-			(at 323.85 224.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 323.85 215.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 323.85 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 323.85 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 323.85 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4a480423-f01a-432f-8e4d-e245ab5afd3f")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "#PWR0118")
 					(unit 1)
 				)
 			)
@@ -42140,7 +41236,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ff7e5bf9-e841-4529-81ca-a917fa1ee20e")
-		(property "Reference" "D27"
+		(property "Reference" "D26"
 			(at 411.48 218.186 0)
 			(effects
 				(font
@@ -42229,7 +41325,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D27")
+					(reference "D26")
 					(unit 1)
 				)
 			)
