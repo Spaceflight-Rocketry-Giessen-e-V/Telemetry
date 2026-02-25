@@ -10017,8 +10017,8 @@
 		(uuid d8bb65e9-48e3-40be-86a5-26991b046aa0)
 	)
 	(rectangle
-		(start 509.27 141.986)
-		(end 565.15 167.64)
+		(start 497.84 143.256)
+		(end 553.72 168.91)
 		(stroke
 			(width 0)
 			(type default)
@@ -10228,7 +10228,7 @@
 	)
 	(text "Cable to Umbilical Connector"
 		(exclude_from_sim no)
-		(at 509.27 140.97 0)
+		(at 497.84 142.24 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16957,7 +16957,7 @@
 	)
 	(global_label "TX1"
 		(shape input)
-		(at 520.7 152.4 180)
+		(at 509.27 153.67 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16967,7 +16967,7 @@
 		)
 		(uuid "6aec2b05-e826-4c61-9ea3-754f42ea9e3a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 514.3282 152.4 0)
+			(at 502.8982 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17309,7 +17309,7 @@
 	)
 	(global_label "RX1"
 		(shape output)
-		(at 520.7 149.86 180)
+		(at 509.27 151.13 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17319,7 +17319,7 @@
 		)
 		(uuid "92f9d7a7-7451-4379-aa1b-ddcdf40c22c1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 514.0258 149.86 0)
+			(at 502.5958 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18877,7 +18877,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 520.7 157.48 270)
+		(at 509.27 158.75 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18886,7 +18886,7 @@
 		(fields_autoplaced yes)
 		(uuid "0527947c-3503-4384-a083-ce57916defb1")
 		(property "Reference" "#PWR0111"
-			(at 514.35 157.48 0)
+			(at 502.92 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18895,7 +18895,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 516.89 157.4799 90)
+			(at 505.46 158.7499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18904,7 +18904,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 520.7 157.48 0)
+			(at 509.27 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18913,7 +18913,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 520.7 157.48 0)
+			(at 509.27 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18922,7 +18922,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 520.7 157.48 0)
+			(at 509.27 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19640,7 +19640,7 @@
 	)
 	(symbol
 		(lib_id "Symbols:Molex_MicroFit_2pin")
-		(at 525.78 154.94 0)
+		(at 514.35 156.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19649,7 +19649,7 @@
 		(fields_autoplaced yes)
 		(uuid "0d2fd9b6-9fea-4c4b-b8ef-16acdebc7af5")
 		(property "Reference" "J5"
-			(at 539.75 153.6699 0)
+			(at 528.32 154.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19658,7 +19658,7 @@
 			)
 		)
 		(property "Value" "Molex_MicroFit_2pin"
-			(at 539.75 156.2099 0)
+			(at 528.32 157.4799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19667,7 +19667,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Molex_MicroFit_2pin"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19677,7 +19677,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19686,7 +19686,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19695,7 +19695,7 @@
 			)
 		)
 		(property "DigiKey_Part_Number" "WM1870-ND"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19705,7 +19705,7 @@
 			)
 		)
 		(property "SnapEDA_Link" "https://www.snapeda.com/parts/436500203/Molex/view-part/?ref=snap"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19715,7 +19715,7 @@
 			)
 		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "5.57 mm"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19725,7 +19725,7 @@
 			)
 		)
 		(property "Package" "None"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19735,7 +19735,7 @@
 			)
 		)
 		(property "Check_prices" "https://www.snapeda.com/parts/436500203/Molex/view-part/?ref=eda"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19745,7 +19745,7 @@
 			)
 		)
 		(property "STANDARD" "Manufacturer Recommendations"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19755,7 +19755,7 @@
 			)
 		)
 		(property "PARTREV" "F3"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19765,7 +19765,7 @@
 			)
 		)
 		(property "MF" "Molex"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19775,7 +19775,7 @@
 			)
 		)
 		(property "MP" "436500203"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19785,7 +19785,7 @@
 			)
 		)
 		(property "Description_1" "Conn Wire to Board HDR 2 POS 3mm Solder RA Side Entry Thru-Hole Micro-Fit 3.0™ Tray"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19795,7 +19795,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Molex"
-			(at 525.78 154.94 0)
+			(at 514.35 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19832,7 +19832,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "0f2aa905-b324-4abb-85ae-e8400157f965")
 		(property "Reference" "D11"
 			(at 396.24 99.822 0)
@@ -30092,7 +30092,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "7a804686-f150-4a00-b6b0-733e0fff915a")
 		(property "Reference" "R20"
 			(at 406.4 99.568 90)
@@ -31475,7 +31475,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "8c9ade12-04c7-4c05-9594-02b04752f2e7")
 		(property "Reference" "D12"
 			(at 396.24 109.982 0)
@@ -36147,7 +36147,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 520.7 160.02 270)
+		(at 509.27 161.29 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -36156,7 +36156,7 @@
 		(fields_autoplaced yes)
 		(uuid "c9eb9964-644f-4c22-af5b-fa1acc4bc2b5")
 		(property "Reference" "#PWR0112"
-			(at 514.35 160.02 0)
+			(at 502.92 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36165,7 +36165,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 516.89 160.0199 90)
+			(at 505.46 161.2899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36174,7 +36174,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 520.7 160.02 0)
+			(at 509.27 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36183,7 +36183,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 520.7 160.02 0)
+			(at 509.27 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36192,7 +36192,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 520.7 160.02 0)
+			(at 509.27 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -38273,7 +38273,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "dae78e8f-c148-49f2-ae27-1544f01a20d1")
 		(property "Reference" "R21"
 			(at 406.4 109.728 90)
