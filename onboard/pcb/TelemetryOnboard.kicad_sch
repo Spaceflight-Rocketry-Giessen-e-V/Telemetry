@@ -9874,7 +9874,7 @@
 	)
 	(rectangle
 		(start 186.69 306.07)
-		(end 209.55 397.51)
+		(end 209.55 403.86)
 		(stroke
 			(width 0)
 			(type default)
@@ -10792,16 +10792,8 @@
 		(uuid "06511879-b6c8-4890-9e1e-aba11847aa73")
 	)
 	(no_connect
-		(at 394.97 254)
-		(uuid "06a64ae3-ed12-48b2-a14c-cd010fc8c016")
-	)
-	(no_connect
 		(at 331.47 62.23)
 		(uuid "08c4503f-bc5d-4e84-9701-7143ecedace9")
-	)
-	(no_connect
-		(at 394.97 261.62)
-		(uuid "0b3a9fd5-96e5-4b85-89b8-fca96ff0e7da")
 	)
 	(no_connect
 		(at 349.25 190.5)
@@ -10844,16 +10836,20 @@
 		(uuid "4800dacb-f156-49fb-836a-c0395c573719")
 	)
 	(no_connect
+		(at 394.97 266.7)
+		(uuid "4ccdfb14-4796-4907-9839-7a2389653fcc")
+	)
+	(no_connect
 		(at 394.97 236.22)
 		(uuid "527bbb64-ed47-466e-84f9-eded6911ea63")
 	)
 	(no_connect
-		(at 394.97 264.16)
-		(uuid "52f27bcc-bd31-4d85-874b-f55e2abd8472")
+		(at 394.97 261.62)
+		(uuid "52ec68bb-97c7-44b2-8c75-9a74d52f7539")
 	)
 	(no_connect
-		(at 394.97 256.54)
-		(uuid "5bc19cbd-4420-47b0-b343-ad7f7aa8478d")
+		(at 394.97 264.16)
+		(uuid "57329d0d-391c-4dd5-8589-7127ed8934a7")
 	)
 	(no_connect
 		(at 349.25 195.58)
@@ -10874,10 +10870,6 @@
 	(no_connect
 		(at 213.36 62.23)
 		(uuid "81f12a09-71a2-4158-8544-4d49e4f26b0e")
-	)
-	(no_connect
-		(at 394.97 259.08)
-		(uuid "9045d474-72cc-4624-ad96-62f1a28f2f0d")
 	)
 	(no_connect
 		(at 77.47 184.15)
@@ -11162,6 +11154,16 @@
 			(type default)
 		)
 		(uuid "0d55dde2-14c8-4939-b989-2287e75b0db8")
+	)
+	(wire
+		(pts
+			(xy 407.67 259.08) (xy 405.13 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e482d58-1b13-484b-bb35-7833a50e94c1")
 	)
 	(wire
 		(pts
@@ -11872,16 +11874,6 @@
 			(type default)
 		)
 		(uuid "343439f4-bce0-47bc-aa14-2f21b3c9708e")
-	)
-	(wire
-		(pts
-			(xy 417.83 266.7) (xy 415.29 266.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3476c0f8-98d9-4037-8da2-0d31f9d9c16a")
 	)
 	(wire
 		(pts
@@ -13195,6 +13187,16 @@
 	)
 	(wire
 		(pts
+			(xy 397.51 259.08) (xy 394.97 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74f97e10-1e5c-4cf0-8c08-84df76e703bb")
+	)
+	(wire
+		(pts
 			(xy 204.47 173.99) (xy 212.09 173.99)
 		)
 		(stroke
@@ -13315,6 +13317,16 @@
 	)
 	(wire
 		(pts
+			(xy 407.67 256.54) (xy 405.13 256.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d658f36-e699-485e-8764-932a08b2841b")
+	)
+	(wire
+		(pts
 			(xy 224.79 118.11) (xy 224.79 115.57)
 		)
 		(stroke
@@ -13392,6 +13404,16 @@
 			(type default)
 		)
 		(uuid "82ebb5cd-fdd1-44e7-a47e-adff7b8d1d33")
+	)
+	(wire
+		(pts
+			(xy 407.67 254) (xy 405.13 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "834d66e6-5977-4f53-9439-5e7675fa2772")
 	)
 	(wire
 		(pts
@@ -14055,6 +14077,16 @@
 	)
 	(wire
 		(pts
+			(xy 417.83 254) (xy 415.29 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a71e1224-81b7-4f47-ba4b-80458d21bc1b")
+	)
+	(wire
+		(pts
 			(xy 59.69 35.56) (xy 41.91 35.56)
 		)
 		(stroke
@@ -14525,6 +14557,16 @@
 	)
 	(wire
 		(pts
+			(xy 397.51 254) (xy 394.97 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbd8fd08-ec55-4eca-9701-c1d0c70f512b")
+	)
+	(wire
+		(pts
 			(xy 252.73 275.59) (xy 250.19 275.59)
 		)
 		(stroke
@@ -14602,16 +14644,6 @@
 			(type default)
 		)
 		(uuid "bd7cf3ca-1f74-465f-aa45-a9433f0bcc70")
-	)
-	(wire
-		(pts
-			(xy 407.67 266.7) (xy 405.13 266.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd8edf2e-acc3-4d55-a8dd-676da7491607")
 	)
 	(wire
 		(pts
@@ -15085,6 +15117,16 @@
 	)
 	(wire
 		(pts
+			(xy 417.83 259.08) (xy 415.29 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4351179-9fdf-4775-b2d2-af57742d91dc")
+	)
+	(wire
+		(pts
 			(xy 247.65 184.15) (xy 245.11 184.15)
 		)
 		(stroke
@@ -15262,6 +15304,16 @@
 			(type default)
 		)
 		(uuid "dc752831-971f-4229-9d96-f38c97d2afbe")
+	)
+	(wire
+		(pts
+			(xy 417.83 256.54) (xy 415.29 256.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc8e62dd-b828-4335-903c-656c9ebd6ae4")
 	)
 	(wire
 		(pts
@@ -15625,16 +15677,6 @@
 	)
 	(wire
 		(pts
-			(xy 397.51 266.7) (xy 394.97 266.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f0e4aa1a-4de7-4830-9875-da7486b2a330")
-	)
-	(wire
-		(pts
 			(xy 110.49 40.64) (xy 97.79 40.64)
 		)
 		(stroke
@@ -15652,6 +15694,16 @@
 			(type default)
 		)
 		(uuid "f3578665-bc18-46a9-aa96-642efbb671d5")
+	)
+	(wire
+		(pts
+			(xy 397.51 256.54) (xy 394.97 256.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3ef096f-d165-42bb-ab37-40646e3a9395")
 	)
 	(wire
 		(pts
@@ -16229,28 +16281,6 @@
 			)
 		)
 	)
-	(global_label "MISO0"
-		(shape input)
-		(at 196.85 382.27 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2dfd88ac-f6ba-4d5e-91a2-91f3d4313520")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.0591 382.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "CS0"
 		(shape input)
 		(at 118.11 377.19 180)
@@ -16264,28 +16294,6 @@
 		(uuid "3508d4d7-56aa-4d99-ac3f-0776b8d523fb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 111.4358 377.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "CS0"
-		(shape input)
-		(at 196.85 392.43 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "37cd991e-18ca-4d07-8484-c7794c14e3bd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.1758 392.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16627,7 +16635,7 @@
 	)
 	(global_label "TX3"
 		(shape input)
-		(at 196.85 367.03 180)
+		(at 196.85 361.95 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16637,7 +16645,7 @@
 		)
 		(uuid "5a08b6ac-9070-4304-a92b-dfe116606a16")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.4782 367.03 0)
+			(at 190.4782 361.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16704,28 +16712,6 @@
 		(uuid "5cc5025d-71ed-4f70-b1dd-7047c526c021")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 30.0953 334.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SCK0"
-		(shape input)
-		(at 196.85 387.35 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "5d809747-7f45-4aef-8571-87e551abf55a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.9058 387.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17259,6 +17245,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "TX1"
+		(shape input)
+		(at 196.85 372.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "850f9386-17e2-49d3-b880-26dcdd6502a1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 190.4782 372.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -18011,9 +18019,31 @@
 			)
 		)
 	)
+	(global_label "RX1"
+		(shape input)
+		(at 196.85 377.19 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d9827ac9-3fea-437e-b1c3-bf3f47e89696")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 190.1758 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "RX3"
 		(shape input)
-		(at 196.85 372.11 180)
+		(at 196.85 367.03 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18023,7 +18053,7 @@
 		)
 		(uuid "db7631e2-7c20-4118-9a7d-59a78c527244")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.1758 372.11 0)
+			(at 190.1758 367.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18079,7 +18109,7 @@
 	)
 	(global_label "RX0"
 		(shape input)
-		(at 196.85 361.95 180)
+		(at 196.85 356.87 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18089,7 +18119,7 @@
 		)
 		(uuid "e11c0ba1-d5a5-491d-9ae8-57c548fb924a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.1758 361.95 0)
+			(at 190.1758 356.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18233,7 +18263,7 @@
 	)
 	(global_label "TX0"
 		(shape input)
-		(at 196.85 356.87 180)
+		(at 196.85 351.79 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18243,7 +18273,7 @@
 		)
 		(uuid "f1d7e2bd-24f3-4689-868c-725247b2a3b2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.4782 356.87 0)
+			(at 190.4782 351.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18310,28 +18340,6 @@
 		(uuid "f71be2c4-fd61-436b-8286-700bae675b63")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 111.7382 387.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "MOSI0"
-		(shape input)
-		(at 196.85 377.19 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f8ea85c4-9f26-48f7-bb8a-8a85e2befa32")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.0591 377.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21325,92 +21333,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 377.19 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board no)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "1ee34b0d-9db9-4734-a278-6aa97389e145")
-		(property "Reference" "TP36"
-			(at 201.93 377.1899 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 378.4599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 382.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 382.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 377.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 377.19 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 377.19 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f84c89df-bdd7-4ee0-b2d0-204076bdcfbb")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP36")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 212.09 176.53 0)
 		(unit 1)
@@ -23086,7 +23008,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 367.03 270)
+		(at 196.85 361.95 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23095,7 +23017,7 @@
 		(fields_autoplaced yes)
 		(uuid "30e74048-e172-4dda-9caa-06c553c2a1b2")
 		(property "Reference" "TP16"
-			(at 201.93 367.0299 90)
+			(at 201.93 361.9499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23104,7 +23026,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 368.2999 90)
+			(at 201.93 363.2199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23114,24 +23036,6 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 372.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 372.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
 			(at 196.85 367.03 0)
 			(effects
 				(font
@@ -23140,8 +23044,26 @@
 				(hide yes)
 			)
 		)
+		(property "Datasheet" "~"
+			(at 196.85 367.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Availability" ""
-			(at 196.85 367.03 90)
+			(at 196.85 361.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23150,7 +23072,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 367.03 90)
+			(at 196.85 361.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24687,7 +24609,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 411.48 266.7 180)
+		(at 411.48 254 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24695,7 +24617,7 @@
 		(dnp no)
 		(uuid "3a59a751-d83b-4087-824e-ff649c49074e")
 		(property "Reference" "D27"
-			(at 411.48 264.16 0)
+			(at 411.48 251.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24703,7 +24625,7 @@
 			)
 		)
 		(property "Value" "orange"
-			(at 412.75 264.16 0)
+			(at 412.75 251.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24712,7 +24634,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24721,7 +24643,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24730,7 +24652,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24739,7 +24661,7 @@
 			)
 		)
 		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24748,7 +24670,7 @@
 			)
 		)
 		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24757,7 +24679,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24766,7 +24688,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 411.48 266.7 0)
+			(at 411.48 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25153,6 +25075,110 @@
 			(project "Platinenkonzept v3.0.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR076")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 401.32 259.08 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3d0e3d0c-5c09-4426-9f02-78d7fd8d38d5")
+		(property "Reference" "R44"
+			(at 401.32 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "270R"
+			(at 401.32 259.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 401.32 257.302 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 401.32 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 401.32 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 401.32 259.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 401.32 259.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 401.32 259.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 401.32 259.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b1393c1f-a96a-477c-97c1-f79a6394d735")
+		)
+		(pin "2"
+			(uuid "1893f0c0-df33-497c-9d52-71a3a59409cb")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -26597,6 +26623,110 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED")
+		(at 411.48 256.54 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "58a0ce2d-cc77-4713-ac14-ff62164a8ba8")
+		(property "Reference" "D23"
+			(at 411.48 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "orange"
+			(at 412.75 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a5de31a9-9b06-4f04-a4e5-ca737d5d987c")
+		)
+		(pin "2"
+			(uuid "a4e181c5-2035-411e-a548-ce5415786715")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "D23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 59.69 45.72 90)
 		(unit 1)
@@ -27206,93 +27336,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 392.43 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board no)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "5c0ca677-52b5-419a-8fc0-fe17c0435dc8")
-		(property "Reference" "TP39"
-			(at 201.93 392.4299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 393.6999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 397.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 397.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 392.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 392.43 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 392.43 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "22fb3ade-e8e6-4bd7-b2c7-afa5d2a96d89")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP39")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 372.11 270)
+		(at 196.85 367.03 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -27301,7 +27345,7 @@
 		(fields_autoplaced yes)
 		(uuid "5c189da9-bb2d-4219-85b0-d92412ed3bcc")
 		(property "Reference" "TP17"
-			(at 201.93 372.1099 90)
+			(at 201.93 367.0299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27310,7 +27354,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 373.3799 90)
+			(at 201.93 368.2999 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27320,24 +27364,6 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 377.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 377.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
 			(at 196.85 372.11 0)
 			(effects
 				(font
@@ -27346,8 +27372,26 @@
 				(hide yes)
 			)
 		)
+		(property "Datasheet" "~"
+			(at 196.85 372.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 367.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Availability" ""
-			(at 196.85 372.11 90)
+			(at 196.85 367.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27356,7 +27400,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 372.11 90)
+			(at 196.85 367.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27560,7 +27604,7 @@
 	(symbol
 		(lib_name "GND_2")
 		(lib_id "power:GND")
-		(at 417.83 266.7 90)
+		(at 417.83 254 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -27569,7 +27613,7 @@
 		(fields_autoplaced yes)
 		(uuid "5d4d6669-110f-49c6-895d-709149fc44fa")
 		(property "Reference" "#PWR0119"
-			(at 424.18 266.7 0)
+			(at 424.18 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27578,7 +27622,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 421.64 266.7001 90)
+			(at 421.64 254.0001 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27587,7 +27631,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 417.83 266.7 0)
+			(at 417.83 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27596,7 +27640,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 417.83 266.7 0)
+			(at 417.83 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27605,7 +27649,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 417.83 266.7 0)
+			(at 417.83 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30450,6 +30494,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 196.85 372.11 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7d7ab0ae-48bc-49b0-ad00-7cee28c6b703")
+		(property "Reference" "TP6"
+			(at 201.93 372.1099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 201.93 373.3799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Footprints:Test Point"
+			(at 196.85 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 196.85 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 372.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 196.85 372.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 372.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8dcd23d7-b4dd-41d9-8644-00e47c08939d")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 111.76 218.44 270)
 		(unit 1)
@@ -30536,7 +30666,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 356.87 270)
+		(at 196.85 351.79 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -30545,7 +30675,7 @@
 		(fields_autoplaced yes)
 		(uuid "7e739553-b9e2-4712-aa0b-385c331a4f75")
 		(property "Reference" "TP70"
-			(at 201.93 356.8699 90)
+			(at 201.93 351.7899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30554,7 +30684,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 358.1399 90)
+			(at 201.93 353.0599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30564,24 +30694,6 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 361.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
 			(at 196.85 356.87 0)
 			(effects
 				(font
@@ -30590,8 +30702,26 @@
 				(hide yes)
 			)
 		)
+		(property "Datasheet" "~"
+			(at 196.85 356.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Availability" ""
-			(at 196.85 356.87 90)
+			(at 196.85 351.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30600,7 +30730,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 356.87 90)
+			(at 196.85 351.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31631,6 +31761,110 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 401.32 256.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8f005423-5e5f-4884-a004-263bf128f9f4")
+		(property "Reference" "R43"
+			(at 401.32 254 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "270R"
+			(at 401.32 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 401.32 254.762 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 401.32 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 401.32 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 401.32 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+			(at 401.32 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 401.32 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 401.32 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e236a082-1cbc-4ada-8a17-7f70513c103b")
+		)
+		(pin "2"
+			(uuid "7028e35a-30af-4a7a-88ba-de3d2aa10b4d")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "R43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 212.09 209.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -32457,6 +32691,74 @@
 		)
 	)
 	(symbol
+		(lib_name "GND_2")
+		(lib_id "power:GND")
+		(at 417.83 259.08 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9ad22661-9967-4bce-b270-e13bf2cd67c6")
+		(property "Reference" "#PWR0114"
+			(at 424.18 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 421.64 259.0801 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 417.83 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 417.83 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 417.83 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2272edc3-a8da-4f67-89ba-f61d4a695420")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "#PWR0114")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 59.69 93.98 270)
 		(unit 1)
@@ -32880,7 +33182,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 401.32 266.7 270)
+		(at 401.32 254 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -32888,7 +33190,7 @@
 		(dnp no)
 		(uuid "a0a2b35f-31db-4c74-ab25-79a95f3bdba3")
 		(property "Reference" "R47"
-			(at 401.32 264.16 90)
+			(at 401.32 251.46 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32896,7 +33198,7 @@
 			)
 		)
 		(property "Value" "270R"
-			(at 401.32 266.7 90)
+			(at 401.32 254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32905,7 +33207,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 401.32 264.922 90)
+			(at 401.32 252.222 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32914,7 +33216,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 401.32 266.7 0)
+			(at 401.32 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32923,7 +33225,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 401.32 266.7 0)
+			(at 401.32 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32932,7 +33234,7 @@
 			)
 		)
 		(property "Digikey Link" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
-			(at 401.32 266.7 90)
+			(at 401.32 254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32941,7 +33243,7 @@
 			)
 		)
 		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
-			(at 401.32 266.7 90)
+			(at 401.32 254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32950,7 +33252,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 401.32 266.7 90)
+			(at 401.32 254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32959,7 +33261,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 401.32 266.7 90)
+			(at 401.32 254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34737,92 +35039,6 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 387.35 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board no)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "bd95d9a7-4f86-4750-8e32-808c5a11d31c")
-		(property "Reference" "TP38"
-			(at 201.93 387.3499 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 388.6199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 392.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 392.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 387.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 387.35 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 387.35 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0b18a7a0-2dfb-4ae2-a739-c839c5a1e529")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP38")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
 		(at 107.95 180.34 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -36374,6 +36590,74 @@
 		)
 	)
 	(symbol
+		(lib_name "GND_2")
+		(lib_id "power:GND")
+		(at 417.83 256.54 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cb57739c-ac6f-4b14-b0c0-72260110ed93")
+		(property "Reference" "#PWR0113"
+			(at 424.18 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 421.64 256.5401 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 417.83 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 417.83 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 417.83 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "002b5b6f-5652-40d4-b22f-9bf32348b9fa")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x01_Pin")
 		(at 452.12 114.3 0)
 		(unit 1)
@@ -37077,7 +37361,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 361.95 270)
+		(at 196.85 356.87 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -37086,7 +37370,7 @@
 		(fields_autoplaced yes)
 		(uuid "d22ed0bd-bce4-495c-9c4d-f93b2eea74e2")
 		(property "Reference" "TP80"
-			(at 201.93 361.9499 90)
+			(at 201.93 356.8699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37095,7 +37379,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 363.2199 90)
+			(at 201.93 358.1399 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37105,24 +37389,6 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 367.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 367.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
 			(at 196.85 361.95 0)
 			(effects
 				(font
@@ -37131,8 +37397,26 @@
 				(hide yes)
 			)
 		)
+		(property "Datasheet" "~"
+			(at 196.85 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 356.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Availability" ""
-			(at 196.85 361.95 90)
+			(at 196.85 356.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37141,7 +37425,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 361.95 90)
+			(at 196.85 356.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -39631,6 +39915,110 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED")
+		(at 411.48 259.08 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eab6e608-1574-4997-81b2-5372eeec3903")
+		(property "Reference" "D24"
+			(at 411.48 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "orange"
+			(at 412.75 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey Link" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 411.48 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "933981fb-f681-4c4a-9887-f8dc11fbbafa")
+		)
+		(pin "2"
+			(uuid "17efd76c-f53a-46eb-9441-aead2f99968b")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "D24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 468.63 219.71 0)
 		(unit 1)
@@ -40146,6 +40534,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 196.85 377.19 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f1ac7747-ffd0-41bc-a5e3-030347874eb3")
+		(property "Reference" "TP7"
+			(at 201.93 377.1899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 201.93 378.4599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Footprints:Test Point"
+			(at 196.85 382.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 196.85 382.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 196.85 377.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 377.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "59c79b05-5cad-4c06-b96e-87503403aab2")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Symbols:WE-TVS_SOT23-3L_824021")
 		(at 530.86 44.45 270)
 		(unit 1)
@@ -40386,92 +40860,6 @@
 			(project "Platinenkonzept v3.0.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR050")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 382.27 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board no)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "f5c52ed3-d605-4d79-94f8-0b79dd255e82")
-		(property "Reference" "TP37"
-			(at 201.93 382.2699 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 383.5399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 387.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 387.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 382.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 382.27 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 382.27 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0c27355b-c421-46d2-8465-cecaf5aeec1d")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP37")
 					(unit 1)
 				)
 			)
