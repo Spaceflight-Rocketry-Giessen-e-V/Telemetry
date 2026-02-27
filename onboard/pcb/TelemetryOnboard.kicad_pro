@@ -675,6 +675,42 @@
           "label": "Digikey Link",
           "name": "Digikey Link",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Type",
+          "name": "Sim.Type",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "CREATOR",
+          "name": "CREATOR",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "VERIFIER",
+          "name": "VERIFIER",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "DigiKey_Part_Number",
+          "name": "DigiKey_Part_Number",
+          "show": false
         }
       ],
       "filter_string": "",

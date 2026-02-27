@@ -16635,7 +16635,7 @@
 	)
 	(global_label "TX3"
 		(shape input)
-		(at 196.85 361.95 180)
+		(at 196.85 372.11 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16645,7 +16645,7 @@
 		)
 		(uuid "5a08b6ac-9070-4304-a92b-dfe116606a16")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.4782 361.95 0)
+			(at 190.4782 372.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17251,7 +17251,7 @@
 	)
 	(global_label "TX1"
 		(shape input)
-		(at 196.85 372.11 180)
+		(at 196.85 361.95 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -17261,7 +17261,7 @@
 		)
 		(uuid "850f9386-17e2-49d3-b880-26dcdd6502a1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.4782 372.11 0)
+			(at 190.4782 361.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18021,7 +18021,7 @@
 	)
 	(global_label "RX1"
 		(shape input)
-		(at 196.85 377.19 180)
+		(at 196.85 367.03 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18031,7 +18031,7 @@
 		)
 		(uuid "d9827ac9-3fea-437e-b1c3-bf3f47e89696")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.1758 377.19 0)
+			(at 190.1758 367.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18043,7 +18043,7 @@
 	)
 	(global_label "RX3"
 		(shape input)
-		(at 196.85 367.03 180)
+		(at 196.85 377.19 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18053,7 +18053,7 @@
 		)
 		(uuid "db7631e2-7c20-4118-9a7d-59a78c527244")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 190.1758 367.03 0)
+			(at 190.1758 377.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18600,7 +18600,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0122a10c-54a2-40be-8d82-cde89edeed73")
-		(property "Reference" "R36"
+		(property "Reference" "R43"
 			(at 448.31 207.01 90)
 			(effects
 				(font
@@ -18653,7 +18653,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+		(property "Purchase-URL" ""
 			(at 445.77 207.01 90)
 			(effects
 				(font
@@ -18689,7 +18689,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R36")
+					(reference "R43")
 					(unit 1)
 				)
 			)
@@ -18712,7 +18712,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 483.87 52.07 90)
 			(effects
 				(font
@@ -18789,7 +18789,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "03db9aaf-6e63-43f9-82f6-3fc4a5c99027")
-		(property "Reference" "R26"
+		(property "Reference" "R34"
 			(at 266.7 76.2 90)
 			(effects
 				(font
@@ -18841,7 +18841,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-072K7L/728277"
+		(property "Purchase-URL" ""
 			(at 266.7 78.74 90)
 			(effects
 				(font
@@ -18877,7 +18877,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R26")
+					(reference "R34")
 					(unit 1)
 				)
 			)
@@ -18960,7 +18960,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "05ef22b7-50c1-4111-9de3-81003dd0e0c7")
-		(property "Reference" "C12"
+		(property "Reference" "C8"
 			(at 403.86 148.59 90)
 			(effects
 				(font
@@ -19012,7 +19012,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+		(property "Purchase-URL" ""
 			(at 403.86 154.94 90)
 			(effects
 				(font
@@ -19048,7 +19048,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C12")
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -20262,6 +20262,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 196.85 377.19 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "14d90b4d-f46f-4250-81e2-3c917f4fcc38")
+		(property "Reference" "TP17"
+			(at 201.93 377.1899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 201.93 378.4599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Footprints:Test Point"
+			(at 196.85 382.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 196.85 382.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 196.85 377.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 377.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1bd311d4-88d3-4593-a0f4-846b8fdbf7db")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "TP17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VCC")
 		(at 110.49 255.27 0)
 		(unit 1)
@@ -20337,7 +20423,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15dab9af-54ea-4687-897e-a122bcecda39")
-		(property "Reference" "R41"
+		(property "Reference" "R28"
 			(at 124.46 309.88 90)
 			(effects
 				(font
@@ -20407,7 +20493,7 @@
 		(instances
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R41")
+					(reference "R28")
 					(unit 1)
 				)
 			)
@@ -20489,13 +20575,13 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1ad90c3e-bbd5-49cf-8784-5624940b853b")
-		(property "Reference" "D14"
-			(at 217.17 112.0776 90)
+		(property "Reference" "D25"
+			(at 223.52 110.8074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "green"
@@ -20544,7 +20630,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+		(property "Purchase-URL" ""
 			(at 219.71 109.22 90)
 			(effects
 				(font
@@ -20580,7 +20666,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D14")
+					(reference "D25")
 					(unit 1)
 				)
 			)
@@ -20595,7 +20681,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1b2f6a62-7d1c-4f1c-a8f0-70319f89e80a")
-		(property "Reference" "U3"
+		(property "Reference" "U4"
 			(at 224.028 60.0711 0)
 			(effects
 				(font
@@ -20803,7 +20889,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "U3")
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -21085,7 +21171,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1d8b7aec-54b4-410e-8bbd-c6445a050a42")
-		(property "Reference" "R51"
+		(property "Reference" "R49"
 			(at 474.98 219.71 90)
 			(effects
 				(font
@@ -21138,7 +21224,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+		(property "Purchase-URL" ""
 			(at 472.44 219.71 90)
 			(effects
 				(font
@@ -21174,7 +21260,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R51")
+					(reference "R49")
 					(unit 1)
 				)
 			)
@@ -21475,7 +21561,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "21658d24-693a-4979-acde-47b88af4f266")
-		(property "Reference" "C11"
+		(property "Reference" "C7"
 			(at 396.24 153.67 90)
 			(effects
 				(font
@@ -21527,7 +21613,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+		(property "Purchase-URL" ""
 			(at 396.24 160.02 90)
 			(effects
 				(font
@@ -21563,7 +21649,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C11")
+					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -21578,7 +21664,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2205107b-a724-4d89-9a83-b4265b134756")
-		(property "Reference" "D19"
+		(property "Reference" "D21"
 			(at 420.37 164.592 0)
 			(effects
 				(font
@@ -21631,7 +21717,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+		(property "Purchase-URL" ""
 			(at 422.91 163.83 0)
 			(effects
 				(font
@@ -21667,7 +21753,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D19")
+					(reference "D21")
 					(unit 1)
 				)
 			)
@@ -21751,7 +21837,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "23feacb9-e822-41b5-a58c-fad30c5b4b94")
-		(property "Reference" "R40"
+		(property "Reference" "R30"
 			(at 124.46 330.2 90)
 			(effects
 				(font
@@ -21821,7 +21907,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R40")
+					(reference "R30")
 					(unit 1)
 				)
 			)
@@ -22239,7 +22325,7 @@
 				)
 			)
 		)
-		(property "Value" "470 Ohm"
+		(property "Value" "470R"
 			(at 266.7 182.88 90)
 			(effects
 				(font
@@ -22450,7 +22536,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "29a7faf0-e893-4daf-b711-21cc7a8fe446")
-		(property "Reference" "C7"
+		(property "Reference" "C11"
 			(at 275.59 86.36 0)
 			(effects
 				(font
@@ -22504,7 +22590,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
+		(property "Purchase-URL" ""
 			(at 273.05 85.09 0)
 			(effects
 				(font
@@ -22540,7 +22626,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C7")
+					(reference "C11")
 					(unit 1)
 				)
 			)
@@ -23008,7 +23094,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 361.95 270)
+		(at 196.85 356.87 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23016,8 +23102,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30e74048-e172-4dda-9caa-06c553c2a1b2")
-		(property "Reference" "TP16"
-			(at 201.93 361.9499 90)
+		(property "Reference" "TP13"
+			(at 201.93 356.8699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23026,7 +23112,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 363.2199 90)
+			(at 201.93 358.1399 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23036,24 +23122,6 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 367.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 367.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
 			(at 196.85 361.95 0)
 			(effects
 				(font
@@ -23062,8 +23130,26 @@
 				(hide yes)
 			)
 		)
+		(property "Datasheet" "~"
+			(at 196.85 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 356.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Availability" ""
-			(at 196.85 361.95 90)
+			(at 196.85 356.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23072,7 +23158,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 361.95 90)
+			(at 196.85 356.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23086,7 +23172,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP16")
+					(reference "TP13")
 					(unit 1)
 				)
 			)
@@ -23154,7 +23240,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+		(property "Purchase-URL" ""
 			(at 445.77 196.85 0)
 			(effects
 				(font
@@ -23213,7 +23299,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 483.87 43.18 90)
 			(effects
 				(font
@@ -23283,7 +23369,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 326.39 270)
+		(at 196.85 311.15 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23291,8 +23377,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "328aad59-933e-42e9-a628-0ea65ef4eefd")
-		(property "Reference" "TP8"
-			(at 201.93 326.3899 90)
+		(property "Reference" "TP4"
+			(at 201.93 311.1499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23301,7 +23387,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 327.6599 90)
+			(at 201.93 312.4199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23311,7 +23397,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 331.47 0)
+			(at 196.85 316.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23320,7 +23406,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 331.47 0)
+			(at 196.85 316.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23329,7 +23415,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 326.39 0)
+			(at 196.85 311.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23338,7 +23424,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 326.39 90)
+			(at 196.85 311.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23347,7 +23433,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 326.39 90)
+			(at 196.85 311.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23361,7 +23447,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP8")
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -23478,7 +23564,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 112.014 228.092 90)
 			(effects
 				(font
@@ -23644,7 +23730,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "347a7a5a-35f6-47d4-a3a2-3e5d8e682eb5")
-		(property "Reference" "R38"
+		(property "Reference" "R33"
 			(at 124.46 320.04 90)
 			(effects
 				(font
@@ -23714,7 +23800,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R38")
+					(reference "R33")
 					(unit 1)
 				)
 			)
@@ -23722,7 +23808,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 346.71 270)
+		(at 196.85 331.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23730,8 +23816,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3559b77b-a186-4125-ae3e-b6a93d4b3579")
-		(property "Reference" "TP15"
-			(at 201.93 346.7099 90)
+		(property "Reference" "TP8"
+			(at 201.93 331.4699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23740,7 +23826,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 347.9799 90)
+			(at 201.93 332.7399 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23750,7 +23836,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 351.79 0)
+			(at 196.85 336.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23759,7 +23845,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 351.79 0)
+			(at 196.85 336.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23768,7 +23854,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 346.71 0)
+			(at 196.85 331.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23777,7 +23863,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 346.71 90)
+			(at 196.85 331.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23786,7 +23872,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 346.71 90)
+			(at 196.85 331.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23800,7 +23886,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP15")
+					(reference "TP8")
 					(unit 1)
 				)
 			)
@@ -23882,7 +23968,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "36d7ab22-5bb6-4eb7-85b6-6831b18fc24d")
-		(property "Reference" "U4"
+		(property "Reference" "U5"
 			(at 339.598 60.0711 0)
 			(effects
 				(font
@@ -23934,7 +24020,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/radiocrafts-as/RC1780HP-RC232/7100620"
+		(property "Purchase-URL" ""
 			(at 347.98 90.17 0)
 			(effects
 				(font
@@ -24090,7 +24176,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "U4")
+					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -24616,8 +24702,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3a59a751-d83b-4087-824e-ff649c49074e")
-		(property "Reference" "D27"
-			(at 411.48 251.46 0)
+		(property "Reference" "D17"
+			(at 410.972 253.746 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24669,7 +24755,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+		(property "Purchase-URL" ""
 			(at 411.48 254 0)
 			(effects
 				(font
@@ -24705,7 +24791,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D27")
+					(reference "D17")
 					(unit 1)
 				)
 			)
@@ -24721,7 +24807,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3b7fcb85-503f-4b63-84b9-df5fd4ce13c0")
-		(property "Reference" "R30"
+		(property "Reference" "R23"
 			(at 124.46 350.52 90)
 			(effects
 				(font
@@ -24791,7 +24877,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R30")
+					(reference "R23")
 					(unit 1)
 				)
 			)
@@ -25089,15 +25175,15 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3d0e3d0c-5c09-4426-9f02-78d7fd8d38d5")
-		(property "Reference" "R44"
-			(at 401.32 256.54 90)
+		(property "Reference" "R37"
+			(at 401.066 259.08 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "560R"
 			(at 401.32 259.08 90)
 			(effects
 				(font
@@ -25142,7 +25228,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 401.32 259.08 90)
 			(effects
 				(font
@@ -25178,7 +25264,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R44")
+					(reference "R37")
 					(unit 1)
 				)
 			)
@@ -25518,13 +25604,13 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "40bcb20a-e649-4394-a2dd-ce74fb8ec693")
-		(property "Reference" "D17"
-			(at 342.9 112.0776 90)
+		(property "Reference" "D26"
+			(at 349.25 110.8074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "yellow"
@@ -25573,7 +25659,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171YKT/386807"
+		(property "Purchase-URL" ""
 			(at 345.44 109.22 90)
 			(effects
 				(font
@@ -25609,7 +25695,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D17")
+					(reference "D26")
 					(unit 1)
 				)
 			)
@@ -26554,7 +26640,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 254 217.17 90)
 			(effects
 				(font
@@ -26631,8 +26717,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "58a0ce2d-cc77-4713-ac14-ff62164a8ba8")
-		(property "Reference" "D23"
-			(at 411.48 254 0)
+		(property "Reference" "D15"
+			(at 410.972 256.286 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26684,7 +26770,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+		(property "Purchase-URL" ""
 			(at 411.48 256.54 0)
 			(effects
 				(font
@@ -26720,7 +26806,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D23")
+					(reference "D15")
 					(unit 1)
 				)
 			)
@@ -27336,7 +27422,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 367.03 270)
+		(at 196.85 361.95 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -27344,8 +27430,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c189da9-bb2d-4219-85b0-d92412ed3bcc")
-		(property "Reference" "TP17"
-			(at 201.93 367.0299 90)
+		(property "Reference" "TP14"
+			(at 201.93 361.9499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27354,7 +27440,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 368.2999 90)
+			(at 201.93 363.2199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27364,24 +27450,6 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 372.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 372.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
 			(at 196.85 367.03 0)
 			(effects
 				(font
@@ -27390,8 +27458,26 @@
 				(hide yes)
 			)
 		)
+		(property "Datasheet" "~"
+			(at 196.85 367.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Availability" ""
-			(at 196.85 367.03 90)
+			(at 196.85 361.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27400,7 +27486,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 367.03 90)
+			(at 196.85 361.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27414,7 +27500,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP17")
+					(reference "TP14")
 					(unit 1)
 				)
 			)
@@ -27525,7 +27611,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5d2324ac-7a89-4720-aa45-c6784bbe9923")
-		(property "Reference" "R34"
+		(property "Reference" "R27"
 			(at 124.46 381 90)
 			(effects
 				(font
@@ -27595,7 +27681,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R34")
+					(reference "R27")
 					(unit 1)
 				)
 			)
@@ -28430,7 +28516,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 483.87 71.12 90)
 			(effects
 				(font
@@ -28509,13 +28595,13 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "65ac98f3-9726-4ef0-a972-727e80160908")
-		(property "Reference" "D15"
-			(at 227.33 112.0776 90)
+		(property "Reference" "D24"
+			(at 233.68 110.8074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "yellow"
@@ -28564,7 +28650,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171YKT/386807"
+		(property "Purchase-URL" ""
 			(at 229.87 109.22 90)
 			(effects
 				(font
@@ -28600,7 +28686,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D15")
+					(reference "D24")
 					(unit 1)
 				)
 			)
@@ -28616,7 +28702,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "665d8115-b420-4334-b02b-fb54d758a3f4")
-		(property "Reference" "R50"
+		(property "Reference" "R26"
 			(at 158.75 320.04 90)
 			(effects
 				(font
@@ -28686,7 +28772,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R50")
+					(reference "R26")
 					(unit 1)
 				)
 			)
@@ -28701,7 +28787,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "67bb2729-2ea8-431f-9df0-c677ad3bb453")
-		(property "Reference" "U5"
+		(property "Reference" "U3"
 			(at 376.682 274.32 0)
 			(effects
 				(font
@@ -28978,7 +29064,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "U5")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -29555,7 +29641,7 @@
 				)
 			)
 		)
-		(property "Value" "470 Ohm"
+		(property "Value" "470R"
 			(at 258.064 171.196 0)
 			(effects
 				(font
@@ -29734,7 +29820,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 483.87 34.29 90)
 			(effects
 				(font
@@ -29900,7 +29986,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "79232e60-c039-47f9-b8b3-f6e49f0db6fc")
-		(property "Reference" "R42"
+		(property "Reference" "R31"
 			(at 124.46 370.84 90)
 			(effects
 				(font
@@ -29970,7 +30056,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R42")
+					(reference "R31")
 					(unit 1)
 				)
 			)
@@ -29978,7 +30064,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 331.47 270)
+		(at 196.85 316.23 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -29986,8 +30072,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "79fba5b1-2a05-4501-a30e-043ad4feb593")
-		(property "Reference" "TP12"
-			(at 201.93 331.4699 90)
+		(property "Reference" "TP5"
+			(at 201.93 316.2299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29996,7 +30082,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 332.7399 90)
+			(at 201.93 317.4999 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30006,7 +30092,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 336.55 0)
+			(at 196.85 321.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30015,7 +30101,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 336.55 0)
+			(at 196.85 321.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30024,7 +30110,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 331.47 0)
+			(at 196.85 316.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30033,7 +30119,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 331.47 90)
+			(at 196.85 316.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30042,7 +30128,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 331.47 90)
+			(at 196.85 316.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30056,7 +30142,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP12")
+					(reference "TP5")
 					(unit 1)
 				)
 			)
@@ -30146,7 +30232,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 406.4 101.6 90)
 			(effects
 				(font
@@ -30398,15 +30484,15 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7c111275-4681-43f6-93a8-4c4d7327598d")
-		(property "Reference" "R45"
-			(at 401.32 215.9 90)
+		(property "Reference" "R39"
+			(at 401.32 218.186 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "560R"
 			(at 401.32 218.44 90)
 			(effects
 				(font
@@ -30451,7 +30537,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 401.32 218.44 90)
 			(effects
 				(font
@@ -30487,7 +30573,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R45")
+					(reference "R39")
 					(unit 1)
 				)
 			)
@@ -30495,7 +30581,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 372.11 270)
+		(at 196.85 346.71 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -30503,8 +30589,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7d7ab0ae-48bc-49b0-ad00-7cee28c6b703")
-		(property "Reference" "TP6"
-			(at 201.93 372.1099 90)
+		(property "Reference" "TP11"
+			(at 201.93 346.7099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30513,7 +30599,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 373.3799 90)
+			(at 201.93 347.9799 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30523,7 +30609,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 377.19 0)
+			(at 196.85 351.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30532,7 +30618,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 377.19 0)
+			(at 196.85 351.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30541,7 +30627,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 372.11 0)
+			(at 196.85 346.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30550,7 +30636,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 372.11 90)
+			(at 196.85 346.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30559,7 +30645,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 372.11 90)
+			(at 196.85 346.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30573,7 +30659,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP6")
+					(reference "TP11")
 					(unit 1)
 				)
 			)
@@ -30596,7 +30682,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 111.76 215.9 90)
 			(effects
 				(font
@@ -30666,7 +30752,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 351.79 270)
+		(at 196.85 336.55 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -30674,8 +30760,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7e739553-b9e2-4712-aa0b-385c331a4f75")
-		(property "Reference" "TP70"
-			(at 201.93 351.7899 90)
+		(property "Reference" "TP9"
+			(at 201.93 336.5499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30684,7 +30770,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 353.0599 90)
+			(at 201.93 337.8199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30694,7 +30780,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 356.87 0)
+			(at 196.85 341.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30703,7 +30789,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 356.87 0)
+			(at 196.85 341.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30712,7 +30798,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 351.79 0)
+			(at 196.85 336.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30721,7 +30807,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 351.79 90)
+			(at 196.85 336.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30730,7 +30816,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 351.79 90)
+			(at 196.85 336.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30744,7 +30830,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP70")
+					(reference "TP9")
 					(unit 1)
 				)
 			)
@@ -30752,7 +30838,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 341.63 270)
+		(at 196.85 326.39 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -30760,8 +30846,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7ea70095-67ae-444b-8525-512c5503daf7")
-		(property "Reference" "TP14"
-			(at 201.93 341.6299 90)
+		(property "Reference" "TP7"
+			(at 201.93 326.3899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30770,7 +30856,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 342.8999 90)
+			(at 201.93 327.6599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30780,7 +30866,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 346.71 0)
+			(at 196.85 331.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30789,7 +30875,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 346.71 0)
+			(at 196.85 331.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30798,7 +30884,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 341.63 0)
+			(at 196.85 326.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30807,7 +30893,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 341.63 90)
+			(at 196.85 326.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30816,7 +30902,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 341.63 90)
+			(at 196.85 326.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30830,7 +30916,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP14")
+					(reference "TP7")
 					(unit 1)
 				)
 			)
@@ -31062,15 +31148,15 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8604f348-013a-4912-8200-6201b5681bbc")
-		(property "Reference" "R46"
-			(at 401.32 218.186 90)
+		(property "Reference" "R40"
+			(at 401.32 220.98 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "560R"
 			(at 401.32 220.98 90)
 			(effects
 				(font
@@ -31115,7 +31201,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 401.32 220.98 90)
 			(effects
 				(font
@@ -31151,7 +31237,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R46")
+					(reference "R40")
 					(unit 1)
 				)
 			)
@@ -31522,7 +31608,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8c1c5b61-0b63-4fb7-8346-fd666d0a34e2")
-		(property "Reference" "R29"
+		(property "Reference" "R22"
 			(at 45.72 327.66 90)
 			(effects
 				(font
@@ -31530,7 +31616,7 @@
 				)
 			)
 		)
-		(property "Value" "180 R"
+		(property "Value" "180R"
 			(at 45.72 330.2 90)
 			(effects
 				(font
@@ -31592,7 +31678,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R29")
+					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -31768,15 +31854,15 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8f005423-5e5f-4884-a004-263bf128f9f4")
-		(property "Reference" "R43"
-			(at 401.32 254 90)
+		(property "Reference" "R36"
+			(at 401.32 256.54 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "560R"
 			(at 401.32 256.54 90)
 			(effects
 				(font
@@ -31821,7 +31907,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 401.32 256.54 90)
 			(effects
 				(font
@@ -31857,7 +31943,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R43")
+					(reference "R36")
 					(unit 1)
 				)
 			)
@@ -32507,8 +32593,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "965caa4a-aaa3-48d4-b272-675bc69856ad")
-		(property "Reference" "R27"
-			(at 337.82 97.7899 0)
+		(property "Reference" "R48"
+			(at 337.82 99.0599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32562,7 +32648,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 335.28 99.06 0)
 			(effects
 				(font
@@ -32598,7 +32684,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R27")
+					(reference "R48")
 					(unit 1)
 				)
 			)
@@ -32621,7 +32707,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 483.87 68.58 90)
 			(effects
 				(font
@@ -32886,7 +32972,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+		(property "Purchase-URL" ""
 			(at 468.63 210.82 0)
 			(effects
 				(font
@@ -33189,15 +33275,15 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a0a2b35f-31db-4c74-ab25-79a95f3bdba3")
-		(property "Reference" "R47"
-			(at 401.32 251.46 90)
+		(property "Reference" "R38"
+			(at 401.066 254.254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "270R"
+		(property "Value" "560R"
 			(at 401.32 254 90)
 			(effects
 				(font
@@ -33242,7 +33328,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 401.32 254 90)
 			(effects
 				(font
@@ -33278,7 +33364,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R47")
+					(reference "R38")
 					(unit 1)
 				)
 			)
@@ -33393,7 +33479,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 336.55 270)
+		(at 196.85 321.31 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -33401,8 +33487,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a2c34abc-ebf2-4611-b2f4-8cd6e54f8c58")
-		(property "Reference" "TP13"
-			(at 201.93 336.5499 90)
+		(property "Reference" "TP6"
+			(at 201.93 321.3099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33411,7 +33497,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 337.8199 90)
+			(at 201.93 322.5799 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33421,7 +33507,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 341.63 0)
+			(at 196.85 326.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33430,7 +33516,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 341.63 0)
+			(at 196.85 326.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33439,7 +33525,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 336.55 0)
+			(at 196.85 321.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33448,7 +33534,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 336.55 90)
+			(at 196.85 321.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33457,7 +33543,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 336.55 90)
+			(at 196.85 321.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33471,7 +33557,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP13")
+					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -33554,7 +33640,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a57062e0-f19b-49a3-b4e6-8c5160b67039")
-		(property "Reference" "C15"
+		(property "Reference" "C13"
 			(at 403.86 33.02 90)
 			(effects
 				(font
@@ -33562,7 +33648,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uf"
+		(property "Value" "1 uF"
 			(at 403.86 35.56 90)
 			(effects
 				(font
@@ -33624,7 +33710,7 @@
 		(instances
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C15")
+					(reference "C13")
 					(unit 1)
 				)
 			)
@@ -34141,8 +34227,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ad76f2f3-295a-4902-8e38-85e6eb12feef")
-		(property "Reference" "D25"
-			(at 411.48 215.9 0)
+		(property "Reference" "D18"
+			(at 411.226 218.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34194,7 +34280,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+		(property "Purchase-URL" ""
 			(at 411.48 218.44 0)
 			(effects
 				(font
@@ -34230,7 +34316,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D25")
+					(reference "D18")
 					(unit 1)
 				)
 			)
@@ -34245,7 +34331,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "afa1e5e5-ead3-4320-afdb-beccc8c85376")
-		(property "Reference" "R33"
+		(property "Reference" "R41"
 			(at 429.26 173.99 90)
 			(effects
 				(font
@@ -34298,7 +34384,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+		(property "Purchase-URL" ""
 			(at 426.72 173.99 90)
 			(effects
 				(font
@@ -34334,7 +34420,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R33")
+					(reference "R41")
 					(unit 1)
 				)
 			)
@@ -34483,7 +34569,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b2dcc2e4-e958-4e32-815e-0f0baca4a1fc")
-		(property "Reference" "R37"
+		(property "Reference" "R29"
 			(at 124.46 391.16 90)
 			(effects
 				(font
@@ -34553,7 +34639,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R37")
+					(reference "R29")
 					(unit 1)
 				)
 			)
@@ -34636,7 +34722,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b6c909fc-f1e8-43bb-88c6-42d207a5e4fb")
-		(property "Reference" "R49"
+		(property "Reference" "R25"
 			(at 158.75 309.88 90)
 			(effects
 				(font
@@ -34706,7 +34792,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R49")
+					(reference "R25")
 					(unit 1)
 				)
 			)
@@ -34721,7 +34807,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b75c3adb-09f7-4076-851a-6779f419fd95")
-		(property "Reference" "C5"
+		(property "Reference" "C9"
 			(at 160.02 86.36 0)
 			(effects
 				(font
@@ -34775,7 +34861,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
+		(property "Purchase-URL" ""
 			(at 157.48 85.09 0)
 			(effects
 				(font
@@ -34811,7 +34897,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C5")
+					(reference "C9")
 					(unit 1)
 				)
 			)
@@ -34961,7 +35047,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bcc11bd2-c101-4630-a03b-bc4a37805328")
-		(property "Reference" "R39"
+		(property "Reference" "R35"
 			(at 124.46 340.36 90)
 			(effects
 				(font
@@ -35031,7 +35117,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R39")
+					(reference "R35")
 					(unit 1)
 				)
 			)
@@ -35334,6 +35420,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 196.85 372.11 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c2383029-5c3d-4f94-a338-79316f26d220")
+		(property "Reference" "TP16"
+			(at 201.93 372.1099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 201.93 373.3799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Footprints:Test Point"
+			(at 196.85 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 196.85 377.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 372.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 196.85 372.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 372.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4032478c-1bf4-4686-a3a1-8a9d8a8ac6f7")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "TP16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 388.62 165.1 90)
 		(unit 1)
@@ -35342,7 +35514,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c447e08d-1037-4185-adf2-44ae34cd0787")
-		(property "Reference" "C10"
+		(property "Reference" "C6"
 			(at 388.62 158.75 90)
 			(effects
 				(font
@@ -35394,7 +35566,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+		(property "Purchase-URL" ""
 			(at 388.62 165.1 90)
 			(effects
 				(font
@@ -35430,7 +35602,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C10")
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -35446,7 +35618,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c47495b5-328e-4d8c-b3c2-ec8a13d830fe")
-		(property "Reference" "R31"
+		(property "Reference" "R24"
 			(at 124.46 360.68 90)
 			(effects
 				(font
@@ -35516,7 +35688,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R31")
+					(reference "R24")
 					(unit 1)
 				)
 			)
@@ -35531,7 +35703,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c5889324-85f1-4022-9183-e7ef07a2d70e")
-		(property "Reference" "R32"
+		(property "Reference" "R42"
 			(at 420.37 173.99 90)
 			(effects
 				(font
@@ -35584,7 +35756,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+		(property "Purchase-URL" ""
 			(at 422.91 173.99 90)
 			(effects
 				(font
@@ -35620,7 +35792,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R32")
+					(reference "R42")
 					(unit 1)
 				)
 			)
@@ -35643,7 +35815,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 483.87 66.04 90)
 			(effects
 				(font
@@ -35787,8 +35959,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c7cb5350-7a4f-4f1d-9c44-e6fa929dc84b")
-		(property "Reference" "R25"
-			(at 232.41 97.7899 0)
+		(property "Reference" "R45"
+			(at 232.41 99.0599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -35842,7 +36014,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 229.87 99.06 0)
 			(effects
 				(font
@@ -35878,7 +36050,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R25")
+					(reference "R45")
 					(unit 1)
 				)
 			)
@@ -36026,7 +36198,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c8d3a5eb-0bc7-4747-9d09-f7992811e71b")
-		(property "Reference" "D30"
+		(property "Reference" "D28"
 			(at 474.726 211.582 0)
 			(effects
 				(font
@@ -36079,7 +36251,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+		(property "Purchase-URL" ""
 			(at 472.44 210.82 0)
 			(effects
 				(font
@@ -36115,7 +36287,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D30")
+					(reference "D28")
 					(unit 1)
 				)
 			)
@@ -36264,8 +36436,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9d126e0-db75-4a2f-8787-7f4894c3f5a7")
-		(property "Reference" "R24"
-			(at 222.25 97.7899 0)
+		(property "Reference" "R46"
+			(at 222.25 99.0599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36319,7 +36491,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 219.71 99.06 0)
 			(effects
 				(font
@@ -36355,7 +36527,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R24")
+					(reference "R46")
 					(unit 1)
 				)
 			)
@@ -36802,7 +36974,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+		(property "Purchase-URL" ""
 			(at 426.72 163.83 0)
 			(effects
 				(font
@@ -37187,92 +37359,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 321.31 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d179da42-883c-4108-9347-341c3f33acd3")
-		(property "Reference" "TP5"
-			(at 201.93 321.3099 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 322.5799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 326.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 326.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 321.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 321.31 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 321.31 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8e384c96-8a2c-43a6-a4ad-870d89436902")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 204.47 167.64 0)
 		(unit 1)
@@ -37361,7 +37447,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 356.87 270)
+		(at 196.85 341.63 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -37369,8 +37455,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d22ed0bd-bce4-495c-9c4d-f93b2eea74e2")
-		(property "Reference" "TP80"
-			(at 201.93 356.8699 90)
+		(property "Reference" "TP10"
+			(at 201.93 341.6299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37379,7 +37465,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 358.1399 90)
+			(at 201.93 342.8999 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37389,7 +37475,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 361.95 0)
+			(at 196.85 346.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37398,7 +37484,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 361.95 0)
+			(at 196.85 346.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37407,7 +37493,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 356.87 0)
+			(at 196.85 341.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37416,7 +37502,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 356.87 90)
+			(at 196.85 341.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37425,7 +37511,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 356.87 90)
+			(at 196.85 341.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -37439,7 +37525,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP80")
+					(reference "TP10")
 					(unit 1)
 				)
 			)
@@ -37455,13 +37541,13 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d2e1901b-2284-4b51-9263-0834c78920c3")
-		(property "Reference" "D16"
-			(at 332.74 112.0776 90)
+		(property "Reference" "D27"
+			(at 339.09 110.8074 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "green"
@@ -37510,7 +37596,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+		(property "Purchase-URL" ""
 			(at 335.28 109.22 90)
 			(effects
 				(font
@@ -37546,7 +37632,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D16")
+					(reference "D27")
 					(unit 1)
 				)
 			)
@@ -37888,7 +37974,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d755a73f-b7c3-4ec8-af12-c5fc07a03bb9")
-		(property "Reference" "D18"
+		(property "Reference" "D14"
 			(at 49.53 321.3099 90)
 			(effects
 				(font
@@ -37978,7 +38064,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D18")
+					(reference "D14")
 					(unit 1)
 				)
 			)
@@ -37993,7 +38079,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d86f08f2-b4c5-4ea4-82cb-5ccb4210b633")
-		(property "Reference" "D21"
+		(property "Reference" "D23"
 			(at 439.42 197.612 0)
 			(effects
 				(font
@@ -38046,7 +38132,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KRKT/386801"
+		(property "Purchase-URL" ""
 			(at 441.96 196.85 0)
 			(effects
 				(font
@@ -38082,7 +38168,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D21")
+					(reference "D23")
 					(unit 1)
 				)
 			)
@@ -38567,7 +38653,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 406.4 111.76 90)
 			(effects
 				(font
@@ -38970,6 +39056,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 196.85 367.03 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "df23701a-5706-454c-9aa3-96b18b252c48")
+		(property "Reference" "TP15"
+			(at 201.93 367.0299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 201.93 368.2999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Footprints:Test Point"
+			(at 196.85 372.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 196.85 372.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 196.85 367.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 196.85 367.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 367.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1d47c096-8fd2-4921-87d2-e0a6ce1732a3")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "TP15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 459.74 68.58 270)
 		(unit 1)
@@ -39031,92 +39203,6 @@
 			(project "Platinenkonzept v2.1.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 316.23 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e31eae6b-ff24-481d-b327-a22a799882c7")
-		(property "Reference" "TP4"
-			(at 201.93 316.2299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 317.4999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 321.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 321.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 316.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 316.23 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 316.23 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e610b2af-23f3-47f7-8132-63371cb9b60c")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -39197,7 +39283,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e4a0c928-2b45-4b0b-a8d5-11a958e40026")
-		(property "Reference" "R35"
+		(property "Reference" "R44"
 			(at 439.42 207.01 90)
 			(effects
 				(font
@@ -39250,7 +39336,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+		(property "Purchase-URL" ""
 			(at 441.96 207.01 90)
 			(effects
 				(font
@@ -39286,7 +39372,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R35")
+					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -39369,7 +39455,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e4f9de8d-f9c6-4ae6-b3b6-ced34b65721b")
-		(property "Reference" "C6"
+		(property "Reference" "C10"
 			(at 179.07 88.8999 0)
 			(effects
 				(font
@@ -39378,7 +39464,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1 uf"
+		(property "Value" "1 uF"
 			(at 179.07 91.4399 0)
 			(effects
 				(font
@@ -39441,7 +39527,7 @@
 		(instances
 			(project ""
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C6")
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -39647,92 +39733,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 311.15 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ea12e7e1-55a9-48cb-9156-82e900d7accc")
-		(property "Reference" "TP60"
-			(at 201.93 311.1499 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 312.4199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 316.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 316.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 311.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 196.85 311.15 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 196.85 311.15 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c450d868-70df-4d42-b04d-4b5983449113")
-		)
-		(instances
-			(project "TelemetryOnboard"
-				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP60")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 290.83 90.17 0)
 		(unit 1)
@@ -39742,7 +39742,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ea1a9bd9-1224-4194-8157-edb218a3fbdc")
-		(property "Reference" "C8"
+		(property "Reference" "C12"
 			(at 294.64 88.8999 0)
 			(effects
 				(font
@@ -39751,7 +39751,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1 uf"
+		(property "Value" "1 uF"
 			(at 294.64 91.4399 0)
 			(effects
 				(font
@@ -39814,7 +39814,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C8")
+					(reference "C12")
 					(unit 1)
 				)
 			)
@@ -39923,8 +39923,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "eab6e608-1574-4997-81b2-5372eeec3903")
-		(property "Reference" "D24"
-			(at 411.48 256.54 0)
+		(property "Reference" "D16"
+			(at 411.226 259.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -39976,7 +39976,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+		(property "Purchase-URL" ""
 			(at 411.48 259.08 0)
 			(effects
 				(font
@@ -40012,7 +40012,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D24")
+					(reference "D16")
 					(unit 1)
 				)
 			)
@@ -40027,7 +40027,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "eabf1880-a956-488e-88bd-1774f741d7e6")
-		(property "Reference" "R22"
+		(property "Reference" "R50"
 			(at 466.09 219.71 90)
 			(effects
 				(font
@@ -40080,7 +40080,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-131KL/13694121"
+		(property "Purchase-URL" ""
 			(at 468.63 219.71 90)
 			(effects
 				(font
@@ -40116,7 +40116,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R22")
+					(reference "R50")
 					(unit 1)
 				)
 			)
@@ -40436,8 +40436,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ef887f30-f05b-49c5-b689-c9a98d8c9445")
-		(property "Reference" "R28"
-			(at 347.98 97.7899 0)
+		(property "Reference" "R47"
+			(at 347.98 99.0599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40491,7 +40491,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" ""
 			(at 345.44 99.06 0)
 			(effects
 				(font
@@ -40527,7 +40527,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R28")
+					(reference "R47")
 					(unit 1)
 				)
 			)
@@ -40535,7 +40535,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 196.85 377.19 270)
+		(at 196.85 351.79 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -40543,8 +40543,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1ac7747-ffd0-41bc-a5e3-030347874eb3")
-		(property "Reference" "TP7"
-			(at 201.93 377.1899 90)
+		(property "Reference" "TP12"
+			(at 201.93 351.7899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40553,7 +40553,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 201.93 378.4599 90)
+			(at 201.93 353.0599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40563,7 +40563,7 @@
 			)
 		)
 		(property "Footprint" "Footprints:Test Point"
-			(at 196.85 382.27 0)
+			(at 196.85 356.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40572,7 +40572,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 382.27 0)
+			(at 196.85 356.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40581,7 +40581,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 196.85 377.19 0)
+			(at 196.85 351.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40590,7 +40590,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 196.85 377.19 90)
+			(at 196.85 351.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40599,7 +40599,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 196.85 377.19 90)
+			(at 196.85 351.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40613,7 +40613,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "TP7")
+					(reference "TP12")
 					(unit 1)
 				)
 			)
@@ -41046,7 +41046,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f917f7af-95a7-4ee4-ad65-7a989ff5a575")
-		(property "Reference" "C9"
+		(property "Reference" "C5"
 			(at 381 163.83 90)
 			(effects
 				(font
@@ -41098,7 +41098,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B105KAFNNNE/3886724"
+		(property "Purchase-URL" ""
 			(at 381 170.18 90)
 			(effects
 				(font
@@ -41134,7 +41134,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "C9")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -41388,7 +41388,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fd589e4a-4e97-4789-a581-a41c75e284d9")
-		(property "Reference" "R23"
+		(property "Reference" "R32"
 			(at 151.13 76.2 90)
 			(effects
 				(font
@@ -41440,7 +41440,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-072K7L/728277"
+		(property "Purchase-URL" ""
 			(at 151.13 78.74 90)
 			(effects
 				(font
@@ -41476,7 +41476,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "R23")
+					(reference "R32")
 					(unit 1)
 				)
 			)
@@ -41624,8 +41624,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ff7e5bf9-e841-4529-81ca-a917fa1ee20e")
-		(property "Reference" "D26"
-			(at 411.48 218.186 0)
+		(property "Reference" "D19"
+			(at 411.734 221.234 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41677,7 +41677,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KFKT/386775"
+		(property "Purchase-URL" ""
 			(at 411.48 220.98 0)
 			(effects
 				(font
@@ -41713,7 +41713,7 @@
 		(instances
 			(project "TelemetryOnboard"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
-					(reference "D26")
+					(reference "D19")
 					(unit 1)
 				)
 			)
