@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 2.0,
-          "width": 2.0
+          "drill": 1.0,
+          "height": 1.7,
+          "width": 1.7
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -249,7 +249,24 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      [
+        "pin_to_pin|2438400|3314700|a31a80fb-9ddc-4e7b-8365-072a22b67d9d|4609e8ae-95e7-4e4a-9be9-a19589dbc77d|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
+        ""
+      ],
+      [
+        "pin_to_pin|2438400|3340100|4ce13382-7685-44f2-bfe8-aef648959c58|aa9dd08c-9831-4bf5-9ef4-59dcfb41463f|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
+        ""
+      ],
+      [
+        "pin_to_pin|2438400|3581400|e53ad85f-aeaa-4ae9-bceb-2ff1d70b881c|2a87117d-912f-4323-a569-e31a29fe6385|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
+        ""
+      ],
+      [
+        "pin_to_pin|2438400|3606800|6a7ef32f-e66d-462f-901a-57158710bca4|4ce13382-7685-44f2-bfe8-aef648959c58|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9|/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
+        ""
+      ]
+    ],
     "meta": {
       "version": 0
     },
@@ -517,7 +534,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "TelemetryOnboard.net",
+      "netlist": "TelemetryGroundstationMB.net",
       "plot": "Production Files/",
       "pos_files": "",
       "specctra_dsn": "",

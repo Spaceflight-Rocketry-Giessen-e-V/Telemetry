@@ -1,0 +1,124 @@
+(footprint "Banana_CT3151-0"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "174af75f-58d9-4b2e-a47f-5001e24f5a1b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Banana_CT3151-0"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "eeaffb19-2797-4c8f-bcbd-c49611d22bb1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5e070b2a-f0fd-4545-92ef-d6b0f7a03088")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6d1a3a5d-78af-4423-a725-471f119e85ae")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -4 -6.5)
+		(end 24 6.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "413b75b5-8476-4748-b7ba-f90fce3dc9ad")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "389a80f6-a70b-4611-9a51-3aaea9b869f9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -2.55 -2.55)
+		(size 2.7 2.7)
+		(drill 1.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c18688af-3acd-459d-834a-dd8ca338102e")
+	)
+	(pad "1" thru_hole circle
+		(at -2.55 2.55)
+		(size 2.7 2.7)
+		(drill 1.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7400ffcc-9637-4a47-a752-029332b793c2")
+	)
+	(pad "1" thru_hole circle
+		(at 2.55 -2.55)
+		(size 2.7 2.7)
+		(drill 1.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f82e1410-0a1a-4c2b-b30d-faf639b9422d")
+	)
+	(pad "1" thru_hole circle
+		(at 2.55 2.55)
+		(size 2.7 2.7)
+		(drill 1.7)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "190a5562-7585-49d3-9db2-ed289c2c9fe1")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D Models/CT3151-0.STEP"
+		(offset
+			(xyz 10.5 0 13)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 180)
+		)
+	)
+)
