@@ -151,9 +151,15 @@ This values is between $0.0015$ and $0.015$, but is much larger than the first r
 With the basic parameters we can then calculate the remaining parameters:
 
 $$
-d = \tan \alpha \cdot C =39.502\,\mathrm{mm} \\[12 pt]
-N = \frac{L}{d} = 39.303 \\[12 pt]
-R= \frac{C}{2\pi} = 49.420\,\mathrm{mm} \\[12 pt]
+d = \tan \alpha \cdot C =39.502\,\mathrm{mm}
+$$
+$$
+N = \frac{L}{d} = 39.303
+$$
+$$
+R= \frac{C}{2\pi} = 49.420\,\mathrm{mm}
+$$
+$$
 l = N \cdot \sqrt{C^2+d^2} = 12.303\,\mathrm{m}
 $$
 
