@@ -181,6 +181,25 @@ We get a gain of $G = 16.5\,\mathrm{dBi}$.
 
 ### Groundstation helix antenna mechanical design
 
+To realise this long antenna design, some kind of fixature is necessary since the copper pipe would otherwise act as a spring.
+
+As a central support, we use a 2 m long 30 mm wide glass fiber rod. With epoxy resin, we attach a 3D printed support structure called pacifier every 1.75 turns. The prewound copper pipe can be wound through the pacifiers, which then leads to a supported structure.
+
+The glass fibre rod sticks through the 70 cm x 70 xm aluminium ground plane and is held in place by two cone shaped 3D printed support structures, attached with epoxy resin to the GFK rod. The cones are in turn attached to each other with eight M8 bolts through the ground plane.
+
+Addionally, the rod is held in place by ropes attached to a 3D printed strucutre at the top of the GFK rod and to holes in the ground plane.
+
+The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
+
+<p align="center"><img src="images/helix_mechanical_design.png" width = 600/></p>
+
+The assembly informations can be found in the [user manual](user_manual.md).
+
+During assembly of the first prototype antenna, it was obvious that the concept has some flaws, which we want to solve in the future. They include:
+- The pacifiers were printed with not enough tolerance. Since the wound copper pipe is not perfectly shaped, a tolerance of at least 1 mm oder 1.5 mm to every side is necessary.
+- The winding template reproduced the antenna exactly. Due to its elastic properties, the pipe expanded after winding, leading to a helix with a larger diameter. Also, the winding grooves could have been deeper.
+- The used winding template for the vertical section at the bottom did not work as expected. More work has to be done here.
+
 ### Groundstation helix aimulations
 
 <p align="center"><img src="images/helix_plot.svg" width = 600/></p>
