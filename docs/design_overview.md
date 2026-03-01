@@ -119,46 +119,73 @@ The encoding and decoding of packets according to our [packet structure](packet_
 
 ### General
 
-So far, we only use [dipole stick antennas](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340) for our telemetry system. In the future, we plan to design and build our own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helix antenna on the ground side.
+Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helix antenna on the ground side.
 
-### Antenna design
-The Antenna design process is based on this [Paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463). This paper differentiates between NB (Narrow band)designs ans WB (Wide band) antennas, we chose an NB antenna for our system, which will be useful to get the needed information via the diagram form the paper.In addition manufacturing is based on prior prototype of an helical antenna.
+### Groundstation helix antenna design
+The Antenna design process is based on this [paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463). More information can be found [here](https://www.microwaves101.com/encyclopedias/helix-antennas) and [here](https://jcoppens.com/ant/helix/index.en.php).
 
-The first step we took, was accruing the frequency of the radio module in our case it is $f=869.525$ MHz which equals to a wavelength of 344.79mm. Further more we will use a wire radius of $sr = 3$ mm. 
+The paper differentiates between NB (Narrow band) and WB (Wide band) antenna designs. Since we only use a narrow frequency band, we chose an NB antenna for our system, which will be useful to get the needed information via the diagrams from the paper. In addition, manufacturing is based on a prior prototype of an helical antenna.
+
+The first step we took, was researching the frequency of the radio module in our case it is $f=869.525\,\mathrm{MHz}$  which equals to a wavelength of $\lambda = 345.02\,\mathrm{mm}$. Further more we will use a wire radius of $r = 3\,\mathrm{mm}$ due to good availability. 
+
+The first step is to specify the circumference $C$ and the length $L$:
 
 <p align="center"><img src="images/helix_plot_1.png" width = 600/></p>
 
-From this diagram we took an ratio of $L/C=5$ which in our case was a compromise between an longer antenna, which increases performance but adds more mechanical instability. With this we got $C/\lambda=0.9$.
+From this diagram we took a ratio of $\frac{L}{C} = 5$ which in our case was a compromise between performance and mechanical instability. With this we got $\frac{C}{\lambda} = 0.9$.
 
-$\Rightarrow$ $C=\lambda\cdot 0.9 = 31.051$ cm 
+$\Rightarrow C = \lambda \cdot 0.9 = 31.051\,\mathrm{cm}$ 
 
-$\Rightarrow$ $L= 5C = 1.553$ m
+$\Rightarrow L = 5 \cdot C = 1.553\,\mathrm{m}$
 
+Next, the pitch angle has to be specified:
 
-We chose this parameters for the balance between length and the size of the circumference. <p align="center"><img src="images/helix_plot_2.png" width = 600/></p>
+<p align="center"><img src="images/helix_plot_2.png" width = 600/></p>
 
 To get a value for the pitch angle $\alpha$ we first have to calculate:
 $$
-r/C=0.00966 \approx 0.01    
+\frac{r}{C} = 0.00966 \approx 0.01    
 $$
-This values is between $0.0015$ and $0.015$, but is much larger than the first ratio, therefore we chose an angle hat $L/C=5$ a little bit lower than $0.015$ which would be $\alpha=7.25°$.
+This values is between $0.0015$ and $0.015$, but is much larger than the first ratio, therefore we chose an angle at $\frac{L}{C} = 5$ which is a little bit lower than $0.015$, which would then be $\alpha = 7.25°$.
 
-With the basic parameters wen can calculate the rest of the parameters.
-
-$$
-p=\tan \alpha \cdot C =39.502 \,\text{mm}
-$$
-$$
-N=L/p=39.303
-$$
-$$
-R=C/2\pi=49.420 \text{mm}
-$$
+With the basic parameters we can then calculate the remaining parameters:
 
 $$
-L_{wire} = N\,\sqrt{C^2+p^2} = 12.303 \text{m}
+d = \tan \alpha \cdot C =39.502\,\mathrm{mm} \\[12 pt]
+N = \frac{L}{d} = 39.303 \\[12 pt]
+R= \frac{C}{2\pi} = 49.420\,\mathrm{mm} \\[12 pt]
+l = N \cdot \sqrt{C^2+d^2} = 12.303\,\mathrm{m}
 $$
+
+The following table summarizes the geometric parameters of the antenna: 
+
+| Parameter | Symbol | Value |
+| --- | --- | --- |
+| Frequency | f | 869.525 MHz |
+| Wavelength | λ | 34.502 cm |
+| Circumference | C | 31.051 cm |
+| Diameter | D | 98.840 mm |
+| Radius | R | 49.420 mm |
+| Length | L | 1.553 m |
+| Pitch angle | α | 7.25° |
+| Pitch distance | d | 39.502 |
+| Turns | N | 39.303 |
+| Wire radius | r | 3 mm |
+| Wire length | l | 12.303 m |
+
+With these informations, we can also estimate the antenna gain:
+
+<p align="center"><img src="images/helix_plot_3.png" width = 600/></p>
+
+We get a gain of $G = 16.5\,\mathrm{dBi}$.
+
+### Groundstation helix antenna mechanical design
+
+### Groundstation helix aimulations
+
 <p align="center"><img src="images/helix_plot.svg" width = 600/></p>
+
+### Onboard QFH antenna design
 
 Many resources on antennas: [antenna-theory.com](https://www.antenna-theory.com/)
 
@@ -166,10 +193,8 @@ Information on QFH antennas: [jcoppens.com](https://jcoppens.com/ant/qfh/index.e
 
 Information on connecting QFH antennas: [jcoppens.com](https://jcoppens.com/ant/qfh/adapt.en.php)
 
-Information on helical antennas: [jcoppens.com](https://jcoppens.com/ant/helix/index.en.php)
+### Onboard QFH antenna mechanical design
 
-Article on helical antennas: [Link](https://www.microwaves101.com/encyclopedias/helix-antennas)
-
-Paper on helical antenna design: [Link](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463)
+### Onboard QFH antenna simulations
 
 ## GUI software
