@@ -50,13 +50,19 @@ During the pcb design process, we considered the Radiocrafts [RF PCB Layout Reco
 
 Around the edge of the PCB, an exposed ground strip is included, connected by many vias to the solid ground plane (layer 2). The intend is to contain any electromagnetic emissions.
 
-There are three types of traces commonly used as RF signal traces: microstrip, stripline, and coplanar waveguide. For all types, there are several online calculators to obtain the correct strip width to have a characteristic impedence of 50 Ohms. We use a coplanar waveguide and [this calculator](https://wcalc.sourceforge.net/cgi-bin/coplanar.cgi), which looks like this in our case:
-
-<p align="center"><img src="images/coplanar_waveguide_calculator.png" width="600"/></p>
+There are three types of traces commonly used as RF signal traces: microstrip, stripline, and coplanar waveguide. For all types, there are several online calculators to obtain the correct strip width to have a characteristic impedence of 50 Ohms. We use a coplanar waveguide and the calculator included in Kicad.
 
 Some PCB properties like Tmet, RHO, RGH, H, Er, and tand cannot be changed and depend on the PCB manufacturer. JLCPCB lists some parameters like Tmet, H, and Er in [this document](https://jlcpcb.com/impedance). For the other parameters, we used standard values.
 
-Our goal was to calculate the trace width based on S and L. It is as valid to calculate S based on W and L.
+For a 4 layer pcb like our onboard pcb: H = 0.2104 mm. For a 2 layer pcb like our groundstation daughterboard pcb: H = 1.6 mm.
+
+For the groundstation daughterboard, our goal was to use the width of the 0805 matching component pads as the trace width and thus a variable separation S. The result is S = 0.22 mm:
+
+<p align="center"><img src="images/coplanar_waveguide_groundstation.png" width="600"/></p>
+
+Due to the different height of the onboard pcb, a trace width of 1.2 mm would lead to large values for S. Thus, we used a fixed separation S = 0.22 mm (same value as for the groundstation daughterboard) and a variable trace width. The result is W = 0.37 mm. Due to the different width of the matching components, this is not an ideal trace and might have a slighty different impedance. Matching is advised.
+
+<p align="center"><img src="images/coplanar_waveguide_onboard.png" width="600"/></p>
 
 In the signal trace, a T-matching network is included to be able to match the antenna's impedance to 50 Ohms. When no matching is used, a 0 Ohms resistor has to be connected in series and the parallel component has to be left open. More informations about antenna matching can be found in the [user manual](user_manual.md).
 
