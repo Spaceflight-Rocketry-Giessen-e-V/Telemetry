@@ -1,9 +1,27 @@
+"""
+last_packet_window.py
+---------------------
+Read-only system-status table showing the most recent value for every
+telemetry field.
+
+Each field is a labelled row; values are updated in-place via the DPG item
+tags stored in :attr:`system_status_tags`. UIManager calls these tags
+directly via ``dpg.set_value`` on each incoming packet.
+"""
+
+import logging
+
 import dearpygui.dearpygui as dpg
+
+log = logging.getLogger(__name__)
 
 
 class LastPacketWindow:
-    # New grouped GUI elements
-    system_status_tags = {
+    """Renders and manages the last-packet system-status table."""
+
+    # Maps logical field name → unique DPG item tag.
+    # UIManager uses these tags to push updated values.
+    system_status_tags: dict[str, str] = {
         "accel": "accel_current_raw",
         "temperature": "temperature_value_raw",
         "subsystem": "subsystem_status_value_raw",
@@ -19,69 +37,51 @@ class LastPacketWindow:
         "batteryVoltage": "battery_voltage_value_raw",
     }
 
-    def draw_ui(self, window_width=250, window_height=750):
-        """Creates the panel holding all system status values."""
+    def __init__(self):
+        log.debug("%s: initialised", self.__class__.__name__)
+
+    def draw_ui(self, window_width: int = 300, window_height: int = 750) -> None:
+        """
+        Create the system-status child-window.
+
+        Call once during UI construction. Values are subsequently updated
+        through the tags in :attr:`system_status_tags`.
+        """
+        log.debug("LastPacketWindow: drawing UI (%dx%d)", window_width, window_height)
+
         with dpg.child_window(width=window_width, height=window_height):
-            dpg.add_text("System Status", bullet=False)
+            dpg.add_text("System Status", color=(255, 255, 0))
+            dpg.add_separator()
 
-            # Acceleration
-            dpg.add_text("Acceleration")
-            dpg.add_text("0.00 g", tag=self.system_status_tags["accel"])
+            with dpg.table(
+                    header_row=False,
+                    borders_innerH=True,
+                    borders_outerH=True,
+                    borders_innerV=True,
+                    borders_outerV=True,
+                    row_background=True,
+                    resizable=True,
+            ):
+                dpg.add_table_column(label="Parameter", width_fixed=True)
+                dpg.add_table_column(label="Value")
 
-            # Temperature
-            dpg.add_spacer()
-            dpg.add_text("Temperature")
-            dpg.add_text("0.0 °C", tag=self.system_status_tags["temperature"])
+                def row(label: str, tag: str, default: str) -> None:
+                    with dpg.table_row():
+                        dpg.add_text(label)
+                        dpg.add_text(default, tag=tag)
 
-            # Subsystem Status
-            dpg.add_spacer()
-            dpg.add_text("Subsystem Status")
-            dpg.add_text("0", tag=self.system_status_tags["subsystem"])
+                row("Acceleration", self.system_status_tags["accel"], "0.00 g")
+                row("Temperature", self.system_status_tags["temperature"], "0.0 °C")
+                row("Subsystem", self.system_status_tags["subsystem"], "000")
+                row("Flight Mode", self.system_status_tags["flight_mode"], "OFF")
+                row("Low Power", self.system_status_tags["low_power"], "OFF")
+                row("Status Events", self.system_status_tags["status_events"], "0")
+                row("RSSI", self.system_status_tags["rssi"], "0 dBm")
+                row("Packet Delay", self.system_status_tags["packet_delay"], "0 ms")
+                row("GNSS Height", self.system_status_tags["gnss_height"], "0 m")
+                row("Pressure Height", self.system_status_tags["pressure_height"], "0 m")
+                row("Latitude", self.system_status_tags["lat"], "0.0")
+                row("Longitude", self.system_status_tags["lon"], "0.0")
+                row("Battery Voltage", self.system_status_tags["batteryVoltage"], "0.0 V")
 
-            # Flight Mode
-            dpg.add_spacer()
-            dpg.add_text("Flight Mode")
-            dpg.add_text("0", tag=self.system_status_tags["flight_mode"])
-
-            # Low Power
-            dpg.add_spacer()
-            dpg.add_text("Low Power Mode")
-            dpg.add_text("OFF", tag=self.system_status_tags["low_power"])
-
-            # Status Events
-            dpg.add_spacer()
-            dpg.add_text("Status Events")
-            dpg.add_text("0", tag=self.system_status_tags["status_events"])
-
-            # RSSI
-            dpg.add_spacer()
-            dpg.add_text("RSSI")
-            dpg.add_text("0 dBm", tag=self.system_status_tags["rssi"])
-
-            # Packet Delay
-            dpg.add_spacer()
-            dpg.add_text("Packet Delay")
-            dpg.add_text("0 ms", tag=self.system_status_tags["packet_delay"])
-
-            # Altitudes
-            dpg.add_spacer()
-            dpg.add_text("GNSS Height")
-            dpg.add_text("0 m", tag=self.system_status_tags["gnss_height"])
-
-            dpg.add_spacer()
-            dpg.add_text("Pressure Height")
-            dpg.add_text("0 m", tag=self.system_status_tags["pressure_height"])
-
-            # GPS Coordinates
-            dpg.add_spacer()
-            dpg.add_text("Latitude")
-            dpg.add_text("0.0", tag=self.system_status_tags["lat"])
-
-            dpg.add_spacer()
-            dpg.add_text("Longitude")
-            dpg.add_text("0.0", tag=self.system_status_tags["lon"])
-
-            # Battery
-            dpg.add_spacer()
-            dpg.add_text("Battery Voltage")
-            dpg.add_text("0.0 V", tag=self.system_status_tags["batteryVoltage"])
+        log.debug("LastPacketWindow: %d rows rendered", len(self.system_status_tags))

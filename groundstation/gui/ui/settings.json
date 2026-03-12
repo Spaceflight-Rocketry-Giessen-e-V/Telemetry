@@ -1,0 +1,146 @@
+{
+  "battery": {
+    "voltage_min": 5.400000095367432,
+    "voltage_max": 8.399999618530273,
+    "voltage_critical": 5.599999904632568
+  },
+  "connection": {
+    "rssi_min": -120,
+    "rssi_max": -30,
+    "rssi_warn": -90
+  },
+  "flight_events": {
+    "abort_threshold": 14,
+    "events": [
+      {
+        "label": "50 m",
+        "is_abort": false
+      },
+      {
+        "label": "100 m",
+        "is_abort": false
+      },
+      {
+        "label": "150 m",
+        "is_abort": false
+      },
+      {
+        "label": "200 m",
+        "is_abort": false
+      },
+      {
+        "label": "Armed",
+        "is_abort": false
+      },
+      {
+        "label": "Liftoff detected",
+        "is_abort": false
+      },
+      {
+        "label": "Booster burnout detected",
+        "is_abort": false
+      },
+      {
+        "label": "Drogue deployed (apogee)",
+        "is_abort": false
+      },
+      {
+        "label": "Drogue deployed (timer)",
+        "is_abort": false
+      },
+      {
+        "label": "Drogue deployed (command)",
+        "is_abort": false
+      },
+      {
+        "label": "Main deployed (altitude)",
+        "is_abort": false
+      },
+      {
+        "label": "Main deployed (timer)",
+        "is_abort": false
+      },
+      {
+        "label": "Main deployed (command)",
+        "is_abort": false
+      },
+      {
+        "label": "Landing detected",
+        "is_abort": false
+      }
+    ]
+  },
+  "commands": {
+    "groups": [
+      {
+        "group": "Ping",
+        "commands": [
+          {
+            "label": "Ping",
+            "code": "p"
+          }
+        ]
+      },
+      {
+        "group": "Main Chute (m)",
+        "commands": [
+          {
+            "label": "50m",
+            "code": "a"
+          },
+          {
+            "label": "100m",
+            "code": "b"
+          },
+          {
+            "label": "150m",
+            "code": "c"
+          },
+          {
+            "label": "200m",
+            "code": "d"
+          }
+        ]
+      },
+      {
+        "group": "Low Power",
+        "commands": [
+          {
+            "label": "ON",
+            "code": "l"
+          },
+          {
+            "label": "OFF",
+            "code": "m"
+          }
+        ]
+      },
+      {
+        "group": "Flight Mode",
+        "commands": [
+          {
+            "label": "ARM",
+            "code": "f"
+          },
+          {
+            "label": "DISARM",
+            "code": "g"
+          }
+        ]
+      },
+      {
+        "group": "Parachutes",
+        "commands": [
+          {
+            "label": "Drogue",
+            "code": "q"
+          },
+          {
+            "label": "Main",
+            "code": "r"
+          }
+        ]
+      }
+    ]
+  }
+}
