@@ -602,7 +602,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1684,7 +1684,7 @@
 				)
 			)
 		)
-		(property "Value" "SP0503BAHT"
+		(property "Value" "SP0503BAHTG"
 			(at -0.28 2.48 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2778,7 +2778,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2978,7 +2978,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6072,7 +6072,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1 uF"
+		(property "Value" "0u1"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6904,7 +6904,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7 uF"
+		(property "Value" "4u7"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -16480,7 +16480,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7 uF"
+		(property "Value" "4u7"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -19226,7 +19226,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -20193,7 +20193,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1 uF"
+		(property "Value" "0u1"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -21305,7 +21305,7 @@
 				)
 			)
 		)
-		(property "Value" "1 nF"
+		(property "Value" "1n"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -21610,7 +21610,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -22769,7 +22769,7 @@
 				)
 			)
 		)
-		(property "Value" "1 nF"
+		(property "Value" "1n"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24777,7 +24777,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -26526,7 +26526,7 @@
 				)
 			)
 		)
-		(property "Value" "SP0503BAHT"
+		(property "Value" "SP0503BAHTG"
 			(at -0.28 2.48 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -28843,7 +28843,7 @@
 				)
 			)
 		)
-		(property "Value" "1 uF"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)

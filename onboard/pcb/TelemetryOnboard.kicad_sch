@@ -10132,6 +10132,26 @@
 		)
 		(uuid "3dcfc19a-453e-4187-9c2b-2860190f8465")
 	)
+	(text "RX"
+		(exclude_from_sim no)
+		(at 117.602 374.904 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "507db573-023a-4a91-a805-6be28b207267")
+	)
+	(text "TX"
+		(exclude_from_sim no)
+		(at 225.552 374.904 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "618d419c-175e-4857-b41e-76e7b2a9b34a")
+	)
 	(text "USB UART"
 		(exclude_from_sim no)
 		(at 17.78 128.524 0)
@@ -10153,6 +10173,16 @@
 			(justify left)
 		)
 		(uuid "727c3cac-60d9-48a1-9270-c83db27a60fe")
+	)
+	(text "RX"
+		(exclude_from_sim no)
+		(at 239.776 374.904 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7e90ba8e-778b-4e87-9bb0-8a8d31a22ed7")
 	)
 	(text "Debug LEDs"
 		(exclude_from_sim no)
@@ -10186,6 +10216,16 @@
 			(justify left)
 		)
 		(uuid "92be129d-03f0-4bb9-8d6c-6d8223c7019e")
+	)
+	(text "TX"
+		(exclude_from_sim no)
+		(at 103.632 374.904 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "93d21b0f-d4ba-415c-b1e3-b0d975ed3a15")
 	)
 	(text "ESD Protection"
 		(exclude_from_sim no)
@@ -16710,28 +16750,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "GND"
-		(shape bidirectional)
-		(at 102.87 43.18 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "472d6ae9-1423-4fd8-9536-de7b67ed7b8f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 110.837 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -43300,6 +43318,73 @@
 			(project "Platinenkonzept v3.0.0"
 				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
 					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 102.87 43.18 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f642a0de-289b-4dca-990b-93c180fcfa3a")
+		(property "Reference" "#PWR096"
+			(at 109.22 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 106.68 43.1799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 102.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a5826824-50b6-4c3d-8b00-376c848bcef9")
+		)
+		(instances
+			(project "TelemetryOnboard"
+				(path "/a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
+					(reference "#PWR096")
 					(unit 1)
 				)
 			)
