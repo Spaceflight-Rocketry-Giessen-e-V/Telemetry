@@ -3,19 +3,19 @@
     "GenerationSoftware": {
       "Vendor": "KiCad",
       "Application": "Pcbnew",
-      "Version": "9.0.3"
+      "Version": "9.0.4"
     },
-    "CreationDate": "2025-09-01T11:10:08+02:00"
+    "CreationDate": "2026-03-19T19:45:48+01:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "TelemetryOnboard",
       "GUID": "54656c65-6d65-4747-9279-4f6e626f6172",
-      "Revision": "v0.0.1"
+      "Revision": "rev?"
     },
     "Size": {
-      "X": 100.1,
-      "Y": 91.125
+      "X": 95.05,
+      "Y": 95.05
     },
     "LayerNumber": 4,
     "BoardThickness": 1.6,
@@ -36,7 +36,7 @@
       "PadToPad": 0.2,
       "PadToTrack": 0.2,
       "TrackToTrack": 0.2,
-      "MinLineWidth": 0.5,
+      "MinLineWidth": 0.25,
       "TrackToRegion": 0.2,
       "RegionToRegion": 0.2
     }

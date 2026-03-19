@@ -256,7 +256,7 @@
 		(uuid "4184dae7-d27b-4edc-a691-5e47ea6fd5a9")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3dmodels/Buzzer CMT-0525-75-SMT-TR.step"
+	(model "${KIPRJMOD}/3D Models/Buzzer CMT-0525-75-SMT-TR.step"
 		(offset
 			(xyz 0 0 0)
 		)
