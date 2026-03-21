@@ -21,6 +21,44 @@ The process is similar for the onboard and ground station systems.
 
 Our electronics hardware is designed using the open source EDA KiCAD. The schematic and PCB design files can be viewed and  are editable. The schematic is also included in [PDF format](../onboard/pcb/TelemetryOnboard_Schematic.pdf).
 
+### Add custom symbols, footprints and 3D models
+
+The KiCAD project comes with included custom symbol and footprint libraries.
+Additional symbols and footprints can be added to these libraries:
+
+- Download the desired files. You can find them on Digikey, Traceparts, Snapmagic, or similar sites. They sould be .kicad_sym (symbol), .kicad_mod (footprint), .step (3D model).
+- Put the 3D model in the "3D Model" directory in the same directory as the KiCAD project. The symbol and the footprint can remain in the download folder.
+
+Include the footprint and link the 3D model:
+- Open the footprint editor and go "File", "Import", "Footprint"
+- Choose the footprint from the download folder
+- Press "Save" and insert the desired name and choose the "Footprints" library:
+
+<p align="center"><img src="images/kicad_footprint.png" width ="400"/></p>
+
+- Press "OK"
+- Press "E" to open the footprint properties
+- Go to the "3D Models" tab (1), click the folder symbol (2), choose the project path (3), and choose the correcht 3d model (4)
+
+<p align="center"><img src="images/kicad_3dmodel.png" width ="400"/></p>
+
+- If the 3D model is not positioned correctly, it can be scaled, rotated, or moved
+- Press "OK" and then "Save"
+
+Include the symbol and link the footprint:
+
+- Open the symbol editor, click the "Symbols" library, and go "File", "Import", "Symbol"
+- Choose the symbol from the download folder
+- Press "Save" and insert the desired name and choose the "Symbols" library
+- Press "OK"
+- Press "E" to open the symbol properties
+- Hover over the "Footprint" field and click the library symbol:
+
+<p align="center"><img src="images/kicad_symbol.png" width ="600"/></p>
+
+- Choose the footprint from the "Footprints" library
+- Press "OK" and then "Save"
+
 ### Sourcing PCBs
 The PCBs can be sourced from any PCB manufacturing service like JLCPCB or PCBWAY. We included the [Gerber Production Files](../onboard/pcb/Production%20Files/Production%20Files.zip) in the repository. We recommend ordering a solder paste stencil as well, as it simplifies the soldering process.
 
