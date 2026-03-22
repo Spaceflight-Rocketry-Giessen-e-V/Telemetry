@@ -29435,7 +29435,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Footprints:Banana_CT3151-0"
+		(property "Footprint" "Footprints:Banana_CT3151-2"
 			(at 511.81 322.58 0)
 			(effects
 				(font

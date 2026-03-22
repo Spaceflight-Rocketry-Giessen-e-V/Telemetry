@@ -522,7 +522,7 @@
       "plot": "Production Files/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../media/3dmodels/Onboard_PCB_NoSilkscreen.step",
+      "step": "TelemetryGroundstationDB.step",
       "svg": "",
       "vrml": ""
     },
