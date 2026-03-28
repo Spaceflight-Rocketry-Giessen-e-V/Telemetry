@@ -10,30 +10,33 @@
 #include "Packet.h"
 
 // Pin assignment
-uint8_t ledpin1 = PIN_PG3;
-uint8_t ledpinR = PIN_PG2;
-uint8_t ledpinG = PIN_PG1;
-uint8_t ledpinB = PIN_PG0;
-uint8_t ledpin5 = PIN_PF2;
-uint8_t ledpin6 = PIN_PE7;
-uint8_t ledpin7 = PIN_PE5;
-uint8_t ledpin8 = PIN_PE3;
-uint8_t d1pin = PIN_PC6;
-uint8_t d2pin = PIN_PD0;
-uint8_t d3pin = PIN_PD2;
-uint8_t armpin = PIN_PD6;
-uint8_t slppin = PIN_PD4;
+uint8_t ledpinR = PIN_PG5;
+uint8_t ledpinG = PIN_PG4;
+uint8_t ledpinB = PIN_PG3;
+uint8_t ledpin1 = PIN_PA0;  
+uint8_t ledpin2 = PIN_PG7;  
+uint8_t ledpin3 = PIN_PG6;  
+uint8_t ledpinRSSI1 = PIN_PD0; //(D27)
+uint8_t ledpinRSSI2 = PIN_PD1; //(D28)
+uint8_t ledpinRSSI3 = PIN_PD2; //(D29)
+uint8_t ledpinRSSI4 = PIN_PD3; //(D30)
+uint8_t ledpinRSSI5 = PIN_PD4; //(D31)
+uint8_t ledpinRSSI6 = PIN_PD5; //(D32)
+uint8_t ledpinRSSI7 = PIN_PD6; //(D33)
+uint8_t ledpinRSSI8 = PIN_PD7; //(D34)
 
-uint8_t cfgpin = PIN_PB6;
-uint8_t rstpin = PIN_PF4;
-uint8_t ctspin = PIN_PB5;
-uint8_t rtspin = PIN_PB7;
 
-HardwareSerial* SerialPC1 = &Serial4;
-HardwareSerial* SerialPC2 = &Serial1;
+
+uint8_t D01pin = PIN_PA3;
+uint8_t D02pin = PIN_PA2;
+uint8_t D03pin = PIN_PA1;
+uint8_t D04pin = PIN_PA6;
+
+HardwareSerial* SerialPC1 = &Serial5;
+HardwareSerial* SerialPC2 = &Serial2;
 HardwareSerial* SerialModule = &Serial0;
 
-RC17xxHP_RC232 rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
+RC17xxHP_RC232 rc1780hp(SerialModule, D01pin, D04pin, D03pin, D02pin);
 
 // Data components received from sensors
 uint8_t temperature = 0;
@@ -60,33 +63,41 @@ uint8_t index = 0;
 
 void setup()
 {
-  pinMode(ledpin1, OUTPUT); // Power on
   pinMode(ledpinR, OUTPUT); // Red
   pinMode(ledpinG, OUTPUT); // Green
   pinMode(ledpinB, OUTPUT); // Blue
-  pinMode(ledpin5, OUTPUT); // Flight mode
-  pinMode(ledpin6, OUTPUT); // Low-power-mode
-  pinMode(ledpin7, OUTPUT); // Subsystem status
-  pinMode(ledpin8, OUTPUT); // Battery voltage
-  pinMode(d1pin, INPUT);
-  pinMode(d2pin, INPUT);
-  pinMode(d3pin, INPUT);
-  pinMode(armpin, OUTPUT);
-  pinMode(slppin, OUTPUT);
+  pinMode(ledpin1, OUTPUT); // Flight mode
+  pinMode(ledpin2, OUTPUT); // Low-power-mode
+  pinMode(ledpin3, OUTPUT); // Subsystem status
+  pinMode(ledpinRSSI1, OUTPUT); 
+  pinMode(ledpinRSSI2, OUTPUT);
+  pinMode(ledpinRSSI3, OUTPUT);
+  pinMode(ledpinRSSI4, OUTPUT);
+  pinMode(ledpinRSSI5, OUTPUT);
+  pinMode(ledpinRSSI6, OUTPUT);
+  pinMode(ledpinRSSI7, OUTPUT);
+  pinMode(ledpinRSSI8, OUTPUT);
 
   // Only RGB LED is turned on
-  digitalWrite(ledpin1, LOW);
   digitalWrite(ledpinR, HIGH);
   digitalWrite(ledpinG, HIGH);
   digitalWrite(ledpinB, HIGH);
-  digitalWrite(ledpin5, LOW);
-  digitalWrite(ledpin6, LOW);
-  digitalWrite(ledpin7, LOW);
-  digitalWrite(ledpin8, LOW);
+  digitalWrite(ledpin1, LOW);
+  digitalWrite(ledpin2, LOW);
+  digitalWrite(ledpin3, LOW);
+  digitalWrite(ledpinRSSI1, LOW);
+  digitalWrite(ledpinRSSI2, LOW);
+  digitalWrite(ledpinRSSI3, LOW);
+  digitalWrite(ledpinRSSI4, LOW);
+  digitalWrite(ledpinRSSI5, LOW);
+  digitalWrite(ledpinRSSI6, LOW);
+  digitalWrite(ledpinRSSI7, LOW);
+  digitalWrite(ledpinRSSI8, LOW);
+
 
   SerialPC1->begin(115200);// Connection to PC
   // SerialPC2->begin(19200);
-  SerialModule->swap(1);// Swap RX/TX pins for module
+  SerialModule->pins(PIN_PA4, PIN_PA5);// Swap RX/TX pins for module
   delay(100);
   rc1780hp.begin(19200);
   delay(100);
@@ -107,7 +118,6 @@ void setup()
   digitalWrite(ledpinR, LOW);
   digitalWrite(ledpinG, LOW);
   digitalWrite(ledpinB, LOW);
-  digitalWrite(ledpin1, HIGH);
 }
 
 void loop()
@@ -201,60 +211,131 @@ void loop()
   // LED5 glows wenn flight-mode is active
   if(flight_mode == 1)
   {
-    digitalWrite(ledpin5, HIGH);
+    digitalWrite(ledpin1, HIGH);
   }
   else
   {
-    digitalWrite(ledpin5, LOW);
+    digitalWrite(ledpin1, LOW);
   }
 
   // LED6 glows wenn low-power-mode is active
   if(low_power_mode == 1)
   {
-    digitalWrite(ledpin6, HIGH);
+    digitalWrite(ledpin2, HIGH);
   }
   else
   {
-    digitalWrite(ledpin6, LOW);
+    digitalWrite(ledpin2, LOW);
   }
 
   // LED7 glows wenn subsystems are ready
   if(subsystem_status == 0b11)
   {
-    digitalWrite(ledpin7, HIGH);
+    digitalWrite(ledpin3, HIGH);
   }
   else
   {
-    digitalWrite(ledpin7, LOW);
-  }
-
-  // LED8 glows until battery-voltage gets lower than 6.0V
-  if(battery_voltage < 6.0)
-  {
-    digitalWrite(ledpin8, HIGH);
-  }
-  else
-  {
-    digitalWrite(ledpin8, LOW);
+    digitalWrite(ledpin3, LOW);
   }
   
   // RGB LED (RSSI)
-  if(rssi > -50 )// High signal strength --> LED glows green
+  if(rssi > -40)// High signal strength
   {
-    digitalWrite(ledpinG, HIGH);
-    digitalWrite(ledpinB, LOW);
-    digitalWrite(ledpinR, LOW);
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, HIGH);
+    digitalWrite(ledpinRSSI4, HIGH);
+    digitalWrite(ledpinRSSI5, HIGH);
+    digitalWrite(ledpinRSSI6, HIGH);
+    digitalWrite(ledpinRSSI7, HIGH);
+    digitalWrite(ledpinRSSI8, HIGH);
   }
-  else if(rssi > -80)// Medium signal strength --> LED glows blue
+  else if(rssi > -50)
   {
-    digitalWrite(ledpinG, LOW);
-    digitalWrite(ledpinB, HIGH);
-    digitalWrite(ledpinR, LOW); 
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, HIGH);
+    digitalWrite(ledpinRSSI4, HIGH);
+    digitalWrite(ledpinRSSI5, HIGH);
+    digitalWrite(ledpinRSSI6, HIGH);
+    digitalWrite(ledpinRSSI7, HIGH);
+    digitalWrite(ledpinRSSI8, LOW);
   }
-  else // Low signal strength --> LED glows red
+  else if(rssi > -60)
   {
-    digitalWrite(ledpinG, LOW);
-    digitalWrite(ledpinB, LOW);
-    digitalWrite(ledpinR, HIGH);
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, HIGH);
+    digitalWrite(ledpinRSSI4, HIGH);
+    digitalWrite(ledpinRSSI5, HIGH);
+    digitalWrite(ledpinRSSI6, HIGH);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
+  }
+  else if(rssi > -70)// Medium signal strength
+  {
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, HIGH);
+    digitalWrite(ledpinRSSI4, HIGH);
+    digitalWrite(ledpinRSSI5, HIGH);
+    digitalWrite(ledpinRSSI6, LOW);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
+  }
+  else if(rssi > -80)
+  {
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, HIGH);
+    digitalWrite(ledpinRSSI4, HIGH);
+    digitalWrite(ledpinRSSI5, LOW);
+    digitalWrite(ledpinRSSI6, LOW);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
+  }
+  else if(rssi > -90)
+  {
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, HIGH);
+    digitalWrite(ledpinRSSI4, LOW);
+    digitalWrite(ledpinRSSI5, LOW);
+    digitalWrite(ledpinRSSI6, LOW);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
+  }
+  else if(rssi > -100) // Low signal strength
+  {
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, HIGH);
+    digitalWrite(ledpinRSSI3, LOW);
+    digitalWrite(ledpinRSSI4, LOW);
+    digitalWrite(ledpinRSSI5, LOW);
+    digitalWrite(ledpinRSSI6, LOW);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
+  }
+  else if(rssi > -110)
+  {
+    digitalWrite(ledpinRSSI1, HIGH);
+    digitalWrite(ledpinRSSI2, LOW);
+    digitalWrite(ledpinRSSI3, LOW);
+    digitalWrite(ledpinRSSI4, LOW);
+    digitalWrite(ledpinRSSI5, LOW);
+    digitalWrite(ledpinRSSI6, LOW);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
+  }
+  else
+  {
+    digitalWrite(ledpinRSSI1, LOW);
+    digitalWrite(ledpinRSSI2, LOW);
+    digitalWrite(ledpinRSSI3, LOW);
+    digitalWrite(ledpinRSSI4, LOW);
+    digitalWrite(ledpinRSSI5, LOW);
+    digitalWrite(ledpinRSSI6, LOW);
+    digitalWrite(ledpinRSSI7, LOW);
+    digitalWrite(ledpinRSSI8, LOW);
   }
 }
