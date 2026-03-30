@@ -3,7 +3,7 @@
 <p align="center"><img src="media/images/Onboard_PCB_Rendering_QFH.png" width="400" /></p>
 
 ## Overview
-The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club *Spaceflight Rocketry Gießen e.V.*, developed for the PIPE 2 and ARCHER experimental rockets.  
+The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://spaceflight-rocketry-giessen.de/), developed for the PIPE 2 and ARCHER experimental rockets.  
 This 868 MHz telemetry system allows bidirectional data exchange between rockets and ground stations with a minimum range of 18 km and a minimum data rate of 1.2 kbps.
 The design can also be used in areas outside of rocketry like Smart Home or RC.
 
@@ -65,11 +65,11 @@ Included:
 - Status event indicator
 
 ## Legal notice
-Please note that radio systems may be subject to local regulations. Ensure that any testing or deployment of these antennas complies with national and regional laws regarding RF transmission. The project maintainers are not responsible for misuse or regulatory violations.  
+Please note that radio systems may be subject to local regulations. Ensure that any testing or deployment of these systems complies with national and regional laws regarding RF transmission. The project maintainers are not responsible for misuse or regulatory violations.  
 
 ## License
 
-Copyright SPROG – Spaceflight Rocketry Giessen e.V. 2025.<br />
+Copyright Spaceflight Rocketry Giessen e.V. 2026.<br />
 This source describes Open Hardware and is licensed under the CERN-OHL-S v2.<br />
 You may redistribute and modify this source and make products using it under the terms of the [CERN-OHL-S v2 or any later version](LICENSE).<br />
 This source is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Please see the CERN-OHL-S v2 for applicable conditions.<br />
