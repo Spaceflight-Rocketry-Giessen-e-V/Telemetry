@@ -36,31 +36,44 @@ const uint8_t hz = 8;                                                           
 const uint32_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds   6 min (360s) is max sending time
 
 // Pin assignment
-uint8_t ledpin1 = PIN_PG3;
-uint8_t ledpinR = PIN_PG2;
-uint8_t ledpinG = PIN_PG1;
-uint8_t ledpinB = PIN_PG0;
-uint8_t ledpin5 = PIN_PF2;
-uint8_t ledpin6 = PIN_PE7;
-uint8_t ledpin7 = PIN_PE5;
-uint8_t ledpin8 = PIN_PE3;
-uint8_t d1pin = PIN_PC6;
-uint8_t d2pin = PIN_PD0;
-uint8_t d3pin = PIN_PD2;
-uint8_t armpin = PIN_PD6;
-uint8_t slppin = PIN_PD4;
+uint8_t ledpinR = PIN_PF0; // Red
+uint8_t ledpinG = PIN_PE7; // Green
+uint8_t ledpinB = PIN_PE6; // Blue
+uint8_t ledpin1 = PIN_PF3; // Status
+uint8_t ledpin2 = PIN_PF2; // Flight mode
+uint8_t ledpin3 = PIN_PF1; // Not used so far
+uint8_t ledpinDEBUG1 = PIN_PB6; // Not used so far
+uint8_t ledpinDEBUG2 = PIN_PB7; // Not used so far
+uint8_t ledpinSENS = PIN_PD4; // Sensor circuit board 1
+uint8_t ledpinIGN = PIN_PD2; // Sensor circuit board 2
+uint8_t ledpinPWR = PIN_PD3; // Landing systems, not used so far
+uint8_t d4pin = PIN_PC6; // Not used so far
+uint8_t d5pin = PIN_PC7; // Not used so far
+uint8_t d26pin = PIN_PF4; // Not used so far
+uint8_t d27pin = PIN_PF5; // Not used so far
+uint8_t d28pin = PIN_PF6; // Not used so far
+uint8_t arm1pin = PIN_PG1;
+uint8_t slppin = PIN_PG0;
 
-uint8_t cfgpin = PIN_PB6;
-uint8_t rstpin = PIN_PF4;
-uint8_t ctspin = PIN_PB5;
-uint8_t rtspin = PIN_PB7;
+uint8_t buzzerpin = PIN_PB0; // Not used so far
 
-HardwareSerial* SerialPC1 = &Serial4;
-HardwareSerial* SerialPC2 = &Serial1;
-HardwareSerial* SerialModule = &Serial0;
+uint8_t cfg1pin = PIN_PA5;
+uint8_t rst1pin = PIN_PG7;
+uint8_t cts1pin = PIN_PA3;
+uint8_t rts1pin = PIN_PA4;
+
+uint8_t cfg2pin = PIN_PB3; // Not used so far
+uint8_t rst2pin = PIN_PG6; // Not used so far
+uint8_t cts2pin = PIN_PB1; // Not used so far
+uint8_t rts2pin = PIN_PB2; // Not used so far
+
+HardwareSerial* SerialPC = &Serial4;
+HardwareSerial* SerialUmbilical = &Serial1; // Not used so far
+HardwareSerial* SerialModule1 = &Serial0;
+HardwareSerial* SerialModule2 = &Serial3; // Not used so far
 
 // Radio module initialisation
-RC17xxHP_RC232 rc1780hp(SerialModule, cfgpin, rstpin, ctspin, rtspin);
+RC17xxHP_RC232 rc1780hp(SerialModule1, cfg1pin, rst1pin, cts1pin, rts1pin);
 
 // Functions declaration
 void get_packet_data();
@@ -82,37 +95,42 @@ float battery_voltage = 0;
 
 void setup()
 {
-  pinMode(ledpin1, OUTPUT); // Power on
-  pinMode(ledpinR, OUTPUT); // Red
-  pinMode(ledpinG, OUTPUT); // Green
-  pinMode(ledpinB, OUTPUT); // Blue
-  pinMode(ledpin5, OUTPUT); // Flight mode
-  pinMode(ledpin6, OUTPUT); // Sensor circuit board 1
-  pinMode(ledpin7, OUTPUT); // Sensor circuit board 2
-  pinMode(ledpin8, OUTPUT); // Landing systems
-  pinMode(d1pin, INPUT);
-  pinMode(d2pin, INPUT);
-  pinMode(d3pin, INPUT);
-  pinMode(armpin, OUTPUT);
+  pinMode(ledpinR, OUTPUT);
+  pinMode(ledpinG, OUTPUT);
+  pinMode(ledpinB, OUTPUT);
+  pinMode(ledpin1, OUTPUT);
+  pinMode(ledpin2, OUTPUT);
+  pinMode(ledpin3, OUTPUT);
+  pinMode(ledpinDEBUG1, OUTPUT);
+  pinMode(ledpinDEBUG2, OUTPUT);
+  pinMode(ledpinSENS, OUTPUT);
+  pinMode(ledpinIGN, OUTPUT);
+  pinMode(ledpinPWR, OUTPUT);
+  pinMode(arm1pin, OUTPUT);
   pinMode(slppin, OUTPUT);
 
   // Only LED1 (power indicator) and RGB LED are turned on
-  digitalWrite(ledpin1, HIGH);
   digitalWrite(ledpinR, HIGH);
   digitalWrite(ledpinG, LOW);
   digitalWrite(ledpinB, LOW);
-  digitalWrite(ledpin5, LOW);
-  digitalWrite(ledpin6, LOW);
-  digitalWrite(ledpin7, LOW);
-  digitalWrite(ledpin8, LOW);
+  digitalWrite(ledpin1, HIGH);
+  digitalWrite(ledpin2, LOW);
+  digitalWrite(ledpin3, LOW);
+  digitalWrite(ledpinDEBUG1, LOW);
+  digitalWrite(ledpinDEBUG2, LOW);
+  digitalWrite(ledpinSENS, LOW);
+  digitalWrite(ledpinIGN, LOW);
+  digitalWrite(ledpinPWR, HIGH);
 
   // Initialize UART
-  //SerialPC1->begin(115200);
-  //SerialPC2->begin(115200);
-  SerialModule->swap(1);// Swap RX/TX pins for radio module uart connection
+  //SerialPC->begin(115200);
+  SerialPC->pins(PIN_PE4, PIN_PE5);// Swap RX/TX pins for radio module uart connection
+  SerialUmbilical->pins(PIN_PE4, PIN_PE5);// Swap RX/TX pins for radio module uart connection
+  SerialModule1->pins(PIN_PA0, PIN_PA1);// Swap RX/TX pins for radio module uart connection
+  SerialModule2->pins(PIN_PC0, PIN_PC1);// Swap RX/TX pins for radio module uart connection
  
   // Initialize I2C
-  Wire.swap(2);
+  Wire.pins(PIN_PC2, PIN_PC3);
   Wire.begin();
   
   // Initialize radio transceiver and wait until communication is established
@@ -145,10 +163,10 @@ void loop()
   loop_start_time = millis();
 
   // Check for incoming data from groundstation
-  if(SerialModule->available() != 0)
+  if(SerialModule1->available() != 0)
   {
     // Parity check
-    incoming_data = SerialModule->read();
+    incoming_data = SerialModule1->read();
     for (int z = 0; z < 8; z++) 
     {
         if (incoming_data & (1 << z))
@@ -207,10 +225,10 @@ void loop()
           digitalWrite(ledpinR, LOW);
           digitalWrite(ledpinG, LOW); 
           digitalWrite(ledpinB, LOW);
-          digitalWrite(ledpin5, LOW); 
-          digitalWrite(ledpin6, LOW); 
-          digitalWrite(ledpin7, LOW); 
-          digitalWrite(ledpin8, LOW); 
+          digitalWrite(ledpin2, LOW); 
+          digitalWrite(ledpinSENS, LOW); 
+          digitalWrite(ledpinIGN, LOW); 
+          digitalWrite(ledpinPWR, LOW); 
           low_power_mode = 1;
         }
         break;
@@ -228,32 +246,32 @@ void loop()
       case 'f': // activation
         if(flight_mode == 0)
         {
-          digitalWrite(armpin, HIGH);
-          delay(1);
-          if(digitalRead(d3pin) == HIGH)
-          {
-            digitalWrite(ledpin5, HIGH);
+          digitalWrite(arm1pin, HIGH);
+          // delay(1);
+          //if(digitalRead(d3pin) == HIGH)  This connection is not planned anymore??
+          // {
+            digitalWrite(ledpin2, HIGH);
             flight_mode_start_time = millis();
             flight_mode = 1;
             Wire.beginTransmission(0x40);
             Wire.write('f');
             Wire.endTransmission();
-          }
-          else
-          {
-            digitalWrite(armpin, LOW);
-          }
+          // }
+          // else
+          // {
+          //   digitalWrite(arm1pin, LOW);
+          // }
         }
         break;
       
       case 'g': // deactivation
         if(flight_mode == 1)
         {
-          digitalWrite(armpin, LOW);
+          digitalWrite(arm1pin, LOW);
           delay(1);
           if(digitalRead(d3pin) == LOW)
           {
-            digitalWrite(ledpin5, LOW);
+            digitalWrite(ledpin2, LOW);
             flight_mode = 0;
             Wire.beginTransmission(0x40);
             Wire.write('g');
@@ -261,7 +279,7 @@ void loop()
           }
           else
           {
-            digitalWrite(armpin, HIGH);
+            digitalWrite(arm1pin, HIGH);
           }
         }
         break;
@@ -299,11 +317,11 @@ void loop()
   {
     if(flight_mode == 1)
     {
-      digitalWrite(ledpin5, HIGH);
+      digitalWrite(ledpin2, HIGH);
     }
     else
     {
-      digitalWrite(ledpin5, LOW);
+      digitalWrite(ledpin2, LOW);
     }
 
     digitalWrite(ledpin1, 1 - led_switch);
@@ -313,16 +331,16 @@ void loop()
     {
       if((subsystem_status & 0b001) != 0)
       {
-        digitalWrite(ledpin6, HIGH);
+        digitalWrite(ledpinSENS, HIGH);
       }
       else
       {
-        digitalWrite(ledpin6, led_switch);
+        digitalWrite(ledpinSENS, led_switch);
       }
     }
     else
     {
-      digitalWrite(ledpin6, LOW);
+      digitalWrite(ledpinSENS, LOW);
     }
 
     // Sensor circuit board 2
@@ -330,34 +348,20 @@ void loop()
     {
       if((subsystem_status & 0b010) != 0)
       {
-        digitalWrite(ledpin7, HIGH);
+        digitalWrite(ledpinIGN, HIGH);
       }
       else
       {
-        digitalWrite(ledpin7, led_switch);
+        digitalWrite(ledpinIGN, led_switch);
       }
     }
     else
     {
-      digitalWrite(ledpin7, LOW);
+      digitalWrite(ledpinIGN, LOW);
     }
 
-    // Landing systems
-    if((i2c_connections & 0b100) != 0)
-    {
-      if((subsystem_status & 0b100) != 0)
-      {
-        digitalWrite(ledpin8, HIGH);
-      }
-      else
-      {
-        digitalWrite(ledpin8, led_switch);
-      }
-    }
-    else
-    {
-      digitalWrite(ledpin8, LOW);
-    }
+    // POWER UNIT (no microcontroller yet)
+    digitalWrite(ledpinPWR, HIGH);
 
     // All boards connected but not ready (RGB_LED turns blue)
     if(i2c_connections == 0b111 && subsystem_status != 0b111)
@@ -479,7 +483,8 @@ void get_packet_data()
   }
 
   // Battery_voltage (Voltage divider)
-  battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10;
+  // battery_voltage = (float)analogRead(d2pin) / 1023 * 3.3 * (18 + 10) / 10; Will not be used anymore due to power unit doing the measurement
+  battery_voltage = 0;
 
   // Temperature
   // rc1780hp.read_Temperature(&temperature);
@@ -490,5 +495,5 @@ void send_packet()
 {
   uint8_t packet[15] = { 0 };
   Packet::encode(packet, (float)temperature, subsystem_status, flight_mode, low_power_mode, status_events, acceleration, height_pressure, height_gnss, lat_gnss, lon_gnss, battery_voltage);
-  SerialModule->write(packet, 15);
+  SerialModule1->write(packet, 15);
 }
