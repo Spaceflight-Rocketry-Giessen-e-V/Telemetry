@@ -7,6 +7,11 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(title "Telemetry Groundstation Daughterboard PCB")
+		(date "2026-03-01")
+		(company "Spaceflight Rocketry Giessen e.V.")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(2 "B.Cu" signal)

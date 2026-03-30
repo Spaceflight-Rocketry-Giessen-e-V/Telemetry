@@ -7,6 +7,11 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(title "Telemetry Groundstation Motherboard PCB")
+		(date "2026-03-01")
+		(company "Spaceflight Rocketry Giessen e.V.")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(2 "B.Cu" signal)
@@ -2959,7 +2964,7 @@
 			(net 66 "+5V")
 			(pinfunction "Pin_1")
 			(pintype "passive")
-			(uuid "c672ebbc-dc9d-4a39-b59f-ac8129b26611")
+			(uuid "cbfaa84d-6221-40c1-ae5c-59576e85b8f6")
 		)
 		(pad "1" thru_hole circle
 			(at 2.55 -2.55 270)
@@ -2970,7 +2975,7 @@
 			(net 66 "+5V")
 			(pinfunction "Pin_1")
 			(pintype "passive")
-			(uuid "c672ebbc-dc9d-4a39-b59f-ac8129b26611")
+			(uuid "2c78cf8c-3157-4566-b0fb-251a4da0113b")
 		)
 		(pad "1" thru_hole circle
 			(at 2.55 2.55 270)
@@ -2981,7 +2986,7 @@
 			(net 66 "+5V")
 			(pinfunction "Pin_1")
 			(pintype "passive")
-			(uuid "c672ebbc-dc9d-4a39-b59f-ac8129b26611")
+			(uuid "aa7ed7b8-cf91-4bf5-bde6-451a64800f35")
 		)
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/3D Models/CT3151-2.STEP"
