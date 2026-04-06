@@ -10,13 +10,22 @@ Since our projects include multiple subsytems, which are developed more or less 
 
 ### Added
 
+- separate purpose-build groundstation electronics (motherboard/daughterboard approach)
+- helix antenna design files for groundstation system
+- GUI telemetry command transmission
+
 ### Changed
+
+- onboard electronics with dual-band approach
+- onboard and groundstation firmware update for new electronics
+
+### Fixed
 
 ### Deprecated
 
 ### Removed
 
-### Fixed
+- flight data simulations
 
 ## 2026-01-04
 
