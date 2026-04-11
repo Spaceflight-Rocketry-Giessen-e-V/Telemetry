@@ -35,36 +35,36 @@
 
 A helical antenna is an excellent choice for rocket telemetry: it provides circular polarization, high gain, and a relatively narrow beam — ideal for tracking a rocket that spins during flight.
 
-| Render (Side View)                                                       | Render (Cone Detail)                                                       |
+| Render (Side View)                                                       | Render (Base Detail)                                                       |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| ![Side View](../groundstation/antenna/GroundstationAntenna_render_1.png) | ![Cone Detail](../groundstation/antenna/GroundstationAntenna_render_2.png) |
+| ![Side View](../groundstation/antenna/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/GroundstationAntenna_render_1.png) |
 
 ---
 
 ## Bill of Materials
 
-| Item                          | Specification                                                                                                            | Est. Cost (€) |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ | :-----------: |
-| Fiberglass rod                | 2 m length, 30 mm diameter                                                                                               |      ~15      |
-| Aluminum plate                | 70 × 70 cm, 2 mm thickness (ground plane / reflector)                                                                    |      ~35      |
-| Copper tube                   | 6 mm diameter, 15 m length, **hollow**                                                                                   |      ~40      |
-| SMA Connector                 | [TE Connectivity CONSMA016-15-G](https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA016-15-G/11624645) |      ~8       |
-| Pacifier fixtures             | 22 × (3D printed)                                                                                                        |       —       |
-| Top cone                      | 1 × (3D printed)                                                                                                         |       —       |
-| Bottom cone                   | 1 × (3D printed)                                                                                                         |       —       |
-| Rope fixture                  | 1 × (3D printed)                                                                                                         |       —       |
-| Winding clamp (helix)         | 1 × (3D printed)                                                                                                         |       —       |
-| Winding guide (bend)          | 1 × (3D printed)                                                                                                         |       —       |
-| Pacifier spacing guide        | 1 × (3D printed)                                                                                                         |       —       |
-| M8 × 30 screws                | 8 ×                                                                                                                      |      ~3       |
-| M8 nuts                       | 8 ×                                                                                                                      |      ~2       |
-| M2.5 × 10 screws              | 4 ×                                                                                                                      |      ~2       |
-| M2.5 nuts                     | 4 ×                                                                                                                      |      ~1       |
-| Epoxy resin + hardener        | with syringes and mixing equipment                                                                                       |      ~20      |
-| Hot glue sticks               | for temporary fixturing                                                                                                  |      ~5       |
-| Isopropyl alcohol             | for surface cleaning                                                                                                     |      ~5       |
-| String / guy wire             | for structural bracing                                                                                                   |      ~5       |
-| **Total (excl. 3D printing)** |                                                                                                                          |   **~141**    |
+| Item                                                                                                                                                                | Specification                                         | Est. Cost (€) |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | :-----------: |
+| Fiberglass rod                                                                                                                                                      | 2 m length, 30 mm diameter                            |      ~15      |
+| Aluminum plate                                                                                                                                                      | 70 × 70 cm, 2 mm thickness (ground plane / reflector) |      ~35      |
+| Copper tube                                                                                                                                                         | 6 mm diameter, 15 m length, **hollow**                |      ~40      |
+| [SMA Connector](https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA016-15-G/11624645)                                                             | TE Connectivity CONSMA016-15-G                        |      ~8       |
+| [Pacifier](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Pacifier.stl)                   | 22 × (3D printed)                                     |       —       |
+| [Pacifier Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl) | 1 × (3D printed)                                      |       —       |
+| [Cone Top](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Top.stl)                 | 1 × (3D printed)                                      |       —       |
+| [Cone Bottom](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Bottom.stl)           | 1 × (3D printed)                                      |       —       |
+| [Rope Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Rope%20Fixture.stl)         | 1 × (3D printed)                                      |       —       |
+| [Winding Clamp](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Clamp.stl)       | 1 × (3D printed)                                      |       —       |
+| [Winding Help](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Help.stl)         | 1 × (3D printed)                                      |       —       |
+| M8 × 30 screws                                                                                                                                                      | 8 ×                                                   |      ~3       |
+| M8 nuts                                                                                                                                                             | 8 ×                                                   |      ~2       |
+| M2.5 × 10 screws                                                                                                                                                    | 4 ×                                                   |      ~2       |
+| M2.5 nuts                                                                                                                                                           | 4 ×                                                   |      ~1       |
+| Epoxy resin + hardener                                                                                                                                              | with syringes and mixing equipment                    |      ~20      |
+| Hot glue sticks                                                                                                                                                     | for temporary fixturing                               |      ~5       |
+| Isopropyl alcohol                                                                                                                                                   | for surface cleaning                                  |      ~5       |
+| String / guy wire                                                                                                                                                   | for structural bracing                                |      ~5       |
+| **Total (excl. 3D printing)**                                                                                                                                       |                                                       |   **~141**    |
 
 ### 3D-Printed Design Files
 
@@ -81,10 +81,10 @@ All 3D models are available in the [`groundstation/antenna/`](https://github.com
 
 The "pacifiers" are 3D-printed ring fixtures that hold the copper coil at the correct spacing and angle along the fiberglass rod. They are the backbone of the antenna geometry.
 
-|                                                             |                                                                               |
-| ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| ![Pacifier part](images/antenna_assembly/0001_pacifier.jpg) | ![Template placement](images/antenna_assembly/0002_pacifier_set_template.jpg) |
-| *The pacifier fixture*                                      | *Pacifier with spacing template*                                              |
+|                                                                                                                                                   |                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Pacifier part](images/antenna_assembly/0001_pacifier.jpg)                                                                                       | ![Template placement](images/antenna_assembly/0002_pacifier_set_template.jpg)                                                                                       |
+| [Pacifier](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Pacifier.stl) | [Pacifier Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl) |
 
 ![Pacifier and template](images/antenna_assembly/0003_pacifier_and_template.jpg)
 
@@ -108,18 +108,18 @@ Place the first pacifier 10 cm from the top of the rod. You will work your way *
 
 **3. Attach with hot glue**
 
-Using the 3D-printed spacing template, position and hot-glue each pacifier. Apply a small amount first, just enough for initial stability.
+Using the 3D-printed spacing template, position and hot-glue each pacifier. Apply a small amount first, just enough for initial stability. Wait for the glue to partially cure, remove the template, then reinforce the pacifier with more hot glue around its perimeter. 
+
+> 📎 Cooling can be accelerated with compressed air. Our compressor had issues on build day, so we had to cool it the old-fashioned way — by blowing on a long rod for several hours. Highly recommended workout for the lungs.
+
+Repeat for all pacifiers down the rod.
 
 |                                                                         |                                                                              |
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | ![Hot glued](images/antenna_assembly/0104_first_pacifier_hot_glued.jpg) | ![Template set](images/antenna_assembly/0105_template_set.jpg)               |
 | ![Template set 2](images/antenna_assembly/0106_template_set_2.jpg)      | ![Next pacifier glued](images/antenna_assembly/0107_next_pacifier_glued.jpg) |
 
-Wait for the glue to partially cure, remove the template, then reinforce the pacifier with more hot glue around its perimeter. **Rotate the entire assembly slowly for a few seconds while the glue cools** to prevent it from sagging or setting off-axis.
-
-> 📎 Cooling can be accelerated with compressed air. Our compressor had issues on build day, so we had to cool it the old-fashioned way — by blowing on a long rod for several hours. Highly recommended workout for the lungs.
-
-Repeat for all pacifiers down the rod.
+**Rotate the entire assembly slowly for a few seconds while the glue cools** to prevent it from sagging or setting off-axis.
 
 |                                                                                    |                                                                            |
 | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -128,9 +128,7 @@ Repeat for all pacifiers down the rod.
 
 ![Final rod assembly 2](images/antenna_assembly/0112_final_rod_assembly_2.jpg)
 
-> ⚠ Due to 3D printing tolerances, the template may introduce a small angular offset between pacifiers. This is minor and we found it acceptable.
-
-> ⚠ Also, be aware that removing all hot glue at once before epoxy has cured may allow the pacifiers to rotate.
+> ⚠ Due to 3D printing tolerances, the template may introduce a small angular offset between pacifiers. This is minor and acceptable. Be aware that removing all hot glue at once before the epoxy has cured may allow the pacifiers to rotate.
 
 **4. Mount for curing**
 
@@ -144,9 +142,9 @@ Attach one spare pacifier to the topmost part of the rod and hang the assembly f
 
 ### Phase 3 — Epoxy Application
 
-> ⚠ Always wear a respirator mask when working with epoxy resin.
+> ⚠ Always wear a respirator mask and eye protection when working with epoxy resin.
 
-![Wear a mask](images/antenna_assembly/0200_wear_a_mask.png)
+![Wear a mask](images/antenna_assembly/0200_wear_a_mask.jpg)
 
 **1. Mix and draw up epoxy**
 
@@ -165,8 +163,7 @@ Turn the rod upside down. Apply epoxy to the **top face** of each pacifier-to-ro
 | ![Epoxy application](images/antenna_assembly/0203_epoxy_application.jpg)     | ![Epoxy application 2](images/antenna_assembly/0204_epoxy_application_2.jpg) |
 | ![Epoxy application 3](images/antenna_assembly/0205_epoxy_application_3.jpg) | ![Pacifier done](images/antenna_assembly/0206_pacifier_done.jpg)             |
 
-> 📎 Epoxy may wick into small gaps between the pacifier and rod. We assume this actually increases bonding strength. 
-> Wipe the rod clean of any drips periodically (if necessary).
+> 📎 Epoxy may wick into small gaps between the pacifier and rod — we assume this increases bonding strength. Wipe the rod clean of any drips periodically.
 
 Let it cure fully, then remove the hot glue.
 
@@ -188,23 +185,24 @@ Allow to cure fully, upright, before proceeding.
 
 **1. Prepare the bending template**
 
-Use the 3D-printed cylindrical winding form to shape the copper tube into the correct helix diameter. Small printed clamps hold the tube against the form, secured with woodworking clamps.
+Use the 3D-printed [Winding Help](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Help.stl) form to shape the copper tube into the correct helix diameter. Printed [Winding Clamps](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Clamp.stl) hold the tube against the form, secured with woodworking clamps.
 
-|                                                                          |                                                                                       |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| ![Winding template](images/antenna_assembly/0301_winding_template.jpg)   | ![Template attachment](images/antenna_assembly/0302_winding_template_attachement.jpg) |
-| ![Full template](images/antenna_assembly/0303_winding_template_full.jpg) | ![Materials](images/antenna_assembly/0304_winding_materials.jpg)                      |
+|                                                                                                                                                             |                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Winding template](images/antenna_assembly/0301_winding_template.jpg)                                                                                      | ![Template attachment](images/antenna_assembly/0302_winding_template_attachement.jpg)                                                                         |
+| [Winding Help](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Help.stl) | [Winding Clamp](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Clamp.stl) |
+| ![Full template](images/antenna_assembly/0303_winding_template_full.jpg)                                                                                    | ![Materials](images/antenna_assembly/0304_winding_materials.jpg)                                                                                              |  |
 
 **2. Wind the coil**
 
-With the tube clamped to the form, rotate it around the mandrel in a continuous helical motion, working your way along like threading a screw. Our copper tube was surprisingly cooperative.
+With the tube clamped to the form, rotate it around the mandrel in a continuous helical motion, working your way along like threading a screw. The copper tube is surprisingly cooperative.
 
 |                                                          |                                                          |
 | -------------------------------------------------------- | -------------------------------------------------------- |
 | ![Winding 1](images/antenna_assembly/0305_winding.jpg)   | ![Winding 2](images/antenna_assembly/0306_winding_2.jpg) |
 | ![Winding 3](images/antenna_assembly/0307_winding_3.jpg) | ![Winding 4](images/antenna_assembly/0308_winding_4.jpg) |
 
-We imagined the coil to be a bit more straight, but in the end it worked out fine.
+The coil may not be perfectly straight, but this does not affect function.
 
 |                                                                  |                                                                          |
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -222,7 +220,7 @@ With a smooth rotating motion — as if threading a giant screw — insert the f
 | ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | ![Inserting coil](images/antenna_assembly/0401_inserting_coil.jpg) | ![Inserting coil 2](images/antenna_assembly/0402_inserting_coil_2.jpg) |
 
-> 📎 This step looks like it should take about 5 minutes. Budget an afternoon. It will test your resolve, sanity and possibly your friendships. The coil will get there.
+> 📎 This step looks like it should take about 5 minutes. Budget an afternoon. It will test your resolve, sanity, and possibly your friendships. The coil will get there.
 
 Once fully seated, trim the copper tube flush at the last pacifier.
 
@@ -236,8 +234,7 @@ Once fully seated, trim the copper tube flush at the last pacifier.
 
 **1. Prepare the aluminum ground plane**
 
-Drill a center hole through the aluminum plate sized to pass the fiberglass rod. Around it, drill holes for the cone mounting screws (M8). Add holes for the SMA connector (M2.5).
-A drill template will be introduced in [Issue #39](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/issues/39)
+Drill a center hole through the aluminum plate sized to pass the fiberglass rod. Around it, drill holes for the cone mounting screws (M8). Add holes for the SMA connector (M2.5). A drill template is tracked in [Issue #39](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/issues/39).
 
 > 📎 This is also a good time to drill the corner holes for the guy-wire string attachment, while the plate is already on the drill press.
 
@@ -247,7 +244,7 @@ A drill template will be introduced in [Issue #39](https://github.com/Spacefligh
 
 **2. Assemble the cones and connector**
 
-Pass the rod through the plate. Mount the **top cone** from above and bolt it down with the M8 screws. Install the **SMA connector** using the M2.5 screws. Finally, attach the **bottom cone** from below.
+Pass the rod through the plate. Mount the [Cone Top](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Top.stl) from above and bolt it down with the M8 screws. Install the SMA connector using the M2.5 screws. Finally, attach the [Cone Bottom](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Bottom.stl) from below.
 
 |                                                                                            |                                                                                                  |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
@@ -258,11 +255,11 @@ Pass the rod through the plate. Mount the **top cone** from above and bolt it do
 
 **3. Attach the rope fixture and guy wires**
 
-Glue the 3D-printed rope fixture to the very top of the rod. After curing, run strings from each corner of the aluminum plate up to the fixture. This dramatically increases the structural rigidity of the assembly — far more than relying on the rod-to-plate connection alone.
+Glue the [Rope Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Rope%20Fixture.stl) to the very top of the rod. After curing, run strings from each corner of the aluminum plate up to the fixture. This dramatically increases the structural rigidity of the assembly — far more than relying on the rod-to-plate connection alone.
 
 ![Assembly with strings](images/antenna_assembly/0601_assembly_with_strings_attached.jpg)
 
-> 📎 If adhesion between the pacifiers and the rod seems insufficient, it is possible to design and 3D-print connector bridges between adjacent pacifiers for added rigidity. This should be integrated during Phase 2. We opted against it due to weight and material concerns, but the option exists if .
+> 📎 If adhesion between the pacifiers and the rod seems insufficient, it is possible to design and 3D-print connector bridges between adjacent pacifiers for added rigidity. This should be integrated during Phase 2. We opted against it due to weight and material concerns, but the option exists.
 
 ---
 
@@ -291,7 +288,7 @@ Glue the 3D-printed rope fixture to the very top of the rod. After curing, run s
 - [ ] Let cure fully, upright
 
 ### Phase 4 — Winding the Helix Coil
-- [ ] Clamp copper tube to cylindrical winding form using printed clamps and Schraubzwingen
+- [ ] Clamp copper tube to winding form using printed clamps and woodworking clamps
 - [ ] Wind copper tube into helix along the full length of the form
 - [ ] Remove coil from winding form
 
@@ -304,10 +301,10 @@ Glue the 3D-printed rope fixture to the very top of the rod. After curing, run s
 - [ ] Drill holes for M8 cone screws around center hole
 - [ ] Drill holes for M2.5 SMA connector screws
 - [ ] Drill corner holes for guy-wire string attachment
-- [ ] Pass rod through plate and mount top cone with 8× M8×30 screws and M8 nuts
+- [ ] Pass rod through plate and mount Cone Top with 8× M8×30 screws and M8 nuts
 - [ ] Install SMA connector with 4× M2.5×10 screws and M2.5 nuts
-- [ ] Attach bottom cone with M8 screws and nuts
-- [ ] Glue rope fixture to top of rod, let cure
+- [ ] Attach Cone Bottom with M8 screws and nuts
+- [ ] Glue Rope Fixture to top of rod, let cure
 - [ ] Run string from each corner of aluminum plate up to rope fixture
 
 ---
