@@ -234,7 +234,7 @@ Once fully seated, trim the copper tube flush at the last pacifier.
 
 **1. Prepare the aluminum ground plane**
 
-Drill a center hole through the aluminum plate sized to pass the fiberglass rod. Around it, drill holes for the cone mounting screws (M8). Add holes for the SMA connector (M2.5). A drill template is tracked in [Issue #39](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/issues/39).
+Drill a center hole through the aluminum plate sized to pass the fiberglass rod. Around it, drill holes for the cone mounting screws (M8). Add holes for the SMA connector (M2.5). The [included drilling template](../groundstation/antenna/drilling_template.pdf) can be used.
 
 > 📎 This is also a good time to drill the corner holes for the guy-wire string attachment, while the plate is already on the drill press.
 
