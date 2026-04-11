@@ -1,13 +1,13 @@
 # ASCENT Experimental Rocket Telemetry System
 
-<p align="center"><img src="media/images/Onboard_PCB_Rendering_QFH.png" width="400" /></p>
+<p align="center"><img src="onboard/pcb/images/Onboard_PCB_Rendering_QFH.png" width="400" /></p>
 
 ## Overview
 The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://spaceflight-rocketry-giessen.de/), developed for the PIPE 2 and ARCHER experimental rockets.  
 This 868 MHz telemetry system allows bidirectional data exchange between rockets and ground stations with a minimum range of 18 km and a minimum data rate of 1.2 kbps.
 The design can also be used in areas outside of rocketry like Smart Home or RC.
 
-<p align="center"><img src="media/images/System_Block_Diagram.svg" /></p>
+<p align="center"><img src="docs/images/System_Block_Diagram.svg" /></p>
 
 ## Design Requirements
 
@@ -29,13 +29,13 @@ It also includes user manuals and design rationals which help to understand and 
 
 ### 1. Antenna Hardware
 In the future, this repository will include simulations, design files and assembly instructions for our custom made antennas.
-<!-- <img src="media/images/OnboardAntenna_radiation_pattern.png" width="400" />
-<img src="media/images/GroundstationAntenna_radiation_pattern.png" width="400" />
+<!-- <img src="onboard/pcb/images/OnboardAntenna_radiation_pattern.png" width="400" />
+<img src="images/GroundstationAntenna_radiation_pattern.png" width="400" />
   
 - **Description:** Designs for telemetry antennas -->
 
 ### 2. Electronics Hardware
-<p align="center"><img src="media/images/Onboard_PCB.png" width="600"/></p>
+<p align="center"><img src="onboard/pcb/images/Onboard_PCB.png" width="600"/></p>
 
 Included: 
 - Schematics
