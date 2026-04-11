@@ -2,7 +2,7 @@
 
 This document provides detailed information about our electronics, firmware, antenna, and GUI systems. It also covers rationales used during the design process.
 
-<p align="center"><img src="../media/images/System_Block_Diagram.svg" /></p>
+<p align="center"><img src="images/System_Block_Diagram.svg" /></p>
 
 The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.md) ensures that our system meets this requirement.
 
@@ -38,7 +38,7 @@ The electronics design (schematic and pcb) was done with the open source EDA sof
 
 The following image shows the onboard pcb:
 
-<p align="center"><img src="../media/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
+<p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
 
 The onboard PCB is based on the standard layout of our rocketry club, featuring a round design with a diameter of 10 cm and a flattened edge with space for cables. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use Samtec ESQ due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
 
@@ -97,7 +97,7 @@ The UART to UPDI connection is based on [this guide](https://github.com/SpenceKo
 
 The firmware structure may be seen in the image below.
 
-<p align="center"><img src="../media/images/Firmware_Block_Diagram.svg" /></p>
+<p align="center"><img src="images/Firmware_Block_Diagram.svg" /></p>
 
 In the setup function, pin declarations and starting conditions are established. The radio module is initialized, and the desired configurations are applied after a configuration reset. Additionally, the flight computer initializes the I2C connection to the other subsystems of the flight computer (such as sensorics) and the ground station initializes the UART connection to the ground station computer.
 
@@ -113,13 +113,13 @@ To consider the 10 % duty cycle, the flight computer usually only transmits once
 
 ### Radio module library
 
-To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../common/lib/RC1780HP/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
+To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../common/libraries/RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
 
 The library does not allow the use of all the functions of the radio module but focuses only on the ones needed for our project. However, the included functions can be easily adapted for other uses. It can also easily be adapted for other radio modules like the RC1180HP-RC232.
 
 ### Packet encoding/decoding library
 
-The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by a dedicated library, which can be found [here](../common/lib/Packet/) along with its documentation. It can again be adapted easily for other data structures.
+The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by a dedicated library, which can be found [here](../common/libraries/Packet/) along with its documentation. It can again be adapted easily for other data structures.
 
 ## Antennas
 
