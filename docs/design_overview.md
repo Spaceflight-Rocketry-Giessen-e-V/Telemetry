@@ -6,17 +6,50 @@ This document provides detailed information about our electronics, firmware, ant
 
 The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.md) ensures that our system meets this requirement.
 
-## Electronics
+---
 
-**Please note:** So far, the ground station and the flight computer use the same electronics hardware. We plan to develop dedicated ground station hardware in the future.
+# Table of Contents
 
-### Radio frequency
+- [Electronics](#electronics)
+    - [Design Overview](#design-overview)
+    - [Design Details](#design-details)
+- [Firmware](#firmware)
+    - [Data Budget](#data-budget--packet-structure)
+    - [Libraries](#libraries)
+- [Antennas](#antennas)
+    - [Groundstation Helix Antenna](#groundstation-helix-antenna)
+    - [Onboard QFH Antenna](#onboard-qfh-antenna)
+- [GUI](#gui-software)
+
+---
+
+# Electronics
+
+> Has to be reworked. See [#17](/../../issues/17) and [#18](/../../issues/18)
+
+## Design Overview
+
+### Dual Frequency
+
+### Groundstation MB/DB Approach
+
+### Onboard Electronics
+
+The onboard PCB is based on the standard layout of our rocketry club, featuring a round design with a diameter of 10 cm and a flattened edge with space for cables. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use Samtec ESQ due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
+
+The following image shows the onboard pcb:
+
+<p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
+
+## Design Details
+
+### Radio Frequency
 
 The license-free frequency bands in Germany are regulated by the Bundesnetzagentur. Frequencies between 100 MHz and 2400 MHz are of primary interest to us. The relevant regulations can be found in the ["Allgemeinzuteilungen von Frequenzen"](https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/start.html). In this case the regulation of SRD devices applies. The frequency band between 869.40 MHz and 869.65 MHz can be used with an output power (EIRP) of up to 27 dBm or 500 mW, with a duty cycle of 10 %. This limits the radio transmission to 6 minutes total per (continous) hour.
 
 <p align="center"><img src="images/frequency_regulation.png" /></p>
 
-### Radio modules
+### Radio Modules
 
 We chose the Radiocrafts RC1780HP-RC232 radio modules, which operate at frequencies from 869.41 MHz to 869.64 MHz and can achieve output powers of up to 27 dBm. The operation is straightforward due to the UART interface. The datasheet can be found [here](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf). Additionally, there is a separate manual for the RC232 series of radio modules that includes all configuration commands and more information, available [here](https://radiocrafts.com/uploads/RC232_user_manual.pdf). Application notes can be downloaded [here](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes).
 
@@ -32,15 +65,9 @@ The following image shows the pinout of the AVR128DB64 MCU and is taken from the
 
 <p align="center"><img src="images/avr128db64_pinout.png" width="600"/></p>
 
-### PCB design
+### PCB Stackup
 
 The electronics design (schematic and pcb) was done with the open source EDA software KiCad. We included the KiCad project with all necessary files.
-
-The following image shows the onboard pcb:
-
-<p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
-
-The onboard PCB is based on the standard layout of our rocketry club, featuring a round design with a diameter of 10 cm and a flattened edge with space for cables. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use Samtec ESQ due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
 
 During the pcb design process, we considered the Radiocrafts [RF PCB Layout Recommendation Application Note](https://radiocrafts.com/uploads/AN061_RF_PCB_Layout_Recommendations.pdf) and a [RF PCB Design Guide](https://www.proto-electronics.com/blog/routing-guidelines-rf-pcb). The PCB has a basic 4-layer stackup intended to reduce electromagnetic interference:
 1) Components, signal traces, 50 Ohm RF trace
@@ -49,6 +76,8 @@ During the pcb design process, we considered the Radiocrafts [RF PCB Layout Reco
 4) Ground plane, signal traces 
 
 Around the edge of the PCB, an exposed ground strip is included, connected by many vias to the solid ground plane (layer 2). The intend is to contain any electromagnetic emissions.
+
+### RF Traces
 
 There are three types of traces commonly used as RF signal traces: microstrip, stripline, and coplanar waveguide. For all types, there are several online calculators to obtain the correct strip width to have a characteristic impedence of 50 Ohms. We use a coplanar waveguide and the calculator included in Kicad.
 
@@ -91,9 +120,9 @@ Not shown in the schematic is one LED (with a 560 Ohms resistor) each at `TXT` a
 
 The UART to UPDI connection is based on [this guide](https://github.com/SpenceKonde/AVR-Guidance/blob/master/UPDI/jtag2updi.md). It features a Schottky diode and two protection resistors.
 
-## Firmware
+---
 
-### General
+# Firmware
 
 The firmware structure may be seen in the image below.
 
@@ -103,7 +132,7 @@ In the setup function, pin declarations and starting conditions are established.
 
 In the loop function, radio commands (such as ping, toggle flight mode, toggle low power mode) are exchanged and data from the subsystems is collected and also exchanged. The available radio commands are listed in the [operations cheatsheet](operations_cheatsheet.md). 
 
-### Data budget and packet structure
+## Data Budget \& Packet Structure
 
 To achieve the highest possible range, we opted to use a low data rate, specifically 1.2 kbps. As a compromise between sampling rate and packet size, we chose a sampling rate of 8 Hz, resulting in 150 bits or 18.75 bytes per packet. Since the data link should not operate at full capacity, we allocate a buffer of over 10%, leading to a final packet size of 15 bytes.
 
@@ -111,23 +140,28 @@ The structure of each packet with its components is described [here](package_str
 
 To consider the 10 % duty cycle, the flight computer usually only transmits once every few seconds (the rate can be configured). The module starts to transmit continuously when the flight mode is toggled by a radio command. After a preset time, the continuous transmission stops and the standby transmission once every few seconds starts again.
 
-### Radio module library
+## Libraries
+
+### Radio Module Library
 
 To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../common/libraries/RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
 
 The library does not allow the use of all the functions of the radio module but focuses only on the ones needed for our project. However, the included functions can be easily adapted for other uses. It can also easily be adapted for other radio modules like the RC1180HP-RC232.
 
-### Packet encoding/decoding library
+### Packet Encoding/Decoding Library
 
 The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by a dedicated library, which can be found [here](../common/libraries/Packet/) along with its documentation. It can again be adapted easily for other data structures.
 
-## Antennas
+---
 
-### General
+# Antennas
 
 Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helix antenna on the ground side.
 
-### Groundstation helix antenna design
+## Groundstation Helix Antenna
+
+### Geometrical Design
+
 The Antenna design process is based on this [paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463). More information can be found [here](https://www.microwaves101.com/encyclopedias/helix-antennas) and [here](https://jcoppens.com/ant/helix/index.en.php).
 
 The paper differentiates between NB (Narrow band) and WB (Wide band) antenna designs. Since we only use a narrow frequency band, we chose an NB antenna for our system, which will be useful to get the needed information via the diagrams from the paper. In addition, manufacturing is based on a prior prototype of an helical antenna.
@@ -191,7 +225,7 @@ With these informations, we can also estimate the antenna gain:
 
 We get a gain of $G = 16.5\,\mathrm{dBi}$.
 
-### Groundstation helix antenna mechanical design
+### Mechanical Design
 
 To realise this long antenna design, some kind of fixature is necessary since the copper pipe would otherwise act as a spring.
 
@@ -213,11 +247,17 @@ During assembly of the first prototype antenna, it was obvious that the concept 
 - The winding template reproduced the antenna exactly. Due to its elastic properties, the pipe expanded after winding, leading to a helix with a larger diameter. Also, the winding grooves could have been deeper.
 - The used winding template for the vertical section at the bottom did not work as expected. More work has to be done here.
 
-### Groundstation helix aimulations
+### Simulations
 
 <p align="center"><img src="images/helix_plot.svg" width = 600/></p>
 
-### Onboard QFH antenna design
+> Informations will be added. See [#21](/../../issues/21)
+
+## Onboard QFH Antenna
+
+> Informations will be added. See [#43](/../../issues/43)
+
+### Geometrical Design
 
 Many resources on antennas: [antenna-theory.com](https://www.antenna-theory.com/)
 
@@ -225,8 +265,12 @@ Information on QFH antennas: [jcoppens.com](https://jcoppens.com/ant/qfh/index.e
 
 Information on connecting QFH antennas: [jcoppens.com](https://jcoppens.com/ant/qfh/adapt.en.php)
 
-### Onboard QFH antenna mechanical design
+### Mechanical Design
 
-### Onboard QFH antenna simulations
+### Simulations
 
-## GUI software
+---
+
+# GUI software
+
+> Informations will be added. See [#23](/../../issues/23)

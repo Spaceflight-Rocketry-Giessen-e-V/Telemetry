@@ -22,7 +22,7 @@ This document describes how we built our helical groundstation antenna for recei
 
 ## Overview
 
-The mechanical design of the helix antenna is explained in the [design overview](design_overview.md#groundstation-helix-antenna-mechanical-design).
+The mechanical design of the helix antenna is explained in the [design overview](design_overview.md#mechanical-design).
 
 |![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png)|
 |---|---|
