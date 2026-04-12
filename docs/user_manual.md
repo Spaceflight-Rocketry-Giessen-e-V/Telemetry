@@ -3,8 +3,9 @@
 - [Repository Usage](#repository-cloning)
 - [Electronics Design and Assembly](#electronics-design-and-assembly)
 - [Firmware Development and Deployment](#firmware-development-and-deployment)
-- [Operation Advices](#operation-advices)
+- [Antenna assembly](#antenna-assembly)
 - [Antenna Measurements and Impedance Matching](#antenna-measurements-and-impedance-matching)
+- [Operation Advices](#operation-advices)
 
 ## Repository usage
 
@@ -118,6 +119,10 @@ The following procedure has to be applied:
 <p align="center"><img src="images/simplicity_studio_1.png" width = 600/></p>
 
 4) Save the changes and program to the device.
+
+## Antenna assembly
+
+The assembly of the groundstation helix antenna is described in a [seperate document](./helix_antenna_assembly_manual.md).
 
 ## Antenna measurements and impedance matching
 

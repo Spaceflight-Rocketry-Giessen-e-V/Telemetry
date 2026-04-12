@@ -203,7 +203,8 @@ Addionally, the rod is held in place by ropes attached to a 3D printed strucutre
 
 The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
 
-<p align="center"><img src="../groundstation/antenna/GroundstationAntenna_render_1.png" width = 600/></p>
+|![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png)|
+|---|---|
 
 The assembly informations can be found in the [user manual](user_manual.md).
 
