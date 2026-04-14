@@ -64,17 +64,17 @@ class TelemetryReceiver:
     # Maps human-readable command names to the single ASCII character sent
     # over the serial link.
     COMMANDS: dict[str, str] = {
-        "ping":            "p",
-        "main_chute_50":   "a",
-        "main_chute_100":  "b",
-        "main_chute_150":  "c",
-        "main_chute_200":  "d",
-        "low_power_on":    "l",
-        "low_power_off":   "m",
-        "flight_mode_on":  "f",
+        "ping": "p",
+        "main_chute_50": "a",
+        "main_chute_100": "b",
+        "main_chute_150": "c",
+        "main_chute_200": "d",
+        "low_power_on": "l",
+        "low_power_off": "m",
+        "flight_mode_on": "f",
         "flight_mode_off": "g",
-        "eject_drogue":    "q",
-        "eject_main":      "r",
+        "eject_drogue": "q",
+        "eject_main": "r",
     }
 
     # ── Packet field order ────────────────────────────────────────────────────
@@ -101,18 +101,18 @@ class TelemetryReceiver:
     # Each pattern captures exactly one value group from a raw serial line.
     # Integer fields have no decimal point; float fields do.
     PATTERNS: dict[str, str] = {
-        "temperature":           r"temperature > 80 C: (\d+)",
-        "subsystem_status":      r"subsystem_status: (\d+)",
-        "flight_mode":           r"flight_mode: (\d+)",
-        "low_power_mode":        r"low_power_mode: (\d+)",
-        "status_events":         r"status_events: (\d+)",
-        "acceleration":          r"acceleration: (-?\d+\.\d+)",
-        "height_pressure":       r"height_pressure: (\d+\.\d+)",
-        "height_gnss":           r"height_gnss: (\d+\.\d+)",
-        "lat_gnss":              r"lat_gnss: (-?\d+\.\d+)",
-        "lon_gnss":              r"lon_gnss: (-?\d+\.\d+)",
-        "battery_voltage":       r"battery_voltage: (\d+\.\d+)",
-        "rssi":                  r"rssi: (-?\d+)",
+        "temperature": r"temperature > 80 C: (\d+)",
+        "subsystem_status": r"subsystem_status: (\d+)",
+        "flight_mode": r"flight_mode: (\d+)",
+        "low_power_mode": r"low_power_mode: (\d+)",
+        "status_events": r"status_events: (\d+)",
+        "acceleration": r"acceleration: (-?\d+\.\d+)",
+        "height_pressure": r"height_pressure: (\d+\.\d+)",
+        "height_gnss": r"height_gnss: (\d+\.\d+)",
+        "lat_gnss": r"lat_gnss: (-?\d+\.\d+)",
+        "lon_gnss": r"lon_gnss: (-?\d+\.\d+)",
+        "battery_voltage": r"battery_voltage: (\d+\.\d+)",
+        "rssi": r"rssi: (-?\d+)",
         "time_since_last_packet": r"time_since_last_packet: (\d+)",
     }
 
@@ -124,24 +124,24 @@ class TelemetryReceiver:
     _POLL_INTERVAL: float = 0.01
 
     def __init__(
-        self,
-        com_port:       str,
-        baudrate:       int  = 115200,
-        log_dir:        str  = "logs",
-        log_to_csv:     bool = True,
-        log_to_txt:     bool = True,
-        log_to_console: bool = False,
-        ui_callback=None,
+            self,
+            com_port: str,
+            baudrate: int = 115200,
+            log_dir: str = "logs",
+            log_to_csv: bool = True,
+            log_to_txt: bool = True,
+            log_to_console: bool = False,
+            ui_callback=None,
     ):
-        self.com_port       = com_port
-        self.baudrate       = baudrate
-        self.log_to_csv     = log_to_csv
-        self.log_to_txt     = log_to_txt
+        self.com_port = com_port
+        self.baudrate = baudrate
+        self.log_to_csv = log_to_csv
+        self.log_to_txt = log_to_txt
         self.log_to_console = log_to_console
-        self.ui_callback    = ui_callback
+        self.ui_callback = ui_callback
 
         # Serial port handle and background thread — set on start()
-        self.ser:     serial.Serial | None  = None
+        self.ser: serial.Serial | None = None
         self._thread: threading.Thread | None = None
         self._running: bool = False
 
@@ -151,7 +151,7 @@ class TelemetryReceiver:
         # ── Per-session log file paths ────────────────────────────────────────
         # Timestamped filenames prevent sessions from overwriting each other.
         os.makedirs(log_dir, exist_ok=True)
-        session_ts   = datetime.now().strftime("%Y%m%d_%H%M%S")
+        session_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.csv_file = os.path.join(log_dir, f"telemetry_{session_ts}.csv")
         self.txt_file = os.path.join(log_dir, f"telemetry_{session_ts}.txt")
 
@@ -308,7 +308,7 @@ class TelemetryReceiver:
         while self._running:
             try:
                 if self.ser.in_waiting:
-                    raw  = self.ser.readline()
+                    raw = self.ser.readline()
                     line = raw.decode("utf-8", errors="replace").strip()
                     if line:
                         self._process_line(line)
@@ -346,7 +346,7 @@ class TelemetryReceiver:
         self.ser = serial.Serial(self.com_port, self.baudrate, timeout=1)
 
         self._running = True
-        self._thread  = threading.Thread(target=self._listen, daemon=True, name="telemetry-rx")
+        self._thread = threading.Thread(target=self._listen, daemon=True, name="telemetry-rx")
         self._thread.start()
         log.info("TelemetryReceiver: started (thread id=%d)", self._thread.ident)
 
@@ -368,7 +368,7 @@ class TelemetryReceiver:
             self.ser.close()
             log.info("TelemetryReceiver: serial port closed")
 
-        self.ser    = None
+        self.ser = None
         self._thread = None
 
     # =========================================================================

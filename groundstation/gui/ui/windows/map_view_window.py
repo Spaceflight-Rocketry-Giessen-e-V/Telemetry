@@ -686,6 +686,10 @@ class MapViewWindow:
         Called by UIManager on every GPS fix. If Follow is enabled the
         viewport re-centres automatically.
         """
+        # If GPS is invalid, return
+        if self.lat == 0.0 or self.lon == 0.0:
+            return
+
         self.lat = lat
         self.lon = lon
         self.track.append((lat, lon))

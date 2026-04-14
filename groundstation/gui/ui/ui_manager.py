@@ -43,7 +43,7 @@ def _configure_logging(
         log_dir: str = "logs",
         log_file: str = "ground_station.log",
         max_bytes: int = 5 * 1024 * 1024,
-        backups: int = 3,
+        backups: int = 5,
         level: int = logging.DEBUG,
 ) -> None:
     """
@@ -122,22 +122,22 @@ class UIManager:
 
         # Two MapView and Location instances are created: one for the Flight
         # Data tab and a second for the dedicated Map View tab.
-        self.map_view_window  = MapViewWindow(instance_id="main")
-        self.map_view_tab     = MapViewWindow(instance_id="tab")
-        self.location_window  = LocationWindow(instance_id="main")
-        self.location_tab     = LocationWindow(instance_id="tab")
+        self.map_view_window = MapViewWindow(instance_id="main")
+        self.map_view_tab = MapViewWindow(instance_id="tab")
+        self.location_window = LocationWindow(instance_id="main")
+        self.location_tab = LocationWindow(instance_id="tab")
 
-        self.altitude_window        = AltitudeWindow()
-        self.battery_window         = BatteryWindow()
-        self.com_monitor            = ComMonitor()
+        self.altitude_window = AltitudeWindow()
+        self.battery_window = BatteryWindow()
+        self.com_monitor = ComMonitor()
         self.com_monitor_controller = ComMonitorController(self)
-        self.last_packet_window     = LastPacketWindow()
-        self.flight_events_window   = FlightEventWindow()
-        self.accelerometer_window   = AccelerationWindow()
-        self.commands_window        = CommandsWindow(receiver=self.com_monitor_controller)
-        self.connection_window      = ConnectionWindow()
-        self.settings_window        = SettingsWindow()
-        self.time_window            = TimeWindow()
+        self.last_packet_window = LastPacketWindow()
+        self.flight_events_window = FlightEventWindow()
+        self.accelerometer_window = AccelerationWindow()
+        self.commands_window = CommandsWindow(receiver=self.com_monitor_controller)
+        self.connection_window = ConnectionWindow()
+        self.settings_window = SettingsWindow()
+        self.time_window = TimeWindow()
 
         log.info("UIManager: all sub-windows initialised")
 
@@ -393,14 +393,14 @@ class UIManager:
 
         # Dispatch table mapping data-dict keys to their handler methods.
         handlers: dict[str, Callable[[Any], None]] = {
-            "temperature":          self.update_temperature,
-            "subsystem_status":     self.update_subsystem,
-            "flight_mode":          self.update_flight_mode,
-            "low_power_mode":       self.update_low_power,
-            "status_events":        self.update_status_events,
-            "acceleration":         self.update_acceleration,
-            "battery_voltage":      self.update_battery,
-            "rssi":                 self.update_rssi,
+            "temperature": self.update_temperature,
+            "subsystem_status": self.update_subsystem,
+            "flight_mode": self.update_flight_mode,
+            "low_power_mode": self.update_low_power,
+            "status_events": self.update_status_events,
+            "acceleration": self.update_acceleration,
+            "battery_voltage": self.update_battery,
+            "rssi": self.update_rssi,
             "time_since_last_packet": self.update_packet_delay,
         }
 

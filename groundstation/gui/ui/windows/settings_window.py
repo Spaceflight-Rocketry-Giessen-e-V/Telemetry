@@ -54,7 +54,7 @@ class SettingsWindow:
             dpg.add_spacer(height=14)
 
             dpg.add_button(
-                label="  💾  Save All Settings  ",
+                label="Save All Settings",
                 callback=self._save_all,
                 height=36,
             )
