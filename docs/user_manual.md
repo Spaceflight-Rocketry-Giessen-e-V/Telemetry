@@ -1,22 +1,40 @@
 # ASCENT II Telemetry System User Manual
 
-- [Repository Usage](#repository-cloning)
-- [Electronics Design and Assembly](#electronics-design-and-assembly)
-- [Firmware Development and Deployment](#firmware-development-and-deployment)
-- [Antenna assembly](#antenna-assembly)
-- [Antenna Measurements and Impedance Matching](#antenna-measurements-and-impedance-matching)
-- [Operation Advices](#operation-advices)
+Please see the [operation advices](#operation-advices) before using the system!
 
-## Repository usage
+- [Repository Usage](#repository-usage)
+- [Electronics](#electronics)
+    - [EDA Usage](#eda-usage)
+    - [Ordering](#ordering)
+    - [Assembly](#assembly)
+- [Firmware](#firmware)
+    - [IDE Usage](#ide-usage)
+    - [USB-to-UART/UPDI bridge](#usb-to-uartupdi-bridge)
+- [Antenna](#antenna)
+    - [Assembly](#assembly-1)
+    - [Measurements](#measurements)
+    - [Impedance Matching](#impedance-matching)
+- [Operation Advices](#operation-advices)
+    - [Powering The System](#powering-the-system)
+    - [Serial Communication](#serial-communication)
+    - [Antenna Precautions](#antenna-precautions)
+
+---
+
+# Repository usage
 
 The usual process for locally cloning the repository applies:
 1. Install [Git](https://git-scm.com/install/)
 2. Open the desired destination folder in the terminal
 3. Clone the repository: `git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry` 
 
-## Electronics Design and Assembly
+---
+
+# Electronics
 
 The process is similar for the onboard and ground station systems.
+
+## EDA Usage
 
 ### View and edit the schematic or PCB design files
 
@@ -60,12 +78,16 @@ Include the symbol and link the footprint:
 - Choose the footprint from the "Footprints" library
 - Press "OK" and then "Save"
 
+## Ordering
+
 ### Sourcing PCBs
 The PCBs can be sourced from any PCB manufacturing service like JLCPCB or PCBWAY. We included the [Gerber Production Files](../onboard/pcb/Production%20Files/Production%20Files.zip) in the repository. We recommend ordering a solder paste stencil as well, as it simplifies the soldering process.
 
 ### Sourcing components
 
 We source most of our electronics components from Digikey. We included a [Bill of Materials](../onboard/pcb/TelemetryOnboard_BOM.csv) where a direct link to Digikey is provided. Most of the components are also available at similar sellers like Mouser. An [Interactive BOM](../onboard/pcb/TelemetryOnboard_Interactive_BOM.html) is also included to assist in placing the components.
+
+## Assembly
 
 ### SMD component assembly
 
@@ -90,7 +112,11 @@ After the SMD components are soldered, the through hole mounted components can b
 
 The PCB can be gently cleaned using a soft toothbrush and isopropyl alcohol. The thereby solved flux can be rinsed with isopropyl alcohol. An ultrasonic cleaner with distilled water can also be used and should be followed up by a complete drying process.
 
-## Firmware Development and Deployment
+---
+
+# Firmware
+
+## IDE Usage
 
 ### View and edit the firmware
 
@@ -102,29 +128,46 @@ Our firmware is designed to be used with Visual Studio Code and the PlatformIO e
 
 To upload the firmware to the system, an UPDI programmer like the Adafruit UPDI Friend is needed. The corresponding COM port has to be selected in VSCode in the status bar.
 
-### Program the USB-to-UART bridge
+## USB-to-UART/UPDI bridge
 
 Our newest PCB design features one CP2102N USB-to-UART bridge each for UPDI programming and UART debugging and data transfer.
+
+### Drivers
+
+To use the onboard USB bridge to program the microcontroller via UPDI and to transfer data via UART, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
+
+### LED Setting
+
 By default, the LEDs are not configured to turn on during data transfer.
 
 To configure this setting, the computer has to be connected with a USB cable to the desired chip and the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) as well as the [Simplicity Studio 5 software](https://www.silabs.com/software-and-tools/simplicity-studio/simplicity-studio-version-5) have to be installed on the computer.
 With the Simplicity Studio software, several settings can be changed, as outlined in the [SiLabs AN721 Application Note](https://www.silabs.com/documents/public/application-notes/AN721.pdf).
 
 The following procedure has to be applied:
-1) Open the Xpress Configurator in Simplicity Studio. 
-(When opening for the first time, it might require you to create a new project.)
-2) Import the current data from the device.
-3) Under *Port Configuration GPIO*, change the *Alternate Function* of GPIO2 and GPIO3 to *TX Toggle* and *RX Toggle* respectively.
+1) Open Simplicity Studio.
+When opening for the first time, a new project has to be created: Press *Start* next to the connected device and create the project. 
+
+<p align="center"><img src="images/simplicity_studio_2.png" width = 600/></p>
+
+2) Open the Xpress Configurator by pressing *Open Perspective* in the top right toolbar.
+3) Import the current data from the device.
+4) Under *Port Configuration GPIO*, change the *Alternate Function* of GPIO2 and GPIO3 to *TX Toggle* and *RX Toggle* respectively.
 
 <p align="center"><img src="images/simplicity_studio_1.png" width = 600/></p>
 
-4) Save the changes and program to the device.
+5) Save the changes and program to the device.
 
-## Antenna assembly
+---
 
-The assembly of the groundstation helix antenna is described in a [seperate document](./helix_antenna_assembly_manual.md).
+# Antenna 
 
-## Antenna measurements and impedance matching
+## Assembly
+
+### Helix Assembly
+
+The assembly of the groundstation helix antenna is described in a [separate document](./helix_antenna_assembly_manual.md).
+
+## Measurements
 
 When measuring self-built or bought antennas, vector network analyzers (VNA) like the NanoVNA-H4 or the LiteVNA 64 are necessary tools and can be bought for cheap.
 
@@ -150,27 +193,29 @@ Here is a list of videos explaining [S-parameters](https://youtu.be/-Pi0UbErHTY?
 
 The measurement of the radiation pattern or the gain of an antenna is more sophisticated and introduces more errors, but can be done as well.
 
-### Impedance matching
+## Impedance Matching
 
 Our current design includes a L-matching network to tune the antennas impedance to 50 Ohms. When no impedance matching is used, the ZS1 component should be a 0 Ohm resistor and the ZP1 component should be left open
 
 There are many articles and videos explaining the impedance matching concept. [This video](https://youtu.be/OkPVlv4wVeY?si=Ta4NVOyTLGxH_oTO) and [this video](https://youtu.be/IgeRHDI-ukc?si=xvtN1C7xtP1WACcb) explain the matching network and matching technique used in our design, while [this article](https://www.electronicdesign.com/technologies/analog/whitepaper/21133206/back-to-basics-impedance-matchi) offers a general overview over the topic.
 
-## Operation advices
+---
 
-### Powering the system
+# Operation Advices
+
+## Powering The System
 
 For the system to be operational, both the 3.3 V and the 5 V lines have to be connected. Any of the respective positions on the pin sockets can be used. To allow the full output power with a safe margin, the power supply should be able to provide 1 A at 5 V and 0.5 A at 3.3 V.
 
 Note: When using an external power supply, the 3.3 V lines of UPDI programmers or UART to USB adapters should never be connected.
 
-### Serial communication
+## Serial Communication
 
 For the serial communication with the system, an UART to USB adapter has to be used. When using the (planned) integrated USB circuit or an USB adapter based on the CP2102N, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
 
 We recommend using a dedicated serial monitor like the excellent project [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings). The settings can be opened via "File" -> "Open".
 
-### Antenna
+## Antenna Precautions
 
 The system should never be operational without a connected antenna, as otherwise the high output power can permanently damage the radio module.
 
