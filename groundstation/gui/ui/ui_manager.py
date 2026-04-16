@@ -244,7 +244,7 @@ class UIManager:
                 with dpg.tab(label="Map View"):
                     self._draw_map_view_ui()
 
-                with dpg.tab(label="⚙ Settings"):
+                with dpg.tab(label="Settings"):
                     self.settings_window.draw_ui()
 
         log.info("UIManager: entering DPG main loop")
@@ -324,7 +324,7 @@ class UIManager:
             log.debug("update_altitude: gnss=%.1f m @ %.2f s", gnss_height, elapsed)
             # NOTE: parameter names are intentionally swapped here to match
             # the existing data-flow contract; correct when the back-end changes.
-            self.altitude_window.update_altitude_pressure(elapsed, gnss_height)
+            self.altitude_window.update_altitude_gnss(elapsed, gnss_height)
             dpg.set_value(
                 self.last_packet_window.system_status_tags["gnss_height"],
                 f"{gnss_height}",
@@ -332,7 +332,7 @@ class UIManager:
 
         if pressure_height is not None:
             log.debug("update_altitude: pressure=%.1f m @ %.2f s", pressure_height, elapsed)
-            self.altitude_window.update_altitude_gnss(elapsed, pressure_height)
+            self.altitude_window.update_altitude_pressure(elapsed, pressure_height)
             dpg.set_value(
                 self.last_packet_window.system_status_tags["pressure_height"],
                 f"{pressure_height}",

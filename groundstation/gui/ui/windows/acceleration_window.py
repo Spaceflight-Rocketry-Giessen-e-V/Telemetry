@@ -5,8 +5,8 @@ Live acceleration chart with per-session statistics.
 
 Plots acceleration (g) against mission elapsed time and tracks running
 min, max, current value, per-sample delta, and median delta. The plot can
-be frozen via the "Stop Plot" button; incoming data is still recorded while
-the display is paused.
+be frozen via the "Stop Plot" button or fully reset via "Reset Plot";
+incoming data is still recorded while the display is paused.
 """
 
 import logging
@@ -29,6 +29,7 @@ class AccelerationWindow:
     _TAG_CURRENT = "accel_current"
     _TAG_DELTA = "accel_delta"
     _TAG_MEDIAN_DELTA = "accel_median_delta"
+    _TAG_BTN_STOP_RESUME = "accel_btn_stop_resume"
 
     # Session state — class-level because only one plot instance exists per run.
     time_data: list[float] = []
@@ -72,27 +73,76 @@ class AccelerationWindow:
 
             with dpg.group(horizontal=True):
                 with dpg.group(horizontal=False):
+                    dpg.add_button(
+                        label="Stop Plot",
+                        tag=cls._TAG_BTN_STOP_RESUME,
+                        callback=lambda: cls.stop_plot(),
+                        width=100
+                    )
+                    dpg.add_button(label="Reset Plot", callback=lambda: cls.reset_plot(), width=100)
+                dpg.add_spacer(width=10)
+                with dpg.group(horizontal=False):
                     dpg.add_text("Min: 0 g", tag=cls._TAG_MIN)
-                    dpg.add_spacer(width=10)
                     dpg.add_text("Max: 0 g", tag=cls._TAG_MAX)
-
-                dpg.add_spacer(width=20)
+                dpg.add_spacer(width=10)
                 dpg.add_text("Current: 0 g", tag=cls._TAG_CURRENT)
-                dpg.add_spacer(width=20)
 
                 with dpg.group(horizontal=False):
                     dpg.add_text("Delta: 0 g", tag=cls._TAG_DELTA)
-                    dpg.add_spacer(width=10)
                     dpg.add_text("Median Delta: 0 g", tag=cls._TAG_MEDIAN_DELTA)
 
-                dpg.add_spacer(height=10)
-                dpg.add_button(label="Stop Plot", callback=lambda: cls.stop_plot())
+
 
     @classmethod
     def stop_plot(cls) -> None:
         """Freeze the plot. New data is still recorded but not drawn."""
         cls.plot_active = False
+        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
+        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.resume_plot())
         log.info("AccelerationWindow: plot frozen by user")
+
+    @classmethod
+    def resume_plot(cls) -> None:
+        """Resume live drawing after a stop."""
+        cls.plot_active = True
+        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+        log.info("AccelerationWindow: plot resumed by user")
+
+    @classmethod
+    def reset_plot(cls) -> None:
+        """
+        Clear all session data and statistics, and wipe the chart.
+
+        The plot is also resumed automatically so the operator does not need
+        a second click after a reset (common workflow: reset between flights).
+        """
+        log.info("AccelerationWindow: plot reset by user")
+
+        # Clear all series data
+        cls.time_data.clear()
+        cls.accel_data.clear()
+        cls.delta_data.clear()
+
+        # Reset statistics
+        cls.accel_min = None
+        cls.accel_max = None
+        cls.accel_current = None
+
+        # Ensure the plot resumes on reset — avoids a redundant "Resume" click
+        cls.plot_active = True
+        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+
+        # Wipe the series on the chart
+        dpg.set_value(cls._TAG_SERIES, [[], []])
+
+        # Reset the statistics strip
+        dpg.set_value(cls._TAG_MIN, "Min: 0 g")
+        dpg.set_value(cls._TAG_MAX, "Max: 0 g")
+        dpg.set_value(cls._TAG_CURRENT, "Current: 0 g")
+        dpg.set_value(cls._TAG_DELTA, "Delta: 0 g")
+        dpg.set_value(cls._TAG_MEDIAN_DELTA, "Median Delta: 0 g")
 
     @classmethod
     def update_acceleration(cls, time_value: float, accel_value: float) -> None:

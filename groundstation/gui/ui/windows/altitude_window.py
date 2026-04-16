@@ -7,7 +7,7 @@ Two independent data series are maintained:
   - **Pressure altitude** — derived from the barometric sensor.
   - **GNSS altitude**     — reported by the GPS receiver.
 
-Shared statistics (min, max, current, delta, median delta) are updated
+Shared statistics (min, max, current) are updated
 whenever either source provides a new reading.
 """
 
@@ -30,8 +30,7 @@ class AltitudeWindow:
     _TAG_MIN = "alt_min"
     _TAG_MAX = "alt_max"
     _TAG_CURRENT = "alt_current"
-    _TAG_DELTA = "alt_delta"
-    _TAG_MEDIAN_DELTA = "alt_median_delta"
+    _TAG_BTN_STOP_RESUME = "alt_btn_stop_resume"
 
     # Session state
     time_data_pressure: list[float] = []
@@ -39,7 +38,6 @@ class AltitudeWindow:
     altitude_pressure_data: list[float] = []
     altitude_gnss_data: list[float] = []
 
-    delta_data: list[float] = []
     altitude_min: float | None = None
     altitude_max: float | None = None
     altitude_current: float | None = None
@@ -83,27 +81,69 @@ class AltitudeWindow:
 
             with dpg.group(horizontal=True):
                 with dpg.group(horizontal=False):
-                    dpg.add_text("Min: 0 m", tag=cls._TAG_MIN)
-                    dpg.add_spacer(width=10)
-                    dpg.add_text("Max: 0 m", tag=cls._TAG_MAX)
-
-                dpg.add_spacer(width=20)
-                dpg.add_text("Current: 0 m", tag=cls._TAG_CURRENT)
-                dpg.add_spacer(width=20)
-
+                    dpg.add_button(
+                        label="Stop Plot",
+                        tag=cls._TAG_BTN_STOP_RESUME,
+                        callback=lambda: cls.stop_plot(), width=100
+                    )
+                    dpg.add_button(label="Reset Plot", callback=lambda: cls.reset_plot(), width=100)
+                dpg.add_spacer(width=10)
                 with dpg.group(horizontal=False):
-                    dpg.add_text("Delta: 0 m", tag=cls._TAG_DELTA)
-                    dpg.add_spacer(width=10)
-                    dpg.add_text("Median Delta: 0 m", tag=cls._TAG_MEDIAN_DELTA)
+                    dpg.add_text("Min: 0 m", tag=cls._TAG_MIN)
+                    dpg.add_text("Max: 0 m", tag=cls._TAG_MAX)
+                dpg.add_text("Current: 0 m", tag=cls._TAG_CURRENT)
 
-                dpg.add_spacer(height=10)
-                dpg.add_button(label="Stop Plot", callback=lambda: cls.stop_plot())
 
     @classmethod
     def stop_plot(cls) -> None:
         """Freeze the plot. Incoming data is still recorded but not drawn."""
         cls.plot_active = False
+        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
+        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.resume_plot())
         log.info("AltitudeWindow: plot frozen by user")
+
+    @classmethod
+    def resume_plot(cls) -> None:
+        """Resume live drawing after a stop."""
+        cls.plot_active = True
+        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+        log.info("AltitudeWindow: plot resumed by user")
+
+    @classmethod
+    def reset_plot(cls) -> None:
+        """
+        Clear all session data and statistics, and wipe the chart.
+
+        The plot is also resumed automatically so the operator does not need
+        a second click after a reset (common workflow: reset between flights).
+        """
+        log.info("AltitudeWindow: plot reset by user")
+
+        # Clear all series data
+        cls.time_data_pressure.clear()
+        cls.time_data_gnss.clear()
+        cls.altitude_pressure_data.clear()
+        cls.altitude_gnss_data.clear()
+
+        # Reset statistics
+        cls.altitude_min = None
+        cls.altitude_max = None
+        cls.altitude_current = None
+
+        # Ensure the plot resumes on reset — avoids a redundant "Resume" click
+        cls.plot_active = True
+        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+
+        # Wipe both series on the chart
+        dpg.set_value(cls._TAG_SERIES_PRESSURE, [[], []])
+        dpg.set_value(cls._TAG_SERIES_GNSS, [[], []])
+
+        # Reset the statistics strip
+        dpg.set_value(cls._TAG_MIN, "Min: 0 m")
+        dpg.set_value(cls._TAG_MAX, "Max: 0 m")
+        dpg.set_value(cls._TAG_CURRENT, "Current: 0 m")
 
     @classmethod
     def update_altitude_pressure(cls, time_value: float, altitude_value: float) -> None:
@@ -128,7 +168,7 @@ class AltitudeWindow:
         Shared update path for both altitude sources.
 
         Appends the reading to the correct series, updates shared statistics
-        (min/max/current/delta), then repaints the DPG items.
+        (min/max/current), then repaints the DPG items.
 
         Parameters
         ----------
@@ -159,10 +199,6 @@ class AltitudeWindow:
             cls.altitude_max = altitude_value
             log.debug("AltitudeWindow: new max = %.1f m (source=%s)", altitude_value, source)
 
-        delta = altitude_value - source_data[-2] if len(source_data) > 1 else 0.0
-        cls.delta_data.append(delta)
-        median_delta = statistics.median(cls.delta_data) if cls.delta_data else 0.0
-
         dpg.set_value(series_tag, [source_time, source_data])
         dpg.fit_axis_data(cls._TAG_XAXIS)
         dpg.fit_axis_data(cls._TAG_YAXIS)
@@ -170,5 +206,3 @@ class AltitudeWindow:
         dpg.set_value(cls._TAG_MIN, f"Min: {cls.altitude_min:.1f} m")
         dpg.set_value(cls._TAG_CURRENT, f"Current: {cls.altitude_current:.1f} m")
         dpg.set_value(cls._TAG_MAX, f"Max: {cls.altitude_max:.1f} m")
-        dpg.set_value(cls._TAG_DELTA, f"Delta: {delta:.1f} m")
-        dpg.set_value(cls._TAG_MEDIAN_DELTA, f"Median Delta: {median_delta:.1f} m")

@@ -687,7 +687,7 @@ class MapViewWindow:
         viewport re-centres automatically.
         """
         # If GPS is invalid, return
-        if self.lat == 0.0 or self.lon == 0.0:
+        if lat == 0.0 or lon == 0.0:
             return
 
         self.lat = lat
