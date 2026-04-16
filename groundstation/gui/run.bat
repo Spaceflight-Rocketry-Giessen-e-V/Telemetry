@@ -36,9 +36,9 @@ exit /b 1
 
 :setup
 REM Create virtual environment if it doesn't exist
-if not exist venv (
+if not exist .venv (
     echo Creating virtual environment...
-    "%PYTHON_CMD%" -m venv venv
+    "%PYTHON_CMD%" -m venv .venv
     if errorlevel 1 (
         echo [ERROR] Failed to create virtual environment.
         pause
@@ -50,7 +50,7 @@ if not exist venv (
 
 REM Activate venv
 echo Activating virtual environment...
-call venv\Scripts\activate
+call .venv\Scripts\activate
 
 REM Upgrade pip inside venv
 echo Upgrading pip...
