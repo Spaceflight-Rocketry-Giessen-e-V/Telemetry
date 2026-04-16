@@ -85,7 +85,7 @@ class FlightEventWindow:
                         dpg.add_text(f"{i:02d}")
                         dpg.add_text(label)
                         dpg.add_text(
-                            "pending",
+                            "-",
                             tag=self._row_tags[i],
                             color=self.COLOR_PENDING,
                         )
@@ -95,10 +95,10 @@ class FlightEventWindow:
 
     def update_event(self, event_number: int) -> None:
         """
-        Advance the display to *event_number*.
+        Update the display for *event_number* only.
 
-        All events at or below *event_number* are marked done or ABORT.
-        Events above remain pending.
+        Only the specified event is marked done or ABORT.
+        All other events are left in their current state.
         """
         _, abort_threshold = self._event_config()
 
@@ -108,15 +108,11 @@ class FlightEventWindow:
 
         self.current_event = event_number
 
-        for i, tag in enumerate(self._row_tags):
-            if i <= self.current_event:
-                is_abort = i >= abort_threshold
-                color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
-                label = "ABORT" if is_abort else "done"
-                if is_abort:
-                    log.warning("FlightEventWindow[%s]: abort event reached at index %d", self._uid, i)
-            else:
-                color = self.COLOR_PENDING
-                label = "pending"
-
+        if 0 <= event_number < len(self._row_tags):
+            tag = self._row_tags[event_number]
+            is_abort = event_number >= abort_threshold
+            color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
+            label = "ABORT" if is_abort else "done"
+            if is_abort:
+                log.warning("FlightEventWindow[%s]: abort event reached at index %d", self._uid, event_number)
             dpg.configure_item(tag, default_value=label, color=color)

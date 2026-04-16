@@ -123,9 +123,9 @@ class UIManager:
         # Two MapView and Location instances are created: one for the Flight
         # Data tab and a second for the dedicated Map View tab.
         self.map_view_window = MapViewWindow(instance_id="main")
-        self.map_view_tab = MapViewWindow(instance_id="tab")
+        #self.map_view_tab = MapViewWindow(instance_id="tab")
         self.location_window = LocationWindow(instance_id="main")
-        self.location_tab = LocationWindow(instance_id="tab")
+        #self.location_tab = LocationWindow(instance_id="tab")
 
         self.altitude_window = AltitudeWindow()
         self.battery_window = BatteryWindow()
@@ -179,9 +179,12 @@ class UIManager:
             with dpg.group(horizontal=False):
                 pass
 
-    def _draw_com_monitor_ui(self) -> None:
-        """Build the COM Monitor tab layout (full-width scrollable table)."""
-        self.com_monitor.draw_ui()
+    # TODO rework COM Monitor
+    #
+    #def _draw_com_monitor_ui(self) -> None:
+    #    """Build the COM Monitor tab layout (full-width scrollable table)."""
+    #    self.com_monitor.draw_ui()
+    #
 
     def _draw_map_view_ui(self) -> None:
         """Build the Map View tab layout (large map with GPS panel alongside)."""
@@ -237,12 +240,12 @@ class UIManager:
             with dpg.tab_bar():
                 with dpg.tab(label="Flight Data"):
                     self._draw_flight_data_ui()
+                #TODO rework COM Monitor
+                #with dpg.tab(label="COM Monitor"):
+                #    self._draw_com_monitor_ui()
 
-                with dpg.tab(label="COM Monitor"):
-                    self._draw_com_monitor_ui()
-
-                with dpg.tab(label="Map View"):
-                    self._draw_map_view_ui()
+                #with dpg.tab(label="Map View"):
+                #    self._draw_map_view_ui()
 
                 with dpg.tab(label="Settings"):
                     self.settings_window.draw_ui()
@@ -351,9 +354,9 @@ class UIManager:
         dpg.set_value(self.last_packet_window.system_status_tags["lon"], f"{lon}")
 
         self.location_window.update_gps(lat, lon)
-        self.location_tab.update_gps(lat, lon)
+        #self.location_tab.update_gps(lat, lon)
         self.map_view_window.update_location(lat, lon)
-        self.map_view_tab.update_location(lat, lon)
+        #self.map_view_tab.update_location(lat, lon)
 
     def update_battery(self, v: float) -> None:
         """Push a battery voltage reading (V)."""
@@ -389,7 +392,8 @@ class UIManager:
         log.debug("update_all: dispatching packet with %d fields: %s", len(data), list(data.keys()))
         log.info("incoming package: %s", data)
 
-        self.com_monitor.add_row(data)
+        #TODO rework COM Monitor
+        #self.com_monitor.add_row(data)
 
         # Dispatch table mapping data-dict keys to their handler methods.
         handlers: dict[str, Callable[[Any], None]] = {

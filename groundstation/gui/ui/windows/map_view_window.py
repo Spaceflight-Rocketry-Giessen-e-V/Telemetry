@@ -565,7 +565,7 @@ class MapViewWindow:
         self.draw_track_polyline()
         self.draw_marker()
         self.draw_aircraft()
-        self._draw_diag_overlay()
+        self ._draw_diag_overlay()
 
     # -------------------------------------------------------------------------
     # UI construction
