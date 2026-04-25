@@ -249,7 +249,7 @@ During assembly of the first prototype antenna, it was obvious that the concept 
 
 ### Simulations
 
-<p align="center"><img src="images/helix_plot.svg" width = 600/></p>
+<p align="center"><img src="images/helix_simulation.png" width = 600/></p>
 
 > Informations will be added. See [#21](/../../issues/21)
 
