@@ -6,7 +6,7 @@
 */
 
 #include "Arduino.h"
-#include "RC17xxHP_RC232.h"
+#include "Radiocrafts_RC17xxHP_RC232.h"
 
 RC17xxHP_RC232::RC17xxHP_RC232(HardwareSerial* serialModule, uint8_t cfgpin, uint8_t rstpin, uint8_t ctspin, uint8_t rtspin)  // Store the hardware serial interface and pin assignments
 {  

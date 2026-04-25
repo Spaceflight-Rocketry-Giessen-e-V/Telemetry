@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "../RC17xxHP_RC232.h"
+#include "../Radiocrafts_RC17xxHP_RC232.h"
 
 // Assigning arbitrary pins
 uint8_t cfgpin = PIN_PB6;

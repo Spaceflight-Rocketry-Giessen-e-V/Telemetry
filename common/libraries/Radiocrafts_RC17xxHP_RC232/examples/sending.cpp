@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "../RC17xxHP_RC232.h"
+#include "../Radiocrafts_RC17xxHP_RC232.h"
 
 // This example uses an unique end byte to trigger the transmission. Alternativly the PACKET_TIMEOUT or PACKET_LENGTH parameters can be used.
 

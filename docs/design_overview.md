@@ -144,7 +144,7 @@ To consider the 10 % duty cycle, the flight computer usually only transmits once
 
 ### Radio Module Library
 
-To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../common/libraries/RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
+To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../common/libraries/Radiocrafts_RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
 
 The library does not allow the use of all the functions of the radio module but focuses only on the ones needed for our project. However, the included functions can be easily adapted for other uses. It can also easily be adapted for other radio modules like the RC1180HP-RC232.
 
