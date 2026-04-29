@@ -7,7 +7,7 @@
 
 #include "Arduino.h"
 #include "Wire.h"
-#include "RC17xxHP_RC232.h"
+#include "Radiocrafts_RC17xxHP_RC232.h"
 #include "Packet.h"
 
 // Status events

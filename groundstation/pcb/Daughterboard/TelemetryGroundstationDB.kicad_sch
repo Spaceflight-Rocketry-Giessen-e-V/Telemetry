@@ -5603,6 +5603,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 152.4 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8c38e18a-b0f0-4111-9d7b-538c8197a486")
 		)
@@ -5694,6 +5703,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KGKT/386799"
+			(at 147.32 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "27faf890-68e3-4366-a8a5-085dd5622b4e")
 		)
@@ -5772,6 +5790,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 113.03 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT5K60/1757920"
 			(at 113.03 134.62 90)
 			(effects
 				(font
@@ -5993,7 +6020,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KGKT/386799"
 			(at 99.06 96.52 90)
 			(effects
 				(font
@@ -6398,6 +6425,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 156.21 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "85fc5479-70a3-4ba2-a3d7-3ac99d04db54")
 		)
@@ -6473,6 +6509,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 113.03 144.78 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT5K60/1757920"
 			(at 113.03 144.78 90)
 			(effects
 				(font
@@ -7369,6 +7414,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT5K60/1757920"
+			(at 114.3 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dc282aa4-1d95-4d0e-b9d9-c6128d161434")
 		)
@@ -7516,7 +7570,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171YKT/386807"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KSKT/386781"
 			(at 109.22 96.52 90)
 			(effects
 				(font
@@ -7845,7 +7899,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 157.48 68.58 90)
 			(effects
 				(font
@@ -7890,6 +7944,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 157.48 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
 			(at 157.48 71.12 90)
 			(effects
 				(font
@@ -8161,6 +8224,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 154.94 170.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e8d51c47-79fb-49c1-a1c2-7dee295430dc")
 		)
@@ -8236,6 +8308,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 152.4 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 152.4 127 0)
 			(effects
 				(font
@@ -8463,6 +8544,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 147.32 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KGKT/386799"
 			(at 147.32 81.28 0)
 			(effects
 				(font
@@ -8877,7 +8967,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1 nF"
+		(property "Value" "1n"
 			(at 39.37 76.2 0)
 			(effects
 				(font
@@ -8922,7 +9012,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KCANNNC/3886827"
 			(at 36.83 72.39 0)
 			(effects
 				(font
@@ -9096,7 +9186,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
 			(at 109.22 86.36 0)
 			(effects
 				(font
@@ -9336,7 +9426,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
 			(at 99.06 86.36 0)
 			(effects
 				(font
@@ -9449,6 +9539,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 152.4 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5ea891af-9fa6-49c0-8577-8c1ed60c499c")
 		)
@@ -9527,6 +9626,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 156.21 160.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 156.21 160.02 90)
 			(effects
 				(font
@@ -9687,6 +9795,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 154.94 175.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8e8c4142-fe3d-485c-a41b-506045301145")
 		)
@@ -9790,6 +9907,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/amphenol-cs-fci/ICD15S13E4GV00LF/1536418?s=N4IgTCBcDaIJIGEAiBGArAZRQZgKIBYBxANQAZSAZAMRAF0BfIA"
+			(at 52.07 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -9935,7 +10061,7 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 157.48 78.74 90)
 			(effects
 				(font
@@ -9980,6 +10106,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 157.48 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
 			(at 157.48 81.28 90)
 			(effects
 				(font
@@ -10276,6 +10411,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 156.21 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e610b2af-23f3-47f7-8132-63371cb9b60c")
 		)
@@ -10307,7 +10451,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1 uf"
+		(property "Value" "1u"
 			(at 58.42 78.7399 0)
 			(effects
 				(font
@@ -10353,6 +10497,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 54.61 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KCANNNC/3886827"
 			(at 54.61 77.47 0)
 			(effects
 				(font
@@ -10450,6 +10603,15 @@
 				(hide yes)
 			)
 		)
+		(property "Purchase-URL" "~"
+			(at 156.21 149.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c450d868-70df-4d42-b04d-4b5983449113")
 		)
@@ -10525,6 +10687,15 @@
 			)
 		)
 		(property "Price" ""
+			(at 152.4 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "~"
 			(at 152.4 111.76 0)
 			(effects
 				(font
@@ -10661,6 +10832,15 @@
 		)
 		(property "Description" ""
 			(at 139.7 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/w%C3%BCrth-elektronik/824021/3900544"
+			(at 139.7 36.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10948,7 +11128,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-072K7L/728277"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT2K70/1757901"
 			(at 30.48 66.04 90)
 			(effects
 				(font
@@ -11284,6 +11464,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/gct/RFPC-SMA27-F/22162144"
+			(at 48.26 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
