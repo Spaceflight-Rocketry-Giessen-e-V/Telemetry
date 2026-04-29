@@ -172,9 +172,9 @@ class UIManager:
                 self.accelerometer_window.draw_ui(500, 400)
 
             with dpg.group(horizontal=False):
-                self.time_window.draw_ui(600, 125)
-                self.map_view_window.draw_ui(600, 600)
-                self.location_window.draw_ui(600, 125)
+                self.time_window.draw_ui(650, 125)
+                self.map_view_window.draw_ui(650, 600)
+                self.location_window.draw_ui(650, 125)
 
             with dpg.group(horizontal=False):
                 pass

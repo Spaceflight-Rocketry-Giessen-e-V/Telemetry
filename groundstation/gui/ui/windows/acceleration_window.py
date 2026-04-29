@@ -171,8 +171,11 @@ class AccelerationWindow:
             cls.accel_max = accel_value
             log.debug("AccelerationWindow: new max = %.4f g", accel_value)
 
-        delta = accel_value - cls.accel_data[-2] if len(cls.accel_data) > 1 else 0.0
-        cls.delta_data.append(delta)
+        if len(cls.accel_data) > 1:
+            delta = accel_value - cls.accel_data[-2]
+            cls.delta_data.append(delta)
+        else:
+            delta = 0.0
         median_delta = statistics.median(cls.delta_data) if cls.delta_data else 0.0
 
         dpg.set_value(cls._TAG_SERIES, [cls.time_data, cls.accel_data])
