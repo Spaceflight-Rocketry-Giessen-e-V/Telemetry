@@ -220,3 +220,7 @@ We recommend using a dedicated serial monitor like the excellent project [Coolte
 The system should never be operational without a connected antenna, as otherwise the high output power can permanently damage the radio module.
 
 If testing the radio communication between the onboard system and the ground station system, a distance of at least 1.5 m should always be established.
+
+## Choice of VGA Cabel
+
+The standart VGA pinout is not applicable here, since pins that either carry a digital signal or are connected to ground are internally connected. This renders the standart VGA cable useless. VGA breakout cables, DIY cabel or searching for a cable with 15 individual connectors.
