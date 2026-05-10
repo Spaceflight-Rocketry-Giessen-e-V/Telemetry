@@ -263,7 +263,7 @@ void loop()
           // }
         }
         break;
-      
+      #if(0)
       case 'g': // deactivation
         if(flight_mode == 1)
         {
@@ -283,6 +283,7 @@ void loop()
           }
         }
         break;
+#endif
 
       // Drogue parachute ejection
 

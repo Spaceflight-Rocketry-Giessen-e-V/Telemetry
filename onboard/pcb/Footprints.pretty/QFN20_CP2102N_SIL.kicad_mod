@@ -1142,13 +1142,13 @@
 	(embedded_fonts no)
 	(model "${KIPRJMOD}/3D Models/cp2102n-a02-gqfn20.stp"
 		(offset
-			(xyz -1.5 0 0)
+			(xyz 0 1.5 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -90 -0 -0)
+			(xyz -90 -0 90)
 		)
 	)
 )

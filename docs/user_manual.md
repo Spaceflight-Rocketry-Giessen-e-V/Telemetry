@@ -12,12 +12,14 @@ Please see the [operation advices](#operation-advices) before using the system!
     - [USB-to-UART/UPDI bridge](#usb-to-uartupdi-bridge)
 - [Antenna](#antenna)
     - [Assembly](#assembly-1)
+    - [Simulations](#simulations)
     - [Measurements](#measurements)
     - [Impedance Matching](#impedance-matching)
 - [Operation Advices](#operation-advices)
     - [Powering The System](#powering-the-system)
     - [Serial Communication](#serial-communication)
     - [Antenna Precautions](#antenna-precautions)
+    - [Choice of VGA Cable](#choice-of-vga-cable)
 
 ---
 
@@ -167,6 +169,23 @@ When opening for the first time, a new project has to be created: Press *Start* 
 
 The assembly of the groundstation helix antenna is described in a [separate document](./helix_antenna_assembly_manual.md).
 
+## Simulations
+We do our own simulations of our antennas to validate the proposed designs. The basis is the electromagnetic field solver openEMS developed by Thorsten Liebig. His project can be found on his [GitHub](https://github.com/thliebig/openEMS-Project).
+This is only a short description of the simulation process, a longer manual will be added in the future.
+
+The simulation has four main parts:
+
+1. Setting up the parameters of the antenna (eg. number of turns, radius, frequency). The number of parameters depend on: Do you intend to use a computer generated geometry from a CAD software or do you ant to set up the geometry with a script.
+
+2. With the parameters from the first step, the geometry of the antenna and of the groundplate is build. This can either be done through the code itself or by importing a 3D-model of the antenna. We opt to use the import of the 3D-model to better incorporate the complex geometry. The material properties have to be set manually.
+
+3. After creating the antenna and setting up all the parameters, it is now time to set up and run the simulation.
+
+4. The last step is to output the calculated data and visualize it. For the visualization we used [Paraview](https://www.paraview.org/), other software or plot libraries can be used as well.
+
+
+In the future there will be a detailed instruction on how to use the library for our use case for both ways. In the mean time feel free to explore the library on your own. If you want to have a gasp on our code look for the example code for a helix antenna provided on the openEMS repository.
+
 ## Measurements
 
 When measuring self-built or bought antennas, vector network analyzers (VNA) like the NanoVNA-H4 or the LiteVNA 64 are necessary tools and can be bought for cheap.
@@ -220,3 +239,7 @@ We recommend using a dedicated serial monitor like the excellent project [Coolte
 The system should never be operational without a connected antenna, as otherwise the high output power can permanently damage the radio module.
 
 If testing the radio communication between the onboard system and the ground station system, a distance of at least 1.5 m should always be established.
+
+## Choice of VGA Cable
+
+The standart VGA pinout is not applicable here, since pins that either carry a digital signal or are connected to ground are internally connected. This renders the standart VGA cable useless. VGA breakout cables, DIY cabel or searching for a cable with 15 individual connectors.
