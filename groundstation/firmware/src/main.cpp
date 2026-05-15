@@ -25,18 +25,16 @@ uint8_t ledpinRSSI6 = PIN_PD5; //(D32)
 uint8_t ledpinRSSI7 = PIN_PD6; //(D33)
 uint8_t ledpinRSSI8 = PIN_PD7; //(D34)
 
-
-
-uint8_t D01pin = PIN_PA3;
-uint8_t D02pin = PIN_PA2;
-uint8_t D03pin = PIN_PA1;
-uint8_t D04pin = PIN_PA6;
+uint8_t D21pin = PIN_PE4;
+uint8_t D22pin = PIN_PE3;
+uint8_t D23pin = PIN_PE2;
+uint8_t D24pin = PIN_PE5;
 
 HardwareSerial* SerialPC1 = &Serial5;
 HardwareSerial* SerialPC2 = &Serial2;
-HardwareSerial* SerialModule = &Serial0;
+HardwareSerial* SerialModule = &Serial4;
 
-RC17xxHP_RC232 rc1780hp(SerialModule, D01pin, D04pin, D03pin, D02pin);
+RC17xxHP_RC232 rc1780hp(SerialModule, D21pin, D24pin, D23pin, D22pin);
 
 // Data components received from sensors
 uint8_t temperature = 0;
@@ -95,12 +93,14 @@ void setup()
   digitalWrite(ledpinRSSI8, LOW);
 
 
+
   SerialPC1->begin(115200);// Connection to PC
   // SerialPC2->begin(19200);
-  SerialModule->pins(PIN_PA4, PIN_PA5);// Swap RX/TX pins for module
+  SerialModule->pins(PIN_PE1, PIN_PE0);// Swap RX/TX pins for module
   delay(100);
   rc1780hp.begin(19200);
   delay(100);
+
   rc1780hp.ping();
   
   //rc1780hp.memory_Reset();
