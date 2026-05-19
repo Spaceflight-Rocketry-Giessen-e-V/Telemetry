@@ -33,6 +33,10 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 ### Groundstation MB/DB Approach
 
+|<img src="/groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="/groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" />|
+|---|---|
+|<p align="center">[Motherboard](/groundstation/pcb/Motherboard/)</p>|<p align="center">[Daughterboard](/groundstation/pcb/Daughterboard/)</p>|
+
 ### Onboard Electronics
 
 The onboard PCB is based on the standard layout of our rocketry club, featuring a round design with a diameter of 10 cm and a flattened edge with space for cables. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use Samtec ESQ due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
@@ -43,19 +47,25 @@ The following image shows the onboard pcb:
 
 ## Design Details
 
-### Radio Frequency
+### Radio Frequencies
 
-The license-free frequency bands in Germany are regulated by the Bundesnetzagentur. Frequencies between 100 MHz and 2400 MHz are of primary interest to us. The relevant regulations can be found in the ["Allgemeinzuteilungen von Frequenzen"](https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/start.html). In this case the regulation of SRD devices applies. The frequency band between 869.40 MHz and 869.65 MHz can be used with an output power (EIRP) of up to 27 dBm or 500 mW, with a duty cycle of 10 %. This limits the radio transmission to 6 minutes total per (continous) hour.
+The license-free frequency bands in Germany are regulated by the Bundesnetzagentur. Frequencies between 100 MHz and 2400 MHz are of primary interest to us. The relevant regulations can be found in the ["Allgemeinzuteilungen von Frequenzen"](https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/start.html). In this case the regulation of SRD devices applies. 
 
-<p align="center"><img src="images/frequency_regulation.png" /></p>
+The frequency band between 169.4 MHz and 169.475 MHz can be used with an output power (EIRP) of up to 27 dBm or 500 mW, with a duty cycle of 1 %. This limits the radio transmission to 36 seconds total per (continous) hour.
+
+<p align="center"><img src="images/frequency_regulation_169.png" /></p>
+
+The frequency band between 869.4 MHz and 869.65 MHz can be used with an output power (EIRP) of up to 27 dBm or 500 mW, with a duty cycle of 10 %. This limits the radio transmission to 6 minutes total per (continous) hour.
+
+<p align="center"><img src="images/frequency_regulation_869.png" /></p>
 
 ### Radio Modules
 
-We chose the Radiocrafts RC1780HP-RC232 radio modules, which operate at frequencies from 869.41 MHz to 869.64 MHz and can achieve output powers of up to 27 dBm. The operation is straightforward due to the UART interface. The datasheet can be found [here](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf). Additionally, there is a separate manual for the RC232 series of radio modules that includes all configuration commands and more information, available [here](https://radiocrafts.com/uploads/RC232_user_manual.pdf). Application notes can be downloaded [here](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes).
+We chose the Radiocrafts RC17xxHP-RC232 radio modules which come in 169 MHz (RC1701HP) and 869 MHz (RC1780HP) variants. The modules can achieve output powers of up to 27 dBm and the operation is straightforward due to the UART interface. The datasheet can be found [here](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf). Additionally, there is a separate manual for the RC232 series of radio modules that includes all configuration commands and more information, available [here](https://radiocrafts.com/uploads/RC232_user_manual.pdf). Application notes can be downloaded [here](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes).
 
-The following image shows the available data rates and high power (27 dBm) radio channels of the RC1780HP-RC232 module. The information is taken from the official datasheet.
+The following image shows the available data rates and high power (27 dBm) radio channels of the RC1780HP-RC232 and RC1701HP-RC232 radio modules. The data is taken from the linked datasheet.
 
-<p align="center"><img src="images/rc1780hp_rc232_specifications.png" /></p>
+<p align="center"><img src="images/rc17xxhp_rc232_specifications.png" /></p>
 
 ### Microcontroller
 
@@ -97,6 +107,8 @@ In the signal trace, a T-matching network is included to be able to match the an
 
 ### LEDs
 
+> Has to be reworked. See [#17](/../../issues/17) and [#18](/../../issues/18)
+
 Both the onboard and groundstation PCB include each 1 status LED, 1 RGB LED and 4 debug LEDs.
 
 The use of the groundstation's LEDs is described in the [operations cheatsheet](operations_cheatsheet.md).
@@ -109,7 +121,7 @@ The use of the onboard LEDs is the following:
 
 ### USB UPDI Programmer
 
-On our next-generation PCBs, an onboard UPDI programmer with an USB-C connector will be included. 
+On the onboard and motherboard PCBs, onboard UPDI programmers and USB-UART bridges with USB-C connectors are included. 
 
 The following image shows the general schematic:
 
@@ -119,6 +131,15 @@ The design features a CP2102N USB to UART bridge, [whose datasheet](https://www.
 Not shown in the schematic is one LED (with a 560 Ohms resistor) each at `TXT` and `RXT` and decoupling capacitors (4.7 uF and 0.1 uF) at the `VREGIN` and `VDD`.
 
 The UART to UPDI connection is based on [this guide](https://github.com/SpenceKonde/AVR-Guidance/blob/master/UPDI/jtag2updi.md). It features a Schottky diode and two protection resistors.
+
+### Staggered Pin Rows / Lock Pattern
+
+The onboard electronics feature a total of four stackable pin headers used to connect all subsystems of the rocket flight computer to a PCB stackup. Without precise alignment, the stacking of multiple PCBs is impossible.<br>
+To fullfill this requirement, we use high-quality [Samtec ESQ pin sockets](https://www.digikey.de/de/products/detail/samtec-inc/ESQ-108-13-G-S/1766188) and a staggered pin layout inspired by an old [Sparkfun article](https://web.archive.org/web/20241202225923/https://www.sparkfun.com/tutorials/114), which is only available on the Wayback Machine nowadays.
+
+The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254 mm and a hole size of 1 mm is perfect for the Samtec ESQ pin sockets. The result looks like this:
+
+<p align="center"><img src="images/staggered_pins.png" width = 400/></p>
 
 ---
 
@@ -160,7 +181,7 @@ Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https:/
 
 ## Groundstation Helix Antenna
 
-### Geometrical Design
+### Geometric Design
 
 The Antenna design process is based on this [paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463). More information can be found [here](https://www.microwaves101.com/encyclopedias/helix-antennas) and [here](https://jcoppens.com/ant/helix/index.en.php).
 
@@ -257,7 +278,7 @@ During assembly of the first prototype antenna, it was obvious that the concept 
 
 > Informations will be added. See [#43](/../../issues/43)
 
-### Geometrical Design
+### Geometric Design
 
 Many resources on antennas: [antenna-theory.com](https://www.antenna-theory.com/)
 
