@@ -9,6 +9,8 @@
 **/.vscode/
 **/.pio/
 *.pyc
+/groundstation/firmware/.gitignore
+/onboard/firmware/.gitignore
 /groundstation/gui/ui/__pycache__
 /groundstation/gui/.venv
 /groundstation/gui/.idea
