@@ -39,9 +39,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 ### Onboard Electronics
 
-The onboard PCB is based on the standard layout of our rocketry club, featuring a round design with a diameter of 10 cm and a flattened edge with space for cables. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use Samtec ESQ due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
-
-The following image shows the onboard pcb:
+The onboard PCB is based on the standard layout of our rocketry club, featuring a square design with round edges. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use [Samtec ESQ pin sockets](https://www.digikey.de/de/products/detail/samtec-inc/ESQ-108-13-G-S/1766188) due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
 
 <p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
 
@@ -139,7 +137,7 @@ To fullfill this requirement, we use high-quality [Samtec ESQ pin sockets](https
 
 The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254 mm and a hole size of 1 mm is perfect for the Samtec ESQ pin sockets. The result looks like this:
 
-<p align="center"><img src="images/staggered_pins.png" width = 400/></p>
+<p align="center"><img src="images/staggered_pins.png" width = 600/></p>
 
 ---
 
