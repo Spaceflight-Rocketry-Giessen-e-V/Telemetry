@@ -24,11 +24,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 ---
 
 # Electronics
-The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB48), while the daughterboards host the radio modules (RC17xx series).
 
-This architecture allows multiple daughterboards to be connected to the motherboard via a standard 15-pin VGA connector. As a result, different radio modules operating on different frequency bands can be used within the same system.
-
-In the current configuration, the system is designed to use 169.5 MHz for command transmission and 869.5 MHz for telemetry data.
 > Has to be reworked. See [#17](/../../issues/17) and [#18](/../../issues/18)
 
 ## Design Overview
@@ -40,7 +36,11 @@ In the current configuration, the system is designed to use 169.5 MHz for comman
 |<img src="/groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="/groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" />|
 |---|---|
 |<p align="center">[Motherboard](/groundstation/pcb/Motherboard/)</p>|<p align="center">[Daughterboard](/groundstation/pcb/Daughterboard/)</p>|
+The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB48), while the daughterboards host the radio modules (RC17xx series).
 
+This architecture allows multiple daughterboards to be connected to the motherboard via a standard 15-pin VGA connector. As a result, different radio modules operating on different frequency bands can be used within the same system.
+
+In the current configuration, the system is designed to use 169.5 MHz for command transmission and 869.5 MHz for telemetry data.
 ### Onboard Electronics
 
 The onboard PCB is based on the standard layout of our rocketry club, featuring a square design with round edges. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use [Samtec ESQ pin sockets](https://www.digikey.de/de/products/detail/samtec-inc/ESQ-108-13-G-S/1766188) due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
