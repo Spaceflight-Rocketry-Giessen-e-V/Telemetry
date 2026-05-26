@@ -75,7 +75,9 @@ The "pacifiers" are 3D-printed ring fixtures that hold the copper coil at the co
 |---|---|
 |[Pacifier](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier.stl)|[Pacifier Spacer](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|
 
-![Pacifier and template](images/antenna_assembly/0003_pacifier_and_template.png)
+<p align="center">
+  <img src="images/antenna_assembly/0003_pacifier_and_template.png" alt="Pacifier and template">
+</p>
 
 **2. Prepare the rod**
 
@@ -88,7 +90,9 @@ Lay the fiberglass rod on your work surface and clean it thoroughly with isoprop
 
 Place the first pacifier 10 cm from the top of the rod. You will work your way down from the top.
 
-![First pacifier placed](images/antenna_assembly/0103_first_pacifier_10cm.png)
+<p align="center">
+  <img src="images/antenna_assembly/0103_first_pacifier_10cm.png" alt="First pacifier placed">
+</p>
 
 **4. Attach with hot glue**
 
@@ -115,8 +119,9 @@ Due to 3D printing tolerances, the template may introduce a small angular offset
 
 Always wear a respirator mask and eye protection and open the windows when working with epoxy resin. A helmet is advised for the looks.
 
-![Wear a mask](images/antenna_assembly/0200_wear_a_mask.png)
-
+<p align="center">
+  <img src="images/antenna_assembly/0200_wear_a_mask.png" alt="Wear a mask">
+</p>
 **1. Mount for curing**
 
 Attach one spare pacifier to the topmost part of the rod and hang the assembly from a shelf so the epoxy can be applied and cure fully upright, without placing stress on any of the pacifiers.
@@ -178,8 +183,9 @@ The coil may not seem be perfectly straight due to its springy behaviour, but th
 |![Finished side](images/antenna_assembly/0309_finished_side.png)|![Finished coil top](images/antenna_assembly/0310_finished_coil_top.png)|
 |---|---|
 
-![Finished coil angle](images/antenna_assembly/0311_finished_coil_angle.png)
-
+<p align="center">
+  <img src="images/antenna_assembly/0311_finished_coil_angle.png" alt="Finished coil angle">
+</p>
 ---
 
 ### Phase 4 — Inserting the Coil
@@ -231,8 +237,9 @@ Install the SMA connector using the M2.5 screws. Pass the rod through the plate.
 
 Glue the [Rope Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Rope%20Fixture.stl) with epoxy resin to the very top of the rod. After curing, run strings from each corner of the aluminum plate up to the fixture.
 
-![Assembly with strings](images/antenna_assembly/0601_assembly_with_strings_attached.png)
-
+<p align="center">
+  <img src="images/antenna_assembly/0601_assembly_with_strings_attached.png" alt="Assembly with strings">
+</p>
 If adhesion between the pacifiers and the rod seems insufficient, it is possible to design and 3D-print connector bridges between adjacent pacifiers for added rigidity. This should be integrated during Phase 2. We opted against it due to weight and material concerns, but the option exists.
 
 ---
