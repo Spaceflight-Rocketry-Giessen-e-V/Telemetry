@@ -24,7 +24,11 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 ---
 
 # Electronics
+The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB48), while the daughterboards host the radio modules (RC17xx series).
 
+This architecture allows multiple daughterboards to be connected to the motherboard via a standard 15-pin VGA connector. As a result, different radio modules operating on different frequency bands can be used within the same system.
+
+In the current configuration, the system is designed to use 169.5 MHz for command transmission and 869.5 MHz for telemetry data.
 > Has to be reworked. See [#17](/../../issues/17) and [#18](/../../issues/18)
 
 ## Design Overview
