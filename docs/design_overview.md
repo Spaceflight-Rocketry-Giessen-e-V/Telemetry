@@ -25,11 +25,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 # Electronics
 
-> Has to be reworked. See [#17](/../../issues/17) and [#18](/../../issues/18)
-
 ## Design Overview
-
-### Dual Frequency
 
 ### Groundstation MB/DB Approach
 
@@ -43,9 +39,14 @@ The system is based on a modular approach consisting of a motherboard and one or
 This architecture allows multiple daughterboards to be connected to the motherboard via a standard 15-pin VGA connector. As a result, different radio modules operating on different frequency bands can be used within the same system.
 
 In the current configuration, the system is designed to use 169.5 MHz for command transmission and 869.5 MHz for telemetry data.
+
+The use of the LEDs is described in the [operations cheatsheet](operations_cheatsheet.md).
+
 ### Onboard Electronics
 
 The onboard PCB is based on the standard layout of our rocketry club, featuring a square design with round edges. Power and data are distributed via stackable pin headers located on the left and right sides. Generally, cheap stackable headers which can be found on eBay or Aliexpress can be used. We opted to use [Samtec ESQ pin sockets](https://www.digikey.de/de/products/detail/samtec-inc/ESQ-108-13-G-S/1766188) due to their superior quality. An I2C connection is used for communication with other subsystems to gather sensor data and forward radio commands.
+
+The system includes an RGB LED for status indication, three LEDs for subsystem status indication and five general-purpose LEDs. Additionally, all UART traces feature a LED indicator.
 
 <p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
 
@@ -108,20 +109,6 @@ Due to the different height of the onboard pcb, a trace width of 1.2 mm would le
 <p align="center"><img src="images/coplanar_waveguide_onboard.png" width="600"/></p>
 
 In the signal trace, a T-matching network is included to be able to match the antenna's impedance to 50 Ohms. When no matching is used, a 0 Ohms resistor has to be connected in series and the parallel component has to be left open. More informations about antenna matching can be found in the [user manual](user_manual.md).
-
-### LEDs
-
-> Has to be reworked. See [#17](/../../issues/17) and [#18](/../../issues/18)
-
-Both the onboard and groundstation PCB include each 1 status LED, 1 RGB LED and 4 debug LEDs.
-
-The use of the groundstation's LEDs is described in the [operations cheatsheet](operations_cheatsheet.md).
-
-The use of the onboard LEDs is the following:
-- The status LED D1 is lit continuously in setup and blinks during loop. 
-- The RGB LED shows the status of the connected subsystems. If all subsystems are responding via I2C, the LED glows blue. If all subsystems communicate a "good" state, the LED glows green. Else, it glows red.
-- D5 is lit when the flight mode is active
-- D6, D7 and D8 are used to indicate the detailed status of up to three subsystems. If a subsystem is responding via I2C, the respective LED blinks. If it communicates the "good" state, the LED is lit continuously. Else, it is not lit.
 
 ### USB UPDI Programmer
 
