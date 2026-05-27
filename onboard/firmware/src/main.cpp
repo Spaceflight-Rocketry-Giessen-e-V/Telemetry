@@ -263,27 +263,26 @@ void loop()
           // }
         }
         break;
-      #if(0)
-      case 'g': // deactivation
+      
+        case 'g': // deactivation
         if(flight_mode == 1)
         {
           digitalWrite(arm1pin, LOW);
-          delay(1);
-          if(digitalRead(d3pin) == LOW)
-          {
+          // delay(1);
+          // if(digitalRead(d3pin) == LOW)
+          // {
             digitalWrite(ledpin2, LOW);
             flight_mode = 0;
             Wire.beginTransmission(0x40);
             Wire.write('g');
             Wire.endTransmission();
-          }
-          else
-          {
-            digitalWrite(arm1pin, HIGH);
-          }
+          // }
+          // else
+          // {
+          //   digitalWrite(arm1pin, HIGH);
+          // }
         }
         break;
-#endif
 
       // Drogue parachute ejection
 

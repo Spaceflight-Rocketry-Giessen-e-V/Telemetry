@@ -38,7 +38,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 |<p align="center">[Motherboard](/groundstation/pcb/Motherboard/)</p>|<p align="center">[Daughterboard](/groundstation/pcb/Daughterboard/)</p>|
 
 
-The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB48), while the daughterboards host the radio modules (RC17xx series).
+The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB64), while the daughterboards host the radio modules (RC17xx series).
 
 This architecture allows multiple daughterboards to be connected to the motherboard via a standard 15-pin VGA connector. As a result, different radio modules operating on different frequency bands can be used within the same system.
 
