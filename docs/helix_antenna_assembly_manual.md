@@ -71,19 +71,19 @@ All 3D models are available in the [`groundstation/antenna/`](../groundstation/a
 
 The "pacifiers" are 3D-printed ring fixtures that hold the copper coil at the correct spacing and angle along the fiberglass rod. They are the most integral part of the assembly since they decide the final geometry.
 
-|![Pacifier part](images/antenna_assembly/0001_pacifier.png)|![Template placement](images/antenna_assembly/0002_pacifier_set_template.png)|
+|![Pacifier part](images/helix_antenna_assembly/0001_pacifier.png)|![Template placement](images/helix_antenna_assembly/0002_pacifier_set_template.png)|
 |---|---|
 |[Pacifier](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier.stl)|[Pacifier Spacer](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|
 
 <p align="center">
-  <img src="images/antenna_assembly/0003_pacifier_and_template.png" alt="Pacifier and template">
+  <img src="images/helix_antenna_assembly/0003_pacifier_and_template.png" alt="Pacifier and template">
 </p>
 
 **2. Prepare the rod**
 
 Lay the fiberglass rod on your work surface and clean it thoroughly with isopropyl alcohol.
 
-|![Rod](images/antenna_assembly/0101_rod.png)|![Cleaned rod](images/antenna_assembly/0102_rod_cleaned.png)|
+|![Rod](images/helix_antenna_assembly/0101_rod.png)|![Cleaned rod](images/helix_antenna_assembly/0102_rod_cleaned.png)|
 |---|---|
 
 **3. Set the first pacifier**
@@ -91,7 +91,7 @@ Lay the fiberglass rod on your work surface and clean it thoroughly with isoprop
 Place the first pacifier 10 cm from the top of the rod. You will work your way down from the top.
 
 <p align="center">
-  <img src="images/antenna_assembly/0103_first_pacifier_10cm.png" alt="First pacifier placed">
+  <img src="images/helix_antenna_assembly/0103_first_pacifier_10cm.png" alt="First pacifier placed">
 </p>
 
 **4. Attach with hot glue**
@@ -102,13 +102,13 @@ Cooling can be accelerated with compressed air or a fan. Our compressor had issu
 
 Repeat for all pacifiers down the rod.
 
-|![Hot glued](images/antenna_assembly/0104_first_pacifier_hot_glued.png)|![Template set](images/antenna_assembly/0105_template_set.png)|
+|![Hot glued](images/helix_antenna_assembly/0104_first_pacifier_hot_glued.png)|![Template set](images/helix_antenna_assembly/0105_template_set.png)|
 |---|---|
-| ![Template set 2](images/antenna_assembly/0106_template_set_2.png)|![Next pacifier glued](images/antenna_assembly/0107_next_pacifier_glued.png)|
+| ![Template set 2](images/helix_antenna_assembly/0106_template_set_2.png)|![Next pacifier glued](images/helix_antenna_assembly/0107_next_pacifier_glued.png)|
 
 The result should look like this:
 
-|![Final rod assembly 2](images/antenna_assembly/0112_final_rod_assembly_2.png)|![Final rod assembly](images/antenna_assembly/0111_final_rod_assembly.png)|
+|![Final rod assembly 2](images/helix_antenna_assembly/0112_final_rod_assembly_2.png)|![Final rod assembly](images/helix_antenna_assembly/0111_final_rod_assembly.png)|
 |---|---|
 
 Due to 3D printing tolerances, the template may introduce a small angular offset between pacifiers. This is minor and acceptable.
@@ -120,29 +120,29 @@ Due to 3D printing tolerances, the template may introduce a small angular offset
 Always wear a respirator mask and eye protection and open the windows when working with epoxy resin. A helmet is advised for the looks.
 
 <p align="center">
-  <img src="images/antenna_assembly/0200_wear_a_mask.png" alt="Wear a mask">
+  <img src="images/helix_antenna_assembly/0200_wear_a_mask.png" alt="Wear a mask">
 </p>
 **1. Mount for curing**
 
 Attach one spare pacifier to the topmost part of the rod and hang the assembly from a shelf so the epoxy can be applied and cure fully upright, without placing stress on any of the pacifiers.
 
-|![Shelf attachment](images/antenna_assembly/0113_rod_mount.png)|![Shelf attachment 2](images/antenna_assembly/0208_shelf_attachement.png)|
+|![Shelf attachment](images/helix_antenna_assembly/0113_rod_mount.png)|![Shelf attachment 2](images/helix_antenna_assembly/0208_shelf_attachement.png)|
 |---|---|
 
 **2. Mix and draw up epoxy**
 
 Mix the two-part epoxy resin according to the manufacturer's instructions. Draw it into syringes with large blunt-tip needles for controlled application.
 
-|![Epoxy resin](images/antenna_assembly/0201_epoxy_resin.png)|![Drawing epoxy into syringe](images/antenna_assembly/0202_epoxy_syringe_draw.png)|
+|![Epoxy resin](images/helix_antenna_assembly/0201_epoxy_resin.png)|![Drawing epoxy into syringe](images/helix_antenna_assembly/0202_epoxy_syringe_draw.png)|
 |---|---|
 
 **3. First application — top side of rings**
 
 Turn the rod upside down. Apply epoxy to the top face of each pacifier-to-rod junction. The bottom face is still covered by hot glue at this point, so leave it.
 
-|![Epoxy application](images/antenna_assembly/0203_epoxy_application.png)|![Epoxy application 2](images/antenna_assembly/0204_epoxy_application_2.png)|
+|![Epoxy application](images/helix_antenna_assembly/0203_epoxy_application.png)|![Epoxy application 2](images/helix_antenna_assembly/0204_epoxy_application_2.png)|
 |---|---|
-|![Epoxy application 3](images/antenna_assembly/0205_epoxy_application_3.png)|![Pacifier done](images/antenna_assembly/0206_pacifier_done.png)|
+|![Epoxy application 3](images/helix_antenna_assembly/0205_epoxy_application_3.png)|![Pacifier done](images/helix_antenna_assembly/0206_pacifier_done.png)|
 
 The epoxy may wick into small gaps between the pacifier and the rod which should increase the bonding strength. However, drips are undesired and hould be wiped with acetone.
 
@@ -152,7 +152,7 @@ Remove the rod from the shelf fixture, turn it around and reinsert it in the fix
 
 Remove the hot glue, then apply epoxy to the previously covered bottom faces of each pacifier.
 
-| ![Round two](images/antenna_assembly/0210_epoxy_application_round_two.png) | ![Round two 2](images/antenna_assembly/0211_epoxy_application_round_two_2.png) |
+| ![Round two](images/helix_antenna_assembly/0210_epoxy_application_round_two.png) | ![Round two 2](images/helix_antenna_assembly/0211_epoxy_application_round_two_2.png) |
 |---|---|
 
 Allow to cure fully before proceeding.
@@ -166,7 +166,7 @@ Allow to cure fully before proceeding.
 Use the 3D-printed winding help form to shape the copper tube into the correct helix diameter. Printed winding clamps hold the tube against the form, secured with woodworking clamps.
 
 
-|![Full template](images/antenna_assembly/0303_winding_template_full.png)|![Template attachment](images/antenna_assembly/0302_winding_template_attachement.png)|
+|![Full template](images/helix_antenna_assembly/0303_winding_template_full.png)|![Template attachment](images/helix_antenna_assembly/0302_winding_template_attachement.png)|
 |---|---|
 |[Winding Help](../groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Help.stl)|[Winding Clamp](../groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Clamp.stl)|
 
@@ -174,17 +174,17 @@ Use the 3D-printed winding help form to shape the copper tube into the correct h
 
 With the tube clamped to the template, rotate it around the mandrel in a continuous helical motion, and secure it after each turn with a clamp. The copper tube should more or less keep its shape.
 
-|![Winding 1](images/antenna_assembly/0305_winding.png)|![Winding 2](images/antenna_assembly/0306_winding_2.png)|
+|![Winding 1](images/helix_antenna_assembly/0305_winding.png)|![Winding 2](images/helix_antenna_assembly/0306_winding_2.png)|
 |---|---|
-|![Winding 3](images/antenna_assembly/0307_winding_3.png)|![Winding 4](images/antenna_assembly/0308_winding_4.png)|
+|![Winding 3](images/helix_antenna_assembly/0307_winding_3.png)|![Winding 4](images/helix_antenna_assembly/0308_winding_4.png)|
 
 The coil may not seem be perfectly straight due to its springy behaviour, but this does not affect function since it will be hold by the pacifiers.
 
-|![Finished side](images/antenna_assembly/0309_finished_side.png)|![Finished coil top](images/antenna_assembly/0310_finished_coil_top.png)|
+|![Finished side](images/helix_antenna_assembly/0309_finished_side.png)|![Finished coil top](images/helix_antenna_assembly/0310_finished_coil_top.png)|
 |---|---|
 
 <p align="center">
-  <img src="images/antenna_assembly/0311_finished_coil_angle.png" alt="Finished coil angle">
+  <img src="images/helix_antenna_assembly/0311_finished_coil_angle.png" alt="Finished coil angle">
 </p>
 ---
 
@@ -194,7 +194,7 @@ The coil may not seem be perfectly straight due to its springy behaviour, but th
 
 Insert the finished coil into the pacifier assembly on the rod with a smooth rotating motion.
 
-|![Inserting coil](images/antenna_assembly/0401_inserting_coil.png)|![Inserting coil 2](images/antenna_assembly/0402_inserting_coil_2.png)|
+|![Inserting coil](images/helix_antenna_assembly/0401_inserting_coil.png)|![Inserting coil 2](images/helix_antenna_assembly/0402_inserting_coil_2.png)|
 |---|---|
 
 This step is very easy and should take about 5 minutes.
@@ -203,7 +203,7 @@ This step is very easy and should take about 5 minutes.
 
 Once fully seated, trim the copper tube flush at the last pacifier.
 
-|![Finished coil antenna assembly](images/antenna_assembly/0403_finished_coil_antenna_assembly.png)|![Cut end](images/antenna_assembly/0404_cut_end.png)|
+|![Finished coil antenna assembly](images/helix_antenna_assembly/0403_finished_coil_antenna_assembly.png)|![Cut end](images/helix_antenna_assembly/0404_cut_end.png)|
 |---|---|
 
 **3. Bend the end straight**
@@ -220,16 +220,16 @@ Drill a center hole through the aluminum plate sized to pass the fiberglass rod.
 
 This is also a good time to drill the corner holes for the guy-wire string attachment, while the plate is already on the drill press.
 
-|![Cones](images/antenna_assembly/0500_cones.png)|![Drilled plate](images/antenna_assembly/0501_drilled_plate.png)|
+|![Cones](images/helix_antenna_assembly/0500_cones.png)|![Drilled plate](images/helix_antenna_assembly/0501_drilled_plate.png)|
 |---|---|
 
 **2. Assemble the cones and connector**
 
 Install the SMA connector using the M2.5 screws. Pass the rod through the plate. Mount the [Top Cone](../groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Top.stl) from above and bolt it down with the M8 screws. Finally, attach the [Bottom Cone](../groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Bottom.stl) from below, by removing the nuts from the Top Cone, and using them to bolt the Bottom Cone to the Top Cone
 
-|![Top cone screwed on (top view)](images/antenna_assembly/0502_top_cone_screwedon_top.png)|![Top cone screwed on (bottom view)](images/antenna_assembly/0503_top_cone_screwedon_bottom.png)|
+|![Top cone screwed on (top view)](images/helix_antenna_assembly/0502_top_cone_screwedon_top.png)|![Top cone screwed on (bottom view)](images/helix_antenna_assembly/0503_top_cone_screwedon_bottom.png)|
 |---|---|
-|![SMA connector bottom](images/antenna_assembly/0504_SMA_connector_bottom.png)|![SMA connector top](images/antenna_assembly/0504_SMA_connector_top.png)|
+|![SMA connector bottom](images/helix_antenna_assembly/0504_SMA_connector_bottom.png)|![SMA connector top](images/helix_antenna_assembly/0504_SMA_connector_top.png)|
 
 ![Finished assembly](../groundstation/antenna/images/GroundstationAntenna_picture_2.png)
 
@@ -238,7 +238,7 @@ Install the SMA connector using the M2.5 screws. Pass the rod through the plate.
 Glue the [Rope Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Rope%20Fixture.stl) with epoxy resin to the very top of the rod. After curing, run strings from each corner of the aluminum plate up to the fixture.
 
 <p align="center">
-  <img src="images/antenna_assembly/0601_assembly_with_strings_attached.png" alt="Assembly with strings">
+  <img src="images/helix_antenna_assembly/0601_assembly_with_strings_attached.png" alt="Assembly with strings">
 </p>
 If adhesion between the pacifiers and the rod seems insufficient, it is possible to design and 3D-print connector bridges between adjacent pacifiers for added rigidity. This should be integrated during Phase 2. We opted against it due to weight and material concerns, but the option exists.
 
@@ -248,11 +248,18 @@ If adhesion between the pacifiers and the rod seems insufficient, it is possible
 
 **1. Prepare the tube end**
 
-Trim the straight end of the tube to the correct length. Squeeze the end with pliers and use sandpaper to rough the surface and remove the oxide layer. Clean with isopropyl alcohol.
+Trim the straight end of the tube to the correct length. Use sandpaper to rough the surface and remove the oxide layer. Clean with isopropyl alcohol.
+
+|![Copper Tube](images/helix_antenna_assembly/0602_copper_tube.png)|![Copper Tube Prepared](images/helix_antenna_assembly/0603_copper_tube_prepared.png)|
+|---|---|
 
 **2. Solder copper tube to SMA connector**
 
-Use a good amount of flux, a heat gun and a soldering iron to attach the squeezed end of the tube to the sma connector.
+Use a good amount of flux, a heat gun and a soldering iron to attach the end of the tube to the sma connector.
+
+<p align="center">
+  <img src="images/helix_antenna_assembly/0604_soldered.png" width = 600>
+</p>
 
 ---
 
