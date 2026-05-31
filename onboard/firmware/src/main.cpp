@@ -25,7 +25,10 @@ int main(void)
   // Pin Declarations
   // Pin Initialisations
   // UART Declarations
-  // I2C Declarations
+  
+  // Initialize I2C
+  Wire.pins(PIN_PC2, PIN_PC3);
+  Wire.begin();
 
   RC17xxHP_RC232 rc1780hp();
   RC17xxHP_RC232 rc1701hp();
@@ -34,14 +37,34 @@ int main(void)
   ledUpdate(2, pinLed); // B On
   
   dataStruct dataVariables;
+  
   // Data Arrays Preparations
 
-  Subsystem subsystemPower();
-  Subsystem subsystemSens();
-  Subsystem subsystemControl();
+  const uint8_t uint8CountPower = 0;
+  uint8_t* uint8ListPower[uint8CountPower] = {};
+  const uint8_t floatCountPower = 0;
+  float* floatListPower[floatCountPower] = {};
+
+  const uint8_t uint8CountSens = 0;
+  uint8_t* uint8ListSens[uint8CountSens] = {};
+  const uint8_t floatCountSens = 0;
+  float* floatListSens[floatCountSens] = {};
+
+  const uint8_t uint8CountControl = 0;
+  uint8_t* uint8ListControl[uint8CountControl] = {};
+  const uint8_t floatCountControl = 0;
+  float* floatListControl[floatCountControl] = {};
+
+  // Subsystems Initialization
+
+  Subsystem subsystemPower(0x50, pinLed.Power, &dataVariables.statusPower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
+  Subsystem subsystemSens(0x20, pinLed.Sens, &dataVariables.statusSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
+  Subsystem subsystemControl(0x40, pinLed.Control, &dataVariables.statusControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
 
   const uint8_t subsystemsCount = 3;
   Subsystem* subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
+
+  // Setup Complete
 
   buzzerSound();
 
