@@ -10,16 +10,39 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 # Table of Contents
 
+- [Design overview](#design-overview)
+- [Table of Contents](#table-of-contents)
 - [Electronics](#electronics)
-    - [Design Overview](#design-overview)
-    - [Design Details](#design-details)
+  - [Design Overview](#design-overview-1)
+    - [Groundstation MB/DB Approach](#groundstation-mbdb-approach)
+    - [Onboard Electronics](#onboard-electronics)
+  - [Design Details](#design-details)
+    - [Radio Frequencies](#radio-frequencies)
+    - [Radio Modules](#radio-modules)
+    - [Microcontroller](#microcontroller)
+    - [PCB Stackup](#pcb-stackup)
+    - [RF Traces](#rf-traces)
+    - [USB UPDI Programmer](#usb-updi-programmer)
+    - [Staggered Pin Rows / Lock Pattern](#staggered-pin-rows--lock-pattern)
 - [Firmware](#firmware)
-    - [Data Budget](#data-budget--packet-structure)
-    - [Libraries](#libraries)
+  - [Data Budget \& Packet Structure](#data-budget--packet-structure)
+  - [Libraries](#libraries)
+    - [Radio Module Library](#radio-module-library)
+    - [Packet Encoding/Decoding Library](#packet-encodingdecoding-library)
 - [Antennas](#antennas)
-    - [Groundstation Helix Antenna](#groundstation-helix-antenna)
-    - [Onboard QFH Antenna](#onboard-qfh-antenna)
-- [GUI](#gui-software)
+  - [Groundstation Helix Antenna](#groundstation-helix-antenna)
+    - [Geometric Design](#geometric-design)
+    - [Mechanical Design](#mechanical-design)
+    - [Simulations](#simulations)
+  - [Onboard QFH Antenna](#onboard-qfh-antenna)
+    - [Geometric Design](#geometric-design-1)
+    - [Mechanical Design](#mechanical-design-1)
+    - [Simulations](#simulations-1)
+- [GUI software](#gui-software)
+  - [Architecture](#architecture)
+  - [Flight Data Tab](#flight-data-tab)
+  - [Settings Tab](#settings-tab)
+  - [Data Flow \& Logging](#data-flow--logging)
 
 ---
 
@@ -29,9 +52,9 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 ### Groundstation MB/DB Approach
 
-|<img src="/groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="/groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" />|
-|---|---|
-|<p align="center">[Motherboard](/groundstation/pcb/Motherboard/)</p>|<p align="center">[Daughterboard](/groundstation/pcb/Daughterboard/)</p>|
+| <img src="/groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="/groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" /> |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| <p align="center">[Motherboard](/groundstation/pcb/Motherboard/)</p>                          | <p align="center">[Daughterboard](/groundstation/pcb/Daughterboard/)</p>                          |
 
 
 The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB64), while the daughterboards host the radio modules (RC17xx series).
@@ -217,19 +240,19 @@ $$
 
 The following table summarizes the geometric parameters of the antenna: 
 
-| Parameter | Symbol | Value |
-| --- | --- | --- |
-| Frequency | f | 869.525 MHz |
-| Wavelength | λ | 34.502 cm |
-| Circumference | C | 31.051 cm |
-| Diameter | D | 98.840 mm |
-| Radius | R | 49.420 mm |
-| Length | L | 1.553 m |
-| Pitch angle | α | 7.25° |
-| Pitch distance | d | 39.502 |
-| Turns | N | 39.303 |
-| Wire radius | r | 3 mm |
-| Wire length | l | 12.303 m |
+| Parameter      | Symbol | Value       |
+| -------------- | ------ | ----------- |
+| Frequency      | f      | 869.525 MHz |
+| Wavelength     | λ      | 34.502 cm   |
+| Circumference  | C      | 31.051 cm   |
+| Diameter       | D      | 98.840 mm   |
+| Radius         | R      | 49.420 mm   |
+| Length         | L      | 1.553 m     |
+| Pitch angle    | α      | 7.25°       |
+| Pitch distance | d      | 39.502      |
+| Turns          | N      | 39.303      |
+| Wire radius    | r      | 3 mm        |
+| Wire length    | l      | 12.303 m    |
 
 With these informations, we can also estimate the antenna gain:
 
@@ -249,8 +272,8 @@ Addionally, the rod is held in place by ropes attached to a 3D printed strucutre
 
 The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
 
-|![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png)|
-|---|---|
+| ![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png) |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 
 The assembly informations can be found in the [user manual](user_manual.md).
 
@@ -285,4 +308,80 @@ Information on connecting QFH antennas: [jcoppens.com](https://jcoppens.com/ant/
 
 # GUI software
 
-> Informations will be added. See [#23](/../../issues/23)
+The ground station GUI is a desktop telemetry dashboard for monitoring a flight in
+real time. It is written in Python and built on [DearPyGui](https://github.com/hoffstadt/DearPyGui),
+an immediate-mode GUI framework. The application reads the decoded telemetry stream
+from the ground station receiver over the serial (UART) link, visualises it across a
+set of live windows, logs everything to disk, and lets the operator send radio
+commands back to the flight computer. The code lives in [/groundstation/gui/](/groundstation/gui/);
+see its [README](/groundstation/gui/README.md) for setup and run instructions.
+
+<p align="center"><img src="/groundstation/gui/example_images/main_view.png" /></p>
+
+## Architecture
+
+The application is started from [main.py](/groundstation/gui/main.py), which hands off to
+the `UIManager` (`ui/ui_manager.py`). The `UIManager` builds the DearPyGui viewport,
+instantiates every window, and acts as the central dispatcher for incoming telemetry.
+
+Telemetry ingestion is handled by a `TelemetryReceiver` (`telemetry/com_controller.py`)
+running on a background daemon thread. It reads the serial port line by line, matches
+each line against a set of per-field regular expressions, and assembles a complete
+packet once all expected fields have arrived. Completed packets are pushed to
+`UIManager.update_all()`, which fans the individual fields out to the relevant windows.
+
+All thresholds, labels and command definitions are kept in a JSON file
+(`ui/settings.json`) managed by a `SettingsManager`. Values are accessed by
+dot-notation (e.g. `battery.voltage_min`) and can be changed at runtime through the
+Settings tab, with edits written back to disk immediately.
+
+The GUI is single-window with two tabs. Several background threads run alongside the
+main DearPyGui loop: the serial receiver, a map tile-fetch worker pool, and (optionally)
+an air-traffic poller for the map overlay.
+
+## Flight Data Tab
+
+The Flight Data tab is the operational view and arranges the live windows in columns:
+
+| Window         | Purpose                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| COM Controller | Select the serial port and baud rate and start/stop the telemetry receiver.                                                                                         |
+| Commands       | Send radio commands (ping, flight mode, low power, parachute/main chute) with a two-step confirm/abort flow so nothing is sent by a single misclick.                |
+| Last Packet    | Read-only table showing the latest decoded value for every telemetry field.                                                                                         |
+| Flight Events  | Sequential, colour-coded event list (pending → done → abort) driven by the packet status field.                                                                     |
+| Battery        | Voltage progress bar with an under-voltage warning against configurable thresholds.                                                                                 |
+| Connection     | RSSI signal-quality bar with a red→yellow→green gradient and a weak-signal warning.                                                                                 |
+| Altitude       | Live plot of barometric (pressure) and GNSS altitude with min/max/current statistics and stop/resume/reset controls.                                                |
+| Acceleration   | Live acceleration plot in g, with min/max/current and sample-to-sample delta statistics.                                                                            |
+| Time           | Mission clock shown in three time zones (Germany, Portugal, US East).                                                                                               |
+| Map View       | Interactive OpenStreetMap view with live GPS track, pan/zoom, follow-the-rocket centring, cached tiles, and an optional live air-traffic overlay (OpenSky Network). |
+| GPS Location   | Current coordinates in both decimal degrees and degrees/minutes/seconds.                                                                                            |
+
+## Settings Tab
+
+The Settings tab exposes the contents of `settings.json` as editable fields, so the
+operator can tune the dashboard without leaving the application. Changes are persisted
+immediately. The configurable sections are:
+
+| Section         | Controls                                       |
+| --------------- | ---------------------------------------------- |
+| `battery`       | Minimum, maximum and critical voltage          |
+| `connection`    | RSSI minimum, warning and maximum              |
+| `flight_events` | Event labels and the abort threshold           |
+| `commands`      | Command groups, button labels and serial codes |
+
+## Data Flow & Logging
+
+A packet travels from the hardware to the screen as follows:
+
+```
+Receiver hardware (UART)
+    - TelemetryReceiver: read line, regex-match fields, assemble packet
+    - UIManager.update_all(packet): dispatch fields to windows
+    - individual windows: altitude, acceleration, battery, connection,
+      map/GPS, flight events, last-packet table
+```
+
+Every session is logged to disk under `groundstation/gui/logs/`: a `.txt` file
+captures the raw serial lines with timestamps, and a `.csv` file records one row per
+complete packet for post-flight analysis.
