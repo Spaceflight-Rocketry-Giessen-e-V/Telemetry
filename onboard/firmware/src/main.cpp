@@ -15,43 +15,60 @@ int main(void)
 {
   init();
 
-  // Buzzersound On Bootup #1
+  ledStruct pinLed;
+  pinLed.D1 = PIN_PF3;
+  //...
+  pinLed.pinMode();
 
-  // Configuration Variables Declarations + Initialisations (Standby Packet Frequency, Loop Packet Frequency etc.)
+  ledUpdate(1, pinLed); // R On
 
   // Pin Declarations
   // Pin Initialisations
   // UART Declarations
   // I2C Declarations
 
-  // Buzzersound On Bootup #2
+  RC17xxHP_RC232 rc1780hp();
+  RC17xxHP_RC232 rc1701hp();
+  radioModulesSetup(rc1780hp, rc1701hp);
 
-  // Radiomodules Initialisations
-  // Radiomodules Configurations
-
-  // Buzzersound On Bootup #3
+  ledUpdate(2, pinLed); // B On
   
+  dataStruct dataVariables;
   // Data Arrays Preparations
-  // Subsystems Initialisations
 
-  // Buzzersound On Bootup #4
+  Subsystem subsystemPower();
+  Subsystem subsystemSens();
+  Subsystem subsystemControl();
 
-  // Loop Variables Declarations + Initialisations (Loop Count, Loop Start Time etc.)
+  const uint8_t subsystemsCount = 3;
+  Subsystem* subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
+
+  buzzerSound();
+
+  ledUpdate(3, pinLed); // G On
+
+  const uint8_t loopFrequency = 10;  // in Hz       10 Hz = 100 ms interval
+  const uint8_t timeBetweenStandbyPackets = 15; // in seconds. In standby, data packets aren't send every loop
+  
+  uint8_t flightmode = 0;
+  uint8_t loopCount = 0;
+  uint32_t loopStartTime = 0;
   
   while(true)
   {
-    // Subsystem Connection Check
+    subsystemsConnCheck(subsystemList, subsystemsCount);
 
-    // Subsystem Data Request
+    subsystemsDataGet(subsystemList, subsystemsCount);
 
-    // Receiving Commands (Packet Library Function)
-    // Execute Commands (Distribute Data To Subsystems etc.)
+    uint8_t command = commandReceive(rc1701hp);
+    commandExecute(command);
 
-    // Sending Data (Telemetry Packet Or Sensorics Packet)
-    // Save Data On Flash Chip
+    uint8_t packetIdentifier = packetSendCheck(flightmode, loopFrequency, timeBetweenStandbyPackets, loopCount);
+    packetSend(rc1780hp, dataVariables, packetIdentifier);
 
-    // Delay
-    // Update Loop Variables
+    flashWrite(dataVariables);
+
+    loopVariablesUpdate(&loopCount, &loopStartTime, loopFrequency, pinLed.D1);
   }
 
   return 0;
