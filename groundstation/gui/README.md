@@ -2,7 +2,7 @@
 
 A desktop telemetry ground station for monitoring rocketry flights in real time. Built with Python and DearPyGui.
 
-![Ground Station UI](example_images/gui_example_pipe2.png)
+![Ground Station UI](example_images/main_view.png)
 
 ---
 
@@ -37,12 +37,12 @@ All thresholds and labels live in `settings.json` (auto-created on first run). Y
 
 Configurable sections:
 
-| Section | What you can change |
-|---|---|
-| `battery` | min / max / critical voltage |
-| `connection` | RSSI min / warn / max |
-| `flight_events` | event labels, abort threshold |
-| `commands` | command groups, button labels, serial codes |
+| Section         | What you can change                         |
+| --------------- | ------------------------------------------- |
+| `battery`       | min / max / critical voltage                |
+| `connection`    | RSSI min / warn / max                       |
+| `flight_events` | event labels, abort threshold               |
+| `commands`      | command groups, button labels, serial codes |
 
 ---
 
