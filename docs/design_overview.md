@@ -4,7 +4,7 @@ This document provides detailed information about our electronics, firmware, ant
 
 <p align="center"><img src="images/System_Block_Diagram.svg" /></p>
 
-The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.md) ensures that our system meets this requirement.
+The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.ipynb) ensures that our system meets this requirement.
 
 ---
 
@@ -197,48 +197,16 @@ Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https:/
 
 ### Geometric Design
 
-The Antenna design process is based on this [paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463). More information can be found [here](https://www.microwaves101.com/encyclopedias/helix-antennas) and [here](https://jcoppens.com/ant/helix/index.en.php).
+We have included a separate [Helix Antenna Design Guide Python Notebook](/docs/helix_antenna_design_guide.ipynb). It describes the design process based on [this paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463) and the necessary calculations. There is also a Fast-Track calculation which approximates the calculations and needs only the frequency $f$, the wire radius $r$ and the ratio of length to circumference $\frac{L}{C}$.
 
-The paper differentiates between NB (Narrow band) and WB (Wide band) antenna designs. Since we only use a narrow frequency band, we chose an NB antenna for our system, which will be useful to get the needed information via the diagrams from the paper. In addition, manufacturing is based on a prior prototype of an helical antenna.
+More informations about helical antennas can be found [here](https://www.microwaves101.com/encyclopedias/helix-antennas) and [here](https://jcoppens.com/ant/helix/index.en.php).
 
-The first step we took, was researching the frequency of the radio module in our case it is $f=869.525\,\mathrm{MHz}$  which equals to a wavelength of $\lambda = 345.02\,\mathrm{mm}$. Further more we will use a wire radius of $r = 3\,\mathrm{mm}$ due to good availability. 
+The general process follows these steps:
+1) Specify absolute circumference based on $\frac{L}{C}$
+2) Specify pitch angle based on $\frac{L}{C}$
+3) Calculate all other parameters and estimate the gain
 
-The first step is to specify the circumference $C$ and the length $L$:
-
-<p align="center"><img src="images/helix_plot_1.png" width = 600/></p>
-
-From this diagram we took a ratio of $\frac{L}{C} = 5$ which in our case was a compromise between performance and mechanical instability. With this we got $\frac{C}{\lambda} = 0.9$.
-
-$\Rightarrow C = \lambda \cdot 0.9 = 31.051\,\mathrm{cm}$ 
-
-$\Rightarrow L = 5 \cdot C = 1.553\,\mathrm{m}$
-
-Next, the pitch angle has to be specified:
-
-<p align="center"><img src="images/helix_plot_2.png" width = 600/></p>
-
-To get a value for the pitch angle $\alpha$ we first have to calculate:
-$$
-\frac{r}{C} = 0.00966 \approx 0.01    
-$$
-This values is between $0.0015$ and $0.015$, but is much larger than the first ratio, therefore we chose an angle at $\frac{L}{C} = 5$ which is a little bit lower than $0.015$, which would then be $\alpha = 7.25°$.
-
-With the basic parameters we can then calculate the remaining parameters:
-
-$$
-d = \tan \alpha \cdot C =39.502\,\mathrm{mm}
-$$
-$$
-N = \frac{L}{d} = 39.303
-$$
-$$
-R= \frac{C}{2\pi} = 49.420\,\mathrm{mm}
-$$
-$$
-l = N \cdot \sqrt{C^2+d^2} = 12.303\,\mathrm{m}
-$$
-
-The following table summarizes the geometric parameters of the antenna: 
+The following table summarizes the geometric parameters of our helical groundstation antenna: 
 
 | Parameter      | Symbol | Value       |
 | -------------- | ------ | ----------- |
@@ -254,11 +222,7 @@ The following table summarizes the geometric parameters of the antenna:
 | Wire radius    | r      | 3 mm        |
 | Wire length    | l      | 12.303 m    |
 
-With these informations, we can also estimate the antenna gain:
-
-<p align="center"><img src="images/helix_plot_3.png" width = 600/></p>
-
-We get a gain of $G = 16.5\,\mathrm{dBi}$.
+The antenna has a gain of $G = 16.5\,\mathrm{dBi}$.
 
 ### Mechanical Design
 
