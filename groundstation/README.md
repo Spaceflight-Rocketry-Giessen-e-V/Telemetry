@@ -19,7 +19,7 @@
 - [Firmware](/groundstation/firmware/)
 - [869 MHz Helical Antenna](/groundstation/antenna/helical/)
     - [Design Files](/groundstation/antenna/helical/)
-    - [Assembly Manual](/docs/helix_antenna_assembly_manual.md)
+    - [Assembly Manual](/docs/helical_antenna_assembly_manual.md)
     - [Antenna 3D Model](/groundstation/antenna/helical/Antenna%20Assembly.step)
     - [Antenna Images](/groundstation/antenna/helical/images/)
 - [Serial Monitor Configuration File](/groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings)

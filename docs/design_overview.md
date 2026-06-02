@@ -30,7 +30,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
     - [Radio Module Library](#radio-module-library)
     - [Packet Encoding/Decoding Library](#packet-encodingdecoding-library)
 - [Antennas](#antennas)
-  - [Groundstation Helix Antenna](#groundstation-helix-antenna)
+  - [Groundstation Helical Antenna](#groundstation-helical-antenna)
     - [Geometric Design](#geometric-design)
     - [Mechanical Design](#mechanical-design)
     - [Simulations](#simulations)
@@ -191,9 +191,9 @@ The encoding and decoding of packets according to our [packet structure](packet_
 
 # Antennas
 
-Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helix antenna on the ground side.
+Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helical antenna on the ground side.
 
-## Groundstation Helix Antenna
+## Groundstation Helical Antenna
 
 ### Geometric Design
 
@@ -205,7 +205,7 @@ The first step we took, was researching the frequency of the radio module in our
 
 The first step is to specify the circumference $C$ and the length $L$:
 
-<p align="center"><img src="images/helix_plot_1.png" width = 600/></p>
+<p align="center"><img src="images/helical_plot_1.png" width = 600/></p>
 
 From this diagram we took a ratio of $\frac{L}{C} = 5$ which in our case was a compromise between performance and mechanical instability. With this we got $\frac{C}{\lambda} = 0.9$.
 
@@ -215,7 +215,7 @@ $\Rightarrow L = 5 \cdot C = 1.553\,\mathrm{m}$
 
 Next, the pitch angle has to be specified:
 
-<p align="center"><img src="images/helix_plot_2.png" width = 600/></p>
+<p align="center"><img src="images/helical_plot_2.png" width = 600/></p>
 
 To get a value for the pitch angle $\alpha$ we first have to calculate:
 $$
@@ -256,7 +256,7 @@ The following table summarizes the geometric parameters of the antenna:
 
 With these informations, we can also estimate the antenna gain:
 
-<p align="center"><img src="images/helix_plot_3.png" width = 600/></p>
+<p align="center"><img src="images/helical_plot_3.png" width = 600/></p>
 
 We get a gain of $G = 16.5\,\mathrm{dBi}$.
 

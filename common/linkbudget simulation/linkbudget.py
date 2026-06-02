@@ -15,7 +15,7 @@ G_TX = 0                    # QFH-antenna gain (real gain not equal to 0 and dep
 L_TX = 3                    # Transmit (cable, ...) losses (guess)
 
 P_RX = -114                 # Minimum receive signal strength RC1780HP-RC232, alternative: P_RX = -118
-G_RX = 10                   # Helix antenna gain, first guess
+G_RX = 10                   # Helical antenna gain, first guess
 L_RX = 3                    # Receive (cable, ...) losses (guess)
 
 h_max = 9000                # Maximum height

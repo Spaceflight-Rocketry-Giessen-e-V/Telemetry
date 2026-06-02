@@ -165,9 +165,9 @@ When opening for the first time, a new project has to be created: Press *Start* 
 
 ## Assembly
 
-### Helix Assembly
+### Helical Assembly
 
-The assembly of the groundstation helix antenna is described in a [separate document](./helix_antenna_assembly_manual.md).
+The assembly of the groundstation helical antenna is described in a [separate document](./helical_antenna_assembly_manual.md).
 
 ## Simulations
 We do our own simulations of our antennas to validate the proposed designs. The basis is the electromagnetic field solver openEMS developed by Thorsten Liebig. His project can be found on his [GitHub](https://github.com/thliebig/openEMS-Project).

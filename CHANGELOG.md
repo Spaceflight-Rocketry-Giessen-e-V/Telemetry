@@ -11,7 +11,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 ### Added
 
 - separate purpose-build groundstation electronics (motherboard/daughterboard approach)
-- helix antenna design files for groundstation system
+- helical antenna design files for groundstation system
 - GUI telemetry command transmission
 
 ### Changed
