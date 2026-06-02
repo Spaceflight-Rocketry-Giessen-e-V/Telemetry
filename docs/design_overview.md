@@ -272,7 +272,7 @@ Addionally, the rod is held in place by ropes attached to a 3D printed strucutre
 
 The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
 
-| ![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png) |
+| ![Side View](../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png) |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 
 The assembly informations can be found in the [user manual](user_manual.md).
@@ -284,7 +284,7 @@ During assembly of the first prototype antenna, it was obvious that the concept 
 
 ### Simulations
 
-<p align="center"><img src="/groundstation/antenna/images/GroundstationAntenna_simulation.png" width = 600/></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width = 600/></p>
 
 > Informations will be added. See [#21](/../../issues/21)
 

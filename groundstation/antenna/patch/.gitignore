@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# openEMS / FDTD run output (regenerable)
+RHCP_Patch_*/
+sim_data/
+*.h5
+*.vtk
+
+# Plots / logs / generated exports
+images/
+graphs/
+*.log
+rhcp_patch_init.xml
+patch_antenna.kicad_pcb

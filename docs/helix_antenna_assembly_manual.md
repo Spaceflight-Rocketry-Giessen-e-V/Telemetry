@@ -24,7 +24,7 @@ This document describes how we built our helical groundstation antenna for recei
 
 The mechanical design of the helix antenna is explained in the [design overview](design_overview.md#mechanical-design).
 
-|![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png)|
+|![Side View](../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png)|
 |---|---|
 
 ---
@@ -37,13 +37,13 @@ The mechanical design of the helix antenna is explained in the [design overview]
 |Aluminum Plate|70 × 70 cm, 2 mm thickness|35|
 |Copper Tube|15 m length, 6 mm diameter, hollow|60|
 |[SMA Connector](https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA016-15-G/11624645)|TE Connectivity CONSMA016-15-G|7|
-|[Pacifier](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier.stl)|22× (3D printed)|-|
-|[Pacifier Fixture](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|1× (3D printed)|-|
-|[Cone Top](../groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Top.stl)|1× (3D printed)|-|
-|[Cone Bottom](../groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Bottom.stl)|1× (3D printed)|-|
-|[Rope Fixture](../groundstation/antenna/Auxiliary%20Design%20Files/Rope%20Fixture.stl)|1× (3D printed)|-|
-|[Winding Clamp](../groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Clamp.stl)|1× (3D printed)|-|
-|[Winding Help](../groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Help.stl)|1× (3D printed)|-|
+|[Pacifier](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier.stl)|22× (3D printed)|-|
+|[Pacifier Fixture](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|1× (3D printed)|-|
+|[Cone Top](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Cone%20Top.stl)|1× (3D printed)|-|
+|[Cone Bottom](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Cone%20Bottom.stl)|1× (3D printed)|-|
+|[Rope Fixture](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Rope%20Fixture.stl)|1× (3D printed)|-|
+|[Winding Clamp](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Clamp.stl)|1× (3D printed)|-|
+|[Winding Help](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Help.stl)|1× (3D printed)|-|
 |M8 × 30 Screws|8×|-|
 |M8 Nuts|8×|-|
 |M2.5 × 10 Screws|4×|-|
@@ -56,7 +56,7 @@ The mechanical design of the helix antenna is explained in the [design overview]
 
 ### 3D-Printed Design Files
 
-All 3D models are available in the [`groundstation/antenna/`](../groundstation/antenna/) subfolder:
+All 3D models are available in the [`groundstation/antenna/helical/`](../groundstation/antenna/helical/) subfolder:
 
 - Original Design Files: Native `.f3z` Autodesk Fusion files
 - Auxiliary Design Files: Parts exported as `.stl` and `.step`
@@ -73,7 +73,7 @@ The "pacifiers" are 3D-printed ring fixtures that hold the copper coil at the co
 
 |![Pacifier part](images/helix_antenna_assembly/0001_pacifier.png)|![Template placement](images/helix_antenna_assembly/0002_pacifier_set_template.png)|
 |---|---|
-|[Pacifier](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier.stl)|[Pacifier Spacer](../groundstation/antenna/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|
+|[Pacifier](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier.stl)|[Pacifier Spacer](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|
 
 <p align="center">
   <img src="images/helix_antenna_assembly/0003_pacifier_and_template.png" alt="Pacifier and template">
@@ -168,7 +168,7 @@ Use the 3D-printed winding help form to shape the copper tube into the correct h
 
 |![Full template](images/helix_antenna_assembly/0303_winding_template_full.png)|![Template attachment](images/helix_antenna_assembly/0302_winding_template_attachement.png)|
 |---|---|
-|[Winding Help](../groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Help.stl)|[Winding Clamp](../groundstation/antenna/Auxiliary%20Design%20Files/Winding%20Clamp.stl)|
+|[Winding Help](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Help.stl)|[Winding Clamp](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Clamp.stl)|
 
 **2. Wind the coil**
 
@@ -216,7 +216,7 @@ Bend the end of the tube straight towards the groundplane.
 
 **1. Prepare the aluminum ground plane**
 
-Drill a center hole through the aluminum plate sized to pass the fiberglass rod. Around it, drill holes for the cone mounting screws (M8). Add holes for the SMA connector (M2.5). The [included drilling template](../groundstation/antenna/drilling_template.pdf) can be used: print it and stick it on the plate with adhesive.
+Drill a center hole through the aluminum plate sized to pass the fiberglass rod. Around it, drill holes for the cone mounting screws (M8). Add holes for the SMA connector (M2.5). The [included drilling template](../groundstation/antenna/helical/drilling_template.pdf) can be used: print it and stick it on the plate with adhesive.
 
 This is also a good time to drill the corner holes for the guy-wire string attachment, while the plate is already on the drill press.
 
@@ -225,17 +225,17 @@ This is also a good time to drill the corner holes for the guy-wire string attac
 
 **2. Assemble the cones and connector**
 
-Install the SMA connector using the M2.5 screws. Pass the rod through the plate. Mount the [Top Cone](../groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Top.stl) from above and bolt it down with the M8 screws. Finally, attach the [Bottom Cone](../groundstation/antenna/Auxiliary%20Design%20Files/Cone%20Bottom.stl) from below, by removing the nuts from the Top Cone, and using them to bolt the Bottom Cone to the Top Cone
+Install the SMA connector using the M2.5 screws. Pass the rod through the plate. Mount the [Top Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Cone%20Top.stl) from above and bolt it down with the M8 screws. Finally, attach the [Bottom Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Cone%20Bottom.stl) from below, by removing the nuts from the Top Cone, and using them to bolt the Bottom Cone to the Top Cone
 
 |![Top cone screwed on (top view)](images/helix_antenna_assembly/0502_top_cone_screwedon_top.png)|![Top cone screwed on (bottom view)](images/helix_antenna_assembly/0503_top_cone_screwedon_bottom.png)|
 |---|---|
 |![SMA connector bottom](images/helix_antenna_assembly/0504_SMA_connector_bottom.png)|![SMA connector top](images/helix_antenna_assembly/0504_SMA_connector_top.png)|
 
-![Finished assembly](../groundstation/antenna/images/GroundstationAntenna_picture_2.png)
+![Finished assembly](../groundstation/antenna/helical/images/GroundstationAntenna_picture_2.png)
 
 **3. Attach the rope fixture and guy wires**
 
-Glue the [Rope Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/Auxiliary%20Design%20Files/Rope%20Fixture.stl) with epoxy resin to the very top of the rod. After curing, run strings from each corner of the aluminum plate up to the fixture.
+Glue the [Rope Fixture](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/groundstation/antenna/helical/Auxiliary%20Design%20Files/Rope%20Fixture.stl) with epoxy resin to the very top of the rod. After curing, run strings from each corner of the aluminum plate up to the fixture.
 
 <p align="center">
   <img src="images/helix_antenna_assembly/0601_assembly_with_strings_attached.png" alt="Assembly with strings">
