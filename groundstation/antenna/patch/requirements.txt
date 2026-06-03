@@ -1,3 +1,10 @@
+# Pure-Python / PyPI dependencies (installable with `pip install -r requirements.txt`).
+#
+# NOTE: this is NOT the full dependency set.  The simulation also needs the
+# openEMS Python bindings -- the `CSXCAD` and `openEMS` packages -- which are
+# NOT on PyPI or conda.  They ship as version-specific wheels bundled with a
+# native openEMS install and must be installed separately.  See SETUP.md.
+# Requires CPython 3.14 (see .python-version): the bindings are cp314 wheels.
 numpy
 scipy
 matplotlib

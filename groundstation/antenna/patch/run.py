@@ -58,6 +58,78 @@ import os
 import subprocess
 import sys
 
+# This project targets CPython 3.14: the openEMS/CSXCAD bindings are installed
+# as cp314-ABI wheels, so a different minor version cannot load them (see
+# SETUP.md and .python-version).
+REQUIRED_PY = (3, 14)
+
+
+def preflight_check():
+    """Fail fast with an actionable message when the openEMS bindings are missing.
+
+    CSXCAD/openEMS are NOT on PyPI or conda, so `pip install -r requirements.txt`
+    cannot provide them -- they are installed out-of-band alongside a native
+    openEMS (see SETUP.md).  Without this check the first heavy import dies with a
+    deep `ModuleNotFoundError: No module named 'CSXCAD'` traceback (it actually
+    surfaces via `import config` -> openEMS/__init__.py, not src.model).
+
+    Runs only from main(), and imports only the two bindings -- so `import run`
+    stays lightweight and openEMS-free, per the module-scope note above.  Message
+    is kept ASCII so it prints correctly before the UTF-8 console is configured.
+    """
+    # Self-healing DLL discovery: the bindings' CSXCAD/__init__.py registers
+    # os.environ['OPENEMS_INSTALL_PATH'] as a Windows DLL search dir.  If unset,
+    # point it at a standard install so the import can still find CSXCAD.dll /
+    # openEMS.dll without relying on a machine-global environment variable.
+    if os.name == 'nt' and not os.environ.get('OPENEMS_INSTALL_PATH'):
+        for _cand in (r'C:\Program Files\openEMS',
+                      r'C:\opt\openEMS',
+                      os.path.join(os.environ.get('LOCALAPPDATA', ''), 'openEMS')):
+            if _cand and os.path.exists(os.path.join(_cand, 'CSXCAD.dll')):
+                os.environ['OPENEMS_INSTALL_PATH'] = _cand
+                break
+
+    try:
+        import CSXCAD   # noqa: F401  -- import also sets up the Windows DLL path
+        import openEMS  # noqa: F401
+        return
+    except Exception as exc:  # ImportError, or DLL-load error on Windows
+        cp       = f'cp{REQUIRED_PY[0]}{REQUIRED_PY[1]}'
+        py       = f'{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}'
+        ver_note = ('' if sys.version_info[:2] == REQUIRED_PY
+                    else f'   <-- mismatch: {cp} wheels will not install/load here')
+        bar = '=' * 72
+        lines = [
+            '', bar,
+            ' openEMS Python bindings unavailable -- cannot run the simulation.',
+            bar,
+            f'   {type(exc).__name__}: {exc}',
+            '',
+            ' CSXCAD / openEMS are NOT on PyPI or conda, so installing',
+            ' requirements.txt does not provide them. They ship as version-specific',
+            ' wheels alongside a native openEMS install.  Full steps: SETUP.md',
+            '',
+            ' Quick fix:',
+            '   1. Install native openEMS (provides CSXCAD.dll / openEMS.dll) and',
+            '      set OPENEMS_INSTALL_PATH to that folder.',
+            '   2. Install the matching bindings into THIS interpreter:',
+            f'        "{sys.executable}" -m pip install '
+            f'"<openEMS>\\python\\csxcad-*-{cp}-*.whl" '
+            f'"<openEMS>\\python\\openems-*-{cp}-*.whl"',
+            '',
+            f' This project targets Python {REQUIRED_PY[0]}.{REQUIRED_PY[1]}; '
+            f'you are on {py}{ver_note}',
+        ]
+        if os.name == 'nt' and not os.environ.get('OPENEMS_INSTALL_PATH'):
+            lines += [
+                '',
+                ' OPENEMS_INSTALL_PATH is unset and no openEMS install was found at',
+                ' C:\\Program Files\\openEMS -- the bindings cannot locate their DLLs.',
+            ]
+        lines += [bar, '']
+        print('\n'.join(lines))
+        sys.exit(1)
+
 
 def setup_console_and_backend():
     """UTF-8 console on Windows + a display-capable matplotlib backend."""
@@ -207,7 +279,9 @@ def run_single_sim(sim_path, dims):
     FDTD_f, _CSX_f, port_f, nf2ff_f = build_sim(
         opt_delta, opt_y_inset, opt_W, config.NrTS_final,
         sub_hw_mm=opt_sub_hw, vtk_dump=export_vtk_surf)
-    FDTD_f.Run(sim_path, verbose=1, cleanup=True)
+    # Runs alone in the main process — claim all cores (numThreads=0 → max),
+    # independent of any ambient OMP_NUM_THREADS the user may have set.
+    FDTD_f.Run(sim_path, verbose=1, cleanup=True, numThreads=(os.cpu_count() or 0))
     return opt_W, opt_delta, opt_y_inset, opt_sub_hw, [], port_f, nf2ff_f
 
 
@@ -215,12 +289,12 @@ def run_optimize(sim_path, W_cp, ws, sub_hw_init):
     """Full six-phase optimisation followed by a final high-fidelity sim."""
     import config
     from src.model import build_sim
-    from src.optimizer import Optimizer, n_opt, phases_label, resolve_workers
+    from src.optimizer import (Optimizer, estimate_seconds, n_opt, phases_label,
+                               resolve_workers)
 
     par   = resolve_workers()
     n_run = n_opt()
-    secs  = (n_run / par * config.NrTS_opt / 40000 * 90
-             + config.NrTS_final / 40000 * 90)
+    secs  = estimate_seconds(par)  # honest: sums ceil(n_phase/par) waves, incl. final sim
     eta   = _dt.datetime.now() + _dt.timedelta(seconds=secs)
     print(f'\n{"="*60}')
     print(f'Starting optimisation  ({n_run} FDTD runs  NrTS = {config.NrTS_opt})')
@@ -238,7 +312,9 @@ def run_optimize(sim_path, W_cp, ws, sub_hw_init):
     FDTD_f, _CSX_f, port_f, nf2ff_f = build_sim(
         opt_delta, opt_y_inset, opt_W, config.NrTS_final,
         sub_hw_mm=opt_sub_hw, vtk_dump=export_vtk_surf)
-    FDTD_f.Run(sim_path, verbose=1, cleanup=True)
+    # Runs alone in the main process — claim all cores (numThreads=0 → max),
+    # independent of any ambient OMP_NUM_THREADS the user may have set.
+    FDTD_f.Run(sim_path, verbose=1, cleanup=True, numThreads=(os.cpu_count() or 0))
     return opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log, port_f, nf2ff_f
 
 
@@ -326,6 +402,7 @@ def export_outputs(pp, run_dir):
 
 
 def main():
+    preflight_check()      # fail fast (actionable message) if openEMS is missing
     setup_console_and_backend()
 
     run_dir, sim_path, graphs_path, vtk_path = setup_run_dirs()
