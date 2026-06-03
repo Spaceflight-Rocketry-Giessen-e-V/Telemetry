@@ -22,7 +22,12 @@ substrate_cells     = 4      # FDTD cells through substrate thickness
 
 # ── FDTD domain ───────────────────────────────────────────────────
 SimBox   = np.array([560, 560, 420])  # simulation domain [mm]
-NrTS_opt   = 80000   # time steps per optimisation run  (was 60000)
+NrTS_opt   = 120000  # time steps per optimisation run (was 80000). Raised so the
+                     # coarse opt runs reach (nearly) the same energy-decay
+                     # convergence as NrTS_final; at 80000 a high-Q CP patch
+                     # stopped short, its resonance landing ~1.8 MHz off the
+                     # final value, which slid the razor-thin AR null off
+                     # f_target (AR read ~2 dB in opt but ~7 dB in the final).
 NrTS_final = 150000  # time steps for the final high-fidelity run  (was 80000)
 
 # Parallel FDTD workers (within-phase). 0 = use os.cpu_count().
@@ -87,6 +92,7 @@ W_FREQ  = 1.0   # |f_res - f_target| / fc          (1.0 at edge of band)
 W_MATCH = 1.0   # max(0, s11_dB + 10)  in dB       (0 once matched to -10 dB)
 W_CP    = 1.0   # max(0, AR - AR_MAX)/AR_MAX       (0 once true AR ≤ AR_MAX_DB)
 W_GAIN  = 1.0   # min(Dmax - 5, GAIN_CAP)  in dBi  (reward gain above 5 dBi)
+W_AREA  = 0.5   # (sub_hw / SUB_HW_DEFAULT)^2  ∝ board area  (penalise big GP)
 
 # AR is the TRUE axial ratio (dB, ≥0; 0 = perfect circular). 3 dB is the
 # conventional CP spec edge. WRONG_HAND_PENALTY is added to the AR term when a
@@ -96,15 +102,30 @@ AR_MAX_DB          = 3.0
 WRONG_HAND_PENALTY = 3.0
 GAIN_CAP           = 3.0
 
+# AR robustness margin. The optimiser evaluates axial ratio not only at f_target
+# but at f_target ± AR_MARGIN_MHZ and selects on the WORST value over that band
+# (see optimizer._run_sim_worker / _cost). A single-feed corner-truncated patch
+# has a razor-thin AR null; selecting at one frequency picks a design that is
+# perfect in the coarse sim but collapses once the resonance drifts a MHz or two
+# (fab tolerance, εr spread, or the coarse→final convergence shift). Sampling a
+# band forces a flatter, drift-tolerant AR. ±1.5 MHz covers the observed
+# coarse→final drift plus a little board tolerance; widen it for more margin (at
+# the cost of being harder for a single-feed patch to satisfy).
+AR_MARGIN_MHZ = 1.5
+
 # ── Ground-plane / substrate half-width sweep (Phase 4) ───────────
-# sub_hw_mm = half-width of the square copper ground plane AND substrate plate.
-# Default 75 → 150 × 150 mm board (legacy). At 869 MHz λ₀ ≈ 345 mm.
+# sub_hw_mm = half-width of the square copper ground plane AND substrate plate
+# (board edge = 2 × sub_hw). At 869.52 MHz λ₀ ≈ 345 mm.
 #
-# Empirical: 150→250 mm board bought ~+0.9 dBi. The curve flattens fast;
-# 250→400 mm typically adds another ~0.3 dBi. Upper bound 200 mm half-width
-# (=400 mm board) keeps ≥80 mm clearance to the MUR boundary on each side
-# with the default SimBox = 560×560 mm (guardrail in build_sim checks this).
-SUB_HW_DEFAULT = 75.0
-SUB_HW_MIN     = 100.0
-SUB_HW_MAX     = 200.0
+# Physics: a patch ground plane only needs to reach ~0.5–0.6 λ; beyond that the
+# gain curve flattens and merely ripples with edge diffraction. Measured here:
+# 150→375 mm board bought only ~+1.4 dBi (≈6× the area for ~1 dB), and most of
+# that is already won by ~250 mm. So the board is kept SMALL: the enclosure caps
+# it at 170 mm, and the cost function's area penalty (W_AREA) drives the Phase-4
+# sweep to the smallest board that still meets the match / AR / frequency spec.
+SUB_HW_DEFAULT = 60.0    # 120 mm board — GP used in the non-GP tuning phases and
+                         # the reference size for the W_AREA area penalty.
+SUB_HW_MIN     = 55.0    # 110 mm board — smallest swept GP. Leaves ≳ patch+6h of
+                         # ground around the ~83 mm patch (Lg ≳ Lp+6h guideline).
+SUB_HW_MAX     = 85.0    # 170 mm board — hard upper limit set by the enclosure.
 SUB_HW_N       = 9       # == MAX_WORKERS: Phase-4 GP sweep fits one full wave

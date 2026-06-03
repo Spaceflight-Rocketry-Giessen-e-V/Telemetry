@@ -110,7 +110,12 @@ def _cost(r) -> float:
     where the optimiser traded away axial ratio for raw directivity.
 
     AR is the true axial ratio (≥0, smaller = better); a wrong-handed result
-    (LHCP dominant when we want RHCP) takes a flat penalty on top.
+    (LHCP dominant when we want RHCP) takes a flat penalty on top.  Here AR is
+    the WORST value over f_target ± AR_MARGIN_MHZ, so the optimiser selects for
+    CP that survives a resonance drift rather than a fragile single-frequency null.
+
+    A board-area penalty (W_AREA · (sub_hw/SUB_HW_DEFAULT)²) is added so the
+    Phase-4 ground-plane sweep prefers the smallest board that still meets spec.
     """
     pen_freq = config.W_FREQ  * abs(r['f_res'] - config.f_target) / config.fc
     pen_s11  = config.W_MATCH * max(0.0, r['s11_dB'] + 10.0)
@@ -118,12 +123,22 @@ def _cost(r) -> float:
     if not r.get('rhcp', True):
         pen_ar += config.W_CP * config.WRONG_HAND_PENALTY
 
+    # Ground-plane area penalty ∝ board area (sub_hw²): drives the optimiser to
+    # the smallest feasible board, since beyond ~0.5–0.6 λ a bigger GP buys
+    # negligible gain. A raw worker result has no 'sub_hw' (it is added later by
+    # _record), so fall back to the default — _cost must never KeyError.
+    sub_hw   = r.get('sub_hw', config.SUB_HW_DEFAULT)
+    pen_area = config.W_AREA * (sub_hw / config.SUB_HW_DEFAULT) ** 2
+
+    # r['ar_dB'] is the WORST axial ratio over f_target ± AR_MARGIN_MHZ (set in
+    # the worker), so feasibility/gain credit require CP that holds across the
+    # band, not just at the centre frequency.
     feasible = (r.get('rhcp', True)
                 and r['ar_dB'] <= config.AR_MAX_DB
                 and r['s11_dB'] <= -10.0)
     rew_gain = (config.W_GAIN * max(0.0, min(r['Dmax'] - 5.0, config.GAIN_CAP))
                 if feasible else 0.0)
-    return pen_freq + pen_s11 + pen_ar - rew_gain
+    return pen_freq + pen_s11 + pen_ar + pen_area - rew_gain
 
 
 def _run_sim_worker(kw: dict) -> dict:
@@ -173,15 +188,24 @@ def _run_sim_worker(kw: dict) -> dict:
         # NF2FF grid: θ=0 (boresight) for Dmax, plus the 1°/2°/3° ring used for
         # the AR estimate — the SAME near-boresight cone postproc reports, so
         # the optimiser selects on the metric the final run will confirm.
-        res = nf2ff_box.CalcNF2FF(sp, [_cfg.f_target],
+        # NF2FF at f_target AND f_target ± AR_MARGIN: select on the WORST axial
+        # ratio across the band, so a razor-thin AR null that a resonance drift
+        # would fall off cannot win. The transform re-uses the recorded near
+        # fields, so the extra frequencies are nearly free. Index 1 is f_target —
+        # read Dmax and handedness there.
+        dAR    = _cfg.AR_MARGIN_MHZ * 1e6
+        f_band = [_cfg.f_target - dAR, _cfg.f_target, _cfg.f_target + dAR]
+        res = nf2ff_box.CalcNF2FF(sp, f_band,
                                    theta=[0.0, 1.0, 2.0, 3.0, 5.0, 10.0],
                                    phi=[0., 90., 180., 270.],
                                    center=[0, 0, 1e-3])
-        # True axial ratio from the θ∈{1,2,3}° ring (rows 1:4); skip θ=0 where
-        # the E_cprh/E_cplh split is degenerate on-axis.
-        ar_dB, is_rhcp = _ar(res.E_cprh[0][1:4], res.E_cplh[0][1:4])
-        Dmax  = float(res.Dmax[0])
-        return {'s11_dB': s11_dB, 'f_res': f_res, 'ar_dB': ar_dB, 'Dmax': Dmax,
+        # True axial ratio from the θ∈{1,2,3}° ring (rows 1:4) at each frequency;
+        # skip θ=0 where the E_cprh/E_cplh split is degenerate on-axis.
+        ar_band  = [_ar(res.E_cprh[n][1:4], res.E_cplh[n][1:4]) for n in range(3)]
+        ar_worst = max(a for a, _ in ar_band)        # worst across the band
+        _, is_rhcp = ar_band[1]                       # handedness at f_target
+        Dmax  = float(res.Dmax[1])
+        return {'s11_dB': s11_dB, 'f_res': f_res, 'ar_dB': ar_worst, 'Dmax': Dmax,
                 'rhcp': is_rhcp,
                 'zin_re': float(_np.real(zin)), 'zin_im': float(_np.imag(zin)),
                 'ok': True}
@@ -246,8 +270,12 @@ class Optimizer:
         self._t_start     = None
         self._num_workers = resolve_workers(num_workers)
         self._pool        = None  # one persistent pool, created lazily in _run_batch
-        # Phases 0–3b all use the default GP size; Phase 4 sweeps it.
-        self._sub_hw = float(sub_hw_init) if sub_hw_init is not None else config.SUB_HW_DEFAULT
+        # Phases 0–3b all use one fixed GP size; Phase 4 sweeps it. Clamp a
+        # warm-started value (e.g. a stale 375 mm board from an old results.json)
+        # into the current [SUB_HW_MIN, SUB_HW_MAX] window so the tuning phases
+        # never run at a board size the final design can't use.
+        _sh = float(sub_hw_init) if sub_hw_init is not None else config.SUB_HW_DEFAULT
+        self._sub_hw = min(max(_sh, config.SUB_HW_MIN), config.SUB_HW_MAX)
         self.N_OPT   = n_opt()
 
         # Starting fractions — overridden by warm-start if provided
@@ -434,9 +462,10 @@ class Optimizer:
         """Sweep ground-plane half-width at the locked-in patch dimensions.
 
         GP affects boresight gain (and slightly back-lobe) but only weakly
-        perturbs the patch's resonance/match, so it runs last. Selects on
-        the same _cost metric — gain reward typically dominates here since
-        S11/AR/freq are already in their good regions.
+        perturbs the patch's resonance/match, so it runs last. Selects on the
+        same _cost metric: because a bigger GP barely adds gain in this small
+        range while the W_AREA area penalty grows with board size, this now
+        picks the SMALLEST board that still meets the match / AR / frequency spec.
         """
         sub_hws = np.linspace(config.SUB_HW_MIN, config.SUB_HW_MAX, config.SUB_HW_N)
         print(f'\n=== Phase 4: Ground-plane sweep '
@@ -561,7 +590,7 @@ class Optimizer:
             f'  gp={sub_hw*2:5.1f}mm'
             f'  →  S11={r["s11_dB"]:+5.1f}dB  f_res={r["f_res"]/1e6:.2f}MHz({df:+.1f})'
             f'  AR={r["ar_dB"]:4.1f}dB {status}  G={r["Dmax"]:+4.1f}dBi'
-            f'  cost={_cost(r):+5.2f}'
+            f'  cost={_cost(entry):+5.2f}'
             f'  [+{self._fmt_dur(elapsed)}  ETA {eta.strftime("%H:%M")}]',
             flush=True)
 

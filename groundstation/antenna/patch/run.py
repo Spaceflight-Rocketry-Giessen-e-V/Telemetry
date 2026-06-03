@@ -31,7 +31,7 @@ warm_start = {
 # this reproduces the old "run one final sim at previous best dims" behaviour.
 # Combined with single_sim_only=False it re-runs the full optimisation from
 # those dims as a warm start.
-reuse_best        = True
+reuse_best        = False
 reuse_results_dir = None  # folder to load results.json from; None = auto-find latest
 
 # ── Output options ────────────────────────────────────────────────
