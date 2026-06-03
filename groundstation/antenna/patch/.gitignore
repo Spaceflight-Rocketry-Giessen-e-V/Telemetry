@@ -15,3 +15,6 @@ graphs/
 *.log
 rhcp_patch_init.xml
 patch_antenna.kicad_pcb
+
+# Claude Code session artifacts (workflow scripts, transcripts)
+.claude/
