@@ -8,7 +8,7 @@
     - Operation Advices
 - Antenna Documentation
     - [Helix Antenna Design Guide](/docs/helix_antenna_design_guide.ipynb)
-    - [Helix Antenna Assembly Manual](/docs/helix_antenna_assembly_manual.md)
+    - [Helical Antenna Assembly Manual](/docs/helical_antenna_assembly_manual.md)
 - [Operations Cheatsheet](/docs/operations_cheatsheet.md)
     - Commands List
     - Status Events List

@@ -30,7 +30,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
     - [Radio Module Library](#radio-module-library)
     - [Packet Encoding/Decoding Library](#packet-encodingdecoding-library)
 - [Antennas](#antennas)
-  - [Groundstation Helix Antenna](#groundstation-helix-antenna)
+  - [Groundstation Helical Antenna](#groundstation-helical-antenna)
     - [Geometric Design](#geometric-design)
     - [Mechanical Design](#mechanical-design)
     - [Simulations](#simulations)
@@ -191,9 +191,9 @@ The encoding and decoding of packets according to our [packet structure](packet_
 
 # Antennas
 
-Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helix antenna on the ground side.
+Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helical antenna on the ground side.
 
-## Groundstation Helix Antenna
+## Groundstation Helical Antenna
 
 ### Geometric Design
 

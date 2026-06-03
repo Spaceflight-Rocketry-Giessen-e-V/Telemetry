@@ -38,13 +38,13 @@ This repository contains all files necessary to reproduce the telemetry system, 
 It also includes [user manuals](/docs/user_manual.md) and [design rationals](/docs/design_overview.md) which help to understand and adapt the system.
 
 ### 1. Antenna Hardware
-So far, this repository includes [design files](/groundstation/antenna/) and [assembly instructions](/docs/helix_antenna_assembly_manual.md) for our helical 869 MHz groundstation antenna.
+So far, this repository includes [design files](/groundstation/antenna/helical/) and [assembly instructions](/docs/helical_antenna_assembly_manual.md) for our helical 869 MHz groundstation antenna.
 
-<p align="center"><img src="/groundstation/antenna/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
 
 We also do our own FDTD-simulations to verify the antenna design and will include them in the repository soon.
 
-<p align="center"><img src="/groundstation/antenna/images/GroundstationAntenna_simulation.png" width="600" /></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width="600" /></p>
 
 In the future, the repository will also contain an 869 MHz QFH design.
 
