@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 """Six-phase RHCP patch antenna optimizer (parallel FDTD sweeps)."""
 
+import atexit
 import datetime as _dt
 import glob
 import json
+import math
+import multiprocessing as _mp
 import os
+import shutil
+import tempfile
 import time
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import (ProcessPoolExecutor, TimeoutError as _FuturesTimeout,
+                                as_completed)
 
 import numpy as np
 
@@ -17,13 +23,19 @@ from src.metrics import failure_result
 # ── Phase schedule: the single source of truth for sweep sizes and labels ──
 # (phase_id, n_candidates, short_label). The Phase-4 ground-plane sweep uses
 # config.SUB_HW_N candidates and is accounted for separately in n_opt().
+#
+# Candidate counts are aligned to the default worker count (config.MAX_WORKERS=9)
+# so every phase is a single FULL wave — no straggler wave, no idle cores — while
+# also giving finer W/Δ grids than the old (10,8,5,9,7,5) counts. On a machine
+# with fewer cores the pool simply wave-rounds (still correct). Edit freely, but
+# keeping each count == the worker count maximises utilisation.
 PHASES = [
-    ('0',  10, 'width(10)'),
-    ('1',   8, 'coarse-Δ(8)'),
-    ('0b',  5, 'W-corr(5)'),
+    ('0',   9, 'width(9)'),
+    ('1',   9, 'coarse-Δ(9)'),
+    ('0b',  9, 'W-corr(9)'),
     ('2',   9, 'inset(9)'),
-    ('3',   7, 'fine-Δ(7)'),
-    ('3b',  5, 'W-corr(5)'),
+    ('3',   9, 'fine-Δ(9)'),
+    ('3b',  9, 'W-corr(9)'),
 ]
 PHASE_N = {pid: n for pid, n, _ in PHASES}
 
@@ -49,6 +61,40 @@ def resolve_workers(num_workers: int | None = None) -> int:
     nw = num_workers if num_workers is not None else config.num_workers
     nw = nw if nw and nw > 0 else (os.cpu_count() or 1)
     return min(nw, config.MAX_WORKERS)
+
+
+def _sim_seconds(n_timesteps: int) -> float:
+    """Rough wall-clock for one FDTD run: ~90 s per 40 000 time steps."""
+    return n_timesteps / 40000 * 90
+
+
+def estimate_seconds(num_workers: int | None = None) -> float:
+    """Wall-clock estimate for a full optimisation + final high-fidelity sim.
+
+    Single source of truth shared with the run.py banner so the two can never
+    disagree (mirrors resolve_workers). Sums ceil(n_phase / par) WAVES per phase
+    — honest about the per-phase barrier — rather than the old n_run/par formula,
+    which assumed perfect packing and so under-estimated. The dynamic-thread
+    speed-up on under-filled waves is ignored here (kept conservative).
+    """
+    par   = resolve_workers(num_workers)
+    waves = sum(math.ceil(n / par) for _, n, _ in PHASES)
+    waves += math.ceil(int(config.SUB_HW_N) / par)
+    return waves * _sim_seconds(config.NrTS_opt) + _sim_seconds(config.NrTS_final)
+
+
+def _sweep_stale_temp_dirs():
+    """Delete leftover rhcp_* sim dirs (from killed workers / crashed runs).
+
+    Registered with atexit in the MAIN process ONLY — a spawned pool worker must
+    never run this or it would delete its siblings' live sim directories.
+    """
+    for d in glob.glob(os.path.join(tempfile.gettempdir(), 'rhcp_*')):
+        shutil.rmtree(d, ignore_errors=True)
+
+
+if _mp.parent_process() is None:        # true in the main process, not in workers
+    atexit.register(_sweep_stale_temp_dirs)
 
 
 def _cost(r) -> float:
@@ -88,7 +134,12 @@ def _run_sim_worker(kw: dict) -> dict:
     inside the function so they load once per spawned child.
     """
     import os as _os
-    _os.environ.setdefault('OMP_NUM_THREADS', '1')
+    n_threads = int(kw.get('num_threads', 1))
+    # Hard set (NOT setdefault): on Windows spawn the child inherits the parent
+    # env, so setdefault would be a no-op when OMP_NUM_THREADS is already set,
+    # silently oversubscribing cores. The authoritative control is numThreads
+    # passed to FDTD.Run below; this just keeps any incidental BLAS in step.
+    _os.environ['OMP_NUM_THREADS'] = str(n_threads)
     import shutil as _shutil
     import tempfile as _tempfile
     import numpy as _np
@@ -98,13 +149,15 @@ def _run_sim_worker(kw: dict) -> dict:
                              failure_result as _fail, freq_eval_grid as _grid,
                              s11_db as _s11db)
 
-    sp = _os.path.join(_tempfile.gettempdir(), f'rhcp_{kw["sim_suffix"]}')
+    # Unique temp dir per sim: mkdtemp can never collide, even if two candidates
+    # round to the same readable suffix (the old gettempdir()/rhcp_<suffix> could,
+    # and one worker's cleanup=True could then wipe the other's data mid-read).
+    sp = _tempfile.mkdtemp(prefix=f'rhcp_{kw["sim_suffix"]}_')
     try:
         FDTD, _CSX, port, nf2ff_box = _build(
             kw['delta_mm'], kw['y_inset_mm'], kw['W_patch'], kw['NrTS'],
             sub_hw_mm=kw.get('sub_hw_mm', _cfg.SUB_HW_DEFAULT))
-        _os.makedirs(sp, exist_ok=True)
-        FDTD.Run(sp, verbose=0, cleanup=True)
+        FDTD.Run(sp, verbose=0, cleanup=True, numThreads=n_threads)
 
         f_eval = _grid()
         port.CalcPort(sp, f_eval)
@@ -192,6 +245,7 @@ class Optimizer:
         self._n_done      = 0
         self._t_start     = None
         self._num_workers = resolve_workers(num_workers)
+        self._pool        = None  # one persistent pool, created lazily in _run_batch
         # Phases 0–3b all use the default GP size; Phase 4 sweeps it.
         self._sub_hw = float(sub_hw_init) if sub_hw_init is not None else config.SUB_HW_DEFAULT
         self.N_OPT   = n_opt()
@@ -204,9 +258,18 @@ class Optimizer:
             self._y_inset_frac = float(warm_start['y_inset_mm']) / float(warm_start['W_mm'])
 
     def run(self) -> tuple:
-        """Run all phases. Returns (opt_W, opt_delta, opt_y_inset, opt_sub_hw, log)."""
-        self._t_start = time.monotonic()
+        """Run all phases. Returns (opt_W, opt_delta, opt_y_inset, opt_sub_hw, log).
 
+        Thin wrapper around _run_all_phases so the shared worker pool is always
+        shut down — even if a phase raises.
+        """
+        self._t_start = time.monotonic()
+        try:
+            return self._run_all_phases()
+        finally:
+            self._shutdown_pool()
+
+    def _run_all_phases(self) -> tuple:
         opt_W   = self._phase0()
         best_dr = self._phase1(opt_W)
         opt_W   = self._phase0b(opt_W, best_dr)
@@ -393,25 +456,74 @@ class Optimizer:
     # ── helpers ───────────────────────────────────────────────────────
 
     def _mk_kw(self, W, dr, yi, suffix, sub_hw=None):
-        """Per-sim kwargs dict handed to the worker (identical shape every phase)."""
+        """Per-sim kwargs dict handed to the worker (identical shape every phase).
+
+        num_threads is a placeholder of 1; _run_batch sets the real value once the
+        wave width for the phase is known (dynamic idle-core reclamation).
+        """
         return {'delta_mm': dr * W, 'y_inset_mm': yi, 'W_patch': W,
                 'sub_hw_mm': self._sub_hw if sub_hw is None else sub_hw,
-                'NrTS': config.NrTS_opt, 'sim_suffix': suffix}
+                'NrTS': config.NrTS_opt, 'sim_suffix': suffix,
+                'num_threads': 1}
+
+    # ── worker-pool lifecycle ──────────────────────────────────────────
+    def _ensure_pool(self) -> ProcessPoolExecutor:
+        """Return the persistent pool, creating it on first use."""
+        if self._pool is None:
+            self._pool = ProcessPoolExecutor(max_workers=self._num_workers)
+        return self._pool
+
+    def _rebuild_pool(self):
+        """Tear down the pool (cancelling queued work) and start a fresh one.
+
+        Used after a phase timeout so a wedged openEMS child can't poison later
+        phases; the running phase already recorded its stragglers as failures.
+        """
+        if self._pool is not None:
+            self._pool.shutdown(wait=False, cancel_futures=True)
+        self._pool = ProcessPoolExecutor(max_workers=self._num_workers)
+
+    def _shutdown_pool(self):
+        if self._pool is not None:
+            self._pool.shutdown(wait=True)
+            self._pool = None
 
     def _run_batch(self, phase, jobs: list):
         """Submit a phase's simulations in parallel and record results as they arrive.
 
         jobs: list of (W, dr, yi, kw_dict) where kw_dict is passed to _run_sim_worker.
+
+        Reuses ONE persistent pool across phases (workers import openEMS once, not
+        once per phase). When a wave under-fills the pool, its otherwise-idle cores
+        are handed to the running sims as extra openEMS threads. A wedged sim can't
+        freeze the run: as_completed has a per-phase timeout, after which any
+        stragglers are recorded as failures and the pool is rebuilt.
         """
+        # Dynamic threads-per-sim: >1 only when this wave under-fills the pool.
+        cores      = os.cpu_count() or self._num_workers
+        concurrent = min(len(jobs), self._num_workers)
+        n_threads  = max(1, cores // concurrent)
+        for _, _, _, kw in jobs:
+            kw['num_threads'] = n_threads
+
+        waves    = math.ceil(len(jobs) / self._num_workers)
+        t_phase  = waves * _sim_seconds(config.NrTS_opt)
+        eta      = _dt.datetime.now() + _dt.timedelta(seconds=t_phase)
         suffixes = '  '.join(kw['sim_suffix'] for _, _, _, kw in jobs)
-        print(f'  Queued ({len(jobs)} sims, {self._num_workers} workers): {suffixes}',
-              flush=True)
-        with ProcessPoolExecutor(max_workers=self._num_workers) as ex:
-            fut_map = {ex.submit(_run_sim_worker, kw): (W, dr, yi,
-                                                         kw.get('sub_hw_mm', self._sub_hw),
-                                                         kw['sim_suffix'])
-                       for W, dr, yi, kw in jobs}
-            for fut in as_completed(fut_map):
+        print(f'  Phase {phase}: {len(jobs)} sims, {self._num_workers} workers, '
+              f'{n_threads} thread(s)/sim  →  ~{self._fmt_dur(t_phase)} '
+              f'(phase ETA {eta.strftime("%H:%M")})', flush=True)
+        print(f'  Queued: {suffixes}', flush=True)
+
+        pool    = self._ensure_pool()
+        fut_map = {pool.submit(_run_sim_worker, kw): (W, dr, yi,
+                                                      kw.get('sub_hw_mm', self._sub_hw),
+                                                      kw['sim_suffix'])
+                   for W, dr, yi, kw in jobs}
+        pending = set(fut_map)
+        try:
+            for fut in as_completed(fut_map, timeout=config.PHASE_TIMEOUT_S):
+                pending.discard(fut)
                 W, dr, yi, sub_hw, suffix = fut_map[fut]
                 try:
                     r = fut.result()
@@ -421,6 +533,16 @@ class Optimizer:
                     print(f'  !! Sim {suffix} raised: {exc}')
                     r = failure_result()
                 self._record(phase, W, dr, yi, r, sub_hw=sub_hw)
+        except _FuturesTimeout:
+            # One or more sims hung past the phase deadline. Record the missing
+            # candidates as failures (they can never win _cost) and rebuild the
+            # pool so the wedged child can't poison later phases.
+            for fut in pending:
+                W, dr, yi, sub_hw, suffix = fut_map[fut]
+                print(f'  !! Sim {suffix} timed out after {config.PHASE_TIMEOUT_S}s'
+                      f' — recorded as failure', flush=True)
+                self._record(phase, W, dr, yi, failure_result(), sub_hw=sub_hw)
+            self._rebuild_pool()
 
     def _record(self, phase, W, dr, yi, r, sub_hw=None):
         self._n_done += 1

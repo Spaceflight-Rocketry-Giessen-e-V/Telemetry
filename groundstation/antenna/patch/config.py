@@ -35,7 +35,18 @@ num_workers = 0
 # Caps peak RAM (each concurrent sim is ~200–500 MB) and keeps the wall-clock
 # estimate honest. Both the optimiser pool and the ETA derive from this via
 # optimizer.resolve_workers(), so they can never disagree.
+#
+# NOTE: the optimizer's per-phase candidate counts (optimizer.PHASES and
+# SUB_HW_N below) are aligned to this value so each phase is a single FULL wave
+# (no straggler wave, no idle cores). If you change MAX_WORKERS, consider
+# re-aligning those counts for best utilisation.
 MAX_WORKERS = 9
+
+# Per-phase hang guard. optimizer._run_batch waits at most this long for a
+# phase's sims via as_completed(timeout=...); a wedged/diverged openEMS child is
+# then recorded as a failure and the worker pool rebuilt, instead of freezing the
+# whole run. Generous vs a healthy ~3–4 min phase — raise it on slow hardware.
+PHASE_TIMEOUT_S = 1800
 
 # ── Derived constants (no side effects, computed once on import) ──
 substrate_kappa = substrate_tanD * 2 * np.pi * f_target * EPS0 * substrate_epsR
@@ -96,4 +107,4 @@ GAIN_CAP           = 3.0
 SUB_HW_DEFAULT = 75.0
 SUB_HW_MIN     = 100.0
 SUB_HW_MAX     = 200.0
-SUB_HW_N       = 8
+SUB_HW_N       = 9       # == MAX_WORKERS: Phase-4 GP sweep fits one full wave
