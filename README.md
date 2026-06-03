@@ -82,9 +82,14 @@ Included:
 Included:
 - GNSS map view
 - Height plot over time
-- Acceleration indicator
+- Acceleration plot over time
 - Battery voltage indicator with visual warnings
+- Connection quality indicator with visual warnings
 - Status event indicator
+
+### 5. Documentation
+
+$\Rightarrow$ [Jump to Documentation](/docs/)
 
 ---
 
