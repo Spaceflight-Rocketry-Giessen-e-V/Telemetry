@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """openEMS / CSXCAD model builder for the RHCP patch antenna."""
 
-import sys
-
 import numpy as np
 from CSXCAD  import ContinuousStructure
 from openEMS import openEMS
@@ -36,12 +34,12 @@ class _Tee:
         return self._s[0].encoding
 
     def reconfigure(self, **_):
-        pass  # already configured
+        pass  # already configured; defensive shim so callers can probe stdout
 
 
 def build_sim(delta_mm: float, y_inset_mm: float, W_patch: float,
               NrTS: int, sub_hw_mm: float = config.SUB_HW_DEFAULT,
-              _dbg: bool = False, vtk_dump: bool = False):
+              vtk_dump: bool = False):
     """Build a complete openEMS + CSXCAD model.
 
     Returns (FDTD, CSX, port, nf2ff_box).
@@ -56,25 +54,17 @@ def build_sim(delta_mm: float, y_inset_mm: float, W_patch: float,
         print(f'  ! WARNING: sub_hw_mm={sub_hw_mm:.1f} leaves <30 mm to MUR boundary '
               f'(SimBox xy = {config.SimBox[0]:.0f}×{config.SimBox[1]:.0f} mm). '
               f'Far-field accuracy may degrade.', flush=True)
-    def _p(msg):
-        if _dbg:
-            print(f'  [build_sim] {msg}', flush=True)
 
-    _p('creating openEMS + CSXCAD objects')
     FDTD = openEMS(NrTS=NrTS, EndCriteria=1e-4)
-    _p('SetGaussExcite')
     FDTD.SetGaussExcite(config.f_target, config.fc)
-    _p('SetBoundaryCond')
     FDTD.SetBoundaryCond(['MUR'] * 6)
 
-    _p('ContinuousStructure')
     CSX = ContinuousStructure()
-    _p('SetCSX')
     FDTD.SetCSX(CSX)
     mesh = CSX.GetGrid()
     mesh.SetDeltaUnit(1e-3)
 
-    _p('outer domain mesh lines')
+    # Outer domain mesh lines
     mesh.AddLine('x', [-config.SimBox[0] / 2, config.SimBox[0] / 2])
     mesh.AddLine('y', [-config.SimBox[1] / 2, config.SimBox[1] / 2])
     mesh.AddLine('z', [-config.SimBox[2] / 3,  config.SimBox[2] * 2 / 3])
@@ -87,56 +77,44 @@ def build_sim(delta_mm: float, y_inset_mm: float, W_patch: float,
     z = config.substrate_thickness
 
     patch_pts = patch_vertices_array(W_patch, delta_mm)
-
-    _p(f'AddMetal patch polygon  h={h:.2f} d={d:.2f} z={z}')
     patch = CSX.AddMetal('patch')
     patch.AddPolygon(patch_pts, 'z', elevation=z, priority=10)
 
-    _p('patch edge mesh lines')
+    # Patch edge mesh lines: a fine triple-line halo straddling each edge.
     mer = config.mesh_res / 2
     for xv in sorted({-h, -h + d, h - d, h}):
         mesh.AddLine('x', [xv - mer / 3, xv, xv + mer / 3])
     for yv in sorted({-h, -h + d, h - d, h}):
         mesh.AddLine('y', [yv - mer / 3, yv, yv + mer / 3])
 
-    _p('AddMaterial substrate')
     sub_hw    = sub_hw_mm
     substrate = CSX.AddMaterial('substrate',
                                 epsilon=config.substrate_epsR,
                                 kappa=config.substrate_kappa)
-    _p('substrate.AddBox')
     substrate.AddBox(priority=0,
                      start=[-sub_hw, -sub_hw, 0],
                      stop =[ sub_hw,  sub_hw, config.substrate_thickness])
-    _p('substrate z mesh lines')
     mesh.AddLine('z', np.linspace(0, config.substrate_thickness,
                                   config.substrate_cells + 1))
 
-    _p('AddMetal gnd')
     gnd = CSX.AddMetal('gnd')
-    _p('gnd.AddBox')
     gnd.AddBox(start=[-sub_hw, -sub_hw, 0],
                stop =[ sub_hw,  sub_hw, 0], priority=10)
-    _p('AddEdges2Grid gnd')
     FDTD.AddEdges2Grid(dirs='xy', properties=gnd)
 
-    _p('feed port mesh lines')
+    # Feed port: lumped z-directed port at the inset point on the -y edge.
     y_feed = -W_patch / 2 + y_inset_mm
     mesh.AddLine('x', [-mer / 3, 0.0, mer / 3])
     mesh.AddLine('y', [y_feed - mer / 3, y_feed, y_feed + mer / 3])
-    _p(f'AddLumpedPort  y_feed={y_feed:.2f}')
     port = FDTD.AddLumpedPort(1, config.feed_R,
                                [0, y_feed, 0],
                                [0, y_feed, config.substrate_thickness],
                                'z', 1.0, priority=5, edges2grid='xy')
 
-    _p('SmoothMeshLines')
     mesh.SmoothMeshLines('all', config.mesh_res, 1.3)
-    _p('CreateNF2FFBox')
     nf2ff_box = FDTD.CreateNF2FFBox()
 
     if vtk_dump:
-        _p('vtk_dump: adding frequency-domain surface field dumps')
         # E_patch_surf — E-field DFT phasor at substrate mid-plane.
         # J_patch_surf — surface current density DFT phasor at patch conductor.
         # Both accumulate during the FDTD run and write one VTK file each.
@@ -157,7 +135,5 @@ def build_sim(delta_mm: float, y_inset_mm: float, W_patch: float,
             start=[-h - pad, -h - pad, config.substrate_thickness],
             stop =[ h + pad,  h + pad, config.substrate_thickness]
         )
-        _p('vtk_dump: E_patch_surf and J_patch_surf dump boxes added')
 
-    _p('done')
     return FDTD, CSX, port, nf2ff_box

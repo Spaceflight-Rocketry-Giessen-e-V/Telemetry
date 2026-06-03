@@ -31,6 +31,12 @@ NrTS_final = 150000  # time steps for the final high-fidelity run  (was 80000)
 # Lower this if RAM is tight (~200–500 MB per concurrent sim).
 num_workers = 0
 
+# Hard ceiling on concurrent workers, applied on top of num_workers/cpu_count.
+# Caps peak RAM (each concurrent sim is ~200–500 MB) and keeps the wall-clock
+# estimate honest. Both the optimiser pool and the ETA derive from this via
+# optimizer.resolve_workers(), so they can never disagree.
+MAX_WORKERS = 9
+
 # ── Derived constants (no side effects, computed once on import) ──
 substrate_kappa = substrate_tanD * 2 * np.pi * f_target * EPS0 * substrate_epsR
 

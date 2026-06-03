@@ -1,56 +1,54 @@
 # -*- coding: utf-8 -*-
-"""Six-phase RHCP patch antenna optimizer and single-simulation runner."""
+"""Six-phase RHCP patch antenna optimizer (parallel FDTD sweeps)."""
 
 import datetime as _dt
 import glob
 import json
 import os
-import shutil
-import tempfile
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import numpy as np
 
 import config
-from src.model import build_sim
+from src.metrics import failure_result
 
 
-def _cp_center_freq(f_arr, s11_dB_arr, threshold_dB=-10.0):
-    """CP operating frequency as the -S11-weighted centroid of the matched bandwidth.
+# ── Phase schedule: the single source of truth for sweep sizes and labels ──
+# (phase_id, n_candidates, short_label). The Phase-4 ground-plane sweep uses
+# config.SUB_HW_N candidates and is accounted for separately in n_opt().
+PHASES = [
+    ('0',  10, 'width(10)'),
+    ('1',   8, 'coarse-Δ(8)'),
+    ('0b',  5, 'W-corr(5)'),
+    ('2',   9, 'inset(9)'),
+    ('3',   7, 'fine-Δ(7)'),
+    ('3b',  5, 'W-corr(5)'),
+]
+PHASE_N = {pid: n for pid, n, _ in PHASES}
 
-    Works for both single-mode patches (centroid ≈ argmin) and split-mode CP
-    patches (centroid ≈ midpoint of the two modes).  Robust at coarse frequency
-    grids where individual mode minima may not resolve as distinct local minima.
-    Falls back to argmin when nothing is below threshold.
+
+def n_opt() -> int:
+    """Total number of FDTD runs across all phases, including the GP sweep."""
+    return sum(n for _, n, _ in PHASES) + int(config.SUB_HW_N)
+
+
+def phases_label() -> str:
+    """One-line 'Phases: 0=width(10) 1=coarse-Δ(8) ...' header (run.py banner)."""
+    parts = '  '.join(f'{pid}={lbl}' for pid, _, lbl in PHASES)
+    return f'{parts}  4=GP({int(config.SUB_HW_N)})'
+
+
+def resolve_workers(num_workers: int | None = None) -> int:
+    """Resolve the parallel-worker count, capped by config.MAX_WORKERS.
+
+    num_workers=None falls back to config.num_workers, then os.cpu_count().
+    The optimiser pool and the run.py ETA both call this, so they can never
+    disagree about how many openEMS subprocesses run concurrently.
     """
-    mask = s11_dB_arr < threshold_dB
-    if not mask.any():
-        return float(f_arr[np.argmin(s11_dB_arr)])
-    weights = -s11_dB_arr[mask]  # positive; deeper S11 → higher weight
-    return float(np.average(f_arr[mask], weights=weights))
-
-
-def _axial_ratio_db(E_rhcp, E_lhcp):
-    """True axial ratio [dB, ≥0] and handedness from circular field components.
-
-    E_rhcp / E_lhcp: complex RHCP / LHCP field samples over a small boresight
-    cone (openEMS res.E_cprh / res.E_cplh).  Reduced to scalar magnitudes by
-    averaging, then combined with the rigorous polarisation-ellipse formula
-
-        AR = (R + L) / |R − L|        (linear, ≥1)
-        AR_dB = 20·log10(AR)          (0 dB = perfect circular)
-
-    This is NOT the same as 20·log10(L/R) (the cross-pol ratio): an AR of 3 dB
-    corresponds to a cross-pol ratio of only ≈ −15 dB, so optimising the ratio
-    with a −3 dB threshold accepts essentially linear polarisation.
-
-    Returns (ar_dB, is_rhcp) where is_rhcp is True when RHCP dominates.
-    """
-    R = float(np.mean(np.abs(E_rhcp)))
-    L = float(np.mean(np.abs(E_lhcp)))
-    ar = (R + L) / (abs(R - L) + 1e-30)
-    return 20.0 * np.log10(ar), (R >= L)
+    nw = num_workers if num_workers is not None else config.num_workers
+    nw = nw if nw and nw > 0 else (os.cpu_count() or 1)
+    return min(nw, config.MAX_WORKERS)
 
 
 def _cost(r) -> float:
@@ -86,7 +84,8 @@ def _run_sim_worker(kw: dict) -> dict:
     """Top-level worker: build and run one FDTD sim in a child process.
 
     Must be a module-level function (not a method) so multiprocessing can
-    pickle it on Windows (spawn start method).
+    pickle it on Windows (spawn start method).  Heavy dependencies are imported
+    inside the function so they load once per spawned child.
     """
     import os as _os
     _os.environ.setdefault('OMP_NUM_THREADS', '1')
@@ -95,6 +94,9 @@ def _run_sim_worker(kw: dict) -> dict:
     import numpy as _np
     import config as _cfg
     from src.model import build_sim as _build
+    from src.metrics import (axial_ratio_db as _ar, cp_center_freq as _cf,
+                             failure_result as _fail, freq_eval_grid as _grid,
+                             s11_db as _s11db)
 
     sp = _os.path.join(_tempfile.gettempdir(), f'rhcp_{kw["sim_suffix"]}')
     try:
@@ -104,16 +106,16 @@ def _run_sim_worker(kw: dict) -> dict:
         _os.makedirs(sp, exist_ok=True)
         FDTD.Run(sp, verbose=0, cleanup=True)
 
-        f_eval = _np.concatenate([
-            [_cfg.f_target],
-            _np.linspace(_cfg.f_target * 0.85, _cfg.f_target * 1.15, 25)
-        ])
+        f_eval = _grid()
         port.CalcPort(sp, f_eval)
-        s11_all    = port.uf_ref / port.uf_inc
-        s11_dB_all = 20.0 * _np.log10(_np.abs(s11_all) + 1e-30)
+        s11_dB_all = _s11db(port.uf_ref, port.uf_inc)
         s11_dB     = float(s11_dB_all[0])
         zin        = port.uf_tot[0] / port.if_tot[0]
-        f_res      = _cp_center_freq(f_eval, s11_dB_all)
+        # f_res: weighted centroid over the swept band ONLY. Index 0 of the grid
+        # is f_target (a deliberate duplicate, so s11_dB[0] reads S11 at the
+        # design frequency); excluding it keeps f_target from being double-
+        # counted in the matched-bandwidth centroid.
+        f_res      = _cf(f_eval[1:], s11_dB_all[1:])
 
         # NF2FF grid: θ=0 (boresight) for Dmax, plus the 1°/2°/3° ring used for
         # the AR estimate — the SAME near-boresight cone postproc reports, so
@@ -124,16 +126,14 @@ def _run_sim_worker(kw: dict) -> dict:
                                    center=[0, 0, 1e-3])
         # True axial ratio from the θ∈{1,2,3}° ring (rows 1:4); skip θ=0 where
         # the E_cprh/E_cplh split is degenerate on-axis.
-        ar_dB, is_rhcp = _axial_ratio_db(res.E_cprh[0][1:4], res.E_cplh[0][1:4])
+        ar_dB, is_rhcp = _ar(res.E_cprh[0][1:4], res.E_cplh[0][1:4])
         Dmax  = float(res.Dmax[0])
         return {'s11_dB': s11_dB, 'f_res': f_res, 'ar_dB': ar_dB, 'Dmax': Dmax,
                 'rhcp': is_rhcp,
                 'zin_re': float(_np.real(zin)), 'zin_im': float(_np.imag(zin)),
                 'ok': True}
     except Exception as exc:
-        return {'s11_dB': 0.0, 'f_res': config.f_target, 'ar_dB': 99.0,
-                'Dmax': -99.0, 'rhcp': True,
-                'zin_re': 0.0, 'zin_im': 0.0, 'ok': False, '_exc': str(exc)}
+        return {**_fail(), '_exc': str(exc)}
     finally:
         if _os.path.exists(sp):
             _shutil.rmtree(sp, ignore_errors=True)
@@ -172,7 +172,7 @@ def _load_results_json(rjson_path: str) -> tuple:
 
 
 class Optimizer:
-    """Six-phase optimizer: width → coarse Δ → W-correct → inset → fine Δ → W-correct.
+    """Six-phase optimizer: width → coarse Δ → W-correct → inset → fine Δ → W-correct → GP.
 
     Phase 0:  Sweep patch side W to align resonance with f_target.
     Phase 1:  Fix W, sweep truncation ratio Δ/W for best RHCP purity.
@@ -180,24 +180,21 @@ class Optimizer:
     Phase 2:  Fix W and Δ, sweep y_inset for best impedance match.
     Phase 3:  Fine-grid Δ/W search around Phase-1 best with correct inset.
     Phase 3b: Re-tune W after Phase-3 Δ adjustment (resonance drifts again).
+    Phase 4:  Sweep ground-plane half-width for boresight gain.
     """
-
-    N_OPT = 10 + 8 + 5 + 9 + 7 + 5 + 0  # phase counts; +SUB_HW_N added at runtime
 
     def __init__(self, W_patch_init: float, warm_start: dict | None = None,
                  num_workers: int | None = None,
                  sub_hw_init: float | None = None):
-        self._W_init     = W_patch_init
-        self._ws         = warm_start
-        self._log: list  = []
-        self._n_done     = 0
-        self._t_start    = None
-        nw = num_workers if num_workers is not None else config.num_workers
-        self._num_workers = nw if nw > 0 else os.cpu_count()
+        self._W_init      = W_patch_init
+        self._ws          = warm_start
+        self._log: list   = []
+        self._n_done      = 0
+        self._t_start     = None
+        self._num_workers = resolve_workers(num_workers)
         # Phases 0–3b all use the default GP size; Phase 4 sweeps it.
         self._sub_hw = float(sub_hw_init) if sub_hw_init is not None else config.SUB_HW_DEFAULT
-        # Recompute N_OPT to include Phase 4.
-        self.N_OPT = 10 + 8 + 5 + 9 + 7 + 5 + int(config.SUB_HW_N)
+        self.N_OPT   = n_opt()
 
         # Starting fractions — overridden by warm-start if provided
         self._delta_frac   = config._delta_frac
@@ -261,14 +258,12 @@ class Optimizer:
     def _phase0(self) -> float:
         print('\n=== Phase 0: Patch width sweep (frequency tuning) ===')
         if self._ws is not None:
-            W_cands = self._W_init * np.linspace(0.96, 1.04, 10)
+            W_cands = self._W_init * np.linspace(0.96, 1.04, PHASE_N['0'])
             print(f'  (warm-start: ±4 % around W = {self._W_init:.4f} mm)')
         else:
-            W_cands = self._W_init * np.linspace(0.90, 1.05, 10)
+            W_cands = self._W_init * np.linspace(0.90, 1.05, PHASE_N['0'])
         jobs = [(W, self._delta_frac, W * self._y_inset_frac,
-                 {'delta_mm': W * self._delta_frac, 'y_inset_mm': W * self._y_inset_frac,
-                  'W_patch': W, 'sub_hw_mm': self._sub_hw,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p0_W{W:.1f}'})
+                 self._mk_kw(W, self._delta_frac, W * self._y_inset_frac, f'p0_W{W:.1f}'))
                 for W in W_cands]
         self._run_batch('0', jobs)
 
@@ -286,15 +281,13 @@ class Optimizer:
         yi_init = opt_W * self._y_inset_frac
         if self._ws is not None:
             dr0   = float(self._ws['delta_mm']) / float(self._ws['W_mm'])
-            drs_1 = np.clip(np.linspace(dr0 - 0.06, dr0 + 0.06, 8), 0.02, 0.30)
+            drs_1 = np.clip(np.linspace(dr0 - 0.06, dr0 + 0.06, PHASE_N['1']), 0.02, 0.30)
             print(f'  (warm-start: Δ/W = {dr0:.4f} ± 0.06)')
         else:
-            drs_1 = np.linspace(0.04, 0.28, 8)
+            drs_1 = np.linspace(0.04, 0.28, PHASE_N['1'])
         self._drs_1 = drs_1  # stored for Phase 3 coarse_step
         jobs = [(opt_W, dr, yi_init,
-                 {'delta_mm': dr * opt_W, 'y_inset_mm': yi_init,
-                  'W_patch': opt_W, 'sub_hw_mm': self._sub_hw,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p1_{dr:.3f}'})
+                 self._mk_kw(opt_W, dr, yi_init, f'p1_{dr:.3f}'))
                 for dr in drs_1]
         self._run_batch('1', jobs)
 
@@ -308,10 +301,8 @@ class Optimizer:
     def _phase0b(self, opt_W: float, best_dr: float) -> float:
         print(f'\n=== Phase 0b: W correction at Δ/W = {best_dr:.3f} ===')
         jobs = [(W, best_dr, self._y_inset_frac * W,
-                 {'delta_mm': best_dr * W, 'y_inset_mm': self._y_inset_frac * W,
-                  'W_patch': W, 'sub_hw_mm': self._sub_hw,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p0b_W{W:.1f}'})
-                for W in opt_W * np.linspace(0.96, 1.04, 5)]
+                 self._mk_kw(W, best_dr, self._y_inset_frac * W, f'p0b_W{W:.1f}'))
+                for W in opt_W * np.linspace(0.96, 1.04, PHASE_N['0b'])]
         self._run_batch('0b', jobs)
 
         p0b   = [x for x in self._log if x['phase'] == '0b']
@@ -328,15 +319,13 @@ class Optimizer:
         if self._ws is not None:
             yi0   = float(self._ws['y_inset_mm'])
             yis_2 = np.clip(
-                np.linspace(yi0 - 0.04 * opt_W, yi0 + 0.04 * opt_W, 9),
+                np.linspace(yi0 - 0.04 * opt_W, yi0 + 0.04 * opt_W, PHASE_N['2']),
                 0.01 * opt_W, 0.22 * opt_W)
             print(f'  (warm-start: yi = {yi0:.4f} mm ± {0.04*opt_W:.2f} mm)')
         else:
-            yis_2 = np.linspace(0.01 * opt_W, 0.22 * opt_W, 9)
+            yis_2 = np.linspace(0.01 * opt_W, 0.22 * opt_W, PHASE_N['2'])
         jobs = [(opt_W, best_dr, yi,
-                 {'delta_mm': best_dr * opt_W, 'y_inset_mm': yi,
-                  'W_patch': opt_W, 'sub_hw_mm': self._sub_hw,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p2_yi{yi:.1f}'})
+                 self._mk_kw(opt_W, best_dr, yi, f'p2_yi{yi:.1f}'))
                 for yi in yis_2]
         self._run_batch('2', jobs)
 
@@ -351,12 +340,10 @@ class Optimizer:
         print(f'\n=== Phase 3: Fine truncation sweep (yi = {best_yi:.2f} mm) ===')
         coarse_step = (self._drs_1[1] - self._drs_1[0]) / 2
         drs_3 = np.clip(
-            np.linspace(best_dr - 2 * coarse_step, best_dr + 2 * coarse_step, 7),
+            np.linspace(best_dr - 2 * coarse_step, best_dr + 2 * coarse_step, PHASE_N['3']),
             0.02, 0.30)
         jobs = [(opt_W, dr, best_yi,
-                 {'delta_mm': dr * opt_W, 'y_inset_mm': best_yi,
-                  'W_patch': opt_W, 'sub_hw_mm': self._sub_hw,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p3_{dr:.4f}'})
+                 self._mk_kw(opt_W, dr, best_yi, f'p3_{dr:.4f}'))
                 for dr in drs_3]
         self._run_batch('3', jobs)
 
@@ -367,10 +354,8 @@ class Optimizer:
     def _phase3b(self, opt_W: float, best_dr3: float, opt_yi: float) -> float:
         print(f'\n=== Phase 3b: W correction at Δ/W = {best_dr3:.3f} ===')
         jobs = [(W, best_dr3, opt_yi,
-                 {'delta_mm': best_dr3 * W, 'y_inset_mm': opt_yi,
-                  'W_patch': W, 'sub_hw_mm': self._sub_hw,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p3b_W{W:.1f}'})
-                for W in opt_W * np.linspace(0.96, 1.04, 5)]
+                 self._mk_kw(W, best_dr3, opt_yi, f'p3b_W{W:.1f}'))
+                for W in opt_W * np.linspace(0.96, 1.04, PHASE_N['3b'])]
         self._run_batch('3b', jobs)
 
         p3b   = [x for x in self._log if x['phase'] == '3b']
@@ -394,9 +379,7 @@ class Optimizer:
         print(f'\n=== Phase 4: Ground-plane sweep '
               f'(GP edge {2*config.SUB_HW_MIN:.0f}–{2*config.SUB_HW_MAX:.0f} mm) ===')
         jobs = [(opt_W, best_dr3, opt_yi,
-                 {'delta_mm': best_dr3 * opt_W, 'y_inset_mm': opt_yi,
-                  'W_patch': opt_W, 'sub_hw_mm': sh,
-                  'NrTS': config.NrTS_opt, 'sim_suffix': f'p4_gp{sh:.0f}'})
+                 self._mk_kw(opt_W, best_dr3, opt_yi, f'p4_gp{sh:.0f}', sub_hw=sh))
                 for sh in sub_hws]
         self._run_batch('4', jobs)
 
@@ -408,6 +391,12 @@ class Optimizer:
         return float(best['sub_hw'])
 
     # ── helpers ───────────────────────────────────────────────────────
+
+    def _mk_kw(self, W, dr, yi, suffix, sub_hw=None):
+        """Per-sim kwargs dict handed to the worker (identical shape every phase)."""
+        return {'delta_mm': dr * W, 'y_inset_mm': yi, 'W_patch': W,
+                'sub_hw_mm': self._sub_hw if sub_hw is None else sub_hw,
+                'NrTS': config.NrTS_opt, 'sim_suffix': suffix}
 
     def _run_batch(self, phase, jobs: list):
         """Submit a phase's simulations in parallel and record results as they arrive.
@@ -430,67 +419,8 @@ class Optimizer:
                         print(f'  !! Sim {suffix} failed: {r["_exc"]}')
                 except Exception as exc:
                     print(f'  !! Sim {suffix} raised: {exc}')
-                    r = {'s11_dB': 0.0, 'f_res': config.f_target, 'ar_dB': 99.0,
-                         'Dmax': -99.0, 'rhcp': True,
-                         'zin_re': 0.0, 'zin_im': 0.0, 'ok': False}
+                    r = failure_result()
                 self._record(phase, W, dr, yi, r, sub_hw=sub_hw)
-
-    def _run_single(self, delta_mm: float, y_inset_mm: float,
-                    W_patch: float, sim_suffix: str,
-                    sub_hw_mm: float | None = None,
-                    NrTS: int | None = None, cleanup: bool = True,
-                    verbose: int = 0) -> dict:
-        """Build, run, and post-process one FDTD simulation."""
-        if NrTS is None:
-            NrTS = config.NrTS_opt
-        if sub_hw_mm is None:
-            sub_hw_mm = config.SUB_HW_DEFAULT
-        print(f'  → [{sim_suffix}]  W={W_patch:.2f}mm  Δ={delta_mm:.2f}mm'
-              f'  yi={y_inset_mm:.2f}mm  sub_hw={sub_hw_mm:.1f}mm  NrTS={NrTS}',
-              flush=True)
-        sp = os.path.join(tempfile.gettempdir(), f'rhcp_{sim_suffix}')
-        try:
-            FDTD, _CSX, port, nf2ff_box = build_sim(delta_mm, y_inset_mm,
-                                                     W_patch, NrTS,
-                                                     sub_hw_mm=sub_hw_mm)
-            if not os.path.exists(sp):
-                os.makedirs(sp)
-            FDTD.Run(sp, verbose=verbose, cleanup=True)
-
-            f_eval = np.concatenate([
-                [config.f_target],
-                np.linspace(config.f_target * 0.85, config.f_target * 1.15, 25)
-            ])
-            port.CalcPort(sp, f_eval)
-
-            s11_all    = port.uf_ref / port.uf_inc
-            s11_dB_all = 20.0 * np.log10(np.abs(s11_all) + 1e-30)
-            s11_dB     = float(s11_dB_all[0])
-            zin        = port.uf_tot[0] / port.if_tot[0]
-            f_res      = _cp_center_freq(f_eval, s11_dB_all)
-
-            res = nf2ff_box.CalcNF2FF(sp, [config.f_target],
-                                       theta=[0.0, 1.0, 2.0, 3.0, 5.0, 10.0],
-                                       phi=[0., 90., 180., 270.],
-                                       center=[0, 0, 1e-3])
-            ar_dB, is_rhcp = _axial_ratio_db(res.E_cprh[0][1:4],
-                                             res.E_cplh[0][1:4])
-            Dmax  = float(res.Dmax[0])
-
-            return {'s11_dB': s11_dB, 'f_res': f_res, 'ar_dB': ar_dB,
-                    'Dmax': Dmax, 'rhcp': is_rhcp,
-                    'zin_re': float(np.real(zin)),
-                    'zin_im': float(np.imag(zin)), 'ok': True}
-
-        except Exception as exc:
-            print(f'  !! Sim {sim_suffix} failed: {exc}')
-            return {'s11_dB': 0.0, 'f_res': config.f_target, 'ar_dB': 99.0,
-                    'Dmax': -99.0, 'rhcp': True,
-                    'zin_re': 0.0, 'zin_im': 0.0, 'ok': False}
-
-        finally:
-            if cleanup and os.path.exists(sp):
-                shutil.rmtree(sp, ignore_errors=True)
 
     def _record(self, phase, W, dr, yi, r, sub_hw=None):
         self._n_done += 1

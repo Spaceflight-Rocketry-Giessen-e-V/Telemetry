@@ -10,6 +10,7 @@ import numpy as np
 
 import config
 from src import plotting
+from src.metrics import axial_ratio_db, s11_db
 
 
 _PARAVIEW_README = """\
@@ -119,12 +120,14 @@ class PostProcessor:
             config.f_target + config.fc, 401)
         self._port.CalcPort(self._sim_path, f_sweep)
 
-        s11    = self._port.uf_ref / self._port.uf_inc
-        s11_dB = 20.0 * np.log10(np.abs(s11) + 1e-30)
+        s11_dB = s11_db(self._port.uf_ref, self._port.uf_inc)
         Zin    = self._port.uf_tot / self._port.if_tot
 
         # CP operating frequency: centroid of matched bandwidth (works for both
-        # single-mode and split-mode patches; robust at coarse and fine grids)
+        # single-mode and split-mode patches; robust at coarse and fine grids).
+        # NOTE: intentionally NOT metrics.cp_center_freq — this reporting path
+        # also needs s11_at_res and falls back to f_target (not argmin) when the
+        # patch never matches below -10 dB, so the two must stay distinct.
         mask = s11_dB < -10
         if mask.any():
             weights    = -s11_dB[mask]
@@ -192,14 +195,13 @@ class PostProcessor:
             outfile=os.path.join(self._sim_path, 'nf2ff_ar.h5'))
 
         # True axial ratio AR = (R+L)/|R-L| in dB (≥0); handedness from sign of
-        # (R-L). Matches the optimiser's _axial_ratio_db so opt and final agree.
+        # (R-L). Uses the same metrics.axial_ratio_db as the optimiser so opt
+        # and final agree.
         ar_vs_f_raw = np.empty(len(f_ar))
         rhcp_vs_f   = np.empty(len(f_ar), dtype=bool)
         for n in range(len(f_ar)):
-            R = float(np.mean(np.abs(res_ar.E_cprh[n])))
-            L = float(np.mean(np.abs(res_ar.E_cplh[n])))
-            ar_vs_f_raw[n] = 20.0 * np.log10((R + L) / (abs(R - L) + 1e-30))
-            rhcp_vs_f[n]   = R >= L
+            ar_vs_f_raw[n], rhcp_vs_f[n] = axial_ratio_db(
+                res_ar.E_cprh[n], res_ar.E_cplh[n])
         _w = 5
         ar_vs_f = np.convolve(ar_vs_f_raw, np.ones(_w) / _w, mode='same')
         ar_vs_f[:_w // 2]  = ar_vs_f_raw[:_w // 2]
