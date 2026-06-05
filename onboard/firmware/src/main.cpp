@@ -81,8 +81,8 @@ int main(void)
 
   // UART Declarations
 
-  HardwareSerial* SerialUSB = &Serial4;
-  HardwareSerial* SerialUmbilical = &Serial1;
+  HardwareSerial *SerialUSB = &Serial4;
+  HardwareSerial *SerialUmbilical = &Serial1;
 
   uint8_t pinTX_USB = PIN_PE4;
   uint8_t pinRX_USB = PIN_PE5;
@@ -99,7 +99,7 @@ int main(void)
   uint8_t pinRX_1780 = PIN_PA1;
   uint8_t pinTX_1701 = PIN_PB4;
   uint8_t pinRX_1701 = PIN_PB5;
-  
+
   // Initialize I2C
 
   Wire.pins(PIN_PC2, PIN_PC3);
@@ -110,28 +110,28 @@ int main(void)
   RC17xxHP_RC232 rc1780hp(&Serial0, pinTX_1780, pinRX_1780, pinCFG_1780, pinRST_1780, pinCTS_1780, pinRTS_1780);
   RC17xxHP_RC232 rc1701hp(&Serial3, pinTX_1701, pinRX_1701, pinCFG_1701, pinRST_1780, pinCTS_1701, pinRTS_1701);
 
-  radioModulesSetup(rc1780hp, rc1701hp);
+  radioModulesSetup(rc1780hp, rc1701hp, pinLed, pinBuzzer);
 
   ledUpdate(2, pinLed); // B On
-  
+
   dataStruct dataVariables;
-  
+
   // Data Arrays Preparations
 
   const uint8_t uint8CountPower = 0;
-  uint8_t* uint8ListPower[uint8CountPower] = {};
+  uint8_t *uint8ListPower[uint8CountPower] = {};
   const uint8_t floatCountPower = 0;
-  float* floatListPower[floatCountPower] = {};
+  float *floatListPower[floatCountPower] = {};
 
   const uint8_t uint8CountSens = 0;
-  uint8_t* uint8ListSens[uint8CountSens] = {};
+  uint8_t *uint8ListSens[uint8CountSens] = {};
   const uint8_t floatCountSens = 0;
-  float* floatListSens[floatCountSens] = {};
+  float *floatListSens[floatCountSens] = {};
 
   const uint8_t uint8CountControl = 0;
-  uint8_t* uint8ListControl[uint8CountControl] = {};
+  uint8_t *uint8ListControl[uint8CountControl] = {};
   const uint8_t floatCountControl = 0;
-  float* floatListControl[floatCountControl] = {};
+  float *floatListControl[floatCountControl] = {};
 
   // Subsystems Initialization
 
@@ -140,7 +140,7 @@ int main(void)
   Subsystem subsystemControl(0x40, pinLed.Control, &dataVariables.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
 
   const uint8_t subsystemsCount = 3;
-  Subsystem* subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
+  Subsystem *subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
 
   // Setup Complete
 
@@ -148,14 +148,14 @@ int main(void)
 
   ledUpdate(3, pinLed); // G On
 
-  const uint8_t loopFrequency = 10;  // in Hz       10 Hz = 100 ms interval
+  const uint8_t loopFrequency = 10;             // in Hz       10 Hz = 100 ms interval
   const uint8_t timeBetweenStandbyPackets = 15; // in seconds. In standby, data packets aren't send every loop
-  
+
   uint8_t flightmode = 0;
   uint16_t loopCount = 0;
   uint32_t loopStartTime = 0;
-  
-  while(true)
+
+  while (true)
   {
     subsystemsConnCheck(subsystemList, subsystemsCount);
 
@@ -176,4 +176,3 @@ int main(void)
 
   return 0;
 }
-
