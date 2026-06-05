@@ -54,8 +54,35 @@ public:
 class dataStruct // :)
 {
 public:
+    // Subsystem States
+
     uint8_t statePower;
     uint8_t stateSens;
     uint8_t stateControl;
-    // Define Variables here: height, latitude, longitude etc.
+    uint8_t stateTelemetry;
+
+    // Flight Data
+
+    uint8_t flightEvents;
+    float latitude;
+    float longitude;
+    float heightPressure;
+    float acceleration;
+
+    // Telemetry Data
+
+    uint8_t lowPowerMode;
+    float heightGNSS;
+    uint8_t hdopGNSS;
+    uint8_t satCountGNSS;
+    uint8_t stateUmbilical;
+    float currentUmbilical;
+    uint8_t pressureDecoupler;
+    uint8_t ldrDecoupler;
+    uint8_t continuityPyros;
+    float currentBattery;
+    float voltageBattery;
+    float voltageBatteryCOTS;
+    uint8_t temperatureBattery;
+    uint8_t temperatureElectronics;
 };
