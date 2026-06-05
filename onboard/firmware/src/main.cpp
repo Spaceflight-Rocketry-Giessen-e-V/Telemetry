@@ -60,9 +60,9 @@ int main(void)
 
   // Subsystems Initialization
 
-  Subsystem subsystemPower(0x50, pinLed.Power, &dataVariables.statusPower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
-  Subsystem subsystemSens(0x20, pinLed.Sens, &dataVariables.statusSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
-  Subsystem subsystemControl(0x40, pinLed.Control, &dataVariables.statusControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
+  Subsystem subsystemPower(0x50, pinLed.Power, &dataVariables.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
+  Subsystem subsystemSens(0x20, pinLed.Sens, &dataVariables.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
+  Subsystem subsystemControl(0x40, pinLed.Control, &dataVariables.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
 
   const uint8_t subsystemsCount = 3;
   Subsystem* subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
