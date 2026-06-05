@@ -1,6 +1,17 @@
 #include "Arduino.h"
 #include "Radiocrafts_RC17xxHP_RC232.h"
 #include "Packet.h"
+
+
+//LEDs states
+#define SETUPBEGIN 1
+#define SETUPRADIOMODULS 2
+#define SETUPEND 3
+#define RADIOMODUL_ONE 4
+#define RADIOMODUL_TWO 5
+
+
+
 void buzzerSound(uint8_t pinBuzzer);
 
 void buzzerSoundError(uint8_t pinBuzzer);
@@ -18,15 +29,16 @@ void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t p
 
 void flashWrite(dataStruct dataVariables);
 
-void loopVariablesUpdate(uint8_t* loopCount, uint32_t* loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop); 
+void loopVariablesUpdate(uint16_t* loopCount, uint32_t* loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop); 
 // Delay, count++, loopStartTime aktualisieren, led blinken lassen (loopCount % 2)
 
 void ledUpdate(uint8_t state, ledStruct pinLed); // Switch Case
 
+
 class ledStruct // :) // An Niklas: Makro für digitalWrite einrichten
 {
     public:
-        void pinMode(); // Bei allen Pins pinMode(..., OUTPUT) und digitalWrite(..., LOW);
+         // Bei allen Pins pinMode(..., OUTPUT) und digitalWrite(..., LOW);
 
         uint8_t R;
         uint8_t G;
@@ -34,12 +46,16 @@ class ledStruct // :) // An Niklas: Makro für digitalWrite einrichten
         uint8_t D1;
         uint8_t D2;
         uint8_t D3;
-        uint8_t D18;
-        uint8_t D19;
+        uint8_t Debug1;
+        uint8_t Debug2;
         uint8_t Power;
         uint8_t Sens;
         uint8_t Control;
-};
+
+
+        void pinMode();
+    };
+
 
 class dataStruct // :)
 {

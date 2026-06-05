@@ -17,10 +17,10 @@ int main(void)
 
   ledStruct pinLed;
   pinLed.D1 = PIN_PF3;
-  //...
+  
   pinLed.pinMode();
 
-  ledUpdate(1, pinLed); // R On
+  ledUpdate(SETUPBEGIN, pinLed); // R On
 
   // Pin Declarations
   // Pin Initialisations
@@ -99,3 +99,4 @@ int main(void)
 
   return 0;
 }
+
