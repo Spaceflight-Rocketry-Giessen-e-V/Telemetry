@@ -2,15 +2,12 @@
 #include "Radiocrafts_RC17xxHP_RC232.h"
 #include "Packet.h"
 
-
 //LEDs states
 #define SETUPBEGIN 1
 #define SETUPRADIOMODULS 2
 #define SETUPEND 3
 #define RADIOMODUL_ONE 4
 #define RADIOMODUL_TWO 5
-
-
 
 void buzzerSound(uint8_t pinBuzzer);
 
@@ -29,17 +26,13 @@ void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t p
 
 void flashWrite(dataStruct dataVariables);
 
-void loopVariablesUpdate(uint16_t* loopCount, uint32_t* loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop); 
-// Delay, count++, loopStartTime aktualisieren, led blinken lassen (loopCount % 2)
+void loopVariablesUpdate(uint16_t* loopCount, uint32_t* loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop);
 
-void ledUpdate(uint8_t state, ledStruct pinLed); // Switch Case
+void ledUpdate(uint8_t state, ledStruct pinLed);
 
-
-class ledStruct // :) // An Niklas: Makro für digitalWrite einrichten
+class ledStruct
 {
     public:
-         // Bei allen Pins pinMode(..., OUTPUT) und digitalWrite(..., LOW);
-
         uint8_t R;
         uint8_t G;
         uint8_t B;
@@ -51,7 +44,6 @@ class ledStruct // :) // An Niklas: Makro für digitalWrite einrichten
         uint8_t Power;
         uint8_t Sens;
         uint8_t Control;
-
 
         void pinMode();
     };

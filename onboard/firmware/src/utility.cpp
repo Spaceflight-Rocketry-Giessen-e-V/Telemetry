@@ -3,10 +3,8 @@
 #include "Radiocrafts_RC17xxHP_RC232.h"
 #include "Packet.h"
 
-
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount)
 {
-
   static uint16_t loopCountWhenFlightmodeStarts = 0;
   static uint8_t lastValueOfFlightmode = 0;
 
@@ -52,22 +50,22 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
 
 void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t packetIdentifier)
 {
-    if (packetIdentifier == 0)
-    {
-        return;
-    }
+  if (packetIdentifier == 0)
+  {
+      return;
+  }
 
-    uint8_t packet[12] = { 0 };
+  uint8_t packet[12] = { 0 };
 
-    if (packetIdentifier == 1)
-    {
-        Packet::encodeFlightData(packet, dataVariables);
-    }
-    else if (packetIdentifier == 2)
-    {
-        Packet::encodeTelemetryData(packet, dataVariables);
-    } 
-    radioModule->send(packet, 12);
+  if (packetIdentifier == 1)
+  {
+      Packet::encodeFlightData(packet, dataVariables);
+  }
+  else if (packetIdentifier == 2)
+  {
+      Packet::encodeTelemetryData(packet, dataVariables);
+  } 
+  radioModule->send(packet, 12);
 }
 void loopVariablesUpdate(uint16_t* loopCount, uint32_t* loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop)
 {
@@ -127,13 +125,13 @@ void ledUpdate(uint8_t state, ledStruct &pinLed)
 
         break;
     }
-
 }
 
 void buzzerSound(uint8_t pinBuzzer)
 {
   tone(pinBuzzer,1260,50);
 }
+
 void buzzerSoundError(uint8_t pinBuzzer)
 {
   tone(pinBuzzer,1400,50);
@@ -146,23 +144,21 @@ void buzzerSoundError(uint8_t pinBuzzer)
 }
 
 void ledStruct::pinMode()
-        {
-    
-        ::pinMode(R, OUTPUT);       digitalWrite(R, LOW);
-        ::pinMode(G, OUTPUT);       digitalWrite(G, LOW);
-        ::pinMode(B, OUTPUT);       digitalWrite(B, LOW);
+{
 
-        
-        ::pinMode(D1, OUTPUT);      ::digitalWrite(D1, LOW);
-        ::pinMode(D2, OUTPUT);      ::digitalWrite(D2, LOW);
-        ::pinMode(D3, OUTPUT);      ::digitalWrite(D3, LOW);
+  ::pinMode(R, OUTPUT);       digitalWrite(R, LOW);
+  ::pinMode(G, OUTPUT);       digitalWrite(G, LOW);
+  ::pinMode(B, OUTPUT);       digitalWrite(B, LOW);
 
-       
-        ::pinMode(Sens, OUTPUT);    ::digitalWrite(Sens, LOW);
-        ::pinMode(Power, OUTPUT);   ::digitalWrite(Power, LOW);
-        ::pinMode(Control, OUTPUT);    ::digitalWrite(Control, LOW);
+  ::pinMode(D1, OUTPUT);      ::digitalWrite(D1, LOW);
+  ::pinMode(D2, OUTPUT);      ::digitalWrite(D2, LOW);
+  ::pinMode(D3, OUTPUT);      ::digitalWrite(D3, LOW);
 
-        ::pinMode(Debug1, OUTPUT);    ::digitalWrite(Debug1, LOW);
-        ::pinMode(Debug2, OUTPUT);    ::digitalWrite(Debug2, LOW);
+  ::pinMode(Sens, OUTPUT);    ::digitalWrite(Sens, LOW);
+  ::pinMode(Power, OUTPUT);   ::digitalWrite(Power, LOW);
+  ::pinMode(Control, OUTPUT);    ::digitalWrite(Control, LOW);
 
-        }
+  ::pinMode(Debug1, OUTPUT);    ::digitalWrite(Debug1, LOW);
+  ::pinMode(Debug2, OUTPUT);    ::digitalWrite(Debug2, LOW);
+
+}
