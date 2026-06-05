@@ -112,32 +112,32 @@ int main(void)
 
   radioModulesSetup(rc1780hp, rc1701hp);
 
-  ledUpdate(2, pinLed); // B On
+  ledUpdate(SETUPRADIOMODULS, pinLed); // B On
   
-  dataStruct dataVariables;
+  dataStruct dataVars;
   
   // Data Arrays Preparations
 
-  const uint8_t uint8CountPower = 0;
-  uint8_t* uint8ListPower[uint8CountPower] = {};
-  const uint8_t floatCountPower = 0;
-  float* floatListPower[floatCountPower] = {};
+  const uint8_t uint8CountPower = 3;
+  uint8_t* uint8ListPower[uint8CountPower] = {&dataVars.statePower, &dataVars.stateUmbilical, &dataVars.temperatureBattery};
+  const uint8_t floatCountPower = 4;
+  float* floatListPower[floatCountPower] = {&dataVars.currentUmbilical, &dataVars.currentBattery, &dataVars.voltageBattery, &dataVars.voltageBatteryCOTS};
 
-  const uint8_t uint8CountSens = 0;
-  uint8_t* uint8ListSens[uint8CountSens] = {};
-  const uint8_t floatCountSens = 0;
-  float* floatListSens[floatCountSens] = {};
+  const uint8_t uint8CountSens = 4;
+  uint8_t* uint8ListSens[uint8CountSens] = {&dataVars.stateSens, &dataVars.hdopGNSS, &dataVars.satCountGNSS, &dataVars.temperatureElectronics};
+  const uint8_t floatCountSens = 5;
+  float* floatListSens[floatCountSens] = {&dataVars.latitude, &dataVars.longitude, &dataVars.heightPressure, &dataVars.acceleration, &dataVars.heightGNSS};
 
-  const uint8_t uint8CountControl = 0;
-  uint8_t* uint8ListControl[uint8CountControl] = {};
+  const uint8_t uint8CountControl = 5;
+  uint8_t* uint8ListControl[uint8CountControl] = {&dataVars.stateControl, &dataVars.flightEvents, &dataVars.pressureDecoupler, &dataVars.ldrDecoupler, &dataVars.continuityPyros};
   const uint8_t floatCountControl = 0;
   float* floatListControl[floatCountControl] = {};
 
   // Subsystems Initialization
 
-  Subsystem subsystemPower(0x50, pinLed.Power, &dataVariables.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
-  Subsystem subsystemSens(0x20, pinLed.Sens, &dataVariables.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
-  Subsystem subsystemControl(0x40, pinLed.Control, &dataVariables.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
+  Subsystem subsystemPower(0x50, pinLed.Power, &dataVars.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
+  Subsystem subsystemSens(0x20, pinLed.Sens, &dataVars.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
+  Subsystem subsystemControl(0x40, pinLed.Control, &dataVars.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
 
   const uint8_t subsystemsCount = 3;
   Subsystem* subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
@@ -146,7 +146,8 @@ int main(void)
 
   buzzerSound(pinBuzzer);
 
-  ledUpdate(3, pinLed); // G On
+  ledUpdate(SETUPEND, pinLed); // G On
+  dataVars.stateTelemetry = 3;
 
   const uint8_t loopFrequency = 10;  // in Hz       10 Hz = 100 ms interval
   const uint8_t timeBetweenStandbyPackets = 15; // in seconds. In standby, data packets aren't send every loop
@@ -167,9 +168,9 @@ int main(void)
     commandExecute(command);
 
     uint8_t packetIdentifier = packetSendCheck(&flightmode, loopFrequency, timeBetweenStandbyPackets, loopCount);
-    packetSend(&rc1780hp, dataVariables, packetIdentifier);
+    packetSend(&rc1780hp, dataVars, packetIdentifier);
 
-    flashWrite(dataVariables);
+    flashWrite(dataVars);
 
     loopVariablesUpdate(&loopCount, &loopStartTime, loopFrequency, pinLed.D1);
   }
