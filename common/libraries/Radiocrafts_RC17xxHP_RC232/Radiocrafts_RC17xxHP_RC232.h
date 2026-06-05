@@ -15,6 +15,8 @@ class RC17xxHP_RC232
     public:
         RC17xxHP_RC232(HardwareSerial* serialModule, uint8_t cfgpin, uint8_t rstpin, uint8_t ctspin, uint8_t rtspin);
 
+        void send(uint8_t* packet, uint8_t length) //Hinzugefügt
+
         void begin(uint32_t baud_module);
 
         void serial_Flush();

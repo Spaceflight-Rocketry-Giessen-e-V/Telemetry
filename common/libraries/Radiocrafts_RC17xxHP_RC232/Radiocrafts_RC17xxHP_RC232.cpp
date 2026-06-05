@@ -17,6 +17,10 @@ RC17xxHP_RC232::RC17xxHP_RC232(HardwareSerial* serialModule, uint8_t cfgpin, uin
     _rtspin = rtspin;
 }
 
+void send(uint8_t* packet, uint8_t length) //Hinzugefügt
+        {
+            serialModule->write(packet, length);
+        }
 
 void RC17xxHP_RC232::begin(uint32_t baud_module)
 {

@@ -30,8 +30,10 @@ int main(void)
   Wire.pins(PIN_PC2, PIN_PC3);
   Wire.begin();
 
-  RC17xxHP_RC232 rc1780hp();
-  RC17xxHP_RC232 rc1701hp();
+  //RC17xxHP_RC232 rc1780hp();
+  //RC17xxHP_RC232 rc1701hp();
+  RC17xxHP_RC232 rc1780hp(&Serial1, cfgpin1780, rstpin1780, ctspin1780, rtspin1780);
+  RC17xxHP_RC232 rc1701hp(&Serial2, cfgpin1701, rstpin1701, ctspin1701, rtspin1701);
   radioModulesSetup(rc1780hp, rc1701hp);
 
   ledUpdate(2, pinLed); // B On

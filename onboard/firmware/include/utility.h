@@ -1,5 +1,6 @@
 #include "Arduino.h"
-
+#include "Radiocrafts_RC17xxHP_RC232.h"
+#include "Packet.h"
 void buzzerSound(uint8_t pinBuzzer);
 
 void buzzerSoundError(uint8_t pinBuzzer);
