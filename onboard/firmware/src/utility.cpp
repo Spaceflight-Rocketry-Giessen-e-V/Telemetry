@@ -3,9 +3,9 @@
 #include "Radiocrafts_RC17xxHP_RC232.h"
 #include "Packet.h"
 
-// TODO !! check GS match !!
 static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
+    radioModule->hard_Reset();    // initial reboot to clear settings
     radioModule->begin(19200);    // UART @19200 baud
     if (radioModule->ping() != 0) // confirm response
     {
@@ -41,15 +41,16 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 }
 
 // Configures both radio modules; lights each module's status LED on success and sounds buzzzer
-void radioModulesSetup(RC17xxHP_RC232 rc1780hp, RC17xxHP_RC232 rc1701hp, ledStruct pinLed, uint8_t pinBuzzer)
+void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct pinLed, uint8_t pinBuzzer)
 {
-    uint8_t error1780 = radioModuleConfigure(&rc1780hp); // module 1: downlink (TX)
+    // fallback loop
+    uint8_t error1780 = radioModuleConfigure(rc1780hp); // module 1: downlink (TX)
     if (error1780 == 0)
     {
         ledUpdate(RADIOMODUL_ONE, pinLed);
     }
 
-    uint8_t error1701 = radioModuleConfigure(&rc1701hp); // module 2: uplink (RX)
+    uint8_t error1701 = radioModuleConfigure(rc1701hp); // module 2: uplink (RX)
     if (error1701 == 0)
     {
         ledUpdate(RADIOMODUL_TWO, pinLed);
@@ -58,39 +59,43 @@ void radioModulesSetup(RC17xxHP_RC232 rc1780hp, RC17xxHP_RC232 rc1701hp, ledStru
     if (error1780 != 0 || error1701 != 0)
     {
         buzzerSoundError(pinBuzzer);
+        exit(1);
     }
 }
 
 // Returns the latest single-byte command from the uplink module (rc1701hp, on Serial3), or 0 if command is bad/unknown
-uint8_t commandReceive(RC17xxHP_RC232 radioModule)
+uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
 {
-    (void)radioModule;
-    if (Serial3.available() == 0)
+    uint8_t command = radioModule->read();
+
+    // availability
+    if (radioModule->available() == 0)
     {
         return 0;
     }
-    uint8_t command = Serial3.read();
-    if (command >= 'A' && command <= 'Z') // normalise
+
+    // parity check
+    uint8_t count = 0;
+    for (int z = 0; z < 8; z++)
+    {
+        if (command & (1 << z))
+        {
+            count++;
+        }
+    }
+    if (count % 2 == 0)
+    {
+        command &= 0x7F;
+    }
+
+    // normalise
+    if (command >= 'A' && command <= 'Z')
     {
         command += 'a' - 'A';
     }
-    switch (command)
-    {
-    case 'p':
-    case 'a':
-    case 'b':
-    case 'c':
-    case 'd':
-    case 'l':
-    case 'm':
-    case 'f':
-    case 'g':
-    case 'q':
-    case 'r':
-        return command;
-    default:
-        return 0;
-    }
+
+    // command parsing
+    return command;
 }
 
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount)
