@@ -86,6 +86,8 @@ int main(void)
 
     subsystemsDataGet(subsystemList, subsystemsCount);
 
+    subsystemsLedUpdate(subsystemList, subsystemsCount);
+
     uint8_t command = commandReceive(rc1701hp);
     commandExecute(command);
 

@@ -18,7 +18,7 @@ class Subsystem
         uint8_t _i2cAddress;
         uint8_t _pinLed;
         uint8_t _stateLed;
-        uint8_t* _subsystemStatus;
+        uint8_t* _subsystemState;
         uint8_t** _uint8List;
         uint8_t _uint8Count;
         float** _floatList;

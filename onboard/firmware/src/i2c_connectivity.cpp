@@ -5,8 +5,8 @@ Subsystem::Subsystem(uint8_t i2cAddress, uint8_t pinLed, uint8_t* subsystemStatu
     _i2cAddress = i2cAddress;
     _pinLed = pinLed;
     _stateLed = 0;
-    _subsystemStatus = subsystemStatus;
-    *_subsystemStatus = 4;
+    _subsystemState = subsystemStatus;
+    *_subsystemState = 0;
     _uint8List = uint8List;
     _uint8Count = uint8Count;
     _floatList = floatList;
@@ -16,15 +16,15 @@ Subsystem::Subsystem(uint8_t i2cAddress, uint8_t pinLed, uint8_t* subsystemStatu
 void Subsystem::connectionCheck()
 {
     Wire.beginTransmission(_i2cAddress);
-    uint8_t i2cStatus = (Wire.endTransmission() != 0);
-    *_subsystemStatus = i2cStatus * 4; // Success -> 0, Failure -> 4
+    uint8_t i2cStatus = (Wire.endTransmission() == 0);
+    *_subsystemState = i2cStatus; // Success -> 1, Failure -> 0
 }
 
 void Subsystem::dataGet()
 {
-    if(*_subsystemStatus != 4)
+    if(*_subsystemState != 0)
     {
-        const uint8_t byteCount = _uint8Count * 8 + _floatCount * 32;
+        const uint8_t byteCount = _uint8Count * 1 + _floatCount * 4;
         Wire.requestFrom(_i2cAddress, byteCount);
         uint8_t receivedBytes[byteCount];
         for(uint8_t i = 0; i < byteCount; i++)
@@ -47,17 +47,17 @@ void Subsystem::dataGet()
 
 void Subsystem::ledUpdate()
 {
-    if(*_subsystemStatus == 0)
+    if(*_subsystemState == 1)
     {
         digitalWrite(_pinLed, 1 - _stateLed);
         _stateLed = 1 - _stateLed;
     }
-    else if(*_subsystemStatus >= 1 && *_subsystemStatus <= 3)
+    else if(*_subsystemState == 2 || *_subsystemState == 3)
     {
         digitalWrite(_pinLed, HIGH);
         _stateLed = 1;
     }
-    else if(*_subsystemStatus == 4)
+    else if(*_subsystemState == 0)
     {
         digitalWrite(_pinLed, LOW);
         _stateLed = 0;
@@ -66,7 +66,7 @@ void Subsystem::ledUpdate()
 
 uint8_t Subsystem::statusGet()
 {
-    return *_subsystemStatus;
+    return *_subsystemState;
 }
 
 float Subsystem::bytesToFloat(uint8_t* bytes)
@@ -80,7 +80,7 @@ void subsystemsConnCheck(Subsystem** subsystemsList, uint8_t subsystemsCount)
 {
     for(uint8_t i = 0; i < subsystemsCount; i++)
     {
-        if(subsystemsList[i]->statusGet() == 4)
+        if(subsystemsList[i]->statusGet() == 0)
         {
             subsystemsList[i]->connectionCheck();
         }

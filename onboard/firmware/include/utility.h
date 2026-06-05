@@ -60,8 +60,8 @@ class ledStruct // :) // An Niklas: Makro für digitalWrite einrichten
 class dataStruct // :)
 {
     public:
-        uint8_t statusPower;
-        uint8_t statusSens;
-        uint8_t statusControl;
+        uint8_t statePower;
+        uint8_t stateSens;
+        uint8_t stateControl;
         // Define Variables here: height, latitude, longitude etc.
 };
