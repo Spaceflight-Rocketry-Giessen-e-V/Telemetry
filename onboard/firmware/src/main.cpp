@@ -34,6 +34,7 @@ int main(void)
   //RC17xxHP_RC232 rc1701hp();
   RC17xxHP_RC232 rc1780hp(&Serial1, cfgpin1780, rstpin1780, ctspin1780, rtspin1780);
   RC17xxHP_RC232 rc1701hp(&Serial2, cfgpin1701, rstpin1701, ctspin1701, rtspin1701);
+
   radioModulesSetup(rc1780hp, rc1701hp);
 
   ledUpdate(2, pinLed); // B On
@@ -76,7 +77,7 @@ int main(void)
   const uint8_t timeBetweenStandbyPackets = 15; // in seconds. In standby, data packets aren't send every loop
   
   uint8_t flightmode = 0;
-  uint8_t loopCount = 0;
+  uint16_t loopCount = 0;
   uint32_t loopStartTime = 0;
   
   while(true)

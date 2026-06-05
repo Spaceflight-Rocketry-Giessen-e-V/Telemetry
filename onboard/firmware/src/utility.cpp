@@ -9,8 +9,6 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
 
   static uint16_t loopCountWhenFlightmodeStarts = 0;
   static uint8_t lastValueOfFlightmode = 0;
-  static uint8_t lastPacket = 2;
-  uint16_t loopsToWait = 0;
 
   if(*flightmode == 1 && lastValueOfFlightmode == 0 )
   {
@@ -21,16 +19,13 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
   if(*flightmode == 1) 
   {
 
-    if((loopCount - loopCountWhenFlightmodeStarts) / loopFrequency >= 360)
+    if((loopCount - loopCountWhenFlightmodeStarts) / loopFrequency >= 360 - 3600 / timeBetweenStandbyPackets / loopFrequency)
     {
       *flightmode = 0;
       return 0;
     }
     
-//uint16_t loopsSinceStart = loopCount - loopCountWhenFlightmodeStarts;
-//if(loopsSinceStart % 10 == 9)
-
-    if(loopCount % 10 == 9)
+    if(loopCount % 10 == 0)
     {
       return 2;
     }
@@ -41,18 +36,21 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
   }
   else
   {
-    loopsToWait = (uint16_t) timeBetweenStandbyPackets * loopFrequency;
-
-    if(loopCount % loopsToWait == 0)
+   
+    if(loopCount % (uint16_t) timeBetweenStandbyPackets * loopFrequency == 0)
     {
-      lastPacket = (lastPacket == 1) ? 2 : 1;
-      return lastPacket;
+     
+      return (loopCount % 2) + 1;
     }
-  return 0;
+    else
+    {
+      return 0;
+    }
+
   }
 }  
 
-void packetSend(RC17xxHP_RC232 radioModule, dataStruct dataVariables, uint8_t packetIdentifier)
+void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t packetIdentifier)
 {
     if (packetIdentifier == 0)
     {
@@ -63,12 +61,12 @@ void packetSend(RC17xxHP_RC232 radioModule, dataStruct dataVariables, uint8_t pa
 
     if (packetIdentifier == 1)
     {
-        Packet::encodeSensoric(packet, dataVariables);
+        Packet::encodeFlightData(packet, dataVariables);
     }
     else if (packetIdentifier == 2)
     {
-        Packet::encodeTelemetrie(packet, dataVariables);
+        Packet::encodeTelemetryData(packet, dataVariables);
     } 
-    radioModule.send(packet, 12);
+    radioModule->send(packet, 12);
 }
 

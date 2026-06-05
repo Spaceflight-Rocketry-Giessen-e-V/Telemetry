@@ -12,11 +12,9 @@ uint8_t commandReceive(RC17xxHP_RC232 radioModule); // Aufruf Packet Library Fun
 
 void commandExecute(uint8_t command); //  Distribute Data To Subsystems etc.. Check for 0 (-> no command)
 
-uint8_t packetSendCheck(uint8_t flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint8_t loopCount);
-// Ausrechnen:   const uint32_t flight_mode_max_duration = 360 - 3600 / time_between_packets_standby / hz;     // in seconds   6 min (360s) is max sending time
-// Return: 0 wenn kein Paket, 1 wenn Sensorikpaket, 2 wenn Telemetriepaket
+uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount);
 
-void packetSend(RC17xxHP_RC232 radioModule, dataStruct dataVariables, uint8_t packetIdentifier); // packetIdentifier auswerten: 0 wenn kein Paket, 1 wenn Sensorikpaket, 2 wenn Telemetriepaket. Entsprechende Encode Funktion in Packet Library aufrufen
+void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t packetIdentifier);
 
 void flashWrite(dataStruct dataVariables);
 
