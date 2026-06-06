@@ -5,8 +5,8 @@
 
 static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
-    radioModule->hard_Reset();    // initial reboot to clear settings
-    radioModule->begin(19200);    // UART @19200 baud
+    radioModule->resetHard(); // initial reboot to clear settings
+    radioModule->begin();
     if (radioModule->ping() != 0) // confirm response
     {
         return 1;
@@ -35,8 +35,8 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
     {
         return 1;
     }
-    radioModule->hard_Reset();   // reboot settings take effect
-    radioModule->serial_Flush(); // flush serial buffer
+    radioModule->resetHard(); // reboot settings take effect
+    radioModule->flush();     // flush serial buffer
     return 0;
 }
 
@@ -100,7 +100,6 @@ uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
 
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount)
 {
-
     static uint16_t loopCountWhenFlightmodeStarts = 0;
     static uint8_t lastValueOfFlightmode = 0;
 
@@ -161,6 +160,7 @@ void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t p
     }
     radioModule->send(packet, 12);
 }
+
 void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop)
 {
     *loopCount = *loopCount + 1;
@@ -239,7 +239,6 @@ void buzzerSoundError(uint8_t pinBuzzer)
 
 void ledStruct::pinMode()
 {
-
     ::pinMode(R, OUTPUT);
     digitalWrite(R, LOW);
     ::pinMode(G, OUTPUT);

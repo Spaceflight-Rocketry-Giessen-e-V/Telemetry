@@ -107,8 +107,8 @@ int main(void)
 
   // Initialize Radio Modules
 
-  RC17xxHP_RC232 rc1780hp(&Serial0, pinTX_1780, pinRX_1780, pinCFG_1780, pinRST_1780, pinCTS_1780, pinRTS_1780);
-  RC17xxHP_RC232 rc1701hp(&Serial3, pinTX_1701, pinRX_1701, pinCFG_1701, pinRST_1780, pinCTS_1701, pinRTS_1701);
+  RC17xxHP_RC232 rc1780hp(&Serial0, pinTX_1780, pinRX_1780, 19200, pinCFG_1780, pinRST_1780, pinCTS_1780, pinRTS_1780);
+  RC17xxHP_RC232 rc1701hp(&Serial3, pinTX_1701, pinRX_1701, 19200, pinCFG_1701, pinRST_1780, pinCTS_1701, pinRTS_1701);
 
   radioModulesSetup(rc1780hp, rc1701hp, pinLed, pinBuzzer);
 
