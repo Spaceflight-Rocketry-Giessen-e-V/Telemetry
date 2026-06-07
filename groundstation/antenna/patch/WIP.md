@@ -1,10 +1,15 @@
 # Patch antenna — work in progress
 
-Design is **committed & validated**: 160×160 mm, NP-140F (εr 4.15), W=72.5 / coupler-arm 40,
-dual-feed branch-line coupler, **869.525 MHz** → S11 −11 dB, AR 1.64 dB, 56° AR≤3 beam, RHCP,
-Dmax 3.9 dBi (latest sim `RHCP_Patch_20260607_120756`). KiCad board exported with NP-140F /
-869.525 silk, soldermask keep-out over RF copper, edge-launch SMA land, iso-R + ground via,
-3× M3 holes.
+Design is **committed & validated** (latest sim `RHCP_Patch_20260607_120756`):
+160×160 mm, NP-140F (εr 4.15, tanδ 0.014), 1.6 mm, W = 72.5 / coupler-arm 40,
+dual-feed branch-line coupler, **869.525 MHz** (f_res 870.7 MHz), RHCP.
+
+- Boresight: S11 −11.0 dB, AR 1.64 dB, Dmax 3.9 dBi, AR≤3 dB beam 56°.
+- 45° coverage cone: worst AR 5.3 dB, min RHCP gain ~0 dBic.
+
+KiCad board exported (`patch_antenna.kicad_pcb`): NP-140F / 869.525 silk, datasheet-style
+silk (front boresight-farfield panel, back elevation panel + sunburst deco), soldermask
+keep-out over RF copper, edge-launch SMA land, isolated-port R (R50_ISO) + ground via, 3× M3 holes.
 
 ---
 
@@ -16,7 +21,7 @@ Dmax 3.9 dBi (latest sim `RHCP_Patch_20260607_120756`). KiCad board exported wit
 
 ## ⛔ Pre-fab gates (resolve before ordering)
 - [ ] **Confirm the fab actually supplies NP-140F** at 160×160. JLCPCB's cheap tier stocks
-      KingBoard KB-6164 (εr ~4.6), NOT Nan Ya NP-140F (εr 4.1). If NP-140F isn't guaranteed:
+      KingBoard KB-6164 (εr ~4.6), NOT Nan Ya NP-140F (εr 4.15). If NP-140F isn't guaranteed:
       either accept KB-6164 and re-tune W for εr 4.6 (patch ~−2 %), or pick a fab that stocks Nan Ya.
 - [ ] **Lock RHCP sense before committing copper** (issue #43) — confirm the sim handedness
       matches the rocket's RHCP QFH; wrong sense = ~15–20 dB cross-pol loss.
