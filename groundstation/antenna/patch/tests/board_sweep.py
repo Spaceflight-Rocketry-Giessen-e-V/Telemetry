@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+"""Fixed-dims board-size sweep: AR<=3 beamwidth vs ground-plane size on NP-140F.
+
+W / arm / inset / coupler widths are FROZEN at the re-tuned NP-140F optimum
+(W=72.5, arm=40, f_res 870.2 MHz, AR 1.92 dB; RHCP_Patch_20260607_011202). Only
+sub_hw varies. Board size barely moves resonance / CP quadrature but sets the
+far-field beamwidth, so this isolates the COVERAGE-vs-board curve. Full 150k
+fidelity per point (beamwidth does NOT converge at the cheap 60k screen).
+
+Reuses src.optimizer._run_sim_worker (build_full_sim -> FDTD -> coverage metrics),
+no KiCad / graphs. Run:  python tests/board_sweep.py
+"""
+import _bootstrap  # noqa: F401 - openEMS DLL discovery + project root on sys.path (keep first)
+
+import json
+import os
+import time
+from concurrent.futures import ProcessPoolExecutor, as_completed
+
+import config
+from src.params import PatchParams
+from src.optimizer import _run_sim_worker
+
+# Frozen re-tuned dims (results.json of RHCP_Patch_20260607_011202); only sub_hw varies.
+BASE = dict(W_mm=72.5, cpl_arm_mm=40.0,
+            cpl_w50_mm=config.CPL_W50, cpl_w35_mm=config.CPL_W35,
+            inset_x_mm=16.0, inset_y_mm=16.0)
+SUB_HW = [80.0, 85.0, 90.0]          # -> 160 / 170 / 180 mm boards
+NrTS   = config.NrTS_final            # 150000 (beamwidth-converged fidelity)
+
+
+def main():
+    cores = os.cpu_count() or 1
+    nthreads = max(1, cores // len(SUB_HW))
+    jobs = []
+    for hw in SUB_HW:
+        p = PatchParams.from_dict({**BASE, 'sub_hw_mm': hw})
+        jobs.append((hw, {'p': p, 'NrTS': NrTS,
+                          'sim_suffix': f'BW{int(2 * hw)}', 'num_threads': nthreads}))
+
+    print(f'Board sweep {[int(2 * hw) for hw in SUB_HW]} mm @ NrTS={NrTS}  '
+          f'({len(jobs)} concurrent, {nthreads} threads/sim)', flush=True)
+    t0 = time.monotonic()
+    results = {}
+    with ProcessPoolExecutor(max_workers=len(jobs)) as ex:
+        fut = {ex.submit(_run_sim_worker, kw): hw for hw, kw in jobs}
+        for f in as_completed(fut):
+            hw = fut[f]
+            r = f.result()
+            results[hw] = r
+            tag = 'RHCP' if r.get('rhcp', True) else 'LHCP'
+            note = f'  ERROR: {r.get("_exc")}' if r.get('_exc') else ''
+            print(f'  [{int(2 * hw)} mm done +{(time.monotonic() - t0) / 60:.0f}m]  '
+                  f'f_res={r["f_res"] / 1e6:6.1f}  S11={r["s11_dB"]:+6.1f}  '
+                  f'AR={r["ar_dB"]:5.2f} {tag}  BW={r.get("ar_bw_deg", 0):3.0f}deg  '
+                  f'worstAR={r.get("ar_cone_dB", 99):5.1f}  Dmax={r["Dmax"]:+5.2f}{note}',
+                  flush=True)
+
+    print('\n=== BOARD SWEEP (NP-140F, er 4.15, W=72.5/arm=40 fixed) ===')
+    print(f'{"board":>7} {"f_res":>8} {"S11":>7} {"AR0":>6} {"AR<=3 BW":>9} '
+          f'{"worstAR@cone":>12} {"Dmax":>6}  hand')
+    for hw in SUB_HW:
+        r = results[hw]
+        tag = 'RHCP' if r.get('rhcp', True) else 'LHCP'
+        print(f'{int(2 * hw):>5}mm {r["f_res"] / 1e6:>7.1f} {r["s11_dB"]:>6.1f} '
+              f'{r["ar_dB"]:>6.2f} {r.get("ar_bw_deg", 0):>7.0f}deg '
+              f'{r.get("ar_cone_dB", 99):>11.1f} {r["Dmax"]:>6.2f}  {tag}')
+    print(f'{190:>5}mm    870.2  -11.1   1.92      28deg          9.1   3.89  RHCP'
+          f'   <- prior run (RHCP_Patch_20260607_011202)')
+
+    with open('board_sweep_results.json', 'w', encoding='utf-8') as f:
+        json.dump({int(2 * hw): results[hw] for hw in SUB_HW}, f, indent=2)
+    print(f'\nTotal {(time.monotonic() - t0) / 60:.0f} min. Saved board_sweep_results.json')
+
+
+if __name__ == '__main__':
+    main()
