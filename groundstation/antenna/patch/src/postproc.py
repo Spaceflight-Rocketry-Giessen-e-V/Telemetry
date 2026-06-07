@@ -20,7 +20,8 @@ import config
 from src import plotting
 from src.geometry import dual_feed_layout
 from src.metrics import (axial_ratio_db, s11_db, ar_beamwidth_deg,
-                         worst_ar_over_cone, min_gain_over_cone)
+                         worst_ar_over_cone, min_gain_over_cone,
+                         directivity_dbi, radiation_efficiency)
 from src.params import PatchParams
 
 
@@ -132,10 +133,14 @@ class PostProcessor:
         # port resistor, not returned to the source — so raw Zin ≠ the match it achieves).
         Z0  = float(config.feed_R)
         Zin = Z0 * (1.0 + gamma) / (1.0 - gamma)
-        # Accepted power into the network at each f (for radiation efficiency in _band_sweep).
+        # Power flows into the network at each f (for radiation efficiency in _band_sweep).
+        # P_acc = accepted (incident − reflected); P_inc = incident (available). η_rad uses
+        # P_acc (excludes mismatch), η_tot / realised gain uses P_inc (includes mismatch).
         self._gamma_sweep = gamma
         self._P_acc_sweep = 0.5 * np.real(self._port.uf_tot
                                           * np.conj(self._port.if_tot))
+        self._P_inc_sweep = 0.5 * np.real(self._port.uf_inc
+                                          * np.conj(self._port.if_inc))
 
         # CP operating frequency: -S11-weighted centroid of the matched band
         # (robust for single-mode and split-mode patches at coarse & fine grids).
@@ -203,33 +208,29 @@ class PostProcessor:
             os.path.join(self._graphs_path, 'smith.png'))
 
     def _band_sweep(self):
-        """Directivity + AR-beamwidth vs frequency (the band-behaviour read).
+        """Directivity, realised gain & efficiency + AR-beamwidth vs frequency.
 
-        One multi-frequency NF2FF call over a coarse full sphere gives the peak
-        directivity at each f; its RHCP/LHCP fields give the boresight RHCP
-        directivity, boresight AR, and the AR≤3 dB beamwidth per f. DIRECTIVITY only
-        (normalisation-independent) — absolute efficiency / realised gain is NOT
-        derived here: the openEMS NF2FF radiated-power vs port-power normalisation for
-        this offset-board, hybrid-fed structure is unreliable (Prad came out ~33×
-        below accepted power → a non-physical ~3 %). Realised gain IS below directivity
-        (FR-4 / copper / isolated-resistor loss) but must be quantified by a dedicated
-        NF2FF-calibration run or a bench measurement; see plotting.plot_gain_vs_freq.
+        One multi-frequency NF2FF call over a FINE full sphere gives, per f: the peak
+        directivity (dBi = 10·log10(Dmax), Dmax being openEMS's LINEAR ratio), the
+        total radiated power Prad, the boresight RHCP directivity, boresight AR, and
+        the AR≤3 dB beamwidth. Combined with the port accepted/incident power (from
+        _s11_sweep) this yields the radiation efficiency η_rad = Prad/P_acc, total
+        efficiency η_tot = Prad/P_inc, and realised gain = directivity + 10·log10(η_tot).
+
+        η is dipole-validated (a lossless half-wave dipole gives η_rad ≈ 1.00 and
+        Dmax → 2.19 dBi vs the textbook 2.15), so a low η here is PHYSICAL, not a
+        normalisation artefact: a branch-line coupler dumps the patch's feed-point
+        mismatch into the isolated-port 50 Ω resistor, so η_rad falls far below 1 even
+        with a good input S11. As a guard the efficiency outputs are still gated on a
+        sanity check (0 < η_rad ≲ 1) and dropped to directivity-only if it fails.
         """
-        # TODO(efficiency-nf2ff): restore absolute efficiency / realised gain once the
-        # openEMS NF2FF radiated-power normalisation is trusted. Symptom: nf2ff.Prad came
-        # out ~33x BELOW the port accepted power (P_acc from uf_tot*conj(if_tot), which is
-        # self-consistent with |Gamma| and S11), giving a non-physical ~3 % / -11.6 dBic.
-        # Directivity (Dmax) is correct, so it is an ABSOLUTE-Prad issue, not the pattern.
-        # Investigate, in order: (1) the NF2FF box — build_full_sim uses a default
-        # CreateNF2FFBox() on an OFFSET board; create it with explicit bounds enclosing the
-        # board with >= lambda/4 clearance to the PML and re-sim; (2) integrate Prad on a
-        # FINE full sphere; (3) sanity-check against a lossless reference (dipole -> ~100 %);
-        # expected here ~20-40 % (iso-resistor dump + FR-4 loss). When Prad/P_acc is sane,
-        # re-add eta_rad/eta_tot/realised-gain to plot_gain_vs_freq, results.json & summary.
-        print('Computing band sweep (directivity / AR-beamwidth vs frequency)...')
+        print('Computing band sweep (directivity / efficiency / AR-beamwidth vs frequency)...')
         f_band = np.linspace(config.f_target - 50e6, config.f_target + 50e6, 21)
-        th = np.arange(0.0, 180.1, 3.0)            # full sphere (Dmax)
-        ph = np.arange(0.0, 360.0, 45.0)
+        # FINE full sphere: 2° in θ, 15° in φ (keeps 0/45/90/135 for the AR cuts) so the
+        # Prad solid-angle integral and Dmax are accurate (verified: Prad converged vs a
+        # 1°/2° sphere to <1%). Center at the patch (origin), not the offset board centre.
+        th = np.arange(0.0, 180.1, 2.0)
+        ph = np.arange(0.0, 360.0, 15.0)
         res = self._nf2ff.CalcNF2FF(
             self._sim_path, list(f_band), theta=th, phi=list(ph),
             center=[0, 0, 1e-3], outfile=os.path.join(self._sim_path, 'nf2ff_band.h5'))
@@ -239,16 +240,17 @@ class PostProcessor:
         j_cov   = [int(np.argmin(np.abs(ph - p))) for p in ph_cov]
         i0      = 1 if len(th) > 1 else 0          # off-axis ring (RHCP/LHCP singular on-axis)
 
-        directivity = np.empty(len(f_band))
-        bs_rhcp     = np.empty(len(f_band))
+        directivity = np.empty(len(f_band))        # dBi
+        bs_rhcp     = np.empty(len(f_band))        # dBic
         ar_bs       = np.empty(len(f_band))
         ar_bw       = np.empty(len(f_band))
+        Prad        = np.asarray(res.Prad, dtype=float)
         for n in range(len(f_band)):
-            Dmax = float(res.Dmax[n])
+            D_dBi = float(directivity_dbi(res.Dmax[n]))
             E_rh = res.E_cprh[n]; E_lh = res.E_cplh[n]
             Emax = float(np.max(res.E_norm[n]))
-            directivity[n] = Dmax
-            bs_rhcp[n] = Dmax + 20.0 * np.log10(abs(E_rh[0, 0]) / Emax + 1e-12)
+            directivity[n] = D_dBi
+            bs_rhcp[n] = D_dBi + 20.0 * np.log10(abs(E_rh[0, 0]) / Emax + 1e-12)
             ar_bs[n] = axial_ratio_db(np.array([E_rh[i0, 0]]),
                                       np.array([E_lh[i0, 0]]))[0]
             ar_w = np.array([
@@ -258,13 +260,51 @@ class PostProcessor:
                 for i in range(len(th_cone))])
             ar_bw[n] = ar_beamwidth_deg(th_cone, ar_w)
 
+        # ── efficiency & realised gain (η dipole-validated; see docstring) ──────────
+        P_acc = np.interp(f_band, self._f_sweep, self._P_acc_sweep)
+        P_inc = np.interp(f_band, self._f_sweep, self._P_inc_sweep)
+        eta_rad = radiation_efficiency(Prad, P_acc)            # radiated / accepted
+        eta_tot = radiation_efficiency(Prad, P_inc)            # radiated / incident
+        # Clip η_tot to ≤1 before the realised-gain log: radiated power can never exceed
+        # incident, so realised gain can never exceed directivity. An off-target NF2FF
+        # normalisation artefact (η_tot[n] slightly >1 at a band edge) would otherwise
+        # plot a non-physical realised-gain spike ABOVE the directivity curve (the
+        # f_target sanity gate only checks the single target point).
+        realised_gain = directivity + 10.0 * np.log10(np.clip(eta_tot, 1e-12, 1.0))
+
+        i_ft = int(np.argmin(np.abs(f_band - config.f_target)))
+        eta_rad_ft = float(eta_rad[i_ft]); eta_tot_ft = float(eta_tot[i_ft])
+        # Trust gate: radiated power can never exceed accepted (η_rad ≤ 1); a small
+        # tolerance covers solid-angle discretisation. If it fails, the NF2FF/port
+        # normalisation is suspect — drop to directivity-only (the old safe behaviour).
+        self._eff_ok = bool(np.isfinite(eta_rad_ft) and 0.0 < eta_rad_ft <= 1.05)
+        self._eta_rad   = eta_rad_ft if self._eff_ok else float('nan')
+        self._eta_tot   = eta_tot_ft if self._eff_ok else float('nan')
+        # realised gain at f_target, referenced to the authoritative 3-D Dmax (_farfield)
+        self._realised_gain_dBi = (float(self._Dmax) + 10.0 * np.log10(eta_tot_ft)
+                                   if self._eff_ok else float('nan'))
+
         self._band_f = f_band
-        print(f'  directivity @ target ≈ {np.interp(config.f_target, f_band, directivity):.1f} dBi  '
-              f'(realised gain is lower — efficiency not reliably extractable, see notes)')
+        D_ft = float(np.interp(config.f_target, f_band, directivity))
+        if self._eff_ok:
+            print(f'  directivity @ target ≈ {D_ft:.1f} dBi   '
+                  f'η_rad {eta_rad_ft*100:.1f}%  η_tot {eta_tot_ft*100:.1f}%   '
+                  f'realised gain ≈ {self._realised_gain_dBi:.1f} dBic')
+            if eta_rad_ft < 0.10:
+                print(f'  ! LOW radiation efficiency ({eta_rad_ft*100:.1f}%): most accepted '
+                      f'power is dissipated (branch-line coupler → isolated-port resistor / '
+                      f'dielectric), NOT radiated. Realised gain is far below directivity.')
+        else:
+            print(f'  directivity @ target ≈ {D_ft:.1f} dBi   '
+                  f'(η_rad={eta_rad_ft:.2f} failed sanity gate → efficiency/realised gain '
+                  f'dropped; NF2FF/port normalisation suspect)')
 
         plotting.plot_gain_vs_freq(
             f_band, directivity, bs_rhcp, config.f_target,
-            os.path.join(self._graphs_path, 'directivity_vs_freq.png'))
+            os.path.join(self._graphs_path, 'directivity_vs_freq.png'),
+            realised_gain_dBi=(realised_gain if self._eff_ok else None),
+            eta_rad=(eta_rad if self._eff_ok else None),
+            eta_tot=(eta_tot if self._eff_ok else None))
         plotting.plot_ar_beamwidth_vs_freq(
             f_band, ar_bw, ar_bs, config.f_target,
             os.path.join(self._graphs_path, 'ar_beamwidth_vs_freq.png'),
@@ -326,16 +366,18 @@ class PostProcessor:
         # would describe a different frequency and could flatter a design whose
         # resonance has drifted off f_target. f_res is still reported as resonance.
         f_eval = config.f_target
-        # 2D cuts
+        # 2D cuts. openEMS Dmax is the LINEAR directivity ratio → dBi via directivity_dbi
+        # (10·log10); using it raw under-reads the dBi scale by that log (see metrics).
         theta_2d = np.arange(-180.0, 180.0, 2.0)
         res_2d   = self._nf2ff.CalcNF2FF(
             self._sim_path, f_eval, theta_2d, [0., 90.],
             center=[0, 0, 1e-3])
+        D2 = float(directivity_dbi(res_2d.Dmax[0]))
         E_norm_2d = (20.0 * np.log10(res_2d.E_norm[0] /
-                     np.max(res_2d.E_norm[0]) + 1e-30) + res_2d.Dmax[0])
+                     np.max(res_2d.E_norm[0]) + 1e-30) + D2)
         plotting.plot_farfield_2d(
             theta_2d, np.squeeze(E_norm_2d[:, 0]), np.squeeze(E_norm_2d[:, 1]),
-            f_eval, res_2d.Dmax[0],
+            f_eval, D2,
             os.path.join(self._graphs_path, 'farfield_2d.png'))
 
         # Polar co/cross-pol patterns (RHCP co-pol + LHCP cross-pol) in 3 principal
@@ -344,7 +386,7 @@ class PostProcessor:
         # dBi scale is consistent across panels (the XY horizon cut is correctly low).
         Emax2 = float(np.max(res_2d.E_norm[0]))
         def _cdb(E):
-            return 20.0 * np.log10(np.abs(E) / Emax2 + 1e-12) + res_2d.Dmax[0]
+            return 20.0 * np.log10(np.abs(E) / Emax2 + 1e-12) + D2
         phi_xy = np.arange(0.0, 360.0, 2.0)
         res_xy = self._nf2ff.CalcNF2FF(self._sim_path, f_eval, theta=[90.0],
                                        phi=list(phi_xy), center=[0, 0, 1e-3])
@@ -352,7 +394,7 @@ class PostProcessor:
             [('XZ-plane (φ = 0°)',  theta_2d, _cdb(res_2d.E_cprh[0][:, 0]), _cdb(res_2d.E_cplh[0][:, 0])),
              ('YZ-plane (φ = 90°)', theta_2d, _cdb(res_2d.E_cprh[0][:, 1]), _cdb(res_2d.E_cplh[0][:, 1])),
              ('XY-plane (θ = 90°)', phi_xy,   _cdb(res_xy.E_cprh[0][0, :]), _cdb(res_xy.E_cplh[0][0, :]))],
-            f_eval, res_2d.Dmax[0],
+            f_eval, D2,
             os.path.join(self._graphs_path, 'pattern_polar.png'))
 
         # XY-plane (θ=90°, azimuth) RHCP pattern, downsampled, for the on-board KiCad polar
@@ -367,7 +409,7 @@ class PostProcessor:
             self._sim_path, f_eval, theta_3d, phi_3d,
             center=[0, 0, 1e-3])
         E_3d  = res_3d.E_norm[0]
-        self._Dmax = res_3d.Dmax[0]
+        self._Dmax = float(directivity_dbi(res_3d.Dmax[0]))   # authoritative peak directivity (dBi)
         E_dBi = 20.0 * np.log10(E_3d / np.max(E_3d) + 1e-12) + self._Dmax
         E_lin = np.maximum(E_dBi + 20, 0)
         E_lin = E_lin / np.max(E_lin)
@@ -403,7 +445,7 @@ class PostProcessor:
             center=[0, 0, 1e-3],
             outfile=os.path.join(self._sim_path, 'nf2ff_cone.h5'))
 
-        Dmax = float(res.Dmax[0])
+        Dmax = float(directivity_dbi(res.Dmax[0]))   # peak directivity in dBi (linear→dB)
         E_rh = res.E_cprh[0]               # (n_theta, n_phi) complex
         E_lh = res.E_cplh[0]
         E_no = res.E_norm[0]               # (n_theta, n_phi) real magnitude
@@ -449,10 +491,18 @@ class PostProcessor:
             os.path.join(self._graphs_path, 'ar_vs_theta.png'),
             ar_max=config.AR_MAX_DB, beamwidth_deg=self._ar3_bw_deg,
             cone_half_deg=config.COVER_CONE_DEG)
+        # Overlay the realised-gain curve (directivity × η_tot) when η is trustworthy,
+        # so the absolute level — far below directivity for this iso-resistor-loaded
+        # coupler feed — is visible against the gain floor.
+        realised_off = (10.0 * np.log10(self._eta_tot)
+                        if getattr(self, '_eff_ok', False)
+                        and np.isfinite(getattr(self, '_eta_tot', float('nan')))
+                        else None)
         plotting.plot_gain_vs_theta(
             th, gain_by_phi, ph, gain_worst, config.f_target,
             os.path.join(self._graphs_path, 'gain_vs_theta.png'),
-            gain_floor=config.GAIN_FLOOR_DBIC, cone_half_deg=config.COVER_CONE_DEG)
+            gain_floor=config.GAIN_FLOOR_DBIC, cone_half_deg=config.COVER_CONE_DEG,
+            realized_offset_dB=realised_off)
 
     def _write_vtk_farfield(self):
         vtk_ff = os.path.join(self._vtk_path, 'farfield_rhcp.vtk')
@@ -551,6 +601,12 @@ class PostProcessor:
             'cover_cone_deg':     config.COVER_CONE_DEG,
             'Dmax_dBi':           round(float(self._Dmax), 3),
             'peak_gain_theta_deg': round(self._peak_gain_theta, 1),
+            # ── efficiency & realised gain (dipole-validated NF2FF; see _band_sweep) ──
+            # η_rad = Prad/P_acc (excludes mismatch), η_tot = Prad/P_inc (includes it),
+            # realised gain = Dmax_dBi + 10·log10(η_tot). null when the sanity gate fails.
+            'eta_rad':            (round(self._eta_rad, 4) if self._eff_ok else None),
+            'eta_tot':            (round(self._eta_tot, 4) if self._eff_ok else None),
+            'realised_gain_dBic': (round(self._realised_gain_dBi, 3) if self._eff_ok else None),
             # XY-plane (azimuth) RHCP pattern for the KiCad board polar
             'xy_phi_deg':         [round(a, 1) for a in getattr(self, '_xy_phi_deg', [])],
             'xy_rhcp_dBi':        [round(v, 2) for v in getattr(self, '_xy_rhcp_dBi', [])],
@@ -575,7 +631,11 @@ class PostProcessor:
             ['AR ≤ 3 dB beamwidth',     f"{r['ar3_beamwidth_deg']:.0f}°"],
             ['Worst AR over ±45° cone', f"{r['worst_ar_cone_dB']:.1f} dB"],
             ['Peak directivity',             f"{r['Dmax_dBi']:.1f} dBi"],
-            ['Realised gain / efficiency',   'lower than directivity (FR-4 + iso-R loss)'],
+            ['Realised gain (×η)',
+                (f"{r['realised_gain_dBic']:.1f} dBic   "
+                 f"(η_rad {r['eta_rad']*100:.0f}%, η_tot {r['eta_tot']*100:.0f}%)"
+                 if r.get('realised_gain_dBic') is not None
+                 else 'efficiency unavailable (NF2FF/port sanity gate failed)')],
             ['Min RHCP gain over cone',      f"{r['min_gain_cone_dBic']:.1f} dBic (directivity)"],
             ['Substrate',                    f"{r['substrate_material']}  εr {r['substrate_epsR']}  {r['substrate_h_mm']} mm"],
             ['Board (ground plane)',         f"{r['gp_edge_mm']:.0f} × {r['gp_edge_mm']:.0f} mm"],
@@ -584,8 +644,9 @@ class PostProcessor:
         plotting.plot_summary_sheet(
             rows, f"RHCP Dual-Feed Patch — {r['f_target_MHz']:.3f} MHz",
             os.path.join(self._graphs_path, 'summary_sheet.png'),
-            footnote='Directivity is the pattern peak; realised gain includes dielectric/'
-                     'copper/isolated-resistor loss + mismatch. Simulated in openEMS (FDTD).')
+            footnote='Directivity is the pattern peak; realised gain = directivity × η_tot '
+                     '(η dipole-validated). In-sim loss = FR-4 dielectric + isolated-port '
+                     '50 Ω resistor + mismatch (copper is modelled as PEC). openEMS (FDTD).')
 
     def _write_paraview_readme(self):
         header = (f'Simulation: {config.f_target/1e6:.4f} MHz target, '
@@ -670,6 +731,7 @@ print('Done.  Use Animation View (View > Animation View) to play the phase seque
   Coverage   : AR≤3 dB beam {self._ar3_bw_deg:.0f}°   worst AR / {config.COVER_CONE_DEG:.0f}° cone {self._worst_ar_cone:.1f} dB
              : min RHCP gain / cone {self._min_gain_cone:.1f} dBic   (peak gain θ≈{self._peak_gain_theta:.0f}°)
   Dmax       : {self._Dmax:.1f} dBi  @ {self._f_res/1e6:.2f} MHz
+  Efficiency : {f'η_rad {self._eta_rad*100:.1f}%   η_tot {self._eta_tot*100:.1f}%   realised gain {self._realised_gain_dBi:.1f} dBic' if getattr(self, '_eff_ok', False) else 'unavailable (NF2FF/port sanity gate failed)'}
   Sim data   : {self._sim_path}
   Graphs     : {self._graphs_path}
   ParaView   : {self._vtk_path}

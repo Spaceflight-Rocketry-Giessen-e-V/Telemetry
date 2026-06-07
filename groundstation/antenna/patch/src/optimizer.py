@@ -133,7 +133,10 @@ def _cost(r) -> float:
         0.0, config.GAIN_FLOOR_DBIC - r.get('gain_cone_dBic', -99.0)) / config.GAIN_FLOOR_DBIC
     # reward AR<=3 dB beamwidth, normalised to AR_BW_REF and capped at 1.0
     rew_bw = config.W_AR_BW * min(r.get('ar_bw_deg', 0.0) / config.AR_BW_REF, 1.0)
-    return pen_freq + pen_s11 + pen_ar + pen_gain - rew_bw
+    # reward radiation efficiency (drive power INTO the patch, not the iso resistor);
+    # saturates at ETA_RAD_REF so a good radiator isn't over-rewarded vs CP coverage.
+    rew_eff = config.W_EFF * min(max(r.get('eta_rad', 0.0), 0.0) / config.ETA_RAD_REF, 1.0)
+    return pen_freq + pen_s11 + pen_ar + pen_gain - rew_bw - rew_eff
 
 
 def _screen_cost(r) -> float:
@@ -146,7 +149,10 @@ def _screen_cost(r) -> float:
         / config.F_RES_SCALE_MHZ
     pen_s11  = config.W_MATCH * max(0.0, r['s11_dB'] + 10.0)
     pen_hand = 0.0 if r.get('rhcp', True) else 1.0   # soft: handedness noisy at coarse NrTS
-    return pen_freq + pen_s11 + pen_hand
+    # radiation efficiency (Prad/P_acc) converges with the match at screen NrTS, and is
+    # the dominant re-tune objective, so shortlist on it too (drive power into the patch).
+    rew_eff  = config.W_EFF * min(max(r.get('eta_rad', 0.0), 0.0) / config.ETA_RAD_REF, 1.0)
+    return pen_freq + pen_s11 + pen_hand - rew_eff
 
 
 def _run_sim_worker(kw: dict) -> dict:
@@ -167,7 +173,8 @@ def _run_sim_worker(kw: dict) -> dict:
     from src.metrics import (axial_ratio_db as _ar, cp_center_freq as _cf,
                              failure_result as _fail, s11_db as _s11db,
                              ar_beamwidth_deg as _bw, worst_ar_over_cone as _wc,
-                             min_gain_over_cone as _mg)
+                             min_gain_over_cone as _mg, directivity_dbi as _ddbi,
+                             radiation_efficiency as _eff)
 
     sp = _tempfile.mkdtemp(prefix=f'rhcp_{kw["sim_suffix"]}_')
     try:
@@ -197,7 +204,18 @@ def _run_sim_worker(kw: dict) -> dict:
         f_ar  = [_cfg.f_target, _cfg.f_target - d_ar, _cfg.f_target + d_ar]
         res   = nf2ff.CalcNF2FF(sp, f_ar, theta=th, phi=ph, center=[0, 0, 1e-3])
         nf    = len(f_ar)
-        Dmax  = float(res.Dmax[0])                       # at f_target
+
+        # Peak directivity (dBi) + radiation efficiency from a coarse FULL-SPHERE call:
+        # Dmax/Prad need the whole sphere (the cone call above only integrates 0..60°, so
+        # its Prad — hence Dmax — is biased). openEMS Dmax is the LINEAR ratio → dBi via
+        # _ddbi. η_rad = Prad / P_acc is dipole-validated; for a branch-line-coupler feed
+        # it exposes power dumped in the isolated-port resistor that a good S11 hides.
+        res_f = nf2ff.CalcNF2FF(sp, [_cfg.f_target],
+                                theta=_np.arange(0.0, 180.1, 6.0),
+                                phi=_np.arange(0.0, 360.0, 30.0), center=[0, 0, 1e-3])
+        Dmax  = float(_ddbi(res_f.Dmax[0]))              # at f_target, dBi
+        P_acc = float(_np.real(port.P_acc[0]))          # f_eval[0] == f_target
+        eta_rad = float(_eff(res_f.Prad[0], P_acc))
 
         # handedness at f_target; boresight AR = worst over the band (θ=2° near-axis ring)
         _, is_rhcp = _ar(res.E_cprh[0][1, :], res.E_cplh[0][1, :])
@@ -223,10 +241,10 @@ def _run_sim_worker(kw: dict) -> dict:
                 'ar_bw_deg': float(_bw(th, ar_th)),
                 'ar_cone_dB': float(_wc(th, ar_th, _cfg.COVER_CONE_DEG)),
                 'gain_cone_dBic': float(_mg(th, g_th, _cfg.COVER_CONE_DEG)),
-                'Dmax': Dmax, 'rhcp': bool(is_rhcp), 'ok': True}
+                'Dmax': Dmax, 'eta_rad': eta_rad, 'rhcp': bool(is_rhcp), 'ok': True}
     except Exception as exc:
         return {**_fail(), 'ar_bw_deg': 0.0, 'ar_cone_dB': 99.0,
-                'gain_cone_dBic': -99.0, '_exc': str(exc)}
+                'gain_cone_dBic': -99.0, 'eta_rad': 0.0, '_exc': str(exc)}
     finally:
         if _os.path.exists(sp):
             _shutil.rmtree(sp, ignore_errors=True)
@@ -420,7 +438,7 @@ class Optimizer:
             f'  gp={p.sub_hw_mm*2:5.1f}'
             f'  ->  S11={r["s11_dB"]:+5.1f}  f={r["f_res"]/1e6:.1f}({df:+.0f})'
             f'  AR={r["ar_dB"]:4.1f} {status}  BW={r.get("ar_bw_deg",0):3.0f}'
-            f'  G={r["Dmax"]:+4.1f}  cost={_cost(entry):+5.2f}'
+            f'  D={r["Dmax"]:+4.1f}dBi  η={r.get("eta_rad",0)*100:4.1f}%  cost={_cost(entry):+5.2f}'
             f'  [+{self._fmt_dur(elapsed)} ETA {eta.strftime("%H:%M")}]',
             flush=True)
 

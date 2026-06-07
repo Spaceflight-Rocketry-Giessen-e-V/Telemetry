@@ -58,6 +58,32 @@ def s11_db(uf_ref, uf_inc):
     return 20.0 * np.log10(np.abs(uf_ref / uf_inc) + 1e-30)
 
 
+def directivity_dbi(dmax_linear):
+    """Convert openEMS ``nf2ff.Dmax`` (LINEAR directivity ratio) to dBi.
+
+    openEMS returns Dmax = 4·π·U_max / P_rad — a dimensionless ratio ≥ 1 (1 =
+    isotropic), NOT decibels. Directivity in dBi is 10·log10(Dmax). Reporting the
+    raw ratio AS dBi under-reads directivity by exactly this log (e.g. a linear
+    3.89 is 5.90 dBi, not "3.9 dBi"). Validated against a lossless half-wave dipole:
+    openEMS Dmax = 1.656 → 2.19 dBi, matching the textbook 2.15 dBi. Accepts a
+    scalar or array; the 1e-30 floor keeps log10 finite.
+    """
+    return 10.0 * np.log10(np.asarray(dmax_linear, dtype=float) + 1e-30)
+
+
+def radiation_efficiency(P_rad, P_acc):
+    """η_rad = radiated / ACCEPTED power (excludes feed mismatch). 0..1.
+
+    ``P_rad`` is the openEMS NF2FF total radiated power (integrate the far field
+    over a full sphere); ``P_acc`` is the port accepted power 0.5·Re(V·I*). Both
+    are dipole-validated (a lossless dipole gives η_rad ≈ 1.00). For a branch-line-
+    coupler feed, power the patch reflects is dumped in the isolated-port resistor,
+    so η_rad can be far below 1 even when S11 is good. Realised gain (dBi) =
+    directivity_dbi(Dmax) + 10·log10(η_tot), with η_tot = P_rad / P_inc.
+    """
+    return np.asarray(P_rad, dtype=float) / (np.asarray(P_acc, dtype=float) + 1e-30)
+
+
 def failure_result():
     """Sentinel result dict for a simulation that failed to produce metrics.
 

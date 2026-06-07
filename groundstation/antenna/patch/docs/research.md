@@ -43,6 +43,17 @@ comprehensive review," Alexandria Engineering Journal 103 (2024) 197–221*
 > *not* chosen); **§9 is the current decision.** migration-plan.md is being rewritten
 > to the flat dual-feed design.
 
+> **⚠️ CORRECTION 2026-06-07 (efficiency / directivity).** Two sim-reporting issues were found
+> and fixed (see WIP.md "Efficiency resolved"): (1) openEMS `nf2ff.Dmax` is a LINEAR ratio, so every
+> "dBic"/"dBi" figure below that came straight from `Dmax` (e.g. the §"150 mm 0.43 4.4 dBic … 375 mm
+> 1.09 5.8 dBic" GP table, and the "~3–5 dBic" expectations) is the linear ratio mis-labelled — the
+> true **directivity** is `10·log10` of it (~+2 dB; the on-target patch is **5.9 dBi**, not 3.9).
+> (2) Far more important, the as-built dual-feed patch radiates only **η_rad ≈ 3 %** of accepted
+> power (**realised gain ≈ −9.6 dBic**): the branch-line coupler dumps the patch feed-point mismatch
+> into the isolated-port resistor. This is dipole-validated and REAL. The 10 km link still closes
+> (~16 dB margin) but a feed-match re-tune is recommended. Treat the gain numbers below as DIRECTIVITY
+> projections, ~2 dB low, and NOT realised gain.
+
 ## 1. Project context
 
 | Fact | Value |

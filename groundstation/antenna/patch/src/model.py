@@ -205,7 +205,8 @@ def build_patch_sim(p: PatchParams, NrTS: int, *, stage: str = 'single',
     return FDTD, CSX, port, nf2ff_box
 
 
-def build_full_sim(p: PatchParams, NrTS: int, *, vtk_dump: bool = False):
+def build_full_sim(p: PatchParams, NrTS: int, *, vtk_dump: bool = False,
+                   iso_probe: bool = False):
     """Stage 2+ full dual-feed model: square patch + branch-line coupler + two
     equal-length L-feeds + isolated-port 50 Ω termination, on the offset finite
     board. LOCKED topology: input=BL, isolated=BR, outputs TL→LEFT(-x)/E_x and
@@ -314,6 +315,14 @@ def build_full_sim(p: PatchParams, NrTS: int, *, vtk_dump: bool = False):
     res.AddBox(start=[ix, iy, 0], stop=[ix, iy, z])
     mesh.AddLine('x', [ix - fr, ix, ix + fr])
     mesh.AddLine('y', [iy - fr, iy, iy + fr])
+    if iso_probe:
+        # DIAGNOSTIC ONLY (no EM effect): a voltage probe across R_iso integrates Ez
+        # over the substrate at the resistor, so P_iso = 0.5·|V|²/R. Lets a 150k run
+        # decompose accepted power into radiated (NF2FF Prad) vs iso-resistor dump vs
+        # FR-4 dielectric (= P_acc − Prad − P_iso; copper is PEC). Read via
+        # openEMS.ports.UI_data(['iso_V'], sim_path, [f]).
+        vp = CSX.AddProbe('iso_V', p_type=0)
+        vp.AddBox([ix, iy, 0], [ix, iy, z])
 
     # ── input stub (BL → stub_end) = MSL feed metal, Feed_R-terminated source ──
     feed = CSX.AddMetal('feed')

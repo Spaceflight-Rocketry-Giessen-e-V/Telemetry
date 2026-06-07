@@ -9,7 +9,7 @@ Figure set (datasheet-style characterisation of the dual-feed RHCP patch):
     smith.png              S11 locus on a 50 Ω Smith chart
     input_impedance.png    de-embedded Zin = 50·(1+Γ)/(1-Γ)  (R + jX)
     axial_ratio.png        boresight AR vs f, AR<=3 dB band
-    efficiency_gain.png     directivity / realised gain / radiation+total efficiency vs f
+    directivity_vs_freq.png  directivity / realised gain / radiation+total efficiency vs f
     ar_beamwidth_vs_freq.png  AR<=3 dB elevation beamwidth + boresight AR vs f
 
   Spatial (the pattern):
@@ -22,10 +22,12 @@ Figure set (datasheet-style characterisation of the dual-feed RHCP patch):
   Summary:
     summary_sheet.png      key-parameter table (one-glance datasheet block)
 
-NOTE on "gain": the per-angle pattern plots show DIRECTIVITY (pattern shape).
-Realised gain (directivity x total efficiency, i.e. incl. FR-4 / copper / isolated-
-resistor / mismatch loss) is reported in efficiency_gain.png and summary_sheet.png —
-it is several dB below directivity on FR-4-class laminate, so the two are kept distinct.
+NOTE on "gain": the per-angle pattern plots show DIRECTIVITY (pattern shape, in dBi =
+10·log10(openEMS Dmax)). Realised gain (directivity × total efficiency η_tot, i.e. incl.
+FR-4 dielectric + isolated-port-resistor + mismatch loss; copper is PEC in-sim) is
+reported in directivity_vs_freq.png, gain_vs_theta.png and summary_sheet.png — for the
+branch-line-coupler feed it is many dB below directivity (the coupler dumps the patch
+mismatch into the isolated-port resistor), so the two are kept distinct.
 """
 
 import matplotlib
@@ -171,26 +173,48 @@ def plot_axial_ratio(f_ar, ar_vs_f, ar_vs_f_raw, f_target, out_path, rhcp=True):
     _save(fig, out_path)
 
 
-def plot_gain_vs_freq(f, directivity_dBi, rhcp_boresight_dBic, f_target, out_path):
-    """Peak directivity and boresight RHCP directivity vs frequency.
+def plot_gain_vs_freq(f, directivity_dBi, rhcp_boresight_dBic, f_target, out_path,
+                      realised_gain_dBi=None, eta_rad=None, eta_tot=None):
+    """Peak directivity, boresight RHCP directivity, and (if given) realised gain vs f.
 
-    DIRECTIVITY only — it is normalisation-independent and reliable. Absolute
-    realised gain / efficiency is NOT plotted: the openEMS NF2FF radiated-power vs
-    port-power normalisation for this offset-board, hybrid-fed structure is not
-    trustworthy (gave a non-physical ~3 %), so realised gain (which is genuinely
-    below directivity due to FR-4 / copper / isolated-resistor loss) must be
-    quantified by a dedicated NF2FF-calibration run or a bench measurement.
+    Directivity (dBi = 10·log10(openEMS Dmax)) is normalisation-independent. When the
+    dipole-validated efficiency is trustworthy, the realised-gain curve (directivity +
+    10·log10(η_tot)) and the radiation/total efficiency (right axis, %) are overlaid so
+    the absolute level — far below directivity when a branch-line coupler dumps the
+    patch mismatch into the isolated-port resistor — is visible. If η is unavailable
+    (sanity gate failed) only the directivity curves are drawn.
     """
     fig, ax = plt.subplots()
     ax.plot(f / 1e6, directivity_dBi, 'k-', linewidth=2, label='Peak directivity (dBi)')
     ax.plot(f / 1e6, rhcp_boresight_dBic, 'b-', linewidth=2,
             label='Boresight RHCP directivity (dBic)')
-    ax.axvline(x=f_target / 1e6, label=f'Target {f_target/1e6:.3f} MHz', **_TARGET_LINE)
     d_ft = float(np.interp(f_target, f, directivity_dBi))
     ax.plot(f_target / 1e6, d_ft, 'ko', label=f'{d_ft:.1f} dBi @ target')
-    ax.grid(True); ax.legend(loc='best', fontsize='small')
-    ax.set_xlabel('Frequency (MHz)'); ax.set_ylabel('Directivity (dB)')
-    ax.set_title('Directivity vs Frequency  (realised gain is lower — see notes)')
+    if realised_gain_dBi is not None:
+        ax.plot(f / 1e6, realised_gain_dBi, color='purple', linestyle='-.', linewidth=2,
+                label='Realised gain (×η_tot, dBic)')
+        g_ft = float(np.interp(f_target, f, realised_gain_dBi))
+        ax.plot(f_target / 1e6, g_ft, 'o', color='purple', label=f'{g_ft:.1f} dBic @ target')
+    ax.axvline(x=f_target / 1e6, label=f'Target {f_target/1e6:.3f} MHz', **_TARGET_LINE)
+    ax.grid(True)
+    ax.set_xlabel('Frequency (MHz)'); ax.set_ylabel('Directivity / realised gain (dB)')
+
+    if eta_rad is not None or eta_tot is not None:
+        axR = ax.twinx()
+        if eta_rad is not None:
+            axR.plot(f / 1e6, np.asarray(eta_rad) * 100.0, color='green',
+                     linestyle=':', linewidth=1.6, label='η_rad (%)')
+        if eta_tot is not None:
+            axR.plot(f / 1e6, np.asarray(eta_tot) * 100.0, color='darkorange',
+                     linestyle=':', linewidth=1.6, label='η_tot (%)')
+        axR.set_ylabel('Efficiency (%)'); axR.set_ylim(bottom=0)
+        h1, l1 = ax.get_legend_handles_labels()
+        h2, l2 = axR.get_legend_handles_labels()
+        ax.legend(h1 + h2, l1 + l2, loc='best', fontsize='small')
+        ax.set_title('Directivity, Realised Gain & Efficiency vs Frequency')
+    else:
+        ax.legend(loc='best', fontsize='small')
+        ax.set_title('Directivity vs Frequency  (efficiency unavailable — see notes)')
     _save(fig, out_path)
 
 

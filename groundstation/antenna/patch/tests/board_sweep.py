@@ -53,20 +53,21 @@ def main():
             print(f'  [{int(2 * hw)} mm done +{(time.monotonic() - t0) / 60:.0f}m]  '
                   f'f_res={r["f_res"] / 1e6:6.1f}  S11={r["s11_dB"]:+6.1f}  '
                   f'AR={r["ar_dB"]:5.2f} {tag}  BW={r.get("ar_bw_deg", 0):3.0f}deg  '
-                  f'worstAR={r.get("ar_cone_dB", 99):5.1f}  Dmax={r["Dmax"]:+5.2f}{note}',
+                  f'worstAR={r.get("ar_cone_dB", 99):5.1f}  '
+                  f'D={r["Dmax"]:+5.2f}dBi  eta={r.get("eta_rad", 0)*100:4.1f}%{note}',
                   flush=True)
 
+    # Dmax is now peak directivity in dBi (10*log10 of openEMS Dmax); eta_rad = Prad/P_acc.
     print('\n=== BOARD SWEEP (NP-140F, er 4.15, W=72.5/arm=40 fixed) ===')
     print(f'{"board":>7} {"f_res":>8} {"S11":>7} {"AR0":>6} {"AR<=3 BW":>9} '
-          f'{"worstAR@cone":>12} {"Dmax":>6}  hand')
+          f'{"worstAR@cone":>12} {"D_dBi":>6} {"eta_r":>6}  hand')
     for hw in SUB_HW:
         r = results[hw]
         tag = 'RHCP' if r.get('rhcp', True) else 'LHCP'
         print(f'{int(2 * hw):>5}mm {r["f_res"] / 1e6:>7.1f} {r["s11_dB"]:>6.1f} '
               f'{r["ar_dB"]:>6.2f} {r.get("ar_bw_deg", 0):>7.0f}deg '
-              f'{r.get("ar_cone_dB", 99):>11.1f} {r["Dmax"]:>6.2f}  {tag}')
-    print(f'{190:>5}mm    870.2  -11.1   1.92      28deg          9.1   3.89  RHCP'
-          f'   <- prior run (RHCP_Patch_20260607_011202)')
+              f'{r.get("ar_cone_dB", 99):>11.1f} {r["Dmax"]:>6.2f} '
+              f'{r.get("eta_rad", 0)*100:>5.1f}%  {tag}')
 
     with open('board_sweep_results.json', 'w', encoding='utf-8') as f:
         json.dump({int(2 * hw): results[hw] for hw in SUB_HW}, f, indent=2)

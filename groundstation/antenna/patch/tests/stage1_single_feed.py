@@ -25,7 +25,7 @@ import tempfile
 import numpy as np
 
 import config
-from src.metrics import s11_db
+from src.metrics import s11_db, directivity_dbi
 from src.model import build_patch_sim
 from src.params import default_params
 
@@ -48,11 +48,14 @@ def run_one(W: float) -> dict:
                  else float(f[np.argmin(s11)]))
         i_ft   = int(np.argmin(np.abs(f - config.f_target)))
         zin    = port.uf_tot[i_ft] / port.if_tot[i_ft]
-        res    = nf2ff.CalcNF2FF(sp, f_res, theta=[0.0], phi=[0.0], center=[0, 0, 1e-3])
+        # full sphere → trustworthy Dmax/Prad (a single θ=0 point cannot integrate Prad,
+        # so its Dmax would be meaningless); report directivity in dBi (10·log10).
+        res    = nf2ff.CalcNF2FF(sp, f_res, theta=np.arange(0.0, 180.1, 5.0),
+                                 phi=np.arange(0.0, 360.0, 20.0), center=[0, 0, 1e-3])
         return dict(W=W, f_res=f_res,
                     s11_ft=float(np.interp(config.f_target, f, s11)),
                     s11_res=float(np.interp(f_res, f, s11)),
-                    Dmax=float(res.Dmax[0]), zin=zin)
+                    Dmax=float(directivity_dbi(res.Dmax[0])), zin=zin)
     finally:
         shutil.rmtree(sp, ignore_errors=True)
 

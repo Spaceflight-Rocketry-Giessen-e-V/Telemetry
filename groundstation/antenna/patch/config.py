@@ -207,6 +207,15 @@ W_AR_BW         = 2.0    # reward ∝ (AR≤3 dB beamwidth / AR_BW_REF). PRIMARY
                         #   this coverage backup patch — raised 1.0→2.0 so a wide clean-CP
                         #   beam is decisive vs the edge-dominated worst-AR-over-cone penalty
                         #   (run #3: a 44° beam must beat a 0° beam; see F_RES_*_FINAL note).
+# Radiation-efficiency term. The validated run radiates only η_rad ≈ 3 % of ACCEPTED
+# power: the branch-line coupler routes the patch's feed-point mismatch into the
+# isolated-port 50 Ω resistor, so a good input S11 hides a near-zero realised gain
+# (≈ −9.6 dBic vs 5.9 dBi directivity). η_rad = Prad/P_acc is dipole-validated. This
+# term REWARDS designs that actually radiate (saturating at ETA_RAD_REF) so the
+# optimiser drives power into the patch, not the iso resistor. Weighted high because a
+# wide clean-CP beam is worthless if the antenna radiates 3 %.
+W_EFF           = 4.0    # reward ∝ min(η_rad / ETA_RAD_REF, 1) — dominant lever in the re-tune
+ETA_RAD_REF     = 0.45   # radiation efficiency at which the reward saturates (good FR-4 patch)
 W_AR_CONE       = 1.0    # penalty ∝ worst-AR-over-cone above AR_MAX_DB (dominated by the 45°
                         #   cone EDGE; the beamwidth reward above is the real coverage signal)
 W_GAIN_FLOOR    = 1.0    # penalty when min RHCP gain over the cone < GAIN_FLOOR_DBIC
