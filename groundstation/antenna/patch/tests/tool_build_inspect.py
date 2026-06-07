@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Build inspector — geometry, mesh, smallest gaps and Courant timestep (no solve).
 
-Constructs build_full_sim at NrTS=1 and reports, WITHOUT running a simulation:
+Constructs build_patch_sim at NrTS=1 and reports, WITHOUT running a simulation:
   * the realised geometry / board size / analytical seeds (a fast geometry +
     port-API regression gate),
   * the full mesh-line counts and per-axis min/max gaps,
@@ -29,8 +29,8 @@ import tempfile
 import numpy as np
 
 import config
-from src.geometry import dual_feed_layout
-from src.model import build_full_sim
+from src.geometry import single_feed_layout
+from src.model import build_patch_sim
 from src.params import default_params
 
 
@@ -62,7 +62,7 @@ def main():
     banner = '--banner' in sys.argv
     W = float(pos[0]) if pos else default_params().W_mm
     p = default_params().with_(W_mm=W)
-    Lo = dual_feed_layout(p)
+    Lo = single_feed_layout(p)
 
     print('=' * 66)
     print('BUILD INSPECTOR  (NrTS=1, no solve)')
@@ -76,11 +76,11 @@ def main():
     for k, v in p.to_dict().items():
         print(f'  {k:12s} = {v:8.3f} mm')
 
-    print('\nRealised layout (dual_feed_layout):')
+    print('\nRealised layout (single_feed_layout):')
     xmin, xmax, ymin, ymax = Lo['copper_bbox']
     print(f'  patch side W      = {p.W_mm:.2f} mm   (half {Lo["h"]:.2f} mm)')
-    print(f'  coupler ring at   = ({Lo["corners"]["BL"][0]:.1f}, {Lo["corners"]["BL"][1]:.1f}) BL'
-          f' .. ({Lo["corners"]["TR"][0]:.1f}, {Lo["corners"]["TR"][1]:.1f}) TR')
+    print(f'  corner truncation = {Lo["trunc"]:.2f} mm chamfer ({Lo["diag"]})')
+    print(f'  feed inset / pt   = {p.inset_y_mm:.2f} mm at {Lo["feed_fp"]}')
     print(f'  copper bbox       = x[{xmin:.1f}, {xmax:.1f}]  y[{ymin:.1f}, {ymax:.1f}] mm')
     print(f'  copper extent     = {xmax-xmin:.1f} x {ymax-ymin:.1f} mm')
     print(f'  board half-width  = {Lo["sub_hw"]:.2f} mm  ->  board edge {Lo["sub_hw"]*2:.1f} mm'
@@ -96,7 +96,7 @@ def main():
     assert min(margins) >= config.BOARD_MARGIN - 1e-6, 'copper too close to board edge!'
 
     print('\nBuilding full FDTD model (NrTS=1)...')
-    FDTD, CSX, port, nf2ff = build_full_sim(p, 1)
+    FDTD, CSX, port, nf2ff = build_patch_sim(p, 1)
     mesh = CSX.GetGrid()
     nx, ny, nz, ncell = _mesh_cells(mesh)
     print(f'  mesh lines        = {nx} x {ny} x {nz}  ->  {ncell:,} cells')
@@ -121,7 +121,7 @@ def main():
         print('\nRunning NrTS=300 to read the engine timestep banner...')
         sp = tempfile.mkdtemp(prefix='buildinspect_')
         try:
-            FDTD2, _CSX2, _p2, _n2 = build_full_sim(p, 300)
+            FDTD2, _CSX2, _p2, _n2 = build_patch_sim(p, 300)
             FDTD2.Run(sp, verbose=2, cleanup=True, numThreads=1)
         finally:
             shutil.rmtree(sp, ignore_errors=True)

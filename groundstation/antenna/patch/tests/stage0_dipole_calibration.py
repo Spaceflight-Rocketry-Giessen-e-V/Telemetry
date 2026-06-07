@@ -13,8 +13,8 @@ It pins down two things the patch results depend on:
      Dmax ≈ 1.64 → 10·log10 = 2.15 dBi (metrics.directivity_dbi). Reporting the raw
      ratio as "dBi" under-reads directivity by that log.
   2. η_rad = Prad / P_acc is absolute-correct: a lossless dipole gives ≈ 1.00, so a
-     low η on the patch (≈ 3 %: branch-line coupler dumping the feed mismatch into the
-     isolated-port resistor) is PHYSICAL, not an NF2FF normalisation artefact.
+     a low η on the patch (FR-4 dielectric loss + any feed mismatch) is PHYSICAL, not an
+     NF2FF normalisation artefact.
 
 Gate (printed PASS/FAIL): directivity within ±0.5 dB of 2.15 dBi, η_rad within
 [0.90, 1.05], and η_tot ≈ (1 − |Γ|²) within ±5 %.

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Stage 1 — single-feed square patch validation.
+"""Stage 1 — single-feed corner-truncated patch resonance scan.
 
-Builds the SINGLE-feed square patch (build_patch_sim stage='single'), runs a
-short FDTD per candidate W, and reports resonance / S11 / Dmax. This de-risks the
-square-patch + MSL-port mechanics before the branch-line coupler is added.
+Builds the single-feed CP patch (build_patch_sim) at the default truncation, runs a
+short FDTD per candidate patch side W, and reports resonance / S11 / Dmax — a quick
+way to centre the resonance on f_target before the full W×truncation optimise. AR is
+NOT judged here (it needs full fidelity + the truncation grid); use the optimiser /
+run.py for the converged CP metrics.
 
-Gate (docs/migration-plan.md §5, Stage 1): S11 <= -10 dB near f_target,
-Dmax ~5-6 dBi, resonance within +-3 MHz of 869.52 MHz. RHCP is NOT expected here
-(there is no coupler yet — this feed is linearly polarised).
+Gate: S11 <= -10 dB and resonance within +-a few MHz of f_target; Dmax ~5-7 dBi.
 
 Usage:
     python tests/stage1_single_feed.py                 # one sim at the analytical seed W
@@ -36,7 +36,7 @@ def run_one(W: float) -> dict:
     p  = default_params().with_(W_mm=W)
     sp = tempfile.mkdtemp(prefix=f'stage1_W{W:.1f}_')
     try:
-        FDTD, _CSX, port, nf2ff = build_patch_sim(p, NrTS, stage='single')
+        FDTD, _CSX, port, nf2ff = build_patch_sim(p, NrTS)
         FDTD.Run(sp, verbose=0, cleanup=True, numThreads=(os.cpu_count() or 0))
 
         f = np.linspace(max(100e6, config.f_target - config.fc),

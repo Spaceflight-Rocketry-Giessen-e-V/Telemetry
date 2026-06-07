@@ -30,11 +30,10 @@ substrate_thickness = 1.6    # mm
 substrate_cells     = 4      # FDTD cells through substrate thickness
 
 # ── FDTD domain ───────────────────────────────────────────────────
-SimBox   = np.array([600, 600, 600])  # simulation domain [mm]. Sized so the OFFSET
-                                      # board (centred in the domain by build_full_sim)
-                                      # clears ≳λ/4 to the inner PML_8 boundary on every
-                                      # face — PML_8 consumes ~8·mesh_res (≈107 mm) inside
-                                      # each face. The old 560×560×420 crowded the -x/-y/-z
+SimBox   = np.array([600, 600, 600])  # simulation domain [mm]. Sized so the centred
+                                      # board clears ≳λ/4 to the inner PML_8 boundary on
+                                      # every face — PML_8 consumes ~8·mesh_res (≈107 mm)
+                                      # inside each face. The old 560×560×420 crowded the
                                       # PML (~0.1 λ) and biased Dmax / wide-angle AR.
 NrTS_opt   = 150000  # time steps per optimisation run. Set EQUAL to NrTS_final so the
                      # opt metric matches the final-run metric. Run 20260606_052114
@@ -61,7 +60,7 @@ num_workers = 0
 # estimate honest. Both the optimiser pool and the ETA derive from this via
 # optimizer.resolve_workers(), so they can never disagree.
 #
-# NOTE: the optimiser's batch sizes (the W×arm GRID = len(GRID_W_FRAC)·len(GRID_ARM_MM),
+# NOTE: the optimiser's batch sizes (the W×trunc GRID = len(GRID_W_FRAC)·len(GRID_TRUNC_MM),
 # and N_CONFIRM, below) are kept near/below MAX_WORKERS so each runs as ~one pool wave.
 # With ~5 concurrent sims on a ~20-thread host _run_batch gives each sim cores//5 = 4
 # FDTD threads, filling every core via threads rather than workers — better per-sim
@@ -102,50 +101,28 @@ dL = (0.412 * substrate_thickness
 L_lp = C0 / (2 * f_target * np.sqrt(eps_eff)) * 1e3 - 2 * dL  # mm
 
 # ══════════════════════════════════════════════════════════════════
-# Flat dual-feed (branch-line coupler) RHCP design — geometry seeds
+# Single-feed corner-truncated RHCP design — geometry seeds
 # ══════════════════════════════════════════════════════════════════
-# CP no longer comes from corner truncation; it comes from a 90° branch-line
-# hybrid feeding two orthogonal patch edges in quadrature.  So the patch is a
-# plain SQUARE (side ≈ resonant length, NO 0.86 CP shrink) and the coupler +
-# two feed lines are new etched copper on the same top layer.  All values are
-# seeds — the optimiser refines them.  See docs/migration-plan.md §2.
+# CP comes from truncating two diagonally-opposite corners of a near-square patch
+# (the chamfer splits the two degenerate modes so they are 90° apart at f_target),
+# fed by ONE inset microstrip. No coupler, no isolated-port resistor — the dual-feed
+# coupler dumped ~64 % of accepted power into that resistor (realised gain −9.6 dBic);
+# the single feed recovers it (validated: η_rad 28 %, realised gain +0.8 dBic). All
+# values are seeds — the optimiser refines W (resonance) / trunc (AR) / inset (match).
 
-# Square patch side seed — a square resonates on its side length, so seed from
-# the LP resonant length L_lp (≈ 83 mm at 869.52 MHz on FR-4 1.6 mm).
-W_SQ_INIT = L_lp                 # mm
+# CP square side: average of the LP width and length, shrunk by a calibrated factor
+# (0.86, from the proven single-feed reference design); the optimiser refines it.
+W_CP_INIT = (W_lp + L_lp) / 2.0 * 0.86   # mm  (≈ 82.5 at εr 4.15)
 
-# Branch-line coupler: a square ring of four λg/4 arms. Through arms are
-# Z0/√2 = 35.36 Ω (wider); the shunt arms and I/O lines are 50 Ω. Hammerstad
-# widths on εr=4.15 / h=1.6 mm (re-synthesised for NP-140F; lower εr → wider lines).
-CPL_W50 = 3.2                    # mm — 50 Ω line width   (Hammerstad synth @ εr 4.15: W/h 1.997 → 50.0 Ω)
-CPL_W35 = 5.43                   # mm — 35.36 Ω line width (Hammerstad synth @ εr 4.15: W/h 3.391 → 35.4 Ω)
-# Arm length ≈ λg/4. Textbook εeff≈3.3 gives λg/4≈47 mm, but in-situ the coupler is loaded
-# by the patch+feeds (effective εeff≈4.8). The validated clean-CP design (W=87.14/arm=48)
-# resonated AND delivered good quadrature TOGETHER at 714 MHz; uniformly scaling the whole
-# structure by 714/869.52 = 0.821 moves that onto the target, giving arm ≈ 48*0.821 ≈ 40 mm.
-# (The earlier "arm=48 quadrature is mistuned to 714" reading came from a malformed-patch run
-# and is RETRACTED — 714 was simply where the un-scaled design happened to work.)
-CPL_ARM = 40.0                   # mm — 0.821 * 48 (scaled λg/4 for clean CP at 869.52)
-# Local fine mesh for the coupler/feed copper: config.mesh_res (~13 mm) is far too
-# coarse for the ~3-5 mm strips and ~0.6 mm gaps, so the coupler arms/feeds get an
-# explicit fine mesh at this scale (3+ cells across every strip width).
-METAL_EDGE_RES = 0.4             # mm — local mesh near coupler/feed edges
+# Corner truncation (chamfer leg per corner). Literature/proven start ≈ 0.10·W (with
+# total Q ≈ 40-50 on FR-4, the Sharma-Gupta ΔS/S ≈ 1/(2Q) gives Δ/W ≈ 0.08-0.10).
+TRUNC_INIT = 0.10 * W_CP_INIT            # mm  (≈ 8.25)
 
-# Feed routing: each coupler output → its orthogonal inset feed point. The two
-# 50 Ω feed lines MUST be equal electrical length so the 90° quadrature reaches
-# the patch intact.
-FEED_W     = CPL_W50             # mm — feed lines are 50 Ω microstrip
-INSET_X    = 16.0               # mm — inset depth, x-edge feed (impedance match); matches the
-INSET_Y    = 16.0               #      validated anchor. dual_feed_layout auto-caps it to
-                                #      (W-arm)/2-3.15 at small W so the two notches never collide.
-INSET_GAP  = 0.6                # mm — etched gap each side of an inset feed line
-CPL_PATCH_GAP = 2.5            # mm — copper gap, coupler TR corner → patch BL corner
-ISO_STUB      = 6.0            # mm — short stub from the isolated corner to its 50 Ω R
-BOARD_MARGIN  = 8.0            # mm — min ground beyond any copper (return current + edge)
-INPUT_STUB = 25.0              # mm — 50 Ω input stub that hosts the MSL port
-                                #      (≈0.13 λg: room for ≥5 prop mesh lines plus
-                                #      the excitation/measurement planes ahead of
-                                #      the first coupler junction)
+# Single inset feed at the −y edge centre. 50 Ω microstrip; shallow inset on 1.6 mm.
+FEED_W     = 3.2                # mm — 50 Ω line width (Hammerstad @ εr 4.15: W/h 1.997 → 50 Ω)
+INSET_Y    = 0.07 * W_CP_INIT   # mm — feed inset depth (≈ 5.8; 7 % of W, proven seed)
+INSET_GAP  = 0.6               # mm — etched gap each side of the inset feed line
+BOARD_MARGIN  = 8.0           # mm — min ground beyond any copper (return current + edge)
 
 # ── Optimizer cost weights (lower cost = better candidate) ────────
 # Each term is normalized so weight ≈ 1 makes them comparable in magnitude;
@@ -197,7 +174,7 @@ WRONG_HAND_PENALTY = 3.0
 # the cost of being harder for a single-feed patch to satisfy).
 AR_MARGIN_MHZ = 1.5
 
-# ── Coverage cost weights (flat dual-feed design; rewritten optimiser) ─────────
+# ── Coverage cost weights (single-feed coverage optimiser) ─────────────────────
 # The no-tracking BACKUP patch is selected on WIDE-BEAM coverage, not boresight
 # gain: reward a large AR≤3 dB elevation beamwidth, penalise the worst AR over
 # the 0–COVER_CONE° cone, and hold a FLOOR on RHCP gain across the cone (not
@@ -207,14 +184,13 @@ W_AR_BW         = 2.0    # reward ∝ (AR≤3 dB beamwidth / AR_BW_REF). PRIMARY
                         #   this coverage backup patch — raised 1.0→2.0 so a wide clean-CP
                         #   beam is decisive vs the edge-dominated worst-AR-over-cone penalty
                         #   (run #3: a 44° beam must beat a 0° beam; see F_RES_*_FINAL note).
-# Radiation-efficiency term. The validated run radiates only η_rad ≈ 3 % of ACCEPTED
-# power: the branch-line coupler routes the patch's feed-point mismatch into the
-# isolated-port 50 Ω resistor, so a good input S11 hides a near-zero realised gain
-# (≈ −9.6 dBic vs 5.9 dBi directivity). η_rad = Prad/P_acc is dipole-validated. This
-# term REWARDS designs that actually radiate (saturating at ETA_RAD_REF) so the
-# optimiser drives power into the patch, not the iso resistor. Weighted high because a
-# wide clean-CP beam is worthless if the antenna radiates 3 %.
-W_EFF           = 4.0    # reward ∝ min(η_rad / ETA_RAD_REF, 1) — dominant lever in the re-tune
+# Radiation-efficiency term. η_rad = Prad/P_acc (dipole-validated) rewards designs that
+# actually RADIATE accepted power rather than dissipate it (FR-4 dielectric loss + any
+# feed mismatch — a good input S11 alone does not guarantee a high realised gain). This
+# was the lesson from the retired dual-feed coupler, which radiated only ~3 % (−9.6 dBic);
+# the single-feed patch recovers it (~28 %). REWARD saturates at ETA_RAD_REF; weighted
+# high because a wide clean-CP beam is worthless if the antenna barely radiates.
+W_EFF           = 4.0    # reward ∝ min(η_rad / ETA_RAD_REF, 1) — keeps the optimiser radiating
 ETA_RAD_REF     = 0.45   # radiation efficiency at which the reward saturates (good FR-4 patch)
 W_AR_CONE       = 1.0    # penalty ∝ worst-AR-over-cone above AR_MAX_DB (dominated by the 45°
                         #   cone EDGE; the beamwidth reward above is the real coverage signal)
@@ -234,37 +210,25 @@ COVER_CONE_DEG  = 45.0   # deg — half-cone over which AR/gain coverage is scor
 # it at 170 mm, and the Phase-4 sweep is selected on the COVERAGE cost (a smaller
 # GP broadens the beam → larger AR≤3 dB beamwidth reward), not on any board-area
 # penalty.
-# For the dual-feed design the board (= ground = substrate) must also hold the
-# ~47×47 mm coupler and the two feed lines beside the ~83 mm patch, so the floor
-# is larger than the old single-feed board. The coverage sweep then prefers the
-# SMALLEST board that still fits and meets AR/match (a smaller GP broadens the
-# beam — the wide-beam goal — so no separate area penalty is needed).
-SUB_HW_DEFAULT = 80.0    # 160 mm board - LOCKED. A beamwidth-vs-GP sweep (tests/board_sweep.py) showed the
-                         #   AR≤3 beam WIDENS as the GP shrinks (160→52°, 170→40°, 180→36°, 190→28°);
-                         #   160 mm is the coupler-limited floor (need ~79 mm half-width) and is best on
-                         #   every CP metric (AR 1.70 dB, worst-cone 5.5 dB, min-gain-over-cone ~0 dBic).
-SUB_HW_MIN     = 80.0    # 160 mm — floor (coupler+feeds + 8 mm margin need ~79 mm half-width).
-SUB_HW_MAX     = 80.0    # 160 mm — pinned; board no longer swept. dual_feed_layout auto-grows only if
-                         #   the coupler+stub need more (need ~79 < 80), so the board is exactly 160 mm.
-SUB_HW_N       = 5       # (legacy) old GP-sweep candidate count. The GP phase was
-                         # DROPPED — the coupler footprint pins the board near ~178 mm,
-                         # so the optimiser no longer sweeps sub_hw; kept for reference.
+# The single-feed patch only needs the board to hold the ~83 mm patch + margin, so the
+# board is set purely by the wide-beam COVERAGE goal: a smaller GP broadens the beam.
+SUB_HW_DEFAULT = 80.0    # 160 mm board - LOCKED. The dual-feed beamwidth-vs-GP sweep showed the AR≤3 beam
+                         #   WIDENS as the GP shrinks (160→52°, 170→40°, 180→36°, 190→28°); 160 mm gave the
+                         #   widest clean-CP beam and is kept for the single-feed patch (re-confirm on re-tune).
+SUB_HW_MIN     = 80.0    # 160 mm — floor (patch ~83 mm + ≥0.5·BOARD_MARGIN each side).
+SUB_HW_MAX     = 80.0    # 160 mm — pinned; board not swept (locked on the coverage result above).
+SUB_HW_N       = 5       # (legacy) old GP-sweep candidate count; board no longer swept. Kept for reference.
 
 
-# ── Grid search (W × coupler-arm) — replaces the sequential phase schedule ──────
-# The optimiser sweeps the two COUPLED resonance/AR levers (patch side W and coupler
-# arm) on ONE independent 2-D grid at NrTS_screen, then confirms the best W per arm at
-# full fidelity (NrTS_opt). This escapes the coordinate-descent basin trap — run
-# 20260606_052114 tuned W and arm in SEPARATE phases and kept a +14.9 MHz design — and
-# is ~2-3x faster (fewer sims, fewer waves, most cheap). inset stays at the seed (it
-# sets the match, not resonance); the board is fixed (the coupler pins it near ~178 mm).
-GRID_W_FRAC = (0.98, 1.00, 1.02)   # patch side W grid (fraction of the warm_start seed W). RE-WIDENED
-                                   #   to ±2 % for the εr 4.3→4.15 (NP-140F) re-anchor: lower εr grows
-                                   #   the resonant W ~+1.8 %, so the seed was bumped 71.5→72.5 mm
-                                   #   (run.py warm_start) and the grid widened so the new basin is
-                                   #   bracketed (~71.1–74.0 mm; wings ±14 MHz) despite in-situ
-                                   #   uncertainty. Re-tighten to ±1 % once a scout re-locates the basin.
-GRID_ARM_MM = (38.0, 40.0, 42.0)   # coupler-arm grid (mm), bracketing the scaled 0.821*48≈39.4.
-                                   #   W is now resonance-calibrated, so this sweep is mostly to
-                                   #   widen the AR≤3 coverage beamwidth (44° at arm=40 in the scout).
-N_CONFIRM   = 3                    # best-W-per-arm winners re-run at full NrTS_opt
+# ── Grid search (W × corner-truncation) — the two coupled resonance/AR levers ──────
+# The single-feed CP patch has two coupled levers: patch side W (resonance) and the
+# corner truncation (the CP mode-split / AR null). The optimiser sweeps them on ONE 2-D
+# grid at NrTS_screen, then confirms the best W per truncation at full fidelity (NrTS_opt)
+# — AR is razor-thin and does NOT converge at the screen NrTS, so it is judged only at
+# confirm. The single inset stays at the seed (it sets the match, not resonance/AR).
+GRID_W_FRAC = (0.98, 1.00, 1.02)   # patch side W grid (fraction of the warm_start seed W); ±2 %
+                                   #   brackets resonance about the calibrated W_CP_INIT seed.
+GRID_TRUNC_MM = (6.5, 8.25, 10.0)  # corner-truncation grid (mm), bracketing the proven 0.10·W ≈ 8.25.
+                                   #   Smaller Δ → narrower mode split → tighter AR null but more
+                                   #   fab-sensitive; the sweep centres the AR≤3 null on f_target.
+N_CONFIRM   = 3                    # best-W-per-truncation winners re-run at full NrTS_opt

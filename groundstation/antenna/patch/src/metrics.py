@@ -76,10 +76,10 @@ def radiation_efficiency(P_rad, P_acc):
 
     ``P_rad`` is the openEMS NF2FF total radiated power (integrate the far field
     over a full sphere); ``P_acc`` is the port accepted power 0.5·Re(V·I*). Both
-    are dipole-validated (a lossless dipole gives η_rad ≈ 1.00). For a branch-line-
-    coupler feed, power the patch reflects is dumped in the isolated-port resistor,
-    so η_rad can be far below 1 even when S11 is good. Realised gain (dBi) =
-    directivity_dbi(Dmax) + 10·log10(η_tot), with η_tot = P_rad / P_inc.
+    are dipole-validated (a lossless dipole gives η_rad ≈ 1.00). η_rad captures the
+    dielectric (and any conductor) loss plus the fraction of accepted power lost to
+    a feed mismatch, so it can fall below 1 even when S11 is good. Realised gain (dBi)
+    = directivity_dbi(Dmax) + 10·log10(η_tot), with η_tot = P_rad / P_inc.
     """
     return np.asarray(P_rad, dtype=float) / (np.asarray(P_acc, dtype=float) + 1e-30)
 
@@ -95,7 +95,7 @@ def failure_result():
             'zin_re': 0.0, 'zin_im': 0.0, 'ok': False}
 
 
-# ── Coverage metrics (wide-beam dual-feed design) ─────────────────────────────
+# ── Coverage metrics (wide-beam single-feed design) ───────────────────────────
 # The backup patch is judged on AR / gain held over an elevation CONE, not at
 # boresight. These reduce an AR(theta) / gain(theta) elevation cut to the three
 # scalars the coverage cost uses. Pass the WORST AR over phi (and MIN gain over

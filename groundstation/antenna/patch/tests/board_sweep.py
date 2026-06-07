@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """Fixed-dims board-size sweep: AR<=3 beamwidth vs ground-plane size on NP-140F.
 
-W / arm / inset / coupler widths are FROZEN at the re-tuned NP-140F optimum
-(W=72.5, arm=40, f_res 870.2 MHz, AR 1.92 dB; RHCP_Patch_20260607_011202). Only
-sub_hw varies. Board size barely moves resonance / CP quadrature but sets the
-far-field beamwidth, so this isolates the COVERAGE-vs-board curve. Full 150k
-fidelity per point (beamwidth does NOT converge at the cheap 60k screen).
+W / truncation / inset are FROZEN at the single-feed seed; only sub_hw varies. Board
+size barely moves resonance / CP but sets the far-field beamwidth, so this isolates
+the COVERAGE-vs-board curve. Full 150k fidelity per point (beamwidth does NOT converge
+at the cheap 60k screen). Re-run after the optimiser settles the final dims.
 
-Reuses src.optimizer._run_sim_worker (build_full_sim -> FDTD -> coverage metrics),
+Reuses src.optimizer._run_sim_worker (build_patch_sim -> FDTD -> coverage metrics),
 no KiCad / graphs. Run:  python tests/board_sweep.py
 """
 import _bootstrap  # noqa: F401 - openEMS DLL discovery + project root on sys.path (keep first)
@@ -21,10 +20,8 @@ import config
 from src.params import PatchParams
 from src.optimizer import _run_sim_worker
 
-# Frozen re-tuned dims (results.json of RHCP_Patch_20260607_011202); only sub_hw varies.
-BASE = dict(W_mm=72.5, cpl_arm_mm=40.0,
-            cpl_w50_mm=config.CPL_W50, cpl_w35_mm=config.CPL_W35,
-            inset_x_mm=16.0, inset_y_mm=16.0)
+# Single-feed seed dims (config synthesis); only sub_hw varies.
+BASE = dict(W_mm=config.W_CP_INIT, trunc_mm=config.TRUNC_INIT, inset_y_mm=config.INSET_Y)
 SUB_HW = [80.0, 85.0, 90.0]          # -> 160 / 170 / 180 mm boards
 NrTS   = config.NrTS_final            # 150000 (beamwidth-converged fidelity)
 

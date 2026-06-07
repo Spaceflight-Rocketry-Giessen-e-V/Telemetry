@@ -6,9 +6,9 @@ Central entry point.  Edit the switches below and run:
 
     python run.py
 
-Flat dual-feed (branch-line coupler) RHCP patch: a square patch fed in quadrature
-by an etched 90° hybrid coupler driving two orthogonal inset feeds, one edge-launch
-SMA input, one SMD 50 Ω resistor on the isolated port.  The whole geometry is a
+Single-feed corner-truncated RHCP patch: a near-square patch with two diagonally-
+opposite corners truncated (the CP perturbation), fed by ONE inset microstrip to an
+edge-launch SMA — no coupler, no termination resistor.  The whole geometry is a
 ``PatchParams`` object (src/params.py); all physical constants live in config.py.
 """
 
@@ -28,25 +28,18 @@ post_proc_only  = False  # skip FDTD entirely, re-run post-processing on existin
 # ── Warm-start / dimension source ────────────────────────────────
 # Set warm_start to seed the optimisation (or single sim) from known-good dims.
 # Keys are PatchParams fields (any subset; missing fields take config.py seeds):
-#   W_mm, cpl_arm_mm, cpl_w50_mm, cpl_w35_mm,
-#   inset_x_mm, inset_y_mm, sub_hw_mm
-# Leave as None for a cold start from the config.py synthesis seeds.
+#   W_mm, trunc_mm, inset_y_mm, sub_hw_mm
+# Leave as None for a cold start from the config.py synthesis seeds (which ARE the
+# proven single-feed dims: W_CP_INIT ≈ 82.5, TRUNC_INIT ≈ 8.25, INSET_Y ≈ 5.8).
 warm_start = {
-    # Re-baselined by UNIFORM SCALING of the only valid clean-CP anchor (W=87.14/arm=48/
-    # inset=16 -> AR 0.51 dB at 714 MHz, on geometry with NO inset collision). Scaling the
-    # whole resonant structure by 714/869.52 = 0.821 moves resonance AND the coupler
-    # quadrature onto the target together: W 87.14->71.5, arm 48->40, inset 16->~13 (the
-    # geometry cap at this W lands it at 12.6 == the scaled value). The earlier W=75/arm=40
-    # seed came from a diagnosis run on a MALFORMED patch (insets collided) and is retracted.
-    'W_mm':       72.5,   # Re-anchored for NP-140F (εr 4.3→4.15). The εr=4.3 optimum was W=71.5
-                          #   (AR 1.61 dB @869.52, 44° beam, S11 −12.3, dip at 864.5). Lower εr grows
-                          #   the resonant length ~+1.8 % → ~72.5 mm; the ±2 % W grid (config.GRID_W_FRAC)
-                          #   brackets the new basin. The optimiser re-centres W/arm; re-tighten after a scout.
-    'inset_x_mm': 16.0,   # 50 Ω match; auto-caps to ~12.6 at this W (== scaled depth)
-    'inset_y_mm': 16.0,   #   (symmetric square: inset_x == inset_y)
-    'cpl_arm_mm': 40.0,   # 0.821 * 48 -> coupler quadrature band centred on 869.52 (gives 44° beam;
-                          #   arm=38 breaks CP to beam 0° — do NOT reduce further)
-#    'sub_hw_mm':  85.0,   # half-edge of board; layout grows it to fit coupler+feeds
+    # Single-feed corner-truncated CP seeds, from the proven old single-feed design
+    # (config_deprecated) re-scaled to NP-140F εr 4.15. A throwaway 150k validation at
+    # these dims gave f_res 872 MHz, S11 −10.9, η_rad 28 %, realised +0.8 dBic, RHCP —
+    # AR 6.2 dB at the un-tuned seed, which the W×truncation grid centres to ≤3 dB.
+    'W_mm':       82.5,   # (W_lp+L_lp)/2 * 0.86  — CP square side; grid ±2 % centres resonance
+    'trunc_mm':   8.25,   # 0.10·W corner chamfer — the CP mode-split lever (grid 6.5/8.25/10)
+    'inset_y_mm': 5.8,    # 0.07·W single inset on the −y edge centre (50 Ω match)
+#    'sub_hw_mm':  80.0,   # 160 mm board (locked for wide-beam coverage)
 }
 
 # reuse_best: load dims from the most-recent results.json and use them as
@@ -65,7 +58,7 @@ export_vtk_surf = False  # copy J surface-current .vtr files into vtk/ subfolder
 # Copy the "Final geometry for PCB" values from a previous run's log.
 # Leave as None to fall back to warm_start / config seeds.
 pp_dims = None
-# pp_dims = {'W_mm': 83.5, 'inset_x_mm': 18.0, 'inset_y_mm': 18.0, 'cpl_arm_mm': 47.0}
+# pp_dims = {'W_mm': 82.5, 'trunc_mm': 8.25, 'inset_y_mm': 5.8}
 # ══════════════════════════════════════════════════════════════════
 
 
@@ -267,8 +260,8 @@ def resolve_dimensions():
         print('\nWarm-start dims:')
     else:
         print('\nConfig synthesis seeds:')
-    print(f'  W = {p_init.W_mm:.3f} mm   cpl_arm = {p_init.cpl_arm_mm:.2f} mm   '
-          f'inset x/y = {p_init.inset_x_mm:.2f}/{p_init.inset_y_mm:.2f} mm   '
+    print(f'  W = {p_init.W_mm:.3f} mm   trunc = {p_init.trunc_mm:.2f} mm   '
+          f'inset = {p_init.inset_y_mm:.2f} mm   '
           f'sub_hw = {p_init.sub_hw_mm:.1f} mm')
     if ws is not None and not reuse_best:
         print('  Optimiser sweep windows are tightened around these values.')
@@ -281,10 +274,10 @@ def maybe_preview(run_dir, p_init):
 
     Returns True when the caller should exit now (preview_only).
     """
-    from src.model import build_full_sim
+    from src.model import build_patch_sim
 
     print('\n--- Writing initial geometry for preview ---', flush=True)
-    _FDTD_prev, CSX_prev, _, _ = build_full_sim(p_init, NrTS=1)
+    _FDTD_prev, CSX_prev, _, _ = build_patch_sim(p_init, NrTS=1)
     csx_file = os.path.join(run_dir, 'rhcp_patch_init.xml')
     CSX_prev.Write2XML(csx_file)
     print(f'XML written: {csx_file}', flush=True)
@@ -318,14 +311,14 @@ def run_single_sim(sim_path, p_init):
     a SEPARATE process (run_postproc_isolated) — see its docstring for why.
     """
     import config
-    from src.model import build_full_sim
+    from src.model import build_patch_sim
 
     print(f'\n{"="*60}')
     print(f'single_sim_only=True — one high-fidelity sim  (NrTS = {config.NrTS_final})')
-    print(f'  W = {p_init.W_mm:.2f} mm   cpl_arm = {p_init.cpl_arm_mm:.2f} mm   '
-          f'inset x/y = {p_init.inset_x_mm:.2f}/{p_init.inset_y_mm:.2f} mm')
+    print(f'  W = {p_init.W_mm:.2f} mm   trunc = {p_init.trunc_mm:.2f} mm   '
+          f'inset = {p_init.inset_y_mm:.2f} mm')
     print(f'{"="*60}')
-    FDTD_f, _CSX_f, _port_f, _nf2ff_f = build_full_sim(
+    FDTD_f, _CSX_f, _port_f, _nf2ff_f = build_patch_sim(
         p_init, config.NrTS_final, vtk_dump=export_vtk_surf)
     # Runs alone in the main process — claim all cores (numThreads=0 → max),
     # independent of any ambient OMP_NUM_THREADS the user may have set.
@@ -340,7 +333,7 @@ def run_optimize(sim_path, p_init):
     post-processing runs in a separate process (run_postproc_isolated).
     """
     import config
-    from src.model import build_full_sim
+    from src.model import build_patch_sim
     from src.optimizer import (Optimizer, estimate_seconds, n_opt, phases_label,
                                resolve_workers)
 
@@ -358,10 +351,10 @@ def run_optimize(sim_path, p_init):
     p_opt, opt_log = opt.run()
 
     print('\n--- Final high-fidelity simulation (with VTK field dumps) ---')
-    print(f'  W = {p_opt.W_mm:.2f} mm   cpl_arm = {p_opt.cpl_arm_mm:.2f} mm   '
-          f'inset x/y = {p_opt.inset_x_mm:.2f}/{p_opt.inset_y_mm:.2f} mm   '
+    print(f'  W = {p_opt.W_mm:.2f} mm   trunc = {p_opt.trunc_mm:.2f} mm   '
+          f'inset = {p_opt.inset_y_mm:.2f} mm   '
           f'sub_hw = {p_opt.sub_hw_mm:.1f} mm   NrTS = {config.NrTS_final}')
-    FDTD_f, _CSX_f, _port_f, _nf2ff_f = build_full_sim(
+    FDTD_f, _CSX_f, _port_f, _nf2ff_f = build_patch_sim(
         p_opt, config.NrTS_final, vtk_dump=export_vtk_surf)
     # Runs alone in the main process — claim all cores (numThreads=0 → max),
     # independent of any ambient OMP_NUM_THREADS the user may have set.
@@ -395,7 +388,7 @@ def setup_post_proc_only(p_init, reuse_run_dir):
     if pp_dims is not None:
         p_post = PatchParams.from_dict(pp_dims)
         print(f'post_proc_only: pp_dims OVERRIDE — W={p_post.W_mm} mm  '
-              f'cpl_arm={p_post.cpl_arm_mm} mm  inset x/y={p_post.inset_x_mm}/{p_post.inset_y_mm} mm')
+              f'trunc={p_post.trunc_mm} mm  inset={p_post.inset_y_mm} mm')
         print('  ! pp_dims MUST match the geometry that produced the source sim_data; a'
               ' mismatch silently desyncs the MSL-port probes (wrong S11/Zin/f_res).')
     else:
@@ -447,11 +440,11 @@ def _postproc_worker(kw):
         pass
 
     import config
-    from src.model import build_full_sim
+    from src.model import build_patch_sim
     from src.postproc import PostProcessor
 
     p = kw['params']
-    _F, _C, port, nf2ff = build_full_sim(p, 1)   # fresh model: only to read sim_data
+    _F, _C, port, nf2ff = build_patch_sim(p, 1)   # fresh model: only to read sim_data
     pp = PostProcessor(
         port=port, nf2ff_box=nf2ff, run_dir=kw['run_dir'], sim_path=kw['sim_path'],
         graphs_path=kw['graphs_path'], vtk_path=kw['vtk_path'], params=p,

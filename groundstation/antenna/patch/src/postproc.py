@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Post-processing for the flat dual-feed (branch-line coupler) RHCP patch.
+"""Post-processing for the single-feed corner-truncated RHCP patch.
 
-Driven by a ``PatchParams`` object and the ``build_full_sim`` MSL-port model. Adds
+Driven by a ``PatchParams`` object and the ``build_patch_sim`` MSL-port model. Adds
 the wide-beam COVERAGE reporting the backup-antenna role needs: AR and RHCP gain
 over an elevation cone, the AR<=3 dB beamwidth, the worst AR over the coverage
-cone, and the RHCP sense — alongside the kept S11 / AR-vs-f / far-field / VTK
-outputs. Writes a results.json keyed by the PatchParams fields so the KiCad export
-re-derives the same board via geometry.dual_feed_layout().
+cone, and the RHCP sense — alongside the S11 / AR-vs-f / far-field / efficiency /
+VTK outputs. Writes a results.json keyed by the PatchParams fields so the KiCad
+export re-derives the same board via geometry.single_feed_layout().
 """
 
 import glob
@@ -18,7 +18,7 @@ import numpy as np
 
 import config
 from src import plotting
-from src.geometry import dual_feed_layout
+from src.geometry import single_feed_layout
 from src.metrics import (axial_ratio_db, s11_db, ar_beamwidth_deg,
                          worst_ar_over_cone, min_gain_over_cone,
                          directivity_dbi, radiation_efficiency)
@@ -46,7 +46,7 @@ Steps:
 2. SURFACE CURRENT ANIMATION  (J_patch_surf/ subfolder)
 ----------------------------------------------------------------------------------
   J_patch_surf/  — surface current phasor snapshots on the top copper
-                   (patch + coupler + feeds; reveals the rotating CP current).
+                   (truncated patch + feed; reveals the rotating CP current).
 
 Each subfolder contains files named  *_p=000.vtr  *_p=017.vtr  ... (every ~17°
 through one full RF cycle), plus _abs.vtr (magnitude) and _arg.vtr (phase angle).
@@ -58,7 +58,7 @@ QUICKEST WAY: use the auto-generated script load_in_paraview.py (same folder).
 Tip for J_patch_surf:
   Use Filters > Glyph (Arrow, scale by magnitude) to visualise the rotating
   surface current.  Smooth circular rotation over the patch = correct RHCP
-  balance; a wobble / figure-eight means the coupler balance needs tuning.
+  balance; a wobble / figure-eight means the truncation/resonance needs tuning.
 
 If the subfolder is absent:
   export_vtk_surf may be False in run.py, or the openEMS build does not
@@ -88,8 +88,8 @@ class PostProcessor:
         self._post_proc_only  = post_proc_only
         self._export_vtk_surf = export_vtk_surf
         self._results         = None
-        # realised board (the layout may grow sub_hw to fit coupler/feeds + margin)
-        self._layout          = dual_feed_layout(params)
+        # realised board (the layout may grow sub_hw to fit the patch + margin)
+        self._layout          = single_feed_layout(params)
 
     # ── public interface ──────────────────────────────────────────────
 
@@ -127,10 +127,10 @@ class PostProcessor:
         # S11, VSWR and the Smith locus all derive from this ONE quantity, so they agree.
         gamma  = self._port.uf_ref / self._port.uf_inc
         s11_dB = s11_db(self._port.uf_ref, self._port.uf_inc)
-        # De-embedded, match-CONSISTENT input impedance Zin = Z0·(1+Γ)/(1−Γ). Replaces the
-        # raw uf_tot/if_tot terminal impedance, which for a hybrid-coupler feed reads far
-        # from 50 Ω even when matched (feed-point reflections are dumped into the isolated-
-        # port resistor, not returned to the source — so raw Zin ≠ the match it achieves).
+        # De-embedded, match-CONSISTENT input impedance Zin = Z0·(1+Γ)/(1−Γ), derived from
+        # the SAME reflection Γ as S11/VSWR so all three agree. Preferred over the raw
+        # uf_tot/if_tot terminal impedance, which mixes in the standing-wave phase along the
+        # feed stub and so doesn't read as the 50 Ω-referred match the antenna achieves.
         Z0  = float(config.feed_R)
         Zin = Z0 * (1.0 + gamma) / (1.0 - gamma)
         # Power flows into the network at each f (for radiation efficiency in _band_sweep).
@@ -187,7 +187,7 @@ class PostProcessor:
         self._mode_split = mode_split
 
         title_note = (f'W = {self.params.W_mm:.1f} mm  '
-                      f'arm = {self.params.cpl_arm_mm:.1f} mm')
+                      f'trunc = {self.params.trunc_mm:.1f} mm')
         plotting.plot_s11(
             f_sweep, s11_dB,
             config.f_target, f_res, s11_at_res,
@@ -218,11 +218,10 @@ class PostProcessor:
         efficiency η_tot = Prad/P_inc, and realised gain = directivity + 10·log10(η_tot).
 
         η is dipole-validated (a lossless half-wave dipole gives η_rad ≈ 1.00 and
-        Dmax → 2.19 dBi vs the textbook 2.15), so a low η here is PHYSICAL, not a
-        normalisation artefact: a branch-line coupler dumps the patch's feed-point
-        mismatch into the isolated-port 50 Ω resistor, so η_rad falls far below 1 even
-        with a good input S11. As a guard the efficiency outputs are still gated on a
-        sanity check (0 < η_rad ≲ 1) and dropped to directivity-only if it fails.
+        Dmax → 2.19 dBi vs the textbook 2.15), so η here is PHYSICAL: it captures the
+        FR-4 dielectric loss + any feed mismatch (copper is PEC in-sim). As a guard the
+        efficiency outputs are still gated on a sanity check (0 < η_rad ≲ 1) and dropped
+        to directivity-only if it fails.
         """
         print('Computing band sweep (directivity / efficiency / AR-beamwidth vs frequency)...')
         f_band = np.linspace(config.f_target - 50e6, config.f_target + 50e6, 21)
@@ -292,8 +291,8 @@ class PostProcessor:
                   f'realised gain ≈ {self._realised_gain_dBi:.1f} dBic')
             if eta_rad_ft < 0.10:
                 print(f'  ! LOW radiation efficiency ({eta_rad_ft*100:.1f}%): most accepted '
-                      f'power is dissipated (branch-line coupler → isolated-port resistor / '
-                      f'dielectric), NOT radiated. Realised gain is far below directivity.')
+                      f'power is dissipated (dielectric / feed mismatch), NOT radiated. '
+                      f'Realised gain is far below directivity — re-tune the match.')
         else:
             print(f'  directivity @ target ≈ {D_ft:.1f} dBi   '
                   f'(η_rad={eta_rad_ft:.2f} failed sanity gate → efficiency/realised gain '
@@ -492,8 +491,8 @@ class PostProcessor:
             ar_max=config.AR_MAX_DB, beamwidth_deg=self._ar3_bw_deg,
             cone_half_deg=config.COVER_CONE_DEG)
         # Overlay the realised-gain curve (directivity × η_tot) when η is trustworthy,
-        # so the absolute level — far below directivity for this iso-resistor-loaded
-        # coupler feed — is visible against the gain floor.
+        # so the absolute level — below directivity by the dielectric + mismatch loss —
+        # is visible against the gain floor.
         realised_off = (10.0 * np.log10(self._eta_tot)
                         if getattr(self, '_eff_ok', False)
                         and np.isfinite(getattr(self, '_eta_tot', float('nan')))
@@ -639,14 +638,14 @@ class PostProcessor:
             ['Min RHCP gain over cone',      f"{r['min_gain_cone_dBic']:.1f} dBic (directivity)"],
             ['Substrate',                    f"{r['substrate_material']}  εr {r['substrate_epsR']}  {r['substrate_h_mm']} mm"],
             ['Board (ground plane)',         f"{r['gp_edge_mm']:.0f} × {r['gp_edge_mm']:.0f} mm"],
-            ['Patch / coupler arm',          f"{r['W_mm']:.1f} mm sq / {r['cpl_arm_mm']:.1f} mm"],
+            ['Patch / corner truncation',    f"{r['W_mm']:.1f} mm sq / {r['trunc_mm']:.1f} mm chamfer"],
         ]
         plotting.plot_summary_sheet(
-            rows, f"RHCP Dual-Feed Patch — {r['f_target_MHz']:.3f} MHz",
+            rows, f"RHCP Single-Feed Patch — {r['f_target_MHz']:.3f} MHz",
             os.path.join(self._graphs_path, 'summary_sheet.png'),
             footnote='Directivity is the pattern peak; realised gain = directivity × η_tot '
-                     '(η dipole-validated). In-sim loss = FR-4 dielectric + isolated-port '
-                     '50 Ω resistor + mismatch (copper is modelled as PEC). openEMS (FDTD).')
+                     '(η dipole-validated). In-sim loss = FR-4 dielectric + mismatch '
+                     '(copper is modelled as PEC). openEMS (FDTD).')
 
     def _write_paraview_readme(self):
         header = (f'Simulation: {config.f_target/1e6:.4f} MHz target, '
@@ -715,15 +714,15 @@ print('Done.  Use Animation View (View > Animation View) to play the phase seque
     def _print_summary(self):
         p = self.params
         s11_at_ft = float(np.interp(config.f_target, self._f_sweep, self._s11_dB))
-        sense = 'RHCP' if self._rhcp_at_ft else 'LHCP  (SWAP feeds — wrong sense!)'
+        sense = 'RHCP' if self._rhcp_at_ft else 'LHCP  (FLIP truncation diagonal — wrong sense!)'
         print(f"""
 {'═'*60}
-  FLAT DUAL-FEED RHCP PATCH — {config.f_target/1e6:.3f} MHz
+  SINGLE-FEED CORNER-TRUNCATED RHCP PATCH — {config.f_target/1e6:.3f} MHz
 {'═'*60}
   Substrate  : {config.substrate_material}  εr={config.substrate_epsR}  tanδ={config.substrate_tanD}  h={config.substrate_thickness} mm
-  Patch side : {p.W_mm:.2f} mm (square)
-  Coupler    : arm {p.cpl_arm_mm:.2f} mm   w50 {p.cpl_w50_mm:.2f} mm   w35 {p.cpl_w35_mm:.2f} mm
-  Feed inset : x {p.inset_x_mm:.2f} mm   y {p.inset_y_mm:.2f} mm   (L-feeds equal-length by construction)
+  Patch side : {p.W_mm:.2f} mm (near-square)
+  Truncation : {p.trunc_mm:.2f} mm chamfer on two diagonal corners  ({self._layout['diag']})
+  Feed inset : {p.inset_y_mm:.2f} mm  (single inset, −y edge centre)
   Board      : {self._layout['sub_hw']*2:.1f} × {self._layout['sub_hw']*2:.1f} mm  (realised; param sub_hw → {p.sub_hw_mm*2:.0f} mm)
   S11 @ f0   : {s11_at_ft:.1f} dB
   f_CP_centre: {self._f_res/1e6:.2f} MHz  (offset {(self._f_res-config.f_target)/1e6:+.2f} MHz){f'  [modes: {self._f_mode1/1e6:.1f} / {self._f_mode2/1e6:.1f} MHz  split {self._mode_split/1e6:.1f} MHz]' if self._mode_split > 5e6 else ''}

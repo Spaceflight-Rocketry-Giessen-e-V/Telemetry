@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Coverage optimizer for the flat dual-feed (branch-line coupler) RHCP patch.
+"""Coverage optimizer for the single-feed corner-truncated RHCP patch.
 
 Selects on WIDE-BEAM COVERAGE, not boresight gain: it rewards a large AR<=3 dB
 elevation beamwidth, penalises the worst axial ratio over the 0-COVER_CONE cone,
-holds a floor on gain across the cone, and drives resonance/match/handedness to
-spec. Drives PatchParams variables W -> inset -> coupler arm -> W-correction ->
-ground-plane (beamwidth). Reuses the proven parallel-pool machinery (one
-persistent ProcessPoolExecutor, dynamic idle-core threads, per-phase timeout).
+holds a floor on gain across the cone, rewards radiation efficiency, and drives
+resonance/match/handedness to spec. Sweeps a 2-D grid of the two coupled levers —
+patch side W (resonance) × corner truncation (CP / AR) — at a coarse screen NrTS,
+then confirms the best W-per-truncation at full fidelity. Reuses the parallel-pool
+machinery (one persistent ProcessPoolExecutor, dynamic idle-core threads, timeout).
 """
 
 import atexit
@@ -28,21 +29,19 @@ from src.params import PatchParams, default_params
 
 
 # ── Search schedule (grid screen + two-tier confirm) ──────────────────────────
-# The optimiser explores the two COUPLED resonance/AR levers — patch side W and
-# coupler arm — on ONE independent 2-D grid at a cheap SCREENING fidelity
-# (config.NrTS_screen), then re-runs the best-W-per-arm winners at full fidelity
-# (config.NrTS_opt == NrTS_final). This replaces the old sequential W→I→C→W2→GP
-# coordinate descent, which could not navigate the W/arm coupling: run
-# 20260606_052114 kept a +14.9 MHz design because Phase W and Phase C tuned the two
-# resonance levers separately and never visited their joint sweet spot. The grid is
-# also ~2-3x faster — fewer sims, fewer waves, most sims cheap. inset and the ground
-# plane are FIXED at the seed (inset sets the match; the board is pinned near ~178 mm
-# by the coupler footprint, so the old GP sweep was degenerate). See config.GRID_*.
+# The optimiser explores the two COUPLED resonance/AR levers — patch side W and the
+# corner truncation — on ONE independent 2-D grid at a cheap SCREENING fidelity
+# (config.NrTS_screen), then re-runs the best-W-per-truncation winners at full fidelity
+# (config.NrTS_opt == NrTS_final). The 2-D grid (vs a sequential coordinate descent)
+# navigates the W/truncation coupling: W sets resonance, truncation sets the CP mode-
+# split, and the AR null is only centred on f_target when BOTH are right together. The
+# single inset (match) and the board (locked for wide-beam coverage) stay at the seed.
+# AR does NOT converge at the screen NrTS, so it is judged only at confirm. See config.GRID_*.
 
 
 def _grid_dims() -> tuple:
     """(n_grid, n_confirm) — coarse-screen count and full-fidelity confirm count."""
-    n_grid = len(config.GRID_W_FRAC) * len(config.GRID_ARM_MM)
+    n_grid = len(config.GRID_W_FRAC) * len(config.GRID_TRUNC_MM)
     return n_grid, int(config.N_CONFIRM)
 
 
@@ -54,7 +53,7 @@ def n_opt() -> int:
 
 def phases_label() -> str:
     n_grid, n_conf = _grid_dims()
-    return (f'GRID {len(config.GRID_W_FRAC)}W×{len(config.GRID_ARM_MM)}arm={n_grid}'
+    return (f'GRID {len(config.GRID_W_FRAC)}W×{len(config.GRID_TRUNC_MM)}trunc={n_grid}'
             f'@{config.NrTS_screen // 1000}k  ->  CONFIRM {n_conf}@{config.NrTS_opt // 1000}k')
 
 
@@ -156,7 +155,7 @@ def _screen_cost(r) -> float:
 
 
 def _run_sim_worker(kw: dict) -> dict:
-    """Top-level worker: build + run one full dual-feed FDTD sim in a child process.
+    """Top-level worker: build + run one single-feed CP FDTD sim in a child process.
 
     Returns the COVERAGE metrics the cost selects on (all at f_target): S11,
     f_res, boresight AR + handedness, AR<=3 beamwidth, worst AR over the cone,
@@ -169,7 +168,7 @@ def _run_sim_worker(kw: dict) -> dict:
     import tempfile as _tempfile
     import numpy as _np
     import config as _cfg
-    from src.model import build_full_sim as _build
+    from src.model import build_patch_sim as _build
     from src.metrics import (axial_ratio_db as _ar, cp_center_freq as _cf,
                              failure_result as _fail, s11_db as _s11db,
                              ar_beamwidth_deg as _bw, worst_ar_over_cone as _wc,
@@ -208,8 +207,8 @@ def _run_sim_worker(kw: dict) -> dict:
         # Peak directivity (dBi) + radiation efficiency from a coarse FULL-SPHERE call:
         # Dmax/Prad need the whole sphere (the cone call above only integrates 0..60°, so
         # its Prad — hence Dmax — is biased). openEMS Dmax is the LINEAR ratio → dBi via
-        # _ddbi. η_rad = Prad / P_acc is dipole-validated; for a branch-line-coupler feed
-        # it exposes power dumped in the isolated-port resistor that a good S11 hides.
+        # _ddbi. η_rad = Prad / P_acc is dipole-validated; it rewards designs that actually
+        # radiate (penalising dielectric / mismatch loss a good S11 alone can hide).
         res_f = nf2ff.CalcNF2FF(sp, [_cfg.f_target],
                                 theta=_np.arange(0.0, 180.1, 6.0),
                                 phi=_np.arange(0.0, 360.0, 30.0), center=[0, 0, 1e-3])
@@ -264,16 +263,15 @@ def _load_results_json(rjson_path: str) -> PatchParams:
 
 
 class Optimizer:
-    """Coverage optimizer — 2-D (W × coupler-arm) grid screen + full-fidelity confirm.
+    """Coverage optimizer — 2-D (W × truncation) grid screen + full-fidelity confirm.
 
     Stage GRID : a cheap-fidelity (config.NrTS_screen) 2-D grid over patch side W and
-                 coupler arm — the two COUPLED levers that set resonance AND axial
-                 ratio. Ranked by _screen_cost (resonance + match; the razor AR is not
-                 trustworthy this coarse). inset and ground plane are fixed at the seed.
-    Stage CONF : the best W per arm (up to config.N_CONFIRM arm-diverse candidates)
-                 re-run at full fidelity (config.NrTS_opt); the best by the full
-                 coverage _cost wins. Replaces the old W->I->C->W2->GP coordinate
-                 descent, which could not navigate the W/arm resonance coupling.
+                 corner truncation — the two COUPLED levers that set resonance AND axial
+                 ratio. Ranked by _screen_cost (resonance + match + efficiency; the razor
+                 AR is not trustworthy this coarse). inset and board are fixed at the seed.
+    Stage CONF : the best W per truncation (up to config.N_CONFIRM diverse candidates)
+                 re-run at full fidelity (config.NrTS_opt); the best by the full coverage
+                 _cost (incl. AR/beamwidth/efficiency) wins.
     """
 
     def __init__(self, p_init: PatchParams | None = None,
@@ -285,8 +283,8 @@ class Optimizer:
         self._num_workers = resolve_workers(num_workers)
         self._pool        = None
         self.N_OPT        = n_opt()
-        # fix the board at the seed (clamped); the coupler footprint pins it near
-        # ~178 mm so the old GP sweep was degenerate — sub_hw is no longer swept.
+        # fix the board at the seed (clamped); it is locked for wide-beam coverage
+        # (config.SUB_HW_*), so sub_hw is not swept by the optimiser.
         self._p0 = self._p0.with_(
             sub_hw_mm=min(max(self._p0.sub_hw_mm, config.SUB_HW_MIN), config.SUB_HW_MAX))
 
@@ -299,44 +297,45 @@ class Optimizer:
             self._shutdown_pool()
 
     def _grid_jobs(self, p0, NrTS):
-        """Build the 2-D (W × coupler-arm) grid jobs at the given fidelity."""
+        """Build the 2-D (W × corner-truncation) grid jobs at the given fidelity."""
         jobs = []
         for wf in config.GRID_W_FRAC:
-            for arm in config.GRID_ARM_MM:
-                pp = p0.with_(W_mm=p0.W_mm * wf, cpl_arm_mm=arm)
-                jobs.append((pp, self._mk_kw(pp, NrTS, f'G_W{pp.W_mm:.1f}_A{arm:.0f}')))
+            for tr in config.GRID_TRUNC_MM:
+                pp = p0.with_(W_mm=p0.W_mm * wf, trunc_mm=tr)
+                jobs.append((pp, self._mk_kw(pp, NrTS, f'G_W{pp.W_mm:.1f}_T{tr:.1f}')))
         return jobs
 
     def _run_search(self) -> tuple:
         p0 = self._p0
-        # ── Stage GRID: coarse 2-D (W × arm) screen ──────────────────────────
-        print(f'\n=== Stage GRID: {len(config.GRID_W_FRAC)}×{len(config.GRID_ARM_MM)}'
-              f' (W × coupler-arm) screen @ NrTS={config.NrTS_screen} ===')
+        # ── Stage GRID: coarse 2-D (W × truncation) screen ───────────────────
+        print(f'\n=== Stage GRID: {len(config.GRID_W_FRAC)}×{len(config.GRID_TRUNC_MM)}'
+              f' (W × truncation) screen @ NrTS={config.NrTS_screen} ===')
         self._run_batch('GRID', self._grid_jobs(p0, config.NrTS_screen), config.NrTS_screen)
         grid = [x for x in self._log if x['phase'] == 'GRID' and x.get('ok', True)]
 
-        # best W per arm by SCREEN cost (resonance + match) → arm-diverse confirm set
-        per_arm = []
-        for arm in config.GRID_ARM_MM:
-            col = [x for x in grid if abs(x['p'].cpl_arm_mm - arm) < 1e-6]
+        # best W per truncation by SCREEN cost (resonance + match + efficiency) → a
+        # truncation-diverse confirm set (AR is judged only at the full-fidelity confirm)
+        per_tr = []
+        for tr in config.GRID_TRUNC_MM:
+            col = [x for x in grid if abs(x['p'].trunc_mm - tr) < 1e-6]
             if col:
-                per_arm.append(min(col, key=_screen_cost))
-        per_arm.sort(key=_screen_cost)
-        confirm = per_arm[:int(config.N_CONFIRM)]
+                per_tr.append(min(col, key=_screen_cost))
+        per_tr.sort(key=_screen_cost)
+        confirm = per_tr[:int(config.N_CONFIRM)]
         confirm_ps = [e['p'] for e in confirm] or [p0]   # fall back to seed if grid all failed
         self.N_OPT = self._n_done + len(confirm_ps)      # actual total (grid recorded + confirms)
         if not confirm:
             print('  ! GRID produced no usable candidate — confirming the seed dims.')
         else:
-            print('  GRID winners (best W per arm, by resonance+match):')
+            print('  GRID winners (best W per truncation, by resonance+match+η):')
             for e in confirm:
-                print(f'    W={e["p"].W_mm:.2f}  arm={e["p"].cpl_arm_mm:.2f}  '
+                print(f'    W={e["p"].W_mm:.2f}  trunc={e["p"].trunc_mm:.2f}  '
                       f'f_res {e["f_res"]/1e6:.1f} MHz  S11 {e["s11_dB"]:.1f} dB  '
                       f'screen {_screen_cost(e):.2f}')
 
         # ── Stage CONFIRM: full-fidelity re-run; full coverage _cost decides ──
         print(f'\n=== Stage CONFIRM: {len(confirm_ps)} candidate(s) @ NrTS={config.NrTS_opt} ===')
-        cjobs = [(pp, self._mk_kw(pp, config.NrTS_opt, f'C_W{pp.W_mm:.1f}_A{pp.cpl_arm_mm:.0f}'))
+        cjobs = [(pp, self._mk_kw(pp, config.NrTS_opt, f'C_W{pp.W_mm:.1f}_T{pp.trunc_mm:.1f}'))
                  for pp in confirm_ps]
         self._run_batch('CONF', cjobs, config.NrTS_opt)
         conf = [x for x in self._log if x['phase'] == 'CONF']
@@ -348,8 +347,8 @@ class Optimizer:
         print(f'\n  {"="*70}')
         print(f'  OPTIMISATION COMPLETE — {self._fmt_dur(total)}'
               f'  ({total/max(self._n_done,1):.0f}s/sim avg, {self._n_done} sims)')
-        print(f'  Best: W={p.W_mm:.2f}  inset={p.inset_x_mm:.2f}  '
-              f'cpl_arm={p.cpl_arm_mm:.2f}  GP={p.sub_hw_mm*2:.1f} mm')
+        print(f'  Best: W={p.W_mm:.2f}  trunc={p.trunc_mm:.2f}  '
+              f'inset={p.inset_y_mm:.2f}  GP={p.sub_hw_mm*2:.1f} mm')
         if conf:
             print(f'        f_res {best["f_res"]/1e6:.2f} MHz  S11 {best["s11_dB"]:.1f} dB  '
                   f'AR {best["ar_dB"]:.1f} dB  AR≤3 BW {best.get("ar_bw_deg", 0):.0f}°  '
@@ -434,7 +433,7 @@ class Optimizer:
         df      = (r['f_res'] - config.f_target) / 1e6
         print(
             f'  [{self._n_done:2d}/{self.N_OPT}  P{phase}]'
-            f'  W={p.W_mm:5.1f}  ins={p.inset_x_mm:4.1f}  arm={p.cpl_arm_mm:4.1f}'
+            f'  W={p.W_mm:5.1f}  trunc={p.trunc_mm:4.1f}  ins={p.inset_y_mm:4.1f}'
             f'  gp={p.sub_hw_mm*2:5.1f}'
             f'  ->  S11={r["s11_dB"]:+5.1f}  f={r["f_res"]/1e6:.1f}({df:+.0f})'
             f'  AR={r["ar_dB"]:4.1f} {status}  BW={r.get("ar_bw_deg",0):3.0f}'

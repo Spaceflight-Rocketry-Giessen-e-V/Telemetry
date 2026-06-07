@@ -1,28 +1,26 @@
 # -*- coding: utf-8 -*-
-"""Convert the flat dual-feed RHCP patch geometry to a KiCad 7/8 PCB file.
+"""Convert the single-feed corner-truncated RHCP patch geometry to a KiCad 7/8 PCB.
 
-ONE 2-layer board, re-derived from the SAME geometry.dual_feed_layout(PatchParams)
+ONE 2-layer board, re-derived from the SAME geometry.single_feed_layout(PatchParams)
 the FDTD model builds - so the exported copper matches the simulated copper:
 
-  F.Cu       - square patch (+ inset notches) + branch-line coupler ring
-               + two equal-length feed lines + isolated-port stub + input stub
+  F.Cu       - near-square patch with two diagonally-opposite corners truncated (CP)
+               + inset notch + one 50 Ω feed line to the edge SMA land
   B.Cu       - full ground plane (whole board)
-  Edge.Cuts  - board outline (= substrate / ground edge)
-  F.Fab      - placement marker for the isolated-port 50 Ω SMD resistor;
-               a real ground via for the resistor port
-  F.SilkS    - labels (incl. the WR-SMA connector part number)
+  Edge.Cuts  - board outline (= substrate / ground edge) + 4× M3 holes
+  F.SilkS    - datasheet labels (incl. the WR-SMA connector part number)
 
-The input 50 Ω stub is extended to the board edge and terminated in the WR-SMA
-60312202114514 end-launch land pattern: the stub necks from 3.2 mm down to the
-connector's 0.61 mm centre-tab land, flanked by two ground pads (WE's recommended
-7.1/9.9 mm span) stitched to the B.Cu plane. The extra stub copper is a transparent
-50 Ω tail - it moves the connector reference plane, not the antenna match.
+The single 50 Ω feed runs from the −y edge inset (board centre) to the board edge
+and terminates in the WR-SMA 60312202114514 end-launch land pattern: it necks from
+3.2 mm down to the connector's 0.61 mm centre-tab land, flanked by two ground pads
+(WE's recommended span) stitched to the B.Cu plane. No coupler, no termination
+resistor (the dual-feed coupler dumped ~64 % of accepted power into one).
 
 Can be called programmatically via write_kicad_pcb(p, ...) from run.py, or used as
 a standalone CLI:
 
   python -m src.kicad_export results.json
-  python -m src.kicad_export --W 83.5 --cpl_arm 47 --inset 18
+  python -m src.kicad_export --W 82.5 --trunc 8.25 --inset 5.8
   python -m src.kicad_export results.json -o my_board.kicad_pcb
 """
 
@@ -33,7 +31,7 @@ import os
 import re
 
 import config
-from src.geometry import dual_feed_layout, notched_square_polygon
+from src.geometry import single_feed_layout, notched_square_polygon
 from src.params import PatchParams, default_params
 
 _ASSETS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets')
@@ -577,15 +575,19 @@ def _svg_silk_raster(svg_file, cx, cy, target_mm, layer='F.SilkS', px_mm=0.16, b
 
 
 def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> None:
-    """Write a KiCad 7/8 .kicad_pcb for the flat dual-feed RHCP patch board.
+    """Write a KiCad 7/8 .kicad_pcb for the single-feed corner-truncated RHCP patch.
 
-    All geometry comes from geometry.dual_feed_layout(p), the single source of
-    truth shared with the FDTD model, so the board reproduces the simulated copper.
+    All geometry comes from geometry.single_feed_layout(p), the single source of
+    truth shared with the FDTD model, so the board reproduces the simulated copper:
+    a near-square patch with two diagonally-opposite corners truncated (CP), fed by
+    ONE inset microstrip running to a bottom-centre edge-launch SMA. No coupler, no
+    isolated-port resistor.
     """
-    Lo       = dual_feed_layout(p)
-    bcx, bcy = Lo['board_center']
+    Lo       = single_feed_layout(p)
+    bcx, bcy = Lo['board_center']                 # (0, 0) — patch centred
     sub_hw   = Lo['sub_hw']
     fw       = Lo['fw']
+    h        = p.W_mm / 2.0
     board    = 2.0 * sub_hw                       # board edge length [mm]
 
     # Sim coords (patch-centre origin, +Y up) → KiCad coords (Y-down, (0,0) = TL).
@@ -600,72 +602,43 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     # ── F.Cu copper polygons ──────────────────────────────────────────
     cu_polys = []
 
-    # patch (square + inset notches), at the origin
+    # truncated patch (two diagonal chamfers + the bottom inset notch), at the origin
     cu_polys.append([xf(x, y) for x, y in
-                     notched_square_polygon(p.W_mm, Lo['insets'])])
+                     notched_square_polygon(p.W_mm, Lo['insets'], Lo['trunc'], Lo['diag'])])
 
-    # branch-line coupler ring (4 arms) + 2 equal-length L-feeds
-    for c0, c1 in Lo['coupler_arms']:
-        cu_polys.append(rect_k(c0, c1))
-    for c0, c1 in Lo['feed_rects']:
-        cu_polys.append(rect_k(c0, c1))
-
-    # ── isolated-port termination: real 0603 resistor land (signal = iso stub, other = GND) ──
-    # The branch-line isolated port (BR corner) is terminated in a 50 ohm 0603 chip to ground.
-    # A proper 2-pad land (two EQUAL F.Cu pads on the stub centreline, balanced thermal mass):
-    # the iso stub necks 3.2 -> 1.0 mm into the signal pad; the ground pad carries an in-pad via
-    # to the B.Cu plane. (Audit fix: the old fat-trace-end + offset via left a 1.4 mm copper gap
-    # no 0402/0603 could bridge -> the termination was unsolderable.)
-    BRx, BRy = Lo['BR']
-    ix, iy   = Lo['iso_end']
-    RES_PAD, RES_GAP, RES_NECK = 1.0, 0.8, 1.5          # 0603 hand-solder pads + stub->pad neck
-    gy = iy - 2.0                                       # ground-pad centre (carries the GND via)
-    sy = gy + RES_PAD + RES_GAP                         # signal-pad centre (centre-to-centre 1.8 mm)
-    neck_top = sy + RES_PAD / 2 + RES_NECK
-    cu_polys.append(rect_k((BRx - fw / 2, BRy + fw / 2), (BRx + fw / 2, neck_top)))   # iso stub
-    cu_polys.append([xf(x, y) for x, y in (                                           # neck fw -> pad
-        (BRx - fw / 2, neck_top), (BRx + fw / 2, neck_top),
-        (BRx + RES_PAD / 2, sy + RES_PAD / 2), (BRx - RES_PAD / 2, sy + RES_PAD / 2))])
-    cu_polys.append(rect_k((BRx - RES_PAD / 2, sy - RES_PAD / 2),                     # signal pad
-                           (BRx + RES_PAD / 2, sy + RES_PAD / 2)))
-    cu_polys.append(rect_k((BRx - RES_PAD / 2, gy - RES_PAD / 2),                     # ground pad
-                           (BRx + RES_PAD / 2, gy + RES_PAD / 2)))
-
-    # ── input stub → WR-SMA end-launch land pattern (Würth 60312202114514) ───────
-    # The 50 Ω stub runs to the -Y board edge, then necks down to the connector's
-    # 0.61 mm centre-tab land via a short taper; two flanking F.Cu ground pads (WE's
-    # recommended land pattern, 7.1/9.9 mm span) take the flat-tab ground legs and are
-    # stitched to the B.Cu plane with vias (added in the via section). The neck/flanks
-    # follow the qualified WE footprint - at 869.52 MHz the neck is < λ/30, electrically
-    # invisible, so the manufacturer-characterised launch is used as-is.
-    BLx, BLy   = Lo['BL']
-    board_ymin = bcy - sub_hw                       # -Y board edge (launch plane)
-    SIG_W, SIG_L    = 0.61, 2.30                     # centre-tab land: width × length (datasheet 1.97 MIN + margin)
+    # ── single inset feed → WR-SMA end-launch land (Würth 60312202114514) ────────
+    # The 50 Ω feed runs from the −y edge inset (x=0) straight down to the −Y board
+    # edge, then necks to the connector's 0.61 mm centre-tab land via a short taper;
+    # two flanking F.Cu ground pads (WE's land pattern) take the flat-tab ground legs
+    # and are stitched to the B.Cu plane with vias (via section below). At 869.5 MHz
+    # the neck is < λ/30 — electrically invisible, so the qualified WE launch is used
+    # as-is. The feed is on the patch's mirror axis (x=0) so it does not unbalance the
+    # two truncation-split modes.
+    feed_y_patch = Lo['feed_y_patch']               # inner end of the inset (joins patch)
+    board_ymin   = bcy - sub_hw                      # −Y board edge (launch plane)
+    SIG_W, SIG_L    = 0.61, 2.30                     # centre-tab land: width × length
     TAPER_L         = 3.0                            # fw(50 Ω) -> tab-land neck length
-    GND_W, GND_L    = 1.40, 5.0                      # each flanking ground pad: width × length
+    GND_L           = 5.0                            # flanking ground-pad length
     GND_IN, GND_OUT = 3.55, 4.95                     # ground-pad inner/outer edge from centreline
     y_tap = board_ymin + SIG_L                       # tab-land top (taper bottom)
     y_run = y_tap + TAPER_L                          # 50 Ω trace end (taper top)
-    # 50 Ω trace from the coupler BL corner down to the taper
-    cu_polys.append(rect_k((BLx - fw / 2, BLy + fw / 2), (BLx + fw / 2, y_run)))
+    # 50 Ω feed trace from the patch inset down to the taper (centred on x=0)
+    cu_polys.append(rect_k((-fw / 2, feed_y_patch), (fw / 2, y_run)))
     # neck taper fw -> SIG_W (trapezoid)
     cu_polys.append([xf(x, y) for x, y in (
-        (BLx - fw / 2, y_run), (BLx + fw / 2, y_run),
-        (BLx + SIG_W / 2, y_tap), (BLx - SIG_W / 2, y_tap))])
+        (-fw / 2, y_run), (fw / 2, y_run),
+        (SIG_W / 2, y_tap), (-SIG_W / 2, y_tap))])
     # centre-tab signal land at the edge
-    cu_polys.append(rect_k((BLx - SIG_W / 2, y_tap), (BLx + SIG_W / 2, board_ymin)))
+    cu_polys.append(rect_k((-SIG_W / 2, y_tap), (SIG_W / 2, board_ymin)))
     # two flanking F.Cu ground pads (flat-tab ground legs)
-    cu_polys.append(rect_k((BLx - GND_OUT, board_ymin), (BLx - GND_IN, board_ymin + GND_L)))
-    cu_polys.append(rect_k((BLx + GND_IN, board_ymin), (BLx + GND_OUT, board_ymin + GND_L)))
+    cu_polys.append(rect_k((-GND_OUT, board_ymin), (-GND_IN, board_ymin + GND_L)))
+    cu_polys.append(rect_k(( GND_IN, board_ymin), ( GND_OUT, board_ymin + GND_L)))
 
     # ── B.Cu ground (whole board) + Edge.Cuts ─────────────────────────
     gnd_verts = [(0.0, 0.0), (board, 0.0), (board, board), (0.0, board)]
 
-    # ── markers: edge-launch SMA + isolated-port resistor & ground via ─
-    sma_kx, sma_ky   = xf(BLx, board_ymin)        # launch at the board edge
-    res_kx, res_ky   = xf(BRx, sy)                # resistor signal pad (silk marker)
-    via_x, via_y     = BRx, gy                    # iso-R ground via, in the ground pad -> low L
-    via_kx, via_ky   = xf(via_x, via_y)
+    # ── marker: edge-launch SMA (bottom-centre) ────────────────────────
+    sma_kx, sma_ky = xf(0.0, board_ymin)          # launch at the board edge, centred
 
     lines = [
         '(kicad_pcb (version 20231231) (generator "sim_to_kicad")',
@@ -709,14 +682,13 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     lines += _rounded_rect_edge(board, 6.0)
     lines.append('')
 
-    # ── Soldermask KEEP-OUT over ALL top copper (radiators + coupler + feeds + lands) ─────
+    # ── Soldermask KEEP-OUT over ALL top copper (patch + feed + SMA lands) ────────────────
     # The FDTD sim models bare PEC copper; soldermask (~20 µm, εr~3.5) over the patch would
-    # pull resonance DOWN ~5-10 MHz and detune the coupler/feeds, so we OPEN F.Mask over EVERY
+    # pull resonance DOWN ~5-10 MHz and detune the feed, so we OPEN F.Mask over EVERY
     # top-copper polygon -> the etched board matches the simulated copper (no unmodelled
     # dielectric loading - this is what makes NP-140F's known εr actually land on the bench).
     # Exposed copper takes the surface finish (HASL/ENIG) and is protected by the radome.
-    # F.Mask polys are negative (= openings). cu_polys are already in KiCad coords; every top
-    # solder land (incl. both resistor pads, with the GND via inside its pad) is a cu_poly.
+    # F.Mask polys are negative (= openings). cu_polys are already in KiCad coords.
     mask_polys = list(cu_polys)
     for poly in mask_polys:
         lines += [
@@ -733,8 +705,8 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     # with the same 7.1/9.9 x 5.0 mm ground lands). Open B.Mask over the solid B.Cu pour under
     # the two ground pads so the bottom wings can be wetted. (Audit fix: B.Mask was never written.)
     bmask_polys = [
-        rect_k((BLx - GND_OUT, board_ymin), (BLx - GND_IN, board_ymin + GND_L)),
-        rect_k((BLx + GND_IN, board_ymin), (BLx + GND_OUT, board_ymin + GND_L)),
+        rect_k((-GND_OUT, board_ymin), (-GND_IN, board_ymin + GND_L)),
+        rect_k(( GND_IN, board_ymin), ( GND_OUT, board_ymin + GND_L)),
     ]
     for poly in bmask_polys:
         lines += [
@@ -745,21 +717,12 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
             '',
         ]
 
-    # Isolated-port ground via (F.Cu ↔ B.Cu), in the resistor ground pad (in-pad -> low L)
-    lines += [
-        '  (via',
-        f'    (at {via_kx:.4f} {via_ky:.4f}) (size 0.8) (drill 0.4)',
-        '    (layers "F.Cu" "B.Cu") (net 0)',
-        '  )',
-        '',
-    ]
-
-    # Edge-launch ground stitching: tie the two flanking F.Cu launch pads to the
-    # B.Cu plane so the WR-SMA flat-tab ground legs see a solid edge ground.
+    # Edge-launch ground stitching: tie the two flanking F.Cu launch pads (centred on
+    # x=0) to the B.Cu plane so the WR-SMA flat-tab ground legs see a solid edge ground.
     g_cx = (GND_IN + GND_OUT) / 2.0                  # ground-pad centreline offset
     for _sx in (-1.0, 1.0):
         for _gy in (board_ymin + 1.5, board_ymin + 3.5):
-            _vkx, _vky = xf(BLx + _sx * g_cx, _gy)
+            _vkx, _vky = xf(_sx * g_cx, _gy)
             lines += [
                 '  (via',
                 f'    (at {_vkx:.4f} {_vky:.4f}) (size 0.8) (drill 0.4)',
@@ -768,12 +731,14 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
                 '',
             ]
 
-    # ════════════════ MOUNTING HOLES (3× M3, clear corners) ════════════════
-    # +x/+y corner is the patch (~8.6 mm edge ground), so 3 holes: TL/BL/BR. Edge.Cuts
+    # ════════════════ MOUNTING HOLES (4× M3, clear corners) ════════════════
+    # The patch is centred with ~38 mm of ground at every corner, so all FOUR corners
+    # are clear (the single feed exits the bottom EDGE centre, not a corner). Edge.Cuts
     # circle = routed hole. NYLON standoffs only (metal detunes the ground-plane edge).
     HOLE_D, HOLE_OFF = 3.2, 8.0                        # M3 clearance; inset clears the 6 mm radius
     for mx, my in ((HOLE_OFF, HOLE_OFF),
                    (HOLE_OFF, board - HOLE_OFF),
+                   (board - HOLE_OFF, HOLE_OFF),
                    (board - HOLE_OFF, board - HOLE_OFF)):
         lines.append(f'  (gr_circle (center {mx:.4f} {my:.4f}) '
                      f'(end {mx + HOLE_D / 2:.4f} {my:.4f}) (layer "Edge.Cuts") (width 0.1))')
@@ -781,11 +746,8 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     lines.append('')
 
     # ── shared positions / live performance for the back datasheet ──
-    h         = p.W_mm / 2.0
     inset_cap = Lo['insets'][0]['depth']
-    cqx = (Lo['BL'][0] + Lo['TR'][0]) / 2.0           # coupler-ring centre (sim coords)
-    cqy = (Lo['BL'][1] + Lo['TR'][1]) / 2.0
-    qkx, qky = xf(cqx, cqy)
+    qkx, qky = xf(0.0, (h + sub_hw) / 2.0)             # QR anchor: clear ground strip above the patch
     res = {}
     try:
         with open(os.path.join(os.path.dirname(os.path.abspath(output_path)),
@@ -804,7 +766,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     arb  = res.get('ar_boresight_dB', 1.6) if res else 1.6
     dx = 11.0                                            # left padding (moved in from the edge)
     lines += _txt('RHCP GROUNDSTATION PATCH', dx, 23.0, 'F.SilkS', 1.7, 'left', bold=True)
-    lines += _txt(f'{config.f_target / 1e6:.3f} MHz    RHCP    dual-feed branch-line coupler',
+    lines += _txt(f'{config.f_target / 1e6:.3f} MHz    RHCP    single-feed corner-truncated',
                   dx, 28.5, 'F.SilkS', 1.2)
     lines += _txt(f'2-layer    {config.substrate_material} eps_r {epsr:.2f}    {substrate_h:.1f} mm    '
                   f'{board:.0f} x {board:.0f} mm', dx, 32.5, 'F.SilkS', 1.1)
@@ -813,12 +775,11 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     lines += _txt('boresight = +Z (out of front face)', dx, 44.5, 'F.SilkS', 1.0)
     lines += _txt('Open Source Hardware', dx, 48.0, 'F.SilkS', 1.0)
 
-    # ── BOTTOM-LEFT corner: logos stacked going up (open-hardware lowest, our emblem above),
-    #    sharing ONE centreline midway between the board edge and the input feed ──
-    feed_kx = xf(Lo['BL'][0], 0.0)[0]                   # input-feed centreline (KiCad x)
-    logo_cx = (feed_kx - fw / 2.0) / 2.0                # centre of the gap edge(0)..feed-left
-    lines += _svg_silk(os.path.join(_ASSETS, 'logo.svg'), logo_cx, 113.0, 18.0)
-    lines += _svg_silk(os.path.join(_ASSETS, 'brand-open-source-hardware.svg'), logo_cx, 135.0, 11.0)
+    # ── BOTTOM-LEFT clear ground (below the centred patch): logos stacked going up
+    #    (open-hardware lowest, our emblem above) on the bottom-left margin centreline ──
+    logo_cx = (sub_hw - h) / 2.0                        # centre of the clear bottom-left strip (KiCad x)
+    lines += _svg_silk(os.path.join(_ASSETS, 'logo.svg'), logo_cx, 133.0, 16.0)
+    lines += _svg_silk(os.path.join(_ASSETS, 'brand-open-source-hardware.svg'), logo_cx, 150.0, 10.0)
 
     # ── BOTTOM-RIGHT: BORESIGHT BEAM footprint - the +Z main beam seen looking INTO the
     #    front face (centre = +Z boresight, radius = theta 0..90 to the horizon at the rim,
@@ -841,19 +802,17 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
                                 res.get('xy_phi_deg', []), res.get('xy_rhcp_dBi', []), 'F.SilkS')
         lines += _txt('theta = 90 horizon cut (>=6 dB below boresight)', 104.0, 106.5, 'F.SilkS', 0.85)
 
-    # ── dimensions: text BESIDE each part, flowing PARALLEL to it (no leader arrows) ──
-    lines += _txt(f'Patch {p.W_mm:.1f} mm sq', 124.0, 84.5, 'F.SilkS', 1.1)            # ~3 mm under patch bottom-right corner
-    lines += _txt(f'inset {inset_cap:.1f} mm', 98.0, 84.5, 'F.SilkS', 1.0)             # ~3 mm below, beside the bottom inset notch
-    lines += _txt(f'arm {p.cpl_arm_mm:.0f} mm', 30.0, 120.0, 'F.SilkS', 1.0, angle=90)  # | coupler arm (left)
-    lines += _txt(f'35R w{p.cpl_w35_mm:.2f}', 30.0, 100.0, 'F.SilkS', 0.9, angle=90)    # | coupler vert arm
-    lines += _txt(f'feed 50R w{fw:.2f}', 28.0, 158.0, 'F.SilkS', 0.9, angle=90)         # | input feed
+    # ── dimensions: text on the clear ground beside each feature ──
+    lines += _txt(f'Patch {p.W_mm:.1f} mm sq', logo_cx - 6.0, 50.0, 'F.SilkS', 1.0)     # left strip, beside patch
+    lines += _txt(f'trunc {p.trunc_mm:.1f} mm', logo_cx - 6.0, 54.0, 'F.SilkS', 1.0)    #   corner-chamfer size
+    lines += _txt(f'inset {inset_cap:.1f} mm', sma_kx + 4.0, sma_ky - 11.0, 'F.SilkS', 0.95)  # near the feed
+    lines += _txt(f'feed 50R w{fw:.2f} mm', sma_kx + 4.0, sma_ky - 14.5, 'F.SilkS', 0.9)
 
-    # SMA + isolated-port resistor: part labels on bare substrate beside each land
-    # (no over-pad ring markers - silk over the exposed copper is dropped in fab).
+    # SMA part label on bare substrate beside the launch land (no over-pad markers —
+    # silk over exposed copper is dropped in fab).
     lines += _txt('WR-SMA 60312202114514', sma_kx + 4.0, sma_ky - 7.0, 'F.SilkS', 1.1)
-    lines += _txt('R50_ISO  50R 0603', res_kx + 2.5, res_ky, 'F.SilkS', 1.0)
 
-    # QR centred in the coupler ring (bare substrate inside the ~34 mm opening), no caption
+    # QR on the clear ground strip above the patch, no caption
     qr_sz = 25.5
     lines += _qr_code_lines(
         'https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/tree/main',
@@ -862,28 +821,28 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     # ════════════════ BACK SILK - datasheet (mirrored to read from the back) ════════════════
     lines += _txt('Ground-station RHCP receive antenna - 869.5 MHz rocket telemetry downlink, '
                   'wide-beam backup', board - 12.0, 8.0, 'B.SilkS', 0.95, 'left', mirror=True)
-    lines += _txt('RHCP DUAL-FEED PATCH  -  DATASHEET', board - 12.0, 14.0,
+    lines += _txt('RHCP SINGLE-FEED PATCH  -  DATASHEET', board - 12.0, 14.0,
                   'B.SilkS', 2.2, 'left', mirror=True, bold=True)
     rhcp = 'RHCP' if res.get('rhcp', True) else 'LHCP'
     dtable = [['PARAMETER', 'VALUE'],
               ['Frequency', f'{config.f_target / 1e6:.3f} MHz'],
-              ['Polarisation', f'{rhcp} (90-deg hybrid)'],
-              ['Patch (square)', f'{p.W_mm:.2f} mm'],
-              ['Coupler arm', f'{p.cpl_arm_mm:.2f} mm'],
-              ['Feed 50R / 35R', f'{fw:.2f} / {p.cpl_w35_mm:.2f} mm'],
-              ['Inset depth', f'{inset_cap:.2f} mm'],
+              ['Polarisation', f'{rhcp} (corner-truncated)'],
+              ['Patch (near-square)', f'{p.W_mm:.2f} mm'],
+              ['Corner truncation', f'{p.trunc_mm:.2f} mm chamfer'],
+              ['Feed 50R / inset', f'{fw:.2f} / {inset_cap:.2f} mm'],
               ['Board', f'{board:.0f} x {board:.0f} mm'],
               ['Substrate', f'{config.substrate_material}  er {config.substrate_epsR}  {substrate_h:.1f} mm']]
     if res:
         dtable += [['Return loss S11', f'{res.get("s11_at_ft_dB", 0):.1f} dB'],
                    ['Axial ratio', f'{res.get("ar_boresight_dB", 0):.2f} dB'],
                    ['AR<=3 beamwidth', f'{res.get("ar3_beamwidth_deg", 0):.0f} deg'],
-                   ['Directivity', f'{res.get("Dmax_dBi", 0):.1f} dBi']]
+                   ['Directivity', f'{res.get("Dmax_dBi", 0):.1f} dBi'],
+                   ['Realised gain', f'{res.get("realised_gain_dBic", 0):.1f} dBic']]
     lines += _silk_table(dtable, 14.0, 20.0, [36.0, 50.0], 5.6, 'B.SilkS',
                          board_w=board, size=1.2)
 
-    info = ['Hardware: edge-launch SMA (WE 60312202114514) + 50 ohm 0603 (R50_ISO)',
-            'Mounting: 3x M3, nylon standoffs only',
+    info = ['Hardware: edge-launch SMA (WE 60312202114514); no termination resistor',
+            'Mounting: 4x M3, nylon standoffs only',
             'Main beam: boresight +Z, out of the front face',
             'github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry  -  Open Source Hardware',
             'Spaceflight Rocketry Giessen e.V.']
@@ -934,38 +893,33 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
         f.write('\n'.join(lines) + '\n')
 
     print(f'KiCad PCB written : {output_path}')
-    print(f'  Patch side   W   = {p.W_mm:.4f} mm (square)')
-    print(f'  Coupler arm      = {p.cpl_arm_mm:.4f} mm  (w50 {p.cpl_w50_mm:.2f} / '
-          f'w35 {p.cpl_w35_mm:.2f} mm)')
-    print(f'  Feed inset  x/y  = {p.inset_x_mm:.4f} / {p.inset_y_mm:.4f} mm')
+    print(f'  Patch side   W   = {p.W_mm:.4f} mm (near-square)')
+    print(f'  Corner trunc     = {p.trunc_mm:.4f} mm chamfer ({Lo["diag"]})')
+    print(f'  Feed inset       = {p.inset_y_mm:.4f} mm  (50R w {fw:.2f} mm)')
     print(f'  Board size       = {board:.1f} x {board:.1f} mm')
-    print(f'  SMA edge launch  = ({sma_kx:.2f}, {sma_ky:.2f}) mm from board TL')
-    print(f'  Iso 50 ohm R/via = ({res_kx:.2f}, {res_ky:.2f}) / '
-          f'({via_kx:.2f}, {via_ky:.2f}) mm from board TL')
+    print(f'  SMA edge launch  = ({sma_kx:.2f}, {sma_ky:.2f}) mm from board TL (bottom centre)')
     print()
     print('Next steps in KiCad:')
-    print('  1. Open the .kicad_pcb - F.Cu = patch + coupler + feeds, B.Cu = ground.')
+    print('  1. Open the .kicad_pcb - F.Cu = patch + feed, B.Cu = ground. No coupler/resistor.')
     print('  2. The WR-SMA 60312202114514 end-launch land pattern is already drawn at')
-    print('     the -Y edge: 0.61 mm centre-tab land + two flanking ground pads (stitched')
-    print('     to B.Cu). Solder the connector flat tab to the tab land, ground legs to')
+    print('     the -Y edge centre: 0.61 mm centre-tab land + two flanking ground pads')
+    print('     (stitched to B.Cu). Solder the flat tab to the tab land, ground legs to')
     print('     the flanking pads (top) and the B.Cu plane (bottom edge).')
-    print('  3. Place a 50 ohm 0603 resistor at "R50_ISO": signal pad on the F.Cu iso')
-    print('     stub, ground pad on the in-pad via to B.Cu.')
-    print('  4. NOTE: the whole top copper is soldermask-FREE (matches the bare-PEC sim);')
+    print('  3. NOTE: the whole top copper is soldermask-FREE (matches the bare-PEC sim);')
     print('     the fab plates the surface finish (HASL/ENIG) over it - the radome protects it.')
-    print('  5. Mounting: 3x M3 holes at clear corners - use NYLON standoffs (a metal one')
+    print('  4. Mounting: 4x M3 holes at clear corners - use NYLON standoffs (a metal one')
     print('     would ground the GP edge to the chassis and detune the antenna).')
-    print('  6. File -> Fabrication Outputs -> Gerbers -> Generate.')
+    print('  5. File -> Fabrication Outputs -> Gerbers -> Generate.')
 
 
 def main():
     ap = argparse.ArgumentParser(
-        description='Flat dual-feed RHCP patch sim results → KiCad 7/8 PCB file')
+        description='Single-feed corner-truncated RHCP patch sim results → KiCad 7/8 PCB file')
     ap.add_argument('json_file', nargs='?',
                     help='Path to results.json written by run.py')
     ap.add_argument('--W',           type=float, help='Patch side [mm]')
-    ap.add_argument('--cpl_arm',     type=float, help='Coupler arm length [mm]')
-    ap.add_argument('--inset',       type=float, help='Feed inset depth (sets x==y) [mm]')
+    ap.add_argument('--trunc',       type=float, help='Corner truncation (chamfer) [mm]')
+    ap.add_argument('--inset',       type=float, help='Feed inset depth [mm]')
     ap.add_argument('--sub_hw',      type=float, help='Substrate / GP half-width [mm]')
     ap.add_argument('--substrate_h', type=float, default=config.substrate_thickness,
                     help=f'Substrate thickness [mm] (default {config.substrate_thickness})')
@@ -985,10 +939,10 @@ def main():
 
     # CLI overrides (applied on top of the base params).
     overrides = {}
-    if args.W       is not None: overrides['W_mm']       = args.W
-    if args.cpl_arm is not None: overrides['cpl_arm_mm'] = args.cpl_arm
-    if args.inset   is not None: overrides['inset_x_mm'] = overrides['inset_y_mm'] = args.inset
-    if args.sub_hw  is not None: overrides['sub_hw_mm']  = args.sub_hw
+    if args.W      is not None: overrides['W_mm']       = args.W
+    if args.trunc  is not None: overrides['trunc_mm']   = args.trunc
+    if args.inset  is not None: overrides['inset_y_mm'] = args.inset
+    if args.sub_hw is not None: overrides['sub_hw_mm']  = args.sub_hw
     if overrides:
         p = p.with_(**overrides)
 

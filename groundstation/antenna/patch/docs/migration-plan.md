@@ -1,5 +1,13 @@
 # Flat dual-feed (branch-line coupler) RHCP patch — as-built design notes
 
+> **⚠️ SUPERSEDED 2026-06-08 — the dual-feed coupler design below is RETIRED.** A power
+> decomposition showed the branch-line coupler dumps ~64 % of accepted power into its
+> isolated-port resistor (realised gain −9.6 dBic). The design migrated to a **single-feed
+> corner-truncated RHCP patch** (no coupler, no resistor) on branch `patch_antenna_SF`,
+> which recovers that power (validated: η_rad 28 %, realised +0.8 dBic, RHCP). See WIP.md
+> and [[patch-antenna-sim-state]] for the current design; the notes below are kept as
+> historical reference for the §0/§2/§5 anchors that some pre-migration docstrings cite.
+
 > **STATUS — migration COMPLETE.** The 869.52 MHz ground-station backup patch is a
 > single flat 2-layer FR-4 PCB whose RHCP comes from a **dual quadrature feed** (an
 > etched branch-line / 90° hybrid coupler driving two orthogonal inset feeds), **not**

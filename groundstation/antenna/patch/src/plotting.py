@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """All matplotlib figure creation and saving.  No FDTD / NF2FF calls here.
 
-Figure set (datasheet-style characterisation of the dual-feed RHCP patch):
+Figure set (datasheet-style characterisation of the single-feed RHCP patch):
 
   Frequency domain (radio-facing):
     return_loss.png        S11 vs f, with the -10 dB match band shaded
@@ -24,10 +24,9 @@ Figure set (datasheet-style characterisation of the dual-feed RHCP patch):
 
 NOTE on "gain": the per-angle pattern plots show DIRECTIVITY (pattern shape, in dBi =
 10·log10(openEMS Dmax)). Realised gain (directivity × total efficiency η_tot, i.e. incl.
-FR-4 dielectric + isolated-port-resistor + mismatch loss; copper is PEC in-sim) is
-reported in directivity_vs_freq.png, gain_vs_theta.png and summary_sheet.png — for the
-branch-line-coupler feed it is many dB below directivity (the coupler dumps the patch
-mismatch into the isolated-port resistor), so the two are kept distinct.
+FR-4 dielectric + mismatch loss; copper is PEC in-sim) is reported in
+directivity_vs_freq.png, gain_vs_theta.png and summary_sheet.png — on FR-4-class laminate
+it is a few dB below directivity, so the two are kept distinct.
 """
 
 import matplotlib
@@ -180,9 +179,8 @@ def plot_gain_vs_freq(f, directivity_dBi, rhcp_boresight_dBic, f_target, out_pat
     Directivity (dBi = 10·log10(openEMS Dmax)) is normalisation-independent. When the
     dipole-validated efficiency is trustworthy, the realised-gain curve (directivity +
     10·log10(η_tot)) and the radiation/total efficiency (right axis, %) are overlaid so
-    the absolute level — far below directivity when a branch-line coupler dumps the
-    patch mismatch into the isolated-port resistor — is visible. If η is unavailable
-    (sanity gate failed) only the directivity curves are drawn.
+    the absolute level — below directivity by the FR-4 dielectric + mismatch loss — is
+    visible. If η is unavailable (sanity gate failed) only the directivity curves are drawn.
     """
     fig, ax = plt.subplots()
     ax.plot(f / 1e6, directivity_dBi, 'k-', linewidth=2, label='Peak directivity (dBi)')
@@ -385,35 +383,30 @@ def plot_summary_sheet(rows, title, out_path, footnote=None):
 # ══════════════════════════════════════════════════════════════════════════════
 
 _PHASE_CFG = {
-    'GRID': ('steelblue', 'GRID screen (W×arm, coarse NrTS)'),
+    'GRID': ('steelblue', 'GRID screen (W×truncation, coarse NrTS)'),
     'CONF': ('crimson',   'CONFIRM (full NrTS)'),
-    'W':  ('purple',     'Phase W — width (resonance)'),
-    'I':  ('darkorange', 'Phase I — inset (match)'),
-    'C':  ('darkgreen',  'Phase C — coupler arm (AR)'),
-    'W2': ('navy',       'Phase W2 — width re-tune'),
-    'GP': ('crimson',    'Phase GP — ground plane (beam)'),
 }
 
 
 def plot_opt_width(opt_log, f_target, out_path):
-    """f_res vs patch side W, one line per coupler-arm value (the 2-D grid)."""
+    """f_res vs patch side W, one line per corner-truncation value (the 2-D grid)."""
     pts = [x for x in opt_log
            if x.get('ok', True) and x['phase'] in ('GRID', 'CONF', 'W', 'W2')]
     if not pts:
         return
     fig, ax = plt.subplots()
-    arms = sorted({round(x['p'].cpl_arm_mm, 2) for x in pts})
-    for arm in arms:
-        sub = sorted((x for x in pts if round(x['p'].cpl_arm_mm, 2) == arm),
+    truncs = sorted({round(x['p'].trunc_mm, 2) for x in pts})
+    for tr in truncs:
+        sub = sorted((x for x in pts if round(x['p'].trunc_mm, 2) == tr),
                      key=lambda x: x['p'].W_mm)
         ax.plot([x['p'].W_mm for x in sub], [x['f_res'] / 1e6 for x in sub],
-                'o-', label=f'coupler arm {arm:.1f} mm')
+                'o-', label=f'truncation {tr:.1f} mm')
     best = min(pts, key=lambda x: abs(x['f_res'] - f_target))
     ax.axhline(y=f_target / 1e6, label=f'Target {f_target/1e6:.3f} MHz', **_TARGET_LINE)
     ax.scatter([best['p'].W_mm], [best['f_res'] / 1e6],
                color='gold', s=120, zorder=5, label='Closest to target')
     ax.set_xlabel('Patch side W (mm)'); ax.set_ylabel('Resonant frequency (MHz)')
-    ax.set_title('Optimisation — Resonance vs Patch Size (per coupler arm)')
+    ax.set_title('Optimisation — Resonance vs Patch Size (per corner truncation)')
     ax.legend(loc='best', fontsize='small'); ax.grid(True)
     _save(fig, out_path)
 
