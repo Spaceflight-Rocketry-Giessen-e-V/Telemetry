@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Post-processing: S11, axial ratio, impedance, far-field, VTK output, results.json."""
+"""Post-processing for the flat dual-feed (branch-line coupler) RHCP patch.
+
+Driven by a ``PatchParams`` object and the ``build_full_sim`` MSL-port model. Adds
+the wide-beam COVERAGE reporting the backup-antenna role needs: AR and RHCP gain
+over an elevation cone, the AR<=3 dB beamwidth, the worst AR over the coverage
+cone, and the RHCP sense — alongside the kept S11 / AR-vs-f / far-field / VTK
+outputs. Writes a results.json keyed by the PatchParams fields so the KiCad export
+re-derives the same board via geometry.dual_feed_layout().
+"""
 
 import glob
 import json
@@ -10,7 +18,10 @@ import numpy as np
 
 import config
 from src import plotting
-from src.metrics import axial_ratio_db, s11_db
+from src.geometry import dual_feed_layout
+from src.metrics import (axial_ratio_db, s11_db, ar_beamwidth_deg,
+                         worst_ar_over_cone, min_gain_over_cone)
+from src.params import PatchParams
 
 
 _PARAVIEW_README = """\
@@ -31,13 +42,10 @@ Steps:
   c. Click the rainbow auto-scale button.
   d. View > Orientation Axes  (+Z = boresight / sky).
 
-2. SURFACE STANDING-WAVE ANIMATION  (E_patch_surf/ and J_patch_surf/ subfolders)
+2. SURFACE CURRENT ANIMATION  (J_patch_surf/ subfolder)
 ----------------------------------------------------------------------------------
-Files are in two subfolders:
-  E_patch_surf/  — E-field phasor snapshots at the substrate mid-plane
-                   (reveals TM010 resonant mode)
-  J_patch_surf/  — surface current phasor snapshots on the patch conductor
-                   (reveals CP mode splitting and feed coupling)
+  J_patch_surf/  — surface current phasor snapshots on the top copper
+                   (patch + coupler + feeds; reveals the rotating CP current).
 
 Each subfolder contains files named  *_p=000.vtr  *_p=017.vtr  ... (every ~17°
 through one full RF cycle), plus _abs.vtr (magnitude) and _arg.vtr (phase angle).
@@ -46,50 +54,41 @@ QUICKEST WAY: use the auto-generated script load_in_paraview.py (same folder).
   pvpython load_in_paraview.py          ← batch mode
   — or paste into  View > Tools > Python Console  while ParaView is open.
 
-Manual step-by-step:
-  a. File > Open > E_patch_surf > E_patch_surf_*_p=*.vtr
-     Select all files, ParaView groups them as a time series  → Apply.
-  b. Press Play in the Animation toolbar to cycle through RF phases.
-  c. Colour by the field array shown in Properties > Coloring.
-
 Tip for J_patch_surf:
   Use Filters > Glyph (Arrow, scale by magnitude) to visualise the rotating
-  surface current.  Smooth circular rotation = correct RHCP balance.
-  Figure-eight or wobbling = truncation needs adjustment.
+  surface current.  Smooth circular rotation over the patch = correct RHCP
+  balance; a wobble / figure-eight means the coupler balance needs tuning.
 
-If the subfolders are absent:
+If the subfolder is absent:
   export_vtk_surf may be False in run.py, or the openEMS build does not
-  support DumpType=10/12 (requires >= r700).
+  support DumpType=12 (requires >= r700).
 """
 
 
 class PostProcessor:
     """Runs full post-processing on the final FDTD simulation.
 
-    After calling run(), access the computed antenna parameters via
-    the results property, which returns a dict suitable for results.json
-    and KiCad export.
+    After calling run(), access the computed antenna parameters via the
+    ``results`` property, which returns a dict suitable for results.json and the
+    KiCad export.
     """
 
     def __init__(self, port, nf2ff_box, run_dir, sim_path, graphs_path, vtk_path,
-                 opt_W, opt_delta, opt_y_inset, opt_log,
-                 opt_sub_hw=None,
+                 params: PatchParams, opt_log,
                  post_proc_only=False, export_vtk_surf=True):
-        self._port           = port
-        self._nf2ff          = nf2ff_box
-        self._run_dir        = run_dir
-        self._sim_path       = sim_path
-        self._graphs_path    = graphs_path
-        self._vtk_path       = vtk_path
-        self.opt_W           = opt_W
-        self.opt_delta       = opt_delta
-        self.opt_y_inset     = opt_y_inset
-        self.opt_sub_hw      = (float(opt_sub_hw) if opt_sub_hw is not None
-                                else config.SUB_HW_DEFAULT)
-        self.opt_log         = opt_log
-        self._post_proc_only = post_proc_only
+        self._port            = port
+        self._nf2ff           = nf2ff_box
+        self._run_dir         = run_dir
+        self._sim_path        = sim_path
+        self._graphs_path     = graphs_path
+        self._vtk_path        = vtk_path
+        self.params           = params
+        self.opt_log          = opt_log
+        self._post_proc_only  = post_proc_only
         self._export_vtk_surf = export_vtk_surf
-        self._results        = None
+        self._results         = None
+        # realised board (the layout may grow sub_hw to fit coupler/feeds + margin)
+        self._layout          = dual_feed_layout(params)
 
     # ── public interface ──────────────────────────────────────────────
 
@@ -98,11 +97,14 @@ class PostProcessor:
         self._s11_sweep()
         self._axial_ratio_sweep()
         self._farfield()
+        self._band_sweep()
+        self._coverage_cuts()
         self._write_vtk_farfield()
         self._copy_standing_wave_vtk()
         self._write_paraview_script()
         self._opt_trace_plots()
         self._write_results_json()
+        self._summary_sheet()
         self._write_paraview_readme()
         self._print_summary()
 
@@ -120,14 +122,23 @@ class PostProcessor:
             config.f_target + config.fc, 401)
         self._port.CalcPort(self._sim_path, f_sweep)
 
+        # Complex reflection Γ = uf_ref/uf_inc (referenced to the port's 50 Ω line):
+        # S11, VSWR and the Smith locus all derive from this ONE quantity, so they agree.
+        gamma  = self._port.uf_ref / self._port.uf_inc
         s11_dB = s11_db(self._port.uf_ref, self._port.uf_inc)
-        Zin    = self._port.uf_tot / self._port.if_tot
+        # De-embedded, match-CONSISTENT input impedance Zin = Z0·(1+Γ)/(1−Γ). Replaces the
+        # raw uf_tot/if_tot terminal impedance, which for a hybrid-coupler feed reads far
+        # from 50 Ω even when matched (feed-point reflections are dumped into the isolated-
+        # port resistor, not returned to the source — so raw Zin ≠ the match it achieves).
+        Z0  = float(config.feed_R)
+        Zin = Z0 * (1.0 + gamma) / (1.0 - gamma)
+        # Accepted power into the network at each f (for radiation efficiency in _band_sweep).
+        self._gamma_sweep = gamma
+        self._P_acc_sweep = 0.5 * np.real(self._port.uf_tot
+                                          * np.conj(self._port.if_tot))
 
-        # CP operating frequency: centroid of matched bandwidth (works for both
-        # single-mode and split-mode patches; robust at coarse and fine grids).
-        # NOTE: intentionally NOT metrics.cp_center_freq — this reporting path
-        # also needs s11_at_res and falls back to f_target (not argmin) when the
-        # patch never matches below -10 dB, so the two must stay distinct.
+        # CP operating frequency: -S11-weighted centroid of the matched band
+        # (robust for single-mode and split-mode patches at coarse & fine grids).
         mask = s11_dB < -10
         if mask.any():
             weights    = -s11_dB[mask]
@@ -170,10 +181,12 @@ class PostProcessor:
         self._f_mode2    = f_mode2
         self._mode_split = mode_split
 
+        title_note = (f'W = {self.params.W_mm:.1f} mm  '
+                      f'arm = {self.params.cpl_arm_mm:.1f} mm')
         plotting.plot_s11(
             f_sweep, s11_dB,
             config.f_target, f_res, s11_at_res,
-            self.opt_W, self.opt_delta,
+            title_note,
             os.path.join(self._graphs_path, 's11.png'),
             f_mode1=f_mode1, f_mode2=f_mode2)
 
@@ -181,6 +194,81 @@ class PostProcessor:
             f_sweep, np.real(Zin), np.imag(Zin),
             config.f_target,
             os.path.join(self._graphs_path, 'input_impedance.png'))
+        plotting.plot_vswr(
+            f_sweep, np.abs(self._gamma_sweep), config.f_target,
+            os.path.join(self._graphs_path, 'vswr.png'))
+        plotting.plot_smith(
+            self._gamma_sweep, f_sweep, config.f_target,
+            config.f_target - 60e6, config.f_target + 60e6,
+            os.path.join(self._graphs_path, 'smith.png'))
+
+    def _band_sweep(self):
+        """Directivity + AR-beamwidth vs frequency (the band-behaviour read).
+
+        One multi-frequency NF2FF call over a coarse full sphere gives the peak
+        directivity at each f; its RHCP/LHCP fields give the boresight RHCP
+        directivity, boresight AR, and the AR≤3 dB beamwidth per f. DIRECTIVITY only
+        (normalisation-independent) — absolute efficiency / realised gain is NOT
+        derived here: the openEMS NF2FF radiated-power vs port-power normalisation for
+        this offset-board, hybrid-fed structure is unreliable (Prad came out ~33×
+        below accepted power → a non-physical ~3 %). Realised gain IS below directivity
+        (FR-4 / copper / isolated-resistor loss) but must be quantified by a dedicated
+        NF2FF-calibration run or a bench measurement; see plotting.plot_gain_vs_freq.
+        """
+        # TODO(efficiency-nf2ff): restore absolute efficiency / realised gain once the
+        # openEMS NF2FF radiated-power normalisation is trusted. Symptom: nf2ff.Prad came
+        # out ~33x BELOW the port accepted power (P_acc from uf_tot*conj(if_tot), which is
+        # self-consistent with |Gamma| and S11), giving a non-physical ~3 % / -11.6 dBic.
+        # Directivity (Dmax) is correct, so it is an ABSOLUTE-Prad issue, not the pattern.
+        # Investigate, in order: (1) the NF2FF box — build_full_sim uses a default
+        # CreateNF2FFBox() on an OFFSET board; create it with explicit bounds enclosing the
+        # board with >= lambda/4 clearance to the PML and re-sim; (2) integrate Prad on a
+        # FINE full sphere; (3) sanity-check against a lossless reference (dipole -> ~100 %);
+        # expected here ~20-40 % (iso-resistor dump + FR-4 loss). When Prad/P_acc is sane,
+        # re-add eta_rad/eta_tot/realised-gain to plot_gain_vs_freq, results.json & summary.
+        print('Computing band sweep (directivity / AR-beamwidth vs frequency)...')
+        f_band = np.linspace(config.f_target - 50e6, config.f_target + 50e6, 21)
+        th = np.arange(0.0, 180.1, 3.0)            # full sphere (Dmax)
+        ph = np.arange(0.0, 360.0, 45.0)
+        res = self._nf2ff.CalcNF2FF(
+            self._sim_path, list(f_band), theta=th, phi=list(ph),
+            center=[0, 0, 1e-3], outfile=os.path.join(self._sim_path, 'nf2ff_band.h5'))
+
+        th_cone = th[th <= 90.0]
+        ph_cov  = np.array([0.0, 45.0, 90.0, 135.0])
+        j_cov   = [int(np.argmin(np.abs(ph - p))) for p in ph_cov]
+        i0      = 1 if len(th) > 1 else 0          # off-axis ring (RHCP/LHCP singular on-axis)
+
+        directivity = np.empty(len(f_band))
+        bs_rhcp     = np.empty(len(f_band))
+        ar_bs       = np.empty(len(f_band))
+        ar_bw       = np.empty(len(f_band))
+        for n in range(len(f_band)):
+            Dmax = float(res.Dmax[n])
+            E_rh = res.E_cprh[n]; E_lh = res.E_cplh[n]
+            Emax = float(np.max(res.E_norm[n]))
+            directivity[n] = Dmax
+            bs_rhcp[n] = Dmax + 20.0 * np.log10(abs(E_rh[0, 0]) / Emax + 1e-12)
+            ar_bs[n] = axial_ratio_db(np.array([E_rh[i0, 0]]),
+                                      np.array([E_lh[i0, 0]]))[0]
+            ar_w = np.array([
+                max(axial_ratio_db(np.array([E_rh[(1 if i == 0 else i), j]]),
+                                   np.array([E_lh[(1 if i == 0 else i), j]]))[0]
+                    for j in j_cov)
+                for i in range(len(th_cone))])
+            ar_bw[n] = ar_beamwidth_deg(th_cone, ar_w)
+
+        self._band_f = f_band
+        print(f'  directivity @ target ≈ {np.interp(config.f_target, f_band, directivity):.1f} dBi  '
+              f'(realised gain is lower — efficiency not reliably extractable, see notes)')
+
+        plotting.plot_gain_vs_freq(
+            f_band, directivity, bs_rhcp, config.f_target,
+            os.path.join(self._graphs_path, 'directivity_vs_freq.png'))
+        plotting.plot_ar_beamwidth_vs_freq(
+            f_band, ar_bw, ar_bs, config.f_target,
+            os.path.join(self._graphs_path, 'ar_beamwidth_vs_freq.png'),
+            cover_cone_deg=config.COVER_CONE_DEG)
 
     def _axial_ratio_sweep(self):
         print('Computing axial ratio sweep...')
@@ -195,17 +283,18 @@ class PostProcessor:
             outfile=os.path.join(self._sim_path, 'nf2ff_ar.h5'))
 
         # True axial ratio AR = (R+L)/|R-L| in dB (≥0); handedness from sign of
-        # (R-L). Uses the same metrics.axial_ratio_db as the optimiser so opt
-        # and final agree.
+        # (R-L). Same metrics.axial_ratio_db the optimiser uses, so opt and final
+        # agree on the metric.
         ar_vs_f_raw = np.empty(len(f_ar))
         rhcp_vs_f   = np.empty(len(f_ar), dtype=bool)
         for n in range(len(f_ar)):
             ar_vs_f_raw[n], rhcp_vs_f[n] = axial_ratio_db(
                 res_ar.E_cprh[n], res_ar.E_cplh[n])
         _w = 5
+        _half = _w // 2                    # parenthesise: -_w // 2 == -3, not -(2)
         ar_vs_f = np.convolve(ar_vs_f_raw, np.ones(_w) / _w, mode='same')
-        ar_vs_f[:_w // 2]  = ar_vs_f_raw[:_w // 2]
-        ar_vs_f[-_w // 2:] = ar_vs_f_raw[-_w // 2:]
+        ar_vs_f[:_half]  = ar_vs_f_raw[:_half]
+        ar_vs_f[-_half:] = ar_vs_f_raw[-_half:]
 
         self._f_ar        = f_ar
         self._ar_vs_f     = ar_vs_f
@@ -231,22 +320,51 @@ class PostProcessor:
             rhcp=self._rhcp_at_ft)
 
     def _farfield(self):
+        # Evaluate the pattern at the OPERATING frequency f_target, not the matched
+        # centroid f_res. The antenna is spec'd at 869.52 MHz and the optimiser
+        # selected every coverage metric at f_target; reporting Dmax/pattern at f_res
+        # would describe a different frequency and could flatter a design whose
+        # resonance has drifted off f_target. f_res is still reported as resonance.
+        f_eval = config.f_target
         # 2D cuts
         theta_2d = np.arange(-180.0, 180.0, 2.0)
         res_2d   = self._nf2ff.CalcNF2FF(
-            self._sim_path, self._f_res, theta_2d, [0., 90.],
+            self._sim_path, f_eval, theta_2d, [0., 90.],
             center=[0, 0, 1e-3])
         E_norm_2d = (20.0 * np.log10(res_2d.E_norm[0] /
                      np.max(res_2d.E_norm[0]) + 1e-30) + res_2d.Dmax[0])
         plotting.plot_farfield_2d(
-            theta_2d, E_norm_2d, self._f_res, res_2d.Dmax[0],
+            theta_2d, np.squeeze(E_norm_2d[:, 0]), np.squeeze(E_norm_2d[:, 1]),
+            f_eval, res_2d.Dmax[0],
             os.path.join(self._graphs_path, 'farfield_2d.png'))
 
-        # 3D pattern
+        # Polar co/cross-pol patterns (RHCP co-pol + LHCP cross-pol) in 3 principal
+        # planes: XZ (φ=0) / YZ (φ=90) elevation cuts + XY (θ=90) azimuth/horizon cut.
+        # All referenced to ONE Dmax/Emax (the boresight-containing cut) so the absolute
+        # dBi scale is consistent across panels (the XY horizon cut is correctly low).
+        Emax2 = float(np.max(res_2d.E_norm[0]))
+        def _cdb(E):
+            return 20.0 * np.log10(np.abs(E) / Emax2 + 1e-12) + res_2d.Dmax[0]
+        phi_xy = np.arange(0.0, 360.0, 2.0)
+        res_xy = self._nf2ff.CalcNF2FF(self._sim_path, f_eval, theta=[90.0],
+                                       phi=list(phi_xy), center=[0, 0, 1e-3])
+        plotting.plot_pattern_polar(
+            [('XZ-plane (φ = 0°)',  theta_2d, _cdb(res_2d.E_cprh[0][:, 0]), _cdb(res_2d.E_cplh[0][:, 0])),
+             ('YZ-plane (φ = 90°)', theta_2d, _cdb(res_2d.E_cprh[0][:, 1]), _cdb(res_2d.E_cplh[0][:, 1])),
+             ('XY-plane (θ = 90°)', phi_xy,   _cdb(res_xy.E_cprh[0][0, :]), _cdb(res_xy.E_cplh[0][0, :]))],
+            f_eval, res_2d.Dmax[0],
+            os.path.join(self._graphs_path, 'pattern_polar.png'))
+
+        # XY-plane (θ=90°, azimuth) RHCP pattern, downsampled, for the on-board KiCad polar
+        _xy_rh = _cdb(res_xy.E_cprh[0][0, :])
+        self._xy_phi_deg  = [float(a) for a in phi_xy[::5]]
+        self._xy_rhcp_dBi = [float(v) for v in _xy_rh[::5]]
+
+        # 3D pattern (authoritative Dmax over the full sphere)
         theta_3d = np.arange(  0.0, 181.0, 2.0)
         phi_3d   = np.arange(  0.0, 360.0, 2.0)
         res_3d   = self._nf2ff.CalcNF2FF(
-            self._sim_path, self._f_res, theta_3d, phi_3d,
+            self._sim_path, f_eval, theta_3d, phi_3d,
             center=[0, 0, 1e-3])
         E_3d  = res_3d.E_norm[0]
         self._Dmax = res_3d.Dmax[0]
@@ -263,8 +381,78 @@ class PostProcessor:
 
         plotting.plot_farfield_3d(
             self._X, self._Y, self._Z, E_lin, E_dBi,
-            self._f_res, self._Dmax,
+            f_eval, self._Dmax,
             os.path.join(self._graphs_path, 'farfield_3d.png'))
+
+    def _coverage_cuts(self):
+        """AR and RHCP gain over an elevation cone — the wide-beam coverage read.
+
+        One NF2FF call (θ = 0..90°, φ = 0/45/90/135°) at f_res. Per (θ, φ): true
+        axial ratio and RHCP partial directivity (referenced to this call's own
+        Dmax / peak |E|, which is self-consistent because the broadside peak lies
+        inside the grid). The coverage scalars use the WORST AR over φ and the MIN
+        RHCP gain over φ at each θ, then the shared metrics helpers — the same
+        helpers (and worst-over-φ convention) the optimiser worker selects on.
+        """
+        print('Computing coverage cuts (AR / gain vs elevation)...')
+        # At the OPERATING frequency f_target (the optimiser selected here), not f_res.
+        th = np.arange(0.0, 90.1, 2.0)
+        ph = np.array([0.0, 45.0, 90.0, 135.0])
+        res = self._nf2ff.CalcNF2FF(
+            self._sim_path, config.f_target, theta=th, phi=list(ph),
+            center=[0, 0, 1e-3],
+            outfile=os.path.join(self._sim_path, 'nf2ff_cone.h5'))
+
+        Dmax = float(res.Dmax[0])
+        E_rh = res.E_cprh[0]               # (n_theta, n_phi) complex
+        E_lh = res.E_cplh[0]
+        E_no = res.E_norm[0]               # (n_theta, n_phi) real magnitude
+        Emax = float(np.max(E_no))
+
+        n_th, n_ph = E_rh.shape
+        ar_by_phi   = np.empty((n_th, n_ph))
+        gain_by_phi = np.empty((n_th, n_ph))
+        for i in range(n_th):
+            # AR: the RHCP/LHCP basis is singular exactly on-axis, so use the next
+            # ring for θ=0 (matches the optimiser worker's j0=1) — else a spurious
+            # on-axis AR can inflate worst_ar_over_cone vs what was selected on.
+            i_ar = 1 if (i == 0 and n_th > 1) else i
+            for j in range(n_ph):
+                ar_by_phi[i, j] = axial_ratio_db(
+                    np.array([E_rh[i_ar, j]]), np.array([E_lh[i_ar, j]]))[0]
+                gain_by_phi[i, j] = Dmax + 20.0 * np.log10(
+                    abs(E_rh[i, j]) / Emax + 1e-12)
+        ar_worst   = ar_by_phi.max(axis=1)     # worst azimuth cut
+        gain_worst = gain_by_phi.min(axis=1)   # worst azimuth cut
+
+        self._cone_theta    = th
+        self._cone_phi      = ph
+        self._ar_by_phi     = ar_by_phi
+        self._ar_worst      = ar_worst
+        self._gain_by_phi   = gain_by_phi
+        self._gain_worst    = gain_worst
+        self._ar3_bw_deg    = float(ar_beamwidth_deg(th, ar_worst))
+        self._worst_ar_cone = float(worst_ar_over_cone(th, ar_worst,
+                                                       config.COVER_CONE_DEG))
+        self._min_gain_cone = float(min_gain_over_cone(th, gain_worst,
+                                                       config.COVER_CONE_DEG))
+        g_mean = gain_by_phi.mean(axis=1)
+        self._peak_gain_theta = float(th[int(np.argmax(g_mean))])
+
+        print(f'  AR≤3 dB beamwidth: {self._ar3_bw_deg:.0f}°   '
+              f'worst AR over {config.COVER_CONE_DEG:.0f}° cone: {self._worst_ar_cone:.1f} dB')
+        print(f'  min RHCP gain over cone: {self._min_gain_cone:.1f} dBic   '
+              f'(peak gain at θ ≈ {self._peak_gain_theta:.0f}°)')
+
+        plotting.plot_ar_vs_theta(
+            th, ar_by_phi, ph, ar_worst, config.f_target,
+            os.path.join(self._graphs_path, 'ar_vs_theta.png'),
+            ar_max=config.AR_MAX_DB, beamwidth_deg=self._ar3_bw_deg,
+            cone_half_deg=config.COVER_CONE_DEG)
+        plotting.plot_gain_vs_theta(
+            th, gain_by_phi, ph, gain_worst, config.f_target,
+            os.path.join(self._graphs_path, 'gain_vs_theta.png'),
+            gain_floor=config.GAIN_FLOOR_DBIC, cone_half_deg=config.COVER_CONE_DEG)
 
     def _write_vtk_farfield(self):
         vtk_ff = os.path.join(self._vtk_path, 'farfield_rhcp.vtk')
@@ -290,7 +478,7 @@ class PostProcessor:
 
             with open(vtk_ff, 'w', encoding='utf-8') as fh:
                 fh.write('# vtk DataFile Version 3.0\n')
-                fh.write(f'RHCP Patch Far-Field at {self._f_res/1e6:.4f} MHz'
+                fh.write(f'RHCP Patch Far-Field at {config.f_target/1e6:.4f} MHz'
                          f'  Dmax={self._Dmax:.2f} dBi\n')
                 fh.write('ASCII\nDATASET POLYDATA\n')
                 fh.write(f'POINTS {N} float\n')
@@ -326,36 +514,78 @@ class PostProcessor:
             else:
                 print(f'Surface VTK ({name}): no files found in sim_data/')
         if not any_found:
-            print('  openEMS DumpType=10/12 may not be supported by this build (needs >= r700)')
+            print('  openEMS DumpType=12 may not be supported by this build (needs >= r700)')
 
     def _opt_trace_plots(self):
         if not self.opt_log:
             return
-        p0 = [x for x in self.opt_log if x['phase'] == '0']
-        plotting.plot_opt_phase0(
-            p0, config.f_target, self.opt_W,
-            os.path.join(self._graphs_path, 'opt_phase0_width.png'))
+        plotting.plot_opt_width(
+            self.opt_log, config.f_target,
+            os.path.join(self._graphs_path, 'opt_width.png'))
         plotting.plot_opt_trace(
-            self.opt_log, self.opt_W,
+            self.opt_log,
             os.path.join(self._graphs_path, 'opt_trace.png'))
 
     def _write_results_json(self):
+        gp_edge = round(self._layout['sub_hw'] * 2.0, 4)   # realised board edge
+        s11_at_ft = float(np.interp(config.f_target, self._f_sweep, self._s11_dB))
         self._results = {
-            'W_mm':               round(self.opt_W, 4),
-            'delta_mm':           round(self.opt_delta, 4),
-            'y_inset_mm':         round(self.opt_y_inset, 4),
-            'sub_hw_mm':          round(self.opt_sub_hw, 4),
-            'gp_edge_mm':         round(self.opt_sub_hw * 2, 4),
-            'f_target_MHz':       config.f_target / 1e6,
+            # ── PatchParams fields (KiCad export re-derives the board from these) ──
+            **{k: round(float(v), 4) for k, v in self.params.to_dict().items()},
+            # ── realised board / fab info ──
+            'gp_edge_mm':         gp_edge,
             'substrate_h_mm':     config.substrate_thickness,
             'substrate_epsR':     config.substrate_epsR,
-            'substrate_material': 'NP-140F',
+            'substrate_tanD':     config.substrate_tanD,
+            'substrate_material': config.substrate_material,
+            # ── performance summary ──
+            'f_target_MHz':       config.f_target / 1e6,
+            'f_res_MHz':          round(self._f_res / 1e6, 4),
+            's11_at_ft_dB':       round(s11_at_ft, 2),
+            's11_at_res_dB':      round(self._s11_at_res, 2),
+            'ar_boresight_dB':    round(self._ar_at_ft, 3),
+            'rhcp':               bool(self._rhcp_at_ft),
+            'ar3_beamwidth_deg':  round(self._ar3_bw_deg, 1),
+            'worst_ar_cone_dB':   round(self._worst_ar_cone, 3),
+            'min_gain_cone_dBic': round(self._min_gain_cone, 3),
+            'cover_cone_deg':     config.COVER_CONE_DEG,
+            'Dmax_dBi':           round(float(self._Dmax), 3),
+            'peak_gain_theta_deg': round(self._peak_gain_theta, 1),
+            # XY-plane (azimuth) RHCP pattern for the KiCad board polar
+            'xy_phi_deg':         [round(a, 1) for a in getattr(self, '_xy_phi_deg', [])],
+            'xy_rhcp_dBi':        [round(v, 2) for v in getattr(self, '_xy_rhcp_dBi', [])],
         }
         path = os.path.join(self._run_dir, 'results.json')
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(self._results, f, indent=2)
         print(f'Results JSON  : {path}')
         print(f'  → run: python -m src.kicad_export "{path}"')
+
+    def _summary_sheet(self):
+        """One-glance datasheet table of the headline parameters (summary_sheet.png)."""
+        r = self._results
+        def _g(k, fmt='{}', dflt='—'):
+            v = r.get(k)
+            return dflt if v is None or (isinstance(v, float) and np.isnan(v)) else fmt.format(v)
+        rows = [
+            ['Operating frequency',          f"{r['f_target_MHz']:.3f} MHz"],
+            ['CP centre / resonance',        f"{r['f_res_MHz']:.2f} MHz  ({r['s11_at_res_dB']:.1f} dB)"],
+            ['Return loss @ f0',             f"{r['s11_at_ft_dB']:.1f} dB"],
+            ['Polarisation',                 f"{'RHCP' if r['rhcp'] else 'LHCP'}  (axial ratio {r['ar_boresight_dB']:.2f} dB)"],
+            ['AR ≤ 3 dB beamwidth',     f"{r['ar3_beamwidth_deg']:.0f}°"],
+            ['Worst AR over ±45° cone', f"{r['worst_ar_cone_dB']:.1f} dB"],
+            ['Peak directivity',             f"{r['Dmax_dBi']:.1f} dBi"],
+            ['Realised gain / efficiency',   'lower than directivity (FR-4 + iso-R loss)'],
+            ['Min RHCP gain over cone',      f"{r['min_gain_cone_dBic']:.1f} dBic (directivity)"],
+            ['Substrate',                    f"{r['substrate_material']}  εr {r['substrate_epsR']}  {r['substrate_h_mm']} mm"],
+            ['Board (ground plane)',         f"{r['gp_edge_mm']:.0f} × {r['gp_edge_mm']:.0f} mm"],
+            ['Patch / coupler arm',          f"{r['W_mm']:.1f} mm sq / {r['cpl_arm_mm']:.1f} mm"],
+        ]
+        plotting.plot_summary_sheet(
+            rows, f"RHCP Dual-Feed Patch — {r['f_target_MHz']:.3f} MHz",
+            os.path.join(self._graphs_path, 'summary_sheet.png'),
+            footnote='Directivity is the pattern peak; realised gain includes dielectric/'
+                     'copper/isolated-resistor loss + mismatch. Simulated in openEMS (FDTD).')
 
     def _write_paraview_readme(self):
         header = (f'Simulation: {config.f_target/1e6:.4f} MHz target, '
@@ -386,7 +616,7 @@ Render()  # open default view
 _ff_path = os.path.join(_HERE, 'farfield_rhcp.vtk')
 if os.path.exists(_ff_path):
     ff = LegacyVTKReader(FileNames=[_ff_path])
-    RenameSource('Far-field {config.f_target/1e6:.2f} MHz', ff)
+    RenameSource('Far-field {config.f_target/1e6:.3f} MHz', ff)
     Show(ff)
     dp = GetDisplayProperties(ff)
     ColorBy(dp, ('POINTS', 'Directivity_dBi'))
@@ -397,22 +627,7 @@ if os.path.exists(_ff_path):
 else:
     print('farfield_rhcp.vtk not found.')
 
-# ── 2. Surface E-field animation (phase sequence) ────────────────────────────
-_e_dir   = os.path.join(_HERE, 'E_patch_surf')
-_e_files = sorted(glob.glob(os.path.join(_e_dir, '*_p=*.vtr')))
-if _e_files:
-    e_src = XMLRectilinearGridReader(FileNames=_e_files)
-    RenameSource('E-field surface (phase anim)', e_src)
-    e_src.UpdatePipeline()
-    Show(e_src)
-    scene = GetAnimationScene()
-    scene.NumberOfFrames = len(_e_files)
-    scene.PlayMode = 'Sequence'
-    print(f'Loaded E-field animation: {{len(_e_files)}} frames.')
-else:
-    print('E_patch_surf not found — export_vtk_surf may be False.')
-
-# ── 3. Surface J-field animation (phase sequence) ────────────────────────────
+# ── 2. Surface current animation (phase sequence) ────────────────────────────
 _j_dir   = os.path.join(_HERE, 'J_patch_surf')
 _j_files = sorted(glob.glob(os.path.join(_j_dir, '*_p=*.vtr')))
 if _j_files:
@@ -420,9 +635,12 @@ if _j_files:
     RenameSource('J-field surface (phase anim)', j_src)
     j_src.UpdatePipeline()
     Show(j_src)
+    scene = GetAnimationScene()
+    scene.NumberOfFrames = len(_j_files)
+    scene.PlayMode = 'Sequence'
     print(f'Loaded J-field animation: {{len(_j_files)}} frames.')
 else:
-    print('J_patch_surf not found.')
+    print('J_patch_surf not found — export_vtk_surf may be False.')
 
 Render()
 print('Done.  Use Animation View (View > Animation View) to play the phase sequence.')
@@ -434,21 +652,25 @@ print('Done.  Use Animation View (View > Animation View) to play the phase seque
         print(f'ParaView script  : {path}')
 
     def _print_summary(self):
+        p = self.params
         s11_at_ft = float(np.interp(config.f_target, self._f_sweep, self._s11_dB))
+        sense = 'RHCP' if self._rhcp_at_ft else 'LHCP  (SWAP feeds — wrong sense!)'
         print(f"""
-{'═'*55}
-  RHCP PATCH ANTENNA — {config.f_target/1e6:.2f} MHz
-{'═'*55}
-  Substrate  : NP-140F  εr={config.substrate_epsR}  tanδ={config.substrate_tanD}  h={config.substrate_thickness} mm
-  Patch side : {self.opt_W:.2f} mm
-  Truncation : {self.opt_delta:.2f} mm  (Δ/W = {self.opt_delta/self.opt_W:.3f})
-  Feed inset : {self.opt_y_inset:.2f} mm
-  Gnd plane  : {self.opt_sub_hw*2:.1f} × {self.opt_sub_hw*2:.1f} mm
+{'═'*60}
+  FLAT DUAL-FEED RHCP PATCH — {config.f_target/1e6:.3f} MHz
+{'═'*60}
+  Substrate  : {config.substrate_material}  εr={config.substrate_epsR}  tanδ={config.substrate_tanD}  h={config.substrate_thickness} mm
+  Patch side : {p.W_mm:.2f} mm (square)
+  Coupler    : arm {p.cpl_arm_mm:.2f} mm   w50 {p.cpl_w50_mm:.2f} mm   w35 {p.cpl_w35_mm:.2f} mm
+  Feed inset : x {p.inset_x_mm:.2f} mm   y {p.inset_y_mm:.2f} mm   (L-feeds equal-length by construction)
+  Board      : {self._layout['sub_hw']*2:.1f} × {self._layout['sub_hw']*2:.1f} mm  (realised; param sub_hw → {p.sub_hw_mm*2:.0f} mm)
   S11 @ f0   : {s11_at_ft:.1f} dB
   f_CP_centre: {self._f_res/1e6:.2f} MHz  (offset {(self._f_res-config.f_target)/1e6:+.2f} MHz){f'  [modes: {self._f_mode1/1e6:.1f} / {self._f_mode2/1e6:.1f} MHz  split {self._mode_split/1e6:.1f} MHz]' if self._mode_split > 5e6 else ''}
-  AR  @ f0   : {self._ar_at_ft:.1f} dB  ({'RHCP' if self._rhcp_at_ft else 'LHCP'} dominant)  [AR≤3 dB BW ≈ {self._ar_bw/1e6:.1f} MHz]
+  AR @ f0    : {self._ar_at_ft:.1f} dB  ({sense})  [AR≤3 dB BW ≈ {self._ar_bw/1e6:.1f} MHz]
+  Coverage   : AR≤3 dB beam {self._ar3_bw_deg:.0f}°   worst AR / {config.COVER_CONE_DEG:.0f}° cone {self._worst_ar_cone:.1f} dB
+             : min RHCP gain / cone {self._min_gain_cone:.1f} dBic   (peak gain θ≈{self._peak_gain_theta:.0f}°)
   Dmax       : {self._Dmax:.1f} dBi  @ {self._f_res/1e6:.2f} MHz
   Sim data   : {self._sim_path}
   Graphs     : {self._graphs_path}
   ParaView   : {self._vtk_path}
-{'═'*55}""")
+{'═'*60}""")

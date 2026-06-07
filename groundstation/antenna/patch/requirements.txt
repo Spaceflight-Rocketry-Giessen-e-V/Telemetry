@@ -10,3 +10,4 @@ scipy
 matplotlib
 h5py
 cython
+segno        # optional: QR code on the exported KiCad silkscreen (src/kicad_export.py)
