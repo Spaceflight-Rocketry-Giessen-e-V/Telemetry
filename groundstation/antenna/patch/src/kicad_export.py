@@ -85,12 +85,16 @@ def _qr_code_lines(data: str, x0: float, y0: float, size_mm: float,
 def _txt(s, x, y, layer='F.SilkS', size=1.0, just='left', mirror=False, bold=False, angle=0):
     """One silk gr_text. `mirror=True` for back-layer text (reads right from the back);
     `angle` (deg, CCW) rotates it - 90 = vertical, for labels parallel to vertical parts."""
-    j  = (f'mirror {just}' if mirror else just)
+    # KiCad has no 'center' justify token — centred is the DEFAULT (no left/right). Build the
+    # justify token list from {mirror, left/right} and drop the clause entirely when empty,
+    # else (justify center) is emitted and the board fails to load.
+    toks = (['mirror'] if mirror else []) + ([just] if just in ('left', 'right') else [])
+    just_clause = f' (justify {" ".join(toks)})' if toks else ''
     th = round(size * (0.18 if bold else 0.14), 3)
     at = f'{x:.4f} {y:.4f}' + (f' {angle:.0f}' if angle else '')
     return [f'  (gr_text "{s}"',
             f'    (at {at}) (layer "{layer}")',
-            f'    (effects (font (size {size:.2f} {size:.2f}) (thickness {th})) (justify {j}))',
+            f'    (effects (font (size {size:.2f} {size:.2f}) (thickness {th})){just_clause})',
             '  )']
 
 
@@ -765,16 +769,16 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     epsr = res.get('substrate_epsR', 4.15) if res else 4.15
     s11  = res.get('s11_at_ft_dB', -11.0) if res else -11.0
     arb  = res.get('ar_boresight_dB', 1.6) if res else 1.6
-    dx = 11.0                                            # left padding (clears the top-left M3 hole)
-    lines += _txt('RHCP GROUNDSTATION PATCH', dx, 13.0, 'F.SilkS', 1.7, 'left', bold=True)
+    cx = board / 2.0                                     # patch / board horizontal centre
+    lines += _txt('RHCP GROUNDSTATION PATCH', cx, 13.0, 'F.SilkS', 1.7, 'center', bold=True)
     lines += _txt(f'{config.f_target / 1e6:.3f} MHz    RHCP    single-feed corner-truncated',
-                  dx, 18.5, 'F.SilkS', 1.2)
+                  cx, 18.5, 'F.SilkS', 1.2, 'center')
     lines += _txt(f'2-layer    {config.substrate_material} eps_r {epsr:.2f}    {substrate_h:.1f} mm    '
-                  f'{board:.0f} x {board:.0f} mm', dx, 22.5, 'F.SilkS', 1.1)
-    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi', dx, 26.0, 'F.SilkS', 1.1)
-    lines += _txt(f'AR {arb:.1f} dB    AR<=3 beam +/- {bdeg / 2:.0f} deg', dx, 29.5, 'F.SilkS', 1.1)
-    lines += _txt('boresight = +Z (out of front face)', dx, 33.0, 'F.SilkS', 1.0)
-    lines += _txt('Open Source Hardware', dx, 36.0, 'F.SilkS', 1.0)
+                  f'{board:.0f} x {board:.0f} mm', cx, 22.5, 'F.SilkS', 1.1, 'center')
+    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi', cx, 26.0, 'F.SilkS', 1.1, 'center')
+    lines += _txt(f'AR {arb:.1f} dB    AR<=3 beam +/- {bdeg / 2:.0f} deg', cx, 29.5, 'F.SilkS', 1.1, 'center')
+    lines += _txt('boresight = +Z (out of front face)', cx, 33.0, 'F.SilkS', 1.0, 'center')
+    lines += _txt('Open Source Hardware', cx, 36.0, 'F.SilkS', 1.0, 'center')
 
     # ── LEFT margin strip: the two logos, kept at their fixed spacing and centred AS A PAIR on
     #    the patch's vertical mid-line (KiCad y = board/2). logo.svg above, OSHW gear below. ──
@@ -789,8 +793,9 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     #  the elevation pattern still lives on the back-silk datasheet.)
 
     # ── dimensions: text on the clear ground beside each feature ──
-    lines += _txt(f'Patch {p.W_mm:.1f} mm sq', logo_cx - 6.0, 50.0, 'F.SilkS', 1.0)     # left strip, beside patch
-    lines += _txt(f'trunc {p.trunc_mm:.1f} mm', logo_cx - 6.0, 54.0, 'F.SilkS', 1.0)    #   corner-chamfer size
+    _pr = board / 2.0 + h                                # patch right / bottom edge (KiCad mm)
+    lines += _txt(f'Patch {p.W_mm:.1f} mm sq', _pr + 4.0, _pr - 8.0, 'F.SilkS', 1.0)    # bottom-right of patch, padded
+    lines += _txt(f'trunc {p.trunc_mm:.1f} mm', _pr + 4.0, _pr - 4.0, 'F.SilkS', 1.0)   #   corner-chamfer size
     lines += _txt(f'inset {inset_cap:.1f} mm', sma_kx + 4.0, sma_ky - 11.0, 'F.SilkS', 0.95)  # near the feed
     lines += _txt(f'feed 50R w{fw:.2f} mm', sma_kx + 4.0, sma_ky - 14.5, 'F.SilkS', 0.9)
 
