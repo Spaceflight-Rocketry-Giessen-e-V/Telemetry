@@ -16,11 +16,11 @@ board 160 mm** (these ARE the `config.py` synthesis seeds — `default_params()`
 
 | metric | value (150k, NF2FF) |
 |---|---|
-| Axial ratio @ f0 | **0.45 dB** (AR_min 0.41 dB, null at 869.0 MHz) |
-| AR ≤ 3 dB beam | **180°** (worst 1.0 dB over the 45° cone) |
-| AR ≤ 3 dB freq bandwidth | **8 MHz** (robust to fab/εr drift) |
-| Return loss S11 @ f0 | −12.1 dB |
-| Directivity | 6.6 dBi |
+| Axial ratio @ f0 | ~**1.4 dB** band-robust (single-freq 0.45 dB is optimistic & **not convergence-proven** — the 150k run capped before −40 dB; the optimiser's worst-over-band AR0 = 1.4 dB) |
+| AR ≤ 3 dB beam | **to the horizon (upper hemisphere)** — "180°" is the metric ceiling (θ swept 0–90° only), worst 1.0 dB over the 45° cone |
+| AR ≤ 3 dB freq bandwidth | **7.5 MHz** — ⚠️ NARROWER than the ±0.1 εr null shift (~±10 MHz) + thermal; **NOT drift-robust**, see the cold-tune gate |
+| Return loss S11 @ f0 | −12.1 dB (idealised MSL port; the as-built SMA-launch transition is un-simulated, see gates) |
+| Directivity / realised | 6.6 dBi / **+0.84 dBic boresight, ≈ −2.0 dBic at the 45° cone edge** (η_tot 26.5 %) |
 | Radiation eff. η_rad / η_tot | 28.3 % / 26.5 % |
 | **Realised gain** | **+0.8 dBic**, RHCP (BLTR diagonal) |
 
@@ -44,12 +44,22 @@ automatically circular at f_target. NF2FF-measured on real sim_data:
       band). The deliverable board already comes from the validated W=82.5 sim_data.
 
 ## ⛔ Pre-fab gates
-- [ ] Confirm the fab supplies NP-140F at 160×160 (else re-tune for KB-6164 εr ~4.6 — the
-      8 MHz AR bandwidth absorbs the εr spread, but resonance/null shift must be checked).
 - [x] Lock RHCP sense vs the rocket's QFH — **QFH confirmed RHCP (team, 2026-06-08)**; the
       patch is RHCP (BLTR diagonal) → matched pair, 0 dB polarisation loss. (issue #43)
-- [ ] Per-unit cold-test recommended (single-feed CP AR is εr/fab-sensitive; the known
-      NP-140F εr is what makes it land — the 8 MHz AR band gives margin).
+- [ ] **GATE — per-unit cold-AR acceptance test (REQUIRED, not optional).** The CP null is a
+      narrow 7.5 MHz band and ±0.1 εr alone shifts it ~±10 MHz (corrected; the earlier "8 MHz
+      absorbs the spread" claim was wrong — the band is NARROWER than the spread). A mid/edge-spec
+      or hot board can run near-linear (AR>3 → ~3 dB pol loss). Measure each board's boresight AR
+      at 869.525 and bin/tune; CP cannot be assumed from the sim.
+- [ ] **GATE — εr/thickness robustness sweep** (tests/tool_eps_sweep.py): confirm AR≤3 still
+      covers 869.4–869.65 MHz across εr {4.0…4.6} and ±0.1 mm before committing to fab.
+- [ ] **GATE — convergence check**: the 150k run capped before the −40 dB stop; re-run the
+      nominal point at ≥250k (and a finer mesh of the sub-cell 8.25 mm chamfer) to prove the
+      AR null depth/beamwidth are settled, not staircase/ring-down artefacts.
+- [ ] Confirm the fab supplies NP-140F at 160×160 IN WRITING (JLCPCB cheap tier defaults to
+      KB-6164-class εr ~4.6 → patch lands ~25 MHz low; prepare that re-tune as a fallback).
+- [ ] Simulate/measure the **radome** as a superstrate (detunes the marginal CP downward) and
+      the **real SMA-launch** S11 (the 3.2→0.61 mm neck adds ~3 nH the −12 dB sim didn't see).
 
 ## Notes
 - `tests/stage0_dipole_calibration.py` validates the NF2FF efficiency/directivity (lossless

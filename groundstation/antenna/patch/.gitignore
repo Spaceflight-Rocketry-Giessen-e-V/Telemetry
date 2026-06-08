@@ -18,6 +18,8 @@ geometry_*.xml
 patch_antenna*.kicad_pcb
 # board_sweep_results.json: regenerable from tests/board_sweep.py; the curve lives in docs/research.md
 board_sweep_results.json
+# eps_sweep_results.json: regenerable from tests/tool_eps_sweep.py (εr/thickness robustness)
+eps_sweep_results.json
 
 # Gerber / fab exports (regenerable from the .kicad_pcb)
 GRBR/

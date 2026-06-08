@@ -624,7 +624,12 @@ class PostProcessor:
             'rhcp':               bool(self._rhcp_at_ft),
             'ar3_beamwidth_deg':  round(self._ar3_bw_deg, 1),
             'worst_ar_cone_dB':   round(self._worst_ar_cone, 3),
+            # NOTE: min_gain_cone_dBic is DIRECTIVITY-referenced (peak-pattern, no η). The
+            # link-budget-ready number is min_realised_gain_cone_dBic = that + 10·log10(η_tot)
+            # (≈ −5.8 dB on this FR-4 board). Quote the realised value in any budget.
             'min_gain_cone_dBic': round(self._min_gain_cone, 3),
+            'min_realised_gain_cone_dBic': (round(self._min_gain_cone + 10.0 * np.log10(self._eta_tot), 3)
+                                            if self._eff_ok else None),
             'cover_cone_deg':     config.COVER_CONE_DEG,
             'Dmax_dBi':           round(float(self._Dmax), 3),
             'peak_gain_theta_deg': round(self._peak_gain_theta, 1),
@@ -663,7 +668,11 @@ class PostProcessor:
                  f"(η_rad {r['eta_rad']*100:.0f}%, η_tot {r['eta_tot']*100:.0f}%)"
                  if r.get('realised_gain_dBic') is not None
                  else 'efficiency unavailable (NF2FF/port sanity gate failed)')],
-            ['Min RHCP gain over cone',      f"{r['min_gain_cone_dBic']:.1f} dBic (directivity)"],
+            ['Min RHCP gain over cone',
+                (f"{r['min_realised_gain_cone_dBic']:.1f} dBic realised  "
+                 f"({r['min_gain_cone_dBic']:.1f} directivity)"
+                 if r.get('min_realised_gain_cone_dBic') is not None
+                 else f"{r['min_gain_cone_dBic']:.1f} dBic (directivity)")],
             ['Substrate',                    f"{r['substrate_material']}  εr {r['substrate_epsR']}  {r['substrate_h_mm']} mm"],
             ['Board (ground plane)',         f"{r['gp_edge_mm']:.0f} × {r['gp_edge_mm']:.0f} mm"],
             ['Patch / corner truncation',    f"{r['W_mm']:.1f} mm sq / {r['trunc_mm']:.1f} mm chamfer"],
@@ -756,7 +765,7 @@ print('Done.  Use Animation View (View > Animation View) to play the phase seque
   f_CP_centre: {self._f_res/1e6:.2f} MHz  (offset {(self._f_res-config.f_target)/1e6:+.2f} MHz){f'  [modes: {self._f_mode1/1e6:.1f} / {self._f_mode2/1e6:.1f} MHz  split {self._mode_split/1e6:.1f} MHz]' if self._mode_split > 5e6 else ''}
   AR @ f0    : {self._ar_at_ft:.2f} dB  ({sense})  [null {self._f_ar_null/1e6:.2f} MHz ({(self._f_ar_null-config.f_target)/1e6:+.1f}), AR_min {self._ar_min:.2f} dB, AR≤3 BW ≈ {self._ar_bw/1e6:.1f} MHz]
   Coverage   : AR≤3 dB beam {self._ar3_bw_deg:.0f}°   worst AR / {config.COVER_CONE_DEG:.0f}° cone {self._worst_ar_cone:.1f} dB
-             : min RHCP gain / cone {self._min_gain_cone:.1f} dBic   (peak gain θ≈{self._peak_gain_theta:.0f}°)
+             : min RHCP gain / cone {self._min_gain_cone:.1f} dBic directivity{f' = {self._min_gain_cone + 10.0*np.log10(self._eta_tot):.1f} dBic realised' if getattr(self, '_eff_ok', False) else ''}   (peak gain θ≈{self._peak_gain_theta:.0f}°)
   Dmax       : {self._Dmax:.1f} dBi  @ {config.f_target/1e6:.2f} MHz
   Efficiency : {f'η_rad {self._eta_rad*100:.1f}%   η_tot {self._eta_tot*100:.1f}%   realised gain {self._realised_gain_dBi:.1f} dBic' if getattr(self, '_eff_ok', False) else 'unavailable (NF2FF/port sanity gate failed)'}
   Sim data   : {self._sim_path}
