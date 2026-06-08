@@ -211,13 +211,15 @@ def _run_sim_worker(kw: dict) -> dict:
         # The CP AR null tracks ~7 MHz BELOW the S11 centroid — a MATCHED patch is NOT
         # automatically circular at f_target. The earlier optimiser drove the S11 centroid
         # to f_target and so pushed the AR null ~7 MHz low (AR 0.4 dB → 4.6 dB at f0); the
-        # cost now centres THIS null instead. θ=2° near-axis ring, worst over φ, light 3-pt
-        # smooth vs FDTD spikes. ±20 MHz brackets the null across the W grid.
-        f_scan  = _np.linspace(_cfg.f_target - 20e6, _cfg.f_target + 20e6, 27)
+        # cost now centres THIS null instead. AR per freq = MEAN over φ at the θ=2.0° single
+        # near-axis ring (axial_ratio_db averages its array inputs) — the SAME aggregation
+        # postproc._axial_ratio_sweep uses, so opt and final locate the null at the same
+        # frequency. Light 3-pt (≈3 MHz) smooth vs FDTD spikes. ±30 MHz at 1 MHz/pt
+        # comfortably brackets the seed grid's null (nulls land within ±10 MHz of f_target);
+        # an argmin clamped to a boundary would just read as a far-off null and be penalised.
+        f_scan  = _np.linspace(_cfg.f_target - 30e6, _cfg.f_target + 30e6, 61)
         r_scan  = nf2ff.CalcNF2FF(sp, list(f_scan), theta=[2.0], phi=ph, center=[0, 0, 1e-3])
-        ar_scan = _np.array([max(_ar(_np.array([r_scan.E_cprh[n][0, k]]),
-                                     _np.array([r_scan.E_cplh[n][0, k]]))[0]
-                                 for k in range(len(ph)))
+        ar_scan = _np.array([_ar(r_scan.E_cprh[n][0, :], r_scan.E_cplh[n][0, :])[0]
                              for n in range(len(f_scan))])
         ar_sm = _np.convolve(ar_scan, _np.ones(3) / 3.0, mode='same')
         ar_sm[0], ar_sm[-1] = ar_scan[0], ar_scan[-1]
@@ -414,17 +416,23 @@ class Optimizer:
 
         waves   = math.ceil(len(jobs) / self._num_workers)
         t_phase = waves * _sim_seconds(NrTS)
+        # Per-phase hang guard scaled to the ACTUAL work on THIS host (waves × per-sim
+        # estimate), with config.PHASE_TIMEOUT_S as a floor. A fixed 3 h was calibrated for
+        # the 20-thread reference host; a slow/few-core box legitimately needs more (e.g. 3
+        # serial 150k waves), and would otherwise mark healthy-but-slow sims as failures. The
+        # 4× cushion still catches a truly wedged/diverged openEMS child (it never completes).
+        phase_timeout = max(config.PHASE_TIMEOUT_S, 4.0 * t_phase)
         eta     = _dt.datetime.now() + _dt.timedelta(seconds=t_phase)
         print(f'  Phase {phase}: {len(jobs)} sims, {self._num_workers} workers, '
               f'{n_threads} thread(s)/sim  ->  ~{self._fmt_dur(t_phase)} '
-              f'(ETA {eta.strftime("%H:%M")})', flush=True)
+              f'(ETA {eta.strftime("%H:%M")}, timeout {self._fmt_dur(phase_timeout)})', flush=True)
 
         pool    = self._ensure_pool()
         fut_map = {pool.submit(_run_sim_worker, kw): (p, kw['sim_suffix'])
                    for p, kw in jobs}
         pending = set(fut_map)
         try:
-            for fut in as_completed(fut_map, timeout=config.PHASE_TIMEOUT_S):
+            for fut in as_completed(fut_map, timeout=phase_timeout):
                 pending.discard(fut)
                 p, suffix = fut_map[fut]
                 try:
@@ -439,7 +447,7 @@ class Optimizer:
         except _FuturesTimeout:
             for fut in pending:
                 p, suffix = fut_map[fut]
-                print(f'  !! Sim {suffix} timed out after {config.PHASE_TIMEOUT_S}s'
+                print(f'  !! Sim {suffix} timed out after {self._fmt_dur(phase_timeout)}'
                       f' — recorded as failure', flush=True)
                 self._record(phase, p, {**failure_result(), 'ar_bw_deg': 0.0,
                                         'ar_cone_dB': 99.0, 'gain_cone_dBic': -99.0})
