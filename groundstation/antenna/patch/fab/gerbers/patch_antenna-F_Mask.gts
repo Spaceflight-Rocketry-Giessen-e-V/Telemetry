@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,9.0.7*%
-%TF.CreationDate,2026-06-09T01:09:47+02:00*%
+%TF.CreationDate,2026-06-09T01:31:18+02:00*%
 %TF.ProjectId,patch_antenna,70617463-685f-4616-9e74-656e6e612e6b,rev?*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Soldermask,Top*%
 %TF.FilePolarity,Negative*%
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 9.0.7) date 2026-06-09 01:09:47*
+G04 Created by KiCad (PCBNEW 9.0.7) date 2026-06-09 01:31:18*
 %MOMM*%
 %LPD*%
 G01*

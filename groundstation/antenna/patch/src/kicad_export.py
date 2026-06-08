@@ -793,9 +793,10 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     #  the elevation pattern still lives on the back-silk datasheet.)
 
     # ── dimensions: text on the clear ground beside each feature ──
-    _pr = board / 2.0 + h                                # patch right / bottom edge (KiCad mm)
-    lines += _txt(f'Patch {p.W_mm:.1f} mm sq', _pr + 4.0, _pr - 8.0, 'F.SilkS', 1.0)    # bottom-right of patch, padded
-    lines += _txt(f'trunc {p.trunc_mm:.1f} mm', _pr + 4.0, _pr - 4.0, 'F.SilkS', 1.0)   #   corner-chamfer size
+    _pb  = board / 2.0 + h                               # patch bottom edge (KiCad y)
+    _pdx = (board / 2.0 - h + board / 2.0 - fw / 2.0) / 2.0   # centre of the clear strip UNDER the patch, left of the feed
+    lines += _txt(f'Patch {p.W_mm:.1f} mm sq', _pdx, _pb + 6.0, 'F.SilkS', 1.0, 'center')    # under the patch (clear of the feed)
+    lines += _txt(f'trunc {p.trunc_mm:.1f} mm', _pdx, _pb + 10.0, 'F.SilkS', 1.0, 'center')  #   corner-chamfer size
     lines += _txt(f'inset {inset_cap:.1f} mm', sma_kx + 4.0, sma_ky - 11.0, 'F.SilkS', 0.95)  # near the feed
     lines += _txt(f'feed 50R w{fw:.2f} mm', sma_kx + 4.0, sma_ky - 14.5, 'F.SilkS', 0.9)
 
