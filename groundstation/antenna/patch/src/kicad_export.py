@@ -747,7 +747,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
 
     # ── shared positions / live performance for the back datasheet ──
     inset_cap = Lo['insets'][0]['depth']
-    qkx, qky = xf(0.0, (h + sub_hw) / 2.0)             # QR anchor: clear ground strip above the patch
+    qkx, qky = xf((h + sub_hw) / 2.0, 0.0)             # QR anchor: right margin strip, vertically centred on the patch
     res = {}
     try:
         with open(os.path.join(os.path.dirname(os.path.abspath(output_path)),
@@ -760,26 +760,30 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     bdeg = res.get('ar3_beamwidth_deg', 56) if res else 56
     dmax = res.get('Dmax_dBi', 3.9) if res else 3.9
 
-    # ── TOP-LEFT: datasheet header / description (logos moved to the bottom-left) ──
+    # ── TOP: datasheet header / description (the whole top strip is now clear — QR moved to the
+    #    right of the patch). Laid out between the top-edge M3 holes and the patch top edge. ──
     epsr = res.get('substrate_epsR', 4.15) if res else 4.15
     s11  = res.get('s11_at_ft_dB', -11.0) if res else -11.0
     arb  = res.get('ar_boresight_dB', 1.6) if res else 1.6
-    dx = 11.0                                            # left padding (moved in from the edge)
-    lines += _txt('RHCP GROUNDSTATION PATCH', dx, 23.0, 'F.SilkS', 1.7, 'left', bold=True)
+    dx = 11.0                                            # left padding (clears the top-left M3 hole)
+    lines += _txt('RHCP GROUNDSTATION PATCH', dx, 13.0, 'F.SilkS', 1.7, 'left', bold=True)
     lines += _txt(f'{config.f_target / 1e6:.3f} MHz    RHCP    single-feed corner-truncated',
-                  dx, 28.5, 'F.SilkS', 1.2)
+                  dx, 18.5, 'F.SilkS', 1.2)
     lines += _txt(f'2-layer    {config.substrate_material} eps_r {epsr:.2f}    {substrate_h:.1f} mm    '
-                  f'{board:.0f} x {board:.0f} mm', dx, 32.5, 'F.SilkS', 1.1)
-    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi', dx, 36.5, 'F.SilkS', 1.1)
-    lines += _txt(f'AR {arb:.1f} dB    AR<=3 beam +/- {bdeg / 2:.0f} deg', dx, 40.5, 'F.SilkS', 1.1)
-    lines += _txt('boresight = +Z (out of front face)', dx, 44.5, 'F.SilkS', 1.0)
-    lines += _txt('Open Source Hardware', dx, 48.0, 'F.SilkS', 1.0)
+                  f'{board:.0f} x {board:.0f} mm', dx, 22.5, 'F.SilkS', 1.1)
+    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi', dx, 26.0, 'F.SilkS', 1.1)
+    lines += _txt(f'AR {arb:.1f} dB    AR<=3 beam +/- {bdeg / 2:.0f} deg', dx, 29.5, 'F.SilkS', 1.1)
+    lines += _txt('boresight = +Z (out of front face)', dx, 33.0, 'F.SilkS', 1.0)
+    lines += _txt('Open Source Hardware', dx, 36.0, 'F.SilkS', 1.0)
 
-    # ── BOTTOM-LEFT clear ground (below the centred patch): logos stacked going up
-    #    (open-hardware lowest, our emblem above) on the bottom-left margin centreline ──
-    logo_cx = (sub_hw - h) / 2.0                        # centre of the clear bottom-left strip (KiCad x)
-    lines += _svg_silk(os.path.join(_ASSETS, 'logo.svg'), logo_cx, 133.0, 16.0)
-    lines += _svg_silk(os.path.join(_ASSETS, 'brand-open-source-hardware.svg'), logo_cx, 150.0, 10.0)
+    # ── LEFT margin strip: the two logos, kept at their fixed spacing and centred AS A PAIR on
+    #    the patch's vertical mid-line (KiCad y = board/2). logo.svg above, OSHW gear below. ──
+    logo_cx = (sub_hw - h) / 2.0                        # centre of the left margin strip (KiCad x)
+    _logo_gap = 17.0                                    # keep the original spacing between the two logos
+    lines += _svg_silk(os.path.join(_ASSETS, 'logo.svg'),
+                       logo_cx, board / 2.0 - _logo_gap / 2.0, 16.0)
+    lines += _svg_silk(os.path.join(_ASSETS, 'brand-open-source-hardware.svg'),
+                       logo_cx, board / 2.0 + _logo_gap / 2.0, 10.0)
 
     # (Front boresight-beam polar graph removed per request — the bottom-right is left clear;
     #  the elevation pattern still lives on the back-silk datasheet.)
@@ -794,7 +798,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     # silk over exposed copper is dropped in fab).
     lines += _txt('WR-SMA 60312202114514', sma_kx + 4.0, sma_ky - 7.0, 'F.SilkS', 1.1)
 
-    # QR on the clear ground strip above the patch, no caption
+    # QR on the right margin strip, vertically centred on the patch, no caption
     qr_sz = 25.5
     lines += _qr_code_lines(
         'https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/tree/main',
@@ -823,7 +827,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     lines += _silk_table(dtable, 14.0, 20.0, [36.0, 50.0], 5.6, 'B.SilkS',
                          board_w=board, size=1.2)
 
-    info = ['Hardware: edge-launch SMA (WE 60312202114514); no termination resistor',
+    info = ['Hardware: edge-launch SMA (WE 60312202114514)',
             'Mounting: 4x M3, nylon standoffs only',
             'Main beam: boresight +Z, out of the front face',
             'github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry  -  Open Source Hardware',
@@ -832,42 +836,15 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
         lines += _txt(t, board - 12.0, 112.0 + k * 5.2, 'B.SilkS', 1.25, 'left',
                       mirror=True, bold=(k == len(info) - 1))
 
-    # ── BACK right-side panel (kicad x14..58 == the empty RIGHT column on the back view,
-    #    beside the table) : the elevation (XZ) cut the front lacks, sliced no-re-sim from the
-    #    NF2FF VTK + a sunburst around the origin (TL) mounting hole.  Geometry is drawn in
-    #    final kicad coords (theta mapped so the view reads -90..+90 L->R); text is mirror-left.
-    # filled white silk disc under the rays so the mounting hole is FULLY ringed (the rays alone
-    # converge to a point and leave green wedge gaps at the hole); the drilled hole then removes
-    # the centre -> clean white annulus. Back silk prints over the soldermask, so this is fine.
+    # ── Sunburst deco around the origin (bottom-left) mounting hole. A filled white silk disc
+    #    under the rays fully rings the hole (the rays alone leave green wedge gaps); the drilled
+    #    hole then removes the centre -> clean white annulus. (Elevation graph removed per request.)
     _hx, _hy = 8.0, board - 8.0
     lines.append(f'  (gr_circle (center {_hx:.3f} {_hy:.3f}) (end {_hx + 2.4:.3f} {_hy:.3f}) '
                  f'(layer "B.SilkS") (width 0) (fill solid))')
     lines += _svg_silk(os.path.join(_ASSETS, 'corner_deco.svg'),
                        board - 8.0, board - 8.0, 13.0, 'B.SilkS', board_w=board,
                        anchor='centroid')  # sunburst centred on the bottom-left hole (disc guarantees the ring)
-    ax = 58.0                                                              # right kicad anchor (mirror-left)
-    lines += _txt('ELEVATION PATTERN', ax, 28.0, 'B.SilkS', 1.4, 'left', mirror=True, bold=True)
-    lines += _txt('XZ cut  phi = 0   (directivity)', ax, 32.0, 'B.SilkS', 1.0, 'left', mirror=True)
-    th_e, v_e, st = _vtk_elev_cut(output_path)
-    if th_e:
-        lines += _elev_chart(th_e, v_e, 18.0, 56.0, 36.0, 68.0, 'B.SilkS')
-        lines += _txt('-3 dB', 55.0, 45.7, 'B.SilkS', 0.8, 'left', mirror=True)  # half-power tag
-        lines += _txt('-90', 56.0, 71.5, 'B.SilkS', 0.9, 'left', mirror=True)   # axis labels under ticks
-        lines += _txt('0',   36.5, 71.5, 'B.SilkS', 0.9, 'left', mirror=True)
-        lines += _txt('+90', 19.5, 71.5, 'B.SilkS', 0.9, 'left', mirror=True)
-        lines += _txt('theta (deg)   -   +Z boresight at centre', ax, 75.5,
-                      'B.SilkS', 0.9, 'left', mirror=True)
-        hp = (f'{st["hpbw"]:.0f} deg ({st["lo"]:+.0f}/{st["hi"]:+.0f})' if st['hpbw'] else 'n/a')
-        lines += _txt(f'boresight {st["boresight"]:.1f} dBi   HPBW {hp}   F/B {st["fb"]:.0f} dB',
-                      ax, 80.5, 'B.SilkS', 1.0, 'left', mirror=True)
-        lines += _txt('DIRECTIVITY (NF2FF); realised gain lower on FR-4-class',
-                      ax, 84.5, 'B.SilkS', 0.9, 'left', mirror=True)
-    else:
-        lines += _txt('(elevation cut unavailable - VTK not found)', ax, 42.0,
-                      'B.SilkS', 1.0, 'left', mirror=True)
-    lines += _seg(14.0, 88.5, 58.0, 88.5, 'B.SilkS', 0.12)                # separator
-    lines += _txt(f'Method: openEMS FDTD  @  {config.f_target / 1e6:.3f} MHz',
-                  ax, 92.5, 'B.SilkS', 0.9, 'left', mirror=True)
 
     lines.append(')')
 
