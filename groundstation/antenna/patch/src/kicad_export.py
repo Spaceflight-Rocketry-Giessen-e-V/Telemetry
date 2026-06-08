@@ -781,26 +781,8 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     lines += _svg_silk(os.path.join(_ASSETS, 'logo.svg'), logo_cx, 133.0, 16.0)
     lines += _svg_silk(os.path.join(_ASSETS, 'brand-open-source-hardware.svg'), logo_cx, 150.0, 10.0)
 
-    # ── BOTTOM-RIGHT: BORESIGHT BEAM footprint - the +Z main beam seen looking INTO the
-    #    front face (centre = +Z boresight, radius = theta 0..90 to the horizon at the rim,
-    #    closed -3 dB contour = the real asymmetric beam). Oriented +X right / +Y up to match
-    #    the board; sliced from the NF2FF VTK with no re-sim. (The old plot drew the theta=90
-    #    HORIZON cut, ~6-13 dB below boresight, mislabeled as the main beam.)
-    ph_b, t3_b, st_b = _vtk_boresight_beam(output_path)
-    # header + captions ABOVE the plot, plot pushed DOWN clear of the feed copper (margins all round)
-    lines += _txt('BORESIGHT BEAM  (+Z, into front face)', 104.0, 102.0, 'F.SilkS', 0.95, 'left', bold=True)
-    if ph_b:
-        lines += _txt(f'centre = +Z boresight   peak {st_b["peak"]:.1f} dBi @ {st_b["peak_theta"]:.0f} deg',
-                      104.0, 106.5, 'F.SilkS', 0.9)
-        lines += _txt(f'-3 dB beam {st_b["hb_min"]:.0f}..{st_b["hb_max"]:.0f} deg (asym)   '
-                      f'AR<=3 cone dashed   rim = horizon', 104.0, 110.0, 'F.SilkS', 0.8)
-        lines += _boresight_beam(126.0, 133.0, 14.0, ph_b, t3_b, st_b, 'F.SilkS',
-                                 ar3_half_deg=bdeg / 2.0)
-        lines += _txt('-3 dB', 135.5, 127.0, 'F.SilkS', 0.75)   # contour tag
-    else:                                               # fallback: azimuth/horizon cut, honestly labelled
-        lines += _polar_pattern(126.0, 133.0, 14.0,
-                                res.get('xy_phi_deg', []), res.get('xy_rhcp_dBi', []), 'F.SilkS')
-        lines += _txt('theta = 90 horizon cut (>=6 dB below boresight)', 104.0, 106.5, 'F.SilkS', 0.85)
+    # (Front boresight-beam polar graph removed per request — the bottom-right is left clear;
+    #  the elevation pattern still lives on the back-silk datasheet.)
 
     # ── dimensions: text on the clear ground beside each feature ──
     lines += _txt(f'Patch {p.W_mm:.1f} mm sq', logo_cx - 6.0, 50.0, 'F.SilkS', 1.0)     # left strip, beside patch
