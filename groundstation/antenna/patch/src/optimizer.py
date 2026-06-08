@@ -105,16 +105,15 @@ def _cost(r) -> float:
     ar_cone_dB, gain_cone_dBic, boresight ar_dB, rhcp, Dmax); failure_result()
     supplies safe sentinels so _cost never KeyErrors.
     """
-    # Resonance penalty: a deadband (no penalty within ±F_RES_DEADBAND_MHZ — fab /
-    # channel tolerance) then a strong linear ramp on a few-MHz scale. The OLD form
-    # divided |Δf| by fc (250 MHz), so even a 16 MHz miss cost only ~0.06 and the
-    # optimiser effectively ignored resonance — run 20260606_052114 kept a +16 MHz
-    # design and DISCARDED an on-resonance arm=48.9 mm candidate by a 0.03 cost
-    # margin. The FINAL selection uses the GENTLE F_RES_*_FINAL shaping (a tiebreaker,
-    # not a driver) so on-target CP coverage decides — see config.F_RES_*_FINAL re: run #3,
-    # where the sharp screen penalty wrongly crowned a beam-0° on-dip design. (The SCREEN
-    # cost below keeps the sharp F_RES_* to shortlist on-resonance grid candidates.)
-    df_MHz   = abs(r['f_res'] - config.f_target) / 1e6
+    # Centring penalty — on the AR NULL, NOT the S11 centroid. The AR null (frequency of
+    # minimum axial ratio) is where the patch is actually circular; it tracks ~7 MHz BELOW
+    # the S11 dip, so a matched patch is NOT automatically CP at f_target. Centring the S11
+    # centroid (the OLD r['f_res'] term) pushed the AR null ~7 MHz low and wrecked AR at f0
+    # (0.4 → 4.6 dB) — the root cause of the single-feed re-tune. A deadband (fab/channel
+    # tolerance) then a gentle ramp: the FINAL selection leans on the coverage terms (AR /
+    # beamwidth at f_target, which peak exactly when the null is centred); this is the
+    # tiebreaker. .get() falls back to f_res for any legacy/failure record without a null.
+    df_MHz   = abs(r.get('f_ar_null', r['f_res']) - config.f_target) / 1e6
     pen_freq = config.W_FREQ * max(0.0, df_MHz - config.F_RES_DEADBAND_FINAL_MHZ) \
         / config.F_RES_SCALE_FINAL_MHZ
     pen_s11  = config.W_MATCH * max(0.0, r['s11_dB'] + 10.0)
@@ -143,7 +142,11 @@ def _screen_cost(r) -> float:
     wrong-hand). The razor AR/beamwidth is NOT reliable at config.NrTS_screen, so it
     is EXCLUDED here and judged only at the full-fidelity confirm stage (by _cost).
     """
-    df_MHz   = abs(r['f_res'] - config.f_target) / 1e6
+    # Shortlist on AR-null centring (the freq of minimum AR, NOT the S11 dip) + match +
+    # efficiency. With the screen now at full NrTS the null is reliable; centring it — not
+    # the S11 centroid — is what lands CP on f_target (see _cost). The razor AR DEPTH/beam
+    # is still left to the full coverage _cost at confirm.
+    df_MHz   = abs(r.get('f_ar_null', r['f_res']) - config.f_target) / 1e6
     pen_freq = config.W_FREQ * max(0.0, df_MHz - config.F_RES_DEADBAND_MHZ) \
         / config.F_RES_SCALE_MHZ
     pen_s11  = config.W_MATCH * max(0.0, r['s11_dB'] + 10.0)
@@ -204,6 +207,24 @@ def _run_sim_worker(kw: dict) -> dict:
         res   = nf2ff.CalcNF2FF(sp, f_ar, theta=th, phi=ph, center=[0, 0, 1e-3])
         nf    = len(f_ar)
 
+        # ── AR-null frequency: scan boresight AR over a band and find the minimum ─────
+        # The CP AR null tracks ~7 MHz BELOW the S11 centroid — a MATCHED patch is NOT
+        # automatically circular at f_target. The earlier optimiser drove the S11 centroid
+        # to f_target and so pushed the AR null ~7 MHz low (AR 0.4 dB → 4.6 dB at f0); the
+        # cost now centres THIS null instead. θ=2° near-axis ring, worst over φ, light 3-pt
+        # smooth vs FDTD spikes. ±20 MHz brackets the null across the W grid.
+        f_scan  = _np.linspace(_cfg.f_target - 20e6, _cfg.f_target + 20e6, 27)
+        r_scan  = nf2ff.CalcNF2FF(sp, list(f_scan), theta=[2.0], phi=ph, center=[0, 0, 1e-3])
+        ar_scan = _np.array([max(_ar(_np.array([r_scan.E_cprh[n][0, k]]),
+                                     _np.array([r_scan.E_cplh[n][0, k]]))[0]
+                                 for k in range(len(ph)))
+                             for n in range(len(f_scan))])
+        ar_sm = _np.convolve(ar_scan, _np.ones(3) / 3.0, mode='same')
+        ar_sm[0], ar_sm[-1] = ar_scan[0], ar_scan[-1]
+        i_null    = int(_np.argmin(ar_sm))
+        f_ar_null = float(f_scan[i_null])
+        ar_min    = float(ar_sm[i_null])
+
         # Peak directivity (dBi) + radiation efficiency from a coarse FULL-SPHERE call:
         # Dmax/Prad need the whole sphere (the cone call above only integrates 0..60°, so
         # its Prad — hence Dmax — is biased). openEMS Dmax is the LINEAR ratio → dBi via
@@ -236,13 +257,15 @@ def _run_sim_worker(kw: dict) -> dict:
                 min(abs(E_rh[i, k]) for k in range(len(ph))) / Emax + 1e-12))
         ar_th = _np.array(ar_th); g_th = _np.array(g_th)
 
-        return {'s11_dB': s11_dB, 'f_res': f_res, 'ar_dB': float(ar0),
+        return {'s11_dB': s11_dB, 'f_res': f_res, 'f_ar_null': f_ar_null,
+                'ar_min': ar_min, 'ar_dB': float(ar0),
                 'ar_bw_deg': float(_bw(th, ar_th)),
                 'ar_cone_dB': float(_wc(th, ar_th, _cfg.COVER_CONE_DEG)),
                 'gain_cone_dBic': float(_mg(th, g_th, _cfg.COVER_CONE_DEG)),
                 'Dmax': Dmax, 'eta_rad': eta_rad, 'rhcp': bool(is_rhcp), 'ok': True}
     except Exception as exc:
-        return {**_fail(), 'ar_bw_deg': 0.0, 'ar_cone_dB': 99.0,
+        return {**_fail(), 'f_ar_null': _cfg.f_target, 'ar_min': 99.0,
+                'ar_bw_deg': 0.0, 'ar_cone_dB': 99.0,
                 'gain_cone_dBic': -99.0, 'eta_rad': 0.0, '_exc': str(exc)}
     finally:
         if _os.path.exists(sp):
@@ -430,14 +453,15 @@ class Optimizer:
         elapsed = time.monotonic() - self._t_start
         rem     = (self.N_OPT - self._n_done) * elapsed / max(self._n_done, 1)
         eta     = _dt.datetime.now() + _dt.timedelta(seconds=rem)
-        df      = (r['f_res'] - config.f_target) / 1e6
+        dnull   = (r.get('f_ar_null', r['f_res']) - config.f_target) / 1e6
         print(
             f'  [{self._n_done:2d}/{self.N_OPT}  P{phase}]'
             f'  W={p.W_mm:5.1f}  trunc={p.trunc_mm:4.1f}  ins={p.inset_y_mm:4.1f}'
             f'  gp={p.sub_hw_mm*2:5.1f}'
-            f'  ->  S11={r["s11_dB"]:+5.1f}  f={r["f_res"]/1e6:.1f}({df:+.0f})'
-            f'  AR={r["ar_dB"]:4.1f} {status}  BW={r.get("ar_bw_deg",0):3.0f}'
-            f'  D={r["Dmax"]:+4.1f}dBi  η={r.get("eta_rad",0)*100:4.1f}%  cost={_cost(entry):+5.2f}'
+            f'  ->  S11={r["s11_dB"]:+5.1f}  fS11={r["f_res"]/1e6:.0f}'
+            f'  null={r.get("f_ar_null", r["f_res"])/1e6:.1f}({dnull:+.0f})'
+            f'  ARmin={r.get("ar_min",99):4.1f}  AR0={r["ar_dB"]:4.1f} {status}  BW={r.get("ar_bw_deg",0):3.0f}'
+            f'  D={r["Dmax"]:+4.1f}  η={r.get("eta_rad",0)*100:4.1f}%  cost={_cost(entry):+5.2f}'
             f'  [+{self._fmt_dur(elapsed)} ETA {eta.strftime("%H:%M")}]',
             flush=True)
 

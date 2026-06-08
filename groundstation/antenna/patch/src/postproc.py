@@ -311,11 +311,18 @@ class PostProcessor:
 
     def _axial_ratio_sweep(self):
         print('Computing axial ratio sweep...')
-        f_ar = np.linspace(
-            max(100e6, config.f_target - config.fc),
-            config.f_target + config.fc, 101)
+        # FINE grid around f_target. The single-feed CP AR null is only a few-MHz wide, so
+        # a coarse grid (≈5 MHz/pt) + a wide boxcar smoothing (the old 5-pt over 5 MHz/pt =
+        # 25 MHz window) refilled the null and turned a ~0.4 dB minimum into a reported ~5 dB
+        # — the headline AR was a SMOOTHING ARTEFACT, not the antenna. Resolve at 0.5 MHz over
+        # ±80 MHz where the null lives; sparse context points each side keep the plot shoulders.
+        f_fine   = np.linspace(config.f_target - 80e6, config.f_target + 80e6, 321)  # 0.5 MHz/pt
+        f_ctx_lo = np.linspace(max(100e6, config.f_target - config.fc),
+                               config.f_target - 80e6, 20, endpoint=False)
+        f_ctx_hi = np.linspace(config.f_target + 85e6, config.f_target + config.fc, 20)
+        f_ar = np.unique(np.concatenate([f_ctx_lo, f_fine, f_ctx_hi]))
         res_ar = self._nf2ff.CalcNF2FF(
-            self._sim_path, f_ar,
+            self._sim_path, list(f_ar),
             theta=[1.0, 2.0, 3.0],
             phi=[0., 90., 180., 270.],
             center=[0, 0, 1e-3],
@@ -329,7 +336,9 @@ class PostProcessor:
         for n in range(len(f_ar)):
             ar_vs_f_raw[n], rhcp_vs_f[n] = axial_ratio_db(
                 res_ar.E_cprh[n], res_ar.E_cplh[n])
-        _w = 5
+        # LIGHT 3-pt (≈1.5 MHz) smoothing only — tames single-point FDTD spikes while
+        # PRESERVING the few-MHz null (a wide window over-reads the AR; see above).
+        _w = 3
         _half = _w // 2                    # parenthesise: -_w // 2 == -3, not -(2)
         ar_vs_f = np.convolve(ar_vs_f_raw, np.ones(_w) / _w, mode='same')
         ar_vs_f[:_half]  = ar_vs_f_raw[:_half]
@@ -340,17 +349,33 @@ class PostProcessor:
         self._ar_vs_f_raw = ar_vs_f_raw
         self._ar_at_ft    = float(np.interp(config.f_target, f_ar, ar_vs_f))
         self._rhcp_at_ft  = bool(rhcp_vs_f[int(np.argmin(np.abs(f_ar - config.f_target)))])
+        # AR null (frequency of minimum AR). For a correctly-tuned CP patch this sits on
+        # f_target; its offset is THE tuning diagnostic — note it tracks ~7 MHz BELOW the
+        # S11 centroid, so matching alone does not centre the CP (the optimiser centres this).
+        i_null            = int(np.argmin(ar_vs_f))
+        self._f_ar_null   = float(f_ar[i_null])
+        self._ar_min      = float(ar_vs_f[i_null])
 
-        # CP (AR ≤ 3 dB) bandwidth, for reporting
+        # CP (AR ≤ 3 dB) bandwidth: the CONTIGUOUS band straddling the null (not the global
+        # min/max extent, which a far-off spike could inflate).
         in_band = ar_vs_f <= 3.0
-        if in_band.any():
+        if in_band[i_null]:
+            lo = i_null
+            while lo > 0 and in_band[lo - 1]:
+                lo -= 1
+            hi = i_null
+            while hi < len(in_band) - 1 and in_band[hi + 1]:
+                hi += 1
+            self._ar_bw = float(f_ar[hi] - f_ar[lo])
+        elif in_band.any():
             self._ar_bw = float(f_ar[in_band].max() - f_ar[in_band].min())
         else:
             self._ar_bw = 0.0
 
-        print(f'AR at f_target: {self._ar_at_ft:.1f} dB  '
+        print(f'AR at f_target: {self._ar_at_ft:.2f} dB  '
               f'({"RHCP" if self._rhcp_at_ft else "LHCP"} dominant)  '
-              f'[AR≤3 dB bandwidth ≈ {self._ar_bw/1e6:.1f} MHz]')
+              f'[null {self._f_ar_null/1e6:.2f} MHz ({(self._f_ar_null-config.f_target)/1e6:+.1f}), '
+              f'AR_min {self._ar_min:.2f} dB, AR≤3 BW ≈ {self._ar_bw/1e6:.1f} MHz]')
 
         plotting.plot_axial_ratio(
             f_ar, ar_vs_f, ar_vs_f_raw,
@@ -593,6 +618,9 @@ class PostProcessor:
             's11_at_ft_dB':       round(s11_at_ft, 2),
             's11_at_res_dB':      round(self._s11_at_res, 2),
             'ar_boresight_dB':    round(self._ar_at_ft, 3),
+            'ar_min_dB':          round(self._ar_min, 3),
+            'ar_null_MHz':        round(self._f_ar_null / 1e6, 3),
+            'ar3_freq_bw_MHz':    round(self._ar_bw / 1e6, 2),
             'rhcp':               bool(self._rhcp_at_ft),
             'ar3_beamwidth_deg':  round(self._ar3_bw_deg, 1),
             'worst_ar_cone_dB':   round(self._worst_ar_cone, 3),
@@ -726,7 +754,7 @@ print('Done.  Use Animation View (View > Animation View) to play the phase seque
   Board      : {self._layout['sub_hw']*2:.1f} × {self._layout['sub_hw']*2:.1f} mm  (realised; param sub_hw → {p.sub_hw_mm*2:.0f} mm)
   S11 @ f0   : {s11_at_ft:.1f} dB
   f_CP_centre: {self._f_res/1e6:.2f} MHz  (offset {(self._f_res-config.f_target)/1e6:+.2f} MHz){f'  [modes: {self._f_mode1/1e6:.1f} / {self._f_mode2/1e6:.1f} MHz  split {self._mode_split/1e6:.1f} MHz]' if self._mode_split > 5e6 else ''}
-  AR @ f0    : {self._ar_at_ft:.1f} dB  ({sense})  [AR≤3 dB BW ≈ {self._ar_bw/1e6:.1f} MHz]
+  AR @ f0    : {self._ar_at_ft:.2f} dB  ({sense})  [null {self._f_ar_null/1e6:.2f} MHz ({(self._f_ar_null-config.f_target)/1e6:+.1f}), AR_min {self._ar_min:.2f} dB, AR≤3 BW ≈ {self._ar_bw/1e6:.1f} MHz]
   Coverage   : AR≤3 dB beam {self._ar3_bw_deg:.0f}°   worst AR / {config.COVER_CONE_DEG:.0f}° cone {self._worst_ar_cone:.1f} dB
              : min RHCP gain / cone {self._min_gain_cone:.1f} dBic   (peak gain θ≈{self._peak_gain_theta:.0f}°)
   Dmax       : {self._Dmax:.1f} dBi  @ {config.f_target/1e6:.2f} MHz

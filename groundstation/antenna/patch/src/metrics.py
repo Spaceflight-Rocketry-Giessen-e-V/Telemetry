@@ -90,8 +90,8 @@ def failure_result():
     Costed as strongly infeasible (AR 99 dB, gain -99 dBi) so a failed sim is
     never selected, while keeping the same keys a successful result carries.
     """
-    return {'s11_dB': 0.0, 'f_res': config.f_target, 'ar_dB': 99.0,
-            'Dmax': -99.0, 'rhcp': True,
+    return {'s11_dB': 0.0, 'f_res': config.f_target, 'f_ar_null': config.f_target,
+            'ar_min': 99.0, 'ar_dB': 99.0, 'Dmax': -99.0, 'rhcp': True,
             'zin_re': 0.0, 'zin_im': 0.0, 'ok': False}
 
 

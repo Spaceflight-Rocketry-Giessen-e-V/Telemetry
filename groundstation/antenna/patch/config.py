@@ -44,10 +44,13 @@ NrTS_opt   = 150000  # time steps per optimisation run. Set EQUAL to NrTS_final 
                      # removes that disagreement (≈+25% time/sim; see the speed plan,
                      # which more than offsets it by cutting the sim COUNT).
 NrTS_final = 150000  # time steps for the final high-fidelity run  (was 80000)
-NrTS_screen = 60000  # cheap SCREEN fidelity for the coarse W×truncation grid: resonance + S11
-                     # converge here, but the razor AR/beamwidth does NOT — that is
-                     # judged only at the full-fidelity CONFIRM stage (NrTS_opt). The
-                     # grid block (below) + optimizer._run_search consume these.
+NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. RAISED from 60k to equal
+                     # NrTS_opt: the screen must centre the AR NULL (optimizer._screen_cost on
+                     # f_ar_null), and the razor AR null does NOT converge at 60k — a 60k run read
+                     # AR 8.8 dB where the 150k truth is 0.4 dB, so a cheap screen mis-ranked the
+                     # null-centred design (the whole single-feed re-tune traced to that). At full
+                     # fidelity the null frequency is reliable; CONFIRM then re-applies the full
+                     # coverage cost (incl. AR depth/beamwidth at f_target) to pick the winner.
 
 # Parallel FDTD workers (within-phase). 0 = use os.cpu_count().
 # Each worker spawns one openEMS subprocess; OMP_NUM_THREADS is set to 1
@@ -226,16 +229,16 @@ SUB_HW_N       = 5       # (legacy) old GP-sweep candidate count; board no longe
 # grid at NrTS_screen, then confirms the best W per truncation at full fidelity (NrTS_opt)
 # — AR is razor-thin and does NOT converge at the screen NrTS, so it is judged only at
 # confirm. The single inset stays at the seed (it sets the match, not resonance/AR).
-GRID_W_FRAC = (1.0000, 1.0067, 1.0133)  # patch side W grid (fraction of the warm_start seed W).
-                                   #   NOT symmetric about the seed: the 150k confirmation run
-                                   #   measured the W=82.5 seed resonating at 875.4 MHz — +5.9 MHz
-                                   #   HIGH — so resonance must come DOWN, i.e. W must grow. Patch
-                                   #   resonance ∝ 1/W, so f_target needs W×(875.4/869.525)=×1.0068.
-                                   #   The grid puts that predicted on-resonance W in the MIDDLE
-                                   #   (82.5 / 83.05 / 83.60 mm → ≈875 / 869.5 / 864 MHz), bracketing
-                                   #   f_target with a point on it. A symmetric ±2 % about the seed
-                                   #   left the closest grid point still +5.9 MHz off (AR null tracks
-                                   #   resonance → AR stayed ~4.8 dB at f_target).
+GRID_W_FRAC = (0.994, 1.000, 1.006)  # patch side W grid (fraction of the warm_start seed W).
+                                   #   Brackets the seed: the W=82.5 seed already puts the AR
+                                   #   NULL on f_target (NF2FF-measured 869.0 MHz, AR 0.4 dB,
+                                   #   AR≤3 BW 8 MHz), so the grid stays centred on it
+                                   #   (82.0/82.5/83.0 mm → null ≈ 874/869/864 MHz).
+                                   #   HISTORY: an earlier version recentred UP to land the S11
+                                   #   *centroid* on f_target — but the AR null sits ~7 MHz BELOW
+                                   #   the centroid, so that pushed the null off (AR @ f0 went
+                                   #   0.4 → 4.6 dB). The optimiser now centres the null itself
+                                   #   (optimizer._cost / _screen_cost on f_ar_null), not the centroid.
 GRID_TRUNC_MM = (6.5, 8.25, 10.0)  # corner-truncation grid (mm), bracketing the proven 0.10·W ≈ 8.25.
                                    #   Smaller Δ → narrower mode split → tighter AR null but more
                                    #   fab-sensitive; the sweep centres the AR≤3 null on f_target.
