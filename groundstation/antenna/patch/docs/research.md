@@ -12,8 +12,11 @@ comprehensive review," Alexandria Engineering Journal 103 (2024) 197–221*
 > edge-launch SMA — **no coupler, no termination resistor**, 160×160 mm, ~€30–60/5. It is a
 > **no-tracking wide-beam backup** behind the tracked helical; the 10 km link closes with
 > large margin, so coverage + robust RHCP matter more than gain. Validated in openEMS at the
-> un-tuned seed: **η_rad 28 %, realised gain +0.8 dBic, directivity 6.6 dBi, RHCP**; AR is
-> ~6 dB at the seed and is tuned to ≤3 dB by the W×truncation optimiser.
+> **seed dims (W = 82.5 / Δ = 8.25 / inset = 5.8 mm — the `config.py` synthesis seeds, which
+> ARE the final design): AR 0.45 dB at boresight, AR ≤ 3 dB over a 180° beam (8 MHz CP
+> bandwidth), S11 −12 dB, η_rad 28 %, realised gain +0.8 dBic, directivity 6.6 dBi, RHCP.**
+> The seed already meets CP — the earlier "AR ~6 dB, needs tuning" was a post-processing
+> artefact (a 25 MHz boxcar averaged over a few-MHz null), now fixed (§0.6).
 >
 > **How we got here (and what was wrong before):** truncated single-feed on FR-4 (broken
 > AR 7.1) → explored air/aperture/probe (dropped: manufacturability) → **dual-feed
@@ -45,8 +48,10 @@ comprehensive review," Alexandria Engineering Journal 103 (2024) 197–221*
 4. **Single-feed wins on realised gain.** No iso resistor → the 64 % can't be dumped. Validated on
    the same FR-4 board: **η_rad 3 %→28 %, realised gain −9.6→+0.8 dBic, RHCP** (truncate the bottom-
    left + top-right diagonal → RHCP at +z). Cost: single-feed AR is εr/fab-sensitive — now tractable
-   because NP-140F's εr is datasheet-known. **AR at the un-tuned seed ≈ 6 dB; the W×truncation
-   optimiser centres the AR null on f_target** (truncation Δ sets the mode-split, W sets resonance).
+   because NP-140F's εr is datasheet-known. **The seed dims (W 82.5 / Δ 8.25 / inset 5.8) already
+   give AR 0.45 dB at f_target, AR ≤ 3 dB over a 180° beam, 8 MHz CP bandwidth** — they ARE the
+   final design (truncation Δ sets the mode-split, W centres it). The earlier "AR ≈ 6 dB, needs
+   tuning" was a reporting artefact, not the antenna — see finding 6.
 5. **Gain is EFFICIENCY-limited, not aperture-limited.** Directivity (~6.6 dBi) is already fine; the
    antenna loses ~5 dB to FR-4 dielectric. So the gain levers are efficiency, not board size:
 >   | Lever | Δ realised gain | Cost / tradeoff |
@@ -60,6 +65,24 @@ comprehensive review," Alexandria Engineering Journal 103 (2024) 197–221*
 >
 >   Every *directivity* lever (board, stacking, array) narrows the beam (fights the coverage role);
 >   every *efficiency* lever (thickness, air, laminate) raises gain *without* narrowing it — prefer those.
+6. **The CP axial-ratio NULL sits ~7 MHz BELOW the S11 centroid — optimise the NULL, not
+   resonance.** A *matched* patch is not automatically circular at f_target. NF2FF-measured on real
+   150k sim data (same Δ/inset, only W varied):
+>   | W (mm) | AR-null freq | AR @ 869.525 MHz | AR ≤ 3 dB freq BW | S11 centroid |
+>   |---|---|---|---|---|
+>   | **82.5** (seed) | **869.0 MHz** | **0.45 dB** ✓ | 8.0 MHz | 875.9 MHz |
+>   | 83.05 | 863.5 MHz | 4.63 dB ✗ | 7.5 MHz | 870.2 MHz |
+>
+>   The null tracks ~6.5–6.9 MHz **below** the S11 dip. Two bugs flowed from conflating them, both
+>   fixed: **(a)** the optimiser centred the **S11 centroid** (`f_res`) → it pushed the AR null ~7 MHz
+>   low (AR 0.4 → 4.6 dB at f0). It now scans boresight AR over f_target ± 30 MHz and centres the
+>   **AR null** (`f_ar_null`); the W grid brackets the seed and the screen runs at full NrTS (the
+>   razor null does not converge at 60 k — a 60 k run read AR 8.8 dB where the 150 k truth is 0.4).
+>   **(b)** the post-proc AR-vs-f sweep used a **25 MHz boxcar** (5-pt over 5 MHz/pt) that refilled
+>   the few-MHz null and reported ~5 dB where it is ~0.4 dB; now a fine 0.5 MHz grid + a light 3-pt
+>   smooth, reporting the AR-null frequency / AR_min / contiguous AR ≤ 3 dB bandwidth.
+>   *Lesson: for a single-feed corner-truncated patch, the S11 match and the CP centre are SEPARATE
+>   tuning targets — verify CP on the AR(f) null, never on the S11 dip.*
 
 ## 1. Project context
 
@@ -458,18 +481,19 @@ termination resistor, no air, no probe, no standoffs. Order → solder one SMA �
 | **Patch** | near-square ~82.5 mm, two diagonal corners chamfered ~8 mm | **CP from the truncation**; BL+TR diagonal → RHCP at +z |
 | **Feed** | ONE inset microstrip, −y edge centre, ~6 mm inset → edge-launch SMA | 50 Ω; no coupler, no resistor — all accepted power goes to the patch |
 | **Ground** | 160 mm → **wide beam** (coverage) | locked for coverage; bigger = narrower beam (§4) |
-| Validated (un-tuned seed) | **directivity 6.6 dBi, η_rad 28 %, realised +0.8 dBic, RHCP, S11 −10.9 dB** | AR ~6 dB at seed → optimiser tunes ≤3 dB |
+| Validated (seed dims = final) | **AR 0.45 dB, AR≤3 over a 180° beam (8 MHz CP BW), directivity 6.6 dBi, η_rad 28 %, realised +0.8 dBic, RHCP, S11 −12 dB** | seed already meets CP; AR-null on f_target (§0.6) |
 | Cost | **~€25–45 for 5** (1 PCB + 1 SMA) | + coax / radome per station |
 
 Why this design: it's the same fully-reproducible "order-solder-done" etched PCB, but
 single-feed deletes the dual-feed coupler's **isolated-port resistor — a structural sink
 that burned ~64 % of accepted power** (§0.1), recovering ~10 dB of realised gain (−9.6 →
 +0.8 dBic). The price is that single-feed CP is εr/fab-sensitive; that is now manageable
-because NP-140F's εr is datasheet-known (§5), the W×truncation optimiser centres the AR
-null, and 3.2 mm substrate (the main gain lever, §0.5) also widens AR. RHCP sense is set by
-**which diagonal is truncated** (BL+TR → RHCP) — verify from the far field (E_R vs E_L) and
-against the helix/QFH sense (§1, issue #43). Build: [bom.csv](bom.csv) *(update: drop the
-50 Ω R)*. As-built code on branch `patch_antenna_SF`.
+because NP-140F's εr is datasheet-known (§5), the AR null already lands on f_target at the
+seed dims (the optimiser centres the **AR null**, not the S11 dip — §0.6), and 3.2 mm
+substrate (the main gain lever, §0.5) also widens AR. RHCP sense is set by **which diagonal
+is truncated** (BL+TR → RHCP) — verify from the far field (E_R vs E_L) and against the
+helix/QFH sense (§1, issue #43). Build: [bom.csv](bom.csv) (single-feed: no coupler, no
+termination resistor). As-built code on branch `patch_antenna_SF`.
 
 **To increase gain (if wanted):** efficiency, not aperture — **3.2 mm substrate (+1.5–2 dB,
 PCBWay)** first, then an air/foam gap (+3–4 dB, 3-D assembly). A bigger board (200 mm) buys

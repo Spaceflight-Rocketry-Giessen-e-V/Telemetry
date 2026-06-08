@@ -1,50 +1,57 @@
 # Patch antenna — work in progress
 
-**Migrated to a SINGLE-FEED corner-truncated RHCP patch** (branch `patch_antenna_SF`),
-replacing the dual-feed branch-line coupler. The coupler dumped ~64 % of accepted power
-into its isolated-port resistor (realised gain −9.6 dBic); deleting it recovers that power.
+**Single-feed corner-truncated RHCP patch** (branch `patch_antenna_SF`), replacing the
+retired dual-feed branch-line coupler (which dumped ~64 % of accepted power into its
+isolated-port resistor → realised gain −9.6 dBic).
 
 NP-140F (εr 4.15, tanδ 0.014), 1.6 mm, **869.525 MHz**, 160×160 mm board, RHCP, one
 edge-launch SMA, **no coupler, no termination resistor**.
 
-## ✅ Done — coupler → single-feed migration
-- CP now from truncating two diagonal corners of a near-square patch (chamfer Δ), fed by
-  ONE inset microstrip at the −y edge centre. `geometry.notched_square_polygon` gained
-  `trunc`/`diag`; `geometry.single_feed_layout` replaces `dual_feed_layout`;
-  `model.build_patch_sim` rebuilt (PML_8, centred board); `build_full_sim` + coupler
-  geometry deleted. `PatchParams` = W_mm / trunc_mm / inset_y_mm / sub_hw_mm.
-- Optimizer grid is now **W × corner-truncation** (resonance × AR), efficiency-aware
-  (`W_EFF`); postproc / plotting / run.py / kicad_export all on the single-feed layout;
-  coupler tests + `tool_coupler_circuit` deleted.
-- **Validated** (throwaway 150k at the proven warm-start dims W 82.5 / Δ 8.25 / inset 5.8,
-  from the old single-feed branch re-scaled to εr 4.15):
+## ✅ RESOLVED — the design is the config seed
+The full optimise + NF2FF analysis showed the patch **already works at the seed**. The
+earlier "AR 6.2 dB, needs tuning" was a **reporting artefact**, not the antenna.
 
-  | | dual-feed coupler | **single-feed (un-tuned seed)** |
-  |---|---|---|
-  | η_rad | 3.1 % | **28.4 %** |
-  | Realised gain | −9.6 dBic | **+0.8 dBic** |
-  | Directivity | 5.9 dBi | 6.6 dBi |
-  | Handedness | RHCP | **RHCP** (BLTR diagonal) |
-  | S11 | −11 dB | −10.9 dB |
-  | AR | 1.64 dB | **6.18 dB ← needs tuning** |
+**Final geometry: W = 82.5 mm · corner truncation Δ = 8.25 mm · feed inset = 5.8 mm ·
+board 160 mm** (these ARE the `config.py` synthesis seeds — `default_params()`).
 
-## ▶ CURRENT FOCUS — tune the CP (AR) to ≤3 dB
-- [ ] **Full optimise** (`python run.py` with `single_sim_only=False`, ~3 h): the W×truncation
-      grid centres the AR null on f_target. AR 6.2 at the seed is just un-tuned (truncation Δ
-      sets the mode split, W centres resonance); corner-truncated patches reach AR <1 dB tuned.
-- [ ] Confirm η / realised gain hold (~+1–3 dBic; FR-4's 33 % dielectric loss is the ceiling)
-      and re-check `tests/tool_link_budget.py` at the tuned realised gain.
-- [ ] Watch handedness: the build uses the BLTR diagonal (= RHCP at +z, validated). The
-      console prints "FLIP truncation diagonal" if a run comes out LHCP.
+| metric | value (150k, NF2FF) |
+|---|---|
+| Axial ratio @ f0 | **0.45 dB** (AR_min 0.41 dB, null at 869.0 MHz) |
+| AR ≤ 3 dB beam | **180°** (worst 1.0 dB over the 45° cone) |
+| AR ≤ 3 dB freq bandwidth | **8 MHz** (robust to fab/εr drift) |
+| Return loss S11 @ f0 | −12.1 dB |
+| Directivity | 6.6 dBi |
+| Radiation eff. η_rad / η_tot | 28.3 % / 26.5 % |
+| **Realised gain** | **+0.8 dBic**, RHCP (BLTR diagonal) |
+
+## 🔑 What the optimise taught us (two bugs found + fixed)
+The CP **axial-ratio null sits ~7 MHz BELOW the S11 centroid** — a *matched* patch is not
+automatically circular at f_target. NF2FF-measured on real sim_data:
+`W=82.5 → null 869.0 MHz / AR 0.45 dB`, `W=83.05 → null 863.5 / AR 4.6`.
+
+1. **Optimiser centred the wrong frequency.** It drove the S11 centroid (`f_res`) to
+   f_target, which pushed the AR null ~7 MHz low. Fixed: the worker now scans boresight AR
+   over f_target ± 20 MHz and `_cost`/`_screen_cost` centre **`f_ar_null`** instead;
+   `GRID_W_FRAC` brackets the seed; `NrTS_screen` 60k → 150k (the razor null doesn't
+   converge at 60k — a 60k run read AR 8.8 dB where the 150k truth is 0.4).
+2. **Postproc smoothing crushed the null.** The AR-vs-f sweep used a 25 MHz boxcar (5-pt
+   over 5 MHz/pt) that refilled the few-MHz null → reported ~5 dB. Fixed: fine 0.5 MHz grid
+   + light 3-pt smooth; now reports AR-null freq / AR_min / contiguous AR≤3 bandwidth.
+
+## ▶ In progress
+- [ ] **Verification optimise** (corrected AR-null objective, NrTS_screen=150k) running to
+      confirm W ≈ 82.5 / Δ 8.25 is the cost optimum (and check if another Δ widens the AR
+      band). The deliverable board already comes from the validated W=82.5 sim_data.
 
 ## ⛔ Pre-fab gates
-- [ ] Optimise first — the board (`kicad_export`) should reflect the TUNED dims, not the seed.
-- [ ] Confirm the fab supplies NP-140F at 160×160 (else re-tune for KB-6164 εr ~4.6).
+- [ ] Confirm the fab supplies NP-140F at 160×160 (else re-tune for KB-6164 εr ~4.6 — the
+      8 MHz AR bandwidth absorbs the εr spread, but resonance/null shift must be checked).
 - [ ] Lock RHCP sense vs the rocket's RHCP QFH (issue #43).
+- [ ] Per-unit cold-test recommended (single-feed CP AR is εr/fab-sensitive; the known
+      NP-140F εr is what makes it land — the 8 MHz AR band gives margin).
 
 ## Notes
-- Single-feed CP AR is εr/fab-sensitive (the original reason the coupler was chosen); the
-  NP-140F datasheet-known εr is what makes it tunable now. Per-unit cold-test recommended.
-- `tests/stage0_dipole_calibration.py` validates the NF2FF efficiency/directivity; run it if
-  absolute numbers ever look off.
-- Old run dirs / `board_sweep_results.json` are gitignored build artefacts (regenerable).
+- `tests/stage0_dipole_calibration.py` validates the NF2FF efficiency/directivity (lossless
+  dipole → η≈100 %, Dmax 2.19 dBi); run it if absolute numbers ever look off.
+- The board (`kicad_export`) is regenerated from the W=82.5 results.json; old run dirs /
+  `board_sweep_results.json` are gitignored build artefacts (regenerable).
