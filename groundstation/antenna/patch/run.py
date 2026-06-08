@@ -18,11 +18,10 @@ preview_only    = False  # write XML + open AppCSXCAD, then exit
 show_geometry   = False  # open AppCSXCAD to inspect geometry before simulating (BLOCKS until
                          # the window is closed). Leave False for unattended/background runs —
                          # the geometry XML is still written either way.
-single_sim_only = True   # ON: design FROZEN at the accepted NP-140F dims — W=72.5 / arm=40 on the
-                         # 160 mm board (εr 4.15). Validated at full 150k fidelity: f_res 869.5,
-                         # S11 −11.0, AR 1.70 dB, AR≤3 beam 52°, RHCP (tests/board_sweep.py 160 mm point).
-                         # A run now does ONE confirmation sim + writes the final KiCad board.
-                         # Flip False to re-optimise (W grid re-anchors via config.GRID_W_FRAC).
+single_sim_only = False  # OFF: run the full W×truncation optimise (config.GRID_*) that centres the
+                         # AR null on f_target, then a final high-fidelity sim + graphs + KiCad board.
+                         # Flip True for a single sim at the warm_start seed (W≈82.5 / trunc≈8.25 /
+                         # inset≈5.8 on the 160 mm board, NP-140F εr 4.15) — un-tuned (AR ~5 dB).
 post_proc_only  = False  # skip FDTD entirely, re-run post-processing on existing sim_data
 
 # ── Warm-start / dimension source ────────────────────────────────
@@ -33,10 +32,12 @@ post_proc_only  = False  # skip FDTD entirely, re-run post-processing on existin
 # proven single-feed dims: W_CP_INIT ≈ 82.5, TRUNC_INIT ≈ 8.25, INSET_Y ≈ 5.8).
 warm_start = {
     # Single-feed corner-truncated CP seeds, from the proven old single-feed design
-    # (config_deprecated) re-scaled to NP-140F εr 4.15. A throwaway 150k validation at
-    # these dims gave f_res 872 MHz, S11 −10.9, η_rad 28 %, realised +0.8 dBic, RHCP —
-    # AR 6.2 dB at the un-tuned seed, which the W×truncation grid centres to ≤3 dB.
-    'W_mm':       82.5,   # (W_lp+L_lp)/2 * 0.86  — CP square side; grid ±2 % centres resonance
+    # (config_deprecated) re-scaled to NP-140F εr 4.15. The 150k confirmation run at these
+    # dims gave f_res 875.4 MHz (+5.9 high), S11 −12.1, η_rad 28.3 %, realised +0.8 dBic,
+    # RHCP — AR 4.8 dB at the un-tuned seed. The grid grows W to pull resonance onto f_target
+    # (config.GRID_W_FRAC is recentred above the seed for exactly this) and sweeps truncation
+    # to centre the AR null ≤3 dB.
+    'W_mm':       82.5,   # (W_lp+L_lp)/2 * 0.86  — CP square side; grid grows it +0.0–1.3 % onto f0
     'trunc_mm':   8.25,   # 0.10·W corner chamfer — the CP mode-split lever (grid 6.5/8.25/10)
     'inset_y_mm': 5.8,    # 0.07·W single inset on the −y edge centre (50 Ω match)
 #    'sub_hw_mm':  80.0,   # 160 mm board (locked for wide-beam coverage)

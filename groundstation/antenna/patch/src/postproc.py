@@ -729,7 +729,7 @@ print('Done.  Use Animation View (View > Animation View) to play the phase seque
   AR @ f0    : {self._ar_at_ft:.1f} dB  ({sense})  [AR≤3 dB BW ≈ {self._ar_bw/1e6:.1f} MHz]
   Coverage   : AR≤3 dB beam {self._ar3_bw_deg:.0f}°   worst AR / {config.COVER_CONE_DEG:.0f}° cone {self._worst_ar_cone:.1f} dB
              : min RHCP gain / cone {self._min_gain_cone:.1f} dBic   (peak gain θ≈{self._peak_gain_theta:.0f}°)
-  Dmax       : {self._Dmax:.1f} dBi  @ {self._f_res/1e6:.2f} MHz
+  Dmax       : {self._Dmax:.1f} dBi  @ {config.f_target/1e6:.2f} MHz
   Efficiency : {f'η_rad {self._eta_rad*100:.1f}%   η_tot {self._eta_tot*100:.1f}%   realised gain {self._realised_gain_dBi:.1f} dBic' if getattr(self, '_eff_ok', False) else 'unavailable (NF2FF/port sanity gate failed)'}
   Sim data   : {self._sim_path}
   Graphs     : {self._graphs_path}

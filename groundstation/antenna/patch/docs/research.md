@@ -6,53 +6,60 @@ and the review paper *Yahya et al., "LoRa Microstrip Patch Antenna: A
 comprehensive review," Alexandria Engineering Journal 103 (2024) 197–221*
 (doi:10.1016/j.aej.2024.06.045) — the PDF in the repo root.
 
-> **TL;DR** — The original FR-4 corner-truncated patch had broken CP (AR 7.1 dB) on a
-> 375 mm board for €140. The mission only needs a **no-tracking backup** that holds
-> **RHCP over a wide beam** (catch apogee / parachute-deploy + descent, ~10 km), and
-> the link closes with 20–30 dB margin so **gain is not the constraint.** **Decided
-> design: a flat single 2-layer FR-4 PCB patch, RHCP via a dual feed (etched 90°
-> branch-line coupler), optimised for wide-beam coverage** — one SMA, one SMD
-> resistor, ~150–200 mm, ~€30–60/5. Air gap / aperture / probe / aluminium were all
-> explored and dropped for manufacturability. **Not simulated yet.**
+> **TL;DR — current design (2026-06-08, branch `patch_antenna_SF`).** A flat single
+> 2-layer **NP-140F (FR-4-class)** PCB patch, RHCP from a **single-feed corner-truncated**
+> patch (two diagonally-opposite corners chamfered), fed by ONE inset microstrip to one
+> edge-launch SMA — **no coupler, no termination resistor**, 160×160 mm, ~€30–60/5. It is a
+> **no-tracking wide-beam backup** behind the tracked helical; the 10 km link closes with
+> large margin, so coverage + robust RHCP matter more than gain. Validated in openEMS at the
+> un-tuned seed: **η_rad 28 %, realised gain +0.8 dBic, directivity 6.6 dBi, RHCP**; AR is
+> ~6 dB at the seed and is tuned to ≤3 dB by the W×truncation optimiser.
+>
+> **How we got here (and what was wrong before):** truncated single-feed on FR-4 (broken
+> AR 7.1) → explored air/aperture/probe (dropped: manufacturability) → **dual-feed
+> branch-line coupler** (chosen 2026-06-04 for εr-robust CP, built + simulated) → **coupler
+> RETIRED 2026-06-08** when a power decomposition showed it dumps **~64 % of accepted power
+> into its isolated-port resistor** (realised gain −9.6 dBic) → **back to single-feed**, which
+> deletes that sink and recovers ~10 dB of realised gain. The dual-feed material in §2–§6/§9
+> below is kept as history and flagged ⌗.
 
 ---
 
-> **⚠️ DESIGN DECIDED 2026-06-04 — NOT simulated yet (all numbers are projections).**
-> After an adversarial review + mission input, the air-gap / aperture / capacitive-
-> probe / aluminium ideas were all **dropped** — each added mechanical complexity to
-> chase gain/efficiency the mission doesn't need. **Chosen design (see §9):**
->
-> - **Flat single 2-layer FR-4 PCB patch.** Top copper = square patch + an **etched
->   90° branch-line coupler** + two microstrip feeds; bottom copper = ground. One SMA,
->   one SMD 50 Ω termination resistor. Order → solder → done; all geometry **etched**
->   (so it's reproducible — the thing that killed every air/probe variant).
-> - **RHCP comes from the dual quadrature feed (the coupler), not patch truncation** —
->   εr-independent and robust, no fragile single-feed null, no hard-to-source SMD
->   coupler (the 90° hybrid is etched copper; only a 50 Ω resistor is a part).
-> - **Optimise for COVERAGE, not gain:** smaller ground → wide beam (~70–90°) holding
->   RHCP over a wide elevation cone. Gain ~3–5 dBic is plenty (20–30 dB link margin).
-> - Role: **no-tracking BACKUP** for the manually-tracked helix — catch apogee /
->   parachute-deploy + descent out to ~10 km; horizon (last few degrees) doesn't matter.
-> - **F/B** a hard spec for a sky-pointing receiver.
-> - **Before any build:** lock the helix + QFH RHCP sense (issue #43); reconcile the
->   repo's 16.5 dBi (design_overview) vs 10 dBi (link-budget) helix-gain figure.
-> - **Simulate first** — AR *and* gain **vs elevation** (coverage), converged — before
->   ordering. Nothing below the option-menu is measured yet.
->
-> §6 below is the option **menu** (air / arrays / feed / geometry — explored, mostly
-> *not* chosen); **§9 is the current decision.** migration-plan.md is being rewritten
-> to the flat dual-feed design.
+## 0. Findings (validated in sim, 2026-06-07/08)
 
-> **⚠️ CORRECTION 2026-06-07 (efficiency / directivity).** Two sim-reporting issues were found
-> and fixed (see WIP.md "Efficiency resolved"): (1) openEMS `nf2ff.Dmax` is a LINEAR ratio, so every
-> "dBic"/"dBi" figure below that came straight from `Dmax` (e.g. the §"150 mm 0.43 4.4 dBic … 375 mm
-> 1.09 5.8 dBic" GP table, and the "~3–5 dBic" expectations) is the linear ratio mis-labelled — the
-> true **directivity** is `10·log10` of it (~+2 dB; the on-target patch is **5.9 dBi**, not 3.9).
-> (2) Far more important, the as-built dual-feed patch radiates only **η_rad ≈ 3 %** of accepted
-> power (**realised gain ≈ −9.6 dBic**): the branch-line coupler dumps the patch feed-point mismatch
-> into the isolated-port resistor. This is dipole-validated and REAL. The 10 km link still closes
-> (~16 dB margin) but a feed-match re-tune is recommended. Treat the gain numbers below as DIRECTIVITY
-> projections, ~2 dB low, and NOT realised gain.
+1. **The dual-feed coupler radiated only ~3 %.** A 150k power decomposition (iso-resistor
+   voltage probe; energy balance closes to 100 %): of accepted power, **63.7 % → isolated-port
+   resistor, 33.2 % → FR-4 dielectric, 3.1 % → radiated** → realised gain **−9.6 dBic** despite a
+   good **−11 dB S11**. The coupler routes the patch's feed-point mismatch into the iso resistor,
+   which a good *input* match hides. That resistor is a **structural sink of the coupler topology** —
+   not a bug, and not removable while the coupler stays.
+2. **Directivity was a units bug.** openEMS `nf2ff.Dmax` is the **LINEAR** directivity ratio, not
+   dBi; the repo reported it raw, under-reading directivity by 10·log10 (≈ +2 dB) — true boresight
+   directivity is ~5.9–6.6 dBi, not the "3.9 dBi" once reported. Proven against a lossless half-wave
+   dipole (Dmax 1.656 → 2.19 dBi == textbook 2.15). Fixed repo-wide via `metrics.directivity_dbi`;
+   permanent calibration test = `tests/stage0_dipole_calibration.py`. **Every "dBic" in §3–§6 that
+   came straight from `Dmax` is a linear ratio, ~2 dB below the true directivity.**
+3. **The efficiency method is trustworthy.** η_rad = Prad/P_acc, η_tot = Prad/P_inc, realised gain
+   = directivity + 10·log10(η_tot). The lossless dipole gives η ≈ 100 %, so a low η on the patch is
+   PHYSICAL (FR-4 dielectric + feed mismatch), NOT an NF2FF normalisation artefact.
+4. **Single-feed wins on realised gain.** No iso resistor → the 64 % can't be dumped. Validated on
+   the same FR-4 board: **η_rad 3 %→28 %, realised gain −9.6→+0.8 dBic, RHCP** (truncate the bottom-
+   left + top-right diagonal → RHCP at +z). Cost: single-feed AR is εr/fab-sensitive — now tractable
+   because NP-140F's εr is datasheet-known. **AR at the un-tuned seed ≈ 6 dB; the W×truncation
+   optimiser centres the AR null on f_target** (truncation Δ sets the mode-split, W sets resonance).
+5. **Gain is EFFICIENCY-limited, not aperture-limited.** Directivity (~6.6 dBi) is already fine; the
+   antenna loses ~5 dB to FR-4 dielectric. So the gain levers are efficiency, not board size:
+>   | Lever | Δ realised gain | Cost / tradeoff |
+>   |---|---|---|
+>   | **3.2 mm substrate (1.6→3.2)** | **+1.5–2 dB** (+ wider AR) | ~free (stock thickness), re-tune only — **best bang/buck** |
+>   | Air/foam gap (~10–25 mm) | **+3–4 dB** (η → ~85 %) | a 3-D assembly (the manufacturability reason it was dropped) |
+>   | Stacked parasitic patch | +1–2 dB (+ BW) | adds a layer/spacer |
+>   | Board 160→200 mm | **only ~+0.5 dB** directivity | *narrows the beam* — trades coverage; diminishing past ~0.6 λ (§4) |
+>   | Lower-loss laminate (Rogers) | +3–4 dB | over budget |
+>   | 2×2 array | +6 dB | needs >250 mm + a feed network — breaks the size/coverage budget |
+>
+>   Every *directivity* lever (board, stacking, array) narrows the beam (fights the coverage role);
+>   every *efficiency* lever (thickness, air, laminate) raises gain *without* narrowing it — prefer those.
 
 ## 1. Project context
 
@@ -86,17 +93,22 @@ comprehensive review," Alexandria Engineering Journal 103 (2024) 197–221*
   feed/electronics side (below). Keep all coax/connectors/radio **below** it.
 
 ### Circular polarisation — three ways to make it
-| Method | AR bandwidth / robustness | Cost / complexity | Note |
-|--------|---------------------------|-------------------|------|
-| **Single-feed corner truncation** (current) | ~0.5–2 % on thin substrate; ~0 % usable on 1.6 mm FR-4 | lowest (one feed, two clipped corners) | CP from one fragile mode-split; the root cause of the baseline failure |
-| Single-feed slot/U-slot variants | ~2–7 % | low | lateral improvement only |
-| **Dual-feed 90° hybrid** (branch-line / external coupler) | ~6–30 %+, tolerance-proof | medium | quadrature *enforced by the network*; sense set by which port is driven |
-| **Sequential rotation** (array) | >15 %, excellent | array-level | cross-pol cancels by geometry — even mediocre elements give clean CP |
+| Method | AR bandwidth / robustness | Efficiency | Note |
+|--------|---------------------------|------------|------|
+| **Single-feed corner truncation** (**CHOSEN**) | ~0.5–2 % on thin substrate; tight on 1.6 mm FR-4 | **high — no loss network** | CP from one mode-split; AR is εr/fab-sensitive but tunable with a known εr (NP-140F). All accepted power goes to the patch. |
+| Single-feed slot/U-slot variants | ~2–7 % | high | lateral AR improvement only |
+| ⌗ **Dual-feed 90° hybrid** (branch-line coupler) — *retired* | ~6–30 %+, tolerance-proof | **LOW — iso resistor sinks the mismatch** | quadrature enforced by copper, but its isolated port burned **~64 %** of accepted power (§0) → realised gain −9.6 dBic. Robust CP, terrible gain. |
+| **Sequential rotation** (array) | >15 %, excellent | high | cross-pol cancels by geometry; needs many elements + a feed network |
 
-**Why single-feed CP is fragile:** the AR≤3 dB window width ∝ 1/Q. Thin, lossy
-FR-4 is high-Q, so the window is razor-thin — a ~1–2 MHz resonance drift (fab
-tolerance, εr spread, or under-converged sim) slides the operating point off the
-null and CP collapses.
+**The single-feed vs coupler trade (settled §0):** the coupler buys εr-robust CP but pays
+it with a structural efficiency sink (its isolated-port resistor absorbs the patch
+mismatch → −9.6 dBic). Single-feed has no such sink (→ +0.8 dBic at the seed) but its CP is
+εr/fab-sensitive: the AR≤3 dB window width ∝ 1/Q, and thin lossy FR-4 is high-Q, so a
+~1–2 MHz resonance drift slides the operating point off the AR null. **Mitigations that
+make single-feed viable now:** (1) NP-140F's datasheet-known εr (±0.1) lands resonance
+predictably; (2) FR-4's loss actually *lowers* Q and *widens* the AR window vs Rogers;
+(3) the W×truncation optimiser centres the null on f_target; (4) 3.2 mm substrate (a gain
+lever anyway) widens AR further. Per-unit cold-test still recommended.
 
 ---
 
@@ -121,18 +133,17 @@ resonance landed on f_target (AR looked ~2 dB), but the converged final run drif
 and revealed AR ≈ 7 dB. Same geometry, same AR formula, same cone — the difference was
 FDTD convergence on a ~0-bandwidth AR null.
 
-> **⚠️ Superseded — see [migration-plan.md §3](migration-plan.md) for the as-built
-> optimiser.** The original sequential `W→I→C→W2→GP` coordinate descent could not
-> navigate the W/coupler-arm resonance coupling: the first completed run
-> (`20260606_052114`) still landed **+14.9 MHz** off because the cost divided
-> `|f_res−f_target|` by `fc` (250 MHz), so a 16 MHz miss cost ~0.06 and resonance was
-> ignored. It was replaced by a **2-D (W × coupler-arm) grid screen + full-fidelity
-> confirm** search with a deadband+ramp resonance penalty. Current state (config.py):
-> - `NrTS_opt = NrTS_final = 150000` (grid screens cheaply at `NrTS_screen = 60000`).
-> - Resonance penalty: `F_RES_DEADBAND_MHZ`/`F_RES_SCALE_MHZ` (replaces `|Δf|/fc`).
-> - Select on the **worst AR over f_target ± 1.5 MHz** (`AR_MARGIN_MHZ`) — *retained*.
-> - The **ground-plane area penalty (`W_AREA`) and the GP sweep were removed** — the
->   coupler footprint pins the board near ~178 mm, so board size is fixed, not swept.
+> **Optimiser (current — single-feed).** A **2-D grid (patch side W × corner-truncation
+> Δ) screen + full-fidelity confirm** (config.py: `GRID_W_FRAC × GRID_TRUNC_MM`, `N_CONFIRM`).
+> W sets resonance, Δ sets the CP mode-split, and the AR null is only centred on f_target when
+> both are right together (a sequential coordinate descent can't navigate that coupling). The
+> AR is judged only at the full-fidelity confirm (`NrTS_opt = NrTS_final = 150000`; screen at
+> `NrTS_screen = 60000` — resonance/match converge there, the razor AR does not). Selection:
+> a deadband+ramp resonance penalty (`F_RES_*`), worst AR over f_target ± `AR_MARGIN_MHZ`,
+> AR≤3 beamwidth reward, a gain floor, and a **radiation-efficiency reward (`W_EFF`)** so the
+> optimiser keeps designs that actually radiate. The board is locked at 160 mm for wide-beam
+> coverage (not swept). *(Historical: the original sequential `W→I→C→W2→GP` descent and a
+> coupler-arm grid are retired with the coupler.)*
 
 ---
 
@@ -142,51 +153,59 @@ Gain ultimately needs **aperture**. A single patch is directivity-limited to
 ~6–7 dBic; on FR-4 you only keep ~4.4–5.8 after losses. You cannot buy big gain
 on one small board — only recover efficiency.
 
-**Ground-plane size has sharply diminishing returns** (simulated, this design):
+**Ground-plane size has sharply diminishing returns** (simulated, legacy single-feed
+FR-4; the *D** column is the raw `Dmax` LINEAR ratio — true directivity is ~2 dB higher,
+see §0.2 — but the SHAPE of the curve is what matters here):
 
-| GP edge | board/λ₀ | Gain |
+| GP edge | board/λ₀ | D* (Dmax ratio) |
 |--------|---------|------|
-| 150 mm | 0.43 | 4.4 dBic |
-| 250 mm | 0.72 | 5.3 dBic |
-| 300 mm | 0.87 | 5.5 dBic |
-| 350 mm | 1.01 | 5.8 dBic |
-| 375 mm | 1.09 | 5.8 dBic |
+| 150 mm | 0.43 | 4.4 |
+| 250 mm | 0.72 | 5.3 |
+| 300 mm | 0.87 | 5.5 |
+| 350 mm | 1.01 | 5.8 |
+| 375 mm | 1.09 | 5.8 |
 | 400 mm | 1.16 | **5.5** (edge-diffraction ripple) |
 
-Sweet spot ≈ **0.6–0.8 λ₀ (≈ 210–275 mm)**; beyond ~1 λ₀ it just ripples. A
-bigger GP is cost, not gain. (Literature agrees: a patch ground only needs to
-reach ~0.5–1 λ for a clean pattern; gain swings only ~1–3 dB across the whole
-finite-ground range.)
+The diminishing-returns LAW holds regardless of the units offset: ~+1 unit of directivity
+over the whole 150→375 mm range, most of it by ~250 mm, then ripple past ~1 λ₀. **So a
+bigger board is cost (and a narrower beam), not gain** — and for the 160→200 mm range the
+user asked about, expect only ~+0.5 dB directivity while the coverage beam narrows. A patch
+ground only needs ~0.5–1 λ for a clean pattern; realised *gain* is set by EFFICIENCY (§0.5),
+not ground size.
 
 ---
 
-## 5. Cost vs board size + laminate (the BUILT FR-4 dual-feed route)
+## 5. Cost vs board size + laminate (the single-feed FR-4 route)
 
-> **Decision (2026-06): the built backup patch is the flat 160×160 NP-140F dual-feed
-> board.** 160 mm (not larger) is deliberate — a beamwidth-vs-ground sweep (`tests/board_sweep.py`)
-> showed the AR≤3 coverage beam *widens* as the GP shrinks (**160→52°, 170→40°, 180→36°,
-> 190→28°**), and 160 mm is the coupler-limited floor. It is also best on every CP metric
-> (AR 1.70 dB, worst-cone 5.5 dB, min-gain-over-cone ~0 dBic). The §6 air-gap design was not
-> pursued — the etched dual-feed closes the link with margin at a fraction of the build effort.
+> **Board = 160×160 NP-140F, 2-layer 1.6 mm.** 160 mm (not larger) is deliberate for the
+> wide-beam coverage role — a beamwidth-vs-ground sweep (`tests/board_sweep.py`, run on the
+> dual-feed; re-confirm on the single-feed) showed the AR≤3 coverage beam *widens* as the GP
+> shrinks (**160→52°, 170→40°, 180→36°, 190→28°**). The board is square and **centred** on the
+> single-feed patch (~83 mm), so all four corners are clear (4× M3 holes). ⌗ The 160 mm figure
+> and "coupler-limited floor" reasoning date from the retired dual-feed; the single-feed patch
+> sets its own (smaller) floor (patch + margin), so 160 mm is now a coverage choice, not a floor.
+> Going to 200 mm buys ~+0.5 dB directivity but narrows the beam (§0.5/§4) — only do it if you
+> are trading coverage for gain.
 
 PCB price is driven by **area** with discrete tier jumps. JLCPCB: ≤100×100 mm
 hits a ~2 USD promo tier; a per-50 cm² surcharge starts above **650 cm²**
 (≈ a 255 mm square) — so the **160×160 board (256 cm²) is comfortably cheap-tier**
 (~25–45 €/5 incl. ship+VAT to the EU).
 
-| Board | Gain @1.6 mm | 5× JLCPCB (incl. ship+VAT) | 5× Aisler (EU) |
+| Board | D* @1.6 mm (Dmax ratio) | 5× JLCPCB (incl. ship+VAT) | 5× Aisler (EU) |
 |------|-------------|----------------------------|----------------|
 | 100×100 | ~3.7 | ~15–25 € | ~54 € |
 | 120×120 | ~4.0 | ~25–40 € | ~72 € |
 | 150×150 | 4.4 | ~35–55 € | ~104 € |
 | 170×170 | ~4.6 | ~45–70 € | ~129 € |
-| **160×160 (BUILT)** | ~3.7† | **~25–45 €** | ~115 € |
+| **160×160 (CHOSEN)** | — | **~25–45 €** | ~115 € |
 | *375×375 (old)* | 5.8 | *~140 €* | — |
 
-† Dmax of the dual-feed *coverage* patch (~4 dBic, wide beam) — NOT comparable to the
-legacy single-feed gain column above; gain is not the objective for this backup.
+(D* = the raw `Dmax` linear ratio from the legacy single-feed sweep, ~2 dB below true
+directivity — §0.2. The single-feed patch's directivity is ~6.6 dBi; realised gain depends
+on EFFICIENCY, not board size.)
 
-Within the allowed range, **gain moves <1 dB while cost 2–3×** → pick small.
+Within the allowed range, **directivity moves <1 dB while cost 2–3×** → pick small.
 The real performance comes from the **substrate (3.2 mm or air)**, not size.
 On 1.6 mm the highest-leverage cheap change is **3.2 mm FR-4** (+~1 dB and wider
 AR), available only at PCBWay (JLCPCB caps at 2.0 mm). *Mid-loss "FR-4" grades
@@ -206,35 +225,39 @@ NP-140F is the pick — design εr = 4.15 @ 870 MHz. ⚠️ **Confirm the fab ac
 NP-140F at 160 mm**: JLCPCB's cheap tier stocks KingBoard/Shengyi (KB-6164-class), so a
 bare "FR-4" order silently gives εr ~4.6 and the patch lands ~25 MHz low.
 
-### On-board performance levers (single-board / FR-4 route)
-If you stay on a single etched FR-4 board (one SMA), these recover *efficiency*,
-not directivity — they do **not** sum linearly (~+1 to +1.5 dB total; ceiling
-~5.5–6 dBic at 170 mm):
+### On-board performance levers (the single-feed FR-4 route — CURRENT)
+On the single etched FR-4 board (one SMA), these recover *efficiency* (the gain-limiter,
+§0.5); the 3.2 mm option also helps the single-feed AR robustness:
 
-| Lever | Effect | Note |
+| Lever | Effect on realised gain | Note |
 |-------|--------|------|
-| **3.2 mm substrate** (1.6→3.2 mm) | **+0.6–1.2 dB** + wider/robuster AR | biggest lever; PCBWay only (JLCPCB caps at 2.0 mm) |
-| **Soldermask keep-out over the patch** | +0.1–0.3 dB | *free*; makes the build match the sim (AR null lands on f₀) |
-| **Re-optimise W/Δ/inset** | recovers match | *mandatory* after any stackup change |
+| **3.2 mm substrate** (1.6→3.2 mm) | **+1.5–2 dB** + wider/robuster AR | **biggest lever**; PCBWay (JLCPCB caps at 2.0 mm). Re-tune after. |
+| **Soldermask keep-out over the patch** | +0.1–0.3 dB | *free*; makes the build match the bare-PEC sim (already in kicad_export) |
+| **Re-optimise W/Δ/inset** | recovers match / AR | *mandatory* after any stackup change |
 | **2 oz copper** | +0.1–0.2 dB | cheap insurance for feed/edges |
-| **Lower-loss laminate** | ~0 dB | ⚠️ S1141/S1000H are *default-stock* FR-4, not low-loss; real low-loss = Rogers/I-Speed (over budget) |
+| **Lower-loss laminate** | +3–4 dB | ⚠️ real low-loss = Rogers/I-Speed (over budget); stock "FR-4" grades buy ~0 dB |
 
-Off the table for THIS single-feed lever list (need aperture / extra assembly): bigger
-GP, stacked/suspended, arrays (>190 mm). **NOTE: the dual-feed branch-line coupler IS the
-built design** — it delivers the RHCP these single-feed efficiency levers cannot, and is
-why this section is no longer "single-feed only." The §6 air-gap route was not pursued.
+Bigger jumps need aperture / extra assembly (§0.5): air/foam gap (+3–4 dB), stacked
+parasitic (+1–2 dB), arrays (>250 mm). The §6 menu below is the historical exploration of
+those — the chosen build is this single etched FR-4 board (3.2 mm if more gain is wanted).
 
 ---
 
-## 6. Design space for RHCP + gain (assembly allowed)
+## 6. Design space for RHCP + gain (exploration menu — historical)
+
+> ⌗ **This is the explored option menu, not the current build.** The CHOSEN design is the
+> flat single-feed corner-truncated FR-4 patch (§0/§9). The rows below are the gain/CP
+> options weighed along the way; the practical gain levers for the current build are in §0.5
+> (3.2 mm substrate first; air gap if more is needed). "Gain (dBic)" here is rough/projected.
 
 | Design | Gain (dBic) | RHCP robustness | Size @ 869 MHz | HPBW | Cost (5×) | Verdict |
 |--------|-------------|-----------------|----------------|------|-----------|---------|
-| FR-4 single-feed *(baseline)* | 4.4–5.8 | **broken** (~0 AR BW) | 83 mm patch / ≤170 board | ~70° | cheap | superseded |
-| **Air patch, single feed** | 7–8 | good (~25–30 MHz AR) | 165 mm patch, ~300 mm gnd, 25 mm tall | ~65° | ~30–60 € | **chosen path** |
-| Air patch + 90° hybrid feed | 7–8 | excellent (10–30 %) | same | ~65° | ~50–90 € | best CP if needed |
-| Stacked CP patch | 8–9.5 | excellent (6–15 %) | +taller (40–55 mm) | ~55° | ~60–150 € | overkill for 1 channel |
-| 2×2 seq-rotation array (air) | 11–12.5 | excellent (>15 %) | ~0.45 m panel | ~40° | ~80–150 € | gain path; starts needing aiming |
+| **FR-4 single-feed, 1.6 mm** | ~+1–3 realised | tunable (known εr) | 83 mm patch / 160 board | ~70° | cheap | **CHOSEN** (§9) — efficient, RHCP from truncation |
+| FR-4 single-feed, 3.2 mm | ~+3–4 realised | wider AR | same, 3.2 mm | ~70° | cheap | best cheap gain upgrade (§0.5) |
+| ⌗ Dual-feed branch-line coupler | **−9.6 realised** | excellent | 160 board | ~52° | cheap | RETIRED — iso resistor sank 64 % (§0.1) |
+| Air patch, single feed | 7–8 directivity | good (~25–30 MHz AR) | 165 mm patch, ~300 mm gnd, 25 mm tall | ~65° | ~30–60 € | gain option (3-D assembly) |
+| Stacked CP patch | 8–9.5 | excellent (6–15 %) | +taller (40–55 mm) | ~55° | ~60–150 € | +1–2 dB, adds a layer |
+| 2×2 seq-rotation array (air) | 11–12.5 | excellent (>15 %) | ~0.45 m panel | ~40° | ~80–150 € | gain path; needs aiming + feed net |
 | 2×4 / 4×4 array | 14–17 | excellent | 0.5–1 m+, heavy | ~20–30° | ~200–400 € | **avoid** — duplicates the helical |
 | *+ dielectric/FSS superstrate* | +2 to +6 | CP-safe (symmetric) | +~170 mm tall | narrower | +5–30 € | single-element gain boost |
 | *+ cavity-backed ground* | +2–3, **F/B +12–22 dB** | improves AR | shallow box | — | +10–25 € | great for ground multipath |
@@ -278,10 +301,11 @@ option below cancels that and/or improves CP. Ranked by mechanical simplicity
 | Aperture-coupled (slot), single feed | truncation + slot | good | good, wide | ★★★ | want the simplest *patch* (bare plate) |
 | Aperture dual-slot + 90° hybrid | quadrature (network) | **excellent** | excellent | ★★★★ | bulletproof RHCP, no probes |
 
-**Pick:** *straight probe + series cap* (easiest that works) or *aperture-coupled*
-(plain plate, feed on a PCB behind the GP). The L-probe is the best single-feed
-match/BW but the fiddliest — and unnecessary for a 250 kHz channel. See
-[migration-plan.md](migration-plan.md) for modelling either.
+**Pick (historical menu):** these probe / aperture routes were the alternatives weighed
+before the planar route was chosen. The **shipped feed is the etched inset microstrip**
+on the corner-truncated single-feed patch (§5, §9) — no probe, no extra layer, all copper
+on one face, reproducible by etch alone. The probe/aperture rows are kept only as the
+exploration record.
 
 ### Patch geometry options
 The radiator **outline shape is ~gain-neutral** (all ~6–8 dBic on air); it sets the
@@ -422,36 +446,37 @@ RFID CP-patch literature (§10).
 
 ---
 
-## 9. Decision & recommended build — flat single-PCB, dual-feed (etched coupler)
+## 9. Decision & recommended build — flat single-PCB, single-feed corner-truncated
 
-**One flat 2-layer FR-4 PCB.** RHCP from a dual quadrature feed; optimised for
-**wide-beam coverage** (the no-tracking backup role). Order → solder one SMA (+ one SMD
-resistor) → done. Nothing exotic to source; no air, no probe, no aluminium, no standoffs.
+**One flat 2-layer NP-140F PCB.** RHCP from **truncating two diagonal corners** of a
+near-square patch; ONE inset microstrip feed to ONE edge-launch SMA. No coupler, no
+termination resistor, no air, no probe, no standoffs. Order → solder one SMA → done.
 
 | Item | Spec | Note |
 |------|------|------|
-| **Board** | single **2-layer FR-4, 1.6 mm, ~150–180 mm** | top = patch + coupler + feeds; bottom = ground |
-| **Patch** | square (or lightly truncated), ~83 mm | etched copper; **CP from the feed, not the patch** |
-| **CP feed** | **etched 90° branch-line hybrid coupler** + two microstrip feeds to orthogonal patch edges | one input SMA; isolated 4th port → **one SMD 50 Ω resistor**. Quadrature enforced by copper → εr-independent, robust. |
-| **Ground** | smaller → **wide beam** (coverage) | tune size vs F/B in sim; *not* maximised for gain |
-| Expected | **wide-beam RHCP, ~3–5 dBic, F/B ≥ 12–15 dB**; closes 10 km with 20+ dB margin | gain *not* optimised — coverage + robust CP are |
-| Cost | **~€30–60 for 5** (1 PCB + SMA + resistor) | + coax / radome per station |
+| **Board** | single **2-layer NP-140F, 1.6 mm, 160×160 mm** (centred patch, 4× M3) | top = patch + feed; bottom = ground. εr 4.15 @ 870 MHz. |
+| **Patch** | near-square ~82.5 mm, two diagonal corners chamfered ~8 mm | **CP from the truncation**; BL+TR diagonal → RHCP at +z |
+| **Feed** | ONE inset microstrip, −y edge centre, ~6 mm inset → edge-launch SMA | 50 Ω; no coupler, no resistor — all accepted power goes to the patch |
+| **Ground** | 160 mm → **wide beam** (coverage) | locked for coverage; bigger = narrower beam (§4) |
+| Validated (un-tuned seed) | **directivity 6.6 dBi, η_rad 28 %, realised +0.8 dBic, RHCP, S11 −10.9 dB** | AR ~6 dB at seed → optimiser tunes ≤3 dB |
+| Cost | **~€25–45 for 5** (1 PCB + 1 SMA) | + coax / radome per station |
 
-Why this design: a flat etched PCB is the *only* fully reproducible "order-solder-done"
-build — the air-gap / probe / disc / aluminium variants all failed on manufacturability.
-The branch-line coupler makes RHCP from **copper geometry** (quadrature enforced by the
-network), so it tolerates FR-4 εr spread, needs no fragile single-feed null, and needs
-**no hard-to-source SMD coupler** (the hybrid is etched; only a 50 Ω resistor is a part).
-Gain is left modest on purpose (huge link margin); the small ground buys the **wide beam**
-the backup role needs. RHCP sense is set by which coupler output leads — verify against
-the helix/QFH sense (§1, issue #43). The microstrip input takes a normal **edge-launch
-SMD SMA** at the 1.6 mm board edge. Build: [bom.csv](bom.csv). Simulator plan:
-[migration-plan.md](migration-plan.md).
+Why this design: it's the same fully-reproducible "order-solder-done" etched PCB, but
+single-feed deletes the dual-feed coupler's **isolated-port resistor — a structural sink
+that burned ~64 % of accepted power** (§0.1), recovering ~10 dB of realised gain (−9.6 →
++0.8 dBic). The price is that single-feed CP is εr/fab-sensitive; that is now manageable
+because NP-140F's εr is datasheet-known (§5), the W×truncation optimiser centres the AR
+null, and 3.2 mm substrate (the main gain lever, §0.5) also widens AR. RHCP sense is set by
+**which diagonal is truncated** (BL+TR → RHCP) — verify from the far field (E_R vs E_L) and
+against the helix/QFH sense (§1, issue #43). Build: [bom.csv](bom.csv) *(update: drop the
+50 Ω R)*. As-built code on branch `patch_antenna_SF`.
 
-**Simpler fallback:** single-feed corner-truncated patch on 3.2 mm FR-4 (one SMA, no
-coupler, often no matching parts) — simpler design, but single-feed CP is more
-εr-sensitive board-to-board. Use it only if the coupler proves unnecessary in sim.
-**Not simulated yet — every figure above is a projection (see the banner).**
+**To increase gain (if wanted):** efficiency, not aperture — **3.2 mm substrate (+1.5–2 dB,
+PCBWay)** first, then an air/foam gap (+3–4 dB, 3-D assembly). A bigger board (200 mm) buys
+only ~+0.5 dB and narrows the beam (§0.5/§4).
+
+**Open before fab:** run the full W×truncation optimise to land AR ≤ 3 dB at f_target; then
+the KiCad board reflects the tuned dims. Confirm NP-140F is actually supplied at 160 mm (§5).
 
 ---
 
@@ -506,4 +531,6 @@ on-topic for the suspended air-gap L-probe RHCP build.*
 - ETSI **EN 300 220** (non-specific SRD) and **EN 302 208** (UHF RFID).
 
 ---
-*Last updated for the air-gap-patch experiment branch.*
+*Last updated 2026-06-08 for the single-feed corner-truncated design (branch `patch_antenna_SF`).
+The dual-feed branch-line coupler was retired after a power decomposition showed it radiated
+~3 % (§0). Sections marked ⌗ are kept as history. Current state: WIP.md + §0/§9.*
