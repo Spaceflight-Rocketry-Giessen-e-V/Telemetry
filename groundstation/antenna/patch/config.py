@@ -59,16 +59,18 @@ NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. RAISED from 
 num_workers = 0
 
 # Hard ceiling on concurrent workers, applied on top of num_workers/cpu_count.
-# Caps peak RAM (each concurrent sim is ~200–500 MB) and keeps the wall-clock
-# estimate honest. Both the optimiser pool and the ETA derive from this via
-# optimizer.resolve_workers(), so they can never disagree.
+# Caps peak RAM/temp-disk and keeps the wall-clock estimate honest. Both the optimiser pool
+# and the ETA derive from this via optimizer.resolve_workers(), so they can never disagree.
 #
-# NOTE: the optimiser's batch sizes (the W×trunc GRID = len(GRID_W_FRAC)·len(GRID_TRUNC_MM),
-# and N_CONFIRM, below) are kept near/below MAX_WORKERS so each runs as ~one pool wave.
-# With ~5 concurrent sims on a ~20-thread host _run_batch gives each sim cores//5 = 4
-# FDTD threads, filling every core via threads rather than workers — better per-sim
-# efficiency. On a host with far fewer cores, shrink the grid for full single waves.
-MAX_WORKERS = 9
+# SET TO 3 (was 9): at the full NrTS_screen = NrTS_opt = 150k the openEMS NF2FF recording per
+# sim is large, and 9 concurrent 150k sims returned EMPTY NF2FF (Prad/Dmax≈0 with a still-valid
+# S11) — a RAM/temp-disk overrun — whereas 3-concurrent×150k and 9-concurrent×60k both ran clean.
+# 3 keeps every phase inside the proven-safe regime; on a ~20-thread host _run_batch then gives
+# each sim cores//3 ≈ 6 FDTD threads (faster per sim), so the 9-sim grid runs as 3 quick waves at
+# ~the same wall-clock as one slow 9-wide wave. The worker ALSO guards against empty NF2FF (returns
+# a failure so a tripped sim is excluded, not silently selected). Raise only on a host with RAM/
+# scratch verified at 150k. See [[patch-antenna-sim-state]].
+MAX_WORKERS = 3
 
 # Per-phase hang guard. optimizer._run_batch waits at most this long for a
 # phase's sims via as_completed(timeout=...); a wedged/diverged openEMS child is

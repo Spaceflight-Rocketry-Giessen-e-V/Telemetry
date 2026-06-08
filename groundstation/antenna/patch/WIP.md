@@ -46,7 +46,8 @@ automatically circular at f_target. NF2FF-measured on real sim_data:
 ## ⛔ Pre-fab gates
 - [ ] Confirm the fab supplies NP-140F at 160×160 (else re-tune for KB-6164 εr ~4.6 — the
       8 MHz AR bandwidth absorbs the εr spread, but resonance/null shift must be checked).
-- [ ] Lock RHCP sense vs the rocket's RHCP QFH (issue #43).
+- [x] Lock RHCP sense vs the rocket's QFH — **QFH confirmed RHCP (team, 2026-06-08)**; the
+      patch is RHCP (BLTR diagonal) → matched pair, 0 dB polarisation loss. (issue #43)
 - [ ] Per-unit cold-test recommended (single-feed CP AR is εr/fab-sensitive; the known
       NP-140F εr is what makes it land — the 8 MHz AR band gives margin).
 
