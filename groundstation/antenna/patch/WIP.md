@@ -51,8 +51,11 @@ automatically circular at f_target. NF2FF-measured on real sim_data:
       absorbs the spread" claim was wrong — the band is NARROWER than the spread). A mid/edge-spec
       or hot board can run near-linear (AR>3 → ~3 dB pol loss). Measure each board's boresight AR
       at 869.525 and bin/tune; CP cannot be assumed from the sim.
-- [ ] **GATE — εr/thickness robustness sweep** (tests/tool_eps_sweep.py): confirm AR≤3 still
-      covers 869.4–869.65 MHz across εr {4.0…4.6} and ±0.1 mm before committing to fab.
+- [x] **εr/thickness robustness sweep DONE** (tool_eps_sweep.py): null moves ~−10 MHz per +0.1 εr;
+      only εr≈4.15 keeps AR≤3 in-channel (±0.1 εr → AR@f0 8–13 dB, near-linear). Thickness ±0.1 mm
+      fine. **⇒ as-built 1.6 mm CP is εr-fragile.** Options: (a) **3.2 mm re-optimise** to widen the
+      AR band ≳±10 MHz (recommended; also +1.5–2 dB; needs PCBWay) · (b) measured-εr batch + re-tune
+      · (c) accept linear fallback (−3 dB pol; link still closes). Per-board cold-AR test stays a gate.
 - [ ] **GATE — convergence check**: the 150k run capped before the −40 dB stop; re-run the
       nominal point at ≥250k (and a finer mesh of the sub-cell 8.25 mm chamfer) to prove the
       AR null depth/beamwidth are settled, not staircase/ring-down artefacts.
