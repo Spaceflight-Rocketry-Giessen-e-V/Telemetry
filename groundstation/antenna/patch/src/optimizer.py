@@ -239,6 +239,22 @@ def _run_sim_worker(kw: dict) -> dict:
         P_acc = float(_np.real(port.P_acc[0]))          # f_eval[0] == f_target
         eta_rad = float(_eff(res_f.Prad[0], P_acc))
 
+        # Guard: a valid sim MUST produce a non-zero far field. Under heavy load (many
+        # concurrent high-NrTS sims) the NF2FF recording can come back EMPTY (Prad≈0,
+        # Dmax≈0) while the small port S11 data is still fine — observed at 9-concurrent ×
+        # 150k (the openEMS NF2FF dump scales with NrTS and apparently overran a RAM/disk
+        # limit). Such a sim returns AR=-inf / Dmax=-300 / η=0 with a FINITE cost, which
+        # would silently pollute the grid selection. Mark it a failure so the optimiser
+        # excludes it and falls back to valid candidates (with all grid sims failing it
+        # confirms the seed, which is the optimum). Lower config.MAX_WORKERS or NrTS_screen
+        # if a whole phase trips this. See [[patch-antenna-sim-state]].
+        if not (res_f.Prad[0] > 0.0 and res_f.Dmax[0] > 1e-6):
+            return {**_fail(), 'f_ar_null': _cfg.f_target, 'ar_min': 99.0,
+                    'ar_bw_deg': 0.0, 'ar_cone_dB': 99.0, 'gain_cone_dBic': -99.0,
+                    'eta_rad': 0.0,
+                    '_exc': 'NF2FF returned zero far-field (Prad/Dmax≈0) — likely a '
+                            'RAM/disk limit under concurrent high-NrTS sims'}
+
         # handedness at f_target; boresight AR = worst over the band (θ=2° near-axis ring)
         _, is_rhcp = _ar(res.E_cprh[0][1, :], res.E_cplh[0][1, :])
         ar0 = max(_ar(res.E_cprh[fi][1, :], res.E_cplh[fi][1, :])[0] for fi in range(nf))
