@@ -761,24 +761,26 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
         pass
 
     # ════════════════ FRONT SILK ════════════════
-    bdeg = res.get('ar3_beamwidth_deg', 56) if res else 56
     dmax = res.get('Dmax_dBi', 3.9) if res else 3.9
+    gain = res.get('realised_gain_dBic', 0.8) if res else 0.8
 
     # ── TOP: datasheet header / description (the whole top strip is now clear — QR moved to the
     #    right of the patch). Laid out between the top-edge M3 holes and the patch top edge. ──
     epsr = res.get('substrate_epsR', 4.15) if res else 4.15
     s11  = res.get('s11_at_ft_dB', -11.0) if res else -11.0
-    arb  = res.get('ar_boresight_dB', 1.6) if res else 1.6
     cx = board / 2.0                                     # patch / board horizontal centre
     lines += _txt('RHCP GROUNDSTATION PATCH', cx, 13.0, 'F.SilkS', 1.7, 'center', bold=True)
     lines += _txt(f'{config.f_target / 1e6:.3f} MHz    RHCP    single-feed corner-truncated',
                   cx, 18.5, 'F.SilkS', 1.2, 'center')
     lines += _txt(f'2-layer    {config.substrate_material} eps_r {epsr:.2f}    {substrate_h:.1f} mm    '
                   f'{board:.0f} x {board:.0f} mm', cx, 22.5, 'F.SilkS', 1.1, 'center')
-    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi', cx, 26.0, 'F.SilkS', 1.1, 'center')
-    lines += _txt(f'AR {arb:.1f} dB    AR<=3 beam +/- {bdeg / 2:.0f} deg', cx, 29.5, 'F.SilkS', 1.1, 'center')
-    lines += _txt('boresight = +Z (out of front face)', cx, 33.0, 'F.SilkS', 1.0, 'center')
-    lines += _txt('Open Source Hardware', cx, 36.0, 'F.SilkS', 1.0, 'center')
+    # Hard, as-built-defensible specs only on the front. The soft single-freq AR and the
+    # sweep-limited AR<=3 "beamwidth" are NOT headlined here — they are qualified on the back
+    # datasheet (the bare 0.45 dB / 180 deg numbers are optimistic / a sweep-ceiling artefact).
+    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi    gain {gain:+.1f} dBic',
+                  cx, 26.0, 'F.SilkS', 1.1, 'center')
+    lines += _txt('boresight = +Z (out of front face)', cx, 30.0, 'F.SilkS', 1.0, 'center')
+    lines += _txt('Open Source Hardware', cx, 33.0, 'F.SilkS', 1.0, 'center')
 
     # ── LEFT margin strip: the two logos, kept at their fixed spacing and centred AS A PAIR on
     #    the patch's vertical mid-line (KiCad y = board/2). logo.svg above, OSHW gear below. ──
@@ -825,9 +827,17 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
               ['Board', f'{board:.0f} x {board:.0f} mm'],
               ['Substrate', f'{config.substrate_material}  er {config.substrate_epsR}  {substrate_h:.1f} mm']]
     if res:
+        # AR is presented HONESTLY (see WIP.md). The bare results.json boresight AR (0.45 dB) is the
+        # OPTIMISTIC single-frequency, not-convergence-proven value, and the 180 deg AR<=3 "beamwidth"
+        # is a sweep-CEILING artefact (theta was only swept 0-90). Print instead the band-robust
+        # boresight figure (~1.4 dB, worst over f_target +/-1.5 MHz; the optimiser's AR0) and the
+        # spatial worst AR over the >=45 deg coverage cone (results.json worst_ar_cone_dB /
+        # cover_cone_deg). The per-board cold-AR acceptance test stays a pre-fab gate.
+        _cone = res.get('cover_cone_deg', 45.0)
+        _warc = res.get('worst_ar_cone_dB', 1.0)
         dtable += [['Return loss S11', f'{res.get("s11_at_ft_dB", 0):.1f} dB'],
-                   ['Axial ratio', f'{res.get("ar_boresight_dB", 0):.2f} dB'],
-                   ['AR<=3 beamwidth', f'{res.get("ar3_beamwidth_deg", 0):.0f} deg'],
+                   ['Axial ratio', '~1.4 dB (band)'],
+                   ['AR<=3 coverage', f'>={_cone:.0f} deg cone (worst {_warc:.1f} dB)'],
                    ['Directivity', f'{res.get("Dmax_dBi", 0):.1f} dBi'],
                    ['Realised gain', f'{res.get("realised_gain_dBic", 0):.1f} dBic']]
     lines += _silk_table(dtable, 14.0, 20.0, [36.0, 50.0], 5.6, 'B.SilkS',
