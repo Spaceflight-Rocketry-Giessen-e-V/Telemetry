@@ -197,6 +197,6 @@ static void commandDecode(u_int8_t input, uint8_t* output)
         {
             input = input - 'A' + 'a';
         }
-        *output = input;
+    *output = input;
 }
 
