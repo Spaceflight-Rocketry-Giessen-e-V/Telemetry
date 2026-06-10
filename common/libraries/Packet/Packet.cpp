@@ -153,4 +153,50 @@ void Packet::decode(uint8_t* packet, uint8_t* temperature, uint8_t* subsystem_st
     *battery_voltage = (float)((uint8_t)(packet[13]) & 0x0F) * 0.2 + 5.4;
 
     *rssi = -0.5 * (float)(packet[15]);
+       
 }
+static void commandEncode(u_int8_t input, uint8_t* output)
+{
+        uint8_t count = 0;
+        
+        //-------------Normalisation-------------
+            if(input >= 'A' && input <= 'Z')
+            {
+                input = input - 'A' + 'a';
+            }
+        
+        
+        //-------------Paraity-Endcoding-------------
+            for (int i = 0; i < 7; i++) {       
+                if (input & (1 << i)) count++;
+            }
+            if (count % 2 != 0) {
+                input|= 0x80;                   
+            }
+            
+            *output = input;
+        
+        }
+        
+static void commandDecode(u_int8_t input, uint8_t* output)
+{
+    uint8_t count = 0;
+    //-------------Paraity-Decoding-------------
+    for (int i = 0; i < 8; i++)
+        if (input & (1 << i)) count++;
+
+    if (count % 2 !=0)
+        input=0x00;
+
+    if (count % 2 ==0)
+        input=&= 0x7F;
+    //else is also vaiable option for the second if statment
+    
+    //-------------Normalisation-------------
+    if(input >= 'A' && input <= 'Z')
+        {
+            input = input - 'A' + 'a';
+        }
+        *output = input;
+}
+
