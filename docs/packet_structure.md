@@ -4,7 +4,24 @@ The data rate of 1.2 kbps, the desired sampling rate of 8 Hz and a retained buff
 
 This document describes the specific use of individual 15 byte data packets.
 
-## Packet Structure Overview
+## Flight Data Packet Structure Overview
+
+The following table lists the components of each data package. 
+The 16th byte (#15), the received signal strength, is appended after receiving the packet and is thus not transmitted.
+| Byte position | Use | Size | Value Range | Resolution |
+| --- | --- | --- | --- | --- |
+| 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
+| 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
+| 0 | [COBS](#COBS) | 4 bits | 0 to 10 | / | 
+| 0 to 1 | [Acceleration](#Acceleration) | 10 bits | -16 g to 16 g | 0.03333 g |
+| 2 to 3 | [Height (Pressure)](#Height-(Pressure)) | 15 bits | 0 to 6500 m | 0.2 m |
+| 3 to 4 | [Statusevents](#Statusevents) | 5 bits | 0 to 31 | / |
+| 4 to 7 | [GNSS Lat](#GNSS-(Lat+Lon)) | 26 bits | -90° to 90° | 0.0000026823° |
+| 7 to 10 | [GNSS Lon](#GNSS-(Lat+Lon)) | 26 bits | -180° to 180° | 0.0000053645° |
+| 11 | [End Byte](#End-Byte) | 8 bits | 0xEE | / |
+| 12 | [RSSI](#RSSI) | 8 bits | -127.5 dBm to 0 dBm | 0.5 dBm |
+
+## Telemetry Data Packet Structure Overview
 
 The following table lists the components of each data package. 
 The 16th byte (#15), the received signal strength, is appended after receiving the packet and is thus not transmitted.
