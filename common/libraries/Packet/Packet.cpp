@@ -155,7 +155,7 @@ void Packet::decode(uint8_t* packet, uint8_t* temperature, uint8_t* subsystem_st
     *rssi = -0.5 * (float)(packet[15]);
        
 }
-static void commandEncode(u_int8_t input, uint8_t* output)
+static void commandEncode(uint8_t input, uint8_t* output)
 {
         uint8_t count = 0;
         
@@ -191,7 +191,7 @@ static void commandDecode(u_int8_t input, uint8_t* output)
     if (count % 2 ==0)
         input=&= 0x7F;
     //else is also vaiable option for the second if statment
-    
+
     //-------------Normalisation-------------
     if(input >= 'A' && input <= 'Z')
         {
