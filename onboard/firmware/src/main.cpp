@@ -128,8 +128,8 @@ int main(void)
   const uint8_t floatCountSens = 5;
   float *floatListSens[floatCountSens] = {&dataVars.latitude, &dataVars.longitude, &dataVars.heightPressure, &dataVars.acceleration, &dataVars.heightGNSS};
 
-  const uint8_t uint8CountControl = 5;
-  uint8_t *uint8ListControl[uint8CountControl] = {&dataVars.stateControl, &dataVars.flightEvents, &dataVars.pressureDecoupler, &dataVars.ldrDecoupler, &dataVars.continuityPyros};
+  const uint8_t uint8CountControl = 6;
+  uint8_t *uint8ListControl[uint8CountControl] = {&dataVars.stateControl, &dataVars.flightEvents, &dataVars.stateCapacitors, &dataVars.pressureDecoupler, &dataVars.ldrDecoupler, &dataVars.continuityPyros};
   const uint8_t floatCountControl = 0;
   float *floatListControl[floatCountControl] = {};
 

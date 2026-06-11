@@ -1,13 +1,20 @@
-# Telemetry Radio Packet Structure
+# Radio Packet Structure
 
-The data rate of 1.2 kbps, the desired sampling rate of 8 Hz and a retained buffer of at least 10 % demand a packet size of 16 Byte at most. We chose 15 Bytes with a retained buffer of 3.75 bytes per packet to guarantee a robust and reliable data exchange.
+With the data rate of 1.2 kbps, the desired sampling rate of 10 Hz and the desired packet size of 12 bytes a buffer of 20 % or 3 bytes per packet is retained to guarantee a robust and reliable data exchange.
 
-This document describes the specific use of individual 15 byte data packets.
+This document describes the specific use of the 12 byte data packets.
+We distinguish between [Flight Data Packets](#flight-data-packet-structure-overview), which are being sent 9 times every second, and [Telemetry Data Packets](#telemetry-data-packet-structure-overview), which are being sent once every second.
+
+The encoding and decoding of the data packets is carried out by the included [Packet Library](/../common/libraries/Packet/).
+
+The groundstation appends the received signal strength RSSI as the 13th byte (#12 in the following tables) during receiving. This byte is thus not transmitted and not present in the library encode functions.
 
 ## Flight Data Packet Structure Overview
 
-The following table lists the components of each data package. 
-The 16th byte (#15), the received signal strength, is appended after receiving the packet and is thus not transmitted.
+The Flight Data Packets include data necessary for mission control during flight to confirm a successful launch.
+
+The following table lists the components of each Flight Data Package. 
+
 | Byte position | Use | Size | Value Range | Resolution |
 | --- | --- | --- | --- | --- |
 | 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
@@ -15,30 +22,50 @@ The 16th byte (#15), the received signal strength, is appended after receiving t
 | 0 | [COBS](#COBS) | 4 bits | 0 to 10 | / | 
 | 0 to 1 | [Acceleration](#Acceleration) | 10 bits | -16 g to 16 g | 0.03333 g |
 | 2 to 3 | [Height (Pressure)](#Height-(Pressure)) | 15 bits | 0 to 6500 m | 0.2 m |
-| 3 to 4 | [Statusevents](#Statusevents) | 5 bits | 0 to 31 | / |
-| 4 to 7 | [GNSS Lat](#GNSS-(Lat+Lon)) | 26 bits | -90° to 90° | 0.0000026823° |
-| 7 to 10 | [GNSS Lon](#GNSS-(Lat+Lon)) | 26 bits | -180° to 180° | 0.0000053645° |
+| 3 to 4 | [Flight Events](#Flight-Events) | 5 bits | 0 to 31 | / |
+| 4 to 7 | [GNSS Latitude](#GNSS-(Lat+Lon)) | 26 bits | -90° to 90° | 0.0000026823° |
+| 7 to 10 | [GNSS Longitude](#GNSS-(Lat+Lon)) | 26 bits | -180° to 180° | 0.0000053645° |
 | 11 | [End Byte](#End-Byte) | 8 bits | 0xEE | / |
 | 12 | [RSSI](#RSSI) | 8 bits | -127.5 dBm to 0 dBm | 0.5 dBm |
 
 ## Telemetry Data Packet Structure Overview
 
-The following table lists the components of each data package. 
-The 16th byte (#15), the received signal strength, is appended after receiving the packet and is thus not transmitted.
-| Byte position | Use | Size |
-| --- | --- | --- |
-| 0 | [COBS](#COBS) | 4 bits |
-| 0 | [Temperature](#Temperature) | 1 bit |
-| 0 to 1 | [Status](#Status) | 9 bits |
-| 1 to 2 | [Acceleration](#Acceleration) | 10 bits |
-| 3 to 4 | [Height (Pressure)](#Height-(Pressure)) | 16 bits |
-| 5 to 6 | [Height (GNSS)](#Height-(GNSS)) | 16 bits |
-| 7 to 13 | [GNSS (Lat+Lon)](#GNSS-(Lat+Lon)) | 52 bits |
-| 13 | [Battery level](#Battery-level) | 4 bits |
-| 14 | [End byte](#End-byte) | 8 bits |
-| 15 | [RSSI](#RSSI) | 8 bits |
+The Telemetry Data Packets include housekeeping data, data important during launchpad idle and buffer for future adjustments.
+
+The following table lists the components of each Telemetry Data Package. 
+
+| Byte position | Use | Size | Value Range | Resolution |
+| --- | --- | --- | --- | --- |
+| 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
+| 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
+| 0 | [COBS](#COBS) | 4 bits | 0 to 10 | / | 
+| 0 | No Data | 2 bits | / | / |
+| 1 | [Subsystem States](#Subsystem-States) | 8 bits | 0 to 4 for four subsystems | / |
+| 2 to 3 | [Height (GNSS)](#height-gnss) | 15 bits | 0 to 6500 m | 0.2 m |
+| 3 | No Data | 1 bit | / | / |
+| 4 | [GNSS Satellite Count](#GNSS-Satellite-Count) | 4 bits | 0 to 15 | 1 |
+| 4 | [GNSS HDOP](#GNSS-HDOP) | 4 bits | 0 to 7.5 | 0.5 |
+| 5 | [Electronics Temperature](#Electronics-Temperature) | 4 bits | 0 °C to 150 °C | 10 °C |
+| 5 | [Battery Temperature](#Battery-Temperature) | 4 bits | 0 °C to 150 °C | 10 °C |
+| 6 | [Capacitors State](#Capacitors-State) | 4 bits | 0 to 4 for two capacitors | / |
+| 6 | [Pyros Continuity](#Pyros-Continuity) | 2 bits | 0 or 1 for two pyro channels | / |
+| 6 | [Decoupler Pressure](#Decoupler-Pressure) | 1 bits | 0 or 1 | / |
+| 6 | [Decoupler LDR](#Decoupler-LDR) | 1 bits | 0 or 1 | / |
+| 7 | [Battery Voltage](#Battery-Voltage) | 6 bits | 5 V to 8.15 V | 0.05 V |
+| 7 | No Data | 2 bits | / | / |
+| 8 | [Battery Current](#Battery-Current) | 3 bits | 0 A to 1.75 A | 0.25 A |
+| 8 | [Umbilical Current](#Umbilical-Current) | 3 bits | 0 A to 1.75 A | 0.25 A |
+| 8 | [Umbilical State](#Umbilical-State) | 1 bit | 0 or 1 | / |
+| 8 | [Low Power Mode](#Low-Power-Mode) | 1 bit | 0 or 1 | / |
+| 9 | [COTS Battery Voltage](#COTS-Battery-Voltage) | 5 bits | 5 V to 11.2 V | 0.2 V |
+| 9 | No Data | 3 bits | / | / |
+| 10 | No Data | 8 bits | / | / |
+| 11 | [End Byte](#End-Byte) | 8 bits | 0xEE | / |
+| 12 | [RSSI](#RSSI) | 8 bits | -127.5 dBm to 0 dBm | 0.5 dBm |
 
 ## Data Components
+
+> Has to be reworked. Part of [#52](/../../issues/52)
 
 ### COBS
 - component size: 4 bits

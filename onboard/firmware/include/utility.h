@@ -83,6 +83,7 @@ class dataStruct // :)
     float heightGNSS;
     uint8_t hdopGNSS;
     uint8_t satCountGNSS;
+    uint8_t stateCapacitors;
     uint8_t stateUmbilical;
     float currentUmbilical;
     uint8_t pressureDecoupler;
