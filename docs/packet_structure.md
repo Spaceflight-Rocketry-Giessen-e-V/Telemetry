@@ -17,9 +17,9 @@ The following table lists the components of each Flight Data Package.
 
 | Byte position | Use | Size | Value Range | Resolution |
 | --- | --- | --- | --- | --- |
-| 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
-| 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
 | 0 | [COBS](#COBS) | 4 bits | 0 to 10 | / | 
+| 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
+| 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
 | 0 to 1 | [Acceleration](#Acceleration) | 10 bits | -16 g to 16 g | 0.03333 g |
 | 2 to 3 | [Height (Pressure)](#Height-(Pressure)) | 15 bits | 0 to 6500 m | 0.2 m |
 | 3 to 4 | [Flight Events](#Flight-Events) | 5 bits | 0 to 31 | / |
@@ -36,9 +36,9 @@ The following table lists the components of each Telemetry Data Package.
 
 | Byte position | Use | Size | Value Range | Resolution |
 | --- | --- | --- | --- | --- |
-| 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
-| 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
 | 0 | [COBS](#COBS) | 4 bits | 0 to 10 | / | 
+| 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
+| 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
 | 0 | No Data | 2 bits | / | / |
 | 1 | [Subsystem States](#Subsystem-States) | 8 bits | 0 to 4 for four subsystems | / |
 | 2 to 3 | [Height (GNSS)](#height-gnss) | 15 bits | 0 to 6500 m | 0.2 m |

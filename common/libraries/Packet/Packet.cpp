@@ -1,12 +1,92 @@
 /*
-    Packet - Library for encoding and decoding telemetry packets for the ASCENT II telemetry system.
-    Created by Felix Seene and Benjamin Bauersfeld
+    Packet - Library for encoding and decoding telemetry packets for the ASCENT III telemetry system.
     Spaceflight Rocketry Giessen e.V.
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
 */
 
 #include "Arduino.h"
 #include "Packet.h"
+
+void Packet::encodeFrame(uint8_t *packet, uint8_t packetIdentifier)
+{
+    // Packet Identifier
+    packet[0] |= (0x01 & packetIdentifier) << 2;
+
+    // End Byte
+    packet[11] = 0xEE;
+
+    // COBS
+    uint8_t cobsByte = 0;
+    for (uint8_t bytePos = 1; bytePos < 11; bytePos++)
+    {
+        if (packet[bytePos] == 0xEE)
+        {
+            packet[bytePos] = 0;
+            packet[cobsByte] |= (0x0F & bytePos) << 4;
+            cobsByte = bytePos;
+        }
+    }
+
+    // Parity Bit
+    uint8_t parityBit = 0;
+    for (uint8_t bytePos = 0; bytePos < 12; bytePos++)
+    {
+        uint8_t count = 0;
+        for (uint8_t bitPos = 0; bitPos < 8; bitPos++) 
+        {       
+            if (packet[bytePos] & (1 << bitPos))
+            {
+                count++;
+            }
+        }
+        parityBit ^= (count % 2 != 0);
+    }
+    packet[0] ^= (0x01 & parityBit) << 3;
+}
+
+uint8_t Packet::decodeFrame(uint8_t *packet, uint8_t *packetIdentifier)
+{
+    // Parity Bit
+    uint8_t parityBit = 0;
+    for (uint8_t bytePos = 0; bytePos < 12; bytePos++)
+    {
+        uint8_t count = 0;
+        for (uint8_t bitPos = 0; bitPos < 8; bitPos++)
+        {
+            if (packet[bytePos] & (1 << bitPos))
+            {
+                count++;
+            }
+        }
+        parityBit ^= (count % 2 != 0);
+    }
+    if (parityBit != 0)
+    {
+        return 1;
+    }
+
+    // End Byte
+    if (packet[11] != 0xEE)
+    {
+        return 1;
+    }
+
+    // COBS
+    uint8_t tmp1 = 0;
+    uint8_t tmp2 = (packet[tmp1] & 0xF0) >> 4;
+    while (tmp2 != 0x00)
+    {
+        tmp1 = tmp2;
+        tmp2 = (packet[tmp1] & 0xF0) >> 4;
+        packet[tmp1] = 0xEE;
+    }
+
+    // Packet Identifier
+    *packetIdentifier = (packet[0] & 0x04) >> 2;
+
+    // Success
+    return 0;
+}
 
 void Packet::encode(uint8_t* packet, float temperature, uint8_t subsystem_status, uint8_t flight_mode, uint8_t low_power_mode, uint8_t status_events, float acceleration, float height_pressure, float height_gnss, float lat_gnss, float lon_gnss, float battery_voltage)
 {
@@ -155,34 +235,36 @@ void Packet::decode(uint8_t* packet, uint8_t* temperature, uint8_t* subsystem_st
     *rssi = -0.5 * (float)(packet[15]);
        
 }
-void Packet::commandEncode(uint8_t input, uint8_t* output)
-{
-        uint8_t count = 0;
-        
-        //-------------Normalisation-------------
-            if(input >= 'A' && input <= 'Z')
-            {
-                input = input - 'A' + 'a';
-            }
-        
-        
-        //-------------Paraity-Endcoding-------------
-            for (int i = 0; i < 7; i++) {       
-                if (input & (1 << i)) count++;
-            }
-            if (count % 2 != 0) {
-                input|= 0x80;                   
-            }
-            
-            *output = input;
-        
-        }
-        
-void Packet::commandDecode(u_int8_t input, uint8_t* output)
+
+void Packet::encodeCommand(uint8_t input, uint8_t* output)
 {
     uint8_t count = 0;
-    //-------------Paraity-Decoding-------------
-    for (int i = 0; i < 8; i++)
+
+    //-------------Normalisation-------------
+    if(input >= 'A' && input <= 'Z')
+    {
+        input = input - 'A' + 'a';
+    }
+
+    //-------------Parity-Endcoding-------------
+    for (uint8_t i = 0; i < 7; i++) 
+    {       
+        if (input & (1 << i)) count++;
+    }
+    if (count % 2 != 0) 
+    {
+        input|= 0x80;                   
+    }
+    
+    *output = input;
+}
+        
+void Packet::decodeCommand(u_int8_t input, uint8_t* output)
+{
+    uint8_t count = 0;
+
+    //-------------Parity-Decoding-------------
+    for (uint8_t i = 0; i < 8; i++)
         if (input & (1 << i)) count++;
 
     if (count % 2 !=0)
@@ -194,9 +276,9 @@ void Packet::commandDecode(u_int8_t input, uint8_t* output)
 
     //-------------Normalisation-------------
     if(input >= 'A' && input <= 'Z')
-        {
-            input = input - 'A' + 'a';
-        }
+    {
+        input = input - 'A' + 'a';
+    }
     *output = input;
 }
 
