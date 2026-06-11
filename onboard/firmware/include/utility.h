@@ -64,10 +64,10 @@ class dataStruct // :)
   public:
     // Subsystem States
 
+    uint8_t stateTelemetry;
     uint8_t statePower;
     uint8_t stateSens;
     uint8_t stateControl;
-    uint8_t stateTelemetry;
 
     // Flight Data
 
@@ -79,19 +79,19 @@ class dataStruct // :)
 
     // Telemetry Data
 
-    uint8_t lowPowerMode;
     float heightGNSS;
-    uint8_t hdopGNSS;
     uint8_t satCountGNSS;
+    float hdopGNSS;
+    uint8_t temperatureElectronics;
+    uint8_t temperatureBattery;
     uint8_t stateCapacitors;
-    uint8_t stateUmbilical;
-    float currentUmbilical;
+    uint8_t continuityPyros;
     uint8_t pressureDecoupler;
     uint8_t ldrDecoupler;
-    uint8_t continuityPyros;
-    float currentBattery;
     float voltageBattery;
+    float currentBattery;
+    float currentUmbilical;
+    uint8_t stateUmbilical;
+    uint8_t lowPowerMode;
     float voltageBatteryCOTS;
-    uint8_t temperatureBattery;
-    uint8_t temperatureElectronics;
 };

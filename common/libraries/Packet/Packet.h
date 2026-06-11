@@ -20,6 +20,10 @@ class Packet
         static void encodeFrame(uint8_t *packet, uint8_t packetIdentifier);
         static uint8_t decodeFrame(uint8_t *packet, uint8_t *packetIdentifier);
 
+        static void encodeTelemetryData(uint8_t *packet, uint8_t stateTelemetry, uint8_t statePower, uint8_t stateSens, uint8_t stateControl, float heightGNSS, uint8_t satCountGNSS, float hdopGNSS, uint8_t temperatureElectronics, uint8_t temperatureBattery, uint8_t stateCapacitors, uint8_t continuityPyros, uint8_t pressureDecoupler, uint8_t ldrDecoupler, float voltageBattery, float currentBattery, float currentUmbilical, uint8_t stateUmbilical, uint8_t lowPowerMode, float voltageBatteryCOTS);
+
+        static void decodeTelemetryData(uint8_t *packet, uint8_t *stateTelemetry, uint8_t *statePower, uint8_t *stateSens, uint8_t *stateControl, float *heightGNSS, uint8_t *satCountGNSS, float *hdopGNSS, uint8_t *temperatureElectronics, uint8_t *temperatureBattery, uint8_t *stateCapacitors, uint8_t *continuityPyros, uint8_t *pressureDecoupler, uint8_t *ldrDecoupler, float *voltageBattery, float *currentBattery, float *currentUmbilical, uint8_t *stateUmbilical, uint8_t *lowPowerMode, float *voltageBatteryCOTS);
+
         static void encodeCommand(u_int8_t input, uint8_t *output);
         static void decodeCommand(u_int8_t input, uint8_t *output);
 }; 

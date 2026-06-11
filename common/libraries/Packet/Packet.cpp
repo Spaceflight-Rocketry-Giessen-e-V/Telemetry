@@ -88,6 +88,169 @@ uint8_t Packet::decodeFrame(uint8_t *packet, uint8_t *packetIdentifier)
     return 0;
 }
 
+void Packet::encodeTelemetryData(uint8_t *packet, uint8_t stateTelemetry, uint8_t statePower, uint8_t stateSens, uint8_t stateControl, float heightGNSS, uint8_t satCountGNSS, float hdopGNSS, uint8_t temperatureElectronics, uint8_t temperatureBattery, uint8_t stateCapacitors, uint8_t continuityPyros, uint8_t pressureDecoupler, uint8_t ldrDecoupler, float voltageBattery, float currentBattery, float currentUmbilical, uint8_t stateUmbilical, uint8_t lowPowerMode, float voltageBatteryCOTS)
+{
+    // Subsystem States
+    packet[1] |= (0x03 & stateTelemetry) << 6;
+    packet[1] |= (0x03 & statePower) << 4;
+    packet[1] |= (0x03 & stateSens) << 2;
+    packet[1] |= (0x03 & stateControl);
+
+    // Height GNSS
+    if (heightGNSS < 0)
+    {
+        heightGNSS = 0;
+    }
+    else if (heightGNSS > 6500)
+    {
+        heightGNSS = 6500;
+    }
+    packet[2] |= (0x7F00 & (uint16_t)(heightGNSS / 0.2 + 0.5)) >> 8;
+    packet[3] |= (0x00FF & (uint16_t)(heightGNSS / 0.2 + 0.5));
+
+    // GNSS Satellite Count
+    if (satCountGNSS > 15)
+    {
+        satCountGNSS = 15;
+    }
+    packet[4] |= (0x0F & satCountGNSS) << 4;
+
+    // GNSS HDOP
+    if (hdopGNSS > 7.5)
+    {
+        hdopGNSS = 7.5;
+    }
+    packet[4] |= (0x0F & (uint8_t)(hdopGNSS / 0.5 + 0.5));
+
+    // Elecronics Temperature
+    if (temperatureElectronics > 150)
+    {
+        temperatureElectronics = 150;
+    }
+    packet[5] |= (0x0F & ((temperatureElectronics + 5) / 10)) << 4;
+
+    // Battery Temperature
+    if (temperatureBattery > 150)
+    {
+        temperatureBattery = 150;
+    }
+    packet[5] |= (0x0F & ((temperatureBattery + 5) / 10));
+
+    // Capacitors State
+    packet[6] |= (0x0F & stateCapacitors) << 4;
+
+    // Pyros Continuity
+    packet[6] |= (0x03 & continuityPyros) << 2;
+
+    // Decoupler Pressure
+    packet[6] |= (0x01 & pressureDecoupler) << 1;
+
+    // Decoupler LDR
+    packet[6] |= (0x01 & ldrDecoupler);
+
+    // Battery Voltage
+    if (voltageBattery < 5)
+    {
+        voltageBattery = 5;
+    }
+    else if (voltageBattery > 8.15)
+    {
+        voltageBattery = 8.15;
+    }
+    packet[7] |= (0x3F & (uint8_t)((voltageBattery - 5) / 0.05 + 0.5));
+
+    // Battery Current
+    if (currentBattery > 1.75)
+    {
+        currentBattery = 1.75;
+    }
+    packet[8] |= (0x07 & (uint8_t)(currentBattery / 0.25 + 0.5)) << 5;
+
+    // Umbilical Current
+    if (currentUmbilical > 1.75)
+    {
+        currentUmbilical = 1.75;
+    }
+    packet[8] |= (0x07 & (uint8_t)(currentUmbilical / 0.25 + 0.5)) << 2;
+
+    // Umbilical State
+    packet[8] |= (0x01 & stateUmbilical) << 1;
+
+    // Low Power Mode
+    packet[8] |= (0x01 & lowPowerMode);
+
+    // COTS Battery Voltage
+    if (voltageBatteryCOTS < 5)
+    {
+        voltageBatteryCOTS = 5;
+    }
+    else if (voltageBatteryCOTS > 11.2)
+    {
+        voltageBatteryCOTS = 11.2;
+    }
+    packet[9] |= (0x1F & (uint8_t)((voltageBatteryCOTS - 5) / 0.2 + 0.5)) << 3;
+
+    // Packet Framing (COBS, Packet Identifier, End Byte, Parity)
+    encodeFrame(packet, 1);
+}
+
+void Packet::decodeTelemetryData(uint8_t *packet, uint8_t *stateTelemetry, uint8_t *statePower, uint8_t *stateSens, uint8_t *stateControl, float *heightGNSS, uint8_t *satCountGNSS, float *hdopGNSS, uint8_t *temperatureElectronics, uint8_t *temperatureBattery, uint8_t *stateCapacitors, uint8_t *continuityPyros, uint8_t *pressureDecoupler, uint8_t *ldrDecoupler, float *voltageBattery, float *currentBattery, float *currentUmbilical, uint8_t *stateUmbilical, uint8_t *lowPowerMode, float *voltageBatteryCOTS, float *rssi)
+{
+    // Subsystem States
+    *stateTelemetry = (0xC0 & packet[1]) >> 6;
+    *statePower = (0x30 & packet[1]) >> 4;
+    *stateSens = (0x0C & packet[1]) >> 2;
+    *stateControl = (0x03 & packet[1]);
+
+    // Height GNSS
+    *heightGNSS = (float)((uint16_t)(0x7F & packet[2]) << 8 | (uint16_t)(packet[3])) * 0.2;
+
+    // GNSS Satellite Count
+    *satCountGNSS = (0xF0 & packet[4]) >> 4;
+
+    // GNSS HDOP
+    *hdopGNSS = (float)(0x0F & packet[4]) * 0.5;
+
+    // Elecronics Temperature
+    *temperatureElectronics = ((0xF0 & packet[5]) >> 4) * 10;
+
+    // Elecronics Temperature
+    *temperatureBattery = (0x0F & packet[5]) * 10;
+
+    // Capacitors State
+    *stateCapacitors = (0xF0 & packet[6]) >> 4;
+
+    // Pyros Continuity
+    *continuityPyros = (0x0C & packet[6]) >> 2;
+
+    // Decoupler Pressure
+    *pressureDecoupler = (0x02 & packet[6]) >> 1;
+
+    // Decoupler LDR
+    *ldrDecoupler = (0x01 & packet[6]);
+
+    // Battery Voltage
+    *voltageBattery = (float)((0x3F & packet[7])) * 0.05 + 5;
+
+    // Battery Current
+    *currentBattery = (float)((0xE0 & packet[8]) >> 5) * 0.25;
+
+    // Umbilical Current
+    *currentUmbilical = (float)((0x1C & packet[8]) >> 2) * 0.25;
+
+    // Umbilical State
+    *stateUmbilical = (0x02 & packet[8]) >> 1;
+
+    // Low Power Mode
+    *lowPowerMode = (0x01 & packet[8]);
+
+    // COTS Battery Voltage
+    *voltageBatteryCOTS = (float)((0xF8 & packet[9]) >> 3) * 0.2 + 5;
+
+    // RSSI
+    *rssi = -0.5 * (float)(packet[12]);
+}
+
 void Packet::encode(uint8_t* packet, float temperature, uint8_t subsystem_status, uint8_t flight_mode, uint8_t low_power_mode, uint8_t status_events, float acceleration, float height_pressure, float height_gnss, float lat_gnss, float lon_gnss, float battery_voltage)
 {
     // Temperature

@@ -123,10 +123,10 @@ int main(void)
   const uint8_t floatCountPower = 4;
   float *floatListPower[floatCountPower] = {&dataVars.currentUmbilical, &dataVars.currentBattery, &dataVars.voltageBattery, &dataVars.voltageBatteryCOTS};
 
-  const uint8_t uint8CountSens = 4;
-  uint8_t *uint8ListSens[uint8CountSens] = {&dataVars.stateSens, &dataVars.hdopGNSS, &dataVars.satCountGNSS, &dataVars.temperatureElectronics};
-  const uint8_t floatCountSens = 5;
-  float *floatListSens[floatCountSens] = {&dataVars.latitude, &dataVars.longitude, &dataVars.heightPressure, &dataVars.acceleration, &dataVars.heightGNSS};
+  const uint8_t uint8CountSens = 3;
+  uint8_t *uint8ListSens[uint8CountSens] = {&dataVars.stateSens, &dataVars.satCountGNSS, &dataVars.temperatureElectronics};
+  const uint8_t floatCountSens = 6;
+  float *floatListSens[floatCountSens] = {&dataVars.latitude, &dataVars.longitude, &dataVars.heightPressure, &dataVars.acceleration, &dataVars.heightGNSS, &dataVars.hdopGNSS};
 
   const uint8_t uint8CountControl = 6;
   uint8_t *uint8ListControl[uint8CountControl] = {&dataVars.stateControl, &dataVars.flightEvents, &dataVars.stateCapacitors, &dataVars.pressureDecoupler, &dataVars.ldrDecoupler, &dataVars.continuityPyros};

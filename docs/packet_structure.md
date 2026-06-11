@@ -41,8 +41,8 @@ The following table lists the components of each Telemetry Data Package.
 | 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
 | 0 | No Data | 2 bits | / | / |
 | 1 | [Subsystem States](#Subsystem-States) | 8 bits | 0 to 4 for four subsystems | / |
+| 2 | No Data | 1 bit | / | / |
 | 2 to 3 | [Height (GNSS)](#height-gnss) | 15 bits | 0 to 6500 m | 0.2 m |
-| 3 | No Data | 1 bit | / | / |
 | 4 | [GNSS Satellite Count](#GNSS-Satellite-Count) | 4 bits | 0 to 15 | 1 |
 | 4 | [GNSS HDOP](#GNSS-HDOP) | 4 bits | 0 to 7.5 | 0.5 |
 | 5 | [Electronics Temperature](#Electronics-Temperature) | 4 bits | 0 °C to 150 °C | 10 °C |
@@ -51,8 +51,8 @@ The following table lists the components of each Telemetry Data Package.
 | 6 | [Pyros Continuity](#Pyros-Continuity) | 2 bits | 0 or 1 for two pyro channels | / |
 | 6 | [Decoupler Pressure](#Decoupler-Pressure) | 1 bits | 0 or 1 | / |
 | 6 | [Decoupler LDR](#Decoupler-LDR) | 1 bits | 0 or 1 | / |
-| 7 | [Battery Voltage](#Battery-Voltage) | 6 bits | 5 V to 8.15 V | 0.05 V |
 | 7 | No Data | 2 bits | / | / |
+| 7 | [Battery Voltage](#Battery-Voltage) | 6 bits | 5 V to 8.15 V | 0.05 V |
 | 8 | [Battery Current](#Battery-Current) | 3 bits | 0 A to 1.75 A | 0.25 A |
 | 8 | [Umbilical Current](#Umbilical-Current) | 3 bits | 0 A to 1.75 A | 0.25 A |
 | 8 | [Umbilical State](#Umbilical-State) | 1 bit | 0 or 1 | / |
