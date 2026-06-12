@@ -88,7 +88,95 @@ uint8_t Packet::decodeFrame(uint8_t *packet, uint8_t *packetIdentifier)
     return 0;
 }
 
-void Packet::encodeTelemetryData(uint8_t *packet, uint8_t stateTelemetry, uint8_t statePower, uint8_t stateSens, uint8_t stateControl, float heightGNSS, uint8_t satCountGNSS, float hdopGNSS, uint8_t temperatureElectronics, uint8_t temperatureBattery, uint8_t stateCapacitors, uint8_t continuityPyros, uint8_t pressureDecoupler, uint8_t ldrDecoupler, float voltageBattery, float currentBattery, float currentUmbilical, uint8_t stateUmbilical, uint8_t lowPowerMode, float voltageBatteryCOTS)
+void Packet::encodeFlightData(uint_8* packet, dataStruct dataVars)
+{
+    packet[0] |= 0x00 << 7;
+
+    // Acceleration
+    if (dataVars.acceleration < 0)
+    {
+        packet[0] |= 1 << 1;
+        dataVars.acceleration = -dataVars.acceleration;
+    }
+
+    if (dataVars.acceleration >= 16)
+    {
+        dataVars.acceleration = 16;
+    }
+    packet[0] |= (0x0100 & (uint16_t)(dataVars.acceleration / 0.03125 + 0.5)) >> 8;
+    packet[1] |= 0x00FF & (uint16_t)(dataVars.acceleration / 0.03125 + 0.5);
+
+    // Height (Pressure)
+    if (dataVars.heightPressure < 0)
+    {
+        dataVars.heightPressure = 0;
+    }
+    else if (dataVars.heightPressure > 6500)
+    {
+        dataVars.heightPressure = 6500;
+    }
+    packet[2] |= (0x7F80 & (uint_32)(dataVars.heightPressure / 0.2 + 0.5)) >> 7;
+    packet[3] |= 0x007F & (uint_32)(dataVars.heightPressure / 0.2 + 0.5) << 1;
+
+    //Status Events
+
+    packet[3] |= (0x10 & dataVars.flightEvents);
+    packet[4] |= (0x0F & dataVars.flightEvents) << 4;
+
+    // Lat (GNSS)
+    if (dataVars.latitude < 0)
+    {
+        packet[4] |= 1 << 3;
+        dataVars.latitude = -dataVars.latitude;
+    }
+    packet[4] |= (0x01C00000 & (uint_32)(dataVars.latitude / 0.0000026823 + 0.5)) >> 22;
+    packet[5] |= (0x003FC000 & (uint_32)(dataVars.latitude / 0.0000026823 + 0.5)) >> 14;
+    packet[6] |= (0x00003FC0 & (uint_32)(dataVars.latitude / 0.0000026823 + 0.5)) >> 6;
+    packet[7] |= (0x0000003F & (uint_32)(dataVars.latitude / 0.0000026823 + 0.5)) << 2;
+
+    // Lon (GNSS)
+    if (dataVars.longitude < 0)
+    {
+        packet[7] |= 1 << 5;
+        dataVars.longitude = -dataVars.longitude;
+    }
+    packet[7] |= (0x01000000 & (uint_32)(dataVars.longitude / 0.0000053645 + 0.5)) >> 24;
+    packet[8] |= (0x00FF0000 & (uint_32)(dataVars.longitude / 0.0000053645 + 0.5)) >> 16;
+    packet[9] |= (0x0000FF00 & (uint_32)(dataVars.longitude / 0.0000053645 + 0.5)) >> 8;
+    packet[10] |= (0x000000FF & (uint_32)(dataVars.longitude / 0.0000053645 + 0.5));
+
+}
+
+
+void Packet::decodeFlightData(uint_8* packet, dataStruct& dataVars)
+{
+    // Acceleration
+    dataVars.acceleration = (float)((uint_32)(packet[0] & 0x01) << 8 | (uint_32)(packet[1])) * 0.03125;
+    if ((packet[0] & (0x01 << 1)) != 0)
+        dataVars.acceleration = -dataVars.acceleration;
+
+    //height 
+    dataVars.heightPressurePressure = (float)((uint_32)(packet[2]) << 7 | (uint_32)(packet[3] >> 1)) * 0.2;
+
+    //flightEvents
+    dataVars.flightEvents = (uint_32)((packet[3] & 0x01) << 4 | (uint_32)(packet[4] >> 4));
+
+    //Latitude
+    dataVars.latitude = (float)((uint_32)(packet[4] & 0x07) << 22 | (uint_32)(packet[5]) << 14 | (uint_32)(packet[6]) << 6 | (uint_32)(packet[7] & 0xFC) >> 2) * 0.0000026823;
+    if ((packet[4] & 0x08) != 0)
+        dataVars.latitude = -dataVars.latitude;
+
+    //Longitude
+    dataVars.longitude = (float)((uint_32)(packet[7] & 0x01) << 24 | (uint_32)(packet[8]) << 16 | (uint_32)(packet[9]) << 8 | (uint_32)packet[10]) * 0.0000053645;
+    if ((packet[7] & 0x02) != 0)
+        dataVars.longitude = -dataVars.longitude;
+
+    // RSSI
+    *rssi = -0.5 * (float)(packet[12]);
+}
+
+
+void Packet::encodeTelemetryData(uint8_t *packet, uint8_t stateTelemetry, uint8_t statePower, uint8_t stateSens, uint8_t stateControl, float heightPressureGNSS, uint8_t satCountGNSS, float hdopGNSS, uint8_t temperatureElectronics, uint8_t temperatureBattery, uint8_t stateCapacitors, uint8_t continuityPyros, uint8_t pressureDecoupler, uint8_t ldrDecoupler, float voltageBattery, float currentBattery, float currentUmbilical, uint8_t stateUmbilical, uint8_t lowPowerMode, float voltageBatteryCOTS)
 {
     // Subsystem States
     packet[1] |= (0x03 & stateTelemetry) << 6;
