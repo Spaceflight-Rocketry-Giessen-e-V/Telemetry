@@ -147,7 +147,8 @@ With the Simplicity Studio software, several settings can be changed, as outline
 
 The following procedure has to be applied:
 1) Open Simplicity Studio.
-When opening for the first time, a new project has to be created: Press *Start* next to the connected device and create the project. 
+Press *Welcome*.
+When opening for the first time, a new project has to be created: Press *Start* next to the connected device and create the project (the project settings should not be changed). 
 
 <p align="center"><img src="images/simplicity_studio_2.png" width = 600/></p>
 
