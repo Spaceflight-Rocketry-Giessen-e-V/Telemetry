@@ -63,41 +63,34 @@ void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledSt
 // Returns the latest single-byte command from the uplink module (rc1701hp, on Serial3), or 0 if command is bad/unknown
 uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
 {
-    uint8_t command = radioModule->read();
-
     // availability
     if (radioModule->available() == 0)
     {
         return 0;
     }
-
-    // parity check
-    uint8_t count = 0;
-    for (int z = 0; z < 8; z++)
+    else
     {
-        if (command & (1 << z))
-        {
-            count++;
-        }
-    }
-    if (count % 2 == 0)
-    {
-        command &= 0x7F;
-    }
+        uint8_t command = radioModule->read();
 
-    // normalise
-    if (command >= 'A' && command <= 'Z')
-    {
-        command += 'a' - 'A';
-    }
+        Packet::decodeCommand(command, &command);
 
-    // command parsing
-    return command;
+        return command;
+    }
 }
 
-void commandExecute(uint8_t command)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem *subsystemSens, Subsystem *subsystemPower, Subsystem *subsystemControl, uint8_t *pinArm, uint8_t *pinSleep)
 {
+    switch (command)
+    {
+    case 0:
+        break;
 
+    case 'a':
+        break;
+    
+    default:
+        break;
+    }
 }
 
 void flashWrite(dataStruct dataVariables)

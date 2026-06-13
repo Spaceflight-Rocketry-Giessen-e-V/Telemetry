@@ -6,6 +6,7 @@ class Subsystem
         // Konstruktoren Überladungen möglich
         Subsystem(uint8_t i2cAddress, uint8_t pinLed, uint8_t* subsystemStatus, uint8_t** uint8List, uint8_t uint8Count, float** floatList, uint8_t floatCount);
 
+        void write(uint8_t byte);
         void connectionCheck();
         void dataGet();
         void ledUpdate();

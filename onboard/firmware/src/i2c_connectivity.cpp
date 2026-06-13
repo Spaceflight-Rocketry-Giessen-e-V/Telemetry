@@ -13,6 +13,14 @@ Subsystem::Subsystem(uint8_t i2cAddress, uint8_t pinLed, uint8_t *subsystemStatu
     _floatCount = floatCount;
 }
 
+void Subsystem::write(uint8_t byte)
+{
+    Wire.beginTransmission(_i2cAddress);
+    Wire.beginTransmission(4);
+    Wire.write(byte);
+    Wire.endTransmission();
+}
+
 void Subsystem::connectionCheck()
 {
     Wire.beginTransmission(_i2cAddress);

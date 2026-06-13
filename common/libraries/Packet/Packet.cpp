@@ -379,20 +379,28 @@ void Packet::decodeCommand(uint8_t input, uint8_t* output)
 
     //-------------Parity-Decoding-------------
     for (uint8_t i = 0; i < 8; i++)
-        if (input & (1 << i)) count++;
+    {
+        if (input & (1 << i)) 
+        {
+            count++;
+        }
+    }
 
     if (count % 2 !=0)
+    {
         input=0x00;
-
-    if (count % 2 ==0)
+    }
+    else
+    {
         input &= 0x7F;
-    //else is also vaiable option for the second if statment
+    }
 
     //-------------Normalisation-------------
     if(input >= 'A' && input <= 'Z')
     {
         input = input - 'A' + 'a';
     }
+
     *output = input;
 }
 

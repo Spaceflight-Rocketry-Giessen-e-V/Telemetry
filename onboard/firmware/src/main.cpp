@@ -5,7 +5,6 @@
 */
 
 #include "header.h"
-#include "i2c_connectivity.h"
 #include "utility.h"
 
 // LED Pins Initialization
@@ -69,7 +68,8 @@ Subsystem *subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &s
 const uint8_t loopFrequency = 10;             // in Hz       10 Hz = 100 ms interval
 const uint8_t timeBetweenStandbyPackets = 5; // in seconds. In standby, data packets aren't send every loop
 
-uint8_t flightmode = 0;
+uint8_t lowPowerMode = 0;
+uint8_t flightMode = 0;
 uint16_t loopCount = 0;
 uint32_t loopStartTime = 0;
 
@@ -129,11 +129,6 @@ void setup()
 
 void loop()
 {
-  if (SerialUSB->available())
-  {
-    SerialUSB->write(SerialUSB->read());
-  }
-
   subsystemsConnCheck(subsystemList, subsystemsCount);
 
   subsystemsDataGet(subsystemList, subsystemsCount);
@@ -141,9 +136,9 @@ void loop()
   subsystemsLedUpdate(subsystemList, subsystemsCount);
 
   uint8_t command = commandReceive(&rc1701hp);
-  commandExecute(command);
+  commandExecute(command, &rc1780hp, dataVars, &lowPowerMode, &flightMode, &subsystemSens, &subsystemPower, &subsystemControl, &pinARM1, &pinSLP);
 
-  uint8_t packetIdentifier = packetSendCheck(&flightmode, loopFrequency, timeBetweenStandbyPackets, loopCount);
+  uint8_t packetIdentifier = packetSendCheck(&flightMode, loopFrequency, timeBetweenStandbyPackets, loopCount);
   packetSend(&rc1780hp, dataVars, packetIdentifier);
 
   flashWrite(dataVars);
