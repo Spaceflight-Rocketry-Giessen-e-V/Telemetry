@@ -1,5 +1,4 @@
-#include "Arduino.h"
-#include "Wire.h"
+#include "header.h"
 
 class Subsystem
 {

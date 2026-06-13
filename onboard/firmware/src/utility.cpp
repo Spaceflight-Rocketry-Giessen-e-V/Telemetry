@@ -1,13 +1,10 @@
-#include "Arduino.h"
 #include "utility.h"
-#include "Radiocrafts_RC17xxHP_RC232.h"
-#include "Packet.h"
 
 static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
-    radioModule->resetHard(); // initial reboot to clear settings
     radioModule->begin();
-    if (radioModule->ping() != 0) // confirm response
+    radioModule->resetHard(); // initial reboot to clear setting
+    while (radioModule->ping() != 0) // confirm response
     {
         return 1;
     }
@@ -98,6 +95,16 @@ uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
     return command;
 }
 
+void commandExecute(uint8_t command)
+{
+
+}
+
+void flashWrite(dataStruct dataVariables)
+{
+
+}
+
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount)
 {
     static uint16_t loopCountWhenFlightmodeStarts = 0;
@@ -129,10 +136,8 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
     }
     else
     {
-
-        if (loopCount % (uint16_t)timeBetweenStandbyPackets * loopFrequency == 0)
+        if ((loopCount % (uint16_t)(timeBetweenStandbyPackets * loopFrequency)) == 0)
         {
-
             return (loopCount % 2) + 1;
         }
         else
@@ -152,11 +157,11 @@ void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t p
 
     if (packetIdentifier == 1)
     {
-        Packet::encodeFlightData(packet, dataVariables);
+        Packet::encodeFlightData(packet, dataVariables.acceleration, dataVariables.heightPressure, dataVariables.flightEvents, dataVariables.latitude, dataVariables.longitude);
     }
     else if (packetIdentifier == 2)
     {
-        Packet::encodeTelemetryData(packet, dataVariables);
+        Packet::encodeTelemetryData(packet, dataVariables.stateTelemetry, dataVariables.statePower, dataVariables.stateSens, dataVariables.stateControl, dataVariables.heightGNSS, dataVariables.satCountGNSS, dataVariables.hdopGNSS, dataVariables.temperatureElectronics, dataVariables.temperatureBattery, dataVariables.stateCapacitors, dataVariables.continuityPyros, dataVariables.pressureDecoupler, dataVariables.ldrDecoupler, dataVariables.voltageBattery, dataVariables.currentBattery, dataVariables.currentUmbilical, dataVariables.stateUmbilical, dataVariables.lowPowerMode, dataVariables.voltageBatteryCOTS);
     }
     radioModule->send(packet, 12);
 }
@@ -167,11 +172,11 @@ void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t l
 
     if (*loopCount % 2 == 1)
         digitalWrite(pinLedLoop, HIGH);
-
     else
         digitalWrite(pinLedLoop, LOW);
 
-    delay(1000 / loopFrequency - (millis() - *loopStartTime));
+    if ((millis() - *loopStartTime) < 1000 / loopFrequency)
+        delay(1000 / loopFrequency - (millis() - *loopStartTime));
     *loopStartTime = millis();
 }
 
@@ -181,9 +186,9 @@ void ledUpdate(uint8_t state, ledStruct &pinLed)
     {
     case SETUPBEGIN:
 
-        digitalWrite(pinLed.B, LOW);
-        digitalWrite(pinLed.G, LOW);
         digitalWrite(pinLed.R, HIGH);
+        digitalWrite(pinLed.G, LOW);
+        digitalWrite(pinLed.B, LOW);
 
         break;
 
@@ -198,8 +203,8 @@ void ledUpdate(uint8_t state, ledStruct &pinLed)
     case SETUPEND:
 
         digitalWrite(pinLed.R, LOW);
-        digitalWrite(pinLed.B, LOW);
         digitalWrite(pinLed.G, HIGH);
+        digitalWrite(pinLed.B, LOW);
 
         break;
 
@@ -229,11 +234,11 @@ void buzzerSound(uint8_t pinBuzzer)
 void buzzerSoundError(uint8_t pinBuzzer)
 {
     tone(pinBuzzer, 1400, 50);
-    delay(20);
+    delay(100);
     tone(pinBuzzer, 1400, 50);
-    delay(40);
+    delay(200);
     tone(pinBuzzer, 1400, 50);
-    delay(20);
+    delay(100);
     tone(pinBuzzer, 1400, 50);
 }
 

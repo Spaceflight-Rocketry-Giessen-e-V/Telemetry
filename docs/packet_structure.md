@@ -40,7 +40,7 @@ The following table lists the components of each Telemetry Data Package.
 | 0 | [Parity Bit](#Parity-Bit) | 1 bits | 0 or 1 | / |
 | 0 | [Packet Identifier](#Packet-Identifier) | 1 bit | 0 | / |
 | 0 | No Data | 2 bits | / | / |
-| 1 | [Subsystem States](#Subsystem-States) | 8 bits | 0 to 4 for four subsystems | / |
+| 1 | [Subsystem States](#Subsystem-States) | 8 bits | 0 to 3 for four subsystems | / |
 | 2 | No Data | 1 bit | / | / |
 | 2 to 3 | [Height (GNSS)](#height-gnss) | 15 bits | 0 to 6500 m | 0.2 m |
 | 4 | [GNSS Satellite Count](#GNSS-Satellite-Count) | 4 bits | 0 to 15 | 1 |

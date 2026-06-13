@@ -64,7 +64,7 @@ uint16_t RC17xxHP_RC232::serialWait(uint32_t delayMicroseconds) // Waits for inc
     uint32_t time_start = micros();
     while (_serial->available() == 0 && (micros() - time_start) < delayMicroseconds)
     {
-        delayMicroseconds(10);
+        ::delayMicroseconds(10);
     }
     return _serial->available();
 }
@@ -104,7 +104,7 @@ uint8_t RC17xxHP_RC232::resetHard() // Performs a reset of the hardware
     digitalWrite(_pinRST, LOW); // Pulling the reset pin to LOW (Resets module)
     delayMicroseconds(1000);
     digitalWrite(_pinRST, HIGH); // Puts reset pin on HIGH again, to enable to continue
-    delayMicroseconds(2 * 3000); // t_{RESET-IDLE} = 3.0 ms
+    delayMicroseconds(4 * 3000); // t_{RESET-IDLE} = 3.0 ms
     return 0;
 }
 
@@ -129,7 +129,7 @@ uint8_t RC17xxHP_RC232::memoryReset() // Resets all the settings to the standart
     {
         digitalWrite(_pinCFG, LOW);                        // Ensure the module stays in CONFIG mode
         _serial->print("@RC");                             // Factory reset command
-        serialWait(2 * (62000 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{MEMORY-CONFIG} = 62 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+        serialWait(4 * (62000 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{MEMORY-CONFIG} = 62 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
         digitalWrite(_pinCFG, HIGH);                       // Return configuration pin to normal state
         if (_serial->available() != 0)
         {
@@ -486,11 +486,11 @@ uint8_t RC17xxHP_RC232::read_RSSI(float *result)
     if (configEnter() == 0)
     {
         _serial->write('S');
-        serialWait(2 * (20000 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{RSSI} = 20 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+        serialWait(4 * (20000 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{RSSI} = 20 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
         if (_serial->available() != 0)
         {
             *result = (float)-_serial->read() / 2;
-            serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+            serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
             if (_serial->available() != 0)
             {
                 if (_serial->read() == '>')
@@ -511,11 +511,11 @@ uint8_t RC17xxHP_RC232::read_TEMPERATURE(int8_t *result)
     if (configEnter() == 0)
     {
         _serial->write('U');
-        serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+        serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
         if (_serial->available() != 0)
         {
             *result = _serial->read() - 128;
-            serialWait(2 * (1100 * 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+            serialWait(4 * (1100 * 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
             if (_serial->available() != 0)
             {
                 if (_serial->read() == '>')
@@ -536,11 +536,11 @@ uint8_t RC17xxHP_RC232::read_VOLTAGE(float *result)
     if (configEnter() == 0)
     {
         _serial->write('V');
-        serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+        serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
         if (_serial->available() != 0)
         {
             *result = (float)_serial->read() * 0.030;
-            serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+            serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C#-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
             if (_serial->available() != 0)
             {
                 if (_serial->read() == '>')
@@ -574,8 +574,9 @@ uint8_t RC17xxHP_RC232::read_VOLTAGE(float *result)
 
 uint8_t RC17xxHP_RC232::configEnter() // Attempts to enter CONFIG mode on the module
 {
+    flush();
     digitalWrite(_pinCFG, LOW);
-    serialWait(2 * (590 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{CONFIG-PROMPT} = 590 us), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+    serialWait(4 * (590 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{CONFIG-PROMPT} = 590 us), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
     digitalWrite(_pinCFG, HIGH);
     if (_serial->available() != 0)
     {
@@ -590,7 +591,7 @@ uint8_t RC17xxHP_RC232::configEnter() // Attempts to enter CONFIG mode on the mo
 uint8_t RC17xxHP_RC232::configCommand(uint8_t command) // Sends a single-byte configuration command to the module
 {
     _serial->write(command);
-    serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+    serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
     if (_serial->available() != 0)
     {
         if (_serial->read() == '>')
@@ -604,7 +605,7 @@ uint8_t RC17xxHP_RC232::configCommand(uint8_t command) // Sends a single-byte co
 uint8_t RC17xxHP_RC232::configExit() // Attempts to exit CONFIG mode
 {
     _serial->write('X');
-    serialWait(2 * (1420 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{CONFIG-IDLE} = 1420 us), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+    serialWait(4 * (1420 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{CONFIG-IDLE} = 1420 us), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
     if (_serial->available() == 0)
     {
         return 0; // Success
@@ -620,11 +621,11 @@ uint8_t RC17xxHP_RC232::memoryRead(uint8_t address, uint8_t *result) // Reads a 
         if (configCommand('Y') == 0) // Command to receive one Byte from memory
         {
             _serial->write(address);                          // Address of the category, of which the information is needed
-            serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+            serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
             if (_serial->available() != 0)
             {
                 *result = _serial->read();                        // Read the Byte the module responded
-                serialWait(2 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+                serialWait(4 * (1100 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{C-CONFIG} = 1.1 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
                 if (_serial->available() != 0)                    // Leaving config mode
                 {
                     if (_serial->read() == '>')
@@ -652,7 +653,7 @@ uint8_t RC17xxHP_RC232::memoryWrite(uint8_t address, uint8_t value) // Writes a 
             _serial->write(value); // Writing the new setting in the memory
             delayMicroseconds(1000);
             _serial->write(0xFF);                              // Signaling the end of the writing
-            serialWait(2 * (62000 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{MEMORY-CONFIG} = 62 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
+            serialWait(4 * (62000 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{MEMORY-CONFIG} = 62 ms), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
             if (_serial->available() != 0)                     // Leaving config mode
             {
                 if (_serial->read() == '>')
