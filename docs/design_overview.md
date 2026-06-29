@@ -91,9 +91,55 @@ The frequency band between 869.4 MHz and 869.65 MHz can be used with an output p
 
 We chose the Radiocrafts RC17xxHP-RC232 radio modules which come in 169 MHz (RC1701HP) and 869 MHz (RC1780HP) variants. The modules can achieve output powers of up to 27 dBm and the operation is straightforward due to the UART interface. The datasheet can be found [here](https://radiocrafts.com/uploads/RC17xxHP-RC232_Datasheet.pdf). Additionally, there is a separate manual for the RC232 series of radio modules that includes all configuration commands and more information, available [here](https://radiocrafts.com/uploads/RC232_user_manual.pdf). Application notes can be downloaded [here](https://radiocrafts.com/resources/document-library/?rs=Application%20Notes).
 
-The following image shows the available data rates and high power (27 dBm) radio channels of the RC1780HP-RC232 and RC1701HP-RC232 radio modules. The data is taken from the linked datasheet.
+The following tables show the available data rates and high power (27 dBm) radio channels of the RC1780HP-RC232 and RC1701HP-RC232 radio modules. The data is taken from the linked datasheet.
 
-<p align="center"><img src="images/rc17xxhp_rc232_specifications.png" /></p>
+|Date Rate #|Data rate|Bandwidth|Modulation|
+|---|---|---|--|
+|1|tbd.|||
+|2|0.3 kbit/s|12.5 kHz|2GFSK|
+|3|0.6 kbit/s|12.5 kHz|2GFSK|
+|**4**|**1.2 kbit/s**|**12.5 kHz**|**2GFSK**|
+|5|2.4 kbit/s|12.5 kHz|2GFSK|
+|6|tbd.|||
+|7|4.8 kbit/s|12.5 kHz|2GFSK|
+|8|9.6 kbit/s|12.5 kHz|4GFSK|
+|9|9.6 kbit/s|25 kHz|2GFSK|
+|10|19.2 kbit/s|50 kHz|4GFSK|
+|11|tbd.|||
+|12|38.4 kbit/s|100 kHz|2GFSK|
+|13|50 kbit/s|100 kHz|2GFSK|
+|14|76.8 kbit/s|200 kHz|2GFSK|
+|15|100 kbit/s|200 kHz|2GFSK|
+
+**RC1780HP-RC232 +27 dBm Channels**
+
+|Channel #|Center Frequency|
+|---|---|
+|57|869.412500 MHz|
+|59|869.437500 MHz|
+|58|869.462500 MHz|
+|60|869.487500 MHz|
+|**61**|**869.512500 MHz**|
+|62|869.537500 MHz|
+|63|869.562500 MHz|
+|64|869.587500 MHz|
+|65|869.612500 MHz|
+|66|869.637500 MHz|
+
+**RC1701HP-RC232 +27 dBm Channels**
+
+|Channel #|Center Frequency|
+|---|---|
+|**1**|**169.406250 MHz**|
+|2|169.418750 MHz|
+|3|169.431250 MHz|
+|4|169.443750 MHz|
+|5|169.456250 MHz|
+|6|169.468750 MHz|
+|7|169.412500 MHz|
+|8|169.437500 MHz|
+|9|169.462500 MHz|
+|10|169.437500 MHz|
 
 ### Microcontroller
 
