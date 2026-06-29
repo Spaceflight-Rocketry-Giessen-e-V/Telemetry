@@ -1,18 +1,72 @@
 #include "Arduino.h"
 
-void radioModulesSetup(RC17xxHP_RC232 rc1780hp, RC17xxHP_RC232 rc1701hp, ledStruct pinLed, uint8_t pinBuzzer);
+// LEDs states
+#define SETUPBEGIN 1
+#define SETUPRADIOMODULS 2
+#define SETUPEND 3
+#define RADIOMODUL_ONE 4
+#define RADIOMODUL_TWO 5
 
-void packetReceive(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t packetIdentifier);
+void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct pinLed);
 
-void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop);
+uint8_t commandReceive(HardwareSerial *serialUSB);
 
-void ledUpdate(uint8_t state, ledStruct &pinLed);
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule);
 
-void buttonCheck(buttonStruct &pinButton);
+void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, dataStruct dataVariables);
 
-void launchControlCheck(uint8_t pinRX, uint8_t pinTX);
+void dataSendUsb(HardwareSerial *serialUSB);
 
-uint8_t commandSend(RC17xxHP_RC232 radioModule, uint8_t command);
+void ledUpdate(uint8_t state, ledStruct pinLed);
+
+void ledRssiUpdate(float rssi, ledStruct pinLed);
+
+void displayUpdate(uint8_t address, dataStruct dataVariables);
+
+void buttonCheck(buttonStruct pinButton);
+
+void controlBoxCheck(uint8_t pin1, uint8_t pin2);
+
+class dataStruct // :)
+{
+public:
+
+  float rssi;
+
+  // Subsystem States
+
+  uint8_t stateTelemetry;
+  uint8_t statePower;
+  uint8_t stateSens;
+  uint8_t stateControl;
+
+  // Flight Data
+
+  float acceleration;
+  float heightPressure;
+  uint8_t flightEvents;
+  float latitude;
+  float longitude;
+
+  // Telemetry Data
+
+  float heightGNSS;
+  uint8_t satCountGNSS;
+  float hdopGNSS;
+  uint8_t temperatureElectronics;
+  uint8_t temperatureBattery;
+  uint8_t stateCapacitors;
+  uint8_t continuityPyros;
+  uint8_t pressureDecoupler;
+  uint8_t ldrDecoupler;
+  float voltageBattery;
+  float currentBattery;
+  float currentUmbilical;
+  uint8_t stateUmbilical;
+  uint8_t lowPowerMode;
+  float voltageBatteryCOTS;
+};
+
 class ledStruct
 {
 public:
@@ -30,54 +84,21 @@ public:
   uint8_t rssi_6;
   uint8_t rssi_7;
   uint8_t rssi_8;
+
   void pinMode();
-};
-
-class dataStruct // :)
-{
-public:
-  // Subsystem States
-
-  uint8_t statePower;
-  uint8_t stateSens;
-  uint8_t stateControl;
-  uint8_t stateTelemetry;
-
-  // Flight Data
-
-  uint8_t flightEvents;
-  float latitude;
-  float longitude;
-  float heightPressure;
-  float acceleration;
-
-  // Telemetry Data
-
-  uint8_t lowPowerMode;
-  float heightGNSS;
-  uint8_t hdopGNSS;
-  uint8_t satCountGNSS;
-  uint8_t stateUmbilical;
-  float currentUmbilical;
-  uint8_t pressureDecoupler;
-  uint8_t ldrDecoupler;
-  uint8_t continuityPyros;
-  float currentBattery;
-  float voltageBattery;
-  float voltageBatteryCOTS;
-  uint8_t temperatureBattery;
-  uint8_t temperatureElectronics;
 };
 
 class buttonStruct // :)
 {
 public:
-  uint8_t sws1;
-  uint8_t sws2;
-  uint8_t sws3;
-  uint8_t sws4;
-  uint8_t sws5;
-  uint8_t sws6;
-  uint8_t sws7;
-  uint8_t sws8;
-}
+  uint8_t sw1;
+  uint8_t sw2;
+  uint8_t sw3;
+  uint8_t sw4;
+  uint8_t sw5;
+  uint8_t sw6;
+  uint8_t sw7;
+  uint8_t sw8;
+
+  void pinMode();
+};
