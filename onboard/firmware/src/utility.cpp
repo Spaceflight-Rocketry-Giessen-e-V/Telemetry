@@ -78,14 +78,78 @@ uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
     }
 }
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem *subsystemSens, Subsystem *subsystemPower, Subsystem *subsystemControl, uint8_t *pinArm, uint8_t *pinSleep)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem** subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
 {
     switch (command)
     {
     case 0:
         break;
 
-    case 'a':
+    case 'a': // Arming
+        digitalWrite(pinArm, HIGH);
+        for (uint8_t i = 0; i < subsystemsCount; i++)
+        {
+            subsystemsList[i]->write('a');
+        }
+        break;
+
+    case 'b': // Dearming
+        digitalWrite(pinArm, LOW);
+        for (uint8_t i = 0; i < subsystemsCount; i++)
+        {
+            subsystemsList[i]->write('b');
+        }
+        break;
+
+    case 'f': // Flight Mode Activation
+        *flightMode = 1;
+        break;
+
+    case 'g': // Flight Mode Deactivation
+        *flightMode = 0;
+        break;
+
+    case 'h': // Change Pressure Sensor
+        subsystemSens->write('h');
+        break;
+
+    case 'i': // Change Acceleration Sensor
+        subsystemSens->write('i');
+        break;
+
+    case 'j': // Change GNSS Sensor
+        subsystemSens->write('j');
+        break;
+
+    case 'l': // Low Power Mode Activation
+        *lowPowerMode = 1;
+        digitalWrite(pinSleep, HIGH);
+        break;
+
+    case 'm': // Low Power Mode Deactivation
+        *lowPowerMode = 0;
+        digitalWrite(pinSleep, LOW);
+        break;
+
+    case 'p': // Ping
+        packetSend(radioModule, dataVariables, 1);
+        packetSend(radioModule, dataVariables, 2);
+        break;
+
+    case 'q': // Drogue Ejection
+        subsystemControl->write('q');
+        break;
+
+    case 'r': // Main Ejection
+        subsystemControl->write('r');
+        break;
+
+    case 's': // Decoupling
+        subsystemControl->write('s');
+        break;
+
+    case 't': // Switch Main Parachute Ejection Height
+        subsystemControl->write('t');
         break;
     
     default:

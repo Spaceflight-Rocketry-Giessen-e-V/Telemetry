@@ -136,7 +136,7 @@ void loop()
   subsystemsLedUpdate(subsystemList, subsystemsCount);
 
   uint8_t command = commandReceive(&rc1701hp);
-  commandExecute(command, &rc1780hp, dataVars, &lowPowerMode, &flightMode, &subsystemSens, &subsystemPower, &subsystemControl, &pinARM1, &pinSLP);
+  commandExecute(command, &rc1780hp, dataVars, &lowPowerMode, &flightMode, subsystemList, subsystemsCount, &subsystemSens, &subsystemPower, pinARM1, pinSLP);
 
   uint8_t packetIdentifier = packetSendCheck(&flightMode, loopFrequency, timeBetweenStandbyPackets, loopCount);
   packetSend(&rc1780hp, dataVars, packetIdentifier);

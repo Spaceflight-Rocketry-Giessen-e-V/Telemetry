@@ -8,6 +8,7 @@
 **/.DS_Store
 **/.vscode/
 **/.pio/
+**/.idea/
 *.pyc
 /groundstation/firmware/.gitignore
 /onboard/firmware/.gitignore

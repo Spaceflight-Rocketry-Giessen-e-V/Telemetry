@@ -6,18 +6,18 @@ The command input can be in either lower or upper case letters.
 Upper case letters will be converted to lower case letters before transmission.
 |Char|Function|
 |---|---|
-|`p`|Ping(Request both data packets)|
-|`l`|activates the low power mode|
-|`m`|deactivates the low power mode|
-|`f`|activates the flight mode|
-|`g`|deactivates the flight mode|
-|`q`|ejects the drogue parachute immediately|
-|`r`|ejects the main parachute immediately|
 |`a`|Arming|
 |`b`|Dearming|
+|`f`|activates the flight mode|
+|`g`|deactivates the flight mode|
 |`h`|Change pressure sensor|
 |`i`|Change acceleration sensor|
 |`j`|Change GNSS|
+|`l`|activates the low power mode|
+|`m`|deactivates the low power mode|
+|`p`|Ping(Request both data packets)|
+|`q`|ejects the drogue parachute immediately|
+|`r`|ejects the main parachute immediately|
 |`s`|Decoupler decoupling|
 |`t`|Switch main parachute ejection height|
 
