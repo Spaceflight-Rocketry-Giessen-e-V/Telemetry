@@ -239,7 +239,7 @@ The encoding and decoding of packets according to our [packet structure](packet_
 
 Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https://www.digikey.de/en/products/detail/te-connectivity-linx/ANT-868-CW-HW-SMA/5592340)) for our telemetry system. Currently, we develop own antennas to be able to adapt them to our specific needs. Our plan is to use a QFH antenna with an omnidirectional radiation pattern on the flight computer and a directional helical antenna on the ground side.
 
-## Groundstation Helical Antenna
+## Groundstation 869 MHz Helical Antenna
 
 ### Geometric Design
 
@@ -298,7 +298,16 @@ During assembly of the first prototype antenna, it was obvious that the concept 
 
 > Informations will be added. See [#21](/../../issues/21)
 
-## Onboard QFH Antenna
+## Groundstation 169 MHz Dipole Antenna
+
+The groundstation antenna for the 169 MHz radio system consists of a simple [dipole antenna](https://www.digikey.de/de/products/detail/joymax-electronics/VHX-362BSA1B/27545755) with an aluminum reflector.
+
+A male-to-male panel-mount sma connector connects the coaxial cable, the reflector and the dipole antenna.
+
+|![Antenna Assembly](images/antenna_169_gs_1.jpg)|![Antenna Components](images/antenna_169_gs_2.jpg)|
+|---|---|
+
+## Onboard 869 Mhz QFH Antenna
 
 > Informations will be added. See [#43](/../../issues/43)
 
