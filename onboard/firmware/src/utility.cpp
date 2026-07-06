@@ -8,7 +8,7 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
     {
         return 1;
     }
-    if (radioModule->set_RF_DATA_RATE(0x05) != 0) // over-the-air data rate index
+    if (radioModule->set_RF_DATA_RATE(0x05) != 0) // radio data rate
     {
         return 1;
     }

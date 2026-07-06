@@ -10,12 +10,10 @@
 // LED Pins Initialization
 
 ledStruct pinLed;
-// MISSING: PIN DECLARATIONS
 
 // Button Pins Initialization
 
 buttonStruct pinButton;
-// MISSING: PIN DECLARATIONS
 
 // Pin Declarations
 
@@ -45,8 +43,34 @@ uint8_t packetBuffer[32];
 
 void setup()
 {
+  pinLed.R = PIN_PG5;
+  pinLed.G = PIN_PG4;
+  pinLed.B = PIN_PG3;
+  pinLed.D1 = PIN_PA0;
+  pinLed.D2 = PIN_PG7;
+  pinLed.D3 = PIN_PG6;
+  pinLed.rssi_1 = PIN_PD0;
+  pinLed.rssi_2 = PIN_PD1;
+  pinLed.rssi_3 = PIN_PD2;
+  pinLed.rssi_4 = PIN_PD3;
+  pinLed.rssi_5 = PIN_PD4;
+  pinLed.rssi_6 = PIN_PD5;
+  pinLed.rssi_7 = PIN_PD6;
+  pinLed.rssi_8 = PIN_PD7;
+
   pinLed.pinMode();
+
+  pinButton.sw1 = PIN_PG2;
+  pinButton.sw2 = PIN_PF6;
+  pinButton.sw3 = PIN_PF5;
+  pinButton.sw4 = PIN_PF4;
+  pinButton.sw5 = PIN_PF3;
+  pinButton.sw6 = PIN_PF2;
+
   pinButton.pinMode();
+
+  pinMode(pinControlBox1, INPUT);
+  pinMode(pinControlBox1, INPUT);
 
   ledUpdate(SETUPBEGIN, pinLed); // R On
 
@@ -60,8 +84,8 @@ void setup()
 
   // Initialize I2C (Display)
 
-  Wire.pins(PIN_PC6, PIN_PC7);
-  Wire.begin();
+  // Wire.pins(PIN_PC6, PIN_PC7);
+  // Wire.begin();
 
   // Initialize Radio Modules
 
@@ -79,7 +103,7 @@ void loop()
   // Check both USBs for commands
   uint8_t command = commandReceive(SerialUSB1);
   commandExecute(command, &rc1701hp);
-  uint8_t command = commandReceive(SerialUSB2);
+  command = commandReceive(SerialUSB2);
   commandExecute(command, &rc1701hp);
 
   buttonCheck(pinButton);

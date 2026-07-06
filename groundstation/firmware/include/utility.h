@@ -1,4 +1,4 @@
-#include "Arduino.h"
+#include "header.h"
 
 // LEDs states
 #define SETUPBEGIN 1
@@ -6,6 +6,10 @@
 #define SETUPEND 3
 #define RADIOMODUL_ONE 4
 #define RADIOMODUL_TWO 5
+
+class dataStruct;
+class ledStruct;
+class buttonStruct;
 
 void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct pinLed);
 
@@ -97,8 +101,6 @@ public:
   uint8_t sw4;
   uint8_t sw5;
   uint8_t sw6;
-  uint8_t sw7;
-  uint8_t sw8;
 
   void pinMode();
 };
