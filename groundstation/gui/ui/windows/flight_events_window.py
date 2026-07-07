@@ -100,7 +100,7 @@ class FlightEventWindow:
         Only the specified event is marked done or ABORT.
         All other events are left in their current state.
         """
-        _, abort_threshold = self._event_config()
+        events, abort_threshold = self._event_config()
 
         if event_number != self.current_event:
             log.info("FlightEventWindow[%s]: event updated %d → %d",
@@ -110,7 +110,12 @@ class FlightEventWindow:
 
         if 0 <= event_number < len(self._row_tags):
             tag = self._row_tags[event_number]
-            is_abort = event_number >= abort_threshold
+            # Prefer the per-event abort flag (what the Settings UI edits); fall
+            # back to the threshold for legacy configs without per-event flags.
+            if event_number < len(events):
+                is_abort = events[event_number].get("is_abort", event_number >= abort_threshold)
+            else:
+                is_abort = event_number >= abort_threshold
             color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
             label = "ABORT" if is_abort else "done"
             if is_abort:

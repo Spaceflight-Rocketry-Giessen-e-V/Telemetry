@@ -119,6 +119,7 @@ class UIManager:
 
     def __init__(self):
         log.info("UIManager: initialising sub-windows")
+        self._shutdown_done = False
 
         # Two MapView and Location instances are created: one for the Flight
         # Data tab and a second for the dedicated Map View tab.
@@ -136,15 +137,36 @@ class UIManager:
         self.accelerometer_window = AccelerationWindow()
         self.commands_window = CommandsWindow(receiver=self.com_monitor_controller)
         self.connection_window = ConnectionWindow()
-        self.settings_window = SettingsWindow()
+        self.settings_window = SettingsWindow(on_saved=self._on_settings_saved)
         self.time_window = TimeWindow()
 
         log.info("UIManager: all sub-windows initialised")
 
     def shutdown(self) -> None:
-        """Tear down the DearPyGui context and exit cleanly."""
-        log.info("UIManager: shutdown requested — destroying DPG context")
-        dpg.destroy_context()
+        """
+        Stop background workers (serial receiver, map traffic thread, tile pool).
+
+        Idempotent and safe to call both from the DPG exit callback and again
+        after the main loop returns. Does NOT destroy the DPG context — build_ui
+        does that exactly once, after the render loop has exited.
+        """
+        if self._shutdown_done:
+            return
+        self._shutdown_done = True
+        log.info("UIManager: shutdown — stopping background workers")
+        try:
+            self.com_monitor_controller.stop_monitor()
+        except Exception as exc:  # noqa: BLE001
+            log.error("UIManager: error stopping receiver: %s", exc, exc_info=True)
+        try:
+            self.map_view_window.shutdown()
+        except Exception as exc:  # noqa: BLE001
+            log.error("UIManager: error stopping map view: %s", exc, exc_info=True)
+
+    def _on_settings_saved(self) -> None:
+        """Push freshly saved thresholds into the live battery/connection widgets."""
+        self.battery_window.reload()
+        self.connection_window.reload()
 
     def _draw_flight_data_ui(self) -> None:
         """
@@ -186,11 +208,10 @@ class UIManager:
     #    self.com_monitor.draw_ui()
     #
 
-    def _draw_map_view_ui(self) -> None:
-        """Build the Map View tab layout (large map with GPS panel alongside)."""
-        with dpg.group(horizontal=True):
-            self.map_view_tab.draw_ui()
-            self.location_tab.draw_ui(600, 600)
+    # NOTE: the former _draw_map_view_ui() was removed — the Map View tab is
+    # disabled (see build_ui) and the method referenced self.map_view_tab /
+    # self.location_tab, which no longer exist. Restore both instances in
+    # __init__ before re-enabling that tab.
 
     def build_ui(self) -> None:
         """
@@ -225,9 +246,11 @@ class UIManager:
         dpg.set_exit_callback(lambda: self.shutdown())
 
         with dpg.handler_registry():
+            # Escape must stop the render loop, not tear down the context from
+            # inside a frame. Cleanup runs after start_dearpygui() returns.
             dpg.add_key_press_handler(
                 key=dpg.mvKey_Escape,
-                callback=lambda: self.shutdown(),
+                callback=lambda: dpg.stop_dearpygui(),
             )
 
         with dpg.window(
@@ -256,6 +279,7 @@ class UIManager:
         dpg.start_dearpygui()
 
         log.info("UIManager: DPG main loop exited — cleaning up")
+        self.shutdown()
         dpg.destroy_context()
 
     # -------------------------------------------------------------------------
@@ -325,8 +349,6 @@ class UIManager:
 
         if gnss_height is not None:
             log.debug("update_altitude: gnss=%.1f m @ %.2f s", gnss_height, elapsed)
-            # NOTE: parameter names are intentionally swapped here to match
-            # the existing data-flow contract; correct when the back-end changes.
             self.altitude_window.update_altitude_gnss(elapsed, gnss_height)
             dpg.set_value(
                 self.last_packet_window.system_status_tags["gnss_height"],
@@ -349,6 +371,9 @@ class UIManager:
         :class:`LocationWindow` so the map stays in sync regardless of
         which tab is active.
         """
+        if lat is None or lon is None:
+            log.debug("update_gps: incomplete fix (lat=%r, lon=%r); skipping", lat, lon)
+            return
         log.debug("update_gps: lat=%.6f, lon=%.6f", lat, lon)
         dpg.set_value(self.last_packet_window.system_status_tags["lat"], f"{lat}")
         dpg.set_value(self.last_packet_window.system_status_tags["lon"], f"{lon}")
@@ -420,8 +445,8 @@ class UIManager:
             )
 
         # Lat and lon arrive together; skip the update if either is absent.
-        if "lat_gnss" in data or "lon_gnss" in data:
+        if "lat_gnss" in data and "lon_gnss" in data:
             self.update_gps(
-                lat=data.get("lat_gnss"),
-                lon=data.get("lon_gnss"),
+                lat=data["lat_gnss"],
+                lon=data["lon_gnss"],
             )

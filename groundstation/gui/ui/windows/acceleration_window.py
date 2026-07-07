@@ -10,6 +10,7 @@ incoming data is still recorded while the display is paused.
 """
 
 import logging
+import math
 import statistics
 
 import dearpygui.dearpygui as dpg
@@ -158,6 +159,10 @@ class AccelerationWindow:
         """
         if not cls.plot_active:
             log.debug("AccelerationWindow: plot frozen, skipping update (t=%.2f)", time_value)
+            return
+
+        if math.isnan(accel_value) or math.isinf(accel_value):
+            log.warning("AccelerationWindow: dropping non-finite acceleration %r", accel_value)
             return
 
         cls.time_data.append(time_value)

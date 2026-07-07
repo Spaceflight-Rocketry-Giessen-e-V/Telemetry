@@ -21,7 +21,10 @@ log = logging.getLogger(__name__)
 class SettingsWindow:
     """Draws and manages the interactive Settings tab."""
 
-    def __init__(self):
+    def __init__(self, on_saved=None):
+        # Optional callback invoked after a successful save so live widgets can
+        # re-read their thresholds without a restart.
+        self._on_saved = on_saved
         self._bat_min_tag = "cfg_bat_min"
         self._bat_max_tag = "cfg_bat_max"
         self._bat_crit_tag = "cfg_bat_crit"
@@ -244,8 +247,14 @@ class SettingsWindow:
             self._save_flight_events()
             self._save_commands()
 
-            dpg.set_value("settings_status_label", "✓  Settings saved successfully.")
+            dpg.set_value(
+                "settings_status_label",
+                "✓  Settings saved. Thresholds applied live; command/event label "
+                "changes take effect on restart.",
+            )
             log.info("All settings saved successfully")
+            if self._on_saved:
+                self._on_saved()
 
         except Exception as exc:  # noqa: BLE001
             msg = f"Error saving settings: {exc}"
@@ -321,6 +330,23 @@ class SettingsWindow:
             label = dpg.get_value(tag_info["label_tag"]).strip()
             code = dpg.get_value(tag_info["code_tag"]).strip()
             groups_out[gi]["commands"][ci] = {"label": label, "code": code}
+
+        # Validate before persisting: each code must be a single ASCII letter (what
+        # the flight hardware accepts) and codes must be unique, otherwise a command
+        # could be silently unsendable or ambiguous.
+        seen: dict[str, str] = {}
+        for grp in groups_out:
+            for cmd in grp["commands"]:
+                code, label = cmd["code"], cmd["label"]
+                if len(code) != 1 or not (code.isascii() and code.isalpha()):
+                    raise ValueError(
+                        f"Command '{label}' code must be a single ASCII letter, got {code!r}"
+                    )
+                if code in seen:
+                    raise ValueError(
+                        f"Duplicate command code {code!r} for '{label}' and '{seen[code]}'"
+                    )
+                seen[code] = label
 
         settings.set_section("commands", {"groups": groups_out})
         log.debug("Command settings saved: %d groups", len(groups_out))

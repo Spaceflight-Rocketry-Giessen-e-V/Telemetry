@@ -28,6 +28,14 @@ class ConnectionWindow:
         self._tag_bar = "rssi_bar"
         self._tag_label = "rssi_label"
         self._tag_warning = "rssi_warning"
+        self._tag_min = "rssi_threshold_min"
+        self._tag_warn = "rssi_threshold_warn"
+        self._tag_max = "rssi_threshold_max"
+
+        # Persistent progress-bar colour theme (created in draw_ui). Reused on
+        # every update so we don't leak a theme item per packet.
+        self._bar_theme: int | None = None
+        self._bar_color: int | None = None
 
         log.debug("ConnectionWindow: thresholds min=%d warn=%d max=%d",
                   self.rssi_min, self.rssi_warn, self.rssi_max)
@@ -50,9 +58,15 @@ class ConnectionWindow:
             dpg.add_spacer(height=10)
 
             with dpg.group(horizontal=False):
-                dpg.add_text(f"Min:  {self.rssi_min} dBm")
-                dpg.add_text(f"Warn: {self.rssi_warn} dBm")
-                dpg.add_text(f"Max:  {self.rssi_max} dBm")
+                dpg.add_text(f"Min:  {self.rssi_min} dBm", tag=self._tag_min)
+                dpg.add_text(f"Warn: {self.rssi_warn} dBm", tag=self._tag_warn)
+                dpg.add_text(f"Max:  {self.rssi_max} dBm", tag=self._tag_max)
+
+        # One reusable theme for the bar colour; _update_bar_color mutates it.
+        with dpg.theme() as self._bar_theme:
+            with dpg.theme_component(dpg.mvProgressBar):
+                self._bar_color = dpg.add_theme_color(dpg.mvThemeCol_PlotHistogram, (0, 255, 0, 255))
+        dpg.bind_item_theme(self._tag_bar, self._bar_theme)
 
         dpg.hide_item(self._tag_warning)
 
@@ -78,7 +92,8 @@ class ConnectionWindow:
 
     def _fraction(self, rssi: int) -> float:
         """Return the normalised position of *rssi* within [rssi_min, rssi_max]."""
-        return (rssi - self.rssi_min) / (self.rssi_max - self.rssi_min)
+        span = self.rssi_max - self.rssi_min
+        return (rssi - self.rssi_min) / span if span else 0.0
 
     def _update_bar_color(self, fraction: float) -> None:
         """Apply a smooth red → yellow → green gradient to the progress bar."""
@@ -87,7 +102,19 @@ class ConnectionWindow:
         else:
             r, g = int(255 - (fraction - 0.5) * 510), 255
 
-        with dpg.theme() as theme:
-            with dpg.theme_component(dpg.mvProgressBar):
-                dpg.add_theme_color(dpg.mvThemeCol_PlotHistogram, (r, g, 0, 255))
-        dpg.bind_item_theme(self._tag_bar, theme)
+        # Mutate the reusable theme colour instead of creating a new theme.
+        if self._bar_color is not None:
+            dpg.set_value(self._bar_color, (r, g, 0, 255))
+
+    def reload(self) -> None:
+        """Re-read thresholds from settings and refresh the static labels (post-save)."""
+        conn = settings.data.get("connection", {})
+        self.rssi_min = int(conn.get("rssi_min", -110))
+        self.rssi_max = int(conn.get("rssi_max", -30))
+        self.rssi_warn = int(conn.get("rssi_warn", -90))
+        if dpg.does_item_exist(self._tag_min):
+            dpg.set_value(self._tag_min, f"Min:  {self.rssi_min} dBm")
+            dpg.set_value(self._tag_warn, f"Warn: {self.rssi_warn} dBm")
+            dpg.set_value(self._tag_max, f"Max:  {self.rssi_max} dBm")
+        log.debug("ConnectionWindow: thresholds reloaded min=%d warn=%d max=%d",
+                  self.rssi_min, self.rssi_warn, self.rssi_max)

@@ -12,6 +12,7 @@ whenever either source provides a new reading.
 """
 
 import logging
+import math
 import statistics
 
 import dearpygui.dearpygui as dpg
@@ -176,6 +177,10 @@ class AltitudeWindow:
             ``"pressure"`` or ``"gnss"``.
         """
         if not cls.plot_active:
+            return
+
+        if math.isnan(altitude_value) or math.isinf(altitude_value):
+            log.warning("AltitudeWindow: dropping non-finite %s altitude %r", source, altitude_value)
             return
 
         if source == "pressure":

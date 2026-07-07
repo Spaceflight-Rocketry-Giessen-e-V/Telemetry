@@ -88,6 +88,13 @@ class ComMonitorController:
             dpg.configure_item(self._TAG_STATUS, default_value="Monitor already running!")
             return
 
+        # A previous receiver may exist but be stopped (e.g. a serial error left
+        # its port open without a stop()). Tear it down before opening a new one
+        # so we don't leak the old port/thread.
+        if self.controller:
+            self.controller.stop()
+            self.controller = None
+
         com_port = dpg.get_value(self.com_port_selector)
         baudrate = dpg.get_value(self.baudrate_input)
 
