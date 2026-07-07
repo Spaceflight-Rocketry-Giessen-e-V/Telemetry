@@ -249,10 +249,14 @@ class UIManager:
         log.info("UIManager: building UI")
         dpg.create_context()
 
+        # GNU Unifont covers the entire Unicode BMP, so every glyph the UI uses
+        # (⚙, ✓, ✗, arrows, box shapes, °, …) renders instead of showing "?".
+        # The whole BMP (U+0020–U+FFFF) is rasterised into the font atlas
+        # (~1–2 s at startup). Unifont is a 16 px bitmap font, hence the larger
+        # native size vs. the previous 14 px vector font.
         with dpg.font_registry():
-            default_font = dpg.add_font("assets/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf", 14)
-            dpg.add_font_range_hint(dpg.mvFontRangeHint_Default, parent=default_font)
-            dpg.add_font_range_hint(dpg.mvFontRangeHint_Cyrillic, parent=default_font)
+            default_font = dpg.add_font("assets/fonts/Unifont/unifont.ttf", 16)
+            dpg.add_font_range(0x0020, 0xFFFF, parent=default_font)
         dpg.bind_font(default_font)
 
         # Hard-coded to 1920×1080. Swap in get_screen_resolution() to go
