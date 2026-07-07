@@ -64,7 +64,9 @@ def validate(doc: Any) -> dict:
     if not isinstance(widgets, list):
         raise DashboardError("dashboard 'widgets' must be a list")
 
-    seen_iids: set[str] = set()
+    # Tags are namespaced as ``TYPE_ID__iid__name``, so an iid only has to be
+    # unique within a widget type — different types may reuse the same iid.
+    seen_keys: set[tuple[str, str]] = set()
     for i, w in enumerate(widgets):
         if not isinstance(w, dict):
             raise DashboardError(f"widget[{i}] must be an object")
@@ -74,10 +76,10 @@ def validate(doc: Any) -> dict:
         cell = w["cell"]
         if not (isinstance(cell, list) and len(cell) == 4 and all(isinstance(n, int) for n in cell)):
             raise DashboardError(f"widget[{i}] 'cell' must be [col,row,colspan,rowspan] ints")
-        iid = w["iid"]
-        if iid in seen_iids:
-            raise DashboardError(f"duplicate widget iid {iid!r}")
-        seen_iids.add(iid)
+        key = (w["type"], w["iid"])
+        if key in seen_keys:
+            raise DashboardError(f"duplicate widget (type, iid) {key!r}")
+        seen_keys.add(key)
         w.setdefault("config", {})
     return doc
 

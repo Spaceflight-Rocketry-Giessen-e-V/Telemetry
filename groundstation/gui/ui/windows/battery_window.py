@@ -3,88 +3,80 @@ battery_window.py
 -----------------
 Battery voltage progress bar with a critical-voltage warning indicator.
 
-Thresholds are read from SettingsManager once at draw time and stored as
-instance attributes. They do not update at runtime unless the UI is rebuilt.
+Modular widget: subscribes to ``tele/battery_voltage`` for live values and to
+``settings/battery/changed`` for live threshold refresh. All DPG tags are
+per-instance (via :py:meth:`Widget.tag`), so any number of battery widgets can
+coexist — e.g. one per battery pack.
 """
 
 import logging
 
 import dearpygui.dearpygui as dpg
 
-from ui.settings_manager import settings
+from ui.core import topics
+from ui.core.services import ServiceHub
+from ui.core.widget_base import Widget
 
 log = logging.getLogger(__name__)
 
 
-class BatteryWindow:
-    """Renders a battery-status widget and handles voltage updates."""
+class BatteryWindow(Widget):
+    """Battery-status widget driven by the telemetry bus."""
 
-    def __init__(self):
-        bat = settings.data.get("battery", {})
-        self.v_min = float(bat.get("voltage_min", 5.4))
-        self.v_max = float(bat.get("voltage_max", 8.4))
-        self.v_crit = float(bat.get("voltage_critical", 5.6))
+    TYPE_ID = "battery"
+    DISPLAY_NAME = "Battery Voltage"
+    DEFAULT_CELLS = (3, 3)
+    MIN_CELLS = (2, 2)
 
-        self._tag_bar = "battery_bar"
-        self._tag_label = "battery_label"
-        self._tag_warning = "battery_warning"
-        self._tag_min = "battery_min"
-        self._tag_crit = "battery_critical"
-        self._tag_max = "battery_max"
+    def __init__(self, iid: str, ctx: ServiceHub, config: dict | None = None):
+        super().__init__(iid, ctx, config)
+        self._read_thresholds()
 
-        log.debug("BatteryWindow: thresholds min=%.2f crit=%.2f max=%.2f",
-                  self.v_min, self.v_crit, self.v_max)
+    def _read_thresholds(self) -> None:
+        bat = self.ctx.settings.data.get("battery", {})
+        self.v_min = float(self.config.get("voltage_min", bat.get("voltage_min", 5.4)))
+        self.v_max = float(self.config.get("voltage_max", bat.get("voltage_max", 8.4)))
+        self.v_crit = float(self.config.get("voltage_critical", bat.get("voltage_critical", 5.6)))
 
-    def draw_ui(self, window_width: int = 300, window_height: int = 200) -> None:
-        """Create the battery child-window. Call once during UI construction."""
-        log.debug("BatteryWindow: drawing UI (%dx%d)", window_width, window_height)
+    def build(self, width: int, height: int) -> None:
+        title = self.config.get("title", "Battery Status")
+        dpg.add_text(title, color=(255, 255, 0))
+        dpg.add_progress_bar(default_value=1.0, width=-1, height=30, tag=self.tag("bar"))
 
-        with dpg.child_window(label="Battery", width=window_width, height=window_height):
-            dpg.add_text("Battery Status", color=(255, 255, 0))
-            dpg.add_progress_bar(default_value=1.0, width=-1, height=30, tag=self._tag_bar)
+        with dpg.group(horizontal=True):
+            dpg.add_text(f"{self.v_max:.2f} V", tag=self.tag("label"))
+            dpg.add_text("⚠ UNDERVOLTAGE", tag=self.tag("warning"), color=(255, 0, 0, 255))
 
-            with dpg.group(horizontal=True):
-                dpg.add_text(f"{self.v_max:.2f} V", tag=self._tag_label)
-                dpg.add_text("⚠ UNDERVOLTAGE", tag=self._tag_warning, color=(255, 0, 0, 255))
+        dpg.add_spacer(height=10)
+        with dpg.group(horizontal=False):
+            dpg.add_text(f"Min:      {self.v_min:.2f} V", tag=self.tag("min"))
+            dpg.add_text(f"Critical: {self.v_crit:.2f} V", tag=self.tag("crit"))
+            dpg.add_text(f"Max:      {self.v_max:.2f} V", tag=self.tag("max"))
 
-            dpg.add_spacer(height=10)
+        dpg.hide_item(self.tag("warning"))
 
-            with dpg.group(horizontal=False):
-                dpg.add_text(f"Min:      {self.v_min:.2f} V", tag=self._tag_min)
-                dpg.add_text(f"Critical: {self.v_crit:.2f} V", tag=self._tag_crit)
-                dpg.add_text(f"Max:      {self.v_max:.2f} V", tag=self._tag_max)
+        self.subscribe(topics.tele("battery_voltage"), self._on_voltage)
+        self.subscribe(topics.settings_changed("battery"), lambda _=None: self.on_config_changed(self.config))
 
-        dpg.hide_item(self._tag_warning)
-
-    def update_voltage(self, voltage: float) -> None:
-        """
-        Update the progress bar and warning indicator for a new voltage reading.
-
-        The voltage is clamped to [v_min, v_max] before display. The
-        UNDERVOLTAGE warning is shown when the value falls at or below v_crit.
-        """
+    def _on_voltage(self, sample) -> None:
+        voltage = float(sample.value)
         clamped = max(self.v_min, min(voltage, self.v_max))
         span = self.v_max - self.v_min
         fraction = (clamped - self.v_min) / span if span else 0.0
 
-        dpg.set_value(self._tag_bar, fraction)
-        dpg.set_value(self._tag_label, f"{clamped:.2f} V")
+        dpg.set_value(self.tag("bar"), fraction)
+        dpg.set_value(self.tag("label"), f"{clamped:.2f} V")
 
         if clamped <= self.v_crit:
-            dpg.show_item(self._tag_warning)
-            log.warning("BatteryWindow: undervoltage — %.2f V (critical: %.2f V)", clamped, self.v_crit)
+            dpg.show_item(self.tag("warning"))
+            log.warning("BatteryWindow[%s]: undervoltage — %.2f V (crit %.2f V)", self.iid, clamped, self.v_crit)
         else:
-            dpg.hide_item(self._tag_warning)
+            dpg.hide_item(self.tag("warning"))
 
-    def reload(self) -> None:
-        """Re-read thresholds from settings and refresh the static labels (post-save)."""
-        bat = settings.data.get("battery", {})
-        self.v_min = float(bat.get("voltage_min", 5.4))
-        self.v_max = float(bat.get("voltage_max", 8.4))
-        self.v_crit = float(bat.get("voltage_critical", 5.6))
-        if dpg.does_item_exist(self._tag_min):
-            dpg.set_value(self._tag_min, f"Min:      {self.v_min:.2f} V")
-            dpg.set_value(self._tag_crit, f"Critical: {self.v_crit:.2f} V")
-            dpg.set_value(self._tag_max, f"Max:      {self.v_max:.2f} V")
-        log.debug("BatteryWindow: thresholds reloaded min=%.2f crit=%.2f max=%.2f",
-                  self.v_min, self.v_crit, self.v_max)
+    def on_config_changed(self, config: dict) -> None:
+        super().on_config_changed(config)
+        self._read_thresholds()
+        if dpg.does_item_exist(self.tag("min")):
+            dpg.set_value(self.tag("min"), f"Min:      {self.v_min:.2f} V")
+            dpg.set_value(self.tag("crit"), f"Critical: {self.v_crit:.2f} V")
+            dpg.set_value(self.tag("max"), f"Max:      {self.v_max:.2f} V")

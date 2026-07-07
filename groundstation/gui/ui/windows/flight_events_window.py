@@ -3,134 +3,97 @@ flight_events_window.py
 -----------------------
 Sequential flight-event status table.
 
-Event labels and the abort-threshold index are read from SettingsManager so
-they can be edited in the Settings tab without modifying source code. Each
-event is shown as pending, done (green), or ABORT (red) depending on the
-current event index and the abort threshold.
+Event labels and the abort threshold come from SettingsManager. Modular widget:
+subscribes to ``tele/status_events`` (mark an event done/ABORT), ``flight/armed``
+(reset on arm and disarm), and ``settings/flight_events/changed`` (rebuild the
+table with new labels). Per-instance tags, so multiple event tables can coexist.
 """
 
-import itertools
 import logging
 
 import dearpygui.dearpygui as dpg
 
-from ui.settings_manager import settings
+from ui.core import topics
+from ui.core.services import ServiceHub
+from ui.core.widget_base import Widget
 
 log = logging.getLogger(__name__)
 
 
-class FlightEventWindow:
-    """Renders a flight-event status table and tracks the current event index."""
+class FlightEventWindow(Widget):
+    """Flight-event status table driven by the telemetry bus."""
 
-    COLOR_PENDING = (200, 200, 200, 255)  # grey  — not yet reached
-    COLOR_COMPLETE = (0, 255, 0, 255)  # green — successfully passed
-    COLOR_ABORT = (255, 0, 0, 255)  # red   — abort-level event
+    TYPE_ID = "flight_events"
+    DISPLAY_NAME = "Flight Events"
+    DEFAULT_CELLS = (4, 5)
+    MIN_CELLS = (3, 3)
 
-    # Class-level counter so multiple instances produce unique DPG tags.
-    _id_counter = itertools.count()
+    COLOR_PENDING = (200, 200, 200, 255)
+    COLOR_COMPLETE = (0, 255, 0, 255)
+    COLOR_ABORT = (255, 0, 0, 255)
 
-    def __init__(self, instance_id: str | None = None):
-        uid = instance_id if instance_id is not None else str(next(self._id_counter))
-
+    def __init__(self, iid: str, ctx: ServiceHub, config: dict | None = None):
+        super().__init__(iid, ctx, config)
         self.current_event = -1
-        self._row_tags: list[str] = []
-        self._uid = uid
+        self._row_count = 0
 
-        log.debug("FlightEventWindow[%s]: initialised", uid)
-
-    @staticmethod
-    def _event_config() -> tuple[list[dict], int]:
-        """
-        Return ``(events, abort_threshold)`` from settings.
-
-        ``events`` is a list of ``{"label": str, "is_abort": bool}`` dicts.
-        ``abort_threshold`` is the first index at which ``is_abort`` is True.
-        """
-        fe = settings.data.get("flight_events", {})
+    def _event_config(self) -> tuple[list[dict], int]:
+        fe = self.ctx.settings.data.get("flight_events", {})
         events = fe.get("events", [])
         abort_threshold = fe.get("abort_threshold", len(events))
         return events, abort_threshold
 
-    def draw_ui(self, window_width: int = 400, window_height: int = 400) -> None:
-        """
-        Build the flight-event table.
+    def build(self, width: int, height: int) -> None:
+        dpg.add_text(self.config.get("title", "Flight Event Status"), color=(255, 255, 0))
+        dpg.add_separator()
+        dpg.add_group(tag=self.tag("holder"))
+        self._render_table()
 
-        Row tags are derived from the event list in settings, so calling this
-        after a settings change will reflect updated labels.
-        """
-        log.debug("FlightEventWindow[%s]: drawing UI (%dx%d)", self._uid, window_width, window_height)
+        self.subscribe(topics.tele("status_events"), self._on_event)
+        self.subscribe(topics.FLIGHT_ARMED, lambda _=None: self.reset())
+        self.subscribe(topics.settings_changed("flight_events"), lambda _=None: self._render_table())
 
+    def _render_table(self) -> None:
+        holder = self.tag("holder")
+        dpg.delete_item(holder, children_only=True)
+        self.current_event = -1
         events, abort_threshold = self._event_config()
-        self._row_tags = [f"flight_event_{self._uid}_{i}" for i in range(len(events))]
+        self._row_count = len(events)
 
-        with dpg.child_window(label="Flight Events", width=window_width, height=window_height):
-            dpg.add_text("Flight Event Status", color=(255, 255, 0))
-            dpg.add_separator()
+        with dpg.table(parent=holder, header_row=True,
+                       borders_innerH=True, borders_outerH=True,
+                       borders_innerV=True, borders_outerV=True, row_background=True):
+            dpg.add_table_column(label="#", width_fixed=True, init_width_or_weight=30)
+            dpg.add_table_column(label="Event", width_stretch=True)
+            dpg.add_table_column(label="State", width_fixed=True, init_width_or_weight=95)
 
-            with dpg.table(
-                    header_row=True,
-                    borders_innerH=True, borders_outerH=True,
-                    borders_innerV=True, borders_outerV=True,
-                    row_background=True,
-            ):
-                dpg.add_table_column(label="#", width_fixed=True, init_width_or_weight=30)
-                dpg.add_table_column(label="Event", width_stretch=True)
-                dpg.add_table_column(label="State", width_fixed=True, init_width_or_weight=95)
+            for i, evt in enumerate(events):
+                label = evt.get("label", f"Event {i}")
+                with dpg.table_row():
+                    dpg.add_text(f"{i:02d}")
+                    dpg.add_text(label)
+                    dpg.add_text("-", tag=self.tag(f"row_{i}"), color=self.COLOR_PENDING)
 
-                for i, evt in enumerate(events):
-                    label = evt.get("label", f"Event {i}")
-                    is_abort = evt.get("is_abort", i >= abort_threshold)
-
-                    with dpg.table_row():
-                        dpg.add_text(f"{i:02d}")
-                        dpg.add_text(label)
-                        dpg.add_text(
-                            "-",
-                            tag=self._row_tags[i],
-                            color=self.COLOR_PENDING,
-                        )
-
-        log.debug("FlightEventWindow[%s]: %d events rendered, abort_threshold=%d",
-                  self._uid, len(events), abort_threshold)
-
-    def update_event(self, event_number: int) -> None:
-        """
-        Update the display for *event_number* only.
-
-        Only the specified event is marked done or ABORT.
-        All other events are left in their current state.
-        """
-        events, abort_threshold = self._event_config()
-
-        if event_number != self.current_event:
-            log.info("FlightEventWindow[%s]: event updated %d → %d",
-                     self._uid, self.current_event, event_number)
-
+    def _on_event(self, sample) -> None:
+        event_number = int(sample.value)
         self.current_event = event_number
-
-        if 0 <= event_number < len(self._row_tags):
-            tag = self._row_tags[event_number]
-            # Prefer the per-event abort flag (what the Settings UI edits); fall
-            # back to the threshold for legacy configs without per-event flags.
-            if event_number < len(events):
-                is_abort = events[event_number].get("is_abort", event_number >= abort_threshold)
-            else:
-                is_abort = event_number >= abort_threshold
-            color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
-            label = "⚠ ABORT" if is_abort else "✓ done"
-            if is_abort:
-                log.warning("FlightEventWindow[%s]: abort event reached at index %d", self._uid, event_number)
+        events, abort_threshold = self._event_config()
+        if not (0 <= event_number < self._row_count):
+            return
+        if event_number < len(events):
+            is_abort = events[event_number].get("is_abort", event_number >= abort_threshold)
+        else:
+            is_abort = event_number >= abort_threshold
+        color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
+        label = "⚠ ABORT" if is_abort else "✓ done"
+        tag = self.tag(f"row_{event_number}")
+        if dpg.does_item_exist(tag):
             dpg.configure_item(tag, default_value=label, color=color)
 
     def reset(self) -> None:
-        """
-        Clear every event indicator back to pending.
-
-        Called on arm (fresh flight) and on disarm, so a stale "Armed"/done state
-        does not persist after the rocket is disarmed.
-        """
+        """Clear every event indicator back to pending (on arm and disarm)."""
         self.current_event = -1
-        for tag in self._row_tags:
+        for i in range(self._row_count):
+            tag = self.tag(f"row_{i}")
             if dpg.does_item_exist(tag):
                 dpg.configure_item(tag, default_value="-", color=self.COLOR_PENDING)
-        log.info("FlightEventWindow[%s]: indicators reset", self._uid)

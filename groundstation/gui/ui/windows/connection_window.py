@@ -1,130 +1,118 @@
 """
 connection_window.py
 --------------------
-Connection-quality (RSSI) progress bar with a weak-signal warning indicator.
+Connection-quality (RSSI) progress bar with a weak-signal warning and a
+time-since-last-packet readout.
 
-Thresholds are read from SettingsManager once at draw time and stored as
-instance attributes. They do not update at runtime unless the UI is rebuilt.
+Modular widget: subscribes to ``tele/rssi`` and ``tele/time_since_last_packet``,
+and to ``settings/connection/changed`` for live threshold refresh. Its bar
+colour theme is created per-instance and deleted on teardown.
 """
 
 import logging
 
 import dearpygui.dearpygui as dpg
 
-from ui.settings_manager import settings
+from ui.core import topics
+from ui.core.services import ServiceHub
+from ui.core.widget_base import Widget
 
 log = logging.getLogger(__name__)
 
 
-class ConnectionWindow:
-    """Renders a connection-quality widget and handles RSSI updates."""
+class ConnectionWindow(Widget):
+    """Connection-quality widget driven by the telemetry bus."""
 
-    def __init__(self):
-        conn = settings.data.get("connection", {})
-        self.rssi_min = int(conn.get("rssi_min", -110))
-        self.rssi_max = int(conn.get("rssi_max", -30))
-        self.rssi_warn = int(conn.get("rssi_warn", -90))
+    TYPE_ID = "connection"
+    DISPLAY_NAME = "Connection Quality"
+    DEFAULT_CELLS = (3, 3)
+    MIN_CELLS = (2, 2)
 
-        self._tag_bar = "rssi_bar"
-        self._tag_label = "rssi_label"
-        self._tag_warning = "rssi_warning"
-        self._tag_min = "rssi_threshold_min"
-        self._tag_warn = "rssi_threshold_warn"
-        self._tag_max = "rssi_threshold_max"
-        self._tag_packet_delay = "rssi_packet_delay"
-
-        # Persistent progress-bar colour theme (created in draw_ui). Reused on
-        # every update so we don't leak a theme item per packet.
+    def __init__(self, iid: str, ctx: ServiceHub, config: dict | None = None):
+        super().__init__(iid, ctx, config)
+        self._read_thresholds()
         self._bar_theme: int | None = None
         self._bar_color: int | None = None
 
-        log.debug("ConnectionWindow: thresholds min=%d warn=%d max=%d",
-                  self.rssi_min, self.rssi_warn, self.rssi_max)
+    def _read_thresholds(self) -> None:
+        conn = self.ctx.settings.data.get("connection", {})
+        self.rssi_min = int(self.config.get("rssi_min", conn.get("rssi_min", -110)))
+        self.rssi_max = int(self.config.get("rssi_max", conn.get("rssi_max", -30)))
+        self.rssi_warn = int(self.config.get("rssi_warn", conn.get("rssi_warn", -90)))
 
-    def draw_ui(self, window_width: int = 200, window_height: int = 200) -> None:
-        """Create the connection child-window. Call once during UI construction."""
-        log.debug("ConnectionWindow: drawing UI (%dx%d)", window_width, window_height)
-
+    def build(self, width: int, height: int) -> None:
         rssi_start = (self.rssi_min + self.rssi_max) // 2
         fraction = self._fraction(rssi_start)
 
-        with dpg.child_window(label="Connection", width=window_width, height=window_height):
-            dpg.add_text("Connection Quality", color=(255, 255, 0))
-            dpg.add_progress_bar(default_value=fraction, width=-1, height=30, tag=self._tag_bar)
+        dpg.add_text(self.config.get("title", "Connection Quality"), color=(255, 255, 0))
+        dpg.add_progress_bar(default_value=fraction, width=-1, height=30, tag=self.tag("bar"))
 
-            with dpg.group(horizontal=True):
-                dpg.add_text(f"{rssi_start} dBm", tag=self._tag_label)
-                dpg.add_text("⚠ WEAK SIGNAL", tag=self._tag_warning, color=(255, 0, 0, 255))
+        with dpg.group(horizontal=True):
+            dpg.add_text(f"{rssi_start} dBm", tag=self.tag("label"))
+            dpg.add_text("⚠ WEAK SIGNAL", tag=self.tag("warning"), color=(255, 0, 0, 255))
 
-            dpg.add_spacer(height=10)
+        dpg.add_spacer(height=10)
+        with dpg.group(horizontal=False):
+            dpg.add_text(f"Min:  {self.rssi_min} dBm", tag=self.tag("min"))
+            dpg.add_text(f"Warn: {self.rssi_warn} dBm", tag=self.tag("warn"))
+            dpg.add_text(f"Max:  {self.rssi_max} dBm", tag=self.tag("max"))
 
-            with dpg.group(horizontal=False):
-                dpg.add_text(f"Min:  {self.rssi_min} dBm", tag=self._tag_min)
-                dpg.add_text(f"Warn: {self.rssi_warn} dBm", tag=self._tag_warn)
-                dpg.add_text(f"Max:  {self.rssi_max} dBm", tag=self._tag_max)
+        dpg.add_spacer(height=6)
+        dpg.add_separator()
+        dpg.add_text("Time since last packet: 0 ms", tag=self.tag("delay"))
 
-            dpg.add_spacer(height=6)
-            dpg.add_separator()
-            dpg.add_text("Time since last packet: 0 ms", tag=self._tag_packet_delay)
-
-        # One reusable theme for the bar colour; _update_bar_color mutates it.
         with dpg.theme() as self._bar_theme:
             with dpg.theme_component(dpg.mvProgressBar):
                 self._bar_color = dpg.add_theme_color(dpg.mvThemeCol_PlotHistogram, (0, 255, 0, 255))
-        dpg.bind_item_theme(self._tag_bar, self._bar_theme)
+        dpg.bind_item_theme(self.tag("bar"), self._bar_theme)
 
-        dpg.hide_item(self._tag_warning)
+        dpg.hide_item(self.tag("warning"))
 
-    def update_rssi(self, rssi: int) -> None:
-        """
-        Refresh the progress bar and warning indicator for a new RSSI reading.
+        self.subscribe(topics.tele("rssi"), self._on_rssi)
+        self.subscribe(topics.tele("time_since_last_packet"), self._on_delay)
+        self.subscribe(topics.settings_changed("connection"), lambda _=None: self.on_config_changed(self.config))
 
-        The value is clamped to [rssi_min, rssi_max]. The WEAK SIGNAL warning
-        is shown when the value falls at or below rssi_warn.
-        """
+    def _on_rssi(self, sample) -> None:
+        rssi = int(sample.value)
         clamped = max(self.rssi_min, min(rssi, self.rssi_max))
         fraction = self._fraction(clamped)
 
-        dpg.set_value(self._tag_bar, fraction)
-        dpg.set_value(self._tag_label, f"{clamped} dBm")
+        dpg.set_value(self.tag("bar"), fraction)
+        dpg.set_value(self.tag("label"), f"{clamped} dBm")
         self._update_bar_color(fraction)
 
         if clamped <= self.rssi_warn:
-            dpg.show_item(self._tag_warning)
-            log.warning("ConnectionWindow: weak signal — %d dBm (warn: %d dBm)", clamped, self.rssi_warn)
+            dpg.show_item(self.tag("warning"))
         else:
-            dpg.hide_item(self._tag_warning)
+            dpg.hide_item(self.tag("warning"))
+
+    def _on_delay(self, sample) -> None:
+        if dpg.does_item_exist(self.tag("delay")):
+            dpg.set_value(self.tag("delay"), f"Time since last packet: {sample.value} ms")
 
     def _fraction(self, rssi: int) -> float:
-        """Return the normalised position of *rssi* within [rssi_min, rssi_max]."""
         span = self.rssi_max - self.rssi_min
         return (rssi - self.rssi_min) / span if span else 0.0
 
     def _update_bar_color(self, fraction: float) -> None:
-        """Apply a smooth red → yellow → green gradient to the progress bar."""
         if fraction < 0.5:
             r, g = 255, int(510 * fraction)
         else:
             r, g = int(255 - (fraction - 0.5) * 510), 255
-
-        # Mutate the reusable theme colour instead of creating a new theme.
         if self._bar_color is not None:
             dpg.set_value(self._bar_color, (r, g, 0, 255))
 
-    def update_packet_delay(self, ms: int) -> None:
-        """Show the time since the last received packet (ms) in this box."""
-        if dpg.does_item_exist(self._tag_packet_delay):
-            dpg.set_value(self._tag_packet_delay, f"Time since last packet: {ms} ms")
+    def on_config_changed(self, config: dict) -> None:
+        super().on_config_changed(config)
+        self._read_thresholds()
+        if dpg.does_item_exist(self.tag("min")):
+            dpg.set_value(self.tag("min"), f"Min:  {self.rssi_min} dBm")
+            dpg.set_value(self.tag("warn"), f"Warn: {self.rssi_warn} dBm")
+            dpg.set_value(self.tag("max"), f"Max:  {self.rssi_max} dBm")
 
-    def reload(self) -> None:
-        """Re-read thresholds from settings and refresh the static labels (post-save)."""
-        conn = settings.data.get("connection", {})
-        self.rssi_min = int(conn.get("rssi_min", -110))
-        self.rssi_max = int(conn.get("rssi_max", -30))
-        self.rssi_warn = int(conn.get("rssi_warn", -90))
-        if dpg.does_item_exist(self._tag_min):
-            dpg.set_value(self._tag_min, f"Min:  {self.rssi_min} dBm")
-            dpg.set_value(self._tag_warn, f"Warn: {self.rssi_warn} dBm")
-            dpg.set_value(self._tag_max, f"Max:  {self.rssi_max} dBm")
-        log.debug("ConnectionWindow: thresholds reloaded min=%d warn=%d max=%d",
-                  self.rssi_min, self.rssi_warn, self.rssi_max)
+    def destroy(self) -> None:
+        # The bar theme lives outside the root child_window, so delete it explicitly.
+        if self._bar_theme is not None and dpg.does_item_exist(self._bar_theme):
+            dpg.delete_item(self._bar_theme)
+        self._bar_theme = None
+        super().destroy()

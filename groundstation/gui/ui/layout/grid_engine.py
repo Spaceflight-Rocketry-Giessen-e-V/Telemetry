@@ -62,14 +62,14 @@ class GridLayoutEngine:
         dpg.add_child_window(tag=canvas_tag, parent=parent, width=-1, height=-1, border=False)
 
         vw = self._viewport_w()
-        placed_iids: set[str] = set()
+        placed: set[tuple[str, str]] = set()
         for entry in doc["widgets"]:
             type_id, iid = entry["type"], entry["iid"]
             if not self._registry.is_registered(type_id):
                 log.warning("grid: skipping unknown widget type %r (iid=%s)", type_id, iid)
                 continue
-            if iid in placed_iids:
-                log.warning("grid: skipping duplicate iid %r", iid)
+            if (type_id, iid) in placed:
+                log.warning("grid: skipping duplicate (type, iid) (%r, %r)", type_id, iid)
                 continue
             rect: grid_math.CellRect = tuple(entry["cell"])  # type: ignore[assignment]
             try:
@@ -81,7 +81,7 @@ class GridLayoutEngine:
                 continue
             self._widgets.append(widget)
             self._rects.append(rect)
-            placed_iids.add(iid)
+            placed.add((type_id, iid))
 
         clashes = grid_math.find_overlaps(self._rects)
         if clashes:

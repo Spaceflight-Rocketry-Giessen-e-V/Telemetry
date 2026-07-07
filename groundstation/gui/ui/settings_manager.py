@@ -27,6 +27,10 @@ SETTINGS_FILE = os.path.join(os.path.dirname(__file__), "settings.json")
 
 # Default values used when no settings.json exists yet.
 DEFAULTS: dict[str, Any] = {
+    # Which dashboard document (dashboards/<name>.json) the UI loads at startup.
+    "dashboard": {
+        "current": "flight-default",
+    },
     "battery": {
         "voltage_min": 5.4,
         "voltage_max": 8.4,
