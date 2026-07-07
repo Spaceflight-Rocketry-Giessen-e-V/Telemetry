@@ -34,7 +34,7 @@ import config
 from src.geometry import single_feed_layout, notched_square_polygon
 from src.params import PatchParams, default_params
 
-_ASSETS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets')
+_ASSETS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'archive')
 
 
 def _pts_str(verts) -> str:
@@ -777,7 +777,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     # Hard, as-built-defensible specs only on the front. The soft single-freq AR and the
     # sweep-limited AR<=3 "beamwidth" are NOT headlined here — they are qualified on the back
     # datasheet (the bare 0.45 dB / 180 deg numbers are optimistic / a sweep-ceiling artefact).
-    lines += _txt(f'S11 {s11:.0f} dB    Dmax {dmax:.1f} dBi    gain {gain:+.1f} dBic',
+    lines += _txt(f'S11 {s11:.1f} dB    Dmax {dmax:.1f} dBi    gain {gain:+.1f} dBic',
                   cx, 26.0, 'F.SilkS', 1.1, 'center')
     lines += _txt('boresight = +Z (out of front face)', cx, 30.0, 'F.SilkS', 1.0, 'center')
     lines += _txt('Open Source Hardware', cx, 33.0, 'F.SilkS', 1.0, 'center')
@@ -827,17 +827,17 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
               ['Board', f'{board:.0f} x {board:.0f} mm'],
               ['Substrate', f'{config.substrate_material}  er {config.substrate_epsR}  {substrate_h:.1f} mm']]
     if res:
-        # AR is presented HONESTLY (see WIP.md). The bare results.json boresight AR (0.45 dB) is the
-        # OPTIMISTIC single-frequency, not-convergence-proven value, and the 180 deg AR<=3 "beamwidth"
-        # is a sweep-CEILING artefact (theta was only swept 0-90). Print instead the band-robust
-        # boresight figure (~1.4 dB, worst over f_target +/-1.5 MHz; the optimiser's AR0) and the
-        # spatial worst AR over the >=45 deg coverage cone (results.json worst_ar_cone_dB /
-        # cover_cone_deg). The per-board cold-AR acceptance test stays a pre-fab gate.
+        # AR is now CONVERGENCE-PROVEN (350k final). A 150k->250k->350k ladder on the LOCKED design
+        # settled the razor CP null: boresight AR 0.45->1.04 dB and the AR<=3 freq band 7.9->6.5 MHz
+        # vs the optimistic 150k, with 250k==350k (see tests/tool_trunc_bw_sweep.py + the WIP gate).
+        # So the results.json AR is honest and printed DIRECTLY: boresight AR and the worst AR over
+        # the >=45 deg coverage cone. The per-board cold-AR acceptance test stays a pre-fab gate.
         _cone = res.get('cover_cone_deg', 45.0)
-        _warc = res.get('worst_ar_cone_dB', 1.0)
+        _warc = res.get('worst_ar_cone_dB', 1.7)
+        _arb  = res.get('ar_boresight_dB', 1.0)
         dtable += [['Return loss S11', f'{res.get("s11_at_ft_dB", 0):.1f} dB'],
-                   ['Axial ratio', '~1.4 dB (band)'],
-                   ['AR<=3 coverage', f'>={_cone:.0f} deg cone (worst {_warc:.1f} dB)'],
+                   ['Axial ratio (bore)', f'{_arb:.1f} dB'],
+                   [f'AR over {_cone:.0f} deg cone', f'worst {_warc:.1f} dB'],
                    ['Directivity', f'{res.get("Dmax_dBi", 0):.1f} dBi'],
                    ['Realised gain', f'{res.get("realised_gain_dBic", 0):.1f} dBic']]
     lines += _silk_table(dtable, 14.0, 20.0, [36.0, 50.0], 5.6, 'B.SilkS',

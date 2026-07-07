@@ -43,7 +43,13 @@ NrTS_opt   = 150000  # time steps per optimisation run. Set EQUAL to NrTS_final 
                      # optimistic AR that collapsed in the final run. Matching fidelity
                      # removes that disagreement (≈+25% time/sim; see the speed plan,
                      # which more than offsets it by cutting the sim COUNT).
-NrTS_final = 150000  # time steps for the final high-fidelity run  (was 80000)
+NrTS_final = 350000  # time steps for the final high-fidelity run. RAISED 150k->350k: the
+                     # razor CP AR null is time-step-limited at 150k (a direct 150k vs 250k
+                     # re-run of the locked W=82.5/trunc=8.25 design moved the AR null depth
+                     # 0.41->1.03 dB and the AR<=3 freq band 7.9->6.6 MHz — the 150k numbers
+                     # were optimistic). 350k is the convergence top-rung to confirm 250k is
+                     # settled and to write a convergence-proven results.json (see tests/
+                     # tool_trunc_bw_sweep.py + the WIP convergence gate).
 NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. RAISED from 60k to equal
                      # NrTS_opt: the screen must centre the AR NULL (optimizer._screen_cost on
                      # f_ar_null), and the razor AR null does NOT converge at 60k — a 60k run read

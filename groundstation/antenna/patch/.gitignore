@@ -20,6 +20,12 @@ patch_antenna*.kicad_pcb
 board_sweep_results.json
 # eps_sweep_results.json: regenerable from tests/tool_eps_sweep.py (εr/thickness robustness)
 eps_sweep_results.json
+# trunc_bw_sweep / thermal_drift results: regenerable from the matching tests/tool_*.py
+trunc_bw_sweep*.json
+thermal_drift_results.json
+# casing print mesh: large binary, regenerable from casing/enclosure.py (openscad). Source +
+# the small acrylic-cut DXF + review PNGs ARE tracked; the STL is built on demand.
+casing/*.stl
 
 # Gerber / fab exports (regenerable from the .kicad_pcb)
 GRBR/
@@ -27,6 +33,9 @@ GRBR/
 
 # Diagnostic scratch outputs (test harness stdout redirects, e.g. foo > x_out.txt)
 *_out*.txt
+
+# Local editor / MCP server config — machine-specific (absolute .vscode paths etc.)
+.mcp.json
 
 # Claude Code session artifacts (workflow scripts, transcripts)
 .claude/

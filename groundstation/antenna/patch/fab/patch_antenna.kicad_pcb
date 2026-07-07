@@ -151,7 +151,7 @@
     (at 80.0000 22.5000) (layer "F.SilkS")
     (effects (font (size 1.10 1.10) (thickness 0.154)))
   )
-  (gr_text "S11 -12 dB    Dmax 6.6 dBi    gain +0.8 dBic"
+  (gr_text "S11 -12.6 dB    Dmax 6.6 dBi    gain +1.0 dBic"
     (at 80.0000 26.0000) (layer "F.SilkS")
     (effects (font (size 1.10 1.10) (thickness 0.154)))
   )
@@ -2446,23 +2446,23 @@
     (at 145.2000 68.4960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
-  (gr_text "-12.1 dB"
+  (gr_text "-12.6 dB"
     (at 109.2000 68.4960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
-  (gr_text "Axial ratio"
+  (gr_text "Axial ratio (bore)"
     (at 145.2000 74.0960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
-  (gr_text "~1.4 dB (band)"
+  (gr_text "1.0 dB"
     (at 109.2000 74.0960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
-  (gr_text "AR<=3 coverage"
+  (gr_text "AR over 45 deg cone"
     (at 145.2000 79.6960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
-  (gr_text ">=45 deg cone (worst 1.0 dB)"
+  (gr_text "worst 1.7 dB"
     (at 109.2000 79.6960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
@@ -2478,7 +2478,7 @@
     (at 145.2000 90.8960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
-  (gr_text "0.8 dBic"
+  (gr_text "1.0 dBic"
     (at 109.2000 90.8960) (layer "B.SilkS")
     (effects (font (size 1.20 1.20) (thickness 0.168)) (justify mirror left))
   )
