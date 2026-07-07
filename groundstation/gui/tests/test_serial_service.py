@@ -78,14 +78,33 @@ class TestSerialService(unittest.TestCase):
         self.bus.pump()
         self.assertEqual(self.received[topics.FLIGHT_ARMED], [True, False])
 
-    def test_arm_resets_mission_clock_and_publishes_plot_reset(self):
-        self._capture(topics.PLOT_RESET)
+    def test_arm_clears_plots_and_rebases_clock_exactly_once(self):
+        self._capture(topics.PLOT_CLEAR, topics.PLOT_RESET)
         self.time.now = 1010.0
         self.svc._on_packet(_packet(flight_mode=1))  # arm at t=1010
         self.bus.pump()
-        self.assertEqual(len(self.received[topics.PLOT_RESET]), 1)
-        # clock rebased at arm, so elapsed is ~0 right after
+        # Arm uses PLOT_CLEAR (clear only), NOT PLOT_RESET — otherwise the
+        # SerialService PLOT_RESET subscriber would rebase the clock a 2nd time.
+        self.assertEqual(len(self.received[topics.PLOT_CLEAR]), 1)
+        self.assertEqual(self.received[topics.PLOT_RESET], [])
+        # clock rebased once at arm, so elapsed is ~0 right after
         self.assertAlmostEqual(self.clock.elapsed(), 0.0)
+
+    def test_arm_does_not_double_shift_time_origin(self):
+        # A packet stamped just after arm and one stamped a frame later must have
+        # monotonically increasing mission_t (the double-reset bug moved the
+        # origin forward between them).
+        self._capture(topics.tele("acceleration"))
+        self.time.now = 1010.000
+        self.svc._on_packet(_packet(flight_mode=1, acceleration=1.0))  # arm, t0
+        self.time.now = 1010.005
+        self.svc._on_packet(_packet(flight_mode=1, acceleration=2.0))  # +5ms
+        self.bus.pump()  # a frame passes; clock must NOT be rebased again here
+        self.time.now = 1010.010
+        self.svc._on_packet(_packet(flight_mode=1, acceleration=3.0))  # +10ms
+        self.bus.pump()
+        samples = [s.mission_t for s in self.received[topics.tele("acceleration")]]
+        self.assertEqual(samples, sorted(samples), f"mission_t not monotonic: {samples}")
 
     def test_user_plot_reset_rebases_clock(self):
         self.time.now = 1000.0

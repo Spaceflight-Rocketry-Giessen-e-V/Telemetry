@@ -57,16 +57,25 @@ def validate(doc: Any) -> dict:
         raise DashboardError("dashboard root must be an object")
     if doc.get("schema") != SCHEMA_VERSION:
         raise DashboardError(f"unsupported schema {doc.get('schema')!r}; expected {SCHEMA_VERSION}")
+
     grid = doc.get("grid")
     if not isinstance(grid, dict):
         raise DashboardError("dashboard 'grid' must be an object")
+    # Whitelist grid keys + require ints, so a typo'd/malformed grid raises a
+    # DashboardError (caught by the caller's empty-grid fallback) instead of an
+    # uncaught TypeError from GridSpec(**grid).
+    allowed_grid = {"cols", "cell_h", "gutter", "margin"}
+    unknown = set(grid) - allowed_grid
+    if unknown:
+        raise DashboardError(f"dashboard 'grid' has unknown key(s): {sorted(unknown)}")
+    for k, v in grid.items():
+        if not isinstance(v, int) or isinstance(v, bool):
+            raise DashboardError(f"dashboard grid['{k}'] must be an int, got {v!r}")
+
     widgets = doc.get("widgets")
     if not isinstance(widgets, list):
         raise DashboardError("dashboard 'widgets' must be a list")
 
-    # Tags are namespaced as ``TYPE_ID__iid__name``, so an iid only has to be
-    # unique within a widget type — different types may reuse the same iid.
-    seen_keys: set[tuple[str, str]] = set()
     for i, w in enumerate(widgets):
         if not isinstance(w, dict):
             raise DashboardError(f"widget[{i}] must be an object")
@@ -74,13 +83,17 @@ def validate(doc: Any) -> dict:
             if key not in w:
                 raise DashboardError(f"widget[{i}] missing '{key}'")
         cell = w["cell"]
-        if not (isinstance(cell, list) and len(cell) == 4 and all(isinstance(n, int) for n in cell)):
+        if not (isinstance(cell, list) and len(cell) == 4
+                and all(isinstance(n, int) and not isinstance(n, bool) for n in cell)):
             raise DashboardError(f"widget[{i}] 'cell' must be [col,row,colspan,rowspan] ints")
-        key = (w["type"], w["iid"])
-        if key in seen_keys:
-            raise DashboardError(f"duplicate widget (type, iid) {key!r}")
-        seen_keys.add(key)
+        col, row, colspan, rowspan = cell
+        if col < 0 or row < 0 or colspan < 1 or rowspan < 1:
+            raise DashboardError(
+                f"widget[{i}] 'cell' out of range (need col>=0,row>=0,colspan>=1,rowspan>=1): {cell}")
         w.setdefault("config", {})
+    # NOTE: duplicate (type, iid) pairs are NOT rejected here — the grid engine
+    # skips duplicates per-widget at load so one bad entry never discards the
+    # whole dashboard. Tags stay unique because they are namespaced per instance.
     return doc
 
 

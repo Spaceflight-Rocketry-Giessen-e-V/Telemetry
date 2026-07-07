@@ -43,9 +43,35 @@ class TestLayoutStore(unittest.TestCase):
         with self.assertRaises(DashboardError):
             validate(d)
 
-    def test_reject_duplicate_iid(self):
+    def test_duplicate_type_iid_allowed_by_validate(self):
+        # Duplicates are handled (skipped) by the engine, not rejected here, so
+        # one bad entry never discards the whole dashboard.
         d = _good_doc()
-        d["widgets"][1]["iid"] = "a"
+        d["widgets"][1]["iid"] = "a"  # now two (battery, a)
+        validate(d)  # must not raise
+
+    def test_reject_unknown_grid_key(self):
+        d = _good_doc()
+        d["grid"]["row_gap"] = 4
+        with self.assertRaises(DashboardError):
+            validate(d)
+
+    def test_reject_noninteger_grid_value(self):
+        d = _good_doc()
+        d["grid"]["cols"] = "12"
+        with self.assertRaises(DashboardError):
+            validate(d)
+
+    def test_reject_zero_or_negative_span(self):
+        for bad in ([0, 0, 0, 3], [0, 0, 3, 0], [0, 0, -1, 3]):
+            d = _good_doc()
+            d["widgets"][0]["cell"] = bad
+            with self.assertRaises(DashboardError):
+                validate(d)
+
+    def test_reject_negative_position(self):
+        d = _good_doc()
+        d["widgets"][0]["cell"] = [-1, 0, 3, 3]
         with self.assertRaises(DashboardError):
             validate(d)
 

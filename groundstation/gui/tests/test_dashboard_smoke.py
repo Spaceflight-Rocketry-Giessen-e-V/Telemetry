@@ -53,6 +53,42 @@ class TestDashboardSmoke(unittest.TestCase):
             self.assertFalse(dpg.does_item_exist("test_canvas_1"))
             dpg.delete_item(win)
 
+    def test_singleton_second_instance_skipped(self):
+        engine = self._make_engine()
+        win = dpg.add_window()
+        doc = {
+            "schema": 1, "name": "x",
+            "grid": {"cols": 12, "cell_h": 80, "gutter": 8, "margin": 12},
+            "widgets": [
+                {"type": "serial_control", "iid": "a", "cell": [0, 0, 3, 2], "config": {}},
+                {"type": "serial_control", "iid": "b", "cell": [3, 0, 3, 2], "config": {}},
+            ],
+        }
+        try:
+            engine.load(doc, parent=win, canvas_tag="test_canvas_s")
+            self.assertEqual(len(engine.widgets), 1, "second singleton instance must be skipped")
+        finally:
+            engine.teardown_all()
+            dpg.delete_item(win)
+
+    def test_duplicate_type_iid_skipped(self):
+        engine = self._make_engine()
+        win = dpg.add_window()
+        doc = {
+            "schema": 1, "name": "x",
+            "grid": {"cols": 12, "cell_h": 80, "gutter": 8, "margin": 12},
+            "widgets": [
+                {"type": "battery", "iid": "a", "cell": [0, 0, 3, 3], "config": {}},
+                {"type": "battery", "iid": "a", "cell": [3, 0, 3, 3], "config": {}},
+            ],
+        }
+        try:
+            engine.load(doc, parent=win, canvas_tag="test_canvas_d")
+            self.assertEqual(len(engine.widgets), 1, "duplicate (type,iid) must be skipped")
+        finally:
+            engine.teardown_all()
+            dpg.delete_item(win)
+
     def test_unknown_type_is_skipped_not_fatal(self):
         engine = self._make_engine()
         win = dpg.add_window()

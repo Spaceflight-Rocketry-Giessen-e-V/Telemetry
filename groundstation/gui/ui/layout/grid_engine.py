@@ -63,6 +63,7 @@ class GridLayoutEngine:
 
         vw = self._viewport_w()
         placed: set[tuple[str, str]] = set()
+        placed_types: set[str] = set()
         for entry in doc["widgets"]:
             type_id, iid = entry["type"], entry["iid"]
             if not self._registry.is_registered(type_id):
@@ -70,6 +71,9 @@ class GridLayoutEngine:
                 continue
             if (type_id, iid) in placed:
                 log.warning("grid: skipping duplicate (type, iid) (%r, %r)", type_id, iid)
+                continue
+            if self._registry.get(type_id).SINGLETON and type_id in placed_types:
+                log.warning("grid: skipping second instance of singleton widget %r (iid=%s)", type_id, iid)
                 continue
             rect: grid_math.CellRect = tuple(entry["cell"])  # type: ignore[assignment]
             try:
@@ -82,6 +86,7 @@ class GridLayoutEngine:
             self._widgets.append(widget)
             self._rects.append(rect)
             placed.add((type_id, iid))
+            placed_types.add(type_id)
 
         clashes = grid_math.find_overlaps(self._rects)
         if clashes:

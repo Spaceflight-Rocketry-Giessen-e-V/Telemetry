@@ -44,7 +44,11 @@ class PlotWidgetBase(Widget):
         """Subscribe to the shared plot-control topics (call inside build)."""
         self.subscribe(topics.PLOT_STOP, self._on_stop)
         self.subscribe(topics.PLOT_RESUME, self._on_resume)
+        # Both reset (user button) and clear (on arm) wipe the series + resume;
+        # they differ only in whether the mission clock is rebased, which is
+        # SerialService's concern, not the plot's.
         self.subscribe(topics.PLOT_RESET, self._on_reset)
+        self.subscribe(topics.PLOT_CLEAR, self._on_reset)
 
     def _toggle(self) -> None:
         self.ctx.bus.publish(topics.PLOT_STOP if self.active else topics.PLOT_RESUME, None)

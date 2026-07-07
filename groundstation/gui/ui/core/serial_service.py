@@ -112,11 +112,13 @@ class SerialService:
         arm_edge = armed and not self._armed
         disarm_edge = (not armed) and self._armed
 
-        # On arm, restart the mission clock and clear the plots so a fresh flight
-        # begins at t=0 (matches the old arm-transition behaviour).
+        # On arm, restart the mission clock synchronously (so this packet and all
+        # that follow are stamped from t=0) and clear the plots via PLOT_CLEAR —
+        # NOT PLOT_RESET, whose subscriber would rebase the clock a *second* time
+        # one frame later on the UI thread and shift the time origin mid-flight.
         if arm_edge:
             self.clock.reset()
-            self.bus.publish(topics.PLOT_RESET, None)
+            self.bus.publish(topics.PLOT_CLEAR, None)
 
         mission_t = self.clock.elapsed()
         wall_t = time.time()

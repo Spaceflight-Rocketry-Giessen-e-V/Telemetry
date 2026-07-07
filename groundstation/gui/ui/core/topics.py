@@ -28,7 +28,12 @@ FLIGHT_ARMED = "flight/armed"
 # Plot control (payload: None) — fanned to every coordinated plot instance.
 PLOT_STOP = "plot/stop"
 PLOT_RESUME = "plot/resume"
+# PLOT_RESET clears the plots AND rebases the mission clock (the user's Reset
+# button). PLOT_CLEAR only clears the plots — used on arm, where the clock has
+# already been reset synchronously, so the clock must NOT be rebased a second
+# time (which would shift the time origin mid-flight).
 PLOT_RESET = "plot/reset"
+PLOT_CLEAR = "plot/clear"
 
 # Serial link status (payload: dict {connected: bool, port: str, message: str}).
 SERIAL_STATUS = "serial/status"
