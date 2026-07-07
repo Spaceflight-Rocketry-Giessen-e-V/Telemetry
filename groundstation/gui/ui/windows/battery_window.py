@@ -45,7 +45,7 @@ class BatteryWindow:
 
             with dpg.group(horizontal=True):
                 dpg.add_text(f"{self.v_max:.2f} V", tag=self._tag_label)
-                dpg.add_text("UNDERVOLTAGE", tag=self._tag_warning, color=(255, 0, 0, 255))
+                dpg.add_text("⚠ UNDERVOLTAGE", tag=self._tag_warning, color=(255, 0, 0, 255))
 
             dpg.add_spacer(height=10)
 

@@ -149,7 +149,7 @@ class CommandsWindow:
 
             with dpg.group(horizontal=True):
                 self._confirm_btn = dpg.add_button(
-                    label="Send",
+                    label="✓ Send",
                     width=100,
                     callback=self._confirm,
                     show=False,
@@ -162,7 +162,7 @@ class CommandsWindow:
                 dpg.bind_item_theme(self._confirm_btn, confirm_theme)
 
                 self._abort_btn = dpg.add_button(
-                    label="Abort",
+                    label="✗ Abort",
                     width=100,
                     callback=self._abort,
                     show=False,

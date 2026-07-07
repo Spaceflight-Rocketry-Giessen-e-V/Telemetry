@@ -75,7 +75,7 @@ class FlightEventWindow:
             ):
                 dpg.add_table_column(label="#", width_fixed=True, init_width_or_weight=30)
                 dpg.add_table_column(label="Event", width_stretch=True)
-                dpg.add_table_column(label="State", width_fixed=True, init_width_or_weight=80)
+                dpg.add_table_column(label="State", width_fixed=True, init_width_or_weight=95)
 
                 for i, evt in enumerate(events):
                     label = evt.get("label", f"Event {i}")
@@ -117,7 +117,7 @@ class FlightEventWindow:
             else:
                 is_abort = event_number >= abort_threshold
             color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
-            label = "ABORT" if is_abort else "done"
+            label = "⚠ ABORT" if is_abort else "✓ done"
             if is_abort:
                 log.warning("FlightEventWindow[%s]: abort event reached at index %d", self._uid, event_number)
             dpg.configure_item(tag, default_value=label, color=color)

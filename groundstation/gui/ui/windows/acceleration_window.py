@@ -92,8 +92,8 @@ class AccelerationWindow:
                 dpg.add_text("Current: 0 g", tag=cls._TAG_CURRENT)
 
                 with dpg.group(horizontal=False):
-                    dpg.add_text("Delta: 0 g", tag=cls._TAG_DELTA)
-                    dpg.add_text("Median Delta: 0 g", tag=cls._TAG_MEDIAN_DELTA)
+                    dpg.add_text("Δ: 0 g", tag=cls._TAG_DELTA)
+                    dpg.add_text("Median Δ: 0 g", tag=cls._TAG_MEDIAN_DELTA)
 
 
 
@@ -145,8 +145,8 @@ class AccelerationWindow:
         dpg.set_value(cls._TAG_MIN, "Min: 0 g")
         dpg.set_value(cls._TAG_MAX, "Max: 0 g")
         dpg.set_value(cls._TAG_CURRENT, "Current: 0 g")
-        dpg.set_value(cls._TAG_DELTA, "Delta: 0 g")
-        dpg.set_value(cls._TAG_MEDIAN_DELTA, "Median Delta: 0 g")
+        dpg.set_value(cls._TAG_DELTA, "Δ: 0 g")
+        dpg.set_value(cls._TAG_MEDIAN_DELTA, "Median Δ: 0 g")
 
     @classmethod
     def update_acceleration(cls, time_value: float, accel_value: float) -> None:
@@ -193,5 +193,5 @@ class AccelerationWindow:
         dpg.set_value(cls._TAG_MIN, f"Min: {cls.accel_min:.2f} g")
         dpg.set_value(cls._TAG_CURRENT, f"Current: {cls.accel_current:.2f} g")
         dpg.set_value(cls._TAG_MAX, f"Max: {cls.accel_max:.2f} g")
-        dpg.set_value(cls._TAG_DELTA, f"Delta: {delta:.2f} g")
-        dpg.set_value(cls._TAG_MEDIAN_DELTA, f"Median Delta: {median_delta:.2f} g")
+        dpg.set_value(cls._TAG_DELTA, f"Δ: {delta:.2f} g")
+        dpg.set_value(cls._TAG_MEDIAN_DELTA, f"Median Δ: {median_delta:.2f} g")

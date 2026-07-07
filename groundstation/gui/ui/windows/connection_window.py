@@ -54,7 +54,7 @@ class ConnectionWindow:
 
             with dpg.group(horizontal=True):
                 dpg.add_text(f"{rssi_start} dBm", tag=self._tag_label)
-                dpg.add_text("WEAK SIGNAL", tag=self._tag_warning, color=(255, 0, 0, 255))
+                dpg.add_text("⚠ WEAK SIGNAL", tag=self._tag_warning, color=(255, 0, 0, 255))
 
             dpg.add_spacer(height=10)
 
