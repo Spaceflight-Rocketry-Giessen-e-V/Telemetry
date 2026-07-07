@@ -17,11 +17,12 @@ from ui.windows.connection_window import ConnectionWindow
 from ui.windows.flight_events_window import FlightEventWindow
 from ui.windows.last_packet_window import LastPacketWindow
 from ui.windows.location_window import LocationWindow
+from ui.windows.map_view_window import MapViewWindow
 from ui.windows.serial_control_window import SerialControlWindow
 from ui.windows.subsystem_window import SubsystemWindow
 from ui.windows.time_window import TimeWindow
 
-# Every placeable widget type. (Map + raw COM monitor are not yet migrated.)
+# Every placeable widget type. (The raw COM-monitor table is not yet migrated.)
 WIDGET_TYPES = [
     SerialControlWindow,
     CommandsWindow,
@@ -32,6 +33,7 @@ WIDGET_TYPES = [
     SubsystemWindow,
     AltitudeWindow,
     AccelerationWindow,
+    MapViewWindow,
     TimeWindow,
     LocationWindow,
 ]

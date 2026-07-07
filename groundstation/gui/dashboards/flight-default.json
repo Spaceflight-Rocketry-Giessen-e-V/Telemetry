@@ -14,7 +14,8 @@
 
     { "type": "altitude",       "iid": "main", "cell": [6, 0, 6, 5], "config": {} },
     { "type": "acceleration",   "iid": "main", "cell": [6, 5, 6, 5], "config": {} },
-    { "type": "time",           "iid": "main", "cell": [6, 10, 3, 2], "config": {} },
-    { "type": "location",       "iid": "main", "cell": [9, 10, 3, 2], "config": {} }
+    { "type": "map",            "iid": "main", "cell": [6, 10, 6, 7], "config": { "zoom": 14 } },
+    { "type": "time",           "iid": "main", "cell": [6, 17, 3, 2], "config": {} },
+    { "type": "location",       "iid": "main", "cell": [9, 17, 3, 2], "config": {} }
   ]
 }
