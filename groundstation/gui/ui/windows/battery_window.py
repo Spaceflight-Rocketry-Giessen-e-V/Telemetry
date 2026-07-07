@@ -40,7 +40,7 @@ class BatteryWindow:
         log.debug("BatteryWindow: drawing UI (%dx%d)", window_width, window_height)
 
         with dpg.child_window(label="Battery", width=window_width, height=window_height):
-            dpg.add_text("Battery Status")
+            dpg.add_text("Battery Status", color=(255, 255, 0))
             dpg.add_progress_bar(default_value=1.0, width=-1, height=30, tag=self._tag_bar)
 
             with dpg.group(horizontal=True):

@@ -121,3 +121,16 @@ class FlightEventWindow:
             if is_abort:
                 log.warning("FlightEventWindow[%s]: abort event reached at index %d", self._uid, event_number)
             dpg.configure_item(tag, default_value=label, color=color)
+
+    def reset(self) -> None:
+        """
+        Clear every event indicator back to pending.
+
+        Called on arm (fresh flight) and on disarm, so a stale "Armed"/done state
+        does not persist after the rocket is disarmed.
+        """
+        self.current_event = -1
+        for tag in self._row_tags:
+            if dpg.does_item_exist(tag):
+                dpg.configure_item(tag, default_value="-", color=self.COLOR_PENDING)
+        log.info("FlightEventWindow[%s]: indicators reset", self._uid)

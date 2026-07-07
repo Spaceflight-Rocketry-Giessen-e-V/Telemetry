@@ -7,15 +7,15 @@ Two independent data series are maintained:
   - **Pressure altitude** — derived from the barometric sensor.
   - **GNSS altitude**     — reported by the GPS receiver.
 
-Shared statistics (min, max, current) are updated
-whenever either source provides a new reading.
+Pressure and GNSS each track their own min / max / current statistics.
 """
 
 import logging
 import math
-import statistics
 
 import dearpygui.dearpygui as dpg
+
+from ui.windows.plot_coordinator import PlotCoordinator
 
 log = logging.getLogger(__name__)
 
@@ -28,9 +28,12 @@ class AltitudeWindow:
     _TAG_YAXIS = "yaxis"
     _TAG_SERIES_PRESSURE = "altitude_pressure_series"
     _TAG_SERIES_GNSS = "altitude_gnss_series"
-    _TAG_MIN = "alt_min"
-    _TAG_MAX = "alt_max"
-    _TAG_CURRENT = "alt_current"
+    _TAG_P_MIN = "alt_p_min"
+    _TAG_P_MAX = "alt_p_max"
+    _TAG_P_CUR = "alt_p_current"
+    _TAG_G_MIN = "alt_g_min"
+    _TAG_G_MAX = "alt_g_max"
+    _TAG_G_CUR = "alt_g_current"
     _TAG_BTN_STOP_RESUME = "alt_btn_stop_resume"
 
     # Session state
@@ -39,9 +42,13 @@ class AltitudeWindow:
     altitude_pressure_data: list[float] = []
     altitude_gnss_data: list[float] = []
 
-    altitude_min: float | None = None
-    altitude_max: float | None = None
-    altitude_current: float | None = None
+    # Per-source statistics (pressure and GNSS are tracked independently).
+    pressure_min: float | None = None
+    pressure_max: float | None = None
+    pressure_current: float | None = None
+    gnss_min: float | None = None
+    gnss_max: float | None = None
+    gnss_current: float | None = None
 
     plot_active: bool = True
 
@@ -85,31 +92,39 @@ class AltitudeWindow:
                     dpg.add_button(
                         label="Stop Plot",
                         tag=cls._TAG_BTN_STOP_RESUME,
-                        callback=lambda: cls.stop_plot(), width=100
+                        callback=lambda: PlotCoordinator.toggle(), width=100
                     )
-                    dpg.add_button(label="Reset Plot", callback=lambda: cls.reset_plot(), width=100)
+                    dpg.add_button(label="Reset Plot",
+                                   callback=lambda: PlotCoordinator.reset_all(), width=100)
                 dpg.add_spacer(width=10)
                 with dpg.group(horizontal=False):
-                    dpg.add_text("Min: 0 m", tag=cls._TAG_MIN)
-                    dpg.add_text("Max: 0 m", tag=cls._TAG_MAX)
-                dpg.add_text("Current: 0 m", tag=cls._TAG_CURRENT)
+                    dpg.add_text("Pressure", color=(180, 200, 255))
+                    dpg.add_text("Min: 0 m", tag=cls._TAG_P_MIN)
+                    dpg.add_text("Max: 0 m", tag=cls._TAG_P_MAX)
+                    dpg.add_text("Cur: 0 m", tag=cls._TAG_P_CUR)
+                dpg.add_spacer(width=10)
+                with dpg.group(horizontal=False):
+                    dpg.add_text("GNSS", color=(180, 255, 180))
+                    dpg.add_text("Min: 0 m", tag=cls._TAG_G_MIN)
+                    dpg.add_text("Max: 0 m", tag=cls._TAG_G_MAX)
+                    dpg.add_text("Cur: 0 m", tag=cls._TAG_G_CUR)
 
 
     @classmethod
     def stop_plot(cls) -> None:
         """Freeze the plot. Incoming data is still recorded but not drawn."""
         cls.plot_active = False
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.resume_plot())
-        log.info("AltitudeWindow: plot frozen by user")
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
+        log.info("AltitudeWindow: plot frozen")
 
     @classmethod
     def resume_plot(cls) -> None:
         """Resume live drawing after a stop."""
         cls.plot_active = True
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
-        log.info("AltitudeWindow: plot resumed by user")
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        log.info("AltitudeWindow: plot resumed")
 
     @classmethod
     def reset_plot(cls) -> None:
@@ -128,23 +143,25 @@ class AltitudeWindow:
         cls.altitude_gnss_data.clear()
 
         # Reset statistics
-        cls.altitude_min = None
-        cls.altitude_max = None
-        cls.altitude_current = None
+        cls.pressure_min = cls.pressure_max = cls.pressure_current = None
+        cls.gnss_min = cls.gnss_max = cls.gnss_current = None
 
         # Ensure the plot resumes on reset — avoids a redundant "Resume" click
         cls.plot_active = True
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
 
         # Wipe both series on the chart
         dpg.set_value(cls._TAG_SERIES_PRESSURE, [[], []])
         dpg.set_value(cls._TAG_SERIES_GNSS, [[], []])
 
-        # Reset the statistics strip
-        dpg.set_value(cls._TAG_MIN, "Min: 0 m")
-        dpg.set_value(cls._TAG_MAX, "Max: 0 m")
-        dpg.set_value(cls._TAG_CURRENT, "Current: 0 m")
+        # Reset both statistics strips
+        for tag in (cls._TAG_P_MIN, cls._TAG_G_MIN):
+            dpg.set_value(tag, "Min: 0 m")
+        for tag in (cls._TAG_P_MAX, cls._TAG_G_MAX):
+            dpg.set_value(tag, "Max: 0 m")
+        for tag in (cls._TAG_P_CUR, cls._TAG_G_CUR):
+            dpg.set_value(tag, "Cur: 0 m")
 
     @classmethod
     def update_altitude_pressure(cls, time_value: float, altitude_value: float) -> None:
@@ -189,25 +206,34 @@ class AltitudeWindow:
             series_tag = cls._TAG_SERIES_PRESSURE
             source_data = cls.altitude_pressure_data
             source_time = cls.time_data_pressure
+            cls.pressure_current = altitude_value
+            if cls.pressure_min is None or altitude_value < cls.pressure_min:
+                cls.pressure_min = altitude_value
+            if cls.pressure_max is None or altitude_value > cls.pressure_max:
+                cls.pressure_max = altitude_value
+            min_tag, max_tag, cur_tag = cls._TAG_P_MIN, cls._TAG_P_MAX, cls._TAG_P_CUR
+            stat_min, stat_max, stat_cur = cls.pressure_min, cls.pressure_max, cls.pressure_current
         else:
             cls.time_data_gnss.append(time_value)
             cls.altitude_gnss_data.append(altitude_value)
             series_tag = cls._TAG_SERIES_GNSS
             source_data = cls.altitude_gnss_data
             source_time = cls.time_data_gnss
+            cls.gnss_current = altitude_value
+            if cls.gnss_min is None or altitude_value < cls.gnss_min:
+                cls.gnss_min = altitude_value
+            if cls.gnss_max is None or altitude_value > cls.gnss_max:
+                cls.gnss_max = altitude_value
+            min_tag, max_tag, cur_tag = cls._TAG_G_MIN, cls._TAG_G_MAX, cls._TAG_G_CUR
+            stat_min, stat_max, stat_cur = cls.gnss_min, cls.gnss_max, cls.gnss_current
 
-        cls.altitude_current = altitude_value
-        if cls.altitude_min is None or altitude_value < cls.altitude_min:
-            cls.altitude_min = altitude_value
-            log.debug("AltitudeWindow: new min = %.1f m (source=%s)", altitude_value, source)
-        if cls.altitude_max is None or altitude_value > cls.altitude_max:
-            cls.altitude_max = altitude_value
-            log.debug("AltitudeWindow: new max = %.1f m (source=%s)", altitude_value, source)
+        log.debug("AltitudeWindow: %s min=%.1f max=%.1f cur=%.1f",
+                  source, stat_min, stat_max, stat_cur)
 
         dpg.set_value(series_tag, [source_time, source_data])
         dpg.fit_axis_data(cls._TAG_XAXIS)
         dpg.fit_axis_data(cls._TAG_YAXIS)
 
-        dpg.set_value(cls._TAG_MIN, f"Min: {cls.altitude_min:.1f} m")
-        dpg.set_value(cls._TAG_CURRENT, f"Current: {cls.altitude_current:.1f} m")
-        dpg.set_value(cls._TAG_MAX, f"Max: {cls.altitude_max:.1f} m")
+        dpg.set_value(min_tag, f"Min: {stat_min:.1f} m")
+        dpg.set_value(max_tag, f"Max: {stat_max:.1f} m")
+        dpg.set_value(cur_tag, f"Cur: {stat_cur:.1f} m")

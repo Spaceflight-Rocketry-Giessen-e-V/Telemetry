@@ -31,6 +31,7 @@ class ConnectionWindow:
         self._tag_min = "rssi_threshold_min"
         self._tag_warn = "rssi_threshold_warn"
         self._tag_max = "rssi_threshold_max"
+        self._tag_packet_delay = "rssi_packet_delay"
 
         # Persistent progress-bar colour theme (created in draw_ui). Reused on
         # every update so we don't leak a theme item per packet.
@@ -48,7 +49,7 @@ class ConnectionWindow:
         fraction = self._fraction(rssi_start)
 
         with dpg.child_window(label="Connection", width=window_width, height=window_height):
-            dpg.add_text("Connection Quality")
+            dpg.add_text("Connection Quality", color=(255, 255, 0))
             dpg.add_progress_bar(default_value=fraction, width=-1, height=30, tag=self._tag_bar)
 
             with dpg.group(horizontal=True):
@@ -61,6 +62,10 @@ class ConnectionWindow:
                 dpg.add_text(f"Min:  {self.rssi_min} dBm", tag=self._tag_min)
                 dpg.add_text(f"Warn: {self.rssi_warn} dBm", tag=self._tag_warn)
                 dpg.add_text(f"Max:  {self.rssi_max} dBm", tag=self._tag_max)
+
+            dpg.add_spacer(height=6)
+            dpg.add_separator()
+            dpg.add_text("Time since last packet: 0 ms", tag=self._tag_packet_delay)
 
         # One reusable theme for the bar colour; _update_bar_color mutates it.
         with dpg.theme() as self._bar_theme:
@@ -105,6 +110,11 @@ class ConnectionWindow:
         # Mutate the reusable theme colour instead of creating a new theme.
         if self._bar_color is not None:
             dpg.set_value(self._bar_color, (r, g, 0, 255))
+
+    def update_packet_delay(self, ms: int) -> None:
+        """Show the time since the last received packet (ms) in this box."""
+        if dpg.does_item_exist(self._tag_packet_delay):
+            dpg.set_value(self._tag_packet_delay, f"Time since last packet: {ms} ms")
 
     def reload(self) -> None:
         """Re-read thresholds from settings and refresh the static labels (post-save)."""

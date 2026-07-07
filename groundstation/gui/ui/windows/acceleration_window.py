@@ -15,6 +15,8 @@ import statistics
 
 import dearpygui.dearpygui as dpg
 
+from ui.windows.plot_coordinator import PlotCoordinator
+
 log = logging.getLogger(__name__)
 
 
@@ -77,10 +79,11 @@ class AccelerationWindow:
                     dpg.add_button(
                         label="Stop Plot",
                         tag=cls._TAG_BTN_STOP_RESUME,
-                        callback=lambda: cls.stop_plot(),
+                        callback=lambda: PlotCoordinator.toggle(),
                         width=100
                     )
-                    dpg.add_button(label="Reset Plot", callback=lambda: cls.reset_plot(), width=100)
+                    dpg.add_button(label="Reset Plot",
+                                   callback=lambda: PlotCoordinator.reset_all(), width=100)
                 dpg.add_spacer(width=10)
                 with dpg.group(horizontal=False):
                     dpg.add_text("Min: 0 g", tag=cls._TAG_MIN)
@@ -98,17 +101,17 @@ class AccelerationWindow:
     def stop_plot(cls) -> None:
         """Freeze the plot. New data is still recorded but not drawn."""
         cls.plot_active = False
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.resume_plot())
-        log.info("AccelerationWindow: plot frozen by user")
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
+        log.info("AccelerationWindow: plot frozen")
 
     @classmethod
     def resume_plot(cls) -> None:
         """Resume live drawing after a stop."""
         cls.plot_active = True
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
-        log.info("AccelerationWindow: plot resumed by user")
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        log.info("AccelerationWindow: plot resumed")
 
     @classmethod
     def reset_plot(cls) -> None:
@@ -132,8 +135,8 @@ class AccelerationWindow:
 
         # Ensure the plot resumes on reset — avoids a redundant "Resume" click
         cls.plot_active = True
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
 
         # Wipe the series on the chart
         dpg.set_value(cls._TAG_SERIES, [[], []])
