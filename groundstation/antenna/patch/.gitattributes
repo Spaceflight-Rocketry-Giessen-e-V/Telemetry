@@ -1,0 +1,13 @@
+# Line-ending policy for the antenna/patch subtree.
+# The repo root has core.autocrlf=true; without this, Git warns
+# "LF will be replaced by CRLF" every time it touches a text file on Windows.
+# Force LF in the working tree so checkout/commit never rewrites line endings.
+* text=auto eol=lf
+
+# Binary assets: never touch their bytes / line endings.
+*.png  binary
+*.jpg  binary
+*.pdf  binary
+*.h5   binary
+*.vtk  binary
+*.xml  binary

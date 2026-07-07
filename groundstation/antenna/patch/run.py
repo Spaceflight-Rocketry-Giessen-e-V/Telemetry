@@ -6,44 +6,60 @@ Central entry point.  Edit the switches below and run:
 
     python run.py
 
-All physical constants and derived values live in config.py.
+Single-feed corner-truncated RHCP patch: a near-square patch with two diagonally-
+opposite corners truncated (the CP perturbation), fed by ONE inset microstrip to an
+edge-launch SMA — no coupler, no termination resistor.  The whole geometry is a
+``PatchParams`` object (src/params.py); all physical constants live in config.py.
 """
 
 # ═══════════════════════ USER SWITCHES ════════════════════════════
 # ── Run mode (pick at most one) ───────────────────────────────────
 preview_only    = False  # write XML + open AppCSXCAD, then exit
-single_sim_only = False  # one high-fidelity sim at current dims, skip optimisation
+show_geometry   = False  # open AppCSXCAD to inspect geometry before simulating (BLOCKS until
+                         # the window is closed). Leave False for unattended/background runs —
+                         # the geometry XML is still written either way.
+single_sim_only = False  # OFF: run the full W×truncation optimise (config.GRID_*) that centres the
+                         # AR null on f_target, then a final high-fidelity sim + graphs + KiCad board.
+                         # Flip True for a single sim at the warm_start seed (W≈82.5 / trunc≈8.25 /
+                         # inset≈5.8 on the 160 mm board, NP-140F εr 4.15) — un-tuned (AR ~5 dB).
 post_proc_only  = False  # skip FDTD entirely, re-run post-processing on existing sim_data
 
 # ── Warm-start / dimension source ────────────────────────────────
 # Set warm_start to seed the optimisation (or single sim) from known-good dims.
-# Leave as None for a cold start from the analytical formula.
+# Keys are PatchParams fields (any subset; missing fields take config.py seeds):
+#   W_mm, trunc_mm, inset_y_mm, sub_hw_mm
+# Leave as None for a cold start from the config.py synthesis seeds (which ARE the
+# proven single-feed dims: W_CP_INIT ≈ 82.5, TRUNC_INIT ≈ 8.25, INSET_Y ≈ 5.8).
 warm_start = {
-#    'W_mm':       82.9389,
-    'W_mm':       84.0,
-    'delta_mm':    8.2939,
-    'y_inset_mm':  5.8057,
-#    'sub_hw_mm':  75.0,   # optional — half-edge of board; default 75 (=150 mm board)
+    # Single-feed corner-truncated CP seeds, from the proven old single-feed design
+    # (config_deprecated) re-scaled to NP-140F εr 4.15. The 150k confirmation run at these
+    # dims gave f_res 875.4 MHz (+5.9 high), S11 −12.1, η_rad 28.3 %, realised +0.8 dBic,
+    # RHCP — AR 4.8 dB at the un-tuned seed. The grid grows W to pull resonance onto f_target
+    # (config.GRID_W_FRAC is recentred above the seed for exactly this) and sweeps truncation
+    # to centre the AR null ≤3 dB.
+    'W_mm':       82.5,   # (W_lp+L_lp)/2 * 0.86  — CP square side; grid grows it +0.0–1.3 % onto f0
+    'trunc_mm':   8.25,   # 0.10·W corner chamfer — the CP mode-split lever (grid 6.5/8.25/10)
+    'inset_y_mm': 5.8,    # 0.07·W single inset on the −y edge centre (50 Ω match)
+#    'sub_hw_mm':  80.0,   # 160 mm board (locked for wide-beam coverage)
 }
 
 # reuse_best: load dims from the most-recent results.json and use them as
 # warm_start (overrides the dict above).  Combined with single_sim_only=True
-# this reproduces the old "run one final sim at previous best dims" behaviour.
-# Combined with single_sim_only=False it re-runs the full optimisation from
-# those dims as a warm start.
+# this reproduces "run one final sim at previous best dims".  Combined with
+# single_sim_only=False it re-runs the full optimisation from those dims.
 reuse_best        = False
 reuse_results_dir = None  # folder to load results.json from; None = auto-find latest
 
 # ── Output options ────────────────────────────────────────────────
-export_kicad    = True  # generate patch_antenna.kicad_pcb after final sim
-export_vtk_surf = False   # copy E/J surface-field .vtr files into vtk/ subfolders
-                         # (set False to skip ~46 files and save disk space)
+export_kicad    = True   # generate patch_antenna.kicad_pcb after final sim
+export_vtk_surf = False  # copy J surface-current .vtr files into vtk/ subfolders
+                         # (set False to skip files and save disk space)
 
 # ── Post-processing overrides (only used when post_proc_only=True) ─
 # Copy the "Final geometry for PCB" values from a previous run's log.
-# Leave as None to fall back to warm_start / analytical dims.
+# Leave as None to fall back to warm_start / config seeds.
 pp_dims = None
-# pp_dims = {'W_mm': 84.04, 'delta_mm': 9.61, 'y_inset_mm': 2.44}
+# pp_dims = {'W_mm': 82.5, 'trunc_mm': 8.25, 'inset_y_mm': 5.8}
 # ══════════════════════════════════════════════════════════════════
 
 
@@ -176,19 +192,17 @@ def setup_logging(run_dir):
 
 
 def resolve_dimensions():
-    """Resolve starting geometry: analytical, then warm_start / reuse_best.
+    """Resolve the starting geometry into a PatchParams.
 
-    Returns (W_cp, delta_init, y_inset_init, sub_hw_init, ws, reuse_run_dir)
-    where ws is the effective warm-start dict (or None) and reuse_run_dir is the
-    source run folder when reuse_best loaded a results.json (else None).
+    Precedence: config.py synthesis seeds (default_params) → warm_start dict →
+    reuse_best (loads the latest results.json, overrides warm_start).
+
+    Returns (p_init, ws, reuse_run_dir) where p_init is a PatchParams, ws is the
+    effective warm-start dict (or None) and reuse_run_dir is the source run folder
+    when reuse_best loaded a results.json (else None).
     """
-    import config
+    from src.params import PatchParams, default_params
     from src.optimizer import _find_latest_results_json, _load_results_json
-
-    W_cp         = config.W_cp
-    delta_init   = W_cp * config._delta_frac
-    y_inset_init = W_cp * config._y_inset_frac
-    sub_hw_init  = config.SUB_HW_DEFAULT
 
     ws            = warm_start  # effective warm-start (reuse_best may override)
     reuse_run_dir = None
@@ -206,89 +220,121 @@ def resolve_dimensions():
             print('  Set reuse_results_dir to a previous RHCP_Patch_* folder, or leave None.')
             sys.exit(1)
         try:
-            rW, rd, ryi, rsh = _load_results_json(rj)
+            p_loaded = _load_results_json(rj)
         except Exception as e:
             print(f'\nERROR reading results.json: {e}')
             sys.exit(1)
-        ws            = {'W_mm': rW, 'delta_mm': rd, 'y_inset_mm': ryi, 'sub_hw_mm': rsh}
+        ws            = p_loaded.to_dict()
         reuse_run_dir = os.path.dirname(os.path.abspath(str(rj)))
         print(f'\nreuse_best: loaded {rj}')
-        print(f'  → using as warm_start  (W={rW:.4f}  Δ={rd:.4f}  '
-              f'yi={ryi:.4f}  sub_hw={rsh:.2f} mm)')
+
+    # Standalone post-proc source (without reuse_best): post_proc_only needs an
+    # existing run's sim_data, and the error message advertises reuse_results_dir as
+    # a usable option on its own. Locate that run here and — crucially — load its
+    # results.json dims so the rebuilt model MATCHES the sim_data it reads; using
+    # warm_start/config seeds that differ from the source geometry would silently
+    # desync the MSL-port probes (wrong S11 / Zin / f_res, no error). pp_dims can
+    # still override below for advanced use.
+    if reuse_run_dir is None and (post_proc_only or reuse_results_dir is not None):
+        rj2 = None
+        if reuse_results_dir is not None and os.path.isdir(reuse_results_dir):
+            cand = os.path.join(reuse_results_dir, 'results.json')
+            old  = os.path.join(reuse_results_dir, 'images', 'results.json')
+            rj2  = cand if os.path.exists(cand) else (old if os.path.exists(old) else None)
+        elif reuse_results_dir is None:
+            rj2 = _find_latest_results_json()
+        if rj2 and os.path.exists(str(rj2)):
+            try:
+                ws = _load_results_json(rj2).to_dict()
+            except Exception as e:
+                print(f'\nWARNING: could not read {rj2}: {e}')
+            reuse_run_dir = os.path.dirname(os.path.abspath(str(rj2)))
+            print(f'\npost-proc source run: {reuse_run_dir}')
+        elif reuse_results_dir is not None and os.path.isdir(reuse_results_dir) \
+                and os.path.isdir(os.path.join(reuse_results_dir, 'sim_data')):
+            reuse_run_dir = os.path.abspath(reuse_results_dir)
+            print(f'\npost-proc source run (no results.json): {reuse_run_dir}')
+
+    p_init = PatchParams.from_dict(ws) if ws else default_params()
 
     if ws is not None:
-        W_cp         = float(ws['W_mm'])
-        delta_init   = float(ws['delta_mm'])
-        y_inset_init = float(ws['y_inset_mm'])
-        sub_hw_init  = float(ws.get('sub_hw_mm', config.SUB_HW_DEFAULT))
-        print(f'\nWarm-start dims:')
-        print(f'  W = {W_cp:.4f} mm   Δ = {delta_init:.4f} mm   '
-              f'yi = {y_inset_init:.4f} mm   sub_hw = {sub_hw_init:.2f} mm')
-        if not reuse_best:
-            print(f'  Phase 0/1/2 sweep windows tightened around these values.')
+        print('\nWarm-start dims:')
     else:
-        print(f'\nAnalytical initial dimensions:')
-        print(f'  Patch side   W = {W_cp:.1f} mm  (analytical x 0.86 shrink)')
-        print(f'  Feed inset  yi = {y_inset_init:.1f} mm')
-        print(f'  Truncation   Δ = {delta_init:.1f} mm  (Δ/W = {config._delta_frac:.3f})')
-        print(f'  Ground plane = {sub_hw_init*2:.0f} × {sub_hw_init*2:.0f} mm  (Phase 4 will sweep)')
+        print('\nConfig synthesis seeds:')
+    print(f'  W = {p_init.W_mm:.3f} mm   trunc = {p_init.trunc_mm:.2f} mm   '
+          f'inset = {p_init.inset_y_mm:.2f} mm   '
+          f'sub_hw = {p_init.sub_hw_mm:.1f} mm')
+    if ws is not None and not reuse_best:
+        print('  Optimiser sweep windows are tightened around these values.')
 
-    return W_cp, delta_init, y_inset_init, sub_hw_init, ws, reuse_run_dir
+    return p_init, ws, reuse_run_dir
 
 
-def maybe_preview(run_dir, delta_init, y_inset_init, W_cp, sub_hw_init):
+def maybe_preview(run_dir, p_init):
     """Write the initial-geometry XML and open AppCSXCAD.
 
     Returns True when the caller should exit now (preview_only).
     """
-    from src.model import build_sim
+    from src.model import build_patch_sim
 
     print('\n--- Writing initial geometry for preview ---', flush=True)
-    _FDTD_prev, CSX_prev, _, _ = build_sim(delta_init, y_inset_init, W_cp, NrTS=1,
-                                           sub_hw_mm=sub_hw_init)
+    _FDTD_prev, CSX_prev, _, _ = build_patch_sim(p_init, NrTS=1)
     csx_file = os.path.join(run_dir, 'rhcp_patch_init.xml')
     CSX_prev.Write2XML(csx_file)
     print(f'XML written: {csx_file}', flush=True)
 
-    try:
-        from CSXCAD import AppCSXCAD_BIN
-        print('Launching AppCSXCAD — close window to continue...', flush=True)
-        ret = subprocess.call([AppCSXCAD_BIN, csx_file])
-        if ret != 0:
-            print(f'AppCSXCAD exited with code {ret} — continuing.', flush=True)
-    except Exception as exc:
-        print(f'AppCSXCAD not available: {exc}', flush=True)
-        print(f'Open manually: {csx_file}', flush=True)
-        if preview_only:
-            input('Press ENTER to continue...')
+    # Only OPEN the (blocking) AppCSXCAD viewer when explicitly requested. The
+    # subprocess.call below waits until the GUI window is closed, so launching it
+    # unconditionally would wedge every unattended/background run (incl. the long
+    # optimisation) at startup. The XML above is always written for later inspection.
+    if preview_only or show_geometry:
+        try:
+            from CSXCAD import AppCSXCAD_BIN
+            print('Launching AppCSXCAD — close window to continue...', flush=True)
+            ret = subprocess.call([AppCSXCAD_BIN, csx_file])
+            if ret != 0:
+                print(f'AppCSXCAD exited with code {ret} — continuing.', flush=True)
+        except Exception as exc:
+            print(f'AppCSXCAD not available: {exc}', flush=True)
+            print(f'Open manually: {csx_file}', flush=True)
+            if preview_only:
+                input('Press ENTER to continue...')
+    else:
+        print(f'Skipping AppCSXCAD (show_geometry=False). Inspect later: {csx_file}', flush=True)
 
     return preview_only
 
 
-def run_single_sim(sim_path, dims):
-    """single_sim_only: one high-fidelity sim at the resolved dims."""
+def run_single_sim(sim_path, p_init):
+    """single_sim_only: one high-fidelity sim at the resolved dims. Returns params.
+
+    Only builds + runs the FDTD here (writing sim_data); post-processing happens in
+    a SEPARATE process (run_postproc_isolated) — see its docstring for why.
+    """
     import config
-    from src.model import build_sim
-    opt_W, opt_delta, opt_y_inset, opt_sub_hw = dims
+    from src.model import build_patch_sim
 
     print(f'\n{"="*60}')
     print(f'single_sim_only=True — one high-fidelity sim  (NrTS = {config.NrTS_final})')
-    print(f'  W = {opt_W:.2f} mm   Δ = {opt_delta:.2f} mm   '
-          f'y_inset = {opt_y_inset:.2f} mm   sub_hw = {opt_sub_hw:.2f} mm')
+    print(f'  W = {p_init.W_mm:.2f} mm   trunc = {p_init.trunc_mm:.2f} mm   '
+          f'inset = {p_init.inset_y_mm:.2f} mm')
     print(f'{"="*60}')
-    FDTD_f, _CSX_f, port_f, nf2ff_f = build_sim(
-        opt_delta, opt_y_inset, opt_W, config.NrTS_final,
-        sub_hw_mm=opt_sub_hw, vtk_dump=export_vtk_surf)
+    FDTD_f, _CSX_f, _port_f, _nf2ff_f = build_patch_sim(
+        p_init, config.NrTS_final, vtk_dump=export_vtk_surf)
     # Runs alone in the main process — claim all cores (numThreads=0 → max),
     # independent of any ambient OMP_NUM_THREADS the user may have set.
     FDTD_f.Run(sim_path, verbose=1, cleanup=True, numThreads=(os.cpu_count() or 0))
-    return opt_W, opt_delta, opt_y_inset, opt_sub_hw, [], port_f, nf2ff_f
+    return p_init
 
 
-def run_optimize(sim_path, W_cp, ws, sub_hw_init):
-    """Full six-phase optimisation followed by a final high-fidelity sim."""
+def run_optimize(sim_path, p_init):
+    """Full coverage optimisation followed by a final high-fidelity sim.
+
+    Returns (p_opt, opt_log). The final sim only writes sim_data here; the heavy
+    post-processing runs in a separate process (run_postproc_isolated).
+    """
     import config
-    from src.model import build_sim
+    from src.model import build_patch_sim
     from src.optimizer import (Optimizer, estimate_seconds, n_opt, phases_label,
                                resolve_workers)
 
@@ -297,36 +343,34 @@ def run_optimize(sim_path, W_cp, ws, sub_hw_init):
     secs  = estimate_seconds(par)  # honest: sums ceil(n_phase/par) waves, incl. final sim
     eta   = _dt.datetime.now() + _dt.timedelta(seconds=secs)
     print(f'\n{"="*60}')
-    print(f'Starting optimisation  ({n_run} FDTD runs  NrTS = {config.NrTS_opt})')
-    print(f'  Phases: {phases_label()}')
+    print(f'Starting optimisation  ({n_run} FDTD runs, two-tier fidelity)')
+    print(f'  Search: {phases_label()}')
     print(f'  Workers: {par}  |  Rough wall-clock estimate: ~{int(secs/60)} min'
           f'  (ETA ~{eta.strftime("%H:%M")})')
     print(f'{"="*60}')
-    opt = Optimizer(W_cp, warm_start=ws, sub_hw_init=sub_hw_init)
-    opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log = opt.run()
+    opt = Optimizer(p_init)
+    p_opt, opt_log = opt.run()
 
     print('\n--- Final high-fidelity simulation (with VTK field dumps) ---')
-    print(f'  W = {opt_W:.2f} mm   Δ = {opt_delta:.2f} mm   '
-          f'y_inset = {opt_y_inset:.2f} mm   sub_hw = {opt_sub_hw:.2f} mm   '
-          f'NrTS = {config.NrTS_final}')
-    FDTD_f, _CSX_f, port_f, nf2ff_f = build_sim(
-        opt_delta, opt_y_inset, opt_W, config.NrTS_final,
-        sub_hw_mm=opt_sub_hw, vtk_dump=export_vtk_surf)
+    print(f'  W = {p_opt.W_mm:.2f} mm   trunc = {p_opt.trunc_mm:.2f} mm   '
+          f'inset = {p_opt.inset_y_mm:.2f} mm   '
+          f'sub_hw = {p_opt.sub_hw_mm:.1f} mm   NrTS = {config.NrTS_final}')
+    FDTD_f, _CSX_f, _port_f, _nf2ff_f = build_patch_sim(
+        p_opt, config.NrTS_final, vtk_dump=export_vtk_surf)
     # Runs alone in the main process — claim all cores (numThreads=0 → max),
     # independent of any ambient OMP_NUM_THREADS the user may have set.
     FDTD_f.Run(sim_path, verbose=1, cleanup=True, numThreads=(os.cpu_count() or 0))
-    return opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log, port_f, nf2ff_f
+    return p_opt, opt_log
 
 
-def setup_post_proc_only(dims, reuse_run_dir):
-    """post_proc_only: rebuild the model (no Run) so post-proc can read sim_data.
+def setup_post_proc_only(p_init, reuse_run_dir):
+    """post_proc_only: resolve the params + source sim_data (no model build here).
 
-    Returns (opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log,
-             port_f, nf2ff_f, pp_sim_path).
+    The model is (re)built inside the post-processing child process; this only
+    validates that an existing, populated sim_data is available to read.
+    Returns (p_post, opt_log, pp_sim_path).
     """
-    import config
-    from src.model import build_sim
-    W_cp, delta_init, y_inset_init, sub_hw_init = dims
+    from src.params import PatchParams
 
     # Guard: post-proc needs an existing, populated sim_data. The freshly created
     # run's own sim_data is empty, so without a source run there is nothing to
@@ -343,62 +387,111 @@ def setup_post_proc_only(dims, reuse_run_dir):
     print(f'post_proc_only: reading sim_data from {pp_sim_path}')
 
     if pp_dims is not None:
-        opt_W       = float(pp_dims['W_mm'])
-        opt_delta   = float(pp_dims['delta_mm'])
-        opt_y_inset = float(pp_dims['y_inset_mm'])
-        opt_sub_hw  = float(pp_dims.get('sub_hw_mm', sub_hw_init))
-        print(f'post_proc_only: W={opt_W} mm  Δ={opt_delta} mm  '
-              f'yi={opt_y_inset} mm  sub_hw={opt_sub_hw} mm')
+        p_post = PatchParams.from_dict(pp_dims)
+        print(f'post_proc_only: pp_dims OVERRIDE — W={p_post.W_mm} mm  '
+              f'trunc={p_post.trunc_mm} mm  inset={p_post.inset_y_mm} mm')
+        print('  ! pp_dims MUST match the geometry that produced the source sim_data; a'
+              ' mismatch silently desyncs the MSL-port probes (wrong S11/Zin/f_res).')
     else:
-        opt_W, opt_delta, opt_y_inset, opt_sub_hw = (
-            W_cp, delta_init, y_inset_init, sub_hw_init)
-        print('post_proc_only: no pp_dims override — using warm_start / analytical dims.')
+        # p_init now carries the source run's results.json dims (resolve_dimensions
+        # loads them for the post-proc source), so the rebuilt model matches sim_data.
+        p_post = p_init
+        print('post_proc_only: using source-run dims (results.json) — matches sim_data.')
 
-    _FDTD_f, _CSX_f, port_f, nf2ff_f = build_sim(
-        opt_delta, opt_y_inset, opt_W, config.NrTS_final,
-        sub_hw_mm=opt_sub_hw)
-    return (opt_W, opt_delta, opt_y_inset, opt_sub_hw, [],
-            port_f, nf2ff_f, pp_sim_path)
+    return p_post, [], pp_sim_path
 
 
-def run_postproc(port_f, nf2ff_f, run_dir, pp_sim_path, graphs_path, vtk_path,
-                 opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log):
-    """Run full post-processing; return the PostProcessor (carries results)."""
-    from src.postproc import PostProcessor
-    pp = PostProcessor(
-        port=port_f,
-        nf2ff_box=nf2ff_f,
-        run_dir=run_dir,
-        sim_path=pp_sim_path,
-        graphs_path=graphs_path,
-        vtk_path=vtk_path,
-        opt_W=opt_W,
-        opt_delta=opt_delta,
-        opt_y_inset=opt_y_inset,
-        opt_sub_hw=opt_sub_hw,
-        opt_log=opt_log,
-        post_proc_only=post_proc_only,
-        export_vtk_surf=export_vtk_surf,
-    )
-    pp.run()
-    return pp
+def _postproc_worker(kw):
+    """Post-process + KiCad-export in a FRESH (spawned) process.
 
+    The heavy NF2FF post-processing crashes the openEMS bindings (native access
+    violation) when run in the SAME process right after a long FDTD.Run() at high
+    NrTS — the post-run engine/native state does not survive the Run→heavy-NF2FF
+    transition / interpreter teardown. Doing it in a spawned child (a clean
+    interpreter that rebuilds the model only to READ the already-saved sim_data)
+    sidesteps that entirely. Top-level + a single picklable dict arg so it works
+    with the 'spawn' start method on Windows.
+    """
+    import os as _os
+    import sys as _sys
+    # Windows DLL discovery (mirror preflight_check) — the spawned child has a
+    # clean environment and must locate CSXCAD.dll / openEMS.dll itself.
+    if _os.name == 'nt' and not _os.environ.get('OPENEMS_INSTALL_PATH'):
+        for _c in (r'C:\Program Files\openEMS', r'C:\opt\openEMS',
+                   _os.path.join(_os.environ.get('LOCALAPPDATA', ''), 'openEMS')):
+            if _c and _os.path.exists(_os.path.join(_c, 'CSXCAD.dll')):
+                _os.environ['OPENEMS_INSTALL_PATH'] = _c
+                break
+    if hasattr(_sys.stdout, 'reconfigure'):
+        _sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    # Tee the child's output into the run's simulation.log so nothing is lost.
+    logf = None
+    if kw.get('log_path'):
+        try:
+            from src.model import _Tee
+            logf = open(kw['log_path'], 'a', encoding='utf-8', errors='replace')
+            _sys.stdout = _Tee(_sys.stdout, logf)
+        except Exception:
+            logf = None
+    # Headless backend — set BEFORE importing postproc (which imports pyplot).
+    import matplotlib
+    try:
+        matplotlib.use('Agg')
+    except Exception:
+        pass
 
-def export_outputs(pp, run_dir):
-    """Generate patch_antenna.kicad_pcb from the post-processed results."""
-    if not export_kicad:
-        return
     import config
-    from src.kicad_export import write_kicad_pcb
-    kicad_out = os.path.join(run_dir, 'patch_antenna.kicad_pcb')
-    write_kicad_pcb(
-        W=pp.results['W_mm'],
-        delta=pp.results['delta_mm'],
-        y_inset=pp.results['y_inset_mm'],
-        substrate_h=config.substrate_thickness,
-        output_path=kicad_out,
-        sub_hw_mm=pp.results['sub_hw_mm'],
-    )
+    from src.model import build_patch_sim
+    from src.postproc import PostProcessor
+
+    p = kw['params']
+    _F, _C, port, nf2ff = build_patch_sim(p, 1)   # fresh model: only to read sim_data
+    pp = PostProcessor(
+        port=port, nf2ff_box=nf2ff, run_dir=kw['run_dir'], sim_path=kw['sim_path'],
+        graphs_path=kw['graphs_path'], vtk_path=kw['vtk_path'], params=p,
+        opt_log=kw['opt_log'], post_proc_only=kw['post_proc_only'],
+        export_vtk_surf=kw['export_vtk_surf'])
+    pp.run()
+    if kw['export_kicad']:
+        from src.kicad_export import write_kicad_pcb
+        write_kicad_pcb(p, substrate_h=config.substrate_thickness,
+                        output_path=_os.path.join(kw['run_dir'], 'patch_antenna.kicad_pcb'))
+    if logf:
+        try:
+            logf.flush(); logf.close()
+        except Exception:
+            pass
+
+
+def run_postproc_isolated(run_dir, pp_sim_path, graphs_path, vtk_path,
+                          p_final, opt_log, log_path=None):
+    """Post-process (+ KiCad export) in a spawned child process; True on success.
+
+    Isolating post-processing from the parent — which still holds openEMS engine
+    state from FDTD.Run() — avoids a native segfault on the Run→heavy-NF2FF
+    transition at high NrTS. The child rebuilds the model only to read the saved
+    sim_data, so the simulation is never repeated.
+    """
+    import multiprocessing as mp
+    kw = dict(run_dir=run_dir, sim_path=pp_sim_path, graphs_path=graphs_path,
+              vtk_path=vtk_path, params=p_final, opt_log=opt_log,
+              post_proc_only=post_proc_only, export_vtk_surf=export_vtk_surf,
+              export_kicad=export_kicad, log_path=log_path)
+    sys.stdout.flush()
+    proc = mp.get_context('spawn').Process(target=_postproc_worker, args=(kw,))
+    proc.start()
+    proc.join()
+    if proc.exitcode != 0:
+        print(f'\n{"!"*64}')
+        print(f'! Post-processing subprocess exited abnormally (code {proc.exitcode}).')
+        print(f'! The SIMULATION DATA is intact:')
+        print(f'!   {pp_sim_path}')
+        print(f'! Recover graphs / results.json / KiCad board WITHOUT re-simulating:')
+        print(f'!   set post_proc_only=True and reuse_results_dir="{run_dir}"')
+        print(f'!   (or reuse_best=True) in run.py, then re-run.')
+        print(f'{"!"*64}', flush=True)
+        return False
+    return True
 
 
 def main():
@@ -407,6 +500,7 @@ def main():
 
     run_dir, sim_path, graphs_path, vtk_path = setup_run_dirs()
     log_file = setup_logging(run_dir)
+    log_path = os.path.join(run_dir, 'simulation.log')
 
     print(f'Run directory  : {run_dir}')
     print(f'Sim data       : {sim_path}')
@@ -414,40 +508,42 @@ def main():
     print(f'VTK            : {vtk_path}')
     print(f'Session started: {_dt.datetime.now():%Y-%m-%d %H:%M:%S}')
 
-    (W_cp, delta_init, y_inset_init, sub_hw_init,
-     ws, reuse_run_dir) = resolve_dimensions()
-    dims = (W_cp, delta_init, y_inset_init, sub_hw_init)
+    p_init, ws, reuse_run_dir = resolve_dimensions()
 
     # ── Geometry preview ──────────────────────────────────────────────
     if not post_proc_only:
-        if maybe_preview(run_dir, delta_init, y_inset_init, W_cp, sub_hw_init):
+        if maybe_preview(run_dir, p_init):
             print('preview_only=True — exiting.', flush=True)
             sys.exit(0)
 
-    # ── Simulation dispatch ───────────────────────────────────────────
+    # ── Simulation dispatch (writes sim_data; no in-process post-proc) ─
     if single_sim_only:
-        (opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log,
-         port_f, nf2ff_f) = run_single_sim(sim_path, dims)
-        pp_sim_path = sim_path
+        p_final, opt_log, pp_sim_path = run_single_sim(sim_path, p_init), [], sim_path
     elif not post_proc_only:
-        (opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log,
-         port_f, nf2ff_f) = run_optimize(sim_path, W_cp, ws, sub_hw_init)
+        p_final, opt_log = run_optimize(sim_path, p_init)
         pp_sim_path = sim_path
     else:
-        (opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log,
-         port_f, nf2ff_f, pp_sim_path) = setup_post_proc_only(dims, reuse_run_dir)
+        p_final, opt_log, pp_sim_path = setup_post_proc_only(p_init, reuse_run_dir)
 
-    # ── Post-processing ───────────────────────────────────────────────
-    pp = run_postproc(port_f, nf2ff_f, run_dir, pp_sim_path, graphs_path, vtk_path,
-                      opt_W, opt_delta, opt_y_inset, opt_sub_hw, opt_log)
+    # ── Post-processing + KiCad export in an ISOLATED child process ────
+    # (avoids the native segfault on the in-process Run→heavy-NF2FF transition;
+    # the child reads the saved sim_data, so the simulation is never repeated.)
+    ok = run_postproc_isolated(run_dir, pp_sim_path, graphs_path, vtk_path,
+                               p_final, opt_log, log_path=log_path)
+    if ok:
+        print(f'\nDone. Graphs + results.json + KiCad board in:\n  {run_dir}', flush=True)
 
-    # ── KiCad export ──────────────────────────────────────────────────
-    export_outputs(pp, run_dir)
-
-    # ── Flush log and show plots ──────────────────────────────────────
-    log_file.flush()
-    import matplotlib.pyplot as plt
-    plt.show()
+    # ── Hard exit ─────────────────────────────────────────────────────
+    # The parent still holds openEMS engine/native state from FDTD.Run(), whose
+    # interpreter teardown can itself segfault on Windows after a high-NrTS run.
+    # The child has already written every output, so flush and bypass teardown
+    # with os._exit() to return a clean, reliable status.
+    try:
+        log_file.flush(); log_file.close()
+    except Exception:
+        pass
+    sys.stdout.flush(); sys.stderr.flush()
+    os._exit(0 if ok else 1)
 
 
 if __name__ == '__main__':
