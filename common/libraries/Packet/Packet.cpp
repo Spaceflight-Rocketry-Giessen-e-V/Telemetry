@@ -9,7 +9,7 @@
 void Packet::encodeFrame(uint8_t *packet, uint8_t packetIdentifier)
 {
     // Packet Identifier
-    packet[0] |= (0x01 & packetIdentifier) << 2;
+    packet[0] |= (0x01 & packetIdentifier) << 5;
 
     // End Byte
     packet[11] = 0xEE;
@@ -21,7 +21,7 @@ void Packet::encodeFrame(uint8_t *packet, uint8_t packetIdentifier)
         if (packet[bytePos] == 0xEE)
         {
             packet[bytePos] = 0;
-            packet[cobsByte] |= (0x0F & bytePos) << 4;
+            packet[cobsByte] |= 0x0F & bytePos;
             cobsByte = bytePos;
         }
     }
@@ -40,7 +40,7 @@ void Packet::encodeFrame(uint8_t *packet, uint8_t packetIdentifier)
         }
         parityBit ^= (count % 2 != 0);
     }
-    packet[0] ^= (0x01 & parityBit) << 3;
+    packet[0] ^= (0x01 & parityBit) << 4;
 }
 
 uint8_t Packet::decodeFrame(uint8_t *packet, uint8_t *packetIdentifier)
@@ -72,16 +72,16 @@ uint8_t Packet::decodeFrame(uint8_t *packet, uint8_t *packetIdentifier)
 
     // COBS
     uint8_t tmp1 = 0;
-    uint8_t tmp2 = (packet[tmp1] & 0xF0) >> 4;
+    uint8_t tmp2 = packet[tmp1] & 0x0F;
     while (tmp2 != 0x00)
     {
         tmp1 = tmp2;
-        tmp2 = (packet[tmp1] & 0xF0) >> 4;
+        tmp2 = packet[tmp1] & 0x0F;
         packet[tmp1] = 0xEE;
     }
 
     // Packet Identifier
-    *packetIdentifier = (packet[0] & 0x04) >> 2;
+    *packetIdentifier = (packet[0] & 0x20) >> 5;
 
     // Success
     return 0;
@@ -92,14 +92,14 @@ void Packet::encodeFlightData(uint8_t* packet, float acceleration, float heightP
     // Acceleration
     if (acceleration < 0)
     {
-        packet[0] |= 1 << 1;
+        packet[0] |= 1 << 6;
         acceleration = -acceleration;
     }
     if (acceleration >= 16)
     {
         acceleration = 16;
     }
-    packet[0] |= (0x0100 & (uint16_t)(acceleration / 0.033333333 + 0.5)) >> 8;
+    packet[0] |= (0x0100 & (uint16_t)(acceleration / 0.033333333 + 0.5)) >> 1;
     packet[1] |= 0x00FF & (uint16_t)(acceleration / 0.033333333 + 0.5);
 
     // Height (Pressure)
@@ -155,8 +155,8 @@ void Packet::encodeFlightData(uint8_t* packet, float acceleration, float heightP
 void Packet::decodeFlightData(uint8_t* packet, float* acceleration, float* heightPressure, uint8_t* flightEvents, float* latitude, float* longitude, float* rssi)
 {
     // Acceleration
-    *acceleration = (float)((uint32_t)(packet[0] & 0x01) << 8 | (uint32_t)(packet[1])) * 0.033333333;
-    if ((packet[0] & (0x01 << 1)) != 0)
+    *acceleration = (float)((uint32_t)(packet[0] & 0x80) << 1 | (uint32_t)(packet[1])) * 0.033333333;
+    if ((packet[0] & 0x40) != 0)
         *acceleration = -*acceleration;
 
     //height 

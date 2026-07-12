@@ -151,6 +151,14 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dat
     case 't': // Switch Main Parachute Ejection Height
         subsystemControl->write('t');
         break;
+
+    case 'v': // Delete flash content (sensorics subsystem)
+        subsystemSens->write('v');
+        break;
+
+    case 'w': // Enter flash write mode (sensorics subsystem)
+        subsystemSens->write('w');
+        break;
     
     default:
         break;

@@ -79,7 +79,7 @@ uint8_t Subsystem::statusGet()
 
 float Subsystem::bytesToFloat(uint8_t *bytes)
 {
-    uint32_t combinedBytes = ((uint32_t)bytes[4] << 24) | ((uint32_t)bytes[3] << 16) | ((uint32_t)bytes[2] << 8) | ((uint32_t)bytes[1]);
+    uint32_t combinedBytes = ((uint32_t)bytes[3] << 24) | ((uint32_t)bytes[2] << 16) | ((uint32_t)bytes[1] << 8) | ((uint32_t)bytes[0]);
     float result = *(float *)&combinedBytes;
     return result;
 }
