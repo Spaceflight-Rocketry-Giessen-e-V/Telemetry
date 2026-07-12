@@ -269,19 +269,19 @@ The general process follows these steps:
 
 The following table summarizes the geometric parameters of our helical groundstation antenna: 
 
-| Parameter      | Symbol | Value       |
-| -------------- | ------ | ----------- |
-| Frequency      | f      | 869.525 MHz |
-| Wavelength     | λ      | 34.502 cm   |
-| Circumference  | C      | 31.051 cm   |
-| Diameter       | D      | 98.840 mm   |
-| Radius         | R      | 49.420 mm   |
-| Length         | L      | 1.553 m     |
-| Pitch angle    | α      | 7.25°       |
-| Pitch distance | d      | 39.502      |
-| Turns          | N      | 39.303      |
-| Wire radius    | r      | 3 mm        |
-| Wire length    | l      | 12.303 m    |
+| Parameter | Symbol | Value |
+| --- | --- | --- |
+| Frequency | f | 869.525 MHz |
+| Wavelength | λ | 344.7773 mm |
+| Circumference | C | 344.7773 mm |
+| Diameter | D | 109.7460 mm |
+| Radius | R | 54.8730 mm |
+| Length | L | 480.1482 mm |
+| Pitch angle | α | 6.0° |
+| Pitch distance | d | 36.2376 mm |
+| Turns | N | 13.25 |
+| Wire radius | r | 3 mm |
+| Wire length | l | 4.618 m |
 
 The antenna has a gain of $G = 16.5\,\mathrm{dBi}$.
 
@@ -289,27 +289,22 @@ The antenna has a gain of $G = 16.5\,\mathrm{dBi}$.
 
 To realise this long antenna design, some kind of fixature is necessary since the copper pipe would otherwise act as a spring.
 
-As a central support, we use a 2 m long 30 mm wide glass fiber rod. With epoxy resin, we attach a 3D printed support structure called pacifier every 1.75 turns. The prewound copper pipe can be wound through the pacifiers, which then leads to a supported structure.
+As a central support, we use a 31 mm wide glass fiber rod. With epoxy resin, we attach a 3D printed support structure called pacifier every 1.75 turns. The prewound copper pipe can be wound through the pacifiers, which then leads to a supported structure.
 
-The glass fibre rod sticks through the 70 cm x 70 xm aluminium ground plane and is held in place by two cone shaped 3D printed support structures, attached with epoxy resin to the GFK rod. The cones are in turn attached to each other with eight M8 bolts through the ground plane.
-
-Addionally, the rod is held in place by ropes attached to a 3D printed strucutre at the top of the GFK rod and to holes in the ground plane.
+The glass fibre rod sticks through the 40 cm round aluminium ground plane and is held in place by two cone shaped 3D printed support structures, attached with epoxy resin to the GFK rod. The cones are in turn attached to each other with eight M6 bolts through the ground plane. There is a fixture included in the bottom cone which attached to a camera tripod.
 
 The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
 
-| ![Side View](../groundstation/antenna/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/images/GroundstationAntenna_render_1.png) |
+| ![Side View](../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png) |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 
 The assembly informations can be found in the [user manual](user_manual.md).
 
-During assembly of the first prototype antenna, it was obvious that the concept has some flaws, which we want to solve in the future. They include:
-- The pacifiers were printed with not enough tolerance. Since the wound copper pipe is not perfectly shaped, a tolerance of at least 1 mm oder 1.5 mm to every side is necessary.
-- The winding template reproduced the antenna exactly. Due to its elastic properties, the pipe expanded after winding, leading to a helix with a larger diameter. Also, the winding grooves could have been deeper.
-- The used winding template for the vertical section at the bottom did not work as expected. More work has to be done here.
+The winding help is a mould for shaping the copper wire. Since the wire expands a bit after winding, we decreased the size of the winding help by 3 %, leading to a diameter $D = 106.4536\,\mathrm{mm}$.
 
 ### Simulations
 
-<p align="center"><img src="/groundstation/antenna/images/GroundstationAntenna_simulation.png" width = 600/></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width = 600/></p>
 
 > Informations will be added. See [#21](/../../issues/21)
 
