@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36">
+  <diagram name="Seite-1" id="NOWeRCwz4enJ26XeR_GT">
+    <mxGraphModel dx="1347" dy="713" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=-25;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;fontStyle=1" value="Radio Transmission" vertex="1">
+          <mxGeometry height="240" width="200" x="450" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;fontStyle=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingBottom=-25;fillColor=#d5e8d4;strokeColor=#82b366;" value="Flight Computer" vertex="1">
+          <mxGeometry height="240" width="240" x="190" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingBottom=-25;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;font face=&quot;Montserrat&quot;&gt;Ground Station&lt;/font&gt;" vertex="1">
+          <mxGeometry height="240" width="430" x="670" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;perimeterSpacing=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Montserrat&quot;&gt;Onboard&lt;br&gt;869 MHz&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="400" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Montserrat&quot;&gt;Ground&lt;br&gt;Station&lt;br&gt;869 MHz&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="620" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-3" edge="1" parent="1" source="jUVUQCvvXHwA6zA6FwVF-27" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;fillColor=#dae8fc;strokeColor=#000000;labelBackgroundColor=none;" value="Encoded Commands">
+          <mxGeometry height="50" relative="1" width="50" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="600" y="299.66999999999996" as="sourcePoint" />
+            <mxPoint x="480" y="299.66999999999996" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-4" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;labelBackgroundColor=none;fillColor=#d5e8d4;strokeColor=#000000;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="2oaDprKo-QkZkhTsfPvc-2" value="Encoded Data">
+          <mxGeometry height="50" relative="1" width="50" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="480" y="199.67000000000002" as="sourcePoint" />
+            <mxPoint x="600" y="199.67000000000002" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Montserrat&quot;&gt;PCB &lt;br&gt;Data Bus&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="210" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-6" edge="1" parent="1" source="jUVUQCvvXHwA6zA6FwVF-26" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;fillColor=#dae8fc;strokeColor=#000000;labelBackgroundColor=none;horizontal=1;" target="2oaDprKo-QkZkhTsfPvc-5" value="">
+          <mxGeometry height="50" relative="1" width="50" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="650" y="160" as="sourcePoint" />
+            <mxPoint x="530" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-7" edge="1" parent="1" source="2oaDprKo-QkZkhTsfPvc-5" style="endArrow=classic;html=1;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;exitX=1;exitY=0.25;exitDx=0;exitDy=0;horizontal=1;fillColor=#d5e8d4;strokeColor=#000000;labelBackgroundColor=none;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="2oaDprKo-QkZkhTsfPvc-1" value="">
+          <mxGeometry height="50" relative="1" width="50" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="330" y="777" as="sourcePoint" />
+            <mxPoint x="400" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Montserrat&quot;&gt;Ground&lt;br&gt;Station&lt;br&gt;Software&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="810" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-10" edge="1" parent="1" source="2oaDprKo-QkZkhTsfPvc-2" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;exitX=1;exitY=0.5;exitDx=0;exitDy=0;horizontal=1;fillColor=#d5e8d4;strokeColor=#000000;labelBackgroundColor=none;" target="2oaDprKo-QkZkhTsfPvc-8" value="">
+          <mxGeometry height="50" relative="1" width="50" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1050.0000000000002" y="190" as="sourcePoint" />
+            <mxPoint x="670" y="682" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-11" edge="1" parent="1" source="2oaDprKo-QkZkhTsfPvc-8" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;fillColor=#dae8fc;strokeColor=#000000;labelBackgroundColor=none;horizontal=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="jUVUQCvvXHwA6zA6FwVF-27" value="">
+          <mxGeometry height="50" relative="1" width="50" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1020" y="170" as="sourcePoint" />
+            <mxPoint x="1050.0000000000002" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Montserrat&quot;&gt;Data Storage Medium&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="1000" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-13" edge="1" parent="1" source="2oaDprKo-QkZkhTsfPvc-8" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;labelBackgroundColor=none;fillColor=#d5e8d4;strokeColor=#000000;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="2oaDprKo-QkZkhTsfPvc-12" value="">
+          <mxGeometry height="50" relative="1" width="50" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1230" y="250" as="sourcePoint" />
+            <mxPoint x="670" y="682" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Montserrat&quot;&gt;User&lt;br&gt;Interface&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="1000" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-15" edge="1" parent="1" source="2oaDprKo-QkZkhTsfPvc-8" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;exitX=1;exitY=0.25;exitDx=0;exitDy=0;horizontal=1;fillColor=#d5e8d4;strokeColor=#000000;labelBackgroundColor=none;spacing=2;spacingRight=10;" target="2oaDprKo-QkZkhTsfPvc-14" value="">
+          <mxGeometry height="50" relative="1" width="50" x="-0.0769" y="28" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1130" y="420" as="sourcePoint" />
+            <mxPoint x="1130" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-16" edge="1" parent="1" source="2oaDprKo-QkZkhTsfPvc-14" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;fillColor=#dae8fc;strokeColor=#000000;labelBackgroundColor=none;horizontal=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="2oaDprKo-QkZkhTsfPvc-8" value="">
+          <mxGeometry height="50" relative="1" width="50" x="-0.2683" y="27" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1020" y="170" as="sourcePoint" />
+            <mxPoint x="960" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-30" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rotation=344.8;" value="Commands" vertex="1">
+          <mxGeometry height="30" width="100" x="705" y="281" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-31" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rotation=24.4;" value="Command Input" vertex="1">
+          <mxGeometry height="30" width="110" x="890" y="292" as="geometry" />
+        </mxCell>
+        <mxCell id="2oaDprKo-QkZkhTsfPvc-32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rotation=0;" value="Data" vertex="1">
+          <mxGeometry height="30" width="100" x="900" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="jUVUQCvvXHwA6zA6FwVF-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;perimeterSpacing=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Montserrat&quot;&gt;Onboard &lt;br&gt;169 MHz&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="400" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="jUVUQCvvXHwA6zA6FwVF-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Montserrat&quot;&gt;Ground&lt;br&gt;Station&lt;br&gt;169 MHz&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="620" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="jUVUQCvvXHwA6zA6FwVF-32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rotation=15.2;" value="Decoded Data" vertex="1">
+          <mxGeometry height="30" width="100" x="705" y="189" as="geometry" />
+        </mxCell>
+        <mxCell id="jUVUQCvvXHwA6zA6FwVF-35" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rotation=15.2;" value="Command Execution" vertex="1">
+          <mxGeometry height="30" width="100" x="293" y="287" as="geometry" />
+        </mxCell>
+        <mxCell id="jUVUQCvvXHwA6zA6FwVF-36" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rotation=344.8;" value="Rocket Data" vertex="1">
+          <mxGeometry height="30" width="100" x="294" y="188" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
