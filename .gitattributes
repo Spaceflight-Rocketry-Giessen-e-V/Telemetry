@@ -1,3 +1,4 @@
 **/*.md -linguist-detectable
 **/*.html -linguist-detectable
 **/*.bat -linguist-detectable
+**/*.scad -linguist-detectable
