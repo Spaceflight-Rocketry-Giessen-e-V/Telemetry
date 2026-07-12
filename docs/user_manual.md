@@ -1,6 +1,6 @@
 # ASCENT II Telemetry System User Manual
 
-Please see the [operation advices](#operation-advices) before using the system!
+Please see the [Operation Advices](#operation-advices) before using the system!
 
 - [Repository Usage](#repository-usage)
 - [Electronics](#electronics)
@@ -40,7 +40,7 @@ The process is similar for the onboard and ground station systems.
 
 ### View and edit the schematic or PCB design files
 
-Our electronics hardware is designed using the open source EDA KiCAD. The schematic and PCB design files can be viewed and  are editable. The schematic is also included in [PDF format](../onboard/pcb/TelemetryOnboard_Schematic.pdf).
+Our electronics hardware is designed using the open source EDA KiCAD. The schematics and PCB design files can be viewed and are editable. The schematics are also included in PDF format.
 
 ### Add custom symbols, footprints and 3D models
 
@@ -83,11 +83,11 @@ Include the symbol and link the footprint:
 ## Ordering
 
 ### Sourcing PCBs
-The PCBs can be sourced from any PCB manufacturing service like JLCPCB or PCBWAY. We included the [Gerber Production Files](../onboard/pcb/Production%20Files/Production%20Files.zip) in the repository. We recommend ordering a solder paste stencil as well, as it simplifies the soldering process.
+The PCBs can be sourced from any PCB manufacturing service like JLCPCB or PCBWAY. We included the Gerber Production Files in the repository. We recommend ordering a solder paste stencil as well, as it simplifies the soldering process.
 
 ### Sourcing components
 
-We source most of our electronics components from Digikey. We included a [Bill of Materials](../onboard/pcb/TelemetryOnboard_BOM.csv) where a direct link to Digikey is provided. Most of the components are also available at similar sellers like Mouser. An [Interactive BOM](../onboard/pcb/TelemetryOnboard_Interactive_BOM.html) is also included to assist in placing the components.
+We source most of our electronics components from Digikey. We included a Bills of Materials where a direct link to Digikey is provided. Most of the components are also available at similar sellers like Mouser. Interactive BOMs are also included to assist in placing the components.
 
 ## Assembly
 
@@ -128,7 +128,7 @@ Our firmware is designed to be used with Visual Studio Code and the PlatformIO e
 
 ### Upload the firmware
 
-To upload the firmware to the system, an UPDI programmer like the Adafruit UPDI Friend is needed. The corresponding COM port has to be selected in VSCode in the status bar.
+To upload, the UPDI USB port can be used. The corresponding COM port has to be selected in VSCode in the status bar.
 
 ## USB-to-UART/UPDI bridge
 
@@ -243,4 +243,4 @@ If testing the radio communication between the onboard system and the ground sta
 
 ## Choice of VGA Cable
 
-The standart VGA pinout is not applicable here, since pins that either carry a digital signal or are connected to ground are internally connected. This renders the standart VGA cable useless. VGA breakout cables, DIY cabel or searching for a cable with 15 individual connectors.
+Standard VGA cables are not applicable here, since the pinout is configured that pins that either carry a digital signal or are connected to ground are internally connected. This renders the standart VGA cable useless. Use VGA breakout cables, a DIY cabel or search online for a cable with 15 individual connections.
