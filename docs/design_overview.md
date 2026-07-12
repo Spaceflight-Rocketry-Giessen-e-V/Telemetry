@@ -27,6 +27,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
   - [Casings](/groundstation/casing/)
     - [Motherboard Casing](#motherboard-casing)
     - [Daughterboard Casing](#daughterbaord-casing)
+  - [Onboard Electronics Mounting Bracket](#onboard-electronics-mounting-bracket)
 - [Firmware](#firmware)
   - [Data Budget \& Packet Structure](#data-budget--packet-structure)
   - [Libraries](#libraries)
@@ -213,8 +214,15 @@ The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254
 
 ### Daughterbaord Casing
 
-Enclosure for the Daughterbaord PCB: [Link](/groundstation/casing/Daughterboard)
+Enclosure for the Daughterbaord PCB. The original and auxiliary design files can be found [here](/groundstation/casing/Daughterboard)
+
 ![Side View](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_1.png) 
+
+## Onboard Electronics Mounting Bracket
+
+Attachment for onboard pcb, onboard QFH antenna and attachment point inside the rocket. Designed with generative design. The original and auxiliary design files can be found [here](../onboard/electronics%20mounting%20bracket/)
+
+<p align="center"><img src="../onboard/electronics mounting bracket/Images/MountingBracket_render1.png" width = 400/></p>
 
 ---
 

@@ -66,7 +66,7 @@ Find the contents here:
 |[iBOM](/onboard/pcb/TelemetryOnboard_iBOM.html)|[iBOM](/groundstation/pcb/Motherboard/TelemetryGroundstationMB_iBOM.html)|[iBOM](/groundstation/pcb/Daughterboard/TelemetryGroundstationDB_iBOM.html)|
 |[PCB 3D Model](/onboard/pcb/TelemetryOnboard.step)|[PCB 3D Model](/groundstation/pcb/Motherboard/TelemetryGroundstationMB.step)|[PCB 3D Model](/groundstation/pcb/Daughterboard/TelemetryGroundstationDB.step)|
 |[PCB Images](/onboard/pcb/images/)|[PCB Images](/groundstation/pcb/Motherboard/images/)|[PCB Images](/groundstation/pcb/Daughterboard/images/)|
-||[Motherboard Casing](/groundstation/casing/Motherboard)| [Daughterboard Casing](/groundstation/casing/Daughterboard)
+|[Mounting Bracket](/onboard/electronics%20mounting%20bracket/) | [Motherboard Casing](/groundstation/casing/Motherboard)| [Daughterboard casing](/groundstation/casing/Daughterboard/) |
 
 ### 3. Electronics Firmware
 
