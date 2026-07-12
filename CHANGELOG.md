@@ -10,11 +10,19 @@ Since our projects include multiple subsytems, which are developed more or less 
 ## [UNRELEASED]:
 
 ### Added
-### Changed
-### Removed
-### Fixed
-### Deprecated
+- Daughterboard Electronics Casing
+- Onboard Electronics Mounting Bracket
+- 869 MHz Groundstation Patch Antenna
 
+### Changed
+- Major helical antenna rework with smaller design
+
+### Removed
+
+### Fixed
+- Several GUI issues
+
+### Deprecated
 
 ## 2026-06-02:
 
@@ -33,7 +41,6 @@ Since our projects include multiple subsytems, which are developed more or less 
 
 ### Removed
 - Flight data simulations
-
 
 ## 2026-01-04
 
