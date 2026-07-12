@@ -308,6 +308,12 @@ The winding help is a mould for shaping the copper wire. Since the wire expands 
 
 > Informations will be added. See [#21](/../../issues/21)
 
+### Previous Design
+
+Before the design process of the new helical antenna, we designed and built a much larger version, featuring a 1.5 m helix and a 70 cm x 70 cm x 2 mm ground plane. The resulting antenna was too large, heavy and expensive, which is why we settled on a 0.5 m helix with a round 40 cm x 1.5 mm ground plane. The new antenna can easily be mounted on a camera tripod.
+
+<p align="center"><img src="/docs/images/helical_antenna_assembly/0601_assembly_with_strings_attached.png" width = 600/></p>
+
 ## Groundstation 169 MHz Dipole Antenna
 
 The groundstation antenna for the 169 MHz radio system consists of a simple [dipole antenna](https://www.digikey.de/de/products/detail/joymax-electronics/VHX-362BSA1B/27545755) with an aluminum reflector.
