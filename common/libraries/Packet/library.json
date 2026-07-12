@@ -1,22 +1,45 @@
 {
   "name": "Packet",
   "description": "Library for encoding and decoding telemetry data packets",
-  "authors":
-  [
-    {
-      "name": "Felix Seene"
-    },
-    {
-      "name": "Benjamin Bauersfeld"
-    }
-  ],
-  "license": "CERN OHL-S v2",
+  "license": "CERN-OHL-S-2.0",
   "homepage": "https://www.spaceflight-rocketry-giessen.de/",
   "repository":
   {
     "type": "git",
     "url": "https://www.github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry"
   },
-  "frameworks": "*",
-  "platforms": "*"
+  "headers": "Packet.h",
+  "examples":
+  [
+    {
+      "name": "Decode Command",
+      "base": "examples",
+      "files": ["decodeCommand.cpp"]
+    },
+    {
+      "name": "Encode Command",
+      "base": "examples",
+      "files": ["encodeCommand.cpp"]
+    },
+    {
+      "name": "Decode Flight Data",
+      "base": "examples",
+      "files": ["decodeFlightData.cpp"]
+    },
+    {
+      "name": "Encode Flight Data",
+      "base": "examples",
+      "files": ["encodeFlightData.cpp"]
+    },
+    {
+      "name": "Decode Telemetry Data",
+      "base": "examples",
+      "files": ["decodeTelemetryData.cpp"]
+    },
+    {
+      "name": "Encode Telemetry Data",
+      "base": "examples",
+      "files": ["encodeTelemetryData.cpp"]
+    }
+  ]
 }

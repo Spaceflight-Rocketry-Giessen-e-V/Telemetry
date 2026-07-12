@@ -15,36 +15,49 @@ A lightweight library for encoding and decoding data packets according to our [d
 
 ## Examples
 
-- [encode()](examples/encode.cpp)
-- [decode()](examples/decode.cpp)
-- [encoding and decoding of an example data packet](examples/example.cpp)
+- [Encode Command](/examples/encodeCommand.cpp)
+- [Decode Command](/examples/decodeCommand.cpp)
+- [Encode Flight Data](/examples/encodeFlightData.cpp)
+- [Decode Flight Data](/examples/decodeFlightData.cpp)
+- [Encode Telemetry Data](/examples/encodeTelemetryData.cpp)
+- [Decode Telemetry Data](/examples/decodeTelemetryData.cpp)
 
 ## Reference
 
-### encode()
+### encodeFrame()
 
-- Converts raw data into the packet structure
-- Function prototype: `void encode(uint8_t* packet, float temperature, uint8_t subsystem_status, uint8_t flight_mode, uint8_t low_power_mode, uint8_t status_events, float acceleration, float height_pressure, float height_gnss, float lat_gnss, float lon_gnss, float battery_voltage)`
-- Parameters:  
-    - `uint8_t* packet`: byte array in which the encoded data is stored. 
-    - The other parameters correspond to the raw data components.
-- Returns:
-    - This function doesn't return any values. The data packet is stored in the passed byte array.
-- Notes:
-    - The passed byte array should be of the same size as the data packet or bigger.
+- Sets the packet identifier, end byte, COBS, parity bit
 
-### decode()
+### decodeFrame()
 
-- Converts a data packet back into the raw data components
-- Function prototype: `void decode(uint8_t* packet, uint8_t* temperature, uint8_t* subsystem_status, uint8_t* flight_mode, uint8_t* low_power_mode, uint8_t* status_events, float* acceleration, float* height_pressure, float* height_gnss, float* lat_gnss, float* lon_gnss, float* battery_voltage, float* rssi)`
-- Parameters:  
-    - `uint8_t* packet`: byte array with the data packet to be encoded.
-    - The other parameters correspond to the raw data components.
-- Returns:
-    - This function doesn't return any values. The data components are stored in the respective passed variables.
-- Notes:
-    - The received signal strength (rssi) is appended after receiving a telemetry packet and is thus part of decode() but not encode().
-    - All variables have to be passed as pointers.
+- Reads the packet identifier, end byte, COBS, parity bit
+- Returns 0 if successfull
+
+### encodeFlightData()
+
+- Encodes a flight data packet
+- Packet identifier = 0
+
+### decodeFlightData
+
+- Decodes a flight data packet
+
+### encodeTelemetryData()
+
+- Encodes a telemetry data packet
+- Packet identifier = 1
+
+### decodeTelemetryData
+
+- Decodes a flight data packet
+
+### encodeCommand
+
+- Encodes a command (convert to lower case letters, set parity)
+
+### decodeCommand
+
+- Decodes a command (convert to lower case letters, read parity)
 
 ## Contributing
 
