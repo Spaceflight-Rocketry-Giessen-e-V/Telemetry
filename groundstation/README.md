@@ -24,4 +24,6 @@
     - [Antenna Images](/groundstation/antenna/helical/images/)
 - [Serial Monitor Configuration File](/groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings)
 - [Graphical User Interface](/groundstation/gui/)
-- [Electronics Casings](/groundstation/casing/) (not yet available)
+- [Electronics Casings](/groundstation/casing/)
+    - [Motherboard Casing](/groundstation/casing/Motherboard)
+    - [Daughterboard Casing](/groundstation/casing/Daughterboard)

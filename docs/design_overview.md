@@ -24,6 +24,9 @@ The whole system is designed for an effective range of 18 km. To accomplish this
     - [RF Traces](#rf-traces)
     - [USB UPDI Programmer](#usb-updi-programmer)
     - [Staggered Pin Rows / Lock Pattern](#staggered-pin-rows--lock-pattern)
+  - [Casings](/groundstation/casing/)
+    - [Motherboard Casing](#motherboard-casing)
+    - [Daughterboard Casing](#daughterbaord-casing)
 - [Firmware](#firmware)
   - [Data Budget \& Packet Structure](#data-budget--packet-structure)
   - [Libraries](#libraries)
@@ -201,6 +204,17 @@ To fullfill this requirement, we use high-quality [Samtec ESQ pin sockets](https
 The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254 mm and a hole size of 1 mm is perfect for the Samtec ESQ pin sockets. The result looks like this:
 
 <p align="center"><img src="images/staggered_pins.png" width = 600/></p>
+
+## Casings
+
+### Motherboard Casing
+
+> Informations will be added. See [#27](/../../issues/27)
+
+### Daughterbaord Casing
+
+Enclosure for the Daughterbaord PCB: [Link](/groundstation/casing/Daughterboard)
+![Side View](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_1.png) 
 
 ---
 
