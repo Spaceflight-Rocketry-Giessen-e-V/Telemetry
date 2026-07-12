@@ -53,22 +53,29 @@ void Subsystem::dataGet()
     }
 }
 
-void Subsystem::ledUpdate()
+void Subsystem::ledUpdate(uint8_t lowPowerMode)
 {
-    if (*_subsystemState == 1)
-    {
-        digitalWrite(_pinLed, 1 - _stateLed);
-        _stateLed = 1 - _stateLed;
-    }
-    else if (*_subsystemState == 2 || *_subsystemState == 3)
-    {
-        digitalWrite(_pinLed, HIGH);
-        _stateLed = 1;
-    }
-    else if (*_subsystemState == 0)
+    if (lowPowerMode == 0)
     {
         digitalWrite(_pinLed, LOW);
-        _stateLed = 0;
+    }
+    else
+    {
+        if (*_subsystemState == 1)
+        {
+            digitalWrite(_pinLed, 1 - _stateLed);
+            _stateLed = 1 - _stateLed;
+        }
+        else if (*_subsystemState == 2 || *_subsystemState == 3)
+        {
+            digitalWrite(_pinLed, HIGH);
+            _stateLed = 1;
+        }
+        else if (*_subsystemState == 0)
+        {
+            digitalWrite(_pinLed, LOW);
+            _stateLed = 0;
+        }
     }
 }
 
@@ -103,10 +110,10 @@ void subsystemsDataGet(Subsystem **subsystemsList, uint8_t subsystemsCount)
     }
 }
 
-void subsystemsLedUpdate(Subsystem **subsystemsList, uint8_t subsystemsCount)
+void subsystemsLedUpdate(Subsystem **subsystemsList, uint8_t subsystemsCount, uint8_t lowPowerMode)
 {
     for (uint8_t i = 0; i < subsystemsCount; i++)
     {
-        subsystemsList[i]->ledUpdate();
+        subsystemsList[i]->ledUpdate(lowPowerMode);
     }
 }

@@ -9,7 +9,7 @@ class Subsystem
         void write(uint8_t byte);
         void connectionCheck();
         void dataGet();
-        void ledUpdate();
+        void ledUpdate(uint8_t lowPowerMode);
         uint8_t statusGet();
 
     private:
@@ -29,4 +29,4 @@ void subsystemsConnCheck(Subsystem** subsystemsList, uint8_t subsystemsCount);
 
 void subsystemsDataGet(Subsystem** subsystemsList, uint8_t subsystemsCount);
 
-void subsystemsLedUpdate(Subsystem** subsystemsList, uint8_t subsystemsCount);
+void subsystemsLedUpdate(Subsystem** subsystemsList, uint8_t subsystemsCount, uint8_t lowPowerMode);

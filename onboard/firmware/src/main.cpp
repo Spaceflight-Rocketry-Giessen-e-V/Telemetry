@@ -130,10 +130,8 @@ void setup()
 void loop()
 {
   subsystemsConnCheck(subsystemList, subsystemsCount);
-
   subsystemsDataGet(subsystemList, subsystemsCount);
-
-  subsystemsLedUpdate(subsystemList, subsystemsCount);
+  subsystemsLedUpdate(subsystemList, subsystemsCount, lowPowerMode);
 
   uint8_t command = commandReceive(&rc1701hp);
   commandExecute(command, &rc1780hp, dataVars, &lowPowerMode, &flightMode, subsystemList, subsystemsCount, &subsystemSens, &subsystemPower, pinARM1, pinSLP);
