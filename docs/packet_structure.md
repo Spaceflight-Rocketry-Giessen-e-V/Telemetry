@@ -82,15 +82,15 @@ If there is no occurance of `0xEE` in the data bytes, the COBS value is set to `
 If there is one or mulitple occurances, the COBS value is set to the byte position of the first occurance.
 Then the value of the first occurance (formerly `0xEE`) is set to the byte position of the second occurance and so on.
 This is repeated until no `0xEE` except the end byte is left. 
-The last occurance will be replaced by the value 0x00 to signal the end of the COBS chain. 
+The last occurance will be replaced by the value `0x00` to signal the end of the COBS chain. 
 
 The following table shows an example package with many occurances of `0xEE` being modified using the described method. 
 All changes are marked in italic in the modified package.
 The modified package only includes one `0xEE` in the end and can easily be converted back to its original shape.
-***Note:*** The byte 0 which includes the COBS value also includes other data (in this case `0x8`)
+***Note:*** The byte `0x00` which includes the COBS value also includes other data (in this case `0x8`)
 | Byte position | `0x00` | `0x01` | `0x02` | `0x03` | `0x04` | `0x05` | `0x06` | `0x07` | `0x08` | `0x09` | `0x0A` | `0x0B` |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Original Package | 08 | 56 | EE | A8 | 9B | EE | 77 | 1F | EE | 0E | EE | EE |
+| Original Package | 80 | 56 | EE | A8 | 9B | EE | 77 | 1F | EE | 0E | EE | EE |
 | Modified Package | 8***2*** | 56 | ***05*** | A8 | 9B | ***08*** | 77 | 1F | ***0A*** | 0E | ***00*** | B6 |
 
 ### Parity Bit
