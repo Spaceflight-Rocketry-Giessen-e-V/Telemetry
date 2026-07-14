@@ -24,10 +24,8 @@ The whole system is designed for an effective range of 18 km. To accomplish this
     - [RF Traces](#rf-traces)
     - [USB UPDI Programmer](#usb-updi-programmer)
     - [Staggered Pin Rows / Lock Pattern](#staggered-pin-rows--lock-pattern)
-  - [Casings](/groundstation/casing/)
-    - [Motherboard Casing](#motherboard-casing)
-    - [Daughterboard Casing](#daughterbaord-casing)
-  - [Onboard Electronics Mounting Bracket](#onboard-electronics-mounting-bracket)
+  - [Groundstation Electronics Casings](#groundstation-electronics-casings)
+  - [Onboard Electronics Mounting Structure](#onboard-electronics-mounting-structure)
 - [Firmware](#firmware)
   - [Data Budget \& Packet Structure](#data-budget--packet-structure)
   - [Libraries](#libraries)
@@ -58,8 +56,8 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 ### Groundstation MB/DB Approach
 
 | <img src="/groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="/groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" /> |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| <p align="center">[Motherboard](/groundstation/pcb/Motherboard/)</p>                          | <p align="center">[Daughterboard](/groundstation/pcb/Daughterboard/)</p>                          |
+| :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
+| [Motherboard](/groundstation/pcb/Motherboard/)| [Daughterboard](/groundstation/pcb/Daughterboard/)|
 
 
 The system is based on a modular approach consisting of a motherboard and one or more daughterboards. The motherboard integrates the microcontroller (AVR128DB64), while the daughterboards host the radio modules (RC17xx series).
@@ -206,23 +204,19 @@ The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254
 
 <p align="center"><img src="images/staggered_pins.png" width = 600/></p>
 
-## Casings
+## Groundstation Electronics Casings
 
-### Motherboard Casing
+Plastics enclosures for the motherboard and daughterboards, each with a bottom part, a shell, and an acrylic cover. The repository includes all the original Fusion and auxiliary (`.step`, `.stl`) design files.
 
-> Informations will be added. See [#27](/../../issues/27)
+|![Side View](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Side View](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_1.png)|
+|:---:|:---:|
+|[Motherboard Casing](/groundstation/casing/Motherboard/)|[Daughterboard Casing](/groundstation/casing/Daughterboard/)|
 
-### Daughterbaord Casing
+## Onboard Electronics Mounting Structure
 
-Enclosure for the Daughterbaord PCB. The original and auxiliary design files can be found [here](/groundstation/casing/Daughterboard)
+Attachment for onboard pcb, onboard QFH antenna and attachment point inside the rocket. Designed with generative design. The original and auxiliary design files can be found [here](../onboard/mounting%20structure/)
 
-![Side View](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_1.png) 
-
-## Onboard Electronics Mounting Bracket
-
-Attachment for onboard pcb, onboard QFH antenna and attachment point inside the rocket. Designed with generative design. The original and auxiliary design files can be found [here](../onboard/electronics%20mounting%20bracket/)
-
-<p align="center"><img src="../onboard/electronics mounting bracket/Images/MountingBracket_render1.png" width = 400/></p>
+<p align="center"><img src="../onboard/mounting structure/Images/MountingBracket_render1.png" width = 400/></p>
 
 ---
 
@@ -303,8 +297,8 @@ The glass fibre rod sticks through the 40 cm round aluminium ground plane and is
 
 The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
 
-| ![Side View](../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png) |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_3.png)| ![Side View](../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png) |
+|---|---|---|
 
 The assembly informations can be found in the [user manual](user_manual.md).
 
