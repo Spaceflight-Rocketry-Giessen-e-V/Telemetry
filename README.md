@@ -53,7 +53,7 @@ In the future, the repository will also contain an 869 MHz QFH design.
 The system includes separate [onboard](/onboard/pcb/) and [groundstation](/groundstation/pcb/) electronics.
 The groundstation uses a modular approach with a [motherboard](/groundstation/pcb/Motherboard/) to which up to four [daughterboards](/groundstation/pcb/Daughterboard/) with radio modules can be connected.
 
-<p align="center"><img src="onboard/pcb/images/Onboard_PCB.png" width="600"/></p>
+<p align="center"><img src="onboard/pcb/images/Onboard_PCB.jpg" width="600"/></p>
 
 Find the contents here:
 

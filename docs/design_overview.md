@@ -76,6 +76,10 @@ The system includes an RGB LED for status indication, three LEDs for subsystem s
 
 <p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
 
+### Previous Design
+
+<p align="center"><img src="../onboard/pcb/images/Onboard_PCB_old.png" width="600"/></p>
+
 ## Design Details
 
 ### Radio Frequencies
@@ -208,7 +212,7 @@ The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254
 
 Plastics enclosures for the motherboard and daughterboards, each with a bottom part, a shell, and an acrylic cover. The repository includes all the original Fusion and auxiliary (`.step`, `.stl`) design files.
 
-|![Side View](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Side View](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_1.png)|
+|![Motherboard Casing](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Daughterboard Casing](../groundstation/pcb/Daughterboard/Images/Daughterboard_PCB.jpg)|
 |:---:|:---:|
 |[Motherboard Casing](/groundstation/casing/Motherboard/)|[Daughterboard Casing](/groundstation/casing/Daughterboard/)|
 
