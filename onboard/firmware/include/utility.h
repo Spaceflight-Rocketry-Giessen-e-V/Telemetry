@@ -7,7 +7,6 @@
 #define SETUPEND 3
 #define RADIOMODUL_ONE 4
 #define RADIOMODUL_TWO 5
-#define LOWPOWERTOGGLE 6
 
 class ledStruct;
 class dataStruct;
@@ -50,7 +49,7 @@ public:
   uint8_t Power;
   uint8_t Sens;
   uint8_t Control;
-
+  uint8_t *lowPowerMode;
   void pinMode();
 };
 

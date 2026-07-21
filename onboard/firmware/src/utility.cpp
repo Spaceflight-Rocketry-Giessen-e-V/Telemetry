@@ -44,7 +44,7 @@ void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledSt
     uint8_t error1780 = radioModuleConfigure(rc1780hp); // module 1: downlink (TX)
     if (error1780 == 0)
     {
-        ledUpdate(RADIOMODUL_ONE, pinLed);
+        ledUpdate(RADIOMODUL_ONE, pinLed, );
     }
 
     uint8_t error1701 = radioModuleConfigure(rc1701hp); // module 2: uplink (RX)
@@ -247,7 +247,6 @@ void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t l
 void ledUpdate(uint8_t state, ledStruct &pinLed)
 {
     static uint8_t r = 0, g = 0, b = 0, d2 = 0, d3 = 0;
-    static uint8_t lowPowerMode = 0;
 
     switch (state)
     {
@@ -272,14 +271,11 @@ void ledUpdate(uint8_t state, ledStruct &pinLed)
     case RADIOMODUL_TWO:
         d3 = 1;
         break;
-    case LOWPOWERTOGGLE:
-        lowPowerMode = !lowPowerMode;
-        break;
     default:
         break;
     }
 
-    if (lowPowerMode)
+    if (*pinLed.lowPowerMode == 1)
     {
         digitalWrite(pinLed.R, LOW);
         digitalWrite(pinLed.G, LOW);

@@ -86,7 +86,7 @@ void setup()
   pinLed.Power = PIN_PD3;
   pinLed.Sens = PIN_PD4;
   pinLed.Control = PIN_PD2;
-
+  pinLed.lowPowerMode = &lowPowerMode;
   pinLed.pinMode();
 
   ledUpdate(SETUPBEGIN, pinLed); // R On
