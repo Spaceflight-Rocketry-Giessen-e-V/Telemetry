@@ -65,7 +65,7 @@ Subsystem subsystemControl(0x40, pinLed.Control, &dataVars.stateControl, uint8Li
 const uint8_t subsystemsCount = 3;
 Subsystem *subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};
 
-const uint8_t loopFrequency = 10;             // in Hz       10 Hz = 100 ms interval
+const uint8_t loopFrequency = 10;            // in Hz       10 Hz = 100 ms interval
 const uint8_t timeBetweenStandbyPackets = 5; // in seconds. In standby, data packets aren't send every loop
 
 uint8_t lowPowerMode = 0;

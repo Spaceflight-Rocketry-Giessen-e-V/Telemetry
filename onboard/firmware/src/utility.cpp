@@ -3,7 +3,7 @@
 static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
     radioModule->begin();
-    radioModule->resetHard(); // initial reboot to clear setting
+    radioModule->resetHard();        // initial reboot to clear setting
     while (radioModule->ping() != 0) // confirm response
     {
         return 1;
@@ -78,7 +78,7 @@ uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
     }
 }
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem** subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
 {
     switch (command)
     {
@@ -159,7 +159,7 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dat
     case 'w': // Enter flash write mode (sensorics subsystem)
         subsystemSens->write('w');
         break;
-    
+
     default:
         break;
     }
@@ -167,7 +167,6 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dat
 
 void flashWrite(dataStruct dataVariables)
 {
-
 }
 
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount)
@@ -247,48 +246,54 @@ void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t l
 
 void ledUpdate(uint8_t state, ledStruct &pinLed)
 {
+    static uint8_t r = 0, g = 0, b = 0, d2 = 0, d3 = 0;
+    static uint8_t lowPowerMode = 0;
+
     switch (state)
     {
     case SETUPBEGIN:
-
-        digitalWrite(pinLed.R, HIGH);
-        digitalWrite(pinLed.G, LOW);
-        digitalWrite(pinLed.B, LOW);
-
+        r = 1;
+        g = 0;
+        b = 0;
         break;
-
     case SETUPRADIOMODULS:
-
-        digitalWrite(pinLed.R, LOW);
-        digitalWrite(pinLed.G, LOW);
-        digitalWrite(pinLed.B, HIGH);
-
+        r = 0;
+        g = 0;
+        b = 1;
         break;
-
     case SETUPEND:
-
-        digitalWrite(pinLed.R, LOW);
-        digitalWrite(pinLed.G, HIGH);
-        digitalWrite(pinLed.B, LOW);
-
+        r = 0;
+        g = 1;
+        b = 0;
         break;
-
     case RADIOMODUL_ONE:
-
-        digitalWrite(pinLed.D2, HIGH);
-
+        d2 = 1;
         break;
-
     case RADIOMODUL_TWO:
-
-        digitalWrite(pinLed.D3, HIGH);
-
+        d3 = 1;
         break;
-
+    case LOWPOWERTOGGLE:
+        lowPowerMode = !lowPowerMode;
+        break;
     default:
-
         break;
     }
+
+    if (lowPowerMode)
+    {
+        digitalWrite(pinLed.R, LOW);
+        digitalWrite(pinLed.G, LOW);
+        digitalWrite(pinLed.B, LOW);
+        digitalWrite(pinLed.D2, LOW);
+        digitalWrite(pinLed.D3, LOW);
+        return;
+    }
+
+    digitalWrite(pinLed.R, r);
+    digitalWrite(pinLed.G, g);
+    digitalWrite(pinLed.B, b);
+    digitalWrite(pinLed.D2, d2);
+    digitalWrite(pinLed.D3, d3);
 }
 
 void buzzerSound(uint8_t pinBuzzer)
