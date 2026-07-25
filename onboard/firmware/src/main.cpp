@@ -70,7 +70,7 @@ const uint8_t timeBetweenStandbyPackets = 5; // in seconds. In standby, data pac
 
 uint8_t lowPowerMode = 0;
 uint8_t flightMode = 0;
-uint16_t loopCount = 0;
+uint32_t loopCount = 0;
 uint32_t loopStartTime = 0;
 
 void setup()
@@ -86,10 +86,12 @@ void setup()
   pinLed.Power = PIN_PD3;
   pinLed.Sens = PIN_PD4;
   pinLed.Control = PIN_PD2;
+
   pinLed.lowPowerMode = &lowPowerMode;
+  
   pinLed.pinMode();
 
-  ledUpdate(SETUPBEGIN, pinLed); // R On
+  ledUpdate(SETUPBEGIN, &pinLed); // R On
 
   // Pin Initialisations
 
@@ -115,15 +117,15 @@ void setup()
 
   // Initialize Radio Modules
 
-  radioModulesSetup(&rc1780hp, &rc1701hp, pinLed, pinBuzzer);
+  radioModulesSetup(&rc1780hp, &rc1701hp, &pinLed, pinBuzzer);
 
-  ledUpdate(SETUPRADIOMODULS, pinLed); // B On
+  ledUpdate(SETUPRADIOMODULS, &pinLed); // B On
 
   // Setup Complete
 
   buzzerSound(pinBuzzer);
 
-  ledUpdate(SETUPEND, pinLed); // G On
+  ledUpdate(SETUPEND, &pinLed); // G On
   dataVars.stateTelemetry = 3;
 }
 
@@ -134,12 +136,12 @@ void loop()
   subsystemsLedUpdate(subsystemList, subsystemsCount, lowPowerMode);
 
   uint8_t command = commandReceive(&rc1701hp);
-  commandExecute(command, &rc1780hp, dataVars, &lowPowerMode, &flightMode, subsystemList, subsystemsCount, &subsystemSens, &subsystemPower, pinARM1, pinSLP);
+  commandExecute(command, &rc1780hp, &dataVars, &lowPowerMode, &flightMode, subsystemList, subsystemsCount, &subsystemSens, &subsystemControl, pinARM1, pinSLP);
 
   uint8_t packetIdentifier = packetSendCheck(&flightMode, loopFrequency, timeBetweenStandbyPackets, loopCount);
-  packetSend(&rc1780hp, dataVars, packetIdentifier);
+  packetSend(&rc1780hp, &dataVars, packetIdentifier);
 
-  flashWrite(dataVars);
+  flashWrite(&dataVars);
 
   loopVariablesUpdate(&loopCount, &loopStartTime, loopFrequency, pinLed.D1);
 }

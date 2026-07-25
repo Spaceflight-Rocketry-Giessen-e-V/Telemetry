@@ -73,7 +73,7 @@ uint8_t Packet::decodeFrame(uint8_t *packet, uint8_t *packetIdentifier)
     // COBS
     uint8_t tmp1 = 0;
     uint8_t tmp2 = packet[tmp1] & 0x0F;
-    while (tmp2 != 0x00)
+    while ((tmp2 != 0x00) && (tmp2 < 0x0B))
     {
         tmp1 = tmp2;
         tmp2 = packet[tmp1] & 0x0F;
@@ -112,10 +112,10 @@ void Packet::encodeFlightData(uint8_t* packet, float acceleration, float heightP
         heightPressure = 6500;
     }
     packet[2] |= (0x7F80 & (uint32_t)(heightPressure / 0.2 + 0.5)) >> 7;
-    packet[3] |= 0x007F & (uint32_t)(heightPressure / 0.2 + 0.5) << 1;
+    packet[3] |= (0x007F & (uint32_t)(heightPressure / 0.2 + 0.5)) << 1;
 
     //Status Events
-    packet[3] |= (0x10 & flightEvents);
+    packet[3] |= (0x10 & flightEvents) >> 4;
     packet[4] |= (0x0F & flightEvents) << 4;
 
     // Lat (GNSS)
@@ -160,10 +160,10 @@ void Packet::decodeFlightData(uint8_t* packet, float* acceleration, float* heigh
         *acceleration = -*acceleration;
 
     //height 
-    *heightPressure = (float)((uint32_t)(packet[2]) << 7 | (uint32_t)(packet[3] >> 1)) * 0.2;
+    *heightPressure = (float)((uint32_t)(packet[2]) << 7 | (uint32_t)(packet[3] & 0xFE) >> 1) * 0.2;
 
     //flightEvents
-    *flightEvents = (uint32_t)((packet[3] & 0x01) << 4 | (uint32_t)(packet[4] >> 4));
+    *flightEvents = (uint32_t)((packet[3] & 0x01) << 4 | (uint32_t)(packet[4] & 0xF0) >> 4));
 
     //Latitude
     *latitude = (float)((uint32_t)(packet[4] & 0x07) << 22 | (uint32_t)(packet[5]) << 14 | (uint32_t)(packet[6]) << 6 | (uint32_t)(packet[7] & 0xFC) >> 2) * 0.0000026823;

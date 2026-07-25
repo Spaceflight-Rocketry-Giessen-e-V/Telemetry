@@ -16,7 +16,6 @@ Subsystem::Subsystem(uint8_t i2cAddress, uint8_t pinLed, uint8_t *subsystemStatu
 void Subsystem::write(uint8_t byte)
 {
     Wire.beginTransmission(_i2cAddress);
-    Wire.beginTransmission(4);
     Wire.write(byte);
     Wire.endTransmission();
 }
@@ -25,7 +24,7 @@ void Subsystem::connectionCheck()
 {
     Wire.beginTransmission(_i2cAddress);
     uint8_t i2cStatus = (Wire.endTransmission() == 0);
-    *_subsystemState = i2cStatus; // Success -> 1, Failure -> 0
+    *_subsystemState = i2cStatus; // Success -> 1, Failure -> 0 // Will get overwritten by dataGet function through pointer to state variable in data struct
 }
 
 void Subsystem::dataGet()
@@ -63,19 +62,17 @@ void Subsystem::ledUpdate(uint8_t lowPowerMode)
     {
         if (*_subsystemState == 1)
         {
-            digitalWrite(_pinLed, 1 - _stateLed);
             _stateLed = 1 - _stateLed;
         }
         else if (*_subsystemState == 2 || *_subsystemState == 3)
         {
-            digitalWrite(_pinLed, HIGH);
             _stateLed = 1;
         }
         else if (*_subsystemState == 0)
         {
-            digitalWrite(_pinLed, LOW);
             _stateLed = 0;
         }
+        digitalWrite(_pinLed, _stateLed);
     }
 }
 

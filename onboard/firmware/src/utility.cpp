@@ -4,7 +4,7 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
     radioModule->begin();
     radioModule->resetHard();        // initial reboot to clear setting
-    while (radioModule->ping() != 0) // confirm response
+    if (radioModule->ping() != 0) // confirm response
     {
         return 1;
     }
@@ -38,13 +38,13 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 }
 
 // Configures both radio modules; lights each module's status LED on success and sounds buzzzer
-void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct pinLed, uint8_t pinBuzzer)
+void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct *pinLed, uint8_t pinBuzzer)
 {
     // fallback loop
     uint8_t error1780 = radioModuleConfigure(rc1780hp); // module 1: downlink (TX)
     if (error1780 == 0)
     {
-        ledUpdate(RADIOMODUL_ONE, pinLed, );
+        ledUpdate(RADIOMODUL_ONE, pinLed);
     }
 
     uint8_t error1701 = radioModuleConfigure(rc1701hp); // module 2: uplink (RX)
@@ -78,7 +78,7 @@ uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
     }
 }
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
 {
     switch (command)
     {
@@ -165,14 +165,15 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct dat
     }
 }
 
-void flashWrite(dataStruct dataVariables)
+void flashWrite(dataStruct *dataVariables)
 {
 }
 
-uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint16_t loopCount)
+uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint32_t loopCount)
 {
     static uint16_t loopCountWhenFlightmodeStarts = 0;
     static uint8_t lastValueOfFlightmode = 0;
+    static uint8_t lastPacketTypeStandby = 0;
 
     if (*flightmode == 1 && lastValueOfFlightmode == 0)
     {
@@ -202,7 +203,8 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
     {
         if ((loopCount % (uint16_t)(timeBetweenStandbyPackets * loopFrequency)) == 0)
         {
-            return (loopCount % 2) + 1;
+            lastPacketTypeStandby = 1 - lastPacketTypeStandby;
+            return lastPacketTypeStandby;
         }
         else
         {
@@ -211,7 +213,7 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
     }
 }
 
-void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t packetIdentifier)
+void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t packetIdentifier)
 {
     if (packetIdentifier == 0)
     {
@@ -221,16 +223,16 @@ void packetSend(RC17xxHP_RC232 *radioModule, dataStruct dataVariables, uint8_t p
 
     if (packetIdentifier == 1)
     {
-        Packet::encodeFlightData(packet, dataVariables.acceleration, dataVariables.heightPressure, dataVariables.flightEvents, dataVariables.latitude, dataVariables.longitude);
+        Packet::encodeFlightData(packet, dataVariables->acceleration, dataVariables->heightPressure, dataVariables->flightEvents, dataVariables->latitude, dataVariables->longitude);
     }
     else if (packetIdentifier == 2)
     {
-        Packet::encodeTelemetryData(packet, dataVariables.stateTelemetry, dataVariables.statePower, dataVariables.stateSens, dataVariables.stateControl, dataVariables.heightGNSS, dataVariables.satCountGNSS, dataVariables.hdopGNSS, dataVariables.temperatureElectronics, dataVariables.temperatureBattery, dataVariables.stateCapacitors, dataVariables.continuityPyros, dataVariables.pressureDecoupler, dataVariables.ldrDecoupler, dataVariables.voltageBattery, dataVariables.currentBattery, dataVariables.currentUmbilical, dataVariables.stateUmbilical, dataVariables.lowPowerMode, dataVariables.voltageBatteryCOTS);
+        Packet::encodeTelemetryData(packet, dataVariables->stateTelemetry, dataVariables->statePower, dataVariables->stateSens, dataVariables->stateControl, dataVariables->heightGNSS, dataVariables->satCountGNSS, dataVariables->hdopGNSS, dataVariables->temperatureElectronics, dataVariables->temperatureBattery, dataVariables->stateCapacitors, dataVariables->continuityPyros, dataVariables->pressureDecoupler, dataVariables->ldrDecoupler, dataVariables->voltageBattery, dataVariables->currentBattery, dataVariables->currentUmbilical, dataVariables->stateUmbilical, dataVariables->lowPowerMode, dataVariables->voltageBatteryCOTS);
     }
     radioModule->send(packet, 12);
 }
 
-void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop)
+void loopVariablesUpdate(uint32_t *loopCount, uint32_t *loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop)
 {
     *loopCount = *loopCount + 1;
 
@@ -244,7 +246,7 @@ void loopVariablesUpdate(uint16_t *loopCount, uint32_t *loopStartTime, uint8_t l
     *loopStartTime = millis();
 }
 
-void ledUpdate(uint8_t state, ledStruct &pinLed)
+void ledUpdate(uint8_t state, ledStruct *pinLed)
 {
     static uint8_t r = 0, g = 0, b = 0, d2 = 0, d3 = 0;
 
@@ -275,21 +277,21 @@ void ledUpdate(uint8_t state, ledStruct &pinLed)
         break;
     }
 
-    if (*pinLed.lowPowerMode == 1)
+    if (*pinLed->lowPowerMode == 1)
     {
-        digitalWrite(pinLed.R, LOW);
-        digitalWrite(pinLed.G, LOW);
-        digitalWrite(pinLed.B, LOW);
-        digitalWrite(pinLed.D2, LOW);
-        digitalWrite(pinLed.D3, LOW);
+        digitalWrite(pinLed->R, LOW);
+        digitalWrite(pinLed->G, LOW);
+        digitalWrite(pinLed->B, LOW);
+        digitalWrite(pinLed->D2, LOW);
+        digitalWrite(pinLed->D3, LOW);
         return;
     }
 
-    digitalWrite(pinLed.R, r);
-    digitalWrite(pinLed.G, g);
-    digitalWrite(pinLed.B, b);
-    digitalWrite(pinLed.D2, d2);
-    digitalWrite(pinLed.D3, d3);
+    digitalWrite(pinLed->R, r);
+    digitalWrite(pinLed->G, g);
+    digitalWrite(pinLed->B, b);
+    digitalWrite(pinLed->D2, d2);
+    digitalWrite(pinLed->D3, d3);
 }
 
 void buzzerSound(uint8_t pinBuzzer)

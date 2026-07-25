@@ -11,21 +11,21 @@ class dataStruct;
 class ledStruct;
 class buttonStruct;
 
-void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct pinLed);
+void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct *pinLed);
 
 uint8_t commandReceive(HardwareSerial *serialUSB);
 
 void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule);
 
-void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct dataVariables);
+void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables);
 
-void dataSendUsb(HardwareSerial *serialUSB, dataStruct dataVariables);
+void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables);
 
-void ledUpdate(uint8_t state, ledStruct pinLed);
+void ledUpdate(uint8_t state, ledStruct *pinLed);
 
-void ledRssiUpdate(float rssi, ledStruct pinLed);
+void ledRssiUpdate(float rssi, ledStruct *pinLed);
 
-void displayUpdate(uint8_t address, dataStruct dataVariables);
+void displayUpdate(uint8_t address, dataStruct *dataVariables);
 
 void buttonCheck(buttonStruct pinButton);
 

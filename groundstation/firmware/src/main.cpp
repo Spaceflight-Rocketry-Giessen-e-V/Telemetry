@@ -73,7 +73,7 @@ void setup()
   pinMode(pinControlBox1, INPUT);
   pinMode(pinControlBox1, INPUT);
 
-  ledUpdate(SETUPBEGIN, pinLed); // R On
+  ledUpdate(SETUPBEGIN, &pinLed); // R On
 
   // UART Declarations
 
@@ -90,13 +90,13 @@ void setup()
 
   // Initialize Radio Modules
 
-  radioModulesSetup(&rc1780hp, &rc1701hp, pinLed);
+  radioModulesSetup(&rc1780hp, &rc1701hp, &pinLed);
 
-  ledUpdate(SETUPRADIOMODULS, pinLed); // B On
+  ledUpdate(SETUPRADIOMODULS, &pinLed); // B On
 
   // Setup Complete
 
-  ledUpdate(SETUPEND, pinLed); // G On
+  ledUpdate(SETUPEND, &pinLed); // G On
 }
 
 void loop()
@@ -110,12 +110,12 @@ void loop()
   buttonCheck(pinButton);
   controlBoxCheck(pinControlBox1, pinControlBox2);
 
-  packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, dataVars);
+  packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars);
 
-  dataSendUsb(SerialUSB1, dataVars);
-  dataSendUsb(SerialUSB2, dataVars);
+  dataSendUsb(SerialUSB1, &dataVars);
+  dataSendUsb(SerialUSB2, &dataVars);
 
-  displayUpdate(0x00, dataVars);
+  displayUpdate(0x00, &dataVars);
 
-  ledRssiUpdate(dataVars.rssi, pinLed);
+  ledRssiUpdate(dataVars.rssi, &pinLed);
 }
