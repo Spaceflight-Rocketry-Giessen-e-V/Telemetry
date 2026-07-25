@@ -40,6 +40,7 @@ RC17xxHP_RC232 rc1701hp(&Serial0, PIN_PA4, PIN_PA5, 19200, PIN_PA3, PIN_PA6, PIN
 dataStruct dataVars;
 
 uint8_t packetBuffer[32];
+uint8_t packetBufferIndex = 0;
 
 void setup()
 {
@@ -49,14 +50,14 @@ void setup()
   pinLed.D1 = PIN_PA0;
   pinLed.D2 = PIN_PG7;
   pinLed.D3 = PIN_PG6;
-  pinLed.rssi_1 = PIN_PD0;
-  pinLed.rssi_2 = PIN_PD1;
-  pinLed.rssi_3 = PIN_PD2;
-  pinLed.rssi_4 = PIN_PD3;
-  pinLed.rssi_5 = PIN_PD4;
-  pinLed.rssi_6 = PIN_PD5;
-  pinLed.rssi_7 = PIN_PD6;
-  pinLed.rssi_8 = PIN_PD7;
+  pinLed.rssi_1 = PIN_PD7;
+  pinLed.rssi_2 = PIN_PD6;
+  pinLed.rssi_3 = PIN_PD5;
+  pinLed.rssi_4 = PIN_PD4;
+  pinLed.rssi_5 = PIN_PD3;
+  pinLed.rssi_6 = PIN_PD2;
+  pinLed.rssi_7 = PIN_PD1;
+  pinLed.rssi_8 = PIN_PD0;
 
   pinLed.pinMode();
 
@@ -109,10 +110,10 @@ void loop()
   buttonCheck(pinButton);
   controlBoxCheck(pinControlBox1, pinControlBox2);
 
-  packetReceive(&rc1780hp, packetBuffer, dataVars);
+  packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, dataVars);
 
-  dataSendUsb(SerialUSB1);
-  dataSendUsb(SerialUSB2);
+  dataSendUsb(SerialUSB1, dataVars);
+  dataSendUsb(SerialUSB2, dataVars);
 
   displayUpdate(0x00, dataVars);
 

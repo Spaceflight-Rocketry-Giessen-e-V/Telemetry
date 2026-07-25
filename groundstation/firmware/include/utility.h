@@ -17,9 +17,9 @@ uint8_t commandReceive(HardwareSerial *serialUSB);
 
 void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule);
 
-void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, dataStruct dataVariables);
+void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct dataVariables);
 
-void dataSendUsb(HardwareSerial *serialUSB);
+void dataSendUsb(HardwareSerial *serialUSB, dataStruct dataVariables);
 
 void ledUpdate(uint8_t state, ledStruct pinLed);
 
@@ -36,6 +36,7 @@ class dataStruct // :)
 public:
 
   float rssi;
+  uint32_t timestampLastPacket = 0;
 
   // Subsystem States
 
