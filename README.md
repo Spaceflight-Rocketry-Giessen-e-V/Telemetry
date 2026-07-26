@@ -7,7 +7,7 @@
 ---
 
 ## Overview
-The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://spaceflight-rocketry-giessen.de/), which is being developed for the PIPE 2 and ARCHER experimental rockets.  
+The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://sprog-ev.de/en/), which is being developed for the PIPE 2 and ARCHER experimental rockets.  
 This dual-frequency 169/869 MHz telemetry system based on Radiocrafts RC232 radio modules allows bidirectional data exchange between rockets and groundstations with a range of 20 km and a minimum data rate of 1.2 kbps.
 The design can also be used in areas outside of rocketry like Smart Home or RC.
 
