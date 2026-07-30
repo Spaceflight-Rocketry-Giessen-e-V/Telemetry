@@ -19,6 +19,10 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
     {
         return 1;
     }
+    if (radioModule->set_RSSI_MODE(0x01) != 0) // append signal strength to packet
+    {
+        return 1;
+    }
     if (radioModule->set_PACKET_LENGTH(0x01) != 0) // send every byte when it arrives
     {
         return 1;
