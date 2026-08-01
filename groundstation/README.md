@@ -22,7 +22,7 @@
     - [Assembly Manual](/docs/helical_antenna_assembly_manual.md)
     - [Antenna 3D Model](/groundstation/antenna/helical/Antenna%20Assembly.step)
     - [Antenna Images](/groundstation/antenna/helical/images/)
-    - [Simulation](//groundstation/antenna/helical/Simulation/)
+    - [Simulation](/groundstation/antenna/helical/Simulation/)
 - [Serial Monitor Configuration File](/groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings)
 - [Graphical User Interface](/groundstation/gui/)
 - [Electronics Casings](/groundstation/casing/)
