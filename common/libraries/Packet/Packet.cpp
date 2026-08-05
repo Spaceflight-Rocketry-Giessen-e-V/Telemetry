@@ -163,7 +163,7 @@ void Packet::decodeFlightData(uint8_t* packet, float* acceleration, float* heigh
     *heightPressure = (float)((uint32_t)(packet[2]) << 7 | (uint32_t)(packet[3] & 0xFE) >> 1) * 0.2;
 
     //flightEvents
-    *flightEvents = (uint32_t)((packet[3] & 0x01) << 4 | (uint32_t)(packet[4] & 0xF0) >> 4));
+    *flightEvents = (uint32_t)((packet[3] & 0x01) << 4 | (uint32_t)(packet[4] & 0xF0) >> 4);
 
     //Latitude
     *latitude = (float)((uint32_t)(packet[4] & 0x07) << 22 | (uint32_t)(packet[5]) << 14 | (uint32_t)(packet[6]) << 6 | (uint32_t)(packet[7] & 0xFC) >> 2) * 0.0000026823;
