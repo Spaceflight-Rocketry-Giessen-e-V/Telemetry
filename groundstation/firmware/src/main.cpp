@@ -32,10 +32,10 @@ uint8_t pinRX_USB2 = PIN_PF1;
 
 // Initialize Radio Modules
 
-// First D-Sub
-RC17xxHP_RC232 rc1780hp(&Serial1, PIN_PC1, PIN_PC0, 19200, PIN_PC4, PIN_PC5, PIN_PC2, PIN_PC3);
-// Second D-Sub
-RC17xxHP_RC232 rc1701hp(&Serial0, PIN_PA4, PIN_PA5, 19200, PIN_PA3, PIN_PA6, PIN_PA1, PIN_PA2);
+// First D-Sub 
+RC17xxHP_RC232 rc1780hp(&Serial4, PIN_PE0, PIN_PE1, 19200, PIN_PE4, PIN_PE5, PIN_PE2, PIN_PE3);
+// Second D-Sub 
+RC17xxHP_RC232 rc1701hp(&Serial1, PIN_PC0, PIN_PC1, 19200, PIN_PC4, PIN_PC5, PIN_PC2, PIN_PC3);
 
 dataStruct dataVars;
 

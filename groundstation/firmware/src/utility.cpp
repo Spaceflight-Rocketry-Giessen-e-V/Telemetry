@@ -87,8 +87,11 @@ uint8_t commandReceive(HardwareSerial *serialUSB)
 void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule)
 {
     uint8_t packet;
-    Packet::encodeCommand(command, &packet);
-    radioModule->send(packet);
+    if(command != 0)
+    {
+        Packet::encodeCommand(command, &packet);
+        radioModule->send(packet);
+    }
 }
 
 void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables)
