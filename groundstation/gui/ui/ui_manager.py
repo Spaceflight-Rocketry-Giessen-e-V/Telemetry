@@ -159,10 +159,14 @@ class UIManager:
         dpg.create_context()
 
         # GNU Unifont covers the whole BMP so every glyph the widgets use renders.
+        # A second, smaller size is bound to widgets that opt into "compact".
         with dpg.font_registry():
             default_font = dpg.add_font("assets/fonts/Unifont/unifont.ttf", 16)
             dpg.add_font_range(0x0020, 0xFFFF, parent=default_font)
+            small_font = dpg.add_font("assets/fonts/Unifont/unifont.ttf", 13)
+            dpg.add_font_range(0x0020, 0xFFFF, parent=small_font)
         dpg.bind_font(default_font)
+        self.ctx.font_small = small_font
 
         width, height = (1920, 1080)
         log.info("UIManager: creating viewport %dx%d", width, height)
@@ -183,13 +187,17 @@ class UIManager:
                 with dpg.tab(label="Settings"):
                     self.settings_window.draw_ui()
 
-        # Build the dashboard into the Flight-Data tab, then keep it responsive.
-        self.engine.load(self._load_dashboard(), parent=flight_tab)
-        dpg.set_viewport_resize_callback(lambda *_: self.engine.on_viewport_resize())
-
         log.info("UIManager: entering render loop")
         dpg.setup_dearpygui()
         dpg.show_viewport()
+
+        # Build the dashboard AFTER the viewport is realized, so widgets build at
+        # the true cell width (get_viewport_client_width is only correct once the
+        # viewport is shown — otherwise fixed-size content like the map drawlist
+        # is sized to a stale width and does not fill its cell).
+        self.engine.load(self._load_dashboard(), parent=flight_tab)
+        dpg.set_viewport_resize_callback(lambda *_: self.engine.on_viewport_resize())
+
         run_render_loop(self.bus)
 
         log.info("UIManager: render loop exited — cleaning up")

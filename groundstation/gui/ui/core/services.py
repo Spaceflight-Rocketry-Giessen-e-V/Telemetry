@@ -30,3 +30,7 @@ class ServiceHub:
     settings: "SettingsManager"
     clock: MissionClock
     serial: Optional["SerialService"] = None
+    # A smaller DPG font id, created at startup. Widgets that set ``"compact":
+    # true`` in their config bind this to their root so dense content (tables,
+    # stat strips, control rows) fits without overflowing the cell.
+    font_small: Optional[int] = None

@@ -3,18 +3,18 @@
   "name": "flight-default",
   "grid": { "cols": 12, "cell_h": 80, "gutter": 8, "margin": 12 },
   "widgets": [
-    { "type": "serial_control", "iid": "main", "cell": [0, 0, 3, 2], "config": {} },
+    { "type": "serial_control", "iid": "main", "cell": [0, 0, 3, 2], "config": { "compact": true } },
     { "type": "commands",       "iid": "main", "cell": [0, 2, 3, 6], "config": {} },
-    { "type": "last_packet",    "iid": "main", "cell": [0, 8, 3, 6], "config": {} },
+    { "type": "last_packet",    "iid": "main", "cell": [0, 8, 3, 6], "config": { "compact": true } },
 
-    { "type": "flight_events",  "iid": "main", "cell": [3, 0, 3, 5], "config": {} },
+    { "type": "flight_events",  "iid": "main", "cell": [3, 0, 3, 5], "config": { "compact": true } },
     { "type": "battery",        "iid": "main", "cell": [3, 5, 3, 3], "config": { "title": "Battery Status" } },
     { "type": "connection",     "iid": "main", "cell": [3, 8, 3, 3], "config": {} },
-    { "type": "subsystem",      "iid": "main", "cell": [3, 11, 3, 2], "config": {} },
+    { "type": "subsystem",      "iid": "main", "cell": [3, 11, 3, 2], "config": { "compact": true } },
 
-    { "type": "altitude",       "iid": "main", "cell": [6, 0, 6, 5], "config": {} },
-    { "type": "acceleration",   "iid": "main", "cell": [6, 5, 6, 5], "config": {} },
-    { "type": "map",            "iid": "main", "cell": [6, 10, 6, 7], "config": { "zoom": 14 } },
+    { "type": "altitude",       "iid": "main", "cell": [6, 0, 6, 5], "config": { "compact": true } },
+    { "type": "acceleration",   "iid": "main", "cell": [6, 5, 6, 5], "config": { "compact": true } },
+    { "type": "map",            "iid": "main", "cell": [6, 10, 6, 7], "config": { "zoom": 14, "compact": true } },
     { "type": "time",           "iid": "main", "cell": [6, 17, 3, 2], "config": {} },
     { "type": "location",       "iid": "main", "cell": [9, 17, 3, 2], "config": {} }
   ]

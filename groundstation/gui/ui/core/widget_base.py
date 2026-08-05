@@ -89,6 +89,10 @@ class Widget(ABC):
                 border=self.BORDER,
         ):
             self.build(width, height)
+        # Opt-in compact font for dense widgets, bound to the root so it cascades
+        # to all content. Falls back silently if no small font was provided.
+        if self.config.get("compact") and getattr(self.ctx, "font_small", None):
+            dpg.bind_item_font(self._root, self.ctx.font_small)
         log.debug("%s[%s]: mounted at (%d,%d) %dx%d", self.TYPE_ID, self.iid, x, y, width, height)
 
     def relayout(self, x: int, y: int, width: int, height: int) -> None:

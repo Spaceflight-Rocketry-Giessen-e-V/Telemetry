@@ -42,7 +42,7 @@ class AltitudeWindow(PlotWidgetBase):
     def build(self, width: int, height: int) -> None:
         dpg.add_text(self.config.get("title", "Altitude"), color=(255, 255, 0))
 
-        with dpg.plot(label="Altitude vs Time", height=-80, width=-1, zoom_mod=1):
+        with dpg.plot(label="Altitude vs Time", height=-104, width=-1, zoom_mod=1):
             dpg.add_plot_legend()
             dpg.add_plot_axis(dpg.mvXAxis, label="Time (s)", tag=self.tag("xaxis"))
             with dpg.plot_axis(dpg.mvYAxis, label="Altitude (m)", tag=self.tag("yaxis")):
