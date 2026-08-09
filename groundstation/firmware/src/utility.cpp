@@ -94,37 +94,46 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule)
     }
 }
 
-void packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables)
+uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables)
 {
-    if(radioModule->available() != 0)
+    while(radioModule->available() != 0)
     {
         packetBuffer[*packetBufferIndex] = radioModule->read();
-        packetBufferIndex++;
+        *packetBufferIndex++;
     }
+   
 
     if(packetBuffer[*packetBufferIndex - 2] == 0xEE) // -2 because of rssi
     {
+
         if(*packetBufferIndex >= 13)
         {
+            
             uint8_t packetIdentifier;
             if(Packet::decodeFrame(&packetBuffer[*packetBufferIndex - 13], &packetIdentifier) == 0)
             {
+              
                 if(packetIdentifier == 0)
                 {
+                    
                     Packet::decodeFlightData(&packetBuffer[*packetBufferIndex - 13], &dataVariables->acceleration, &dataVariables->heightPressure, &dataVariables->flightEvents, &dataVariables->latitude, &dataVariables->longitude, &dataVariables->rssi);
                 }
                 else if(packetIdentifier == 1)
                 {
+                  
                     Packet::decodeTelemetryData(&packetBuffer[*packetBufferIndex - 13], &dataVariables->stateTelemetry, &dataVariables->statePower, &dataVariables->stateSens, &dataVariables->stateControl, &dataVariables->heightGNSS, &dataVariables->satCountGNSS, &dataVariables->hdopGNSS, &dataVariables->temperatureElectronics, &dataVariables->temperatureBattery, &dataVariables->stateCapacitors, &dataVariables->continuityPyros, &dataVariables->pressureDecoupler, &dataVariables->ldrDecoupler, &dataVariables->voltageBattery, &dataVariables->currentBattery, &dataVariables->currentUmbilical, &dataVariables->stateUmbilical, &dataVariables->lowPowerMode, &dataVariables->voltageBatteryCOTS, &dataVariables->rssi);
                 }
             }
+            *packetBufferIndex = 0;
+            return 0;
         }
     }
-
-    if((packetBuffer[*packetBufferIndex - 2] == 0xEE) || (*packetBufferIndex > 31))
+    //Serial5.print("nach decode");
+    if (*packetBufferIndex > 31)
     {
         *packetBufferIndex = 0;
     }
+    return 1;
 }
 
 void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables)

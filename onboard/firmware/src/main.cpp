@@ -36,7 +36,6 @@ uint8_t pinRX_Umbilical = PIN_PC1;
 
 RC17xxHP_RC232 rc1780hp(&Serial0, PIN_PA0, PIN_PA1, 19200, PIN_PA5, PIN_PG7, PIN_PA3, PIN_PA4);
 RC17xxHP_RC232 rc1701hp(&Serial3, PIN_PB4, PIN_PB5, 19200, PIN_PB3, PIN_PG6, PIN_PB1, PIN_PB2);
-
 dataStruct dataVars;
 
 // Data Arrays Preparations
@@ -124,9 +123,8 @@ void setup()
   // Setup Complete
 
   buzzerSound(pinBuzzer);
-
-  ledUpdate(SETUPEND, &pinLed); // G On
   dataVars.stateTelemetry = 3;
+  ledUpdate(SETUPEND, &pinLed); // G On
 }
 
 void loop()
@@ -140,7 +138,6 @@ void loop()
 
   uint8_t packetIdentifier = packetSendCheck(&flightMode, loopFrequency, timeBetweenStandbyPackets, loopCount);
   packetSend(&rc1780hp, &dataVars, packetIdentifier);
-
   flashWrite(&dataVars);
 
   loopVariablesUpdate(&loopCount, &loopStartTime, loopFrequency, pinLed.D1);

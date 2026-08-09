@@ -110,12 +110,15 @@ void loop()
   buttonCheck(pinButton);
   controlBoxCheck(pinControlBox1, pinControlBox2);
 
-  packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars);
+  if (packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars)==0)
+  {
 
-  dataSendUsb(SerialUSB1, &dataVars);
-  dataSendUsb(SerialUSB2, &dataVars);
+   dataSendUsb(SerialUSB1, &dataVars);
+   dataSendUsb(SerialUSB2, &dataVars);
 
-  displayUpdate(0x00, &dataVars);
+   displayUpdate(0x00, &dataVars);
 
-  ledRssiUpdate(dataVars.rssi, &pinLed);
+   ledRssiUpdate(dataVars.rssi, &pinLed);
+  
+  }
 }

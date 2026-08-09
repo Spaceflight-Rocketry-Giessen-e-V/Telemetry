@@ -3,7 +3,7 @@
 static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
     radioModule->begin();
-    radioModule->resetHard();        // initial reboot to clear setting
+    radioModule->resetHard();     // initial reboot to clear setting
     if (radioModule->ping() != 0) // confirm response
     {
         return 1;
