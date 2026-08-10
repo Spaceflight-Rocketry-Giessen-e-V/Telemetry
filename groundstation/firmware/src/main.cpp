@@ -32,9 +32,9 @@ uint8_t pinRX_USB2 = PIN_PF1;
 
 // Initialize Radio Modules
 
-// First D-Sub 
+// First D-Sub
 RC17xxHP_RC232 rc1780hp(&Serial4, PIN_PE0, PIN_PE1, 19200, PIN_PE4, PIN_PE5, PIN_PE2, PIN_PE3);
-// Second D-Sub 
+// Second D-Sub
 RC17xxHP_RC232 rc1701hp(&Serial1, PIN_PC0, PIN_PC1, 19200, PIN_PC4, PIN_PC5, PIN_PC2, PIN_PC3);
 
 dataStruct dataVars;
@@ -110,15 +110,14 @@ void loop()
   buttonCheck(pinButton);
   controlBoxCheck(pinControlBox1, pinControlBox2);
 
-  if (packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars)==0)
+  if (packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars) == 0)
   {
 
-   dataSendUsb(SerialUSB1, &dataVars);
-   dataSendUsb(SerialUSB2, &dataVars);
+    dataSendUsb(SerialUSB1, &dataVars);
+    dataSendUsb(SerialUSB2, &dataVars);
 
-   displayUpdate(0x00, &dataVars);
+    displayUpdate(0x00, &dataVars);
 
-   ledRssiUpdate(dataVars.rssi, &pinLed);
-  
+    ledRssiUpdate(dataVars.rssi, &pinLed);
   }
 }

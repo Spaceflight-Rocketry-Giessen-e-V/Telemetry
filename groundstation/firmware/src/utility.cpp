@@ -10,7 +10,7 @@
 static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
 {
     radioModule->begin();
-    radioModule->resetHard(); // initial reboot to clear setting
+    radioModule->resetHard();     // initial reboot to clear setting
     if (radioModule->ping() != 0) // confirm response
     {
         return 1;
@@ -87,7 +87,7 @@ uint8_t commandReceive(HardwareSerial *serialUSB)
 void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule)
 {
     uint8_t packet;
-    if(command != 0)
+    if (command != 0)
     {
         Packet::encodeCommand(command, &packet);
         radioModule->send(packet);
@@ -96,31 +96,32 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule)
 
 uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables)
 {
-    while(radioModule->available() != 0)
+    while (radioModule->available() != 0)
     {
         packetBuffer[*packetBufferIndex] = radioModule->read();
-        *packetBufferIndex++;
+        (*packetBufferIndex)++;
     }
-   
 
-    if(packetBuffer[*packetBufferIndex - 2] == 0xEE) // -2 because of rssi
+    if (packetBuffer[*packetBufferIndex - 2] == 0xEE) // -2 because of rssi
     {
 
-        if(*packetBufferIndex >= 13)
+        if (*packetBufferIndex >= 13)
         {
-            
+            dataVariables->timeSinceLastPacket = millis() - dataVariables->timestampLastPacket;
+            dataVariables->timestampLastPacket = millis();
+
             uint8_t packetIdentifier;
-            if(Packet::decodeFrame(&packetBuffer[*packetBufferIndex - 13], &packetIdentifier) == 0)
+            if (Packet::decodeFrame(&packetBuffer[*packetBufferIndex - 13], &packetIdentifier) == 0)
             {
-              
-                if(packetIdentifier == 0)
+
+                if (packetIdentifier == 0)
                 {
-                    
+
                     Packet::decodeFlightData(&packetBuffer[*packetBufferIndex - 13], &dataVariables->acceleration, &dataVariables->heightPressure, &dataVariables->flightEvents, &dataVariables->latitude, &dataVariables->longitude, &dataVariables->rssi);
                 }
-                else if(packetIdentifier == 1)
+                else if (packetIdentifier == 1)
                 {
-                  
+
                     Packet::decodeTelemetryData(&packetBuffer[*packetBufferIndex - 13], &dataVariables->stateTelemetry, &dataVariables->statePower, &dataVariables->stateSens, &dataVariables->stateControl, &dataVariables->heightGNSS, &dataVariables->satCountGNSS, &dataVariables->hdopGNSS, &dataVariables->temperatureElectronics, &dataVariables->temperatureBattery, &dataVariables->stateCapacitors, &dataVariables->continuityPyros, &dataVariables->pressureDecoupler, &dataVariables->ldrDecoupler, &dataVariables->voltageBattery, &dataVariables->currentBattery, &dataVariables->currentUmbilical, &dataVariables->stateUmbilical, &dataVariables->lowPowerMode, &dataVariables->voltageBatteryCOTS, &dataVariables->rssi);
                 }
             }
@@ -128,7 +129,7 @@ uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_
             return 0;
         }
     }
-    //Serial5.print("nach decode");
+    // Serial5.print("nach decode");
     if (*packetBufferIndex > 31)
     {
         *packetBufferIndex = 0;
@@ -139,34 +140,58 @@ uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_
 void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables)
 {
     serialUSB->print("\n");
-    serialUSB->print("Acceleration: ");             serialUSB->println(dataVariables->acceleration);
-    serialUSB->print("Height (Pressure): ");        serialUSB->println(dataVariables->heightPressure);
-    serialUSB->print("Flight Events: ");            serialUSB->println(dataVariables->flightEvents);
-    serialUSB->print("Latitude: ");                 serialUSB->println(dataVariables->latitude);
-    serialUSB->print("Longitude: ");                serialUSB->println(dataVariables->longitude);
-    serialUSB->print("State Telemetry: ");          serialUSB->println(dataVariables->stateTelemetry);
-    serialUSB->print("State Power Supply: ");       serialUSB->println(dataVariables->statePower);
-    serialUSB->print("State Sensorics: ");          serialUSB->println(dataVariables->stateSens);
-    serialUSB->print("State Flight Control: ");     serialUSB->println(dataVariables->stateControl);
-    serialUSB->print("Height (GNSS): ");            serialUSB->println(dataVariables->heightGNSS);
-    serialUSB->print("GNSS Satellite Count: ");     serialUSB->println(dataVariables->satCountGNSS);
-    serialUSB->print("GNSS HDOP: ");                serialUSB->println(dataVariables->hdopGNSS);
-    serialUSB->print("Electronics Temperature: ");  serialUSB->println(dataVariables->temperatureElectronics);
-    serialUSB->print("Battery Temperature: ");      serialUSB->println(dataVariables->temperatureBattery);
-    serialUSB->print("Capacitors State: ");         serialUSB->println(dataVariables->stateCapacitors);
-    serialUSB->print("Pyros Continuity: ");         serialUSB->println(dataVariables->continuityPyros);
-    serialUSB->print("Decoupler Pressure: ");       serialUSB->println(dataVariables->pressureDecoupler);
-    serialUSB->print("Decoupler LDR: ");            serialUSB->println(dataVariables->ldrDecoupler);
-    serialUSB->print("Battery Voltage: ");          serialUSB->println(dataVariables->voltageBattery);
-    serialUSB->print("Battery Current: ");          serialUSB->println(dataVariables->currentBattery);
-    serialUSB->print("Umbilical Current: ");        serialUSB->println(dataVariables->currentUmbilical);
-    serialUSB->print("Umbilical State: ");          serialUSB->println(dataVariables->stateUmbilical);
-    serialUSB->print("Low Power Mode: ");           serialUSB->println(dataVariables->lowPowerMode);
-    serialUSB->print("COTS Battery Voltage: ");     serialUSB->println(dataVariables->voltageBatteryCOTS);
-    serialUSB->print("RSSI: ");                     serialUSB->println(dataVariables->rssi);
-    serialUSB->print("Time Since Last Packet: ");   serialUSB->println(millis() - dataVariables->timestampLastPacket);
-
-    dataVariables->timestampLastPacket = millis();
+    serialUSB->print("Acceleration: ");
+    serialUSB->println(dataVariables->acceleration);
+    serialUSB->print("Height (Pressure): ");
+    serialUSB->println(dataVariables->heightPressure);
+    serialUSB->print("Flight Events: ");
+    serialUSB->println(dataVariables->flightEvents);
+    serialUSB->print("Latitude: ");
+    serialUSB->println(dataVariables->latitude);
+    serialUSB->print("Longitude: ");
+    serialUSB->println(dataVariables->longitude);
+    serialUSB->print("State Telemetry: ");
+    serialUSB->println(dataVariables->stateTelemetry);
+    serialUSB->print("State Power Supply: ");
+    serialUSB->println(dataVariables->statePower);
+    serialUSB->print("State Sensorics: ");
+    serialUSB->println(dataVariables->stateSens);
+    serialUSB->print("State Flight Control: ");
+    serialUSB->println(dataVariables->stateControl);
+    serialUSB->print("Height (GNSS): ");
+    serialUSB->println(dataVariables->heightGNSS);
+    serialUSB->print("GNSS Satellite Count: ");
+    serialUSB->println(dataVariables->satCountGNSS);
+    serialUSB->print("GNSS HDOP: ");
+    serialUSB->println(dataVariables->hdopGNSS);
+    serialUSB->print("Electronics Temperature: ");
+    serialUSB->println(dataVariables->temperatureElectronics);
+    serialUSB->print("Battery Temperature: ");
+    serialUSB->println(dataVariables->temperatureBattery);
+    serialUSB->print("Capacitors State: ");
+    serialUSB->println(dataVariables->stateCapacitors);
+    serialUSB->print("Pyros Continuity: ");
+    serialUSB->println(dataVariables->continuityPyros);
+    serialUSB->print("Decoupler Pressure: ");
+    serialUSB->println(dataVariables->pressureDecoupler);
+    serialUSB->print("Decoupler LDR: ");
+    serialUSB->println(dataVariables->ldrDecoupler);
+    serialUSB->print("Battery Voltage: ");
+    serialUSB->println(dataVariables->voltageBattery);
+    serialUSB->print("Battery Current: ");
+    serialUSB->println(dataVariables->currentBattery);
+    serialUSB->print("Umbilical Current: ");
+    serialUSB->println(dataVariables->currentUmbilical);
+    serialUSB->print("Umbilical State: ");
+    serialUSB->println(dataVariables->stateUmbilical);
+    serialUSB->print("Low Power Mode: ");
+    serialUSB->println(dataVariables->lowPowerMode);
+    serialUSB->print("COTS Battery Voltage: ");
+    serialUSB->println(dataVariables->voltageBatteryCOTS);
+    serialUSB->print("RSSI: ");
+    serialUSB->println(dataVariables->rssi);
+    serialUSB->print("Time Since Last Packet: ");
+    serialUSB->println(dataVariables->timeSinceLastPacket);
 }
 
 void ledUpdate(uint8_t state, ledStruct *pinLed)
@@ -201,121 +226,118 @@ void ledUpdate(uint8_t state, ledStruct *pinLed)
 
 void ledRssiUpdate(float rssi, ledStruct *pinLed)
 {
-      // RGB LED (RSSI)
-  if(rssi > -40)// High signal strength
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, HIGH);
-    digitalWrite(pinLed->rssi_4, HIGH);
-    digitalWrite(pinLed->rssi_5, HIGH);
-    digitalWrite(pinLed->rssi_6, HIGH);
-    digitalWrite(pinLed->rssi_7, HIGH);
-    digitalWrite(pinLed->rssi_8, HIGH);
-  }
-  else if(rssi > -50)
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, HIGH);
-    digitalWrite(pinLed->rssi_4, HIGH);
-    digitalWrite(pinLed->rssi_5, HIGH);
-    digitalWrite(pinLed->rssi_6, HIGH);
-    digitalWrite(pinLed->rssi_7, HIGH);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi > -60)
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, HIGH);
-    digitalWrite(pinLed->rssi_4, HIGH);
-    digitalWrite(pinLed->rssi_5, HIGH);
-    digitalWrite(pinLed->rssi_6, HIGH);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi > -70)// Medium signal strength
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, HIGH);
-    digitalWrite(pinLed->rssi_4, HIGH);
-    digitalWrite(pinLed->rssi_5, HIGH);
-    digitalWrite(pinLed->rssi_6, LOW);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi > -80)
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, HIGH);
-    digitalWrite(pinLed->rssi_4, HIGH);
-    digitalWrite(pinLed->rssi_5, LOW);
-    digitalWrite(pinLed->rssi_6, LOW);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi > -90)
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, HIGH);
-    digitalWrite(pinLed->rssi_4, LOW);
-    digitalWrite(pinLed->rssi_5, LOW);
-    digitalWrite(pinLed->rssi_6, LOW);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi > -100) // Low signal strength
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, HIGH);
-    digitalWrite(pinLed->rssi_3, LOW);
-    digitalWrite(pinLed->rssi_4, LOW);
-    digitalWrite(pinLed->rssi_5, LOW);
-    digitalWrite(pinLed->rssi_6, LOW);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi > -110)
-  {
-    digitalWrite(pinLed->rssi_1, HIGH);
-    digitalWrite(pinLed->rssi_2, LOW);
-    digitalWrite(pinLed->rssi_3, LOW);
-    digitalWrite(pinLed->rssi_4, LOW);
-    digitalWrite(pinLed->rssi_5, LOW);
-    digitalWrite(pinLed->rssi_6, LOW);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
-  else if(rssi <= -110)
-  {
-    digitalWrite(pinLed->rssi_1, LOW);
-    digitalWrite(pinLed->rssi_2, LOW);
-    digitalWrite(pinLed->rssi_3, LOW);
-    digitalWrite(pinLed->rssi_4, LOW);
-    digitalWrite(pinLed->rssi_5, LOW);
-    digitalWrite(pinLed->rssi_6, LOW);
-    digitalWrite(pinLed->rssi_7, LOW);
-    digitalWrite(pinLed->rssi_8, LOW);
-  }
+    // RGB LED (RSSI)
+    if (rssi > -40) // High signal strength
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, HIGH);
+        digitalWrite(pinLed->rssi_4, HIGH);
+        digitalWrite(pinLed->rssi_5, HIGH);
+        digitalWrite(pinLed->rssi_6, HIGH);
+        digitalWrite(pinLed->rssi_7, HIGH);
+        digitalWrite(pinLed->rssi_8, HIGH);
+    }
+    else if (rssi > -50)
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, HIGH);
+        digitalWrite(pinLed->rssi_4, HIGH);
+        digitalWrite(pinLed->rssi_5, HIGH);
+        digitalWrite(pinLed->rssi_6, HIGH);
+        digitalWrite(pinLed->rssi_7, HIGH);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi > -60)
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, HIGH);
+        digitalWrite(pinLed->rssi_4, HIGH);
+        digitalWrite(pinLed->rssi_5, HIGH);
+        digitalWrite(pinLed->rssi_6, HIGH);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi > -70) // Medium signal strength
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, HIGH);
+        digitalWrite(pinLed->rssi_4, HIGH);
+        digitalWrite(pinLed->rssi_5, HIGH);
+        digitalWrite(pinLed->rssi_6, LOW);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi > -80)
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, HIGH);
+        digitalWrite(pinLed->rssi_4, HIGH);
+        digitalWrite(pinLed->rssi_5, LOW);
+        digitalWrite(pinLed->rssi_6, LOW);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi > -90)
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, HIGH);
+        digitalWrite(pinLed->rssi_4, LOW);
+        digitalWrite(pinLed->rssi_5, LOW);
+        digitalWrite(pinLed->rssi_6, LOW);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi > -100) // Low signal strength
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, HIGH);
+        digitalWrite(pinLed->rssi_3, LOW);
+        digitalWrite(pinLed->rssi_4, LOW);
+        digitalWrite(pinLed->rssi_5, LOW);
+        digitalWrite(pinLed->rssi_6, LOW);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi > -110)
+    {
+        digitalWrite(pinLed->rssi_1, HIGH);
+        digitalWrite(pinLed->rssi_2, LOW);
+        digitalWrite(pinLed->rssi_3, LOW);
+        digitalWrite(pinLed->rssi_4, LOW);
+        digitalWrite(pinLed->rssi_5, LOW);
+        digitalWrite(pinLed->rssi_6, LOW);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
+    else if (rssi <= -110)
+    {
+        digitalWrite(pinLed->rssi_1, LOW);
+        digitalWrite(pinLed->rssi_2, LOW);
+        digitalWrite(pinLed->rssi_3, LOW);
+        digitalWrite(pinLed->rssi_4, LOW);
+        digitalWrite(pinLed->rssi_5, LOW);
+        digitalWrite(pinLed->rssi_6, LOW);
+        digitalWrite(pinLed->rssi_7, LOW);
+        digitalWrite(pinLed->rssi_8, LOW);
+    }
 }
 
 void displayUpdate(uint8_t address, dataStruct *dataVariables)
 {
-
 }
 
 void buttonCheck(buttonStruct pinButton)
 {
-
 }
 
 void controlBoxCheck(uint8_t pin1, uint8_t pin2)
 {
-
 }
 
 void ledStruct::pinMode()
@@ -333,7 +355,7 @@ void ledStruct::pinMode()
     ::digitalWrite(D2, LOW);
     ::pinMode(D3, OUTPUT);
     ::digitalWrite(D3, LOW);
-    
+
     ::pinMode(rssi_1, OUTPUT);
     ::digitalWrite(rssi_2, LOW);
     ::pinMode(rssi_2, OUTPUT);

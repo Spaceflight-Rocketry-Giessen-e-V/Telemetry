@@ -67,7 +67,6 @@ Subsystem *subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &s
 const uint8_t loopFrequency = 10;            // in Hz       10 Hz = 100 ms interval
 const uint8_t timeBetweenStandbyPackets = 5; // in seconds. In standby, data packets aren't send every loop
 
-uint8_t lowPowerMode = 0;
 uint8_t flightMode = 0;
 uint32_t loopCount = 0;
 uint32_t loopStartTime = 0;
@@ -86,8 +85,8 @@ void setup()
   pinLed.Sens = PIN_PD4;
   pinLed.Control = PIN_PD2;
 
-  pinLed.lowPowerMode = &lowPowerMode;
-  
+  pinLed.lowPowerMode = new uint8_t(0);
+
   pinLed.pinMode();
 
   ledUpdate(SETUPBEGIN, &pinLed); // R On
@@ -131,14 +130,16 @@ void loop()
 {
   subsystemsConnCheck(subsystemList, subsystemsCount);
   subsystemsDataGet(subsystemList, subsystemsCount);
-  subsystemsLedUpdate(subsystemList, subsystemsCount, lowPowerMode);
+  subsystemsLedUpdate(subsystemList, subsystemsCount, *(pinLed.lowPowerMode));
 
   uint8_t command = commandReceive(&rc1701hp);
-  commandExecute(command, &rc1780hp, &dataVars, &lowPowerMode, &flightMode, subsystemList, subsystemsCount, &subsystemSens, &subsystemControl, pinARM1, pinSLP);
+  commandExecute(command, &rc1780hp, &dataVars, &pinLed, &flightMode, subsystemList, subsystemsCount, &subsystemSens, &subsystemControl, pinARM1, pinSLP);
 
   uint8_t packetIdentifier = packetSendCheck(&flightMode, loopFrequency, timeBetweenStandbyPackets, loopCount);
-  packetSend(&rc1780hp, &dataVars, packetIdentifier);
+  packetSend(&rc1780hp, &dataVars, &pinLed, packetIdentifier);
   flashWrite(&dataVars);
+
+  ledUpdate(UPDATE, &pinLed);
 
   loopVariablesUpdate(&loopCount, &loopStartTime, loopFrequency, pinLed.D1);
 }

@@ -34,9 +34,9 @@ void controlBoxCheck(uint8_t pin1, uint8_t pin2);
 class dataStruct // :)
 {
 public:
-
   float rssi;
   uint32_t timestampLastPacket = 0;
+  uint32_t timeSinceLastPacket = 0;
 
   // Subsystem States
 

@@ -78,7 +78,7 @@ uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
     }
 }
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
 {
     switch (command)
     {
@@ -122,18 +122,18 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *da
         break;
 
     case 'l': // Low Power Mode Activation
-        *lowPowerMode = 1;
+        *(pinLed->lowPowerMode) = 1;
         digitalWrite(pinSleep, HIGH);
         break;
 
     case 'm': // Low Power Mode Deactivation
-        *lowPowerMode = 0;
+        *(pinLed->lowPowerMode) = 0;
         digitalWrite(pinSleep, LOW);
         break;
 
     case 'p': // Ping
-        packetSend(radioModule, dataVariables, 1);
-        packetSend(radioModule, dataVariables, 2);
+        packetSend(radioModule, dataVariables, pinLed, 1);
+        packetSend(radioModule, dataVariables, pinLed, 2);
         break;
 
     case 'q': // Drogue Ejection
@@ -204,7 +204,7 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
         if ((loopCount % (uint16_t)(timeBetweenStandbyPackets * loopFrequency)) == 0)
         {
             lastPacketTypeStandby = 1 - lastPacketTypeStandby;
-            return lastPacketTypeStandby;
+            return 1 + lastPacketTypeStandby;
         }
         else
         {
@@ -213,7 +213,7 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
     }
 }
 
-void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t packetIdentifier)
+void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t packetIdentifier)
 {
     if (packetIdentifier == 0)
     {
@@ -227,7 +227,7 @@ void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t 
     }
     else if (packetIdentifier == 2)
     {
-        Packet::encodeTelemetryData(packet, dataVariables->stateTelemetry, dataVariables->statePower, dataVariables->stateSens, dataVariables->stateControl, dataVariables->heightGNSS, dataVariables->satCountGNSS, dataVariables->hdopGNSS, dataVariables->temperatureElectronics, dataVariables->temperatureBattery, dataVariables->stateCapacitors, dataVariables->continuityPyros, dataVariables->pressureDecoupler, dataVariables->ldrDecoupler, dataVariables->voltageBattery, dataVariables->currentBattery, dataVariables->currentUmbilical, dataVariables->stateUmbilical, dataVariables->lowPowerMode, dataVariables->voltageBatteryCOTS);
+        Packet::encodeTelemetryData(packet, dataVariables->stateTelemetry, dataVariables->statePower, dataVariables->stateSens, dataVariables->stateControl, dataVariables->heightGNSS, dataVariables->satCountGNSS, dataVariables->hdopGNSS, dataVariables->temperatureElectronics, dataVariables->temperatureBattery, dataVariables->stateCapacitors, dataVariables->continuityPyros, dataVariables->pressureDecoupler, dataVariables->ldrDecoupler, dataVariables->voltageBattery, dataVariables->currentBattery, dataVariables->currentUmbilical, dataVariables->stateUmbilical, *(pinLed->lowPowerMode), dataVariables->voltageBatteryCOTS);
     }
     radioModule->send(packet, 12);
 }
@@ -241,8 +241,15 @@ void loopVariablesUpdate(uint32_t *loopCount, uint32_t *loopStartTime, uint8_t l
     else
         digitalWrite(pinLedLoop, LOW);
 
-    if ((millis() - *loopStartTime) < 1000 / loopFrequency)
-        delay(1000 / loopFrequency - (millis() - *loopStartTime));
+    if ((millis() - (*loopStartTime)) < 1000 / loopFrequency)
+    {
+
+        Serial4.print((1000 / loopFrequency) - (millis() - (*loopStartTime)));
+        Serial4.print(" ");
+        Serial4.print(millis() - (*loopStartTime));
+        Serial4.print(" ");
+        delay((1000 / loopFrequency) - (millis() - (*loopStartTime)));
+    }
     *loopStartTime = millis();
 }
 
@@ -273,11 +280,13 @@ void ledUpdate(uint8_t state, ledStruct *pinLed)
     case RADIOMODUL_TWO:
         d3 = 1;
         break;
+    case UPDATE:
+        break;
     default:
         break;
     }
 
-    if (*pinLed->lowPowerMode == 1)
+    if (*(pinLed->lowPowerMode) == 1)
     {
         digitalWrite(pinLed->R, LOW);
         digitalWrite(pinLed->G, LOW);

@@ -7,6 +7,7 @@
 #define SETUPEND 3
 #define RADIOMODUL_ONE 4
 #define RADIOMODUL_TWO 5
+#define UPDATE 255
 
 class ledStruct;
 class dataStruct;
@@ -22,12 +23,12 @@ void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledSt
 uint8_t commandReceive(RC17xxHP_RC232 *radioModule); // Aufruf Packet Library Function, return 0
                                                      // wenn kein Command, sonst return command
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t *lowPowerMode, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep); //  Distribute Data To Subsystems etc..
-                                                                                                                                                                                                                                                                                       //  Check for 0 (-> no command)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep); //  Distribute Data To Subsystems etc..
+                                                                                                                                                                                                                                                                                    //  Check for 0 (-> no command)
 
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint32_t loopCount);
 
-void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, uint8_t packetIdentifier);
+void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t packetIdentifier);
 
 void flashWrite(dataStruct *dataVariables);
 
@@ -86,6 +87,5 @@ public:
   float currentBattery;
   float currentUmbilical;
   uint8_t stateUmbilical;
-  uint8_t lowPowerMode;
   float voltageBatteryCOTS;
 };
