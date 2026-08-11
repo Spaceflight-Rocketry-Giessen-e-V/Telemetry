@@ -12,19 +12,34 @@
   "examples":
   [
     {
-      "name": "Decode",
+      "name": "Decode Command",
       "base": "examples",
-      "files": ["decode.cpp"]
+      "files": ["decodeCommand.cpp"]
     },
     {
-      "name": "Encode",
+      "name": "Encode Command",
       "base": "examples",
-      "files": ["encode.cpp"]
+      "files": ["encodeCommand.cpp"]
     },
     {
-      "name": "Full Functionality",
+      "name": "Decode Flight Data",
       "base": "examples",
-      "files": ["example.cpp"]
+      "files": ["decodeFlightData.cpp"]
+    },
+    {
+      "name": "Encode Flight Data",
+      "base": "examples",
+      "files": ["encodeFlightData.cpp"]
+    },
+    {
+      "name": "Decode Telemetry Data",
+      "base": "examples",
+      "files": ["decodeTelemetryData.cpp"]
+    },
+    {
+      "name": "Encode Telemetry Data",
+      "base": "examples",
+      "files": ["encodeTelemetryData.cpp"]
     }
   ]
 }

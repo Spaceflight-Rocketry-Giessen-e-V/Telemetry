@@ -1,341 +1,123 @@
 /*
-    groundstation - main.cpp of the groundstation for the ASCENT II telemetry system.
-    Created by Felix Seene and Benjamin Bauersfeld
+    groundstation - main.cpp of the groundstation for the ASCENT III telemetry system.
     Spaceflight Rocketry Giessen e.V.
     Published under the CERN OHL-S v2 license at https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.
 */
 
-#include "Arduino.h"
-#include "Radiocrafts_RC17xxHP_RC232.h"
-#include "Packet.h"
+#include "header.h"
+#include "utility.h"
 
-// Pin assignment
-uint8_t ledpinR = PIN_PG5;
-uint8_t ledpinG = PIN_PG4;
-uint8_t ledpinB = PIN_PG3;
-uint8_t ledpin1 = PIN_PA0;  
-uint8_t ledpin2 = PIN_PG7;  
-uint8_t ledpin3 = PIN_PG6;  
-uint8_t ledpinRSSI1 = PIN_PD0; //(D27)
-uint8_t ledpinRSSI2 = PIN_PD1; //(D28)
-uint8_t ledpinRSSI3 = PIN_PD2; //(D29)
-uint8_t ledpinRSSI4 = PIN_PD3; //(D30)
-uint8_t ledpinRSSI5 = PIN_PD4; //(D31)
-uint8_t ledpinRSSI6 = PIN_PD5; //(D32)
-uint8_t ledpinRSSI7 = PIN_PD6; //(D33)
-uint8_t ledpinRSSI8 = PIN_PD7; //(D34)
+// LED Pins Initialization
 
-uint8_t D21pin = PIN_PE4;
-uint8_t D22pin = PIN_PE3;
-uint8_t D23pin = PIN_PE2;
-uint8_t D24pin = PIN_PE5;
+ledStruct pinLed;
 
-HardwareSerial* SerialPC1 = &Serial5;
-HardwareSerial* SerialPC2 = &Serial2;
-HardwareSerial* SerialModule = &Serial4;
+// Button Pins Initialization
 
-RC17xxHP_RC232 rc1780hp(SerialModule, D21pin, D24pin, D23pin, D22pin);
+buttonStruct pinButton;
 
-// Data components received from sensors
-uint8_t temperature = 0;
-uint8_t subsystem_status = 0;
-uint8_t flight_mode = 0;
-uint8_t low_power_mode = 0;
-uint8_t status_events = 0;
-uint8_t send;
-uint8_t count = 0;
-float height_pressure = 0;
-float height_gnss = 0;
-float lat_gnss = 0;
-float lon_gnss = 0;
-float acceleration = 0;
-float battery_voltage = 8.4;
-float rssi = 0;
-uint32_t packet_time = 0;
-uint32_t time_since_last_packet = 0;
+// Pin Declarations
 
-// Incoming Data
-uint8_t packet[32] = {0};
-uint8_t incoming_Byte = 0;
-uint8_t index = 0;
+uint8_t pinControlBox1 = PIN_PE7;
+uint8_t pinControlBox2 = PIN_PE6;
+
+// UART Declarations
+
+HardwareSerial *SerialUSB1 = &Serial5;
+HardwareSerial *SerialUSB2 = &Serial2;
+
+uint8_t pinTX_USB1 = PIN_PG0;
+uint8_t pinRX_USB1 = PIN_PG1;
+uint8_t pinTX_USB2 = PIN_PF0;
+uint8_t pinRX_USB2 = PIN_PF1;
+
+// Initialize Radio Modules
+
+// First D-Sub
+RC17xxHP_RC232 rc1780hp(&Serial4, PIN_PE0, PIN_PE1, 19200, PIN_PE4, PIN_PE5, PIN_PE2, PIN_PE3);
+// Second D-Sub
+RC17xxHP_RC232 rc1701hp(&Serial1, PIN_PC0, PIN_PC1, 19200, PIN_PC4, PIN_PC5, PIN_PC2, PIN_PC3);
+
+dataStruct dataVars;
+
+uint8_t packetBuffer[32];
+uint8_t packetBufferIndex = 0;
 
 void setup()
 {
-  pinMode(ledpinR, OUTPUT); // Red
-  pinMode(ledpinG, OUTPUT); // Green
-  pinMode(ledpinB, OUTPUT); // Blue
-  pinMode(ledpin1, OUTPUT); // Flight mode
-  pinMode(ledpin2, OUTPUT); // Low-power-mode
-  pinMode(ledpin3, OUTPUT); // Subsystem status
-  pinMode(ledpinRSSI1, OUTPUT); 
-  pinMode(ledpinRSSI2, OUTPUT);
-  pinMode(ledpinRSSI3, OUTPUT);
-  pinMode(ledpinRSSI4, OUTPUT);
-  pinMode(ledpinRSSI5, OUTPUT);
-  pinMode(ledpinRSSI6, OUTPUT);
-  pinMode(ledpinRSSI7, OUTPUT);
-  pinMode(ledpinRSSI8, OUTPUT);
+  pinLed.R = PIN_PG5;
+  pinLed.G = PIN_PG4;
+  pinLed.B = PIN_PG3;
+  pinLed.D1 = PIN_PA0;
+  pinLed.D2 = PIN_PG7;
+  pinLed.D3 = PIN_PG6;
+  pinLed.rssi_1 = PIN_PD7;
+  pinLed.rssi_2 = PIN_PD6;
+  pinLed.rssi_3 = PIN_PD5;
+  pinLed.rssi_4 = PIN_PD4;
+  pinLed.rssi_5 = PIN_PD3;
+  pinLed.rssi_6 = PIN_PD2;
+  pinLed.rssi_7 = PIN_PD1;
+  pinLed.rssi_8 = PIN_PD0;
 
-  // Only RGB LED is turned on
-  digitalWrite(ledpinR, HIGH);
-  digitalWrite(ledpinG, HIGH);
-  digitalWrite(ledpinB, HIGH);
-  digitalWrite(ledpin1, LOW);
-  digitalWrite(ledpin2, LOW);
-  digitalWrite(ledpin3, LOW);
-  digitalWrite(ledpinRSSI1, LOW);
-  digitalWrite(ledpinRSSI2, LOW);
-  digitalWrite(ledpinRSSI3, LOW);
-  digitalWrite(ledpinRSSI4, LOW);
-  digitalWrite(ledpinRSSI5, LOW);
-  digitalWrite(ledpinRSSI6, LOW);
-  digitalWrite(ledpinRSSI7, LOW);
-  digitalWrite(ledpinRSSI8, LOW);
+  pinLed.pinMode();
 
+  pinButton.sw1 = PIN_PG2;
+  pinButton.sw2 = PIN_PF6;
+  pinButton.sw3 = PIN_PF5;
+  pinButton.sw4 = PIN_PF4;
+  pinButton.sw5 = PIN_PF3;
+  pinButton.sw6 = PIN_PF2;
 
+  pinButton.pinMode();
 
-  SerialPC1->begin(115200);// Connection to PC
-  // SerialPC2->begin(19200);
-  SerialModule->pins(PIN_PE1, PIN_PE0);// Swap RX/TX pins for module
-  delay(100);
-  rc1780hp.begin(19200);
-  delay(100);
+  pinMode(pinControlBox1, INPUT);
+  pinMode(pinControlBox1, INPUT);
 
-  rc1780hp.ping();
-  
-  //rc1780hp.memory_Reset();
-  while(rc1780hp.set_RF_DATA_RATE(0x05) != 0);
-  while(rc1780hp.set_RSSI_MODE(0x01) != 0);
-  while(rc1780hp.set_PACKET_TIMEOUT(0x00) != 0);
-  while(rc1780hp.set_PACKET_LENGTH(0x01) != 0);
-  while(rc1780hp.set_ADDRESS_MODE(0x00) != 0);
-  while(rc1780hp.set_CRC_MODE(0x00) != 0);
-  while(rc1780hp.set_LED_CONTROL(0x01) != 0);
+  ledUpdate(SETUPBEGIN, &pinLed); // R On
 
-  rc1780hp.hard_Reset();
-  rc1780hp.serial_Flush();
+  // UART Declarations
 
-  digitalWrite(ledpinR, LOW);
-  digitalWrite(ledpinG, LOW);
-  digitalWrite(ledpinB, LOW);
+  SerialUSB1->pins(pinTX_USB1, pinRX_USB1);
+  SerialUSB2->pins(pinTX_USB2, pinRX_USB2);
+
+  SerialUSB1->begin(115200);
+  SerialUSB2->begin(115200);
+
+  // Initialize I2C (Display)
+
+  // Wire.pins(PIN_PC6, PIN_PC7);
+  // Wire.begin();
+
+  // Initialize Radio Modules
+
+  radioModulesSetup(&rc1780hp, &rc1701hp, &pinLed);
+
+  ledUpdate(SETUPRADIOMODULS, &pinLed); // B On
+
+  // Setup Complete
+
+  ledUpdate(SETUPEND, &pinLed); // G On
 }
 
 void loop()
 {
-  // Send data to rocket
-  if(SerialPC1->available() != 0)
-  { 
-    send = SerialPC1->read(); 
+  // Check both USBs for commands
+  uint8_t command = commandReceive(SerialUSB1);
+  commandExecute(command, &rc1701hp);
+  command = commandReceive(SerialUSB2);
+  commandExecute(command, &rc1701hp);
 
-    // Conversion of capital letters in lowercase letters
-    if(send >= 'A' && send <= 'Z')
-    {
-      send = send - 'A' + 'a';
-    }
+  buttonCheck(pinButton);
+  controlBoxCheck(pinControlBox1, pinControlBox2);
 
-    // Spam some parameters (to guarantee exchange during flight mode)
-    if(send == 'p' || send == 'f' || send == 'a' || send == 'b' || send == 'c' || send == 'd' || send == 'l' || send == 'm')
-    {
-      for (int z = 0; z < 8; z++)
-      {
-          if (send & (1 << z))
-          {
-              count++;
-          }
-      }
-      if (count % 2 != 0)
-      {
-          send |= 0x80;
-      }
-      SerialModule->write(send); 
-    }
-    else
-    {
-      for (int z = 0; z < 8; z++)
-      {
-          if (send & (1 << z))
-          {
-              count++;
-          }
-      }
-      if (count % 2 != 0)
-      {
-          send |= 0x80;
-      }
-      for(int i = 0; i < 25; i++)
-      {
-          delay(5);      
-          SerialModule->write(send); 
-      }
-    }
-    count = 0;
-  }
+  if (packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars) == 0)
+  {
 
-  while(SerialModule->available() != 0)
-  {
-    incoming_Byte = SerialModule->read();
-    packet[index] = incoming_Byte;
-    index++;
+    dataSendUsb(SerialUSB1, &dataVars);
+    dataSendUsb(SerialUSB2, &dataVars);
 
-    if(packet[index - 2] == 0xEE)
-    {
-      if(index >= 16)
-      {
-        Packet::decode(&packet[index - 16], &temperature, &subsystem_status, &flight_mode, &low_power_mode, &status_events, &acceleration, &height_pressure, &height_gnss, &lat_gnss, &lon_gnss, &battery_voltage, &rssi);
-        
-        SerialPC1->print("\ntemperature > 80 C: ");     SerialPC1->println(temperature);
-        SerialPC1->print("subsystem_status: ");         SerialPC1->println(subsystem_status);
-        SerialPC1->print("flight_mode: ");              SerialPC1->println(flight_mode);
-        SerialPC1->print("low_power_mode: ");           SerialPC1->println(low_power_mode);
-        SerialPC1->print("status_events: ");            SerialPC1->println(status_events);
-        SerialPC1->print("acceleration: ");             SerialPC1->println(acceleration,4);
-        SerialPC1->print("height_pressure: ");          SerialPC1->println(height_pressure);
-        SerialPC1->print("height_gnss: ");              SerialPC1->println(height_gnss);
-        SerialPC1->print("lat_gnss: ");                 SerialPC1->println(lat_gnss,7);
-        SerialPC1->print("lon_gnss: ");                 SerialPC1->println(lon_gnss,7);
-        SerialPC1->print("battery_voltage: ");          SerialPC1->println(battery_voltage);
-        SerialPC1->print("rssi: ");                     SerialPC1->println(rssi);
-        SerialPC1->print("time_since_last_packet: ");   SerialPC1->println(millis() - time_since_last_packet);
-      }
-      index = 0;
-      //memset(packet, 0, sizeof(packet));
-      time_since_last_packet = millis();
-    }
-    
-    if(index == 32)
-    {
-      index = 0;
-    }
-  }
- 
-  // LED5 glows wenn flight-mode is active
-  if(flight_mode == 1)
-  {
-    digitalWrite(ledpin1, HIGH);
-  }
-  else
-  {
-    digitalWrite(ledpin1, LOW);
-  }
+    displayUpdate(0x00, &dataVars);
 
-  // LED6 glows wenn low-power-mode is active
-  if(low_power_mode == 1)
-  {
-    digitalWrite(ledpin2, HIGH);
-  }
-  else
-  {
-    digitalWrite(ledpin2, LOW);
-  }
-
-  // LED7 glows wenn subsystems are ready
-  if(subsystem_status == 0b11)
-  {
-    digitalWrite(ledpin3, HIGH);
-  }
-  else
-  {
-    digitalWrite(ledpin3, LOW);
-  }
-  
-  // RGB LED (RSSI)
-  if(rssi > -40)// High signal strength
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, HIGH);
-    digitalWrite(ledpinRSSI4, HIGH);
-    digitalWrite(ledpinRSSI5, HIGH);
-    digitalWrite(ledpinRSSI6, HIGH);
-    digitalWrite(ledpinRSSI7, HIGH);
-    digitalWrite(ledpinRSSI8, HIGH);
-  }
-  else if(rssi > -50)
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, HIGH);
-    digitalWrite(ledpinRSSI4, HIGH);
-    digitalWrite(ledpinRSSI5, HIGH);
-    digitalWrite(ledpinRSSI6, HIGH);
-    digitalWrite(ledpinRSSI7, HIGH);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else if(rssi > -60)
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, HIGH);
-    digitalWrite(ledpinRSSI4, HIGH);
-    digitalWrite(ledpinRSSI5, HIGH);
-    digitalWrite(ledpinRSSI6, HIGH);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else if(rssi > -70)// Medium signal strength
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, HIGH);
-    digitalWrite(ledpinRSSI4, HIGH);
-    digitalWrite(ledpinRSSI5, HIGH);
-    digitalWrite(ledpinRSSI6, LOW);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else if(rssi > -80)
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, HIGH);
-    digitalWrite(ledpinRSSI4, HIGH);
-    digitalWrite(ledpinRSSI5, LOW);
-    digitalWrite(ledpinRSSI6, LOW);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else if(rssi > -90)
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, HIGH);
-    digitalWrite(ledpinRSSI4, LOW);
-    digitalWrite(ledpinRSSI5, LOW);
-    digitalWrite(ledpinRSSI6, LOW);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else if(rssi > -100) // Low signal strength
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, HIGH);
-    digitalWrite(ledpinRSSI3, LOW);
-    digitalWrite(ledpinRSSI4, LOW);
-    digitalWrite(ledpinRSSI5, LOW);
-    digitalWrite(ledpinRSSI6, LOW);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else if(rssi > -110)
-  {
-    digitalWrite(ledpinRSSI1, HIGH);
-    digitalWrite(ledpinRSSI2, LOW);
-    digitalWrite(ledpinRSSI3, LOW);
-    digitalWrite(ledpinRSSI4, LOW);
-    digitalWrite(ledpinRSSI5, LOW);
-    digitalWrite(ledpinRSSI6, LOW);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
-  }
-  else
-  {
-    digitalWrite(ledpinRSSI1, LOW);
-    digitalWrite(ledpinRSSI2, LOW);
-    digitalWrite(ledpinRSSI3, LOW);
-    digitalWrite(ledpinRSSI4, LOW);
-    digitalWrite(ledpinRSSI5, LOW);
-    digitalWrite(ledpinRSSI6, LOW);
-    digitalWrite(ledpinRSSI7, LOW);
-    digitalWrite(ledpinRSSI8, LOW);
+    ledRssiUpdate(dataVars.rssi, &pinLed);
   }
 }

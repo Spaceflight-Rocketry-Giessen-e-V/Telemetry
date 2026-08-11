@@ -236,9 +236,10 @@ In the loop function, radio commands (such as ping, toggle flight mode, toggle l
 
 ## Data Budget \& Packet Structure
 
-To achieve the highest possible range, we opted to use a low data rate, specifically 1.2 kbps. As a compromise between sampling rate and packet size, we chose a sampling rate of 8 Hz, resulting in 150 bits or 18.75 bytes per packet. Since the data link should not operate at full capacity, we allocate a buffer of over 10%, leading to a final packet size of 15 bytes.
+To achieve the highest possible range, we opted to use a low data rate, specifically 1.2 kbps. As a compromise between sampling rate and packet size, we chose a sampling rate of 10 Hz, resulting in 120 bits or 15 bytes per packet. Since the data link should not operate at full capacity, we allocate a buffer of 20%, leading to a final packet size of 12 bytes.
 
 The structure of each packet with its components is described [here](package_structure.md).
+<p align="center"><img src="images/packet_structure_diagram.png" width = 800/></p>
 
 To consider the 10 % duty cycle, the flight computer usually only transmits once every few seconds (the rate can be configured). The module starts to transmit continuously when the flight mode is toggled by a radio command. After a preset time, the continuous transmission stops and the standby transmission once every few seconds starts again.
 
