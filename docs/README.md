@@ -9,6 +9,7 @@
 - Antenna Documentation
     - [Helical Antenna Design Guide](/docs/helical_antenna_design_guide.ipynb)
     - [Helical Antenna Assembly Manual](/docs/helical_antenna_assembly_manual.md)
+    - [Helical Antenna Simulation Guide](/docs/helical_antenna_simulation_guide.md)
     - [QFH Antenna CAD Tutorial](/docs/qfh_antenna_cad_tutorial.md)
 - [Operations Cheatsheet](/docs/operations_cheatsheet.md)
     - Commands List
