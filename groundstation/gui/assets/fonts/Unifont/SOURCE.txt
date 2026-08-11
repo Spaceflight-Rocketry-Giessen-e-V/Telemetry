@@ -1,0 +1,4 @@
+GNU Unifont 15.0.06
+Source: https://ftp.gnu.org/gnu/unifont/unifont-15.0.06/unifont-15.0.06.ttf
+License: dual GNU GPLv2+ (with font embedding exception) / SIL OFL 1.1
+https://unifoundry.com/unifont/

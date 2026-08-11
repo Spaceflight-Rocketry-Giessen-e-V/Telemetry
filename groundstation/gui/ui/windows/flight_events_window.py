@@ -75,7 +75,7 @@ class FlightEventWindow:
             ):
                 dpg.add_table_column(label="#", width_fixed=True, init_width_or_weight=30)
                 dpg.add_table_column(label="Event", width_stretch=True)
-                dpg.add_table_column(label="State", width_fixed=True, init_width_or_weight=80)
+                dpg.add_table_column(label="State", width_fixed=True, init_width_or_weight=95)
 
                 for i, evt in enumerate(events):
                     label = evt.get("label", f"Event {i}")
@@ -100,7 +100,7 @@ class FlightEventWindow:
         Only the specified event is marked done or ABORT.
         All other events are left in their current state.
         """
-        _, abort_threshold = self._event_config()
+        events, abort_threshold = self._event_config()
 
         if event_number != self.current_event:
             log.info("FlightEventWindow[%s]: event updated %d → %d",
@@ -110,9 +110,27 @@ class FlightEventWindow:
 
         if 0 <= event_number < len(self._row_tags):
             tag = self._row_tags[event_number]
-            is_abort = event_number >= abort_threshold
+            # Prefer the per-event abort flag (what the Settings UI edits); fall
+            # back to the threshold for legacy configs without per-event flags.
+            if event_number < len(events):
+                is_abort = events[event_number].get("is_abort", event_number >= abort_threshold)
+            else:
+                is_abort = event_number >= abort_threshold
             color = self.COLOR_ABORT if is_abort else self.COLOR_COMPLETE
-            label = "ABORT" if is_abort else "done"
+            label = "⚠ ABORT" if is_abort else "✓ done"
             if is_abort:
                 log.warning("FlightEventWindow[%s]: abort event reached at index %d", self._uid, event_number)
             dpg.configure_item(tag, default_value=label, color=color)
+
+    def reset(self) -> None:
+        """
+        Clear every event indicator back to pending.
+
+        Called on arm (fresh flight) and on disarm, so a stale "Armed"/done state
+        does not persist after the rocket is disarmed.
+        """
+        self.current_event = -1
+        for tag in self._row_tags:
+            if dpg.does_item_exist(tag):
+                dpg.configure_item(tag, default_value="-", color=self.COLOR_PENDING)
+        log.info("FlightEventWindow[%s]: indicators reset", self._uid)

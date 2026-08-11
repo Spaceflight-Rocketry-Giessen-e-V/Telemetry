@@ -22,6 +22,9 @@ class ComMonitorController:
 
     _TAG_STATUS = "monitor_status_label"
 
+    # Common serial baud rates offered in the dropdown.
+    _BAUD_RATES = ["9600", "19200", "38400", "57600", "115200", "230400", "460800", "921600"]
+
     def __init__(self, ui_manager=None):
         """
         Parameters
@@ -61,10 +64,12 @@ class ComMonitorController:
             )
 
             # Default baud rate is 115 200, the most common rate for telemetry links.
-            self.baudrate_input = dpg.add_input_int(
+            # A dropdown of common rates is friendlier than +/- stepping.
+            self.baudrate_input = dpg.add_combo(
+                items=self._BAUD_RATES,
                 label="Baud",
-                default_value=115200,
                 width=120,
+                default_value="115200",
             )
 
             dpg.add_spacer(height=4)
@@ -88,8 +93,16 @@ class ComMonitorController:
             dpg.configure_item(self._TAG_STATUS, default_value="Monitor already running!")
             return
 
+        # A previous receiver may exist but be stopped (e.g. a serial error left
+        # its port open without a stop()). Tear it down before opening a new one
+        # so we don't leak the old port/thread.
+        if self.controller:
+            self.controller.stop()
+            self.controller = None
+
         com_port = dpg.get_value(self.com_port_selector)
-        baudrate = dpg.get_value(self.baudrate_input)
+        baud_str = dpg.get_value(self.baudrate_input)
+        baudrate = int(baud_str) if baud_str else 115200
 
         if not com_port:
             log.warning("ComMonitorController: start_monitor called with no COM port selected")

@@ -10,9 +10,12 @@ incoming data is still recorded while the display is paused.
 """
 
 import logging
+import math
 import statistics
 
 import dearpygui.dearpygui as dpg
+
+from ui.windows.plot_coordinator import PlotCoordinator
 
 log = logging.getLogger(__name__)
 
@@ -76,10 +79,11 @@ class AccelerationWindow:
                     dpg.add_button(
                         label="Stop Plot",
                         tag=cls._TAG_BTN_STOP_RESUME,
-                        callback=lambda: cls.stop_plot(),
+                        callback=lambda: PlotCoordinator.toggle(),
                         width=100
                     )
-                    dpg.add_button(label="Reset Plot", callback=lambda: cls.reset_plot(), width=100)
+                    dpg.add_button(label="Reset Plot",
+                                   callback=lambda: PlotCoordinator.reset_all(), width=100)
                 dpg.add_spacer(width=10)
                 with dpg.group(horizontal=False):
                     dpg.add_text("Min: 0 g", tag=cls._TAG_MIN)
@@ -88,8 +92,8 @@ class AccelerationWindow:
                 dpg.add_text("Current: 0 g", tag=cls._TAG_CURRENT)
 
                 with dpg.group(horizontal=False):
-                    dpg.add_text("Delta: 0 g", tag=cls._TAG_DELTA)
-                    dpg.add_text("Median Delta: 0 g", tag=cls._TAG_MEDIAN_DELTA)
+                    dpg.add_text("Δ: 0 g", tag=cls._TAG_DELTA)
+                    dpg.add_text("Median Δ: 0 g", tag=cls._TAG_MEDIAN_DELTA)
 
 
 
@@ -97,17 +101,17 @@ class AccelerationWindow:
     def stop_plot(cls) -> None:
         """Freeze the plot. New data is still recorded but not drawn."""
         cls.plot_active = False
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.resume_plot())
-        log.info("AccelerationWindow: plot frozen by user")
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Resume Plot")
+        log.info("AccelerationWindow: plot frozen")
 
     @classmethod
     def resume_plot(cls) -> None:
         """Resume live drawing after a stop."""
         cls.plot_active = True
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
-        log.info("AccelerationWindow: plot resumed by user")
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
+        log.info("AccelerationWindow: plot resumed")
 
     @classmethod
     def reset_plot(cls) -> None:
@@ -131,8 +135,8 @@ class AccelerationWindow:
 
         # Ensure the plot resumes on reset — avoids a redundant "Resume" click
         cls.plot_active = True
-        dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
-        dpg.set_item_callback(cls._TAG_BTN_STOP_RESUME, lambda: cls.stop_plot())
+        if dpg.does_item_exist(cls._TAG_BTN_STOP_RESUME):
+            dpg.set_item_label(cls._TAG_BTN_STOP_RESUME, "Stop Plot")
 
         # Wipe the series on the chart
         dpg.set_value(cls._TAG_SERIES, [[], []])
@@ -141,8 +145,8 @@ class AccelerationWindow:
         dpg.set_value(cls._TAG_MIN, "Min: 0 g")
         dpg.set_value(cls._TAG_MAX, "Max: 0 g")
         dpg.set_value(cls._TAG_CURRENT, "Current: 0 g")
-        dpg.set_value(cls._TAG_DELTA, "Delta: 0 g")
-        dpg.set_value(cls._TAG_MEDIAN_DELTA, "Median Delta: 0 g")
+        dpg.set_value(cls._TAG_DELTA, "Δ: 0 g")
+        dpg.set_value(cls._TAG_MEDIAN_DELTA, "Median Δ: 0 g")
 
     @classmethod
     def update_acceleration(cls, time_value: float, accel_value: float) -> None:
@@ -158,6 +162,10 @@ class AccelerationWindow:
         """
         if not cls.plot_active:
             log.debug("AccelerationWindow: plot frozen, skipping update (t=%.2f)", time_value)
+            return
+
+        if math.isnan(accel_value) or math.isinf(accel_value):
+            log.warning("AccelerationWindow: dropping non-finite acceleration %r", accel_value)
             return
 
         cls.time_data.append(time_value)
@@ -185,5 +193,5 @@ class AccelerationWindow:
         dpg.set_value(cls._TAG_MIN, f"Min: {cls.accel_min:.2f} g")
         dpg.set_value(cls._TAG_CURRENT, f"Current: {cls.accel_current:.2f} g")
         dpg.set_value(cls._TAG_MAX, f"Max: {cls.accel_max:.2f} g")
-        dpg.set_value(cls._TAG_DELTA, f"Delta: {delta:.2f} g")
-        dpg.set_value(cls._TAG_MEDIAN_DELTA, f"Median Delta: {median_delta:.2f} g")
+        dpg.set_value(cls._TAG_DELTA, f"Δ: {delta:.2f} g")
+        dpg.set_value(cls._TAG_MEDIAN_DELTA, f"Median Δ: {median_delta:.2f} g")

@@ -1,22 +1,25 @@
 {
   "name": "Radiocrafts_RC17xxHP_RC232",
   "description": "Library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules",
-  "authors":
-  [
-    {
-      "name": "Felix Seene"
-    },
-    {
-      "name": "Benjamin Bauersfeld"
-    }
-  ],
-  "license": "CERN OHL-S v2",
+  "license": "CERN-OHL-S-2.0",
   "homepage": "https://www.spaceflight-rocketry-giessen.de/",
   "repository":
   {
     "type": "git",
     "url": "https://www.github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry"
   },
-  "frameworks": "*",
-  "platforms": "*"
+  "headers": "Radiocrafts_RC17xxHP_RC232.h",
+  "examples":
+  [
+    {
+      "name": "Initialization",
+      "base": "examples",
+      "files": ["initialization.cpp"]
+    },
+    {
+      "name": "sending",
+      "base": "examples",
+      "files": ["sending.cpp"]
+    }
+  ]
 }

@@ -7,7 +7,7 @@
 ---
 
 ## Overview
-The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://spaceflight-rocketry-giessen.de/), which is being developed for the PIPE 2 and ARCHER experimental rockets.  
+The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://sprog-ev.de/en/), which is being developed for the PIPE 2 and ARCHER experimental rockets.  
 This dual-frequency 169/869 MHz telemetry system based on Radiocrafts RC232 radio modules allows bidirectional data exchange between rockets and groundstations with a range of 20 km and a minimum data rate of 1.2 kbps.
 The design can also be used in areas outside of rocketry like Smart Home or RC.
 
@@ -38,13 +38,13 @@ This repository contains all files necessary to reproduce the telemetry system, 
 It also includes [user manuals](/docs/user_manual.md) and [design rationals](/docs/design_overview.md) which help to understand and adapt the system.
 
 ### 1. Antenna Hardware
-So far, this repository includes [design files](/groundstation/antenna/) and [assembly instructions](/docs/helix_antenna_assembly_manual.md) for our helical 869 MHz groundstation antenna.
+So far, this repository includes [design files](/groundstation/antenna/helical/) and [assembly instructions](/docs/helical_antenna_assembly_manual.md) for our helical 869 MHz groundstation antenna.
 
-<p align="center"><img src="/groundstation/antenna/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
 
 We also do our own FDTD-simulations to verify the antenna design and will include them in the repository soon.
 
-<p align="center"><img src="/groundstation/antenna/images/GroundstationAntenna_simulation.png" width="600" /></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width="600" /></p>
 
 In the future, the repository will also contain an 869 MHz QFH design.
 
@@ -53,7 +53,7 @@ In the future, the repository will also contain an 869 MHz QFH design.
 The system includes separate [onboard](/onboard/pcb/) and [groundstation](/groundstation/pcb/) electronics.
 The groundstation uses a modular approach with a [motherboard](/groundstation/pcb/Motherboard/) to which up to four [daughterboards](/groundstation/pcb/Daughterboard/) with radio modules can be connected.
 
-<p align="center"><img src="onboard/pcb/images/Onboard_PCB.png" width="600"/></p>
+<p align="center"><img src="onboard/pcb/images/Onboard_PCB.jpg" width="600"/></p>
 
 Find the contents here:
 
@@ -66,6 +66,7 @@ Find the contents here:
 |[iBOM](/onboard/pcb/TelemetryOnboard_iBOM.html)|[iBOM](/groundstation/pcb/Motherboard/TelemetryGroundstationMB_iBOM.html)|[iBOM](/groundstation/pcb/Daughterboard/TelemetryGroundstationDB_iBOM.html)|
 |[PCB 3D Model](/onboard/pcb/TelemetryOnboard.step)|[PCB 3D Model](/groundstation/pcb/Motherboard/TelemetryGroundstationMB.step)|[PCB 3D Model](/groundstation/pcb/Daughterboard/TelemetryGroundstationDB.step)|
 |[PCB Images](/onboard/pcb/images/)|[PCB Images](/groundstation/pcb/Motherboard/images/)|[PCB Images](/groundstation/pcb/Daughterboard/images/)|
+|[Mounting Structure](/onboard/mounting%20structure/) | [Motherboard Casing](/groundstation/casing/Motherboard)| [Daughterboard casing](/groundstation/casing/Daughterboard/) |
 
 ### 3. Electronics Firmware
 
@@ -82,9 +83,14 @@ Included:
 Included:
 - GNSS map view
 - Height plot over time
-- Acceleration indicator
+- Acceleration plot over time
 - Battery voltage indicator with visual warnings
+- Connection quality indicator with visual warnings
 - Status event indicator
+
+### 5. Documentation
+
+$\Rightarrow$ [Jump to Documentation](/docs/)
 
 ---
 

@@ -101,24 +101,33 @@ class TelemetryReceiver:
     # Each pattern captures exactly one value group from a raw serial line.
     # Integer fields have no decimal point; float fields do.
     PATTERNS: dict[str, str] = {
-        "temperature": r"temperature > 80 C: (\d+)",
+        "temperature": r"temperature > 80 C: (-?\d+)",
         "subsystem_status": r"subsystem_status: (\d+)",
         "flight_mode": r"flight_mode: (\d+)",
         "low_power_mode": r"low_power_mode: (\d+)",
         "status_events": r"status_events: (\d+)",
         "acceleration": r"acceleration: (-?\d+\.\d+)",
-        "height_pressure": r"height_pressure: (\d+\.\d+)",
-        "height_gnss": r"height_gnss: (\d+\.\d+)",
+        "height_pressure": r"height_pressure: (-?\d+\.\d+)",
+        "height_gnss": r"height_gnss: (-?\d+\.\d+)",
         "lat_gnss": r"lat_gnss: (-?\d+\.\d+)",
         "lon_gnss": r"lon_gnss: (-?\d+\.\d+)",
         "battery_voltage": r"battery_voltage: (\d+\.\d+)",
-        "rssi": r"rssi: (-?\d+)",
+        "rssi": r"rssi: (-?\d+(?:\.\d+)?)",
         "time_since_last_packet": r"time_since_last_packet: (\d+)",
     }
 
     # Fields required for a packet to be considered complete (all except timestamp,
     # which is added by the receiver itself).
     _REQUIRED_FIELDS: frozenset[str] = frozenset(FIELDS[1:])
+
+    # First data field of every transmit cycle. Used as a framing boundary: if it
+    # arrives while a partial packet is still open, the previous cycle dropped a
+    # line, so we discard the partial instead of blending two cycles together.
+    _BOUNDARY_FIELD: str = FIELDS[1]  # "temperature"
+
+    # Discard a partial packet left open longer than this (seconds) so a stalled
+    # cycle can never merge with a later one.
+    _STALE_TIMEOUT: float = 2.0
 
     # How long (seconds) the listen loop sleeps when the serial buffer is empty
     _POLL_INTERVAL: float = 0.01
@@ -147,6 +156,8 @@ class TelemetryReceiver:
 
         # Accumulates field/value pairs until a full packet is ready
         self._packet_data: dict[str, object] = {}
+        # Wall-clock time the current partial packet was opened (for staleness).
+        self._packet_started_at: float = 0.0
 
         # ── Per-session log file paths ────────────────────────────────────────
         # Timestamped filenames prevent sessions from overwriting each other.
@@ -264,6 +275,25 @@ class TelemetryReceiver:
         # ── Parse ─────────────────────────────────────────────────────────────
         key, value = self.parse_line(line)
         if key:
+            # ── Framing ───────────────────────────────────────────────────────
+            # The wire format has no delimiter, so frame on the fixed field order:
+            # the boundary field opens a new cycle, and a partial packet still
+            # open at that point (or gone stale) lost a line and must be dropped
+            # rather than merged with the incoming cycle.
+            if self._packet_data:
+                stale = (time.time() - self._packet_started_at) > self._STALE_TIMEOUT
+                if key == self._BOUNDARY_FIELD or stale:
+                    log.warning(
+                        "TelemetryReceiver: discarding incomplete packet "
+                        "(%d/%d fields, reason=%s): %s",
+                        len(self._packet_data), len(self._REQUIRED_FIELDS),
+                        "new-cycle" if key == self._BOUNDARY_FIELD else "stale",
+                        sorted(self._packet_data),
+                    )
+                    self._packet_data.clear()
+
+            if not self._packet_data:
+                self._packet_started_at = time.time()
             self._packet_data[key] = value
 
         # ── Check for packet completeness ─────────────────────────────────────
@@ -309,6 +339,13 @@ class TelemetryReceiver:
             try:
                 if self.ser.in_waiting:
                     raw = self.ser.readline()
+                    # readline() returns whatever it has (no trailing newline) when
+                    # the 1 s timeout fires mid-line. Parsing that truncated text
+                    # would misread a value, so drop it and wait for a full line.
+                    if not raw.endswith(b"\n"):
+                        if raw:
+                            log.warning("TelemetryReceiver: dropping partial line (no newline): %r", raw)
+                        continue
                     line = raw.decode("utf-8", errors="replace").strip()
                     if line:
                         self._process_line(line)
@@ -362,7 +399,14 @@ class TelemetryReceiver:
         if self._thread and self._thread.is_alive():
             self._thread.join(timeout=2)
             if self._thread.is_alive():
-                log.warning("TelemetryReceiver: listen thread did not exit within timeout")
+                # The thread may still be inside in_waiting/readline on self.ser.
+                # Closing the port now would race it, so leave the port open (the
+                # thread is a daemon and won't block process exit) and bail out.
+                log.error(
+                    "TelemetryReceiver: listen thread did not exit within timeout; "
+                    "leaving serial port open to avoid a race with the live thread"
+                )
+                return
 
         if self.ser and self.ser.is_open:
             self.ser.close()
@@ -394,8 +438,8 @@ class TelemetryReceiver:
         if not self.is_connected():
             raise RuntimeError("Serial port is not open")
 
-        if not cmd or len(cmd) != 1 or not cmd.isalpha():
-            raise ValueError(f"Command must be a single alphabetic character, got: {cmd!r}")
+        if not cmd or len(cmd) != 1 or not (cmd.isascii() and cmd.isalpha()):
+            raise ValueError(f"Command must be a single ASCII letter, got: {cmd!r}")
 
         encoded = cmd.lower().encode("ascii")
         self.ser.write(encoded)

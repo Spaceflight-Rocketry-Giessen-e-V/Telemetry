@@ -129,13 +129,20 @@ class SettingsManager:
             self._save()
 
     def _save(self) -> None:
-        """Serialise current data to disk."""
+        """Serialise current data to disk atomically (temp file + replace)."""
+        tmp = f"{self._path}.tmp"
         try:
-            with open(self._path, "w", encoding="utf-8") as fh:
+            with open(tmp, "w", encoding="utf-8") as fh:
                 json.dump(self.data, fh, indent=2, ensure_ascii=False)
+            os.replace(tmp, self._path)  # atomic swap; never leaves a half-written file
             log.debug("Settings saved to '%s'", self._path)
         except OSError as exc:
             log.error("Failed to write settings file: %s", exc)
+            try:
+                if os.path.exists(tmp):
+                    os.remove(tmp)
+            except OSError:
+                pass
 
     def get(self, dotted_key: str, default: Any = None) -> Any:
         """
@@ -184,8 +191,15 @@ class SettingsManager:
         """Recursively merge *override* into *base*, returning a new dict."""
         result = dict(base)
         for key, val in override.items():
-            if key in result and isinstance(result[key], dict) and isinstance(val, dict):
-                result[key] = SettingsManager._deep_merge(result[key], val)
+            if key in result and isinstance(result[key], dict):
+                if isinstance(val, dict):
+                    result[key] = SettingsManager._deep_merge(result[key], val)
+                else:
+                    # Stored value has the wrong shape (e.g. a string where a
+                    # section dict is expected). Keep the default so consumers
+                    # that assume a dict don't crash on startup.
+                    log.warning("Settings key '%s' has wrong type (%s); keeping default",
+                                key, type(val).__name__)
             else:
                 result[key] = val
         return result

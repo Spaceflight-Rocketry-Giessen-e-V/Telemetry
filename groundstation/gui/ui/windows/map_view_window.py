@@ -89,6 +89,13 @@ class MapViewWindow:
         # Flight-path track points as (lat, lon) tuples.
         self.track: list[tuple[float, float]] = []
 
+        # Set by background threads (serial RX, traffic poll) to request a redraw
+        # that the main-thread visible handler then performs. All DPG item
+        # mutation must happen on the main thread.
+        self._needs_redraw = False
+        self._state_lock = threading.Lock()    # guards self.track
+        self._counter_lock = threading.Lock()  # guards the diagnostic counters
+
         self._session_web_requests = 0
         self._total_cache_count = 0
 
@@ -115,6 +122,13 @@ class MapViewWindow:
         self.diag_cache_tag = f"map_diag_cache_{uid}"
         self.diag_web_tag = f"map_diag_web_{uid}"
 
+        # Prebuilt button themes (created in draw_ui) so a Follow/Traffic toggle
+        # doesn't leak a fresh theme item on every click.
+        self._follow_theme_on: int | None = None
+        self._follow_theme_off: int | None = None
+        self._traffic_theme_on: int | None = None
+        self._traffic_theme_off: int | None = None
+
         log.debug("MapViewWindow[%s]: init at (%.4f, %.4f) zoom=%d", uid, lat, lon, zoom)
 
     # -------------------------------------------------------------------------
@@ -123,6 +137,10 @@ class MapViewWindow:
 
     def latlon_to_pixel(self, lat: float, lon: float, zoom: int) -> tuple[float, float]:
         """Convert a geographic coordinate to pixel coordinates at *zoom*."""
+        # Web Mercator is undefined at the poles (log(0) domain error), so clamp
+        # to the standard ±85.0511° limit. Guards every caller — including
+        # telemetry-driven positions that skip the pan-time clamp.
+        lat = max(-85.0511287798066, min(85.0511287798066, lat))
         lat_rad = math.radians(lat)
         n = 2 ** zoom
         px = (lon + 180.0) / 360.0 * n * self.TILE_SIZE
@@ -187,24 +205,25 @@ class MapViewWindow:
         if dpg.does_item_exist(self.diag_web_tag):
             dpg.set_value(self.diag_web_tag, f"Web req: {self._session_web_requests}")
 
+    @staticmethod
+    def _make_button_theme(base: tuple, hovered: tuple) -> int:
+        """Create a reusable button colour theme and return its id."""
+        with dpg.theme() as theme:
+            with dpg.theme_component(dpg.mvButton):
+                dpg.add_theme_color(dpg.mvThemeCol_Button, base)
+                dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, hovered)
+        return theme
+
     def _update_follow_button(self) -> None:
         """Recolour the Follow button to reflect the current auto-centre state."""
         if not dpg.does_item_exist(self.follow_btn_tag):
             return
         if self.auto_centre:
             dpg.set_item_label(self.follow_btn_tag, "Follow: ON")
-            with dpg.theme() as t:
-                with dpg.theme_component(dpg.mvButton):
-                    dpg.add_theme_color(dpg.mvThemeCol_Button, (40, 140, 40, 255))
-                    dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (60, 170, 60, 255))
-            dpg.bind_item_theme(self.follow_btn_tag, t)
+            dpg.bind_item_theme(self.follow_btn_tag, self._follow_theme_on)
         else:
             dpg.set_item_label(self.follow_btn_tag, "Follow: OFF")
-            with dpg.theme() as t:
-                with dpg.theme_component(dpg.mvButton):
-                    dpg.add_theme_color(dpg.mvThemeCol_Button, (80, 80, 80, 255))
-                    dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (110, 110, 110, 255))
-            dpg.bind_item_theme(self.follow_btn_tag, t)
+            dpg.bind_item_theme(self.follow_btn_tag, self._follow_theme_off)
 
     def _update_traffic_button(self) -> None:
         """Recolour the Traffic button to reflect the current overlay state."""
@@ -212,18 +231,10 @@ class MapViewWindow:
             return
         if self.traffic_enabled:
             dpg.set_item_label(self.traffic_btn_tag, "Traffic: ON")
-            with dpg.theme() as t:
-                with dpg.theme_component(dpg.mvButton):
-                    dpg.add_theme_color(dpg.mvThemeCol_Button, (40, 100, 180, 255))
-                    dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (60, 130, 210, 255))
-            dpg.bind_item_theme(self.traffic_btn_tag, t)
+            dpg.bind_item_theme(self.traffic_btn_tag, self._traffic_theme_on)
         else:
             dpg.set_item_label(self.traffic_btn_tag, "Traffic: OFF")
-            with dpg.theme() as t:
-                with dpg.theme_component(dpg.mvButton):
-                    dpg.add_theme_color(dpg.mvThemeCol_Button, (80, 80, 80, 255))
-                    dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (110, 110, 110, 255))
-            dpg.bind_item_theme(self.traffic_btn_tag, t)
+            dpg.bind_item_theme(self.traffic_btn_tag, self._traffic_theme_off)
 
     # -------------------------------------------------------------------------
     # Traffic / OpenSky
@@ -286,7 +297,8 @@ class MapViewWindow:
                 self._last_traffic_fetch = time.time()
                 log.info("MapViewWindow[%s]: traffic updated — %d aircraft", self._uid, len(aircraft))
 
-                self._redraw_all(refetch=False)
+                # Drawing must happen on the main thread; just request a redraw.
+                self._needs_redraw = True
 
             except requests.RequestException as exc:
                 log.warning("MapViewWindow[%s]: traffic fetch failed: %s", self._uid, exc)
@@ -360,8 +372,10 @@ class MapViewWindow:
 
         img = Image.open(io.BytesIO(r.content)).convert("RGBA")
         img.save(path)
-        self._session_web_requests += 1
-        self._total_cache_count += 1
+        # Runs on tile-pool threads — guard the shared diagnostic counters.
+        with self._counter_lock:
+            self._session_web_requests += 1
+            self._total_cache_count += 1
         return img
 
     @staticmethod
@@ -393,20 +407,26 @@ class MapViewWindow:
 
         cols, rows = self._tile_counts()
         tx0, ty0 = new_origin
+        n = 2 ** self.zoom
 
         for dx in range(cols):
             for dy in range(rows):
                 tx, ty = tx0 + dx, ty0 + dy
+                if ty < 0 or ty >= n:
+                    continue  # outside the valid tile range (past a pole)
+                fx = tx % n  # wrap longitude across the ±180° antimeridian
 
-                def _on_done(future, _dx=dx, _dy=dy, _tx=tx, _ty=ty):
+                def _on_done(future, _dx=dx, _dy=dy, _fx=fx, _ty=ty, _origin=new_origin):
                     try:
                         data = self._img_to_dpg_data(future.result())
-                        self._tile_ready_queue.put((_dx, _dy, data))
+                        # Tag with the origin the fetch was requested for so the
+                        # main thread can drop tiles from a superseded viewport.
+                        self._tile_ready_queue.put((_origin, _dx, _dy, data))
                     except Exception as exc:
                         log.warning("MapViewWindow: tile (%d,%d) z=%d failed: %s",
-                                    _tx, _ty, self.zoom, exc)
+                                    _fx, _ty, self.zoom, exc)
 
-                self._executor.submit(self._fetch_tile_sync, tx, ty, self.zoom).add_done_callback(_on_done)
+                self._executor.submit(self._fetch_tile_sync, fx, ty, self.zoom).add_done_callback(_on_done)
 
     def _pump_tile_queue(self) -> None:
         """
@@ -419,13 +439,19 @@ class MapViewWindow:
             return
 
         slot_index: dict[tuple[int, int], int] = {pos: tid for pos, tid in self.tex_ids}
+        current_origin = self._last_tile_origin
         changed = False
 
         while not self._tile_ready_queue.empty():
             try:
-                dx, dy, data = self._tile_ready_queue.get_nowait()
+                origin, dx, dy, data = self._tile_ready_queue.get_nowait()
             except queue.Empty:
                 break
+
+            # Drop tiles fetched for a viewport we have since panned/zoomed away
+            # from — otherwise they would be painted into the wrong grid slot.
+            if origin != current_origin:
+                continue
 
             tex_id = dpg.add_static_texture(
                 self.TILE_SIZE, self.TILE_SIZE, data,
@@ -441,6 +467,18 @@ class MapViewWindow:
             self.tex_ids = list(slot_index.items())
             self._redraw_all(refetch=False)
             self._update_diag()
+
+    def _on_frame(self) -> None:
+        """
+        Main-thread per-frame tick (bound as the drawlist's visible handler).
+
+        Drains finished tiles and services redraw requests posted by background
+        threads, so every DPG item mutation happens on the render thread.
+        """
+        self._pump_tile_queue()
+        if self._needs_redraw:
+            self._needs_redraw = False
+            self._redraw_all(refetch=True)
 
     # -------------------------------------------------------------------------
     # Drawing
@@ -471,11 +509,15 @@ class MapViewWindow:
 
     def draw_track_polyline(self) -> None:
         """Draw the flight-path polyline from the accumulated track points."""
-        if len(self.track) < 2 or not dpg.does_item_exist(self.drawlist_tag):
+        if not dpg.does_item_exist(self.drawlist_tag):
+            return
+        with self._state_lock:
+            track = list(self.track)  # snapshot; the serial thread appends to it
+        if len(track) < 2:
             return
         margin = self.TILE_SIZE
         points = []
-        for lat, lon in self.track:
+        for lat, lon in track:
             sx, sy = self._world_to_screen(lat, lon)
             if math.isnan(sx) or math.isnan(sy) or math.isinf(sx) or math.isinf(sy):
                 continue
@@ -619,11 +661,15 @@ class MapViewWindow:
                 dpg.add_button(label="OpenStreetMap",
                                callback=lambda: webbrowser.open("https://www.openstreetmap.org/copyright"))
 
+        self._follow_theme_on = self._make_button_theme((40, 140, 40, 255), (60, 170, 60, 255))
+        self._follow_theme_off = self._make_button_theme((80, 80, 80, 255), (110, 110, 110, 255))
+        self._traffic_theme_on = self._make_button_theme((40, 100, 180, 255), (60, 130, 210, 255))
+        self._traffic_theme_off = self._make_button_theme((80, 80, 80, 255), (110, 110, 110, 255))
         self._update_follow_button()
         self._update_traffic_button()
 
         with dpg.item_handler_registry() as handler:
-            dpg.add_item_visible_handler(callback=self._pump_tile_queue)
+            dpg.add_item_visible_handler(callback=self._on_frame)
         dpg.bind_item_handler_registry(self.drawlist_tag, handler)
 
     # -------------------------------------------------------------------------
@@ -671,7 +717,9 @@ class MapViewWindow:
         cx, cy = self.latlon_to_pixel(self.view_lat, self.view_lon, self.zoom)
         new_lat, new_lon = self.pixel_to_latlon(cx + pan_px, cy + pan_py, self.zoom)
         self.view_lat = max(-85.0511, min(85.0511, new_lat))
-        self.view_lon = new_lon
+        # Normalise longitude into [-180, 180) so panning across the antimeridian
+        # keeps producing valid coordinates and tile indices.
+        self.view_lon = (new_lon + 180.0) % 360.0 - 180.0
         self._redraw_all(refetch=True)
         self._update_diag()
 
@@ -683,21 +731,26 @@ class MapViewWindow:
         """
         Update the rocket position and append a track point.
 
-        Called by UIManager on every GPS fix. If Follow is enabled the
-        viewport re-centres automatically.
+        Called by UIManager on the serial RX thread for every GPS fix. This only
+        touches plain Python state and flags a redraw; the actual DPG drawing is
+        performed on the main thread by :py:meth:`_on_frame`.
         """
-        # If GPS is invalid, return
-        if lat == 0.0 or lon == 0.0:
+        # Reject non-finite fixes and the (0, 0) "null island" no-fix sentinel.
+        # AND (not OR) so a genuine fix exactly on the equator or prime meridian
+        # is kept.
+        if math.isnan(lat) or math.isnan(lon) or math.isinf(lat) or math.isinf(lon):
+            return
+        if lat == 0.0 and lon == 0.0:
             return
 
         self.lat = lat
         self.lon = lon
-        self.track.append((lat, lon))
+        with self._state_lock:
+            self.track.append((lat, lon))
         if self.auto_centre:
             self.view_lat = lat
             self.view_lon = lon
-            self.draw_map_tiles()
-        self._redraw_all(refetch=False)
+        self._needs_redraw = True
 
     def update_zoom(self, new_zoom: int) -> None:
         """Set the zoom level, clamped to [1, 19], and trigger a full redraw."""
@@ -708,3 +761,11 @@ class MapViewWindow:
         self.zoom = new_zoom
         self._last_tile_origin = None
         self._redraw_all(refetch=True)
+
+    def shutdown(self) -> None:
+        """Stop the traffic thread and tile executor. Call on app teardown."""
+        log.info("MapViewWindow[%s]: shutdown", self._uid)
+        self._stop_traffic()
+        if self._traffic_thread and self._traffic_thread.is_alive():
+            self._traffic_thread.join(timeout=2)
+        self._executor.shutdown(wait=False)

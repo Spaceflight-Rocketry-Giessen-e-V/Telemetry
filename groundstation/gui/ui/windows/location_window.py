@@ -39,14 +39,17 @@ class LocationWindow:
         """
         Convert a decimal-degree coordinate to ``(degrees, minutes, seconds)``.
 
-        Works for both latitude and longitude. The caller is responsible for
-        appending N/S or E/W suffixes as appropriate.
+        Returns the **magnitude only** (always non-negative); the caller applies
+        the N/S or E/W hemisphere. Seconds are rounded to 2 dp with carry, so a
+        value just under a whole minute/degree rolls over cleanly instead of
+        printing ``60.00"`` — and the sign is never lost for coordinates within
+        1° of the equator/prime meridian (where ``int()`` truncation would drop
+        it).
         """
-        degrees = int(decimal)
-        minutes_full = abs((decimal - degrees) * 60)
-        minutes = int(minutes_full)
-        seconds = (minutes_full - minutes) * 60
-        return degrees, minutes, seconds
+        total_seconds = round(abs(decimal) * 3600, 2)
+        degrees, rem = divmod(total_seconds, 3600)
+        minutes, seconds = divmod(rem, 60)
+        return int(degrees), int(minutes), seconds
 
     def draw_ui(self, window_width: int = 300, window_height: int = 200) -> None:
         """
@@ -97,5 +100,7 @@ class LocationWindow:
 
         lat_d, lat_m, lat_s = self.decimal_to_dms(lat)
         lon_d, lon_m, lon_s = self.decimal_to_dms(lon)
-        dpg.set_value(self.lat_dms_value_tag, f"{lat_d}°{lat_m}'{lat_s:.2f}\"")
-        dpg.set_value(self.lon_dms_value_tag, f"{lon_d}°{lon_m}'{lon_s:.2f}\"")
+        lat_h = "S" if lat < 0 else "N"
+        lon_h = "W" if lon < 0 else "E"
+        dpg.set_value(self.lat_dms_value_tag, f"{lat_d}°{lat_m}'{lat_s:.2f}\" {lat_h}")
+        dpg.set_value(self.lon_dms_value_tag, f"{lon_d}°{lon_m}'{lon_s:.2f}\" {lon_h}")
