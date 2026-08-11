@@ -18,6 +18,7 @@ Please see the [Operation Advices](#operation-advices) before using the system!
 - [Operation Advices](#operation-advices)
     - [Powering The System](#powering-the-system)
     - [Serial Communication](#serial-communication)
+    - [Radio Module Troubleshooting](#radio-module-troubleshooting)
     - [Antenna Precautions](#antenna-precautions)
     - [Choice of VGA Cable](#choice-of-vga-cable)
 
@@ -234,6 +235,19 @@ Note: When using an external power supply, the 3.3 V lines of UPDI programmers o
 For the serial communication with the system, an UART to USB adapter has to be used. When using the (planned) integrated USB circuit or an USB adapter based on the CP2102N, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
 
 We recommend using a dedicated serial monitor like the excellent project [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings). The settings can be opened via "File" -> "Open".
+
+## Radio Module Troubleshooting
+
+Sometimes the radio modules might seem bricked or malfunctioning. In this case, we advise to reset the internal memory by using: 
+```cpp
+rc17xx.memoryReset();
+```
+Sometimes, the radio module boots in the configuration mode, in this case the mode should be exited first:
+```cpp
+rc17xx.send('X');
+delay(100);
+rc17xx.memoryReset();
+```
 
 ## Antenna Precautions
 
