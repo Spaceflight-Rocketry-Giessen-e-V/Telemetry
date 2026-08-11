@@ -10,11 +10,15 @@ Since our projects include multiple subsytems, which are developed more or less 
 ## [UNRELEASED]:
 
 ### Added
-- Daughterboard Electronics Casing
-- Onboard Electronics Mounting Bracket
+- Daughterboard and Motherboard Electronics Casings
+- Onboard Electronics Mounting Structure
 - 869 MHz Groundstation Patch Antenna
+- 869 MHz Groundstation Helical Antenna Simulation Files
+- QFH Antenna CAD Tutorial
 
 ### Changed
+- Complete firmware rework
+- Redefinition of packet structures
 - Major helical antenna rework with smaller design
 
 ### Removed
