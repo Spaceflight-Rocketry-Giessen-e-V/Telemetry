@@ -7,8 +7,9 @@
     - Assembly Instructions
     - Operation Advices
 - Antenna Documentation
-    - [Helix Antenna Design Guide](/docs/helix_antenna_design_guide.ipynb)
+    - [Helical Antenna Design Guide](/docs/helical_antenna_design_guide.ipynb)
     - [Helical Antenna Assembly Manual](/docs/helical_antenna_assembly_manual.md)
+    - [QFH Antenna CAD Tutorial](/docs/qfh_antenna_cad_tutorial.md)
 - [Operations Cheatsheet](/docs/operations_cheatsheet.md)
     - Commands List
     - Status Events List

@@ -32,12 +32,12 @@ The whole system is designed for an effective range of 18 km. To accomplish this
     - [Radio Module Library](#radio-module-library)
     - [Packet Encoding/Decoding Library](#packet-encodingdecoding-library)
 - [Antennas](#antennas)
-  - [Groundstation Helical Antenna](#groundstation-869-mhz-helical-antenna)
+  - [Groundstation 869 MHz Helical Antenna](#groundstation-869-mhz-helical-antenna)
     - [Geometric Design](#geometric-design)
     - [Mechanical Design](#mechanical-design)
     - [Simulations](#simulations)
-  - [Groundstation Dipole Antenna](#groundstation-169-mhz-dipole-antenna)
-  - [Onboard QFH Antenna](#onboard-869-mhz-qfh-antenna)
+  - [Groundstation 169 MHz Dipole Antenna](#groundstation-169-mhz-dipole-antenna)
+  - [Onboard 869 MHz QFH Antenna](#onboard-869-mhz-qfh-antenna)
     - [Geometric Design](#geometric-design-1)
     - [Mechanical Design](#mechanical-design-1)
     - [Simulations](#simulations-1)
@@ -265,7 +265,7 @@ Previously, we only used dipole stick antennas ([Linx ANT-868-CW-HW-SMA](https:/
 
 ### Geometric Design
 
-We have included a separate [Helix Antenna Design Guide Python Notebook](/docs/helix_antenna_design_guide.ipynb). It describes the design process based on [this paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463) and the necessary calculations. There is also a Fast-Track calculation which approximates the calculations and needs only the frequency $f$, the wire radius $r$ and the ratio of length to circumference $\frac{L}{C}$.
+We have included a separate [Helical Antenna Design Guide Python Notebook](/docs/helical_antenna_design_guide.ipynb). It describes the design process based on [this paper](https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/4/463/files/2015/06/HelixAPMagazineSubmission.pdf?bid=463) and the necessary calculations. There is also a Fast-Track calculation which approximates the calculations and needs only the frequency $f$, the wire radius $r$ and the ratio of length to circumference $\frac{L}{C}$.
 
 More informations about helical antennas can be found [here](https://www.microwaves101.com/encyclopedias/helix-antennas) and [here](https://jcoppens.com/ant/helix/index.en.php).
 
@@ -319,7 +319,7 @@ The winding help is a mould for shaping the copper wire. Since the wire expands 
 
 Before the design process of the new helical antenna, we designed and built a much larger version, featuring a 1.5 m helix and a 70 cm x 70 cm x 2 mm ground plane. The resulting antenna was too large, heavy and expensive, which is why we settled on a 0.5 m helix with a round 40 cm x 1.5 mm ground plane. The new antenna can easily be mounted on a camera tripod.
 
-<p align="center"><img src="/docs/images/helical_antenna_assembly/0601_assembly_with_strings_attached.png" width = 600/></p>
+<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width = 600/></p>
 
 ## Groundstation 169 MHz Dipole Antenna
 
