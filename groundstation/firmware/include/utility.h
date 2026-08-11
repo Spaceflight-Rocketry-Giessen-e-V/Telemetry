@@ -34,9 +34,13 @@ void controlBoxCheck(uint8_t pin1, uint8_t pin2);
 class dataStruct // :)
 {
 public:
+
+  // Housekeeping Data
+
   float rssi;
   uint32_t timestampLastPacket = 0;
   uint32_t timeSinceLastPacket = 0;
+  uint8_t lastPacketType = 0;
 
   // Subsystem States
 

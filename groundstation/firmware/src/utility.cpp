@@ -113,6 +113,7 @@ uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_
             uint8_t packetIdentifier;
             if (Packet::decodeFrame(&packetBuffer[*packetBufferIndex - 13], &packetIdentifier) == 0)
             {
+                dataVariables->lastPacketType = packetIdentifier;
 
                 if (packetIdentifier == 0)
                 {
@@ -192,6 +193,8 @@ void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables)
     serialUSB->println(dataVariables->rssi);
     serialUSB->print("Time Since Last Packet: ");
     serialUSB->println(dataVariables->timeSinceLastPacket);
+    serialUSB->print("Packet Type: ");
+    serialUSB->println(dataVariables->lastPacketType == 0 ? "Flight Data Packet" : "Telemetry Data Packet");
 }
 
 void ledUpdate(uint8_t state, ledStruct *pinLed)
