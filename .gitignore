@@ -12,6 +12,7 @@
 **/.venv/
 **/.history/
 **/__pycache__/
+**/.DS_Store
 *.pyc
 /groundstation/firmware/.gitignore
 /onboard/firmware/.gitignore
