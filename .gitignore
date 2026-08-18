@@ -5,7 +5,6 @@
 **/place_footprints.log
 **/fp-info-cache
 **/*.lck
-**/.DS_Store/
 **/.vscode/
 **/.pio/
 **/.idea/
