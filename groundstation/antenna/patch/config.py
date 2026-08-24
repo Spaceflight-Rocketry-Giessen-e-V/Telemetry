@@ -33,24 +33,19 @@ substrate_cells     = 4      # FDTD cells through substrate thickness
 SimBox   = np.array([600, 600, 600])  # simulation domain [mm]. Sized so the centred
                                       # board clears ≳λ/4 to the inner PML_8 boundary on
                                       # every face — PML_8 consumes ~8·mesh_res (≈107 mm)
-                                      # inside each face. The old 560×560×420 crowded the
-                                      # PML (~0.1 λ) and biased Dmax / wide-angle AR.
+                                      # inside each face.
 NrTS_opt   = 150000  # time steps per optimisation run. Set EQUAL to NrTS_final so the
-                     # opt metric matches the final-run metric. Run 20260606_052114
-                     # proved the razor-thin AR/beamwidth does NOT survive coarse→final:
-                     # identical dims read AR 2.5 dB / AR≤3 beam 36° at 120000 but
-                     # AR 3.4 dB / 0° at 150000, so the optimiser was selecting on an
-                     # optimistic AR that collapsed in the final run. Matching fidelity
-                     # removes that disagreement (≈+25% time/sim; see the speed plan,
-                     # which more than offsets it by cutting the sim COUNT).
-NrTS_final = 350000  # time steps for the final high-fidelity run. RAISED 150k->350k: the
+                     # optimiser judges AR at the same fidelity as the confirm stage: the razor
+                     # AR/beamwidth does not survive a coarse→fine change, so a cheaper opt run
+                     # selects on an optimistic AR that collapses at full fidelity.
+NrTS_final = 350000  # time steps for the final high-fidelity run. the
                      # razor CP AR null is time-step-limited at 150k (a direct 150k vs 250k
                      # re-run of the locked W=82.5/trunc=8.25 design moved the AR null depth
                      # 0.41->1.03 dB and the AR<=3 freq band 7.9->6.6 MHz — the 150k numbers
                      # were optimistic). 350k is the convergence top-rung to confirm 250k is
                      # settled and to write a convergence-proven results.json (see tests/
-                     # tool_trunc_bw_sweep.py + the WIP convergence gate).
-NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. RAISED from 60k to equal
+                     # tool_trunc_bw_sweep.py + the convergence ladder in docs/research.md §3).
+NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. Equal to
                      # NrTS_opt: the screen must centre the AR NULL (optimizer._screen_cost on
                      # f_ar_null), and the razor AR null does NOT converge at 60k — a 60k run read
                      # AR 8.8 dB where the 150k truth is 0.4 dB, so a cheap screen mis-ranked the
@@ -68,14 +63,14 @@ num_workers = 0
 # Caps peak RAM/temp-disk and keeps the wall-clock estimate honest. Both the optimiser pool
 # and the ETA derive from this via optimizer.resolve_workers(), so they can never disagree.
 #
-# SET TO 3 (was 9): at the full NrTS_screen = NrTS_opt = 150k the openEMS NF2FF recording per
+# SET TO 3: at the full NrTS_screen = NrTS_opt = 150k the openEMS NF2FF recording per
 # sim is large, and 9 concurrent 150k sims returned EMPTY NF2FF (Prad/Dmax≈0 with a still-valid
 # S11) — a RAM/temp-disk overrun — whereas 3-concurrent×150k and 9-concurrent×60k both ran clean.
 # 3 keeps every phase inside the proven-safe regime; on a ~20-thread host _run_batch then gives
 # each sim cores//3 ≈ 6 FDTD threads (faster per sim), so the 9-sim grid runs as 3 quick waves at
 # ~the same wall-clock as one slow 9-wide wave. The worker ALSO guards against empty NF2FF (returns
 # a failure so a tripped sim is excluded, not silently selected). Raise only on a host with RAM/
-# scratch verified at 150k. See [[patch-antenna-sim-state]].
+# scratch verified at 150k.
 MAX_WORKERS = 3
 
 # Per-phase hang guard. optimizer._run_batch waits at most this long for a
@@ -84,7 +79,7 @@ MAX_WORKERS = 3
 # whole run. MUST exceed the real wall-clock of a phase's slowest sim or healthy
 # sims get marked as failures: this host runs ~0.011 s/step solo (20 threads) and
 # slower under the optimiser's concurrent 4-thread sims, so a 120k-step candidate
-# takes ~60-100 min — NOT the ~3-4 min the old 1800 s assumed. 3 h gives margin;
+# takes ~60-100 min. 3 h gives margin;
 # lower it only on a host fast enough that a single opt sim finishes well inside it.
 PHASE_TIMEOUT_S = 10800
 
@@ -138,7 +133,7 @@ BOARD_MARGIN  = 8.0           # mm — min ground beyond any copper (return curr
 # ── Optimizer cost weights (lower cost = better candidate) ────────
 # Each term is normalized so weight ≈ 1 makes them comparable in magnitude;
 # penalties are 0 inside the "good" region. These are the ACTIVE coverage-cost
-# weights (the old boresight-gain / board-area weights were retired & removed).
+# weights.
 W_FREQ  = 1.0   # weight on the resonance penalty (shape set by F_RES_* below)
 W_MATCH = 1.0   # weight on max(0, s11_dB + 10)  in dB       (0 once matched to -10 dB)
 
@@ -228,7 +223,6 @@ SUB_HW_DEFAULT = 80.0    # 160 mm board - LOCKED. The dual-feed beamwidth-vs-GP 
                          #   widest clean-CP beam and is kept for the single-feed patch (re-confirm on re-tune).
 SUB_HW_MIN     = 80.0    # 160 mm — floor (patch ~83 mm + ≥0.5·BOARD_MARGIN each side).
 SUB_HW_MAX     = 80.0    # 160 mm — pinned; board not swept (locked on the coverage result above).
-SUB_HW_N       = 5       # (legacy) old GP-sweep candidate count; board no longer swept. Kept for reference.
 
 
 # ── Grid search (W × corner-truncation) — the two coupled resonance/AR levers ──────

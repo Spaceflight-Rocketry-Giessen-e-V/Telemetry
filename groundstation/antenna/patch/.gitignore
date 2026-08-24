@@ -37,9 +37,6 @@ GRBR/
 # Local editor / MCP server config — machine-specific (absolute .vscode paths etc.)
 .mcp.json
 
-# Claude Code session artifacts (workflow scripts, transcripts)
-.claude/
-
 # Reference papers / notebooks kept locally in docs/ (not tracked)
 docs/*.pdf
 docs/papers/

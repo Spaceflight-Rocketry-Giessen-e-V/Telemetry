@@ -31,12 +31,9 @@ post_proc_only  = False  # skip FDTD entirely, re-run post-processing on existin
 # Leave as None for a cold start from the config.py synthesis seeds (which ARE the
 # proven single-feed dims: W_CP_INIT ≈ 82.5, TRUNC_INIT ≈ 8.25, INSET_Y ≈ 5.8).
 warm_start = {
-    # Single-feed corner-truncated CP seeds, from the proven old single-feed design
-    # (config_deprecated) re-scaled to NP-140F εr 4.15. The 150k confirmation run at these
-    # dims gave f_res 875.4 MHz (+5.9 high), S11 −12.1, η_rad 28.3 %, realised +0.8 dBic,
-    # RHCP — AR 4.8 dB at the un-tuned seed. The grid grows W to pull resonance onto f_target
-    # (config.GRID_W_FRAC is recentred above the seed for exactly this) and sweeps truncation
-    # to centre the AR null ≤3 dB.
+    # Single-feed corner-truncated CP seeds, re-scaled to NP-140F εr 4.15. These seeds ARE the
+    # locked dims (W 82.5 / trunc 8.25 / inset 5.8); the grid brackets them and sweeps the
+    # truncation to centre the AR null ≤3 dB. Deliverable metrics: fab/results.json.
     'W_mm':       82.5,   # (W_lp+L_lp)/2 * 0.86  — CP square side; grid grows it +0.0–1.3 % onto f0
     'trunc_mm':   8.25,   # 0.10·W corner chamfer — the CP mode-split lever (grid 6.5/8.25/10)
     'inset_y_mm': 5.8,    # 0.07·W single inset on the −y edge centre (50 Ω match)
