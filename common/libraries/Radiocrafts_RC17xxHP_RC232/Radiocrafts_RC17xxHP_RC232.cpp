@@ -152,7 +152,10 @@ uint8_t RC17xxHP_RC232::memoryReset() // Resets all the settings to the standart
 uint8_t RC17xxHP_RC232::set_RF_CHANNEL(uint8_t value)
 {
     uint8_t current_value;
-    get_RF_CHANNEL(&current_value);
+    if (get_RF_CHANNEL(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -166,7 +169,10 @@ uint8_t RC17xxHP_RC232::set_RF_CHANNEL(uint8_t value)
 uint8_t RC17xxHP_RC232::set_RF_POWER(uint8_t value)
 {
     uint8_t current_value;
-    get_RF_POWER(&current_value);
+    if (get_RF_POWER(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -180,7 +186,10 @@ uint8_t RC17xxHP_RC232::set_RF_POWER(uint8_t value)
 uint8_t RC17xxHP_RC232::set_RF_DATA_RATE(uint8_t value)
 {
     uint8_t current_value;
-    get_RF_DATA_RATE(&current_value);
+    if (get_RF_DATA_RATE(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -194,7 +203,10 @@ uint8_t RC17xxHP_RC232::set_RF_DATA_RATE(uint8_t value)
 uint8_t RC17xxHP_RC232::set_SLEEP_MODE(uint8_t value)
 {
     uint8_t current_value;
-    get_SLEEP_MODE(&current_value);
+    if (get_SLEEP_MODE(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -208,7 +220,10 @@ uint8_t RC17xxHP_RC232::set_SLEEP_MODE(uint8_t value)
 uint8_t RC17xxHP_RC232::set_RSSI_MODE(uint8_t value)
 {
     uint8_t current_value;
-    get_RSSI_MODE(&current_value);
+    if (get_RSSI_MODE(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -222,7 +237,10 @@ uint8_t RC17xxHP_RC232::set_RSSI_MODE(uint8_t value)
 uint8_t RC17xxHP_RC232::set_PACKET_LENGTH(uint8_t value)
 {
     uint8_t current_value;
-    get_PACKET_LENGTH(&current_value);
+    if (get_PACKET_LENGTH(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -236,7 +254,10 @@ uint8_t RC17xxHP_RC232::set_PACKET_LENGTH(uint8_t value)
 uint8_t RC17xxHP_RC232::set_PACKET_TIMEOUT(uint8_t value)
 {
     uint8_t current_value;
-    get_PACKET_TIMEOUT(&current_value);
+    if (get_PACKET_TIMEOUT(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -250,7 +271,10 @@ uint8_t RC17xxHP_RC232::set_PACKET_TIMEOUT(uint8_t value)
 uint8_t RC17xxHP_RC232::set_PACKET_END_CHARACTER(uint8_t value)
 {
     uint8_t current_value;
-    get_PACKET_END_CHARACTER(&current_value);
+    if (get_PACKET_END_CHARACTER(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -264,7 +288,10 @@ uint8_t RC17xxHP_RC232::set_PACKET_END_CHARACTER(uint8_t value)
 uint8_t RC17xxHP_RC232::set_ADDRESS_MODE(uint8_t value)
 {
     uint8_t current_value;
-    get_ADDRESS_MODE(&current_value);
+    if (get_ADDRESS_MODE(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -278,7 +305,10 @@ uint8_t RC17xxHP_RC232::set_ADDRESS_MODE(uint8_t value)
 uint8_t RC17xxHP_RC232::set_CRC_MODE(uint8_t value)
 {
     uint8_t current_value;
-    get_CRC_MODE(&current_value);
+    if (get_CRC_MODE(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -292,7 +322,10 @@ uint8_t RC17xxHP_RC232::set_CRC_MODE(uint8_t value)
 uint8_t RC17xxHP_RC232::set_UID(uint8_t value)
 {
     uint8_t current_value;
-    get_UID(&current_value);
+    if (get_UID(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -306,7 +339,10 @@ uint8_t RC17xxHP_RC232::set_UID(uint8_t value)
 uint8_t RC17xxHP_RC232::set_SID(uint8_t value)
 {
     uint8_t current_value;
-    get_SID(&current_value);
+    if (get_SID(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -320,7 +356,10 @@ uint8_t RC17xxHP_RC232::set_SID(uint8_t value)
 uint8_t RC17xxHP_RC232::set_DID(uint8_t value)
 {
     uint8_t current_value;
-    get_DID(&current_value);
+    if (get_DID(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -334,7 +373,10 @@ uint8_t RC17xxHP_RC232::set_DID(uint8_t value)
 uint8_t RC17xxHP_RC232::set_BID(uint8_t value)
 {
     uint8_t current_value;
-    get_BID(&current_value);
+    if (get_BID(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -348,7 +390,10 @@ uint8_t RC17xxHP_RC232::set_BID(uint8_t value)
 uint8_t RC17xxHP_RC232::set_UART_BAUD_RATE(uint8_t value)
 {
     uint8_t current_value;
-    get_UART_BAUD_RATE(&current_value);
+    if (get_UART_BAUD_RATE(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -362,7 +407,10 @@ uint8_t RC17xxHP_RC232::set_UART_BAUD_RATE(uint8_t value)
 uint8_t RC17xxHP_RC232::set_UART_FLOW_CONTROL(uint8_t value)
 {
     uint8_t current_value;
-    get_UART_FLOW_CONTROL(&current_value);
+    if (get_UART_FLOW_CONTROL(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -376,7 +424,10 @@ uint8_t RC17xxHP_RC232::set_UART_FLOW_CONTROL(uint8_t value)
 uint8_t RC17xxHP_RC232::set_LED_CONTROL(uint8_t value)
 {
     uint8_t current_value;
-    get_LED_CONTROL(&current_value);
+    if (get_LED_CONTROL(&current_value) != 0)
+    {
+        return 1;
+    }
     if (current_value == value)
     {
         return 0;
@@ -606,7 +657,7 @@ uint8_t RC17xxHP_RC232::configExit() // Attempts to exit CONFIG mode
 {
     _serial->write('X');
     serialWait(4 * (1420 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{CONFIG-IDLE} = 1420 us), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
-    if (_serial->available() == 0)
+    if ((_serial->available() == 0) || (serial->read() != '>'))
     {
         return 0; // Success
     }

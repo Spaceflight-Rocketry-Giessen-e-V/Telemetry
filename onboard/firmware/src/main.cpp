@@ -57,9 +57,9 @@ float *floatListControl[floatCountControl] = {};
 
 // Subsystems Initialization
 
-Subsystem subsystemPower(0x50, pinLed.Power, &dataVars.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
-Subsystem subsystemSens(0x20, pinLed.Sens, &dataVars.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
-Subsystem subsystemControl(0x40, pinLed.Control, &dataVars.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
+Subsystem subsystemPower(0x50, &pinLed.Power, &dataVars.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower);
+Subsystem subsystemSens(0x20, &pinLed.Sens, &dataVars.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens);
+Subsystem subsystemControl(0x40, &pinLed.Control, &dataVars.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl);
 
 const uint8_t subsystemsCount = 3;
 Subsystem *subsystemList[subsystemsCount] = {&subsystemSens, &subsystemPower, &subsystemControl};

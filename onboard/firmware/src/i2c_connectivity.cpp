@@ -1,6 +1,6 @@
 #include "i2c_connectivity.h"
 
-Subsystem::Subsystem(uint8_t i2cAddress, uint8_t pinLed, uint8_t *subsystemStatus, uint8_t **uint8List, uint8_t uint8Count, float **floatList, uint8_t floatCount)
+Subsystem::Subsystem(uint8_t i2cAddress, uint8_t *pinLed, uint8_t *subsystemStatus, uint8_t **uint8List, uint8_t uint8Count, float **floatList, uint8_t floatCount)
 {
     _i2cAddress = i2cAddress;
     _pinLed = pinLed;
@@ -32,31 +32,36 @@ void Subsystem::dataGet()
     if (*_subsystemState != 0)
     {
         const uint8_t byteCount = _uint8Count * 1 + _floatCount * 4;
-        Wire.requestFrom(_i2cAddress, byteCount);
-        uint8_t receivedBytes[byteCount];
-        for (uint8_t i = 0; i < byteCount; i++)
+        if (Wire.requestFrom(_i2cAddress, byteCount) == byteCount)
         {
-            receivedBytes[i] = Wire.read();
-        }
-        uint8_t bytePointer = 0;
-        for (uint8_t i = 0; i < _uint8Count; i++)
-        {
-            *_uint8List[i] = receivedBytes[bytePointer];
-            bytePointer += 1;
-        }
-        for (uint8_t i = 0; i < _floatCount; i++)
-        {
-            *_floatList[i] = bytesToFloat(&receivedBytes[bytePointer]);
-            bytePointer += 4;
+            uint8_t receivedBytes[byteCount];
+            for (uint8_t i = 0; i < byteCount; i++)
+            {
+                if (Wire.available != 0)
+                {
+                    receivedBytes[i] = Wire.read();
+                }
+            }
+            uint8_t bytePointer = 0;
+            for (uint8_t i = 0; i < _uint8Count; i++)
+            {
+                *_uint8List[i] = receivedBytes[bytePointer];
+                bytePointer += 1;
+            }
+            for (uint8_t i = 0; i < _floatCount; i++)
+            {
+                *_floatList[i] = bytesToFloat(&receivedBytes[bytePointer]);
+                bytePointer += 4;
+            }
         }
     }
 }
 
 void Subsystem::ledUpdate(uint8_t lowPowerMode)
 {
-    if (lowPowerMode == 0)
+    if (lowPowerMode == 1)
     {
-        digitalWrite(_pinLed, LOW);
+        digitalWrite(*_pinLed, LOW);
     }
     else
     {
@@ -72,7 +77,7 @@ void Subsystem::ledUpdate(uint8_t lowPowerMode)
         {
             _stateLed = 0;
         }
-        digitalWrite(_pinLed, _stateLed);
+        digitalWrite(*_pinLed, _stateLed);
     }
 }
 
@@ -92,10 +97,7 @@ void subsystemsConnCheck(Subsystem **subsystemsList, uint8_t subsystemsCount)
 {
     for (uint8_t i = 0; i < subsystemsCount; i++)
     {
-        if (subsystemsList[i]->statusGet() == 0)
-        {
-            subsystemsList[i]->connectionCheck();
-        }
+        subsystemsList[i]->connectionCheck();
     }
 }
 
