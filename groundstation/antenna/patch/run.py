@@ -30,15 +30,10 @@ post_proc_only  = False  # skip FDTD entirely, re-run post-processing on existin
 #   W_mm, trunc_mm, inset_y_mm, sub_hw_mm
 # Leave as None for a cold start from the config.py synthesis seeds (which ARE the
 # proven single-feed dims: W_CP_INIT ≈ 82.5, TRUNC_INIT ≈ 8.25, INSET_Y ≈ 5.8).
-warm_start = {
-    # Single-feed corner-truncated CP seeds, re-scaled to NP-140F εr 4.15. These seeds ARE the
-    # locked dims (W 82.5 / trunc 8.25 / inset 5.8); the grid brackets them and sweeps the
-    # truncation to centre the AR null ≤3 dB. Deliverable metrics: fab/results.json.
-    'W_mm':       82.5,   # (W_lp+L_lp)/2 * 0.86  — CP square side; grid grows it +0.0–1.3 % onto f0
-    'trunc_mm':   8.25,   # 0.10·W corner chamfer — the CP mode-split lever (grid 6.5/8.25/10)
-    'inset_y_mm': 5.8,    # 0.07·W single inset on the −y edge centre (50 Ω match)
-#    'sub_hw_mm':  80.0,   # 160 mm board (locked for wide-beam coverage)
-}
+# None = cold start from the config.py LOCKED dims (the single source of truth:
+# W_CP_INIT / TRUNC_INIT / INSET_Y / SUB_HW_DEFAULT). The grid brackets them and sweeps
+# truncation to centre the AR null ≤3 dB. Deliverable metrics: fab/results.json.
+warm_start = None
 
 # reuse_best: load dims from the most-recent results.json and use them as
 # warm_start (overrides the dict above).  Combined with single_sim_only=True

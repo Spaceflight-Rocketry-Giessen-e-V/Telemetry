@@ -453,7 +453,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     # The patch is centred with ~38 mm of ground at every corner, so all FOUR corners
     # are clear (the single feed exits the bottom EDGE centre, not a corner). Edge.Cuts
     # circle = routed hole. NYLON standoffs only (metal detunes the ground-plane edge).
-    HOLE_D, HOLE_OFF = 3.2, 8.0                        # M3 clearance; inset clears the 6 mm radius
+    HOLE_D, HOLE_OFF = config.HOLE_CLEAR_D, config.HOLE_OFF   # single source: config.py
     for mx, my in ((HOLE_OFF, HOLE_OFF),
                    (HOLE_OFF, board - HOLE_OFF),
                    (board - HOLE_OFF, HOLE_OFF),
@@ -512,13 +512,13 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     _pb  = board / 2.0 + h                               # patch bottom edge (KiCad y)
     _pdx = (board / 2.0 - h + board / 2.0 - fw / 2.0) / 2.0   # centre of the clear strip UNDER the patch, left of the feed
     lines += _txt(f'Patch {p.W_mm:.1f} mm sq', _pdx, _pb + 6.0, 'F.SilkS', 1.0, 'center')    # under the patch (clear of the feed)
-    lines += _txt(f'trunc {p.trunc_mm:.1f} mm', _pdx, _pb + 10.0, 'F.SilkS', 1.0, 'center')  #   corner-chamfer size
+    lines += _txt(f'trunc {p.trunc_mm:.2f} mm', _pdx, _pb + 10.0, 'F.SilkS', 1.0, 'center')  #   corner-chamfer size (2dp: 8.25, not 8.2)
     lines += _txt(f'inset {inset_cap:.1f} mm', sma_kx + 4.0, sma_ky - 11.0, 'F.SilkS', 0.95)  # near the feed
     lines += _txt(f'feed 50R w{fw:.2f} mm', sma_kx + 4.0, sma_ky - 14.5, 'F.SilkS', 0.9)
 
     # SMA part label on bare substrate beside the launch land (no over-pad markers —
     # silk over exposed copper is dropped in fab).
-    lines += _txt('WR-SMA 60312202114514', sma_kx + 4.0, sma_ky - 7.0, 'F.SilkS', 1.1)
+    lines += _txt(f'WR-SMA {config.CONNECTOR_MPN}', sma_kx + 4.0, sma_ky - 7.0, 'F.SilkS', 1.1)
 
     # QR on the right margin strip, vertically centred on the patch, no caption
     qr_sz = 25.5
@@ -557,7 +557,7 @@ def write_kicad_pcb(p: PatchParams, substrate_h: float, output_path: str) -> Non
     lines += _silk_table(dtable, 14.0, 20.0, [36.0, 50.0], 5.6, 'B.SilkS',
                          board_w=board, size=1.2)
 
-    info = ['Hardware: edge-launch SMA (WE 60312202114514)',
+    info = [f'Hardware: edge-launch SMA (WE {config.CONNECTOR_MPN})',
             'Mounting: 4x M3, nylon standoffs only',
             'Main beam: boresight +Z, out of the front face',
             'github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry  -  Open Source Hardware',
@@ -634,6 +634,20 @@ def main():
     if args.sub_hw is not None: overrides['sub_hw_mm']  = args.sub_hw
     if overrides:
         p = p.with_(**overrides)
+
+    # ── SINGLE-SOURCE-OF-TRUTH GUARD ──────────────────────────────────
+    # The board geometry MUST equal config.py (the locked design). A results.json that has
+    # drifted from config means the sim is stale — refuse to fabricate a mismatched board.
+    # CLI overrides are deliberate experiments, so they bypass the guard.
+    if args.json_file and not overrides:
+        cfg = default_params()
+        bad = [f for f in ('W_mm', 'trunc_mm', 'inset_y_mm', 'sub_hw_mm')
+               if abs(getattr(p, f) - getattr(cfg, f)) > 1e-3]
+        if bad:
+            raise SystemExit(
+                'DRIFT: results.json disagrees with config.py (the single source of truth) on '
+                + ', '.join(f'{f} ({getattr(p, f)} vs {getattr(cfg, f)})' for f in bad)
+                + '.\n  Re-run the sim (run.py) so results.json matches, or refreeze config.py.')
 
     if not args.json_file and not overrides:
         print('Note: no results.json and no overrides - exporting from config seeds.')

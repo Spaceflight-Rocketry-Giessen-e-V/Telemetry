@@ -107,28 +107,36 @@ dL = (0.412 * substrate_thickness
 L_lp = C0 / (2 * f_target * np.sqrt(eps_eff)) * 1e3 - 2 * dL  # mm
 
 # ══════════════════════════════════════════════════════════════════
-# Single-feed corner-truncated RHCP design — geometry seeds
+# LOCKED DESIGN GEOMETRY — SINGLE SOURCE OF TRUTH
 # ══════════════════════════════════════════════════════════════════
 # CP comes from truncating two diagonally-opposite corners of a near-square patch
-# (the chamfer splits the two degenerate modes so they are 90° apart at f_target),
-# fed by ONE inset microstrip. No coupler, no isolated-port resistor — the dual-feed
-# coupler dumped ~64 % of accepted power into that resistor (realised gain −9.6 dBic);
-# the single feed recovers it (validated: η_rad 28 %, realised gain +0.8 dBic). All
-# values are seeds — the optimiser refines W (resonance) / trunc (AR) / inset (match).
+# (the chamfer splits the two degenerate modes 90° apart at f_target), fed by ONE
+# inset microstrip. No coupler, no isolated-port resistor.
+#
+# These are the VALIDATED, FROZEN dimensions. EVERYTHING derives from them — the KiCad
+# board + gerbers, the enclosure, the silk labels, the datasheet numbers. They are plain
+# constants, NOT recomputed at import, so nothing drifts: the analytical synthesis below
+# is only the seed the optimiser STARTED from; these are the values it settled on and
+# openEMS validated (fab/results.json). To change the design you MUST edit these constants
+# AND re-run the sim (run.py) to revalidate — a stale results.json trips test_no_drift.
+#
+# Re-synthesis reference (a starting seed if you ever redesign for a new f/εr — the
+# optimiser then refines W/trunc/inset and you refreeze the result here):
+#   W_synth = (W_lp + L_lp)/2 * 0.86  ≈ 82.49   trunc ≈ 0.10·W   inset ≈ 0.07·W
+W_synth = (W_lp + L_lp) / 2.0 * 0.86     # analytical seed — REFERENCE ONLY, not the design
 
-# CP square side: average of the LP width and length, shrunk by a calibrated factor
-# (0.86, from the proven single-feed reference design); the optimiser refines it.
-W_CP_INIT = (W_lp + L_lp) / 2.0 * 0.86   # mm  (≈ 82.5 at εr 4.15)
+# --- the locked design (edit here, then run.py to revalidate; keep fab/results.json in sync) ---
+W_CP_INIT  = 82.5    # mm — patch side (near-square)
+TRUNC_INIT = 8.25    # mm — corner chamfer leg on the BL+TR diagonal → RHCP at +z
+INSET_Y    = 5.8     # mm — feed inset depth (50 Ω match)
+FEED_W     = 3.2     # mm — 50 Ω microstrip width (Hammerstad @ εr 4.15: W/h 1.997)
+INSET_GAP  = 0.6     # mm — etched gap each side of the inset feed line
+BOARD_MARGIN = 8.0   # mm — min ground beyond any copper (return current + edge)
 
-# Corner truncation (chamfer leg per corner). Literature/proven start ≈ 0.10·W (with
-# total Q ≈ 40-50 on FR-4, the Sharma-Gupta ΔS/S ≈ 1/(2Q) gives Δ/W ≈ 0.08-0.10).
-TRUNC_INIT = 0.10 * W_CP_INIT            # mm  (≈ 8.25)
-
-# Single inset feed at the −y edge centre. 50 Ω microstrip; shallow inset on 1.6 mm.
-FEED_W     = 3.2                # mm — 50 Ω line width (Hammerstad @ εr 4.15: W/h 1.997 → 50 Ω)
-INSET_Y    = 0.07 * W_CP_INIT   # mm — feed inset depth (≈ 5.8; 7 % of W, proven seed)
-INSET_GAP  = 0.6               # mm — etched gap each side of the inset feed line
-BOARD_MARGIN  = 8.0           # mm — min ground beyond any copper (return current + edge)
+# ── mechanical / connector conventions (shared by kicad_export + enclosure) ──
+HOLE_OFF     = 8.0             # mm — M3 mounting-hole inset from each board corner
+HOLE_CLEAR_D = 3.2            # mm — M3 clearance hole diameter
+CONNECTOR_MPN = '60312202114514'   # Würth WR-SMA end-launch (the board land pattern is drawn for it)
 
 # ── Optimizer cost weights (lower cost = better candidate) ────────
 # Each term is normalized so weight ≈ 1 makes them comparable in magnitude;

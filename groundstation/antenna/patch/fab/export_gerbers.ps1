@@ -38,7 +38,8 @@ Get-ChildItem $gdir -File -ErrorAction SilentlyContinue |
   Where-Object { $_.Extension -in '.gbr','.gbl','.gtl','.gbo','.gto','.gbs','.gts','.gm1','.gbrjob','.drl' } |
   Remove-Item -Force
 
-$g = & $cli pcb export gerbers --board-plot-params -o $gdir $pcb 2>&1
+$layers = "F.Cu,B.Cu,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts,F.Fab"
+$g = & $cli pcb export gerbers --layers $layers -o $gdir $pcb 2>&1
 if ($LASTEXITCODE -ne 0) {
   throw "gerber export failed (exit $LASTEXITCODE): $g`n" +
         "If it says 'Failed to load board', the installed kicad-cli ($cliVer) is older than the board (KiCad $boardVer). Install a matching KiCad."

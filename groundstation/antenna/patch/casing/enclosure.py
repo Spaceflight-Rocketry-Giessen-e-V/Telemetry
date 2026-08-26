@@ -57,7 +57,7 @@ import config  # noqa: E402
 BOARD_EDGE = 2.0 * config.SUB_HW_DEFAULT      # 160 mm
 BOARD_TH   = config.substrate_thickness       # 1.6 mm
 PATCH_W    = config.W_CP_INIT                  # ~82.5 mm (clearance / viz)
-HOLE_OFF   = 8.0                               # M3 holes 8 mm in from each corner (mirrors kicad_export)
+HOLE_OFF   = config.HOLE_OFF                    # M3 corner inset — single source: config.py
 BOARD_R    = 6.0                               # board corner radius (mirrors kicad_export)
 
 # ── enclosure parameters (mm) ─────────────────────────────────────────────────
