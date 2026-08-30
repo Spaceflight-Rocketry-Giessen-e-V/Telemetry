@@ -1,5 +1,5 @@
 #pragma once
-#include "component.h"
+#include "baseClasses.h"
 
 class uint8_t_Component : public Component
 {

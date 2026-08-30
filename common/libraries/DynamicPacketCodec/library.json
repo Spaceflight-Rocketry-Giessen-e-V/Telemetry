@@ -8,38 +8,19 @@
     "type": "git",
     "url": "https://www.github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry"
   },
-  "headers": "Packet.h",
+  "headers": "DynamicPacketCodec.h",
+  "dependencies" : [
+    { "name": "ArduinoSTL", 
+      "owner": "mike-matera", 
+      "version" : "^1.3.3"
+    }
+  ],
   "examples":
   [
     {
-      "name": "Decode Command",
+      "name": "",
       "base": "examples",
-      "files": ["decodeCommand.cpp"]
-    },
-    {
-      "name": "Encode Command",
-      "base": "examples",
-      "files": ["encodeCommand.cpp"]
-    },
-    {
-      "name": "Decode Flight Data",
-      "base": "examples",
-      "files": ["decodeFlightData.cpp"]
-    },
-    {
-      "name": "Encode Flight Data",
-      "base": "examples",
-      "files": ["encodeFlightData.cpp"]
-    },
-    {
-      "name": "Decode Telemetry Data",
-      "base": "examples",
-      "files": ["decodeTelemetryData.cpp"]
-    },
-    {
-      "name": "Encode Telemetry Data",
-      "base": "examples",
-      "files": ["encodeTelemetryData.cpp"]
+      "files": [".cpp"]
     }
   ]
 }

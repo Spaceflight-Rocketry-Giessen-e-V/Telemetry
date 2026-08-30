@@ -657,7 +657,7 @@ uint8_t RC17xxHP_RC232::configExit() // Attempts to exit CONFIG mode
 {
     _serial->write('X');
     serialWait(4 * (1420 + 8 * 1000000 / _baudrate)); // Time module needs to respond (t_{CONFIG-IDLE} = 1420 us), Transmission rate of a byte over UART: 8 / baud (in s!), bufferfaktor 2
-    if ((_serial->available() == 0) || (serial->read() != '>'))
+    if ((_serial->available() == 0) || (_serial->read() != '>'))
     {
         return 0; // Success
     }

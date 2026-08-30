@@ -1,6 +1,22 @@
 #pragma once
+#include "Arduino.h"
+#include <vector>
 
-class Packet;
+class Component;
+
+class Packet
+{
+public:
+	Packet();
+	std::vector<Component*> components;
+	uint8_t getBitSize() const;
+	uint8_t getByteSize() const;
+	void addComponent(Component* newComponent);
+	uint8_t* encode();
+	void decode(uint8_t* packet);
+protected:
+	uint8_t bitSize;
+};
 
 class Component
 {
