@@ -30,7 +30,7 @@ uint8_t const_Component::decode(uint8_t* packet)
 
 // empty FRAME COMPONENT
 
-empty_Component::empty_Component(uint8_t size) : const_Component(0x00000000, size, 255) {}
+empty_Component::empty_Component(uint8_t size, const uint8_t priority) : const_Component(0x00000000, size, priority) {}
 
 // parity FRAME COMPONENT
 

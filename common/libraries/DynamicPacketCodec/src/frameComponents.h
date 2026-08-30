@@ -14,7 +14,7 @@ protected:
 class empty_Component : public const_Component
 {
 public:
-	empty_Component(uint8_t size);
+	empty_Component(uint8_t size, const uint8_t priority = 0);
 };
 
 class parity_Component : public Component

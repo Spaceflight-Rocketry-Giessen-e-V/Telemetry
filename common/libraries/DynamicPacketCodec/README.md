@@ -1,6 +1,6 @@
-# Dynamic Packet Encoding/Decoding Library
+# Dynamic Packet Codec Library
 
-A library for dynamically encoding and decoding data packets according to a preset packet structure and for dynamically handling the packet framing.
+A library for dynamically encoding and decoding data packets and handling the packet framing.
 
 - [Features](#features)
 - [Limitations](#limitations)
@@ -18,18 +18,17 @@ A library for dynamically encoding and decoding data packets according to a pres
 
 ## Features
 
-- Encode data into a raw bit sequence
-- Decode bit sequences back to the original data
-- Incorporation of frame components like parity and COBS
+- Encode data into a bit sequence
+- Decode a bit sequence back to the original data
+- Implementation of frame components like parity and COBS
 - Easily customizable for different packet structures
-- Simple interface for adding new data and frame components
+- Simple addition of new data and frame components
 
 ## Limitations
 
 - Memory intensive when using many components
-- Not completely dynamic: packet size has to be known in advance, for example for COBS
-- When raw data values exceed their maximum or fall below their minimum value, the maximum/minimum value is used respectively
-- No error handling so far
+- Not completely dynamic: the packet size has to be known in advance for certain frame components like COBS
+- No detailed error handling is implemented so far
 
 ## Examples
 
@@ -38,6 +37,13 @@ A library for dynamically encoding and decoding data packets according to a pres
 ## Documentation
 
 ### General Usage
+
+#### Including the library
+
+Place the library in the `lib` folder of the PlatformIO project or include in folder in the `lib_deps` of the `platformio.ini` file.
+```c
+#include "DynamicPacketCodec.h";
+```
 
 #### Initializing a packet object
 
@@ -54,18 +60,26 @@ myPacket.addComponent(new uint8_t_component(&myVariable, 3, 0, 63));
 
 #### Encoding the Packet
 
-The components will be encoding in the order of their priorities.
+The components will be encoded in the order of their priorities.
 
 ```c
 uint8_t *packetBufTX = myPacket.encode();
 ```
 
-#### Transmitting the Packet
+#### Transmitting & receiving the Packet
 
 ```c
+// Transmitting
 for (uint8_t i = 0; i < myPacket.getByteSize(); i++)
 {
 	Serial.write(packetBufTX[i]);
+}
+
+// Receiving
+uint8_t packetBufRX[myPacket.getByteSize()] = {0};
+for (uint8_t i = 0; i < myPacket.getByteSize(); i++)
+{
+	packetBufRX[i] = Serial.read();
 }
 ```
 
@@ -90,7 +104,7 @@ All components possess default priorities. They can be altered if necessary. Com
 
 ### Implemented Data Components
 
-Data components represent some sort of data variable and don't interact with other components inside the packet. The respective variable is linked by a pointer so that the `encoding()` and `decoding()` function can access and alter the values. Data components have a default priority of `0`, which means that they can be altered by frame components.
+Data components represent some sort of data variable and don't interact with other components inside the packet. The respective variable is linked by a pointer so that the `encode()` and `decode()` functions can access and alter the values. Data components have a default priority of `0`, which means that they can be altered by frame components. The `decode()` function always returns `0` (success).
 
 #### `uint8_t`
 
@@ -114,7 +128,7 @@ The `value` will be stretched to the `min`-`max`-interval.
 char_Component(uint8_t* value, const uint8_t priority = 0)
 ```
 
-Upper case letters will be altered to lower case letters. Letters will be encoded in the interval `1` to `'z' - 'a' + 1`. All other chars will be encoded as `0`.
+Upper case letters will be altered to lower case letters. Letters will be encoded in the interval `1` to `'z'-'a'+1`. All other chars will be encoded as `0`.
 
 ### Implemented Frame Components
 
@@ -126,31 +140,31 @@ Frame components serve special purposes in the packet and might alter the data c
 const_Component(uint32_t value, uint8_t size, const uint8_t priority = 0)
 ```
 
-Constant bit sequence with up to 32 bits.
+Constant bit sequence with up to 32 bits. The `decode()` function returns `0`, if the relevant bit sequence matches the `value`.
 
 #### `empty`
 
 ```c
-empty_Component(uint8_t size)
+empty_Component(uint8_t size, const uint8_t priority = 0)
 ```
 
-Bit sequence with up to 32 zeros.
+Constant bit sequence with up to 32 zero bits. The `decode()` function returns `0`, if the relevant bit sequence is zero.
 
 #### `parity`
 
 ```c
-parity_Component(Packet *packet, const uint8_t priority = 1)
+parity_Component(const uint8_t priority = 1)
 ```
 
-Parity bit to ensure even parity.
+Parity bit to ensure even parity. The `decode()` function returns `0`, if the parity is even.
 
 #### `cobs`
 
 ```c
-cobs_Component(uint8_t markerByte, uint8_t size, Packet* packet, const uint8_t priority = 127)
+cobs_Component(uint8_t markerByte, uint8_t size, const uint8_t priority = 127)
 ```
 
-Ensures no unwanted occurance of the `markerByte` in the encoded byte sequence. The `size` has to be set according to the total packet size: `ceil(log2(byteSize))`. If a, for example constant, occurance of the `markerByte` should not be altered, a higher priority has to be chosen.
+Ensures no unwanted occurances of the `markerByte` in the encoded byte sequence. The `size` has to be set according to the total packet size: `ceil(log2(byteSize))`. If a, for example constant, occurance of the `markerByte` should not be altered, a higher priority has to be chosen for it. The `decode()` function always returns `0` (success).
 
 See the [Packet Structure Documentation](/docs/packet_structure.md) for a more detailed explanation of the COBS algorithm.
 
@@ -158,9 +172,9 @@ See the [Packet Structure Documentation](/docs/packet_structure.md) for a more d
 
 Please see the definitions of the already implemented components as examples.
 
-The declaration of a custom component should be done in `dataComponents.h` or `frameComponents.h`. The definition should be done in `dataComponents.cpp` or `frameComponents.cpp`.
+The declarations of custom components should be included in the `dataComponents.h` or `frameComponents.h` files. The definitions should be included in the `dataComponents.cpp` or `frameComponents.cpp` files.
 
-`1` The class has to be declared:
+#### (1) Declaration of the class:
 ```c
 class myComponent : public Component
 {
@@ -173,14 +187,14 @@ protected:
 ```
 `myComponent` is the name of the new component. In the constructor, all necessary variables can be passed as parameters. Under `protected`, any custom variables can be declared. The `encode()` and `decode` declarations should not be altered.
 
-2: The constructor has to be defined:
+#### (2) Definition of the constructor:
 ```c
 myComponent::myComponent(const uint8_t priority) : Component(size, priority)
 {}
 ```
-The `size` parameter of the `Component` constructor has to be set with a variable in the `myComponent` constructor or as a const value. Inside the brackets, custom `protected` variables can be set.
+The `size` parameter of the `Component` constructor has to be set with a parameter of the `myComponent` constructor or as a const value. Inside the curly brackets, custom `protected` variables can be set.
 
-3: The `encode()` function has to be defined:
+#### (3) Definition of the `encode()` function:
 ```c
 void myComponent::encode(uint8_t* packet)
 {
@@ -191,7 +205,7 @@ void myComponent::encode(uint8_t* packet)
 ```
 The `dataBits` variable has to be set according to the desired encoding scheme.
 
-4: The `decode()` function has to be defined:
+#### (4) Definition of the `decode()` function:
 ```c
 uint8_t myComponent::decode(uint8_t* packet)
 {
@@ -201,7 +215,7 @@ uint8_t myComponent::decode(uint8_t* packet)
 	return 0;
 }
 ```
-With the read `dataBits`, any operation can be done (for example the linked variable can be updated). In case of the decoding scheme failing (for example failed parity check), a nonzero value should be returned. 
+With the extracted `dataBits`, any operation can be done (for example the linked variable can be updated). In case of the decoding scheme failing (for example failed parity check), a nonzero value should be returned.
 
 ## Contributing
 

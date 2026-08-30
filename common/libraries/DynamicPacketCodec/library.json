@@ -1,6 +1,6 @@
 {
-  "name": "Packet",
-  "description": "Library for encoding and decoding telemetry data packets",
+  "name": "DynamicPacketCodec",
+  "description": "Library for dynamically encoding and decoding data packets and handling the packet framing",
   "license": "CERN-OHL-S-2.0",
   "homepage": "https://www.spaceflight-rocketry-giessen.de/",
   "repository":
