@@ -21,6 +21,7 @@ void Packet::addComponent(Component* newComponent)
 	for (i = 0; (i < components.size()) && (components[i]->priority <= newComponent->priority); i++);
 
 	components.insert(components.begin() + i, newComponent);
+	components[i]->packet = this;
 	components[i]->bitPosition = bitSize;
 	bitSize = bitSize + components[i]->size;
 }

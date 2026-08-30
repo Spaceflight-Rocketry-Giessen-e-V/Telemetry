@@ -2,6 +2,7 @@
 #include "Arduino.h"
 #include <vector>
 
+class Packet;
 class Component;
 
 class Packet
@@ -28,6 +29,7 @@ public:
 	uint8_t size;
 	uint8_t bitPosition;
 	uint8_t priority;
+	Packet* packet;
 protected:
 	void bitWriter(uint32_t dataBits, uint8_t* packet) const;
 	void bitReader(uint32_t* dataBits, uint8_t* packet) const;

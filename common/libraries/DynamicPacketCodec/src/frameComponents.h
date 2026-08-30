@@ -20,21 +20,18 @@ public:
 class parity_Component : public Component
 {
 public:
-	parity_Component(Packet *packet, const uint8_t priority = 1);
+	parity_Component(const uint8_t priority = 1);
 	void encode(uint8_t* packet) override;
 	uint8_t decode(uint8_t* packet) override;
-protected:
-	Packet *packet;
 };
 
 class cobs_Component : public Component
 {
 public:
-	cobs_Component(uint8_t markerByte, uint8_t size, Packet* packet, const uint8_t priority = 127);
+	cobs_Component(uint8_t markerByte, uint8_t size, const uint8_t priority = 127);
 	void encode(uint8_t* packet) override;
 	uint8_t decode(uint8_t* packet) override;
 protected:
 	uint8_t markerByte;
 	uint8_t size;
-	Packet* packet;
 };

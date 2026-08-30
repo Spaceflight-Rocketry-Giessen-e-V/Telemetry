@@ -34,10 +34,7 @@ empty_Component::empty_Component(uint8_t size) : const_Component(0x00000000, siz
 
 // parity FRAME COMPONENT
 
-parity_Component::parity_Component(Packet *packet, const uint8_t priority) : Component(1, priority)
-{
-	this->packet = packet;
-}
+parity_Component::parity_Component(const uint8_t priority) : Component(1, priority) {}
 
 void parity_Component::encode(uint8_t* packet)
 {
@@ -77,10 +74,9 @@ uint8_t parity_Component::decode(uint8_t* packet)
 
 // cobs FRAME COMPONENT
 
-cobs_Component::cobs_Component(uint8_t markerByte, uint8_t size, Packet* packet, const uint8_t priority) : Component(size, priority)
+cobs_Component::cobs_Component(uint8_t markerByte, uint8_t size, const uint8_t priority) : Component(size, priority)
 {
 	this->markerByte = markerByte;
-	this->packet = packet;
 }
 
 void cobs_Component::encode(uint8_t* packet)
