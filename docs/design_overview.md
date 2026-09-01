@@ -313,7 +313,7 @@ The winding help is a mould for shaping the copper wire. Since the wire expands 
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width = 600/></p>
 
-> Informations will be added. See [#21](/../../issues/21)
+The simulations are based on the Finite-Difference Time-Domain (FDTD) method provided by the [openEMS software](https://github.com/thliebig/openEMS-Project). This allows us to look at the performance of the antenna nefore we build it and home in during the design process regarding the geometry.
 
 ### Previous Design
 
