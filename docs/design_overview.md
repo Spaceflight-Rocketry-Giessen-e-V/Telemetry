@@ -214,7 +214,7 @@ Plastics enclosures for the motherboard and daughterboards, each with a bottom p
 
 |![Motherboard Casing](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Daughterboard Casing](../groundstation/pcb/Daughterboard/Images/Daughterboard_PCB.jpg)|
 |:---:|:---:|
-|[Motherboard Casing](/groundstation/casing/Motherboard/)|[Daughterboard Casing](/groundstation/casing/Daughterboard/)|
+|[Motherboard Casing](/groundstation/casing/Motherboard/)|[Daughterboard Casing](/groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_3.png)|
 
 ## Onboard Electronics Mounting Structure
 
