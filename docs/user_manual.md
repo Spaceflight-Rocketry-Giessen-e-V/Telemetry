@@ -185,8 +185,9 @@ The simulation has four main parts:
 
 4. The last step is to output the calculated data and visualize it. For the visualization we used [Paraview](https://www.paraview.org/), other software or plot libraries can be used as well.
 
+A more detailed guide can be found [here](helical_antenna_simulation_guide.md).
 
-In the future there will be a detailed instruction on how to use the library for our use case for both ways. In the mean time feel free to explore the library on your own. If you want to have a gasp on our code look for the example code for a helix antenna provided on the openEMS repository.
+
 
 ## Measurements
 
