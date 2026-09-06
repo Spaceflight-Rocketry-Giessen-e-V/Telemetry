@@ -45,6 +45,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 
 ### Removed
 - Flight data simulations
+- Groundstation Casing
 
 ## 2026-01-04
 

@@ -212,7 +212,7 @@ The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254
 
 Plastics enclosures for the motherboard and daughterboards, each with a bottom part, a shell, and an acrylic cover. The repository includes all the original Fusion and auxiliary (`.step`, `.stl`) design files.
 
-|![Motherboard Casing](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Daughterboard Casing](../groundstation/pcb/Daughterboard/Images/Daughterboard_PCB.jpg)|
+|![Motherboard Casing](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Daughterboard Casing](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_3.png)|
 |:---:|:---:|
 |[Motherboard Casing](/groundstation/casing/Motherboard/)|[Daughterboard Casing](/groundstation/casing/Daughterboard/)|
 
@@ -313,8 +313,8 @@ The winding help is a mould for shaping the copper wire. Since the wire expands 
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width = 600/></p>
 
-> Informations will be added. See [#21](/../../issues/21)
-
+The simulations are based on the Finite-Difference Time-Domain (FDTD) method provided by the [openEMS software](https://github.com/thliebig/openEMS-Project). This allows us to look at the performance of the antenna nefore we build it and home in during the design process regarding the geometry.
+The guide to the simulation can be found [here](helical_antenna_simulation_guide.md)
 ### Previous Design
 
 Before the design process of the new helical antenna, we designed and built a much larger version, featuring a 1.5 m helix and a 70 cm x 70 cm x 2 mm ground plane. The resulting antenna was too large, heavy and expensive, which is why we settled on a 0.5 m helix with a round 40 cm x 1.5 mm ground plane. The new antenna can easily be mounted on a camera tripod.

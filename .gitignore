@@ -5,13 +5,13 @@
 **/place_footprints.log
 **/fp-info-cache
 **/*.lck
-**/.DS_Store/
 **/.vscode/
 **/.pio/
 **/.idea/
 **/.venv/
 **/.history/
 **/__pycache__/
+**/.DS_Store
 *.pyc
 /groundstation/firmware/.gitignore
 /onboard/firmware/.gitignore

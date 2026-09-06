@@ -243,11 +243,6 @@ void loopVariablesUpdate(uint32_t *loopCount, uint32_t *loopStartTime, uint8_t l
 
     if ((millis() - (*loopStartTime)) < 1000 / loopFrequency)
     {
-
-        Serial4.print((1000 / loopFrequency) - (millis() - (*loopStartTime)));
-        Serial4.print(" ");
-        Serial4.print(millis() - (*loopStartTime));
-        Serial4.print(" ");
         delay((1000 / loopFrequency) - (millis() - (*loopStartTime)));
     }
     *loopStartTime = millis();
