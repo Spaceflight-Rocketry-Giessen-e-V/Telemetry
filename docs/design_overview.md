@@ -29,8 +29,8 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 - [Firmware](#firmware)
   - [Data Budget \& Packet Structure](#data-budget--packet-structure)
   - [Libraries](#libraries)
-    - [Radio Module Library](#radio-module-library)
-    - [Packet Encoding/Decoding Library](#packet-encodingdecoding-library)
+    - [Radiocrafts RC17xxHP-RC232](#radiocrafts-rx17xxhp-rc232-library)
+    - [Dynamic Packet Codec](#dynamic-packet-codec-library)
 - [Antennas](#antennas)
   - [Groundstation 869 MHz Helical Antenna](#groundstation-869-mhz-helical-antenna)
     - [Geometric Design](#geometric-design)
@@ -245,15 +245,17 @@ To consider the 10 % duty cycle, the flight computer usually only transmits once
 
 ## Libraries
 
-### Radio Module Library
+> Informations will be updated. See [#71](/../../issues/71)
 
-To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../common/libraries/Radiocrafts_RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
+### Radiocrafts RX17xxHP-RC232 Library
+
+To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../libraries/Radiocrafts_RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
 
 The library does not allow the use of all the functions of the radio module but focuses only on the ones needed for our project. However, the included functions can be easily adapted for other uses. It can also easily be adapted for other radio modules like the RC1180HP-RC232.
 
-### Packet Encoding/Decoding Library
+### Dynamic Packet Codec Library
 
-The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by a dedicated library, which can be found [here](../common/libraries/Packet/) along with its documentation. It can again be adapted easily for other data structures.
+The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by a dedicated library, which can be found [here](../libraries/DynamicPacketCodec/) along with its documentation. It can again be adapted easily for other data structures.
 
 ---
 

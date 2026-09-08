@@ -71,9 +71,9 @@ Find the contents here:
 ### 3. Electronics Firmware
 
 Included:
-- [Onboard](/onboard/firmware/) and [ground station](/groundstation/firmware/) electronics firmware 
-- [Radiocrafts RC1780HP-RC232 code library](/common/libraries/Radiocrafts_RC17xxHP_RC232/)
-- [Package encoding and decoding code library](/common/libraries/Packet/)
+- [Onboard](/onboard/firmware/) and [groundstation](/groundstation/firmware/) electronics firmware 
+- [Radiocrafts RC1780HP-RC232 library](/libraries/Radiocrafts_RC17xxHP_RC232/)
+- [Dynamic Package Codec (Encoding/Decoding) library](/libraries/DynamicPacketCodec/)
 
 ### 4. Groundstation UI Software
 <p align="center"><img src="groundstation/gui/example_images/main_view.png" width="600" /></p>
