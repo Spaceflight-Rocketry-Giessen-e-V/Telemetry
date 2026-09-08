@@ -61,24 +61,17 @@ void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledSt
 }
 
 // Returns the latest single-byte command from the uplink module (rc1701hp, on Serial3), or 0 if command is bad/unknown
-uint8_t commandReceive(RC17xxHP_RC232 *radioModule)
+void commandReceive(RC17xxHP_RC232 *radioModule, Packet *commandPacket)
 {
-    // availability
-    if (radioModule->available() == 0)
+    uint8_t receivedByte = 0;
+    if (radioModule->available() != 0)
     {
-        return 0;
+        receivedByte = radioModule->read();
     }
-    else
-    {
-        uint8_t command = radioModule->read();
-
-        Packet::decodeCommand(command, &command);
-
-        return command;
-    }
+    commandPacket->decode(&receivedByte);
 }
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, uint8_t pinArm, uint8_t pinSleep)
+void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, Packet *flightDataPacket, Packet *telemetryDataPacket, uint8_t pinArm, uint8_t pinSleep)
 {
     switch (command)
     {
@@ -132,8 +125,8 @@ void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *da
         break;
 
     case 'p': // Ping
-        packetSend(radioModule, dataVariables, pinLed, 1);
-        packetSend(radioModule, dataVariables, pinLed, 2);
+        packetSend(radioModule, 1, flightDataPacket, telemetryDataPacket);
+        packetSend(radioModule, 2, flightDataPacket, telemetryDataPacket);
         break;
 
     case 'q': // Drogue Ejection
@@ -213,23 +206,22 @@ uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t time
     }
 }
 
-void packetSend(RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t packetIdentifier)
+void packetSend(RC17xxHP_RC232 *radioModule, uint8_t packetType, Packet *flightDataPacket, Packet *telemetryDataPacket)
 {
-    if (packetIdentifier == 0)
+    if (packetType == 0)
     {
         return;
     }
-    uint8_t packet[12] = {0};
-
-    if (packetIdentifier == 1)
+    else if (packetType == 1)
     {
-        Packet::encodeFlightData(packet, dataVariables->acceleration, dataVariables->heightPressure, dataVariables->flightEvents, dataVariables->latitude, dataVariables->longitude);
+        uint8_t *packet = flightDataPacket->encode();
+        radioModule->send(packet, flightDataPacket->getByteSize());
     }
-    else if (packetIdentifier == 2)
+    else if (packetType == 2)
     {
-        Packet::encodeTelemetryData(packet, dataVariables->stateTelemetry, dataVariables->statePower, dataVariables->stateSens, dataVariables->stateControl, dataVariables->heightGNSS, dataVariables->satCountGNSS, dataVariables->hdopGNSS, dataVariables->temperatureElectronics, dataVariables->temperatureBattery, dataVariables->stateCapacitors, dataVariables->continuityPyros, dataVariables->pressureDecoupler, dataVariables->ldrDecoupler, dataVariables->voltageBattery, dataVariables->currentBattery, dataVariables->currentUmbilical, dataVariables->stateUmbilical, *(pinLed->lowPowerMode), dataVariables->voltageBatteryCOTS);
+        uint8_t *packet = telemetryDataPacket->encode();
+        radioModule->send(packet, telemetryDataPacket->getByteSize());
     }
-    radioModule->send(packet, 12);
 }
 
 void loopVariablesUpdate(uint32_t *loopCount, uint32_t *loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop)

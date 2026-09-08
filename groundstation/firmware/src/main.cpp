@@ -37,6 +37,15 @@ RC17xxHP_RC232 rc1780hp(&Serial4, PIN_PE0, PIN_PE1, 19200, PIN_PE4, PIN_PE5, PIN
 // Second D-Sub
 RC17xxHP_RC232 rc1701hp(&Serial1, PIN_PC0, PIN_PC1, 19200, PIN_PC4, PIN_PC5, PIN_PC2, PIN_PC3);
 
+// Packet Declarations
+
+Packet commandPacket;
+Packet framePacket;
+Packet flightDataPacket;
+Packet telemetryDataPacket;
+
+// 
+
 dataStruct dataVars;
 
 uint8_t packetBuffer[32];
@@ -94,6 +103,54 @@ void setup()
 
   ledUpdate(SETUPRADIOMODULS, &pinLed); // B On
 
+  // Packet Components Initializations
+
+  commandPacket.addComponent(new parity_Component());
+  commandPacket.addComponent(new char_Component(&dataVars.command));
+
+  framePacket.addComponent(new cobs_Component(0xEE, 4));
+  framePacket.addComponent(new parity_Component());
+  framePacket.addComponent(new uint8_t_Component(&dataVars.packetIdentifier, 1, 0, 1));
+  framePacket.addComponent(new empty_Component(18));
+  framePacket.addComponent(new empty_Component(32));
+  framePacket.addComponent(new empty_Component(32));
+  framePacket.addComponent(new const_Component(0xEE, 8, 255));
+  framePacket.addComponent(new float_Component(&dataVars.rssi, 8, -127.5, 0, 255));
+
+  flightDataPacket.addComponent(new empty_Component(6));
+  flightDataPacket.addComponent(new float_Component(&dataVars.acceleration, 10, -17, 17.1));
+  flightDataPacket.addComponent(new float_Component(&dataVars.heightPressure, 15, 0, 6553.4));
+  flightDataPacket.addComponent(new uint8_t_Component(&dataVars.flightEvents, 5, 0, 31));
+  flightDataPacket.addComponent(new float_Component(&dataVars.latitude, 26, -90, 90));
+  flightDataPacket.addComponent(new float_Component(&dataVars.longitude, 26, -180, 180));
+  flightDataPacket.addComponent(new empty_Component(16));
+
+  telemetryDataPacket.addComponent(new empty_Component(6));
+  telemetryDataPacket.addComponent(new empty_Component(2));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.stateTelemetry, 2, 0, 3));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.stateControl, 2, 0, 3));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.statePower, 2, 0, 3));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.stateSens, 2, 0, 3));
+  telemetryDataPacket.addComponent(new empty_Component(1));
+  telemetryDataPacket.addComponent(new float_Component(&dataVars.heightGNSS, 15, 0, 6553.4));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.satCountGNSS, 4, 0, 15));
+  telemetryDataPacket.addComponent(new float_Component(&dataVars.hdopGNSS, 4, 0, 7.5));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.temperatureElectronics, 4, 0, 150));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.temperatureBattery, 4, 0, 150));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.stateCapacitors, 4, 0, 15));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.continuityPyros, 2, 0, 3));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.pressureDecoupler, 1, 0, 1));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.ldrDecoupler, 1, 0, 1));
+  telemetryDataPacket.addComponent(new empty_Component(2));
+  telemetryDataPacket.addComponent(new float_Component(&dataVars.voltageBattery, 6, 5, 8.15));
+  telemetryDataPacket.addComponent(new float_Component(&dataVars.currentBattery, 3, 0, 1.75));
+  telemetryDataPacket.addComponent(new float_Component(&dataVars.currentUmbilical, 3, 0, 1.75));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.stateUmbilical, 1, 0, 1));
+  telemetryDataPacket.addComponent(new uint8_t_Component(&dataVars.lowPowerMode, 1, 0, 1));
+  telemetryDataPacket.addComponent(new float_Component(&dataVars.voltageBatteryCOTS, 5, 5, 11.2));
+  telemetryDataPacket.addComponent(new empty_Component(11));
+  telemetryDataPacket.addComponent(new empty_Component(16));
+
   // Setup Complete
 
   ledUpdate(SETUPEND, &pinLed); // G On
@@ -102,17 +159,16 @@ void setup()
 void loop()
 {
   // Check both USBs for commands
-  uint8_t command = commandReceive(SerialUSB1);
-  commandExecute(command, &rc1701hp);
-  command = commandReceive(SerialUSB2);
-  commandExecute(command, &rc1701hp);
+  dataVars.command = commandReceive(SerialUSB1);
+  commandExecute(&rc1701hp, &commandPacket);
+  dataVars.command = commandReceive(SerialUSB2);
+  commandExecute(&rc1701hp, &commandPacket);
 
   buttonCheck(pinButton);
   controlBoxCheck(pinControlBox1, pinControlBox2);
 
-  if (packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars) == 0)
+  if (packetReceive(&rc1780hp, packetBuffer, &packetBufferIndex, &dataVars, &framePacket, &flightDataPacket, &telemetryDataPacket) == 0)
   {
-
     dataSendUsb(SerialUSB1, &dataVars);
     dataSendUsb(SerialUSB2, &dataVars);
 

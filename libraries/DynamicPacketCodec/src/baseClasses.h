@@ -14,7 +14,7 @@ public:
 	uint8_t getByteSize() const;
 	void addComponent(Component* newComponent);
 	uint8_t* encode();
-	void decode(uint8_t* packet);
+	uint8_t decode(uint8_t* packet);
 protected:
 	uint8_t bitSize;
 };

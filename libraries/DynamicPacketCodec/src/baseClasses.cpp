@@ -28,7 +28,7 @@ void Packet::addComponent(Component* newComponent)
 
 uint8_t* Packet::encode()
 {
-	uint8_t* packet = (uint8_t*)calloc(getByteSize(), 8);
+	uint8_t* packet = (uint8_t*)calloc(getByteSize(), 1);
 	for (uint8_t i = 0; i < components.size(); i++)
 	{
 		components[i]->encode(packet);
@@ -36,16 +36,17 @@ uint8_t* Packet::encode()
 	return packet;
 }
 
-void Packet::decode(uint8_t* packet)
+uint8_t Packet::decode(uint8_t* packet)
 {
 	for (uint8_t i = components.size(); i > 0; i--)
 	{
 		if (components[i - 1]->decode(packet) != 0)
 		{
-			break; // Error (parity, cobs, ...)
+			return 1; // Error (parity, cobs, ...)
 		}
 		components[i - 1]->bitReset(packet);
 	}
+	return 0;
 }
 
 // BASE COMPONENT //

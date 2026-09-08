@@ -42,7 +42,7 @@ A library for dynamically encoding and decoding data packets and handling the pa
 
 Place the library in the `lib` folder of the PlatformIO project or include in folder in the `lib_deps` of the `platformio.ini` file.
 ```c
-#include "DynamicPacketCodec.h";
+#include "DynamicPacketCodec.h"
 ```
 
 #### Initializing a packet object
@@ -95,6 +95,7 @@ myPacket.decode(PacketBufRX);
 
 All components possess default priorities. They can be altered if necessary. Components with other priorities can be easily implemented.
 
+- `0`-`126`: Range for custom priorities
 - `0`: All data components and constant/empty frame components
 - `1`: Parity bit
 - `127`: COBS, should be the last alteration before transmittion

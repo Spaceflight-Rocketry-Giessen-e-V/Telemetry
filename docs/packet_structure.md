@@ -32,8 +32,8 @@ The following table lists the components of each Flight Data Package.
 | 0 | [COBS](#cobs) | 4 bits | 0 to 10 | / | 
 | 0 | [Parity Bit](#parity-bit) | 1 bits | 0 or 1 | / |
 | 0 | [Packet Identifier](#packet-identifier) | 1 bit | 0 | / |
-| 0 to 1 | Acceleration | 10 bits | -16 g to 16 g | 0.03333 g |
-| 2 to 3 | Height (Pressure) | 15 bits | 0 to 6500 m | 0.2 m |
+| 0 to 1 | Acceleration | 10 bits | -17 g to 17.1 g | 0.03333 g |
+| 2 to 3 | Height (Pressure) | 15 bits | 0 to 6553.4 m | 0.2 m |
 | 3 to 4 | [Flight Events](#flight-events) | 5 bits | 0 to 31 | / |
 | 4 to 7 | [GNSS Latitude](#latitude-longitude) | 26 bits | -90° to 90° | 0.0000026823° |
 | 7 to 10 | [GNSS Longitude](#latitude-longitude) | 26 bits | -180° to 180° | 0.0000053645° |
