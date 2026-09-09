@@ -18,9 +18,9 @@
   "examples":
   [
     {
-      "name": "",
+      "name": "Simple Packet Encoding/Decoding",
       "base": "examples",
-      "files": [".cpp"]
+      "files": ["packetEncodingDecoding.cpp"]
     }
   ]
 }

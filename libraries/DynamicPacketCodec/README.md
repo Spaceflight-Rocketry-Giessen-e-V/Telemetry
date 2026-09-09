@@ -32,7 +32,7 @@ A library for dynamically encoding and decoding data packets and handling the pa
 
 ## Examples
 
-- [Simple Packet Encoding/Decoding](examples/)
+- [Simple Packet Encoding/Decoding](examples/packetEncodingDecoding.cpp)
 
 ## Documentation
 
