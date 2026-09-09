@@ -131,6 +131,10 @@ Our firmware is designed to be used with Visual Studio Code and the PlatformIO e
 
 To upload, the UPDI USB port can be used. The corresponding COM port has to be selected in VSCode in the status bar.
 
+## Libraries Usage
+
+> Informations will be added. See [#71](/../../issues/71)
+
 ## USB-to-UART/UPDI bridge
 
 Our newest PCB design features one CP2102N USB-to-UART bridge each for UPDI programming and UART debugging and data transfer.

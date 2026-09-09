@@ -15,9 +15,9 @@ void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledSt
 
 uint8_t commandReceive(HardwareSerial *serialUSB);
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule);
+void commandExecute(RC17xxHP_RC232 *radioModule, Packet *commandPacket);
 
-uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables);
+uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables, Packet *framePacket, Packet *flightDataPacket, Packet *telemetryDataPacket);
 
 void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables);
 
@@ -40,7 +40,8 @@ public:
   float rssi;
   uint32_t timestampLastPacket = 0;
   uint32_t timeSinceLastPacket = 0;
-  uint8_t lastPacketType = 0;
+  uint8_t command;
+  uint8_t packetIdentifier;
 
   // Subsystem States
 

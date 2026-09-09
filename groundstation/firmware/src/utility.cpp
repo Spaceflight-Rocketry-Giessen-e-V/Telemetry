@@ -79,22 +79,17 @@ uint8_t commandReceive(HardwareSerial *serialUSB)
     }
     else
     {
-        uint8_t command = serialUSB->read();
-        return command;
+        return serialUSB->read();
     }
 }
 
-void commandExecute(uint8_t command, RC17xxHP_RC232 *radioModule)
+void commandExecute(RC17xxHP_RC232 *radioModule, Packet *commandPacket)
 {
-    uint8_t packet;
-    if (command != 0)
-    {
-        Packet::encodeCommand(command, &packet);
-        radioModule->send(packet);
-    }
+    uint8_t *packet = commandPacket->encode();
+    radioModule->send(packet, commandPacket->getByteSize());
 }
 
-uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables)
+uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables, Packet *framePacket, Packet *flightDataPacket, Packet *telemetryDataPacket)
 {
     while (radioModule->available() != 0)
     {
@@ -110,22 +105,18 @@ uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_
             dataVariables->timeSinceLastPacket = millis() - dataVariables->timestampLastPacket;
             dataVariables->timestampLastPacket = millis();
 
-            uint8_t packetIdentifier;
-            if (Packet::decodeFrame(&packetBuffer[*packetBufferIndex - 13], &packetIdentifier) == 0)
+            if(framePacket->decode(&packetBuffer[*packetBufferIndex - 13]) == 0)
             {
-                dataVariables->lastPacketType = packetIdentifier;
-
-                if (packetIdentifier == 0)
+                if(dataVariables->packetIdentifier == 0)
                 {
-
-                    Packet::decodeFlightData(&packetBuffer[*packetBufferIndex - 13], &dataVariables->acceleration, &dataVariables->heightPressure, &dataVariables->flightEvents, &dataVariables->latitude, &dataVariables->longitude, &dataVariables->rssi);
+                    flightDataPacket->decode(&packetBuffer[*packetBufferIndex - 13]);
                 }
-                else if (packetIdentifier == 1)
+                else if(dataVariables->packetIdentifier == 1)
                 {
-
-                    Packet::decodeTelemetryData(&packetBuffer[*packetBufferIndex - 13], &dataVariables->stateTelemetry, &dataVariables->statePower, &dataVariables->stateSens, &dataVariables->stateControl, &dataVariables->heightGNSS, &dataVariables->satCountGNSS, &dataVariables->hdopGNSS, &dataVariables->temperatureElectronics, &dataVariables->temperatureBattery, &dataVariables->stateCapacitors, &dataVariables->continuityPyros, &dataVariables->pressureDecoupler, &dataVariables->ldrDecoupler, &dataVariables->voltageBattery, &dataVariables->currentBattery, &dataVariables->currentUmbilical, &dataVariables->stateUmbilical, &dataVariables->lowPowerMode, &dataVariables->voltageBatteryCOTS, &dataVariables->rssi);
+                    telemetryDataPacket->decode(&packetBuffer[*packetBufferIndex - 13]);
                 }
             }
+            
             *packetBufferIndex = 0;
             return 0;
         }
@@ -194,7 +185,7 @@ void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables)
     serialUSB->print("Time Since Last Packet: ");
     serialUSB->println(dataVariables->timeSinceLastPacket);
     serialUSB->print("Packet Type: ");
-    serialUSB->println(dataVariables->lastPacketType == 0 ? "Flight Data Packet" : "Telemetry Data Packet");
+    serialUSB->println(dataVariables->packetIdentifier == 0 ? "Flight Data Packet" : "Telemetry Data Packet");
 }
 
 void ledUpdate(uint8_t state, ledStruct *pinLed)

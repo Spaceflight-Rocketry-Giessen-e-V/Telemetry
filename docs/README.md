@@ -6,6 +6,9 @@
 - [User Manual](/docs/user_manual.md)
     - Assembly Instructions
     - Operation Advices
+- Libraries Documentation
+    - [Radiocrafts RC17xxHP-RC232](/libraries/Radiocrafts_RC17xxHP_RC232/README.md)
+    - [Dynamic Packet Codec](/libraries/DynamicPacketCodec/README.md)
 - Antenna Documentation
     - [Helical Antenna Design Guide](/docs/helical_antenna_design_guide.ipynb)
     - [Helical Antenna Assembly Manual](/docs/helical_antenna_assembly_manual.md)

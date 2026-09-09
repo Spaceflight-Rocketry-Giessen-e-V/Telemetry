@@ -37,7 +37,7 @@ void Subsystem::dataGet()
             uint8_t receivedBytes[byteCount];
             for (uint8_t i = 0; i < byteCount; i++)
             {
-                if (Wire.available != 0)
+                if (Wire.available() != 0)
                 {
                     receivedBytes[i] = Wire.read();
                 }
