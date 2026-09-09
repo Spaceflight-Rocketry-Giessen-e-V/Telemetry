@@ -9,7 +9,7 @@ dataclass of plain floats pickles trivially across the spawn start method).
 RHCP comes from truncating two diagonally-opposite corners of a near-square patch
 (the chamfer splits the two degenerate modes 90° apart at f_target), fed by ONE
 inset microstrip — no branch-line coupler, no isolated-port resistor (which dumped
-~64 % of accepted power; see [[patch-antenna-sim-state]]).
+~64 % of accepted power).
 """
 
 from __future__ import annotations

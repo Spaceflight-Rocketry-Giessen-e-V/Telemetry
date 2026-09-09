@@ -33,24 +33,19 @@ substrate_cells     = 4      # FDTD cells through substrate thickness
 SimBox   = np.array([600, 600, 600])  # simulation domain [mm]. Sized so the centred
                                       # board clears ≳λ/4 to the inner PML_8 boundary on
                                       # every face — PML_8 consumes ~8·mesh_res (≈107 mm)
-                                      # inside each face. The old 560×560×420 crowded the
-                                      # PML (~0.1 λ) and biased Dmax / wide-angle AR.
+                                      # inside each face.
 NrTS_opt   = 150000  # time steps per optimisation run. Set EQUAL to NrTS_final so the
-                     # opt metric matches the final-run metric. Run 20260606_052114
-                     # proved the razor-thin AR/beamwidth does NOT survive coarse→final:
-                     # identical dims read AR 2.5 dB / AR≤3 beam 36° at 120000 but
-                     # AR 3.4 dB / 0° at 150000, so the optimiser was selecting on an
-                     # optimistic AR that collapsed in the final run. Matching fidelity
-                     # removes that disagreement (≈+25% time/sim; see the speed plan,
-                     # which more than offsets it by cutting the sim COUNT).
-NrTS_final = 350000  # time steps for the final high-fidelity run. RAISED 150k->350k: the
+                     # optimiser judges AR at the same fidelity as the confirm stage: the razor
+                     # AR/beamwidth does not survive a coarse→fine change, so a cheaper opt run
+                     # selects on an optimistic AR that collapses at full fidelity.
+NrTS_final = 350000  # time steps for the final high-fidelity run. the
                      # razor CP AR null is time-step-limited at 150k (a direct 150k vs 250k
                      # re-run of the locked W=82.5/trunc=8.25 design moved the AR null depth
                      # 0.41->1.03 dB and the AR<=3 freq band 7.9->6.6 MHz — the 150k numbers
                      # were optimistic). 350k is the convergence top-rung to confirm 250k is
                      # settled and to write a convergence-proven results.json (see tests/
-                     # tool_trunc_bw_sweep.py + the WIP convergence gate).
-NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. RAISED from 60k to equal
+                     # tool_trunc_bw_sweep.py + the convergence ladder in docs/research.md §3).
+NrTS_screen = 150000  # SCREEN fidelity for the W×truncation grid. Equal to
                      # NrTS_opt: the screen must centre the AR NULL (optimizer._screen_cost on
                      # f_ar_null), and the razor AR null does NOT converge at 60k — a 60k run read
                      # AR 8.8 dB where the 150k truth is 0.4 dB, so a cheap screen mis-ranked the
@@ -68,14 +63,14 @@ num_workers = 0
 # Caps peak RAM/temp-disk and keeps the wall-clock estimate honest. Both the optimiser pool
 # and the ETA derive from this via optimizer.resolve_workers(), so they can never disagree.
 #
-# SET TO 3 (was 9): at the full NrTS_screen = NrTS_opt = 150k the openEMS NF2FF recording per
+# SET TO 3: at the full NrTS_screen = NrTS_opt = 150k the openEMS NF2FF recording per
 # sim is large, and 9 concurrent 150k sims returned EMPTY NF2FF (Prad/Dmax≈0 with a still-valid
 # S11) — a RAM/temp-disk overrun — whereas 3-concurrent×150k and 9-concurrent×60k both ran clean.
 # 3 keeps every phase inside the proven-safe regime; on a ~20-thread host _run_batch then gives
 # each sim cores//3 ≈ 6 FDTD threads (faster per sim), so the 9-sim grid runs as 3 quick waves at
 # ~the same wall-clock as one slow 9-wide wave. The worker ALSO guards against empty NF2FF (returns
 # a failure so a tripped sim is excluded, not silently selected). Raise only on a host with RAM/
-# scratch verified at 150k. See [[patch-antenna-sim-state]].
+# scratch verified at 150k.
 MAX_WORKERS = 3
 
 # Per-phase hang guard. optimizer._run_batch waits at most this long for a
@@ -84,7 +79,7 @@ MAX_WORKERS = 3
 # whole run. MUST exceed the real wall-clock of a phase's slowest sim or healthy
 # sims get marked as failures: this host runs ~0.011 s/step solo (20 threads) and
 # slower under the optimiser's concurrent 4-thread sims, so a 120k-step candidate
-# takes ~60-100 min — NOT the ~3-4 min the old 1800 s assumed. 3 h gives margin;
+# takes ~60-100 min. 3 h gives margin;
 # lower it only on a host fast enough that a single opt sim finishes well inside it.
 PHASE_TIMEOUT_S = 10800
 
@@ -112,33 +107,41 @@ dL = (0.412 * substrate_thickness
 L_lp = C0 / (2 * f_target * np.sqrt(eps_eff)) * 1e3 - 2 * dL  # mm
 
 # ══════════════════════════════════════════════════════════════════
-# Single-feed corner-truncated RHCP design — geometry seeds
+# LOCKED DESIGN GEOMETRY — SINGLE SOURCE OF TRUTH
 # ══════════════════════════════════════════════════════════════════
 # CP comes from truncating two diagonally-opposite corners of a near-square patch
-# (the chamfer splits the two degenerate modes so they are 90° apart at f_target),
-# fed by ONE inset microstrip. No coupler, no isolated-port resistor — the dual-feed
-# coupler dumped ~64 % of accepted power into that resistor (realised gain −9.6 dBic);
-# the single feed recovers it (validated: η_rad 28 %, realised gain +0.8 dBic). All
-# values are seeds — the optimiser refines W (resonance) / trunc (AR) / inset (match).
+# (the chamfer splits the two degenerate modes 90° apart at f_target), fed by ONE
+# inset microstrip. No coupler, no isolated-port resistor.
+#
+# These are the VALIDATED, FROZEN dimensions. EVERYTHING derives from them — the KiCad
+# board + gerbers, the enclosure, the silk labels, the datasheet numbers. They are plain
+# constants, NOT recomputed at import, so nothing drifts: the analytical synthesis below
+# is only the seed the optimiser STARTED from; these are the values it settled on and
+# openEMS validated (fab/results.json). To change the design you MUST edit these constants
+# AND re-run the sim (run.py) to revalidate — a stale results.json trips test_no_drift.
+#
+# Re-synthesis reference (a starting seed if you ever redesign for a new f/εr — the
+# optimiser then refines W/trunc/inset and you refreeze the result here):
+#   W_synth = (W_lp + L_lp)/2 * 0.86  ≈ 82.49   trunc ≈ 0.10·W   inset ≈ 0.07·W
+W_synth = (W_lp + L_lp) / 2.0 * 0.86     # analytical seed — REFERENCE ONLY, not the design
 
-# CP square side: average of the LP width and length, shrunk by a calibrated factor
-# (0.86, from the proven single-feed reference design); the optimiser refines it.
-W_CP_INIT = (W_lp + L_lp) / 2.0 * 0.86   # mm  (≈ 82.5 at εr 4.15)
+# --- the locked design (edit here, then run.py to revalidate; keep fab/results.json in sync) ---
+W_CP_INIT  = 82.5    # mm — patch side (near-square)
+TRUNC_INIT = 8.25    # mm — corner chamfer leg on the BL+TR diagonal → RHCP at +z
+INSET_Y    = 5.8     # mm — feed inset depth (50 Ω match)
+FEED_W     = 3.2     # mm — 50 Ω microstrip width (Hammerstad @ εr 4.15: W/h 1.997)
+INSET_GAP  = 0.6     # mm — etched gap each side of the inset feed line
+BOARD_MARGIN = 8.0   # mm — min ground beyond any copper (return current + edge)
 
-# Corner truncation (chamfer leg per corner). Literature/proven start ≈ 0.10·W (with
-# total Q ≈ 40-50 on FR-4, the Sharma-Gupta ΔS/S ≈ 1/(2Q) gives Δ/W ≈ 0.08-0.10).
-TRUNC_INIT = 0.10 * W_CP_INIT            # mm  (≈ 8.25)
-
-# Single inset feed at the −y edge centre. 50 Ω microstrip; shallow inset on 1.6 mm.
-FEED_W     = 3.2                # mm — 50 Ω line width (Hammerstad @ εr 4.15: W/h 1.997 → 50 Ω)
-INSET_Y    = 0.07 * W_CP_INIT   # mm — feed inset depth (≈ 5.8; 7 % of W, proven seed)
-INSET_GAP  = 0.6               # mm — etched gap each side of the inset feed line
-BOARD_MARGIN  = 8.0           # mm — min ground beyond any copper (return current + edge)
+# ── mechanical / connector conventions (shared by kicad_export + enclosure) ──
+HOLE_OFF     = 8.0             # mm — M3 mounting-hole inset from each board corner
+HOLE_CLEAR_D = 3.2            # mm — M3 clearance hole diameter
+CONNECTOR_MPN = '60312202114514'   # Würth WR-SMA end-launch (the board land pattern is drawn for it)
 
 # ── Optimizer cost weights (lower cost = better candidate) ────────
 # Each term is normalized so weight ≈ 1 makes them comparable in magnitude;
 # penalties are 0 inside the "good" region. These are the ACTIVE coverage-cost
-# weights (the old boresight-gain / board-area weights were retired & removed).
+# weights.
 W_FREQ  = 1.0   # weight on the resonance penalty (shape set by F_RES_* below)
 W_MATCH = 1.0   # weight on max(0, s11_dB + 10)  in dB       (0 once matched to -10 dB)
 
@@ -228,7 +231,6 @@ SUB_HW_DEFAULT = 80.0    # 160 mm board - LOCKED. The dual-feed beamwidth-vs-GP 
                          #   widest clean-CP beam and is kept for the single-feed patch (re-confirm on re-tune).
 SUB_HW_MIN     = 80.0    # 160 mm — floor (patch ~83 mm + ≥0.5·BOARD_MARGIN each side).
 SUB_HW_MAX     = 80.0    # 160 mm — pinned; board not swept (locked on the coverage result above).
-SUB_HW_N       = 5       # (legacy) old GP-sweep candidate count; board no longer swept. Kept for reference.
 
 
 # ── Grid search (W × corner-truncation) — the two coupled resonance/AR levers ──────

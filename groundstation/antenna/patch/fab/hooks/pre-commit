@@ -1,0 +1,32 @@
+#!/bin/sh
+# Guard against stale patch-antenna Gerbers.
+#
+# The Gerbers in groundstation/antenna/patch/fab/gerbers/ are a plot of
+# groundstation/antenna/patch/fab/patch_antenna.kicad_pcb. If the board is committed
+# without re-plotting them, they go stale (which is how they last drifted). This blocks
+# that: a commit that changes the board MUST also stage refreshed Gerbers.
+#
+# Install (once per machine, from the repo root):
+#   cp groundstation/antenna/patch/fab/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+# To refresh the Gerbers: pwsh groundstation/antenna/patch/fab/export_gerbers.ps1
+# Bypass once (rarely needed): git commit --no-verify
+
+board="groundstation/antenna/patch/fab/patch_antenna.kicad_pcb"
+gerbers="groundstation/antenna/patch/fab/gerbers/"
+
+staged=$(git diff --cached --name-only)
+printf '%s\n' "$staged" | grep -qx "$board" || exit 0            # board not in this commit -> ok
+printf '%s\n' "$staged" | grep -q "^$gerbers" && exit 0          # gerbers refreshed too -> ok
+
+cat >&2 <<'MSG'
+[pre-commit] BLOCKED: the patch-antenna board is staged, but fab/gerbers/ was not refreshed.
+  The Gerbers are plotted from the board; committing the board alone leaves them stale.
+  Fix:
+    pwsh groundstation/antenna/patch/fab/export_gerbers.ps1
+    git add groundstation/antenna/patch/fab/gerbers
+    git commit ...
+  (Deliberate override, rarely right: git commit --no-verify)
+MSG
+exit 1

@@ -42,7 +42,7 @@ So far, this repository includes [design files](/groundstation/antenna/helical/)
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
 
-We also do our own FDTD-simulations to verify the antenna design and will include them in the repository soon.
+We also do our own FDTD-simulations, find it under  [Helix-Antennensimulation](groundstation/antenna/helical/Simulation/Helical_Antenna.m)
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width="600" /></p>
 

@@ -247,7 +247,7 @@ def _run_sim_worker(kw: dict) -> dict:
         # would silently pollute the grid selection. Mark it a failure so the optimiser
         # excludes it and falls back to valid candidates (with all grid sims failing it
         # confirms the seed, which is the optimum). Lower config.MAX_WORKERS or NrTS_screen
-        # if a whole phase trips this. See [[patch-antenna-sim-state]].
+        # if a whole phase trips this.
         if not (res_f.Prad[0] > 0.0 and res_f.Dmax[0] > 1e-6):
             return {**_fail(), 'f_ar_null': _cfg.f_target, 'ar_min': 99.0,
                     'ar_bw_deg': 0.0, 'ar_cone_dB': 99.0, 'gain_cone_dBic': -99.0,
