@@ -15,6 +15,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 - 869 MHz Groundstation Patch Antenna
 - 869 MHz Groundstation Helical Antenna Simulation Files
 - QFH Antenna CAD Tutorial
+- Dynamic Packet Codec Library
 
 ### Changed
 - Complete firmware rework
@@ -22,6 +23,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 - Major helical antenna rework with smaller design
 
 ### Removed
+- Hard-coded Packet Codec Library
 
 ### Fixed
 - Several GUI issues
