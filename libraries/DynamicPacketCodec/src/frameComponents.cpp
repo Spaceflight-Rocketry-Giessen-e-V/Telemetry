@@ -17,6 +17,7 @@ uint8_t const_Component::decode(uint8_t* packet)
 {
 	uint32_t dataBits = 0;
 	bitReader(&dataBits, packet);
+	bitReset(packet);
 
 	if (dataBits == value)
 	{
@@ -30,7 +31,14 @@ uint8_t const_Component::decode(uint8_t* packet)
 
 // empty FRAME COMPONENT
 
-empty_Component::empty_Component(uint8_t size, const uint8_t priority) : const_Component(0x00000000, size, priority) {}
+empty_Component::empty_Component(uint8_t size) : Component(size, 0) {}
+
+void empty_Component::encode(uint8_t* packet) {}
+
+uint8_t empty_Component::decode(uint8_t* packet)
+{
+	return 0;
+}
 
 // parity FRAME COMPONENT
 
@@ -68,6 +76,7 @@ uint8_t parity_Component::decode(uint8_t* packet)
 			}
 		}
 	}
+	bitReset(packet);
 
 	return (count % 2);
 }
@@ -105,6 +114,7 @@ uint8_t cobs_Component::decode(uint8_t* packet)
 	uint32_t tmp1 = 0;
 	uint32_t tmp2 = 0;
 	bitReader(&tmp2, packet);
+	bitReset(packet);
 	while ((tmp2 != 0x00) && (tmp2 < this->packet->getByteSize()))
 	{
 		tmp1 = tmp2;

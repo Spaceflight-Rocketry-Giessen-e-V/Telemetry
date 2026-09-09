@@ -11,10 +11,12 @@ protected:
 	uint32_t value;
 };
 
-class empty_Component : public const_Component
+class empty_Component : public Component
 {
 public:
-	empty_Component(uint8_t size, const uint8_t priority = 0);
+	empty_Component(uint8_t size);
+	void encode(uint8_t* packet) override;
+	uint8_t decode(uint8_t* packet) override;
 };
 
 class parity_Component : public Component

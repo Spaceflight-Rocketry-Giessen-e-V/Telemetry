@@ -24,6 +24,7 @@ uint8_t uint8_t_Component::decode(uint8_t* packet)
 {
 	uint32_t dataBits = 0;
 	bitReader(&dataBits, packet);
+	bitReset(packet);
 
 	*value = (uint8_t)dataBits * resolution + min;
 
@@ -54,6 +55,7 @@ uint8_t float_Component::decode(uint8_t* packet)
 {
 	uint32_t dataBits = 0;
 	bitReader(&dataBits, packet);
+	bitReset(packet);
 
 	*value = (float)dataBits * resolution + min;
 
@@ -87,6 +89,7 @@ uint8_t char_Component::decode(uint8_t* packet)
 {
 	uint32_t dataBits = 0;
 	bitReader(&dataBits, packet);
+	bitReset(packet);
 
 	if (dataBits > 0)
 	{

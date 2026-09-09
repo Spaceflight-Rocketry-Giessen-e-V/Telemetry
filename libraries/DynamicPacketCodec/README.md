@@ -96,7 +96,7 @@ myPacket.decode(PacketBufRX);
 All components possess default priorities. They can be altered if necessary. Components with other priorities can be easily implemented.
 
 - `0`-`126`: Range for custom priorities
-- `0`: All data components and constant/empty frame components
+- `0`: All data components, constant and empty frame components
 - `1`: Parity bit
 - `127`: COBS, should be the last alteration before transmittion
 - `255`: Custom priority for components which should not be altered by frame components. Examples:
@@ -114,6 +114,8 @@ uint8_t_Component(uint8_t* value, uint8_t size, const uint8_t min, const uint8_t
 ```
 
 The `value` will be stretched to the `min`-`max`-interval.
+
+For example, a component with `size = 2`, `min = 10`, `max = 40` has a resolution of `10`. Values below `10` and between and including `10` and `19` will be encoded as `0b00`, values between and including `20` and `29` as `0b01` etc. 
 
 #### `float`
 
@@ -146,10 +148,10 @@ Constant bit sequence with up to 32 bits. The `decode()` function returns `0`, i
 #### `empty`
 
 ```c
-empty_Component(uint8_t size, const uint8_t priority = 0)
+empty_Component(uint8_t size)
 ```
 
-Constant bit sequence with up to 32 zero bits. The `decode()` function returns `0`, if the relevant bit sequence is zero.
+Empty bit sequence with up to 32 bits. The `encode()` function doesn't change the byte buffer and the `decode()` function always return `0` without resetting the bit sequence (`bitReset()` is not used).
 
 #### `parity`
 
@@ -212,11 +214,13 @@ uint8_t myComponent::decode(uint8_t* packet)
 {
 	uint32_t dataBits = 0;
 	bitReader(&dataBits, packet);
+	bitReset(packet);
 
 	return 0;
 }
 ```
 With the extracted `dataBits`, any operation can be done (for example the linked variable can be updated). In case of the decoding scheme failing (for example failed parity check), a nonzero value should be returned.
+The `bitReset()` function sets the corresponding bits in the buffer to `0` and can be omitted if needed.
 
 ## Contributing
 

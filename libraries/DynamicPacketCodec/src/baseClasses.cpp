@@ -44,7 +44,6 @@ uint8_t Packet::decode(uint8_t* packet)
 		{
 			return 1; // Error (parity, cobs, ...)
 		}
-		components[i - 1]->bitReset(packet);
 	}
 	return 0;
 }
@@ -68,7 +67,7 @@ void Component::bitWriter(uint32_t dataBits, uint8_t* packet) const
 		uint8_t bitsInByte = 8 - tempBitPosition;
 		if (bitsInByte >= tempRemainingSize)
 		{
-			packet[tempBytePosition] &= ((0xFF << bitsInByte) | (0xFF >> tempRemainingSize));
+			packet[tempBytePosition] &= ((0xFF << bitsInByte) | (0xFF >> (tempRemainingSize + 8 - bitsInByte)));
 			packet[tempBytePosition] |= (dataBits & (0x000000FF >> (8 - tempRemainingSize))) << (bitsInByte - tempRemainingSize);
 			break;
 		}
@@ -108,5 +107,5 @@ void Component::bitReader(uint32_t* dataBits, uint8_t* packet) const
 
 void Component::bitReset(uint8_t* packet) const
 {
-	bitWriter(0, packet);
+	bitWriter(0x00000000, packet);
 }
