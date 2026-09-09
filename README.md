@@ -9,7 +9,7 @@
 ## Overview
 The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://sprog-ev.de/en/), which is being developed for the PIPE 2 and ARCHER experimental rockets.  
 This dual-frequency 169/869 MHz telemetry system based on Radiocrafts RC232 radio modules allows bidirectional data exchange between rockets and groundstations with a range of 20 km and a minimum data rate of 1.2 kbps.
-The design can also be used in areas outside of rocketry like Smart Home or RC.
+The design can easily be adapted for uses outside of rocketry like Smart Home or RC.
 
 <p align="center"><img src="/docs/images/System_Block_Diagram.svg" /></p>
 
@@ -18,7 +18,6 @@ The design can also be used in areas outside of rocketry like Smart Home or RC.
 - Receiving flight data from our rockets
 - Sending radio commands to our rockets
 - Displaying live telemetry on a serial monitor or UI
-- Storing flight data for post-flight analysis
 
 ## Actual performance
 In January 2026, we performed our first long range test over a distance of 2 km. Despite poor weather conditions and objects inside the first Fresnel zone, the received signal strength was on par with the theoretical maximum without any connection losses. This test ruled out major design flaws which could result in large losses.
@@ -42,7 +41,7 @@ So far, this repository includes [design files](/groundstation/antenna/helical/)
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
 
-We also do our own FDTD-simulations, find it under  [Helix-Antennensimulation](groundstation/antenna/helical/Simulation/Helical_Antenna.m)
+We also do our own FDTD-simulations which can be found [here](groundstation/antenna/helical/Simulation/Helical_Antenna.m).
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width="600" /></p>
 

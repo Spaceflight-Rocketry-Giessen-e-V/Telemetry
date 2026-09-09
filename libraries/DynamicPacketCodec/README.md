@@ -40,7 +40,7 @@ A library for dynamically encoding and decoding data packets and handling the pa
 
 #### Including the library
 
-Place the library in the `lib` folder of the PlatformIO project or include in folder in the `lib_deps` of the `platformio.ini` file.
+Place the library in the `lib` folder of the PlatformIO project or include the folder in the `lib_deps` of the `platformio.ini` file.
 ```c
 #include "DynamicPacketCodec.h"
 ```

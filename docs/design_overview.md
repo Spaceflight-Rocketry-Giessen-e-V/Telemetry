@@ -245,17 +245,17 @@ To consider the 10 % duty cycle, the flight computer usually only transmits once
 
 ## Libraries
 
-> Informations will be updated. See [#71](/../../issues/71)
+Both included libraries underly the same Open-Source license as the parent project and are supposed to be uploaded to the PlatformIO library database.
 
 ### Radiocrafts RX17xxHP-RC232 Library
 
-To ensure high modularity and a clean codebase, we created a RC1780HP-RC232 code library, which can be found [here](../libraries/Radiocrafts_RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
+To ensure high modularity and a clean codebase, we created a [RC17xxHP-RC232 code library](../libraries/Radiocrafts_RC17xxHP_RC232/) together with its documentation. The library includes functions for configuring the module, read sensor data and reset the module.
 
-The library does not allow the use of all the functions of the radio module but focuses only on the ones needed for our project. However, the included functions can be easily adapted for other uses. It can also easily be adapted for other radio modules like the RC1180HP-RC232.
+The included functions can be easily adapted for other uses and other radio modules like the RC11xxHP-RC232 series.
 
 ### Dynamic Packet Codec Library
 
-The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by a dedicated library, which can be found [here](../libraries/DynamicPacketCodec/) along with its documentation. It can again be adapted easily for other data structures.
+The encoding and decoding of packets according to our [packet structure](packet_structure.md) is handled by the [Dynamic Library Codec Library](../libraries/DynamicPacketCodec/). It dynamically encodes and decodes data components and handles the packet framing and can again easily be adapted and expanded.
 
 ---
 
