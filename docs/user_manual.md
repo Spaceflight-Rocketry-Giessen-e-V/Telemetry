@@ -137,9 +137,10 @@ To upload, the UPDI USB port can be used. The corresponding COM port has to be s
 The repository includes two self-developed libraries, namely the [Radiocrafts RC17xxHP-RC232 Library](/libraries/Radiocrafts_RC17xxHP_RC232/) and the [Dynamic Packet Codec Library](/libraries/DynamicPacketCodec/).
 
 The `platformio.ini` configuration files for the groundstation and onboard firmwares are already configured to include the libraries. For the inclusion in other PlatformIO projects:
-- Place the library in the `lib` folder of the relevant project or
+- Place the library folder in the `lib` folder of the relevant project or
 - Include the folder of the library in the `lib_deps` of the `platformio.ini` file or
-- Use the PlatformIO Library Tool (not yet available for the libraries)
+- Include `sprog-ev/Radiocrafts_RC17xxHP_RC232@^1.0.0` in the `lib_deps` of the `platformio.ini` file or
+- Use the PlatformIO Library Tool
 
 ## USB-to-UART/UPDI bridge
 

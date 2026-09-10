@@ -245,7 +245,7 @@ To consider the 10 % duty cycle, the flight computer usually only transmits once
 
 ## Libraries
 
-Both included libraries underly the same Open-Source license as the parent project and are supposed to be uploaded to the PlatformIO library database.
+Both included libraries underly the same Open-Source license as the parent project and are published to the [PlatformIO library registry](https://registry.platformio.org/search?q=owner%3Asprog-ev).
 
 ### Radiocrafts RX17xxHP-RC232 Library
 
