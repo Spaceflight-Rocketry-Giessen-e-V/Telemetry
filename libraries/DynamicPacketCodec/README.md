@@ -151,7 +151,7 @@ Constant bit sequence with up to 32 bits. The `decode()` function returns `0`, i
 empty_Component(uint8_t size)
 ```
 
-Empty bit sequence with up to 32 bits. The `encode()` function doesn't change the byte buffer and the `decode()` function always return `0` without resetting the bit sequence (`bitReset()` is not used).
+Empty bit sequence with up to 256 bits. The `encode()` function doesn't change the byte buffer and the `decode()` function always return `0` without resetting the bit sequence (`bitReset()` is not called).
 
 #### `parity`
 

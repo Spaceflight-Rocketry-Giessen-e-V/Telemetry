@@ -1,13 +1,14 @@
 {
   "name": "DynamicPacketCodec",
+  "version": "1.0.0",
   "description": "Library for dynamically encoding and decoding data packets and handling the packet framing",
   "license": "CERN-OHL-S-2.0",
-  "homepage": "https://www.spaceflight-rocketry-giessen.de/",
   "repository":
   {
     "type": "git",
     "url": "https://www.github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry"
   },
+  "homepage": "https://www.spaceflight-rocketry-giessen.de/",
   "headers": "DynamicPacketCodec.h",
   "dependencies" : [
     { "name": "ArduinoSTL", 
