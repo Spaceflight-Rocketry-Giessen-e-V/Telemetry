@@ -8,6 +8,7 @@ uint8_t_Component::uint8_t_Component(uint8_t* value, uint8_t size, const uint8_t
 	this->min = min;
 	this->max = max;
 	resolution = (max - min) / (pow(2, size) - 1);
+	resolution = resolution == 0 ? 1 : resolution; // Zero Resolution leads to error
 }
 
 void uint8_t_Component::encode(uint8_t* packet)

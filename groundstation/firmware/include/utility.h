@@ -15,7 +15,7 @@ void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledSt
 
 uint8_t commandReceive(HardwareSerial *serialUSB);
 
-void commandExecute(RC17xxHP_RC232 *radioModule, Packet *commandPacket);
+void commandExecute(RC17xxHP_RC232 *radioModule, uint8_t command, Packet *commandPacket);
 
 uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables, Packet *framePacket, Packet *flightDataPacket, Packet *telemetryDataPacket);
 

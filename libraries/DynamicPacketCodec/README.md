@@ -167,7 +167,7 @@ Parity bit to ensure even parity. The `decode()` function returns `0`, if the pa
 cobs_Component(uint8_t markerByte, uint8_t size, const uint8_t priority = 127)
 ```
 
-Ensures no unwanted occurances of the `markerByte` in the encoded byte sequence. The `size` has to be set according to the total packet size: `ceil(log2(byteSize))`. If a, for example constant, occurance of the `markerByte` should not be altered, a higher priority has to be chosen for it. The `decode()` function always returns `0` (success).
+Ensures no unwanted occurances of the `markerByte` in the encoded byte sequence. The `size` has to be set according to the total packet size: `ceil(log2(byteSize))`. If a, for example constant, occurance of the `markerByte` should not be altered, a higher priority has to be chosen for it. The `decode()` function always returns `1` (no success), if the COBS chain is malformed (cyclic, backward, out-of-range etc.).
 
 See the [Packet Structure Documentation](/docs/packet_structure.md) for a more detailed explanation of the COBS algorithm.
 

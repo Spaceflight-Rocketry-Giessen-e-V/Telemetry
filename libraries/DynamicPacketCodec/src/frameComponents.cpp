@@ -115,8 +115,20 @@ uint8_t cobs_Component::decode(uint8_t* packet)
 	uint32_t tmp2 = 0;
 	bitReader(&tmp2, packet);
 	bitReset(packet);
-	while ((tmp2 != 0x00) && (tmp2 < this->packet->getByteSize()))
+	while (tmp2 != 0x00)
 	{
+		if(tmp2 == tmp1) // Cyclic
+		{
+			return 1;
+		}
+		else if(tmp2 < tmp1) // Backwards
+		{
+			return 1;
+		}
+		else if(tmp2 >= this->packet->getByteSize()) // Out-of-range
+		{
+			return 1;
+		}
 		tmp1 = tmp2;
 		tmp2 = packet[tmp1];
 		packet[tmp1] = markerByte;

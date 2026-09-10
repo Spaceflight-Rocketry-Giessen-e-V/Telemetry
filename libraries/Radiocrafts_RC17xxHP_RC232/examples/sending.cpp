@@ -20,17 +20,20 @@ uint32_t baudrate = 19200;
 // Radio module initialization
 RC17xxHP_RC232 rc1780hp(SerialModule, pinTX, pinRX, 19200, pinCFG, pinRST, pinCTS, pinRTS);
 
-delay(3.2 * 10);
-rc1780hp.begin();
-delay(3.2 * 10);
-rc1780hp.ping();
+int main()
+{
+    delay(3.2 * 10);
+    rc1780hp.begin();
+    delay(3.2 * 10);
+    rc1780hp.ping();
 
-while (rc1780hp.set_PACKET_END_CHARACTER(0xEE) != 0)
-    ; // When 0xEE is send to the radio module, the whole buffer is transmitted
+    while (rc1780hp.set_PACKET_END_CHARACTER(0xEE) != 0)
+        ; // When 0xEE is send to the radio module, the whole buffer is transmitted
 
-rc1780hp.resetHard();
-rc1780hp.flush();
+    rc1780hp.resetHard();
+    rc1780hp.flush();
 
-// Send a two byte packet
-uint8_t packet[] = {0xA4, 0xEE}; // Arbitrary data byte with the unique end byte
-rc1780hp.send(packet, 2);
+    // Send a two byte packet
+    uint8_t packet[] = {0xA4, 0xEE}; // Arbitrary data byte with the unique end byte
+    rc1780hp.send(packet, 2);
+}

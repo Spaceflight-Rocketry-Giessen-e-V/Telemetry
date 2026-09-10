@@ -8,7 +8,7 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
     {
         return 1;
     }
-    if (radioModule->set_RF_DATA_RATE(0x05) != 0) // radio data rate
+    if (radioModule->set_RF_DATA_RATE(0x05) != 0) // radio data rate, higher than documentation until flow control is implemented
     {
         return 1;
     }
@@ -164,7 +164,7 @@ void flashWrite(dataStruct *dataVariables)
 
 uint8_t packetSendCheck(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint32_t loopCount)
 {
-    static uint16_t loopCountWhenFlightmodeStarts = 0;
+    static uint32_t loopCountWhenFlightmodeStarts = 0;
     static uint8_t lastValueOfFlightmode = 0;
     static uint8_t lastPacketTypeStandby = 0;
 
@@ -214,13 +214,15 @@ void packetSend(RC17xxHP_RC232 *radioModule, uint8_t packetType, Packet *flightD
     }
     else if (packetType == 1)
     {
-        uint8_t *packet = flightDataPacket->encode();
-        radioModule->send(packet, flightDataPacket->getByteSize());
+        uint8_t *packetBuffer = flightDataPacket->encode();
+        radioModule->send(packetBuffer, flightDataPacket->getByteSize());
+        free(packetBuffer);
     }
     else if (packetType == 2)
     {
-        uint8_t *packet = telemetryDataPacket->encode();
-        radioModule->send(packet, telemetryDataPacket->getByteSize());
+        uint8_t *packetBuffer = telemetryDataPacket->encode();
+        radioModule->send(packetBuffer, telemetryDataPacket->getByteSize());
+        free(packetBuffer);
     }
 }
 
@@ -233,9 +235,10 @@ void loopVariablesUpdate(uint32_t *loopCount, uint32_t *loopStartTime, uint8_t l
     else
         digitalWrite(pinLedLoop, LOW);
 
-    if ((millis() - (*loopStartTime)) < 1000 / loopFrequency)
+    uint32_t timeDelta = millis() - (*loopStartTime);
+    if (timeDelta < 1000 / loopFrequency)
     {
-        delay((1000 / loopFrequency) - (millis() - (*loopStartTime)));
+        delay((1000 / loopFrequency) - timeDelta);
     }
     *loopStartTime = millis();
 }

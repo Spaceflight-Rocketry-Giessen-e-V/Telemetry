@@ -41,6 +41,10 @@ void Subsystem::dataGet()
                 {
                     receivedBytes[i] = Wire.read();
                 }
+                else
+                {
+                    return; // Error: Not enough bytes received
+                }
             }
             uint8_t bytePointer = 0;
             for (uint8_t i = 0; i < _uint8Count; i++)

@@ -80,7 +80,7 @@ void setup()
   pinButton.pinMode();
 
   pinMode(pinControlBox1, INPUT);
-  pinMode(pinControlBox1, INPUT);
+  pinMode(pinControlBox2, INPUT);
 
   ledUpdate(SETUPBEGIN, &pinLed); // R On
 
@@ -160,9 +160,9 @@ void loop()
 {
   // Check both USBs for commands
   dataVars.command = commandReceive(SerialUSB1);
-  commandExecute(&rc1701hp, &commandPacket);
+  commandExecute(&rc1701hp, dataVars.command, &commandPacket);
   dataVars.command = commandReceive(SerialUSB2);
-  commandExecute(&rc1701hp, &commandPacket);
+  commandExecute(&rc1701hp, dataVars.command, &commandPacket);
 
   buttonCheck(pinButton);
   controlBoxCheck(pinControlBox1, pinControlBox2);

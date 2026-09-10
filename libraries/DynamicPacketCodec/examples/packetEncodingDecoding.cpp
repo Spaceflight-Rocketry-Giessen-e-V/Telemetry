@@ -14,7 +14,7 @@ int main()
 
     uint8_t *packetBufferTX = myPacket.encode();
 
-    uint8_t *packetBufferRX = packerBufferTX; // Transmission
+    uint8_t *packetBufferRX = packetBufferTX; // Transmission
 
     if(myPacket.decode(packetBufferRX) != 0)
     {

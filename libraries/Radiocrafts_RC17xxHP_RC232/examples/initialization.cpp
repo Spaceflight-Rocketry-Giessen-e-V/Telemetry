@@ -16,17 +16,20 @@ uint32_t baudrate = 19200;
 // Radio module initialization
 RC17xxHP_RC232 rc1780hp(SerialModule, pinTX, pinRX, 19200, pinCFG, pinRST, pinCTS, pinRTS);
 
-// Initialize radio transceiver and wait until communication is established
-delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
-rc1780hp.begin();
-delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
-rc1780hp.ping();
+int main()
+{
+    // Initialize radio transceiver and wait until communication is established
+    delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
+    rc1780hp.begin();
+    delay(3.2 * 10); // Necessary delay: t_{OFF-IDLE} = 3.2, safety factor 10
+    rc1780hp.ping();
 
-// The non-standard setting can be reconfigured
-while (rc1780hp.set_RF_DATA_RATE(0x05) != 0)
-    ;
-// ...
+    // The non-standard setting can be reconfigured
+    while (rc1780hp.set_RF_DATA_RATE(0x05) != 0)
+        ;
+    // ...
 
-// Resetting the module for the configuration to take place
-rc1780hp.resetHard();
-rc1780hp.flush();
+    // Resetting the module for the configuration to take place
+    rc1780hp.resetHard();
+    rc1780hp.flush();
+}

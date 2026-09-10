@@ -15,7 +15,7 @@ static uint8_t radioModuleConfigure(RC17xxHP_RC232 *radioModule)
     {
         return 1;
     }
-    if (radioModule->set_RF_DATA_RATE(0x05) != 0) // radio data rate
+    if (radioModule->set_RF_DATA_RATE(0x05) != 0) // radio data rate, higher than documentation until flow control is implemented
     {
         return 1;
     }
@@ -83,21 +83,25 @@ uint8_t commandReceive(HardwareSerial *serialUSB)
     }
 }
 
-void commandExecute(RC17xxHP_RC232 *radioModule, Packet *commandPacket)
+void commandExecute(RC17xxHP_RC232 *radioModule, uint8_t command, Packet *commandPacket)
 {
-    uint8_t *packet = commandPacket->encode();
-    radioModule->send(packet, commandPacket->getByteSize());
+    if(command != 0)
+    {
+        uint8_t *packetBuffer = commandPacket->encode();
+        radioModule->send(packetBuffer, commandPacket->getByteSize());
+        free(packetBuffer);
+    }
 }
 
 uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables, Packet *framePacket, Packet *flightDataPacket, Packet *telemetryDataPacket)
 {
-    while (radioModule->available() != 0)
+    while ((radioModule->available() != 0) && (*packetBufferIndex < 32))
     {
         packetBuffer[*packetBufferIndex] = radioModule->read();
         (*packetBufferIndex)++;
     }
 
-    if (packetBuffer[*packetBufferIndex - 2] == 0xEE) // -2 because of rssi
+    if ((*packetBufferIndex >= 2) && (packetBuffer[*packetBufferIndex - 2] == 0xEE)) // -2 because of rssi
     {
 
         if (*packetBufferIndex >= 13)
@@ -351,7 +355,7 @@ void ledStruct::pinMode()
     ::digitalWrite(D3, LOW);
 
     ::pinMode(rssi_1, OUTPUT);
-    ::digitalWrite(rssi_2, LOW);
+    ::digitalWrite(rssi_1, LOW);
     ::pinMode(rssi_2, OUTPUT);
     ::digitalWrite(rssi_2, LOW);
     ::pinMode(rssi_3, OUTPUT);
@@ -371,7 +375,7 @@ void ledStruct::pinMode()
 void buttonStruct::pinMode()
 {
     ::pinMode(sw1, INPUT);
-    ::digitalWrite(sw2, LOW);
+    ::digitalWrite(sw1, LOW);
     ::pinMode(sw2, INPUT);
     ::digitalWrite(sw2, LOW);
     ::pinMode(sw3, INPUT);
