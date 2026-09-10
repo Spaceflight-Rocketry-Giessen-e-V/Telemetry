@@ -2,6 +2,13 @@
 
 A library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules.
 
+- [Features](#features)
+- [Limitations](#limitations)
+- [Examples](#examples)
+- [Reference](#reference)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - Configure the non-volatile memory
@@ -12,15 +19,15 @@ A library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules.
 ## Limitations
 
 - The configuration of the volatile memory is not included.
-- The five test modes are not implemented
+- The five test modes are not implemented.
 - The input and output of non-volatile memory parameters is handled with their binary values and not their real-world values. 
 - Currently, there is no error handling implemented. Different error sources cannot be distinguished.
 - Flow Control is not implemented yet.
 
 ## Examples
 
-- [radio module initialization](examples/initialization.cpp)
-- [sending radio packets](examples/sending.cpp)
+- [Radio Module Initialization](examples/initialization.cpp)
+- [Sending Radio Packets](examples/sending.cpp)
 
 ## Reference
 
@@ -282,6 +289,8 @@ A library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules.
 ## Contributing
 
 The same contribution guideline as for the parent project applies. Read more under [github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/blob/main/CONTRIBUTING.md).
+
+Please use the `Firmware` label when creating an issue.
 
 ## License
 
