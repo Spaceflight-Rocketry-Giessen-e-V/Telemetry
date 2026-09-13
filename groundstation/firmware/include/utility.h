@@ -1,5 +1,10 @@
 #include "header.h"
 
+/**
+ * @defgroup groundstation Ground Station Firmware
+ * @brief Functions and data structures used by the ground-station firmware.
+ */
+
 // LEDs states
 #define SETUPBEGIN 1
 #define SETUPRADIOMODULS 2
@@ -11,26 +16,109 @@ class dataStruct;
 class ledStruct;
 class buttonStruct;
 
+/**
+ * @brief Configures both radio modules; lights each module's status LED on success and sounds buzzzer
+ *
+ * @param rc1780hp
+ * @param rc1701hp
+ * @param pinLed
+ * @ingroup groundstation
+ */
 void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct *pinLed);
 
+/**
+ * @brief Function that reads teh USB serial input.
+ *
+ * @param serialUSB
+ * @return uint8_t
+ * @ingroup groundstation
+ */
 uint8_t commandReceive(HardwareSerial *serialUSB);
 
+/**
+ * @brief Function to send the received command via USB.
+ *
+ * @param command
+ * @param radioModule
+ * @ingroup groundstation
+ */
 void commandExecute(RC17xxHP_RC232 *radioModule, uint8_t command, Packet *commandPacket);
 
+/**
+ * @brief Function that reads the received data from the Rocket and updates the data variables.
+ *
+ * @param radioModule
+ * @param packetBuffer
+ * @param packetBufferIndex
+ * @param dataVariables
+ * @return uint8_t
+ * @ingroup groundstation
+ */
 uint8_t packetReceive(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables, Packet *framePacket, Packet *flightDataPacket, Packet *telemetryDataPacket);
 
+/**
+ * @brief Serial output function via USB.
+ *
+ * @param serialUSB
+ * @param dataVariables
+ * @ingroup groundstation
+ */
 void dataSendUsb(HardwareSerial *serialUSB, dataStruct *dataVariables);
 
+/**
+ * @brief
+ *
+ * @param state
+ * @param pinLed
+ * @ingroup groundstation
+ */
 void ledUpdate(uint8_t state, ledStruct *pinLed);
 
+/**
+ * @brief Function to display the rssi level via a LED array.
+ *
+ * @param rssi
+ * @param pinLed
+ * @ingroup groundstation
+ */
 void ledRssiUpdate(float rssi, ledStruct *pinLed);
 
+/**
+ * @brief Function to display Vlaues on a external Display
+ *
+ * @param address
+ * @param dataVariables
+ *
+ * @todo Has to be implemented in the future.
+ * @ingroup groundstation
+ */
 void displayUpdate(uint8_t address, dataStruct *dataVariables);
 
+/**
+ * @brief Function to use buttons as an
+ *
+ * @param pinButton
+ *
+ * @todo Has to be implemented in the future.
+ * @ingroup groundstation
+ */
 void buttonCheck(buttonStruct pinButton);
 
+/**
+ * @brief Function to connect to the control box.
+ *
+ * @param pin1
+ * @param pin2
+ *
+ * @todo Has to be implemented in the future.
+ * @ingroup groundstation
+ */
 void controlBoxCheck(uint8_t pin1, uint8_t pin2);
 
+/**
+ * @brief Stores the latest housekeeping, subsystem, flight, and telemetry data.
+ * @ingroup groundstation
+ */
 class dataStruct // :)
 {
 public:
@@ -77,6 +165,10 @@ public:
   float voltageBatteryCOTS;
 };
 
+/**
+ * @brief Stores the debug and LED pins for.
+ * @ingroup groundstation
+ */
 class ledStruct
 {
 public:
@@ -98,6 +190,10 @@ public:
   void pinMode();
 };
 
+/**
+ * @brief Stores the pins for the control buttons.
+ * @ingroup groundstation
+ */
 class buttonStruct // :)
 {
 public:

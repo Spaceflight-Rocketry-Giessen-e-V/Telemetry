@@ -19,7 +19,30 @@
 /simulations/FlightData/flight_data
 /groundstation/gui/telemetry_log.csv
 /groundstation/gui/telemetry_log.txt
-/groundstation/gui/cache/map_coords
+/groundstation/gui/ui/telemetry_log.csv
+/groundstation/gui/ui/telemetry_log.txt
 /groundstation/gui/cache/map_coords
 /groundstation/gui/logs
 /docs/images/antenna_assembly/raw
+
+# MkDocs, MkDoxy and Doxygen output
+/site/
+/docs/site/
+/docs/generated-api/
+/docs/pages/generated-api/
+/docs/doxygen/
+/docs/html/
+/docs/latex/
+
+# Python and test caches
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.cache/
+.coverage
+htmlcov/
+
+# Local environment files
+.env
+.env.*
+!.env.example

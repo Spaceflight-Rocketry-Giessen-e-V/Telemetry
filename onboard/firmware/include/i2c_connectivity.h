@@ -1,5 +1,9 @@
 #include "header.h"
 
+/**
+ * @brief Class to dynamically initialise different subsystems.
+ *
+ */
 class Subsystem
 {
 public:
@@ -25,8 +29,27 @@ private:
     uint8_t _floatCount;
 };
 
+/**
+ * @brief Function to check if a system is connected.
+ *
+ * @param subsystemsList
+ * @param subsystemsCount
+ */
 void subsystemsConnCheck(Subsystem **subsystemsList, uint8_t subsystemsCount);
 
+/**
+ * @brief Function to request data from the Subsystems.
+ *
+ * @param subsystemsList
+ * @param subsystemsCount
+ */
 void subsystemsDataGet(Subsystem **subsystemsList, uint8_t subsystemsCount);
 
+/**
+ * @brief Function to update the sub systems LEDs.
+ *
+ * @param subsystemsList
+ * @param subsystemsCount
+ * @param lowPowerMode
+ */
 void subsystemsLedUpdate(Subsystem **subsystemsList, uint8_t subsystemsCount, uint8_t lowPowerMode);
