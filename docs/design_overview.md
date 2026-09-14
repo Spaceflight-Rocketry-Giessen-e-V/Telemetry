@@ -1,4 +1,4 @@
-# Design overview
+# Design Overview
 
 This document provides detailed information about our electronics, firmware, antenna, and GUI systems. It also covers rationales used during the design process.
 
@@ -10,8 +10,6 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 # Table of Contents
 
-- [Design overview](#design-overview)
-- [Table of Contents](#table-of-contents)
 - [Electronics](#electronics)
   - [Design Overview](#design-overview-1)
     - [Groundstation MB/DB Approach](#groundstation-mbdb-approach)
@@ -27,6 +25,8 @@ The whole system is designed for an effective range of 18 km. To accomplish this
   - [Groundstation Electronics Casings](#groundstation-electronics-casings)
   - [Onboard Electronics Mounting Structure](#onboard-electronics-mounting-structure)
 - [Firmware](#firmware)
+  - [Onboard Firmware](#onboard-firmware)
+  - [Groundstation Firmware](#groundstation-firmware)
   - [Data Budget \& Packet Structure](#data-budget--packet-structure)
   - [Libraries](#libraries)
     - [Radiocrafts RC17xxHP-RC232](#radiocrafts-rx17xxhp-rc232-library)
@@ -220,11 +220,17 @@ Plastics enclosures for the motherboard and daughterboards, each with a bottom p
 
 Attachment for onboard pcb, onboard QFH antenna and attachment point inside the rocket. Designed with generative design. The original and auxiliary design files can be found [here](../onboard/mounting%20structure/)
 
-<p align="center"><img src="../onboard/mounting structure/Images/MountingBracket_render1.png" width = 400/></p>
+<p align="center"><img src="../onboard/mounting structure/Images/MountingBracket_render1.png" width = 300/></p>
 
 ---
 
 # Firmware
+
+An overview of all functions and classes is given in the [Firmware Code Reference](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/).
+
+## Firmware Overview
+
+> Outdated, can be removed as soon as the other information is filled in. See [#71](/../../issues/71)
 
 The firmware structure may be seen in the image below.
 
@@ -232,7 +238,20 @@ The firmware structure may be seen in the image below.
 
 In the setup function, pin declarations and starting conditions are established. The radio module is initialized, and the desired configurations are applied after a configuration reset. Additionally, the flight computer initializes the I2C connection to the other subsystems of the flight computer (such as sensorics) and the ground station initializes the UART connection to the ground station computer.
 
-In the loop function, radio commands (such as ping, toggle flight mode, toggle low power mode) are exchanged and data from the subsystems is collected and also exchanged. The available radio commands are listed in the [operations cheatsheet](operations_cheatsheet.md). 
+In the loop function, radio commands (such as ping, toggle flight mode, toggle low power mode) are exchanged and data from the subsystems is collected and also exchanged. The available radio commands are listed in the [operations cheatsheet](operations_cheatsheet.md).
+
+## Onboard Firmware
+
+> Informations will be added. See [#71](/../../issues/71)
+
+### I2C Class
+
+## Groundstation Firmware
+
+> Informations will be added. See [#71](/../../issues/71)
+
+Limitations:
+- No dynamic detection of daughterboards
 
 ## Data Budget \& Packet Structure
 
