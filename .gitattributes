@@ -2,3 +2,4 @@
 **/*.html -linguist-detectable
 **/*.bat -linguist-detectable
 **/*.scad -linguist-detectable
+**/*.yml -linguist-detectable
