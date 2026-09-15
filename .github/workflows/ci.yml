@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "onboard/firmware/**"
+      - "groundstation/firmware/**"
+      - "libraries/**"
+      - ".github/mkdocs/**"
+      - ".github/workflows/ci.yml"
 
 permissions: {}
 
@@ -28,8 +34,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
-          cache-dependency-path: requirements-docs.txt
 
       - name: Install Doxygen
         run: |
@@ -37,10 +41,23 @@ jobs:
           sudo apt-get install --yes doxygen
 
       - name: Install Python dependencies
-        run: python -m pip install -r requirements-docs.txt
+        run: |
+          python -m pip install \
+            mkdocs==1.6.1 \
+            mkdocs-material==9.7.7 \
+            mkdoxy==1.2.8
 
       - name: Verify documentation
-        run: mkdocs build --clean --strict
+        run: |
+          mkdocs build \
+            --config-file .github/mkdocs/mkdocs.yml \
+            --clean \
+            --strict
 
       - name: Deploy documentation
-        run: mkdocs gh-deploy --strict --force --remote-branch gh-pages
+        run: |
+          mkdocs gh-deploy \
+            --config-file .github/mkdocs/mkdocs.yml \
+            --strict \
+            --force \
+            --remote-branch gh-pages

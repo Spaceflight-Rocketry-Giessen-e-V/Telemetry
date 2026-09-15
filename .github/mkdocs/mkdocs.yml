@@ -3,23 +3,10 @@ site_description: Firmware and library reference for the ASCENT III telemetry sy
 site_url: https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/
 repo_url: https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry
 repo_name: Spaceflight-Rocketry-Giessen-e-V/Telemetry
-docs_dir: docs
+docs_dir: pages
 site_dir: site
 remote_name: origin
 remote_branch: gh-pages
-
-exclude_docs: |
-  README.md
-  design_overview.md
-  helical_antenna_assembly_manual.md
-  helical_antenna_design_guide.ipynb
-  helical_antenna_simulation_guide.md
-  images/
-  linkbudget.ipynb
-  operations_cheatsheet.md
-  packet_structure.md
-  qfh_antenna_cad_tutorial.md
-  user_manual.md
 
 theme:
   name: material

@@ -27,6 +27,7 @@
 
 # MkDocs, MkDoxy and Doxygen output
 /site/
+/.github/mkdocs/site/
 /docs/site/
 /docs/generated-api/
 /docs/pages/generated-api/
