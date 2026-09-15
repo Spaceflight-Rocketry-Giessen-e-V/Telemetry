@@ -154,7 +154,7 @@ We use the AVR128DB64 microcontroller in the 64-pin LQFP version ([datasheet](ht
 
 The following image shows the pinout of the AVR128DB64 MCU and is taken from the DxCore documentation:
 
-<p align="center"><img src="images/avr128db64_pinout.png" width="600"/></p>
+<p align="center"><img src="https://github.com/SpenceKonde/DxCore/blob/master/megaavr/extras/DB64.png" width="600"/></p>
 
 ### PCB Stackup
 
