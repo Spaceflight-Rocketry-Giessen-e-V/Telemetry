@@ -7,6 +7,7 @@
 ---
 
 ## Overview
+
 The ASCENT telemetry system is part of the ASCENT flight computer of the student rocketry club [Spaceflight Rocketry Gießen e.V.](https://sprog-ev.de/en/), which is being developed for the PIPE and ARCHER experimental rockets.
 This dual-frequency 169/869 MHz telemetry system based on Radiocrafts RC232 radio modules allows bidirectional data exchange between rockets and groundstations with a range of 20 km and a minimum data rate of 1.2 kbps.
 The design can easily be adapted for uses outside of rocketry like Smart Home or RC.
@@ -20,6 +21,7 @@ The design can easily be adapted for uses outside of rocketry like Smart Home or
 - Displaying live telemetry on a serial monitor or UI
 
 ## Actual Performance
+
 In January 2026, we performed our first long range test over a distance of 2 km. Despite poor weather conditions and objects inside the first Fresnel zone, the received signal strength was on par with the theoretical maximum without any unaccounted losses. This test ruled out major design flaws.
 
 <p align="center"><img src="/docs/images/long_range_test.png" width="600" /></p>
@@ -33,10 +35,11 @@ In April 2026, the system was successfully tested on the PIPE 2 rocket to an alt
 ---
 
 ## Repository Contents
+
 This repository contains all files necessary to reproduce the telemetry system, including hardware, firmware, software, and documentation.
-The latter one also includes a [user manual](/docs/user_manual.md) and [design rationals](/docs/design_overview.md) which help to understand and adapt the system.
 
 ### 1. Antenna Hardware
+
 So far, this repository includes [design files](/groundstation/antenna/helical/) and [assembly instructions](/docs/helical_antenna_assembly_manual.md) for our helical 869 MHz groundstation antenna.
 
 <p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width="600" /></p>
@@ -68,6 +71,7 @@ The [onboard mounting structure](/onboard/mounting%20structure/), the [motherboa
 - [Firmware Functions/Classes Reference](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/)
 
 ### 4. Groundstation UI Software
+
 <p align="center"><img src="groundstation/gui/example_images/main_view.png" width="600" /></p>
 
 [Python-based software](/groundstation/gui/) to display live telemetry data on a modern, minimalistic interface with the ability to store flight data and send radio commands. 
@@ -83,7 +87,8 @@ Widgets include a GNSS map view, a height plot over time, a acceleration plot ov
 
 ---
 
-## Legal notice
+## Legal Notice
+
 Please note that radio systems may be subject to local regulations. Ensure that any testing or deployment of these systems complies with national and regional laws regarding RF transmission. The project maintainers are not responsible for misuse or regulatory violations.  
 
 ## License
