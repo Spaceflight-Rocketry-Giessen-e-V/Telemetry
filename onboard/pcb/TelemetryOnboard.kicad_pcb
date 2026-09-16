@@ -10385,15 +10385,15 @@
 			(uuid "5f9a0d59-c634-4d65-89fb-344f94b60f26")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/esq-108-13.stp"
+		(model "${KIPRJMOD}/3D Models/Samtec_ESQ108-13.step"
 			(offset
-				(xyz -1.27 -19.25 2.54)
+				(xyz 0 -8.89 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -90)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -12439,15 +12439,15 @@
 			(uuid "b18389cd-94a6-4b2b-b6ba-c3701f430952")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/esq-108-13.stp"
+		(model "${KIPRJMOD}/3D Models/Samtec_ESQ108-13.step"
 			(offset
-				(xyz -1.27 -19.25 2.54)
+				(xyz 0 -8.89 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -90)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -20942,15 +20942,15 @@
 			(uuid "989462a3-928a-4c84-86a6-23e4ae7cb5bf")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/esq-108-13.stp"
+		(model "${KIPRJMOD}/3D Models/Samtec_ESQ108-13.step"
 			(offset
-				(xyz -1.27 -19.25 2.54)
+				(xyz 0 -8.89 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -90)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -26965,15 +26965,15 @@
 			(uuid "02cf4f0b-7e17-48b5-b90c-c1ba32a65edb")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/esq-108-13.stp"
+		(model "${KIPRJMOD}/3D Models/Samtec_ESQ108-13.step"
 			(offset
-				(xyz -1.27 -19.25 2.54)
+				(xyz 0 -8.89 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -90)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
