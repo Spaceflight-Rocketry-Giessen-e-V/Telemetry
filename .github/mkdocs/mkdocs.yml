@@ -55,6 +55,7 @@ plugins:
         onboard:
           src-dirs: onboard/firmware/include onboard/firmware/src
           full-doc: true
+          template-dir: .github/mkdocs/templates
           doxy-cfg:
             FILE_PATTERNS: "*.h *.hpp *.cpp"
             RECURSIVE: true
@@ -62,6 +63,7 @@ plugins:
         groundstation:
           src-dirs: groundstation/firmware/include groundstation/firmware/src
           full-doc: true
+          template-dir: .github/mkdocs/templates
           doxy-cfg:
             FILE_PATTERNS: "*.h *.hpp *.cpp"
             RECURSIVE: true
@@ -69,6 +71,7 @@ plugins:
         packet:
           src-dirs: libraries/DynamicPacketCodec/include libraries/DynamicPacketCodec/src
           full-doc: true
+          template-dir: .github/mkdocs/templates
           doxy-cfg:
             FILE_PATTERNS: "*.h *.hpp *.cpp"
             RECURSIVE: true
@@ -76,6 +79,7 @@ plugins:
         radiocrafts:
           src-dirs: libraries/Radiocrafts_RC17xxHP_RC232
           full-doc: true
+          template-dir: .github/mkdocs/templates
           doxy-cfg:
             FILE_PATTERNS: "*.h *.hpp *.cpp"
             RECURSIVE: true
