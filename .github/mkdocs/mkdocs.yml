@@ -47,6 +47,9 @@ extra:
       link: https://sprog-ev.de/
       name: Spaceflight Rocketry Gießen e.V.
 
+extra_javascript:
+  - javascripts/custom-types.js
+
 plugins:
   - search
   - tags
