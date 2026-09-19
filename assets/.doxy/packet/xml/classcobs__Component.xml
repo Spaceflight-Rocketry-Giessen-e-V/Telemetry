@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classcobs__Component" kind="class" language="C++" prot="public">
+    <compoundname>cobs_Component</compoundname>
+    <basecompoundref refid="classComponent" prot="public" virt="non-virtual">Component</basecompoundref>
+    <includes refid="frameComponents_8h" local="no">frameComponents.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classcobs__Component_1ab46a6326cb3acab5aa444d180dfba8a5" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t cobs_Component::markerByte</definition>
+        <argsstring></argsstring>
+        <name>markerByte</name>
+        <qualifiedname>cobs_Component::markerByte</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="37" column="9" bodyfile="libraries/DynamicPacketCodec/include/frameComponents.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcobs__Component_1af5b7472be3c6ed4448cb63be6a788f5a" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t cobs_Component::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>cobs_Component::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="38" column="9" bodyfile="libraries/DynamicPacketCodec/include/frameComponents.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcobs__Component_1adb4757242adbec8abcc57ce8e8056ac6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>cobs_Component::cobs_Component</definition>
+        <argsstring>(uint8_t markerByte, uint8_t size, const uint8_t priority=127)</argsstring>
+        <name>cobs_Component</name>
+        <qualifiedname>cobs_Component::cobs_Component</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>markerByte</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>priority</declname>
+          <defval>127</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="33" column="1" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="86" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classcobs__Component_1a31db0056c870bad88690da978963a485" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void cobs_Component::encode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>encode</name>
+        <qualifiedname>cobs_Component::encode</qualifiedname>
+        <reimplements refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b">encode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="34" column="6" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="91" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classcobs__Component_1a6ee8eec1fc0f1fe07eaa6dae738e43e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t cobs_Component::decode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>decode</name>
+        <qualifiedname>cobs_Component::decode</qualifiedname>
+        <reimplements refid="classComponent_1a266439e9a03683a4e397b13390d00a3e">decode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="35" column="9" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="112" bodyend="137"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+      </node>
+      <node id="1">
+        <label>cobs_Component</label>
+        <link refid="classcobs__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>packet</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Packet</label>
+        <link refid="classPacket"/>
+      </node>
+      <node id="1">
+        <label>cobs_Component</label>
+        <link refid="classcobs__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="30" column="1" bodyfile="libraries/DynamicPacketCodec/include/frameComponents.h" bodystart="31" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" prot="public" virt="non-virtual"><scope>cobs_Component</scope><name>bitPosition</name></member>
+      <member refid="classComponent_1aba2955099d2fb6620facf48393187239" prot="protected" virt="non-virtual"><scope>cobs_Component</scope><name>bitReader</name></member>
+      <member refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" prot="protected" virt="non-virtual"><scope>cobs_Component</scope><name>bitReset</name></member>
+      <member refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" prot="protected" virt="non-virtual"><scope>cobs_Component</scope><name>bitWriter</name></member>
+      <member refid="classcobs__Component_1adb4757242adbec8abcc57ce8e8056ac6" prot="public" virt="non-virtual"><scope>cobs_Component</scope><name>cobs_Component</name></member>
+      <member refid="classComponent_1a9aa87c9b2222a8b0f8687803cf1c8457" prot="public" virt="non-virtual"><scope>cobs_Component</scope><name>Component</name></member>
+      <member refid="classcobs__Component_1a6ee8eec1fc0f1fe07eaa6dae738e43e7" prot="public" virt="virtual"><scope>cobs_Component</scope><name>decode</name></member>
+      <member refid="classcobs__Component_1a31db0056c870bad88690da978963a485" prot="public" virt="virtual"><scope>cobs_Component</scope><name>encode</name></member>
+      <member refid="classcobs__Component_1ab46a6326cb3acab5aa444d180dfba8a5" prot="protected" virt="non-virtual"><scope>cobs_Component</scope><name>markerByte</name></member>
+      <member refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" prot="public" virt="non-virtual"><scope>cobs_Component</scope><name>packet</name></member>
+      <member refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" prot="public" virt="non-virtual"><scope>cobs_Component</scope><name>priority</name></member>
+      <member refid="classcobs__Component_1af5b7472be3c6ed4448cb63be6a788f5a" prot="protected" virt="non-virtual"><scope>cobs_Component</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

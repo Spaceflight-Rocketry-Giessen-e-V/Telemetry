@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classuint8__t__Component" kind="class" language="C++" prot="public">
+    <compoundname>uint8_t_Component</compoundname>
+    <basecompoundref refid="classComponent" prot="public" virt="non-virtual">Component</basecompoundref>
+    <includes refid="dataComponents_8h" local="no">dataComponents.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" prot="protected" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* uint8_t_Component::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>uint8_t_Component::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="11" column="9" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuint8__t__Component_1a9bb460100930859379045396d87bc311" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t uint8_t_Component::min</definition>
+        <argsstring></argsstring>
+        <name>min</name>
+        <qualifiedname>uint8_t_Component::min</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="12" column="9" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t uint8_t_Component::max</definition>
+        <argsstring></argsstring>
+        <name>max</name>
+        <qualifiedname>uint8_t_Component::max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="13" column="9" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t uint8_t_Component::resolution</definition>
+        <argsstring></argsstring>
+        <name>resolution</name>
+        <qualifiedname>uint8_t_Component::resolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="14" column="9" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classuint8__t__Component_1ae08d6fb5a164a08315cad93403dcaf19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>uint8_t_Component::uint8_t_Component</definition>
+        <argsstring>(uint8_t *value, uint8_t size, const uint8_t min, const uint8_t max, const uint8_t priority=0)</argsstring>
+        <name>uint8_t_Component</name>
+        <qualifiedname>uint8_t_Component::uint8_t_Component</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>max</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>priority</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="7" column="1" bodyfile="libraries/DynamicPacketCodec/src/dataComponents.cpp" bodystart="5" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classuint8__t__Component_1aea7ba0eda40610180d01bbf98672a147" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void uint8_t_Component::encode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>encode</name>
+        <qualifiedname>uint8_t_Component::encode</qualifiedname>
+        <reimplements refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b">encode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="8" column="6" bodyfile="libraries/DynamicPacketCodec/src/dataComponents.cpp" bodystart="14" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classuint8__t__Component_1a738622f6af30a034cf9fe10c48d788b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t uint8_t_Component::decode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>decode</name>
+        <qualifiedname>uint8_t_Component::decode</qualifiedname>
+        <reimplements refid="classComponent_1a266439e9a03683a4e397b13390d00a3e">decode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="9" column="9" bodyfile="libraries/DynamicPacketCodec/src/dataComponents.cpp" bodystart="24" bodyend="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+      </node>
+      <node id="1">
+        <label>uint8_t_Component</label>
+        <link refid="classuint8__t__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>packet</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Packet</label>
+        <link refid="classPacket"/>
+      </node>
+      <node id="1">
+        <label>uint8_t_Component</label>
+        <link refid="classuint8__t__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="4" column="1" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="5" bodyend="15"/>
+    <listofallmembers>
+      <member refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" prot="public" virt="non-virtual"><scope>uint8_t_Component</scope><name>bitPosition</name></member>
+      <member refid="classComponent_1aba2955099d2fb6620facf48393187239" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>bitReader</name></member>
+      <member refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>bitReset</name></member>
+      <member refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>bitWriter</name></member>
+      <member refid="classComponent_1a9aa87c9b2222a8b0f8687803cf1c8457" prot="public" virt="non-virtual"><scope>uint8_t_Component</scope><name>Component</name></member>
+      <member refid="classuint8__t__Component_1a738622f6af30a034cf9fe10c48d788b3" prot="public" virt="virtual"><scope>uint8_t_Component</scope><name>decode</name></member>
+      <member refid="classuint8__t__Component_1aea7ba0eda40610180d01bbf98672a147" prot="public" virt="virtual"><scope>uint8_t_Component</scope><name>encode</name></member>
+      <member refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>max</name></member>
+      <member refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>min</name></member>
+      <member refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" prot="public" virt="non-virtual"><scope>uint8_t_Component</scope><name>packet</name></member>
+      <member refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" prot="public" virt="non-virtual"><scope>uint8_t_Component</scope><name>priority</name></member>
+      <member refid="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>resolution</name></member>
+      <member refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" prot="public" virt="non-virtual"><scope>uint8_t_Component</scope><name>size</name></member>
+      <member refid="classuint8__t__Component_1ae08d6fb5a164a08315cad93403dcaf19" prot="public" virt="non-virtual"><scope>uint8_t_Component</scope><name>uint8_t_Component</name></member>
+      <member refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" prot="protected" virt="non-virtual"><scope>uint8_t_Component</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

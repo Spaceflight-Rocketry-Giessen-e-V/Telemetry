@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="utility_8cpp" kind="file" language="C++">
+    <compoundname>utility.cpp</compoundname>
+    <includes refid="utility_8h" local="yes">utility.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>onboard/firmware/src/utility.cpp</label>
+        <link refid="utility_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="6">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="7">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="5">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="utility_8cpp_1ad45c7e4bd81ad6c15ea7181fe7a43caf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t radioModuleConfigure</definition>
+        <argsstring>(RC17xxHP_RC232 *radioModule)</argsstring>
+        <name>radioModuleConfigure</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/utility.cpp" line="3" column="16" bodyfile="onboard/firmware/src/utility.cpp" bodystart="3" bodyend="38"/>
+      </memberdef>
+      <member refid="group__onboard_1ga6046607d0fd0ac28b6c1f57385304c05" kind="function"><name>radioModulesSetup</name></member>
+      <member refid="group__onboard_1gac93be4154e4e329795b3f20cdc150193" kind="function"><name>commandReceive</name></member>
+      <member refid="group__onboard_1ga81781e5fca0b89284d535e761a870943" kind="function"><name>commandExecute</name></member>
+      <member refid="group__onboard_1gae4db8f2ccf1d64901337cf90e1630c72" kind="function"><name>flashWrite</name></member>
+      <member refid="group__onboard_1ga60aa040e4452389436b5be68b9933b25" kind="function"><name>packetSendCheck</name></member>
+      <member refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kind="function"><name>packetSend</name></member>
+      <member refid="group__onboard_1gac01e4dc28b2b2297b74fe0f79e1dc696" kind="function"><name>loopVariablesUpdate</name></member>
+      <member refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kind="function"><name>ledUpdate</name></member>
+      <member refid="group__onboard_1ga53876b16f4099eeb1bf9bc422d4cd5dd" kind="function"><name>buzzerSound</name></member>
+      <member refid="group__onboard_1gaccd289abac63f0ec3f32881ee78848ff" kind="function"><name>buzzerSoundError</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utility_8h" kindref="compound">utility.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>radioModuleConfigure(RC17xxHP_RC232<sp/>*radioModule)</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;begin();</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;resetHard();<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initial<sp/>reboot<sp/>to<sp/>clear<sp/>setting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;ping()<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>confirm<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_RF_DATA_RATE(0x05)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>radio<sp/>data<sp/>rate,<sp/>higher<sp/>than<sp/>documentation<sp/>until<sp/>flow<sp/>control<sp/>is<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_PACKET_TIMEOUT(0x00)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>no<sp/>inter-byte<sp/>timeout<sp/>trigger</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_PACKET_END_CHARACTER(0xEE)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>0xEE<sp/>flushes<sp/>the<sp/>buffer<sp/>over<sp/>RF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_ADDRESS_MODE(0x00)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>addressing<sp/>off<sp/>(broadcast)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_CRC_MODE(0x00)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>CRC<sp/>off</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_LED_CONTROL(0x01)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>enable<sp/>the<sp/>module&apos;s<sp/>status<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;resetHard();<sp/></highlight><highlight class="comment">//<sp/>reboot<sp/>settings<sp/>take<sp/>effect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;flush();<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>flush<sp/>serial<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configures<sp/>both<sp/>radio<sp/>modules;<sp/>lights<sp/>each<sp/>module&apos;s<sp/>status<sp/>LED<sp/>on<sp/>success<sp/>and<sp/>sounds<sp/>buzzzer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga6046607d0fd0ac28b6c1f57385304c05" kindref="member">radioModulesSetup</ref>(RC17xxHP_RC232<sp/>*rc1780hp,<sp/>RC17xxHP_RC232<sp/>*rc1701hp,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fallback<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>error1780<sp/>=<sp/>radioModuleConfigure(rc1780hp);<sp/></highlight><highlight class="comment">//<sp/>module<sp/>1:<sp/>downlink<sp/>(TX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error1780<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1ab75978ba540e0f974c1b4937f2a70e0a" kindref="member">RADIOMODUL_ONE</ref>,<sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>error1701<sp/>=<sp/>radioModuleConfigure(rc1701hp);<sp/></highlight><highlight class="comment">//<sp/>module<sp/>2:<sp/>uplink<sp/>(RX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error1701<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1af91f62521b98861d833a9735c97f0832" kindref="member">RADIOMODUL_TWO</ref>,<sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error1780<sp/>!=<sp/>0<sp/>||<sp/>error1701<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__onboard_1gaccd289abac63f0ec3f32881ee78848ff" kindref="member">buzzerSoundError</ref>(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>latest<sp/>single-byte<sp/>command<sp/>from<sp/>the<sp/>uplink<sp/>module<sp/>(rc1701hp,<sp/>on<sp/>Serial3),<sp/>or<sp/>0<sp/>if<sp/>command<sp/>is<sp/>bad/unknown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gac93be4154e4e329795b3f20cdc150193" kindref="member">commandReceive</ref>(RC17xxHP_RC232<sp/>*radioModule,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>receivedByte<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;available()<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>receivedByte<sp/>=<sp/>radioModule-&gt;read();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>-&gt;decode(&amp;receivedByte);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga81781e5fca0b89284d535e761a870943" kindref="member">commandExecute</ref>(uint8_t<sp/>command,<sp/>RC17xxHP_RC232<sp/>*radioModule,<sp/><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref>,<sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>,<sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>*<ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>,<sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>*<ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>,<sp/>uint8_t<sp/>pinArm,<sp/>uint8_t<sp/>pinSleep)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(command)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Arming</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(pinArm,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subsystemsList[i]-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Dearming</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(pinArm,<sp/>LOW);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subsystemsList[i]-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;f&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Flight<sp/>Mode<sp/>Activation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;g&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Flight<sp/>Mode<sp/>Deactivation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;h&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Change<sp/>Pressure<sp/>Sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;h&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;i&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Change<sp/>Acceleration<sp/>Sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;i&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;j&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Change<sp/>GNSS<sp/>Sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;j&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Low<sp/>Power<sp/>Mode<sp/>Activation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref>)<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(pinSleep,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;m&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Low<sp/>Power<sp/>Mode<sp/>Deactivation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(pinSleep,<sp/>LOW);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;p&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Ping</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kindref="member">packetSend</ref>(radioModule,<sp/>1,<sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kindref="member">packetSend</ref>(radioModule,<sp/>2,<sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;q&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Drogue<sp/>Ejection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;q&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;r&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Main<sp/>Ejection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;r&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;s&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Decoupling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;s&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;t&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>Main<sp/>Parachute<sp/>Ejection<sp/>Height</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;t&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;v&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>flash<sp/>content<sp/>(sensorics<sp/>subsystem)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;v&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;w&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="comment">//<sp/>Enter<sp/>flash<sp/>write<sp/>mode<sp/>(sensorics<sp/>subsystem)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>-&gt;<ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(</highlight><highlight class="charliteral">&apos;w&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gae4db8f2ccf1d64901337cf90e1630c72" kindref="member">flashWrite</ref>(<ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal">uint8_t<sp/><ref refid="group__onboard_1ga60aa040e4452389436b5be68b9933b25" kindref="member">packetSendCheck</ref>(uint8_t<sp/>*flightmode,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" kindref="member">timeBetweenStandbyPackets</ref>,<sp/>uint32_t<sp/><ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>loopCountWhenFlightmodeStarts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>lastValueOfFlightmode<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>lastPacketTypeStandby<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*flightmode<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>lastValueOfFlightmode<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>loopCountWhenFlightmodeStarts<sp/>=<sp/><ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>lastValueOfFlightmode<sp/>=<sp/>*flightmode;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*flightmode<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>-<sp/>loopCountWhenFlightmodeStarts)<sp/>/<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref><sp/>&gt;=<sp/>360<sp/>-<sp/>3600<sp/>/<sp/><ref refid="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" kindref="member">timeBetweenStandbyPackets</ref><sp/>/<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*flightmode<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>%<sp/>10<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>%<sp/>(uint16_t)(<ref refid="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" kindref="member">timeBetweenStandbyPackets</ref><sp/>*<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>))<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lastPacketTypeStandby<sp/>=<sp/>1<sp/>-<sp/>lastPacketTypeStandby;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1<sp/>+<sp/>lastPacketTypeStandby;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kindref="member">packetSend</ref>(RC17xxHP_RC232<sp/>*radioModule,<sp/>uint8_t<sp/>packetType,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packetType<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packetType<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*packetBuffer<sp/>=<sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>-&gt;encode();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radioModule-&gt;send(packetBuffer,<sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>-&gt;getByteSize());</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(packetBuffer);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packetType<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*packetBuffer<sp/>=<sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>-&gt;encode();</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radioModule-&gt;send(packetBuffer,<sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>-&gt;getByteSize());</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(packetBuffer);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gac01e4dc28b2b2297b74fe0f79e1dc696" kindref="member">loopVariablesUpdate</ref>(uint32_t<sp/>*<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>,<sp/>uint32_t<sp/>*<ref refid="main_8cpp_1a9f183f492a951adc3f1fa22be4f2cd87" kindref="member">loopStartTime</ref>,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>,<sp/>uint8_t<sp/>pinLedLoop)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>=<sp/>*<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>%<sp/>2<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(pinLedLoop,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(pinLedLoop,<sp/>LOW);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>timeDelta<sp/>=<sp/>millis()<sp/>-<sp/>(*loopStartTime);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timeDelta<sp/>&lt;<sp/>1000<sp/>/<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay((1000<sp/>/<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>)<sp/>-<sp/>timeDelta);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="main_8cpp_1a9f183f492a951adc3f1fa22be4f2cd87" kindref="member">loopStartTime</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(uint8_t<sp/>state,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>r<sp/>=<sp/>0,<sp/>g<sp/>=<sp/>0,<sp/>b<sp/>=<sp/>0,<sp/>d2<sp/>=<sp/>0,<sp/>d3<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(state)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8h_1a768e7a0e1ea7342f47330b68a864224c" kindref="member">SETUPBEGIN</ref>:</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8h_1ab5d0dcb9a453c5ffed92aa8d86f3c876" kindref="member">SETUPRADIOMODULS</ref>:</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8h_1ac88cc3b672d1f10c24d31e68eaf9a044" kindref="member">SETUPEND</ref>:</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8h_1ab75978ba540e0f974c1b4937f2a70e0a" kindref="member">RADIOMODUL_ONE</ref>:</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d2<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8h_1af91f62521b98861d833a9735c97f0832" kindref="member">RADIOMODUL_TWO</ref>:</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d3<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8h_1ac2558c32fa879d85fe59f8c5f8dfbc04" kindref="member">UPDATE</ref>:</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref>)<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>r);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>g);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>b);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>d2);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>d3);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga53876b16f4099eeb1bf9bc422d4cd5dd" kindref="member">buzzerSound</ref>(uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>tone(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>,<sp/>1260,<sp/>50);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gaccd289abac63f0ec3f32881ee78848ff" kindref="member">buzzerSoundError</ref>(uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>tone(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>,<sp/>1400,<sp/>50);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(100);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>tone(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>,<sp/>1400,<sp/>50);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(200);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>tone(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>,<sp/>1400,<sp/>50);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(100);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>tone(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>,<sp/>1400,<sp/>50);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">ledStruct::pinMode</ref>()</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" kindref="member">Sens</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" kindref="member">Sens</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" kindref="member">Power</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" kindref="member">Power</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" kindref="member">Control</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" kindref="member">Control</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" kindref="member">Debug1</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" kindref="member">Debug1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a292977a9742696f16fdfece498ede85f" kindref="member">Debug2</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a292977a9742696f16fdfece498ede85f" kindref="member">Debug2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="onboard/firmware/src/utility.cpp"/>
+  </compounddef>
+</doxygen>

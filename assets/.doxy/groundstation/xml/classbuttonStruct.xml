@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classbuttonStruct" kind="class" language="C++" prot="public">
+    <compoundname>buttonStruct</compoundname>
+    <includes refid="utility_8h" local="no">utility.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classbuttonStruct_1a0125ee06fce00f8266058d19d94a0b46" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t buttonStruct::sw1</definition>
+        <argsstring></argsstring>
+        <name>sw1</name>
+        <qualifiedname>buttonStruct::sw1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="200" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbuttonStruct_1ac4982a15463942a1b811e27d8fda6fa0" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t buttonStruct::sw2</definition>
+        <argsstring></argsstring>
+        <name>sw2</name>
+        <qualifiedname>buttonStruct::sw2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="201" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbuttonStruct_1ac609bda809a3b448841d3e54310071fe" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t buttonStruct::sw3</definition>
+        <argsstring></argsstring>
+        <name>sw3</name>
+        <qualifiedname>buttonStruct::sw3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="202" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbuttonStruct_1a69a4a610ca633b0f20d72bee18b29e46" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t buttonStruct::sw4</definition>
+        <argsstring></argsstring>
+        <name>sw4</name>
+        <qualifiedname>buttonStruct::sw4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="203" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbuttonStruct_1a5009585ca6eb1707b4636ad1efd2b3c3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t buttonStruct::sw5</definition>
+        <argsstring></argsstring>
+        <name>sw5</name>
+        <qualifiedname>buttonStruct::sw5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="204" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classbuttonStruct_1af050cb8f7581da3248af8d7afc573612" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t buttonStruct::sw6</definition>
+        <argsstring></argsstring>
+        <name>sw6</name>
+        <qualifiedname>buttonStruct::sw6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="205" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void buttonStruct::pinMode</definition>
+        <argsstring>()</argsstring>
+        <name>pinMode</name>
+        <qualifiedname>buttonStruct::pinMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="207" column="8" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="375" bodyend="389"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stores the pins for the control buttons. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="groundstation/firmware/include/utility.h" line="197" column="1" bodyfile="groundstation/firmware/include/utility.h" bodystart="198" bodyend="208"/>
+    <listofallmembers>
+      <member refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>pinMode</name></member>
+      <member refid="classbuttonStruct_1a0125ee06fce00f8266058d19d94a0b46" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>sw1</name></member>
+      <member refid="classbuttonStruct_1ac4982a15463942a1b811e27d8fda6fa0" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>sw2</name></member>
+      <member refid="classbuttonStruct_1ac609bda809a3b448841d3e54310071fe" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>sw3</name></member>
+      <member refid="classbuttonStruct_1a69a4a610ca633b0f20d72bee18b29e46" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>sw4</name></member>
+      <member refid="classbuttonStruct_1a5009585ca6eb1707b4636ad1efd2b3c3" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>sw5</name></member>
+      <member refid="classbuttonStruct_1af050cb8f7581da3248af8d7afc573612" prot="public" virt="non-virtual"><scope>buttonStruct</scope><name>sw6</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

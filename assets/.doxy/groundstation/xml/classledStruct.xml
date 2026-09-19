@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classledStruct" kind="class" language="C++" prot="public">
+    <compoundname>ledStruct</compoundname>
+    <includes refid="utility_8h" local="no">utility.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classledStruct_1aaab043841a499099efe90718c4f5983e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::R</definition>
+        <argsstring></argsstring>
+        <name>R</name>
+        <qualifiedname>ledStruct::R</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="175" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ade289f9167496e3c136712df9166737b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::G</definition>
+        <argsstring></argsstring>
+        <name>G</name>
+        <qualifiedname>ledStruct::G</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="176" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1af84f56424c39c69af2339a2e75b181be" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::B</definition>
+        <argsstring></argsstring>
+        <name>B</name>
+        <qualifiedname>ledStruct::B</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="177" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a85534009833a31787af9b290b3b2ad16" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::D1</definition>
+        <argsstring></argsstring>
+        <name>D1</name>
+        <qualifiedname>ledStruct::D1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="178" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::D2</definition>
+        <argsstring></argsstring>
+        <name>D2</name>
+        <qualifiedname>ledStruct::D2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="179" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::D3</definition>
+        <argsstring></argsstring>
+        <name>D3</name>
+        <qualifiedname>ledStruct::D3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="180" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_1</definition>
+        <argsstring></argsstring>
+        <name>rssi_1</name>
+        <qualifiedname>ledStruct::rssi_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="181" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a936c594d11199fa91974d6b95630b19d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_2</definition>
+        <argsstring></argsstring>
+        <name>rssi_2</name>
+        <qualifiedname>ledStruct::rssi_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="182" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_3</definition>
+        <argsstring></argsstring>
+        <name>rssi_3</name>
+        <qualifiedname>ledStruct::rssi_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="183" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_4</definition>
+        <argsstring></argsstring>
+        <name>rssi_4</name>
+        <qualifiedname>ledStruct::rssi_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="184" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_5</definition>
+        <argsstring></argsstring>
+        <name>rssi_5</name>
+        <qualifiedname>ledStruct::rssi_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="185" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a5de1944efdaacf408797e44206c29de2" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_6</definition>
+        <argsstring></argsstring>
+        <name>rssi_6</name>
+        <qualifiedname>ledStruct::rssi_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="186" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a761834d550f7a0ca4283b99499648411" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_7</definition>
+        <argsstring></argsstring>
+        <name>rssi_7</name>
+        <qualifiedname>ledStruct::rssi_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="187" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1afb4efcf1261a9df30241347833fdf366" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::rssi_8</definition>
+        <argsstring></argsstring>
+        <name>rssi_8</name>
+        <qualifiedname>ledStruct::rssi_8</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="188" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ledStruct::pinMode</definition>
+        <argsstring>()</argsstring>
+        <name>pinMode</name>
+        <qualifiedname>ledStruct::pinMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="190" column="8" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="341" bodyend="373"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stores the debug and LED pins for. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="groundstation/firmware/include/utility.h" line="172" column="1" bodyfile="groundstation/firmware/include/utility.h" bodystart="173" bodyend="191"/>
+    <listofallmembers>
+      <member refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>B</name></member>
+      <member refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>D1</name></member>
+      <member refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>D2</name></member>
+      <member refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>D3</name></member>
+      <member refid="classledStruct_1ade289f9167496e3c136712df9166737b" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>G</name></member>
+      <member refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>pinMode</name></member>
+      <member refid="classledStruct_1aaab043841a499099efe90718c4f5983e" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>R</name></member>
+      <member refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_1</name></member>
+      <member refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_2</name></member>
+      <member refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_3</name></member>
+      <member refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_4</name></member>
+      <member refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_5</name></member>
+      <member refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_6</name></member>
+      <member refid="classledStruct_1a761834d550f7a0ca4283b99499648411" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_7</name></member>
+      <member refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>rssi_8</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

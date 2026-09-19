@@ -1,0 +1,448 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__groundstation" kind="group">
+    <compoundname>groundstation</compoundname>
+    <title>Ground Station Firmware</title>
+    <innerclass refid="classdataStruct" prot="public">dataStruct</innerclass>
+    <innerclass refid="classledStruct" prot="public">ledStruct</innerclass>
+    <innerclass refid="classbuttonStruct" prot="public">buttonStruct</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__groundstation_1ga14933904b9236b20415697dd034ab405" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void radioModulesSetup</definition>
+        <argsstring>(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct *pinLed)</argsstring>
+        <name>radioModulesSetup</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>rc1780hp</declname>
+        </param>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>rc1701hp</declname>
+        </param>
+        <param>
+          <type><ref refid="classledStruct" kindref="compound">ledStruct</ref> *</type>
+          <declname>pinLed</declname>
+        </param>
+        <briefdescription>
+<para>Configures both radio modules; lights each module&apos;s status LED on success and sounds buzzzer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rc1780hp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rc1701hp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="27" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="52" bodyend="71" declfile="groundstation/firmware/include/utility.h" declline="27" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t commandReceive</definition>
+        <argsstring>(HardwareSerial *serialUSB)</argsstring>
+        <name>commandReceive</name>
+        <param>
+          <type>HardwareSerial *</type>
+          <declname>serialUSB</declname>
+        </param>
+        <briefdescription>
+<para>Function that reads teh USB serial input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serialUSB</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="36" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="73" bodyend="84" declfile="groundstation/firmware/include/utility.h" declline="36" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void commandExecute</definition>
+        <argsstring>(RC17xxHP_RC232 *radioModule, uint8_t command, Packet *commandPacket)</argsstring>
+        <name>commandExecute</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>commandPacket</declname>
+        </param>
+        <briefdescription>
+<para>Function to send the received command via USB. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radioModule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="45" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="86" bodyend="94" declfile="groundstation/firmware/include/utility.h" declline="45" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t packetReceive</definition>
+        <argsstring>(RC17xxHP_RC232 *radioModule, uint8_t *packetBuffer, uint8_t *packetBufferIndex, dataStruct *dataVariables, Packet *framePacket, Packet *flightDataPacket, Packet *telemetryDataPacket)</argsstring>
+        <name>packetReceive</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packetBuffer</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packetBufferIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref> *</type>
+          <declname>dataVariables</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>framePacket</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>flightDataPacket</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>telemetryDataPacket</declname>
+        </param>
+        <briefdescription>
+<para>Function that reads the received data from the Rocket and updates the data variables. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>radioModule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>packetBuffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>packetBufferIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataVariables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="57" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="96" bodyend="134" declfile="groundstation/firmware/include/utility.h" declline="57" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void dataSendUsb</definition>
+        <argsstring>(HardwareSerial *serialUSB, dataStruct *dataVariables)</argsstring>
+        <name>dataSendUsb</name>
+        <param>
+          <type>HardwareSerial *</type>
+          <declname>serialUSB</declname>
+        </param>
+        <param>
+          <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref> *</type>
+          <declname>dataVariables</declname>
+        </param>
+        <briefdescription>
+<para>Serial output function via USB. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serialUSB</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataVariables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="66" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="136" bodyend="193" declfile="groundstation/firmware/include/utility.h" declline="66" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ledUpdate</definition>
+        <argsstring>(uint8_t state, ledStruct *pinLed)</argsstring>
+        <name>ledUpdate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type><ref refid="classledStruct" kindref="compound">ledStruct</ref> *</type>
+          <declname>pinLed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="75" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="195" bodyend="223" declfile="groundstation/firmware/include/utility.h" declline="75" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ledRssiUpdate</definition>
+        <argsstring>(float rssi, ledStruct *pinLed)</argsstring>
+        <name>ledRssiUpdate</name>
+        <param>
+          <type>float</type>
+          <declname>rssi</declname>
+        </param>
+        <param>
+          <type><ref refid="classledStruct" kindref="compound">ledStruct</ref> *</type>
+          <declname>pinLed</declname>
+        </param>
+        <briefdescription>
+<para>Function to display the rssi level via a LED array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rssi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="84" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="225" bodyend="327" declfile="groundstation/firmware/include/utility.h" declline="84" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void displayUpdate</definition>
+        <argsstring>(uint8_t address, dataStruct *dataVariables)</argsstring>
+        <name>displayUpdate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref> *</type>
+          <declname>dataVariables</declname>
+        </param>
+        <briefdescription>
+<para>Function to display Vlaues on a external Display. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataVariables</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Has to be implemented in the future.</para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="95" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="329" bodyend="331" declfile="groundstation/firmware/include/utility.h" declline="95" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void buttonCheck</definition>
+        <argsstring>(buttonStruct pinButton)</argsstring>
+        <name>buttonCheck</name>
+        <param>
+          <type><ref refid="classbuttonStruct" kindref="compound">buttonStruct</ref></type>
+          <declname>pinButton</declname>
+        </param>
+        <briefdescription>
+<para>Function to use buttons as an. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pinButton</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="todo_1_todo000002"><xreftitle>Todo</xreftitle><xrefdescription><para>Has to be implemented in the future.</para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="105" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="333" bodyend="335" declfile="groundstation/firmware/include/utility.h" declline="105" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void controlBoxCheck</definition>
+        <argsstring>(uint8_t pin1, uint8_t pin2)</argsstring>
+        <name>controlBoxCheck</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin2</declname>
+        </param>
+        <briefdescription>
+<para>Function to connect to the control box. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pin2</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="todo_1_todo000003"><xreftitle>Todo</xreftitle><xrefdescription><para>Has to be implemented in the future.</para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="116" column="6" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="337" bodyend="339" declfile="groundstation/firmware/include/utility.h" declline="116" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Functions and data structures used by the ground-station firmware. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

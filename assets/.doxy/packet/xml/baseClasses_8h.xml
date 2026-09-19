@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="baseClasses_8h" kind="file" language="C++">
+    <compoundname>baseClasses.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="DynamicPacketCodec_8h" local="yes">libraries/DynamicPacketCodec/include/DynamicPacketCodec.h</includedby>
+    <includedby refid="dataComponents_8h" local="yes">libraries/DynamicPacketCodec/include/dataComponents.h</includedby>
+    <includedby refid="frameComponents_8h" local="yes">libraries/DynamicPacketCodec/include/frameComponents.h</includedby>
+    <includedby refid="baseClasses_8cpp" local="yes">libraries/DynamicPacketCodec/src/baseClasses.cpp</includedby>
+    <includedby refid="frameComponents_8cpp" local="yes">libraries/DynamicPacketCodec/src/frameComponents.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/include/baseClasses.h</label>
+        <link refid="baseClasses_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>libraries/DynamicPacketCodec/include/DynamicPacketCodec.h</label>
+        <link refid="DynamicPacketCodec_8h"/>
+      </node>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/include/baseClasses.h</label>
+        <link refid="baseClasses_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>libraries/DynamicPacketCodec/include/dataComponents.h</label>
+        <link refid="dataComponents_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>libraries/DynamicPacketCodec/include/frameComponents.h</label>
+        <link refid="frameComponents_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>libraries/DynamicPacketCodec/src/baseClasses.cpp</label>
+        <link refid="baseClasses_8cpp"/>
+      </node>
+      <node id="4">
+        <label>libraries/DynamicPacketCodec/src/dataComponents.cpp</label>
+        <link refid="dataComponents_8cpp"/>
+      </node>
+      <node id="6">
+        <label>libraries/DynamicPacketCodec/src/frameComponents.cpp</label>
+        <link refid="frameComponents_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPacket" prot="public">Packet</innerclass>
+    <innerclass refid="classComponent" prot="public">Component</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPacket" kindref="compound">Packet</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classComponent" kindref="compound">Component</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classPacket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPacket" kindref="compound">Packet</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPacket_1aabcfb963c0d5bc0fa554668f92989622" kindref="member">Packet</ref>();</highlight></codeline>
+<codeline lineno="12" refid="classPacket_1a191308267270493a700d57ce87cc3113" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Component*&gt;<sp/><ref refid="classPacket_1a191308267270493a700d57ce87cc3113" kindref="member">components</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classPacket_1af5a1ea5cbfe556a3d59deb408406e388" kindref="member">getBitSize</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classPacket_1a48a204145719e39d6049b24a752d0a77" kindref="member">getByteSize</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPacket_1ac13017d5faae73ffd5fc3ad0ed9062e6" kindref="member">addComponent</ref>(<ref refid="classComponent" kindref="compound">Component</ref>*<sp/>newComponent);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/><ref refid="classPacket_1ada62389e51b9e012997ed09a1911a98e" kindref="member">encode</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classPacket_1a52e3ca4d1563e202aa631dc3e7056900" kindref="member">decode</ref>(uint8_t*<sp/>packet);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19" refid="classPacket_1a33371817b4c98a71304ab8e365ecddb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classPacket_1a33371817b4c98a71304ab8e365ecddb2" kindref="member">bitSize</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classComponent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent" kindref="compound">Component</ref>(uint8_t<sp/><ref refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kindref="member">size</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="26" refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27" refid="classComponent_1a266439e9a03683a4e397b13390d00a3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1a266439e9a03683a4e397b13390d00a3e" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="28" refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="29" refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" kindref="member">bitPosition</ref>;</highlight></codeline>
+<codeline lineno="30" refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref>;</highlight></codeline>
+<codeline lineno="31" refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPacket" kindref="compound">Packet</ref>*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" kindref="member">bitWriter</ref>(uint32_t<sp/>dataBits,<sp/>uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" kindref="member">bitReset</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classComponent_1aba2955099d2fb6620facf48393187239" kindref="member">bitReader</ref>(uint32_t*<sp/>dataBits,<sp/>uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="libraries/DynamicPacketCodec/include/baseClasses.h"/>
+  </compounddef>
+</doxygen>

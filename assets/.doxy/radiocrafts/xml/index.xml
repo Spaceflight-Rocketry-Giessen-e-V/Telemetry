@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="classRC17xxHP__RC232" kind="class"><name>RC17xxHP_RC232</name>
+    <member refid="classRC17xxHP__RC232_1a1b8ad2796579d4ca40491bd04e9640ce" kind="variable"><name>_pinRST</name></member>
+    <member refid="classRC17xxHP__RC232_1a5db533326b64a6ede25cf184b3687a13" kind="variable"><name>_pinCTS</name></member>
+    <member refid="classRC17xxHP__RC232_1a9864adb7e04665affd4de82ddc9da787" kind="variable"><name>_pinCFG</name></member>
+    <member refid="classRC17xxHP__RC232_1ab2879192ece6ed4557157700caf4797e" kind="variable"><name>_pinRTS</name></member>
+    <member refid="classRC17xxHP__RC232_1a110452b761f172a2d767456aa1baebd7" kind="variable"><name>_pinTX</name></member>
+    <member refid="classRC17xxHP__RC232_1a621897e24e5073b2c42e98101b848330" kind="variable"><name>_pinRX</name></member>
+    <member refid="classRC17xxHP__RC232_1a9143b9a43b17cc2c4d619e3311c0e5f6" kind="variable"><name>_baudrate</name></member>
+    <member refid="classRC17xxHP__RC232_1a7dea86f8cb4935a55a2f5492d74adaf6" kind="variable"><name>_serial</name></member>
+    <member refid="classRC17xxHP__RC232_1a120eee3607f97076e1d35c7fef8fa8c0" kind="function"><name>RC17xxHP_RC232</name></member>
+    <member refid="classRC17xxHP__RC232_1a98b9e018d748143c199cdd6827819180" kind="function"><name>begin</name></member>
+    <member refid="classRC17xxHP__RC232_1a9bdf20a27555cf3771ff799b04cdf775" kind="function"><name>ping</name></member>
+    <member refid="classRC17xxHP__RC232_1aa2d13dd73751ee9d27470bc99e779b93" kind="function"><name>flush</name></member>
+    <member refid="classRC17xxHP__RC232_1a703f31f4457ec136d3876c516b9ba851" kind="function"><name>serialWait</name></member>
+    <member refid="classRC17xxHP__RC232_1ad2a57f2b7279ff09fa4acde17e0815ce" kind="function"><name>send</name></member>
+    <member refid="classRC17xxHP__RC232_1ab35d559159d6dd7269fdd4c10614153d" kind="function"><name>send</name></member>
+    <member refid="classRC17xxHP__RC232_1a4ebcf3dbfbef76727e7c39b0a7884c07" kind="function"><name>read</name></member>
+    <member refid="classRC17xxHP__RC232_1a4155351fab7610730321b210212bdb41" kind="function"><name>read</name></member>
+    <member refid="classRC17xxHP__RC232_1ad5776362f4c0f6e321a1d8118890a5a2" kind="function"><name>available</name></member>
+    <member refid="classRC17xxHP__RC232_1a74662398781cfa783380856d94b7dda0" kind="function"><name>resetHard</name></member>
+    <member refid="classRC17xxHP__RC232_1ad610f62c9f0f8596ace1651181aa0019" kind="function"><name>resetSoft</name></member>
+    <member refid="classRC17xxHP__RC232_1a170b96ff2b25442dfd2f5ad220620742" kind="function"><name>memoryReset</name></member>
+    <member refid="classRC17xxHP__RC232_1a5e43814569a705ebc03dc2bb2b4021fd" kind="function"><name>set_RF_CHANNEL</name></member>
+    <member refid="classRC17xxHP__RC232_1a1582b3d55a93af1af7ecf241cdf6522a" kind="function"><name>set_RF_POWER</name></member>
+    <member refid="classRC17xxHP__RC232_1a54f65edf3a494314c019d316847b79cb" kind="function"><name>set_RF_DATA_RATE</name></member>
+    <member refid="classRC17xxHP__RC232_1a4381e4c87dde62f2580eb9fc07699e88" kind="function"><name>set_SLEEP_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1a8fff7556eddec967413052a05fd74424" kind="function"><name>set_RSSI_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1a4e9bafe1eb5cf29f1849627d23fe57df" kind="function"><name>set_PACKET_LENGTH</name></member>
+    <member refid="classRC17xxHP__RC232_1a198846ab22e9c72a608de4592649b4e3" kind="function"><name>set_PACKET_TIMEOUT</name></member>
+    <member refid="classRC17xxHP__RC232_1a472edfe2dc70cceb90fbc203633586f3" kind="function"><name>set_PACKET_END_CHARACTER</name></member>
+    <member refid="classRC17xxHP__RC232_1a813e8fae023b6da72e271218d7dc34a4" kind="function"><name>set_ADDRESS_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1adc547f812d687cc2d99c31965b3f8199" kind="function"><name>set_CRC_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1af582ef0ad21148cf5a6a928526e2e458" kind="function"><name>set_UID</name></member>
+    <member refid="classRC17xxHP__RC232_1aa9468b3c408e1e4d933bc92e8385176b" kind="function"><name>set_SID</name></member>
+    <member refid="classRC17xxHP__RC232_1aedd8502628134d31eec924651e4e4e71" kind="function"><name>set_DID</name></member>
+    <member refid="classRC17xxHP__RC232_1ad4d726863ad07fd4a84f54c902c471f6" kind="function"><name>set_BID</name></member>
+    <member refid="classRC17xxHP__RC232_1a297c62bc87222573601be478daea8946" kind="function"><name>set_UART_BAUD_RATE</name></member>
+    <member refid="classRC17xxHP__RC232_1afea52b70e30c498a2019222930e0da2a" kind="function"><name>set_UART_FLOW_CONTROL</name></member>
+    <member refid="classRC17xxHP__RC232_1ab06ccec968ad6ab5321284575f3ce6c0" kind="function"><name>set_LED_CONTROL</name></member>
+    <member refid="classRC17xxHP__RC232_1a6e3eeeead8208cdd8ba4283cde40ba4d" kind="function"><name>get_RF_CHANNEL</name></member>
+    <member refid="classRC17xxHP__RC232_1ace36e6462c6ecf26e199731718214cfb" kind="function"><name>get_RF_POWER</name></member>
+    <member refid="classRC17xxHP__RC232_1acbebdd40b238ca8b506bde43364a59ab" kind="function"><name>get_RF_DATA_RATE</name></member>
+    <member refid="classRC17xxHP__RC232_1ac496e5d2090ddada1fb8f96ce1260443" kind="function"><name>get_SLEEP_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1a1fa16bfa2ae8b59b1cdfb3c6cd617bd7" kind="function"><name>get_RSSI_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1a240e8c90890a463e438acf5121a40a09" kind="function"><name>get_PACKET_LENGTH</name></member>
+    <member refid="classRC17xxHP__RC232_1a61a7f55530022dbee9ca42218416ed87" kind="function"><name>get_PACKET_TIMEOUT</name></member>
+    <member refid="classRC17xxHP__RC232_1a8c6084336863ee909031eb3f84589499" kind="function"><name>get_PACKET_END_CHARACTER</name></member>
+    <member refid="classRC17xxHP__RC232_1a03ad0ea8ac8bbc03cc924f15c1e36ead" kind="function"><name>get_ADDRESS_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1ad85e880b1c042eaba76aaa79789163ff" kind="function"><name>get_CRC_MODE</name></member>
+    <member refid="classRC17xxHP__RC232_1a2c314f2913724f66cb04b7ba82e07ba4" kind="function"><name>get_UID</name></member>
+    <member refid="classRC17xxHP__RC232_1a0f9ac8c9e9507f8605f7a784da2ac4ef" kind="function"><name>get_SID</name></member>
+    <member refid="classRC17xxHP__RC232_1a94a9223604b10f16ed1d3d71469156ab" kind="function"><name>get_DID</name></member>
+    <member refid="classRC17xxHP__RC232_1a702601649b998e650195334091f2555e" kind="function"><name>get_BID</name></member>
+    <member refid="classRC17xxHP__RC232_1a8ae0d90e4bc1117555969c396b981251" kind="function"><name>get_UART_BAUD_RATE</name></member>
+    <member refid="classRC17xxHP__RC232_1a232263008bb782b578749ccf6a3cced5" kind="function"><name>get_UART_FLOW_CONTROL</name></member>
+    <member refid="classRC17xxHP__RC232_1af8ff086fc3a82b9790d4207645ecd18a" kind="function"><name>get_LED_CONTROL</name></member>
+    <member refid="classRC17xxHP__RC232_1a3e22e015995379689742365e1f77a30f" kind="function"><name>read_RSSI</name></member>
+    <member refid="classRC17xxHP__RC232_1a2fc183d283a2c1ef199abc3cfd51322c" kind="function"><name>read_TEMPERATURE</name></member>
+    <member refid="classRC17xxHP__RC232_1ab6b8a0ad3d7205edfbf5f3da05a094b0" kind="function"><name>read_VOLTAGE</name></member>
+    <member refid="classRC17xxHP__RC232_1a63d2640ecd578e889f44d2cfaa28622f" kind="function"><name>configEnter</name></member>
+    <member refid="classRC17xxHP__RC232_1acd4006414cd09d52322618a87b4ff1f7" kind="function"><name>configExit</name></member>
+    <member refid="classRC17xxHP__RC232_1a4ec3217155839a4b30132d7e3ebd87ec" kind="function"><name>configCommand</name></member>
+    <member refid="classRC17xxHP__RC232_1a543079436a5641f9ea692856c4f29831" kind="function"><name>memoryRead</name></member>
+    <member refid="classRC17xxHP__RC232_1af2d09c28140220ee473139a21877d30b" kind="function"><name>memoryWrite</name></member>
+  </compound>
+  <compound refid="initialization_8cpp" kind="file"><name>initialization.cpp</name>
+    <member refid="initialization_8cpp_1ace01b019e8d95bd79457cef315869ebc" kind="variable"><name>pinCFG</name></member>
+    <member refid="initialization_8cpp_1ace62eb9661e726551b85d55ebf2e9daf" kind="variable"><name>pinRST</name></member>
+    <member refid="initialization_8cpp_1acbb407a2e32d99ea8fdc1ae3a9ab8f3e" kind="variable"><name>pinCTS</name></member>
+    <member refid="initialization_8cpp_1abe9dc4ab33b934a18b4cfa2e7571732c" kind="variable"><name>pinRTS</name></member>
+    <member refid="initialization_8cpp_1a4dbde3dffd259cf7e585ff0ef216f3b1" kind="variable"><name>pinTX</name></member>
+    <member refid="initialization_8cpp_1a66e7296275a111b96053e6e7fac2cfa3" kind="variable"><name>pinRX</name></member>
+    <member refid="initialization_8cpp_1a975b45d6d314a6e352ccc2f4e7759249" kind="variable"><name>SerialModule</name></member>
+    <member refid="initialization_8cpp_1ac4f06ea26ed6bd7ae83b92d64ac10b78" kind="variable"><name>baudrate</name></member>
+    <member refid="initialization_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kind="variable"><name>rc1780hp</name></member>
+    <member refid="initialization_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="sending_8cpp" kind="file"><name>sending.cpp</name>
+    <member refid="sending_8cpp_1ace01b019e8d95bd79457cef315869ebc" kind="variable"><name>pinCFG</name></member>
+    <member refid="sending_8cpp_1ace62eb9661e726551b85d55ebf2e9daf" kind="variable"><name>pinRST</name></member>
+    <member refid="sending_8cpp_1acbb407a2e32d99ea8fdc1ae3a9ab8f3e" kind="variable"><name>pinCTS</name></member>
+    <member refid="sending_8cpp_1abe9dc4ab33b934a18b4cfa2e7571732c" kind="variable"><name>pinRTS</name></member>
+    <member refid="sending_8cpp_1a4dbde3dffd259cf7e585ff0ef216f3b1" kind="variable"><name>pinTX</name></member>
+    <member refid="sending_8cpp_1a66e7296275a111b96053e6e7fac2cfa3" kind="variable"><name>pinRX</name></member>
+    <member refid="sending_8cpp_1a975b45d6d314a6e352ccc2f4e7759249" kind="variable"><name>SerialModule</name></member>
+    <member refid="sending_8cpp_1ac4f06ea26ed6bd7ae83b92d64ac10b78" kind="variable"><name>baudrate</name></member>
+    <member refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kind="variable"><name>rc1780hp</name></member>
+    <member refid="sending_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="Radiocrafts__RC17xxHP__RC232_8cpp" kind="file"><name>Radiocrafts_RC17xxHP_RC232.cpp</name>
+  </compound>
+  <compound refid="Radiocrafts__RC17xxHP__RC232_8h" kind="file"><name>Radiocrafts_RC17xxHP_RC232.h</name>
+  </compound>
+  <compound refid="dir_b3b07431d1f2dc23f8f90d7ee279ceb1" kind="dir"><name>libraries/Radiocrafts_RC17xxHP_RC232/examples</name>
+  </compound>
+  <compound refid="dir_bc0718b08fb2015b8e59c47b2805f60c" kind="dir"><name>libraries</name>
+  </compound>
+  <compound refid="dir_c5ffbea36932c83eb1d4acc4d97a1afa" kind="dir"><name>libraries/Radiocrafts_RC17xxHP_RC232</name>
+  </compound>
+</doxygenindex>

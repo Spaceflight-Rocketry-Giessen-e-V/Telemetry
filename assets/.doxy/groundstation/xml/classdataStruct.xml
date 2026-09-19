@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classdataStruct" kind="class" language="C++" prot="public">
+    <compoundname>dataStruct</compoundname>
+    <includes refid="utility_8h" local="no">utility.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classdataStruct_1a1697c0d7ffd03c6986f20898e7236b5a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::rssi</definition>
+        <argsstring></argsstring>
+        <name>rssi</name>
+        <qualifiedname>dataStruct::rssi</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="128" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1af0e5f5e45596dbbfe25f3743218bce43" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dataStruct::timestampLastPacket</definition>
+        <argsstring></argsstring>
+        <name>timestampLastPacket</name>
+        <qualifiedname>dataStruct::timestampLastPacket</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="129" column="12" bodyfile="groundstation/firmware/include/utility.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a06912c5b978b54ec46e2228dc1c132ed" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dataStruct::timeSinceLastPacket</definition>
+        <argsstring></argsstring>
+        <name>timeSinceLastPacket</name>
+        <qualifiedname>dataStruct::timeSinceLastPacket</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="130" column="12" bodyfile="groundstation/firmware/include/utility.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::command</definition>
+        <argsstring></argsstring>
+        <name>command</name>
+        <qualifiedname>dataStruct::command</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="131" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1aa696a25ad59788191a23fd80f456c786" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::packetIdentifier</definition>
+        <argsstring></argsstring>
+        <name>packetIdentifier</name>
+        <qualifiedname>dataStruct::packetIdentifier</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="132" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::stateTelemetry</definition>
+        <argsstring></argsstring>
+        <name>stateTelemetry</name>
+        <qualifiedname>dataStruct::stateTelemetry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="136" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::statePower</definition>
+        <argsstring></argsstring>
+        <name>statePower</name>
+        <qualifiedname>dataStruct::statePower</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="137" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::stateSens</definition>
+        <argsstring></argsstring>
+        <name>stateSens</name>
+        <qualifiedname>dataStruct::stateSens</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="138" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::stateControl</definition>
+        <argsstring></argsstring>
+        <name>stateControl</name>
+        <qualifiedname>dataStruct::stateControl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="139" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::acceleration</definition>
+        <argsstring></argsstring>
+        <name>acceleration</name>
+        <qualifiedname>dataStruct::acceleration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="143" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::heightPressure</definition>
+        <argsstring></argsstring>
+        <name>heightPressure</name>
+        <qualifiedname>dataStruct::heightPressure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="144" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1aaf3516b914458474480b1d2d390cb733" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::flightEvents</definition>
+        <argsstring></argsstring>
+        <name>flightEvents</name>
+        <qualifiedname>dataStruct::flightEvents</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="145" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::latitude</definition>
+        <argsstring></argsstring>
+        <name>latitude</name>
+        <qualifiedname>dataStruct::latitude</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="146" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::longitude</definition>
+        <argsstring></argsstring>
+        <name>longitude</name>
+        <qualifiedname>dataStruct::longitude</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="147" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1ab57a0593288a017b8cb768c791dae756" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::heightGNSS</definition>
+        <argsstring></argsstring>
+        <name>heightGNSS</name>
+        <qualifiedname>dataStruct::heightGNSS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="151" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::satCountGNSS</definition>
+        <argsstring></argsstring>
+        <name>satCountGNSS</name>
+        <qualifiedname>dataStruct::satCountGNSS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="152" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::hdopGNSS</definition>
+        <argsstring></argsstring>
+        <name>hdopGNSS</name>
+        <qualifiedname>dataStruct::hdopGNSS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="153" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1afef453199523d4a075e9d35fb2118174" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::temperatureElectronics</definition>
+        <argsstring></argsstring>
+        <name>temperatureElectronics</name>
+        <qualifiedname>dataStruct::temperatureElectronics</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="154" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::temperatureBattery</definition>
+        <argsstring></argsstring>
+        <name>temperatureBattery</name>
+        <qualifiedname>dataStruct::temperatureBattery</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="155" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::stateCapacitors</definition>
+        <argsstring></argsstring>
+        <name>stateCapacitors</name>
+        <qualifiedname>dataStruct::stateCapacitors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="156" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::continuityPyros</definition>
+        <argsstring></argsstring>
+        <name>continuityPyros</name>
+        <qualifiedname>dataStruct::continuityPyros</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="157" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::pressureDecoupler</definition>
+        <argsstring></argsstring>
+        <name>pressureDecoupler</name>
+        <qualifiedname>dataStruct::pressureDecoupler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="158" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1add8d871624e41aff468940f842a72515" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::ldrDecoupler</definition>
+        <argsstring></argsstring>
+        <name>ldrDecoupler</name>
+        <qualifiedname>dataStruct::ldrDecoupler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="159" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::voltageBattery</definition>
+        <argsstring></argsstring>
+        <name>voltageBattery</name>
+        <qualifiedname>dataStruct::voltageBattery</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="160" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::currentBattery</definition>
+        <argsstring></argsstring>
+        <name>currentBattery</name>
+        <qualifiedname>dataStruct::currentBattery</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="161" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::currentUmbilical</definition>
+        <argsstring></argsstring>
+        <name>currentUmbilical</name>
+        <qualifiedname>dataStruct::currentUmbilical</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="162" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::stateUmbilical</definition>
+        <argsstring></argsstring>
+        <name>stateUmbilical</name>
+        <qualifiedname>dataStruct::stateUmbilical</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="163" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a6eb4316e73a8391f5e8897adb51a1aea" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dataStruct::lowPowerMode</definition>
+        <argsstring></argsstring>
+        <name>lowPowerMode</name>
+        <qualifiedname>dataStruct::lowPowerMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="164" column="11" bodyfile="groundstation/firmware/include/utility.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float dataStruct::voltageBatteryCOTS</definition>
+        <argsstring></argsstring>
+        <name>voltageBatteryCOTS</name>
+        <qualifiedname>dataStruct::voltageBatteryCOTS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/include/utility.h" line="165" column="9" bodyfile="groundstation/firmware/include/utility.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stores the latest housekeeping, subsystem, flight, and telemetry data. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="groundstation/firmware/include/utility.h" line="122" column="1" bodyfile="groundstation/firmware/include/utility.h" bodystart="123" bodyend="166"/>
+    <listofallmembers>
+      <member refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>acceleration</name></member>
+      <member refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>command</name></member>
+      <member refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>continuityPyros</name></member>
+      <member refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>currentBattery</name></member>
+      <member refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>currentUmbilical</name></member>
+      <member refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>flightEvents</name></member>
+      <member refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>hdopGNSS</name></member>
+      <member refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>heightGNSS</name></member>
+      <member refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>heightPressure</name></member>
+      <member refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>latitude</name></member>
+      <member refid="classdataStruct_1add8d871624e41aff468940f842a72515" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>ldrDecoupler</name></member>
+      <member refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>longitude</name></member>
+      <member refid="classdataStruct_1a6eb4316e73a8391f5e8897adb51a1aea" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>lowPowerMode</name></member>
+      <member refid="classdataStruct_1aa696a25ad59788191a23fd80f456c786" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>packetIdentifier</name></member>
+      <member refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>pressureDecoupler</name></member>
+      <member refid="classdataStruct_1a1697c0d7ffd03c6986f20898e7236b5a" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>rssi</name></member>
+      <member refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>satCountGNSS</name></member>
+      <member refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>stateCapacitors</name></member>
+      <member refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>stateControl</name></member>
+      <member refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>statePower</name></member>
+      <member refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>stateSens</name></member>
+      <member refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>stateTelemetry</name></member>
+      <member refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>stateUmbilical</name></member>
+      <member refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>temperatureBattery</name></member>
+      <member refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>temperatureElectronics</name></member>
+      <member refid="classdataStruct_1a06912c5b978b54ec46e2228dc1c132ed" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>timeSinceLastPacket</name></member>
+      <member refid="classdataStruct_1af0e5f5e45596dbbfe25f3743218bce43" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>timestampLastPacket</name></member>
+      <member refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>voltageBattery</name></member>
+      <member refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" prot="public" virt="non-virtual"><scope>dataStruct</scope><name>voltageBatteryCOTS</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
