@@ -10,6 +10,15 @@ remote_branch: gh-pages
 
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tabs.sticky
+    - navigation.path
+
+
   font:
     text: Montserrat
 
