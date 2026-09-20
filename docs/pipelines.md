@@ -6,7 +6,7 @@ This document provides an overview of the automated workflows running through Gi
 - [Automatic](#automatic)
     - [Github-Actions](#github-actions)
         - [Firmware Documentation](#firmware-documentation)
-- [Manuell](#Manuell)
+- [Manuell](#manuell)
 
 # Automatic
 ## Github Actions
@@ -45,17 +45,17 @@ uint8_t commandReceive(HardwareSerial *serialUSB);
 
 During the workflow, Doxygen converts these comments and the associated C/C++
 declarations into Markdown/HTML files.
+<p align="center"><img src="images/githubaction_workflow.png" /></p>
 
-![Workflow](images/githubaction_workflow.png)
 
 The workflow runs after a push to the `main` branch when files in one of the
 following locations change:
 
-- `onboard/firmware/`
-- `groundstation/firmware/`
-- `libraries/`
-- `.github/mkdocs/`
-- `.github/workflows/ci.yml`
+- [`onboard/firmware/`](/onboard/firmware/)
+- [`groundstation/firmware/`](/groundstation/firmware/)
+- [`libraries/`](/libraries/)
+- [`.github/mkdocs/`](/.github/mkdocs/)
+- [`.github/workflows/ci.yml`](/.github/workflows/ci.yml)
 
 The GitHub Actions job performs these steps:
 
@@ -63,12 +63,15 @@ The GitHub Actions job performs these steps:
    user.
 2. Installs Python 3.12, Doxygen, MkDocs, Material for MkDocs, and MkDoxy.
 3. Builds the complete documentation using the configuration in
-   `.github/mkdocs/mkdocs.yml`.
+   [`.github/mkdocs/mkdocs.yml`](/.github/mkdocs/mkdocs.yml).
 4. Runs the build in strict mode so that documentation warnings cause the job to
    fail instead of deploying an incomplete site.
-5. Publishes the generated website to the `gh-pages` branch.
+5. Publishes the generated website to the
+   [`gh-pages` branch](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/).
 
 The published firmware documentation is available at
 [spaceflight-rocketry-giessen-e-v.github.io/Telemetry](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/).
 If another documentation workflow starts while one is already running, the
 older run is cancelled so that only the newest version is deployed.
+
+# Manuell
