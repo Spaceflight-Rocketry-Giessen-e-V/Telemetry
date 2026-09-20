@@ -27,7 +27,7 @@ class buttonStruct;
 void radioModulesSetup(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct *pinLed);
 
 /**
- * @brief Function that reads teh USB serial input.
+ * @brief Function that reads the USB serial input.
  *
  * @param serialUSB
  * @return uint8_t
@@ -122,7 +122,6 @@ void controlBoxCheck(uint8_t pin1, uint8_t pin2);
 class dataStruct // :)
 {
 public:
-
   // Housekeeping Data
 
   float rssi;
