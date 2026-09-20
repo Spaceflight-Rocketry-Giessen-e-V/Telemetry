@@ -13,6 +13,7 @@ const customCppTypes = new Set([
   "RC17xxHP_RC232",
   "Subsystem",
   "uint8_t_Component",
+  " HardwareSerial",
 ]);
 
 document$.subscribe(() => {
