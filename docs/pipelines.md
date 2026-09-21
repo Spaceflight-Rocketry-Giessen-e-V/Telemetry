@@ -7,6 +7,7 @@ This document provides an overview of the automated workflows running through Gi
     - [Github-Actions](#github-actions)
         - [Firmware Documentation](#firmware-documentation)
 - [Manuell](#manuell)
+   - [Updating PCBs](#updating-pcbs)
 
 # Automatic
 ## Github Actions
@@ -75,3 +76,11 @@ If another documentation workflow starts while one is already running, the
 older run is cancelled so that only the newest version is deployed.
 
 # Manuell
+
+## Updating PCBs
+When updating anything related to PCBs work through the follwing steps:
+
+- [ ] regenerate gerber files 
+- [ ] zip ghe gerber  files
+- [ ] regenerate bom and ibom
+- [ ] check if all rendering are still right
