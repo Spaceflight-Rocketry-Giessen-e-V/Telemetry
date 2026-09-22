@@ -1,33 +1,25 @@
-# ASCENT III Telemetry Firmware
+# ASCENT Telemetry Firmware Reference
 
-API documentation for the onboard and ground-station firmware of the
-ASCENT III telemetry system, including its packet codec and Radiocrafts
-radiomodule libraries.
+API documentation for the onboard and ground-station firmware of the [ASCENT Rocket Telemetry System](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry), including its [Dynamic Packet Codec Library](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/tree/main/libraries/DynamicPacketCodec) and [Radiocrafts RC17xxHP-RC232 Radio Module Library](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/tree/main/libraries/Radiocrafts_RC17xxHP_RC232).
 
-## Firmware documentation
+## Firmware Documentation
 
-- [Onboard firmware](onboard/group__onboard.md)  
-  Functions, classes, and source file documentation for the rocket's
-  onboard telemetry firmware.
+- [Onboard Firmware](onboard/group__onboard.md)  
+  Functions, classes, and source file documentation for the rocket onboard telemetry firmware.
 
-- [Groundstation firmware](groundstation/group__groundstation.md)  
-  Functions, classes, and source-file documentation for the ground-station
-  controller.
+- [Groundstation Firmware](groundstation/group__groundstation.md)  
+  Functions, classes, and source-file documentation for the groundstation telemetry firmware.
 
-## Library documentation
+## Library Documentation
 
 - [DynamicPacketCodec](packet/annotated.md)  
-  Encoding and decoding of telemetry and command packets.
+Library for dynamically encoding and decoding data packets and handling the packet framing.
 
 - [Radiocrafts RC17xxHP-RC232](radiocrafts/annotated.md)  
-  Interface library for the Radiocrafts radio modules.
+Library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules.
 
-## About this documentation
+## About This Documentation
 
-The API reference is generated from the source code using
-[MkDoxy](https://github.com/JakubAndrysek/MkDoxy). The website is built
-with [MkDocs](https://www.mkdocs.org/) and the
-[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme.
+The API reference is generated from the source code using [MkDoxy](https://github.com/JakubAndrysek/MkDoxy). The website is built with [MkDocs](https://www.mkdocs.org/) and the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme.
 
-For hardware files, manuals, and project information, visit the
-[Telemetry repository](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry).
+For hardware files, manuals, and project information, visit the [Telemetry System Repository](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry).
