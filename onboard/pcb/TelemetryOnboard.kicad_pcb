@@ -14499,6 +14499,50 @@
 			(layer "F.Fab")
 			(uuid "3f559c1f-0d4b-4ab9-a0db-e9d70d83faba")
 		)
+		(fp_text user "-"
+			(at -3.81 1.905 180)
+			(layer "F.SilkS")
+			(uuid "e1b8bee5-1787-4875-bd99-2f0366818e6b")
+			(effects
+				(font
+					(size 0.64 0.64)
+					(thickness 0.15)
+				)
+			)
+		)
+		(fp_text user "+"
+			(at -3.81 -1.905 180)
+			(layer "F.SilkS")
+			(uuid "02ddc17e-c400-4117-8294-82b033b5babd")
+			(effects
+				(font
+					(size 0.64 0.64)
+					(thickness 0.15)
+				)
+			)
+		)
+		(fp_text user "-"
+			(at -3.81 1.905 180)
+			(layer "F.Fab")
+			(uuid "35e4129b-aef2-4b56-a9bb-d8bbcac71f97")
+			(effects
+				(font
+					(size 0.64 0.64)
+					(thickness 0.15)
+				)
+			)
+		)
+		(fp_text user "+"
+			(at -3.81 -1.905 180)
+			(layer "F.Fab")
+			(uuid "2c40a98d-2372-411b-880f-c700a0df04f4")
+			(effects
+				(font
+					(size 0.64 0.64)
+					(thickness 0.15)
+				)
+			)
+		)
 		(pad "1" smd rect
 			(at 1.9 -2.25 180)
 			(size 1.3 1.5)
@@ -14525,7 +14569,7 @@
 			(uuid "18d6ad06-94cc-4a18-b25e-cac4422a34ee")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/Buzzer CMT-0525-75-SMT-TR.step"
+		(model "${KIPRJMOD}/3D Models/SameSky_CMT-0525-75-SMT_Buzzer.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14533,7 +14577,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -90)
+				(xyz -0 -0 90)
 			)
 		)
 	)
