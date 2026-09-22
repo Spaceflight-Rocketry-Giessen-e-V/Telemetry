@@ -8,6 +8,7 @@ This document provides an overview of the automated workflows running through Gi
         - [Firmware Documentation](#firmware-documentation)
 - [Manuell](#manuell)
    - [Updating PCBs](#updating-pcbs)
+   - [Updating Libraries](#updating-libraries)
 
 # Automatic
 ## Github Actions
@@ -81,6 +82,12 @@ older run is cancelled so that only the newest version is deployed.
 When updating anything related to PCBs work through the follwing steps:
 
 - [ ] regenerate gerber files 
-- [ ] zip ghe gerber  files
+- [ ] zip the gerber  files
 - [ ] regenerate bom and ibom
 - [ ] check if all rendering are still right
+
+## Updating Libraries
+When updating the libraries update the Version according to this scheme:
+   - fix = x.x.0 -> x.x.1
+   - feat (feature) = x.0.x -> x.1x
+   - Release= 1.x.x -> 2.x.x
