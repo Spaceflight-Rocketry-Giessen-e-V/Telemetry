@@ -2,6 +2,8 @@
 
 A library for configuring and using Radiocrafts RC17xxHP-RC232 radio modules.
 
+&rarr; [Find this library in the PlatformIO Registry!](https://registry.platformio.org/libraries/sprog-ev/Radiocrafts_RC17xxHP_RC232) &larr;
+
 - [Features](#features)
 - [Limitations](#limitations)
 - [Examples](#examples)

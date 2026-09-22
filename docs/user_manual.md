@@ -139,7 +139,7 @@ The repository includes two self-developed libraries, namely the [Radiocrafts RC
 The `platformio.ini` configuration files for the groundstation and onboard firmwares are already configured to include the libraries. For the inclusion in other PlatformIO projects:
 - Place the library folder in the `lib` folder of the relevant project or
 - Include the folder of the library in the `lib_deps` of the `platformio.ini` file or
-- Include `sprog-ev/Radiocrafts_RC17xxHP_RC232@^1.0.0` in the `lib_deps` of the `platformio.ini` file or
+- Include `sprog-ev/Radiocrafts_RC17xxHP_RC232@^1.0.0` / `sprog-ev/DynamicPacketCodec@^1.0.0` in the `lib_deps` of the `platformio.ini` file or
 - Use the PlatformIO Library Tool
 
 ## USB-to-UART/UPDI bridge

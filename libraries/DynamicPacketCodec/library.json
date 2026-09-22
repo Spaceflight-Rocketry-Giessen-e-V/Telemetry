@@ -1,6 +1,6 @@
 {
   "name": "DynamicPacketCodec",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for dynamically encoding and decoding data packets and handling the packet framing",
   "license": "CERN-OHL-S-2.0",
   "repository":
@@ -19,7 +19,7 @@
   "examples":
   [
     {
-      "name": "Simple Packet Encoding/Decoding",
+      "name": "Simple Packet Encoding And Decoding",
       "base": "examples",
       "files": ["packetEncodingDecoding.cpp"]
     }

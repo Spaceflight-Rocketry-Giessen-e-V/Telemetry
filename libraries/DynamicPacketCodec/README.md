@@ -2,6 +2,8 @@
 
 A library for dynamically encoding and decoding data packets and handling the packet framing.
 
+&rarr; [Find this library in the PlatformIO Registry!](https://registry.platformio.org/libraries/sprog-ev/DynamicPacketCodec) &larr;
+
 - [Features](#features)
 - [Limitations](#limitations)
 - [Examples](#examples)
