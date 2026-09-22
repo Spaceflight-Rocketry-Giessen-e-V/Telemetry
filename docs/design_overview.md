@@ -244,7 +244,21 @@ In the loop function, radio commands (such as ping, toggle flight mode, toggle l
 
 > Informations will be added. See [#71](/../../issues/71)
 
-### I2C Class
+### I2C Subsystems
+
+`i2c_connectivity.h` etc.
+
+### Downlink Time Surveillance
+
+6 min in 60 mins
+
+### Flight/Telemetry Data Packets
+
+Every 10th packet in flightmode is telemetry. Every 2nd packet in standby is telemetry.
+
+### Loop Frequency Control
+
+Dynamic Timer
 
 ## Groundstation Firmware
 
@@ -252,6 +266,14 @@ In the loop function, radio commands (such as ping, toggle flight mode, toggle l
 
 Limitations:
 - No dynamic detection of daughterboards
+
+### Daughterboard Modularity
+
+No modularity yet, no dynamic module recognition.
+
+### Not Implemented Features
+
+D-Sub 9 from mission control, display, buttons.
 
 ## Data Budget \& Packet Structure
 
