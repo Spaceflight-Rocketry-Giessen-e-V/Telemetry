@@ -29504,6 +29504,26 @@
 			(uuid "1d37955a-92c7-45b7-95bc-08de0cb5b9e3")
 		)
 		(fp_line
+			(start 3.325 8.92)
+			(end 3.325 5.65)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "d7b44d8d-b4b5-406b-9609-03e9e428e97c")
+		)
+		(fp_line
+			(start 3.325 8.92)
+			(end -6.325 8.92)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "2916a448-04be-4c57-a2af-2dc8cde86461")
+		)
+		(fp_line
 			(start 3.325 -0.98)
 			(end 3.325 0.55)
 			(stroke
@@ -29522,6 +29542,46 @@
 			)
 			(layer "F.SilkS")
 			(uuid "243ad81c-bd60-48a6-a2f4-d4fe8a772e01")
+		)
+		(fp_line
+			(start 0.4 -2.05)
+			(end 0 -1.25)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "1245a2f0-68f6-42dd-a72c-1c1da9af5db4")
+		)
+		(fp_line
+			(start 0 -1.25)
+			(end -0.4 -2.05)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "7f1118ed-46b9-4363-a443-b604039b4793")
+		)
+		(fp_line
+			(start -0.4 -2.05)
+			(end 0.4 -2.05)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "6a037e7f-4e4e-4f4e-9f9d-8081f4d776f7")
+		)
+		(fp_line
+			(start -6.325 5.65)
+			(end -6.325 8.92)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "2c4a018f-1d72-4440-a9e9-bc575ff6aeb5")
 		)
 		(fp_line
 			(start -6.325 -0.98)
@@ -29602,6 +29662,36 @@
 			)
 			(layer "F.Fab")
 			(uuid "266a8906-59a2-47db-aad0-6c7bcc06ffa5")
+		)
+		(fp_line
+			(start 0.4 -2.05)
+			(end 0 -1.25)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "833a7f8e-7df4-4557-9323-cbf0c3048ebe")
+		)
+		(fp_line
+			(start 0 -1.25)
+			(end -0.4 -2.05)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "1c4836b3-0082-4bd4-baa0-6c3e9cef9e87")
+		)
+		(fp_line
+			(start -0.4 -2.05)
+			(end 0.4 -2.05)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "5d9db1d1-fe05-4721-9ab2-61aab67fcb8c")
 		)
 		(fp_line
 			(start -6.325 8.92)
@@ -29788,15 +29878,15 @@
 			)
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/Molex_MicroFit_2pin.stp"
+		(model "${KIPRJMOD}/3D Models/Molex_MicroFit-2pos.step"
 			(offset
-				(xyz -1.5 -8.9 0)
+				(xyz -1.5 -3.95 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz -0 -0 -180)
 			)
 		)
 	)
