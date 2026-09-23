@@ -6725,15 +6725,15 @@
 			(uuid "e7ad7f7a-def3-4ac9-85bc-0bca395d1b6c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/usb4216-03-a.stp"
+		(model "${KIPRJMOD}/3D Models/GCT_USB4216_SMD.step"
 			(offset
-				(xyz 0 -5.25 1.5)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -20705,15 +20705,15 @@
 			(uuid "bf3d0db0-4510-43b8-8139-ce20f92654cd")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/usb4216-03-a.stp"
+		(model "${KIPRJMOD}/3D Models/GCT_USB4216_SMD.step"
 			(offset
-				(xyz 0 -5.25 1.5)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
