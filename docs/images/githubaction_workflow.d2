@@ -1,0 +1,56 @@
+# Firmware documentation pipeline (docs/pipelines.md)
+# Render: d2 --pad=40 githubaction_workflow.d2 githubaction_workflow.svg
+direction: right
+
+vars: {
+  dark: "#1f2933"
+  mid: "#52606d"
+  light: "#f5f7fa"
+}
+
+classes: {
+  stage: {
+    style: {
+      fill: ${dark}
+      stroke: ${dark}
+      font-color: "#ffffff"
+      border-radius: 10
+      font-size: 16
+    }
+    width: 190
+    height: 90
+  }
+  edge: {
+    style: {
+      stroke: ${mid}
+      stroke-width: 2
+      font-size: 14
+      font-color: ${dark}
+    }
+  }
+}
+
+src: "Comments in code\n(Doxygen syntax)" {class: stage}
+
+runner: GitHub Actions runner (ci.yml) {
+  style: {
+    fill: ${light}
+    stroke: ${mid}
+    stroke-dash: 4
+    border-radius: 12
+    font-color: ${mid}
+    font-size: 16
+  }
+
+  doxygen: "Doxygen\nparses C/C++" {class: stage}
+  mkdoxy: "MkDoxy\nXML -> Markdown" {class: stage}
+  mkdocs: "MkDocs + Material\nbuild --strict" {class: stage}
+
+  doxygen -> mkdoxy: XML {class: edge}
+  mkdoxy -> mkdocs: .md {class: edge}
+}
+
+pages: "GitHub Pages\ngh-pages branch" {class: stage}
+
+src -> runner.doxygen: push to main {class: edge}
+runner.mkdocs -> pages: gh-deploy {class: edge}
