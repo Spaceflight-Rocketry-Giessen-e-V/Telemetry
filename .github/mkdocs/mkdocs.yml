@@ -14,6 +14,7 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.path
+    - navigation.expand
   favicon: images/cropped-logo_sprog_normal-scaled-1-75x75.png
 
   font:
