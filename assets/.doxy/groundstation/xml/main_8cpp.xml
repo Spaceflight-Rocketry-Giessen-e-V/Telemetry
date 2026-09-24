@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes refid="header_8h" local="yes">header.h</includes>
+    <includes refid="utility_8h" local="yes">utility.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>groundstation/firmware/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="6">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="4">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" prot="public" static="no" mutable="no">
+        <type><ref refid="classledStruct" kindref="compound">ledStruct</ref></type>
+        <definition>ledStruct pinLed</definition>
+        <argsstring></argsstring>
+        <name>pinLed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="12" column="11" bodyfile="groundstation/firmware/src/main.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" prot="public" static="no" mutable="no">
+        <type><ref refid="classbuttonStruct" kindref="compound">buttonStruct</ref></type>
+        <definition>buttonStruct pinButton</definition>
+        <argsstring></argsstring>
+        <name>pinButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="16" column="14" bodyfile="groundstation/firmware/src/main.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a709c1f8051214f5ab098ff89ffda61bc" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinControlBox1</definition>
+        <argsstring></argsstring>
+        <name>pinControlBox1</name>
+        <initializer>= PIN_PE7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="20" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a2cfa4750e48b4fa0fe9ca93d047c43ff" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinControlBox2</definition>
+        <argsstring></argsstring>
+        <name>pinControlBox2</name>
+        <initializer>= PIN_PE6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="21" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" prot="public" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* SerialUSB1</definition>
+        <argsstring></argsstring>
+        <name>SerialUSB1</name>
+        <initializer>= &amp;Serial5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="25" column="16" bodyfile="groundstation/firmware/src/main.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" prot="public" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* SerialUSB2</definition>
+        <argsstring></argsstring>
+        <name>SerialUSB2</name>
+        <initializer>= &amp;Serial2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="26" column="16" bodyfile="groundstation/firmware/src/main.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ae340c57ce2494bb8b3f613c471f419b9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinTX_USB1</definition>
+        <argsstring></argsstring>
+        <name>pinTX_USB1</name>
+        <initializer>= PIN_PG0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="28" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a858b4741de7a53a9c329b8f92ac37a62" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRX_USB1</definition>
+        <argsstring></argsstring>
+        <name>pinRX_USB1</name>
+        <initializer>= PIN_PG1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="29" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a2c7353ddfc51067e6c250257fb0fb2bf" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinTX_USB2</definition>
+        <argsstring></argsstring>
+        <name>pinTX_USB2</name>
+        <initializer>= PIN_PF0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="30" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1abb479992ea310638e9e0329f9829ca0e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRX_USB2</definition>
+        <argsstring></argsstring>
+        <name>pinRX_USB2</name>
+        <initializer>= PIN_PF1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="31" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ad5ac0573f6084a979fd35d2102ee8576" prot="public" static="no" mutable="no">
+        <type>RC17xxHP_RC232 rc1780hp &amp;</type>
+        <definition>RC17xxHP_RC232 rc1780hp&amp; Serial4</definition>
+        <argsstring></argsstring>
+        <name>Serial4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="36" column="16" bodyfile="groundstation/firmware/src/main.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a82352210c4f1925716baa382005eb8de" prot="public" static="no" mutable="no">
+        <type>RC17xxHP_RC232 rc1701hp &amp;</type>
+        <definition>RC17xxHP_RC232 rc1701hp&amp; Serial1</definition>
+        <argsstring></argsstring>
+        <name>Serial1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="38" column="16" bodyfile="groundstation/firmware/src/main.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet commandPacket</definition>
+        <argsstring></argsstring>
+        <name>commandPacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="42" column="8" bodyfile="groundstation/firmware/src/main.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet framePacket</definition>
+        <argsstring></argsstring>
+        <name>framePacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="43" column="8" bodyfile="groundstation/firmware/src/main.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet flightDataPacket</definition>
+        <argsstring></argsstring>
+        <name>flightDataPacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="44" column="8" bodyfile="groundstation/firmware/src/main.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet telemetryDataPacket</definition>
+        <argsstring></argsstring>
+        <name>telemetryDataPacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="45" column="8" bodyfile="groundstation/firmware/src/main.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" prot="public" static="no" mutable="no">
+        <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref></type>
+        <definition>dataStruct dataVars</definition>
+        <argsstring></argsstring>
+        <name>dataVars</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="49" column="12" bodyfile="groundstation/firmware/src/main.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a20a0216ef20fb672883747b78e190462" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t packetBuffer[32]</definition>
+        <argsstring>[32]</argsstring>
+        <name>packetBuffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="51" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t packetBufferIndex</definition>
+        <argsstring></argsstring>
+        <name>packetBufferIndex</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="52" column="9" bodyfile="groundstation/firmware/src/main.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="54" column="6" bodyfile="groundstation/firmware/src/main.cpp" bodystart="54" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1afe461d27b9c48d5921c00d521181f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/main.cpp" line="159" column="6" bodyfile="groundstation/firmware/src/main.cpp" bodystart="159" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/><sp/><sp/>groundstation<sp/>-<sp/>main.cpp<sp/>of<sp/>the<sp/>groundstation<sp/>for<sp/>the<sp/>ASCENT<sp/>III<sp/>telemetry<sp/>system.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/><sp/><sp/><sp/>Spaceflight<sp/>Rocketry<sp/>Giessen<sp/>e.V.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/><sp/><sp/>Published<sp/>under<sp/>the<sp/>CERN<sp/>OHL-S<sp/>v2<sp/>license<sp/>at<sp/>https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="header_8h" kindref="compound">header.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utility_8h" kindref="compound">utility.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LED<sp/>Pins<sp/>Initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Button<sp/>Pins<sp/>Initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="classbuttonStruct" kindref="compound">buttonStruct</ref><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Pin<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a709c1f8051214f5ab098ff89ffda61bc" kindref="member">pinControlBox1</ref><sp/>=<sp/>PIN_PE7;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a2cfa4750e48b4fa0fe9ca93d047c43ff" kindref="member">pinControlBox2</ref><sp/>=<sp/>PIN_PE6;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">HardwareSerial<sp/>*<ref refid="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" kindref="member">SerialUSB1</ref><sp/>=<sp/>&amp;Serial5;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">HardwareSerial<sp/>*<ref refid="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" kindref="member">SerialUSB2</ref><sp/>=<sp/>&amp;Serial2;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1ae340c57ce2494bb8b3f613c471f419b9" kindref="member">pinTX_USB1</ref><sp/>=<sp/>PIN_PG0;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a858b4741de7a53a9c329b8f92ac37a62" kindref="member">pinRX_USB1</ref><sp/>=<sp/>PIN_PG1;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a2c7353ddfc51067e6c250257fb0fb2bf" kindref="member">pinTX_USB2</ref><sp/>=<sp/>PIN_PF0;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1abb479992ea310638e9e0329f9829ca0e" kindref="member">pinRX_USB2</ref><sp/>=<sp/>PIN_PF1;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initialize<sp/>Radio<sp/>Modules</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>First<sp/>D-Sub</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">RC17xxHP_RC232<sp/>rc1780hp(&amp;<ref refid="main_8cpp_1ad5ac0573f6084a979fd35d2102ee8576" kindref="member">Serial4</ref>,<sp/>PIN_PE0,<sp/>PIN_PE1,<sp/>19200,<sp/>PIN_PE4,<sp/>PIN_PE5,<sp/>PIN_PE2,<sp/>PIN_PE3);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Second<sp/>D-Sub</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">RC17xxHP_RC232<sp/>rc1701hp(&amp;<ref refid="main_8cpp_1a82352210c4f1925716baa382005eb8de" kindref="member">Serial1</ref>,<sp/>PIN_PC0,<sp/>PIN_PC1,<sp/>19200,<sp/>PIN_PC4,<sp/>PIN_PC5,<sp/>PIN_PC2,<sp/>PIN_PC3);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Packet<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>[32];</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">setup</ref>()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref><sp/>=<sp/>PIN_PG5;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref><sp/>=<sp/>PIN_PG4;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref><sp/>=<sp/>PIN_PG3;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref><sp/>=<sp/>PIN_PA0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref><sp/>=<sp/>PIN_PG7;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref><sp/>=<sp/>PIN_PG6;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref><sp/>=<sp/>PIN_PD7;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref><sp/>=<sp/>PIN_PD6;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref><sp/>=<sp/>PIN_PD5;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref><sp/>=<sp/>PIN_PD4;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref><sp/>=<sp/>PIN_PD3;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref><sp/>=<sp/>PIN_PD2;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref><sp/>=<sp/>PIN_PD1;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref><sp/>=<sp/>PIN_PD0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">pinMode</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1a0125ee06fce00f8266058d19d94a0b46" kindref="member">sw1</ref><sp/>=<sp/>PIN_PG2;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1ac4982a15463942a1b811e27d8fda6fa0" kindref="member">sw2</ref><sp/>=<sp/>PIN_PF6;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1ac609bda809a3b448841d3e54310071fe" kindref="member">sw3</ref><sp/>=<sp/>PIN_PF5;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1a69a4a610ca633b0f20d72bee18b29e46" kindref="member">sw4</ref><sp/>=<sp/>PIN_PF4;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1a5009585ca6eb1707b4636ad1efd2b3c3" kindref="member">sw5</ref><sp/>=<sp/>PIN_PF3;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1af050cb8f7581da3248af8d7afc573612" kindref="member">sw6</ref><sp/>=<sp/>PIN_PF2;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>.<ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">pinMode</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>pinMode(<ref refid="main_8cpp_1a709c1f8051214f5ab098ff89ffda61bc" kindref="member">pinControlBox1</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>pinMode(<ref refid="main_8cpp_1a2cfa4750e48b4fa0fe9ca93d047c43ff" kindref="member">pinControlBox2</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1a768e7a0e1ea7342f47330b68a864224c" kindref="member">SETUPBEGIN</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>R<sp/>On</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>UART<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" kindref="member">SerialUSB1</ref>-&gt;pins(<ref refid="main_8cpp_1ae340c57ce2494bb8b3f613c471f419b9" kindref="member">pinTX_USB1</ref>,<sp/><ref refid="main_8cpp_1a858b4741de7a53a9c329b8f92ac37a62" kindref="member">pinRX_USB1</ref>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" kindref="member">SerialUSB2</ref>-&gt;pins(<ref refid="main_8cpp_1a2c7353ddfc51067e6c250257fb0fb2bf" kindref="member">pinTX_USB2</ref>,<sp/><ref refid="main_8cpp_1abb479992ea310638e9e0329f9829ca0e" kindref="member">pinRX_USB2</ref>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" kindref="member">SerialUSB1</ref>-&gt;begin(115200);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" kindref="member">SerialUSB2</ref>-&gt;begin(115200);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>I2C<sp/>(Display)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Wire.pins(PIN_PC6,<sp/>PIN_PC7);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Wire.begin();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>Radio<sp/>Modules</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga14933904b9236b20415697dd034ab405" kindref="member">radioModulesSetup</ref>(&amp;rc1780hp,<sp/>&amp;rc1701hp,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1ab5d0dcb9a453c5ffed92aa8d86f3c876" kindref="member">SETUPRADIOMODULS</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>B<sp/>On</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Packet<sp/>Components<sp/>Initializations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>parity_Component());</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>char_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>cobs_Component(0xEE,<sp/>4));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>parity_Component());</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aa696a25ad59788191a23fd80f456c786" kindref="member">packetIdentifier</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(18));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(32));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(32));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>const_Component(0xEE,<sp/>8,<sp/>255));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a1697c0d7ffd03c6986f20898e7236b5a" kindref="member">rssi</ref>,<sp/>8,<sp/>-127.5,<sp/>0,<sp/>255));</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(6));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" kindref="member">acceleration</ref>,<sp/>10,<sp/>-17,<sp/>17.1));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" kindref="member">heightPressure</ref>,<sp/>15,<sp/>0,<sp/>6553.4));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" kindref="member">flightEvents</ref>,<sp/>5,<sp/>0,<sp/>31));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" kindref="member">latitude</ref>,<sp/>26,<sp/>-90,<sp/>90));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" kindref="member">longitude</ref>,<sp/>26,<sp/>-180,<sp/>180));</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(16));</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(6));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(2));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" kindref="member">stateTelemetry</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kindref="member">stateControl</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kindref="member">statePower</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kindref="member">stateSens</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(1));</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" kindref="member">heightGNSS</ref>,<sp/>15,<sp/>0,<sp/>6553.4));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" kindref="member">satCountGNSS</ref>,<sp/>4,<sp/>0,<sp/>15));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" kindref="member">hdopGNSS</ref>,<sp/>4,<sp/>0,<sp/>7.5));</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" kindref="member">temperatureElectronics</ref>,<sp/>4,<sp/>0,<sp/>150));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" kindref="member">temperatureBattery</ref>,<sp/>4,<sp/>0,<sp/>150));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" kindref="member">stateCapacitors</ref>,<sp/>4,<sp/>0,<sp/>15));</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" kindref="member">continuityPyros</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" kindref="member">pressureDecoupler</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1add8d871624e41aff468940f842a72515" kindref="member">ldrDecoupler</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(2));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" kindref="member">voltageBattery</ref>,<sp/>6,<sp/>5,<sp/>8.15));</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" kindref="member">currentBattery</ref>,<sp/>3,<sp/>0,<sp/>1.75));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" kindref="member">currentUmbilical</ref>,<sp/>3,<sp/>0,<sp/>1.75));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" kindref="member">stateUmbilical</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a6eb4316e73a8391f5e8897adb51a1aea" kindref="member">lowPowerMode</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" kindref="member">voltageBatteryCOTS</ref>,<sp/>5,<sp/>5,<sp/>11.2));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(11));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(16));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Setup<sp/>Complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1ac88cc3b672d1f10c24d31e68eaf9a044" kindref="member">SETUPEND</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>G<sp/>On</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kindref="member">loop</ref>()</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>both<sp/>USBs<sp/>for<sp/>commands</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref><sp/>=<sp/><ref refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kindref="member">commandReceive</ref>(<ref refid="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" kindref="member">SerialUSB1</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kindref="member">commandExecute</ref>(&amp;rc1701hp,<sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>,<sp/>&amp;<ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref><sp/>=<sp/><ref refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kindref="member">commandReceive</ref>(<ref refid="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" kindref="member">SerialUSB2</ref>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kindref="member">commandExecute</ref>(&amp;rc1701hp,<sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>,<sp/>&amp;<ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kindref="member">buttonCheck</ref>(<ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kindref="member">controlBoxCheck</ref>(<ref refid="main_8cpp_1a709c1f8051214f5ab098ff89ffda61bc" kindref="member">pinControlBox1</ref>,<sp/><ref refid="main_8cpp_1a2cfa4750e48b4fa0fe9ca93d047c43ff" kindref="member">pinControlBox2</ref>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" kindref="member">packetReceive</ref>(&amp;rc1780hp,<sp/><ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>,<sp/>&amp;<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>,<sp/>&amp;<ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>,<sp/>&amp;<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>&amp;<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kindref="member">dataSendUsb</ref>(<ref refid="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" kindref="member">SerialUSB1</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kindref="member">dataSendUsb</ref>(<ref refid="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" kindref="member">SerialUSB2</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kindref="member">displayUpdate</ref>(0x00,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" kindref="member">ledRssiUpdate</ref>(<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a1697c0d7ffd03c6986f20898e7236b5a" kindref="member">rssi</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="groundstation/firmware/src/main.cpp"/>
+  </compounddef>
+</doxygen>

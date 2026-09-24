@@ -1,0 +1,881 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes refid="header_8h" local="yes">header.h</includes>
+    <includes refid="utility_8h" local="yes">utility.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>onboard/firmware/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="6">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="4">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" prot="public" static="no" mutable="no">
+        <type><ref refid="classledStruct" kindref="compound">ledStruct</ref></type>
+        <definition>ledStruct pinLed</definition>
+        <argsstring></argsstring>
+        <name>pinLed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="12" column="11" bodyfile="onboard/firmware/src/main.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ae6ded050f125d902d50d592d80452ace" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinSLP</definition>
+        <argsstring></argsstring>
+        <name>pinSLP</name>
+        <initializer>= PIN_PG0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="16" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1afb7a2c40588234dddafa32187ac8c021" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinARM1</definition>
+        <argsstring></argsstring>
+        <name>pinARM1</name>
+        <initializer>= PIN_PG1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="17" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ad8aeec4f4e2bca8e86a6e91a99b8290f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinD26</definition>
+        <argsstring></argsstring>
+        <name>pinD26</name>
+        <initializer>= PIN_PF4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="18" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a5783d0ae354604c81b254f7aa6b46800" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinD27</definition>
+        <argsstring></argsstring>
+        <name>pinD27</name>
+        <initializer>= PIN_PF5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="19" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a795211da21f9097aa93cbd99cf39641b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinD28</definition>
+        <argsstring></argsstring>
+        <name>pinD28</name>
+        <initializer>= PIN_PF6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="20" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a313504cdcf9f5c2072eafcec9a7d3e54" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinD4</definition>
+        <argsstring></argsstring>
+        <name>pinD4</name>
+        <initializer>= PIN_PC6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="21" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ab6bed15e1fb1575b5613c0ae79f45ecc" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinD5</definition>
+        <argsstring></argsstring>
+        <name>pinD5</name>
+        <initializer>= PIN_PC7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="22" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a997395c52693bc9deb589535c3606a42" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinBuzzer</definition>
+        <argsstring></argsstring>
+        <name>pinBuzzer</name>
+        <initializer>= PIN_PB0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="23" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a3290a145f761c9a948a3a34b634f490a" prot="public" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* SerialUSB</definition>
+        <argsstring></argsstring>
+        <name>SerialUSB</name>
+        <initializer>= &amp;Serial4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="27" column="16" bodyfile="onboard/firmware/src/main.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ad6ad13ac2f87381aacdcf9519d3f0ac1" prot="public" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* SerialUmbilical</definition>
+        <argsstring></argsstring>
+        <name>SerialUmbilical</name>
+        <initializer>= &amp;Serial1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="28" column="16" bodyfile="onboard/firmware/src/main.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a718c5e182d214a2860fcf364a677d275" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinTX_USB</definition>
+        <argsstring></argsstring>
+        <name>pinTX_USB</name>
+        <initializer>= PIN_PE4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="30" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1abf6b26e0913dab4f41af6edf7ff093ac" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRX_USB</definition>
+        <argsstring></argsstring>
+        <name>pinRX_USB</name>
+        <initializer>= PIN_PE5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="31" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1af5140927696a07d5797c8efe92f2bd1d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinTX_Umbilical</definition>
+        <argsstring></argsstring>
+        <name>pinTX_Umbilical</name>
+        <initializer>= PIN_PC0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="32" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a338eb679086b8f34d7368848c421bffe" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRX_Umbilical</definition>
+        <argsstring></argsstring>
+        <name>pinRX_Umbilical</name>
+        <initializer>= PIN_PC1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="33" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a8799752c844e1b5d827a7b3e26dda373" prot="public" static="no" mutable="no">
+        <type>RC17xxHP_RC232 rc1780hp &amp;</type>
+        <definition>RC17xxHP_RC232 rc1780hp&amp; Serial0</definition>
+        <argsstring></argsstring>
+        <name>Serial0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="37" column="16" bodyfile="onboard/firmware/src/main.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1af0f6c706157cfe30bf400c91228ffa2f" prot="public" static="no" mutable="no">
+        <type>RC17xxHP_RC232 rc1701hp &amp;</type>
+        <definition>RC17xxHP_RC232 rc1701hp&amp; Serial3</definition>
+        <argsstring></argsstring>
+        <name>Serial3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="38" column="16" bodyfile="onboard/firmware/src/main.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" prot="public" static="no" mutable="no">
+        <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref></type>
+        <definition>dataStruct dataVars</definition>
+        <argsstring></argsstring>
+        <name>dataVars</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="39" column="12" bodyfile="onboard/firmware/src/main.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1aef9398b01f003dc5f6817e97a4566aaa" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t uint8CountPower</definition>
+        <argsstring></argsstring>
+        <name>uint8CountPower</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="43" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ab4af7598d12f4f2a5958c9fcc936d66c" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* uint8ListPower[uint8CountPower]</definition>
+        <argsstring>[uint8CountPower]</argsstring>
+        <name>uint8ListPower</name>
+        <initializer>= {&amp;dataVars.statePower, &amp;dataVars.stateUmbilical, &amp;dataVars.temperatureBattery}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="44" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a4f6058b3accac43f629bbb8e6ae5d725" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t floatCountPower</definition>
+        <argsstring></argsstring>
+        <name>floatCountPower</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="45" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1aea6158c3449bb539b149ba4da25b75fc" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* floatListPower[floatCountPower]</definition>
+        <argsstring>[floatCountPower]</argsstring>
+        <name>floatListPower</name>
+        <initializer>= {&amp;dataVars.currentUmbilical, &amp;dataVars.currentBattery, &amp;dataVars.voltageBattery, &amp;dataVars.voltageBatteryCOTS}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="46" column="7" bodyfile="onboard/firmware/src/main.cpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ac47f3c77d9b6d645f829daee757b5905" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t uint8CountSens</definition>
+        <argsstring></argsstring>
+        <name>uint8CountSens</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="48" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1abe679a44814268a3c6e244e07a845760" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* uint8ListSens[uint8CountSens]</definition>
+        <argsstring>[uint8CountSens]</argsstring>
+        <name>uint8ListSens</name>
+        <initializer>= {&amp;dataVars.stateSens, &amp;dataVars.satCountGNSS, &amp;dataVars.temperatureElectronics}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="49" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1aabf120ea2f566c102f96a65d99c5093a" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t floatCountSens</definition>
+        <argsstring></argsstring>
+        <name>floatCountSens</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="50" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ae63363579d32cc6df894e351d2511492" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* floatListSens[floatCountSens]</definition>
+        <argsstring>[floatCountSens]</argsstring>
+        <name>floatListSens</name>
+        <initializer>= {&amp;dataVars.latitude, &amp;dataVars.longitude, &amp;dataVars.heightPressure, &amp;dataVars.acceleration, &amp;dataVars.heightGNSS, &amp;dataVars.hdopGNSS}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="51" column="7" bodyfile="onboard/firmware/src/main.cpp" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ab0af612dc904ce381bf97f5edbd4aee6" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t uint8CountControl</definition>
+        <argsstring></argsstring>
+        <name>uint8CountControl</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="53" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ac455e8d1c744ad1cfbd28be2038a135e" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* uint8ListControl[uint8CountControl]</definition>
+        <argsstring>[uint8CountControl]</argsstring>
+        <name>uint8ListControl</name>
+        <initializer>= {&amp;dataVars.stateControl, &amp;dataVars.flightEvents, &amp;dataVars.stateCapacitors, &amp;dataVars.pressureDecoupler, &amp;dataVars.ldrDecoupler, &amp;dataVars.continuityPyros}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="54" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ad59433aa1804401ec828815a3aaa1eec" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t floatCountControl</definition>
+        <argsstring></argsstring>
+        <name>floatCountControl</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="55" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a580a671425e68c341865ff0da0f32f96" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* floatListControl[floatCountControl]</definition>
+        <argsstring>[floatCountControl]</argsstring>
+        <name>floatListControl</name>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="56" column="7" bodyfile="onboard/firmware/src/main.cpp" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a7775bcf13d35ea33b2b55446a72ec29f" prot="public" static="no" mutable="no">
+        <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref></type>
+        <definition>Subsystem subsystemPower(0x50, &amp;pinLed.Power, &amp;dataVars.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower)</definition>
+        <argsstring>(0x50, &amp;pinLed.Power, &amp;dataVars.statePower, uint8ListPower, uint8CountPower, floatListPower, floatCountPower)</argsstring>
+        <name>subsystemPower</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="60" column="11"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" prot="public" static="no" mutable="no">
+        <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref></type>
+        <definition>Subsystem subsystemSens(0x20, &amp;pinLed.Sens, &amp;dataVars.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens)</definition>
+        <argsstring>(0x20, &amp;pinLed.Sens, &amp;dataVars.stateSens, uint8ListSens, uint8CountSens, floatListSens, floatCountSens)</argsstring>
+        <name>subsystemSens</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="61" column="11"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" prot="public" static="no" mutable="no">
+        <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref></type>
+        <definition>Subsystem subsystemControl(0x40, &amp;pinLed.Control, &amp;dataVars.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl)</definition>
+        <argsstring>(0x40, &amp;pinLed.Control, &amp;dataVars.stateControl, uint8ListControl, uint8CountControl, floatListControl, floatCountControl)</argsstring>
+        <name>subsystemControl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="62" column="11"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t subsystemsCount</definition>
+        <argsstring></argsstring>
+        <name>subsystemsCount</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="64" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1af6e4dd5ba7c4ff04537ef9cc417a4996" prot="public" static="no" mutable="no">
+        <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> *</type>
+        <definition>Subsystem* subsystemList[subsystemsCount]</definition>
+        <argsstring>[subsystemsCount]</argsstring>
+        <name>subsystemList</name>
+        <initializer>= {&amp;<ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>, &amp;<ref refid="main_8cpp_1a7775bcf13d35ea33b2b55446a72ec29f" kindref="member">subsystemPower</ref>, &amp;<ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="65" column="11" bodyfile="onboard/firmware/src/main.cpp" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet commandPacket</definition>
+        <argsstring></argsstring>
+        <name>commandPacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="69" column="8" bodyfile="onboard/firmware/src/main.cpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet flightDataPacket</definition>
+        <argsstring></argsstring>
+        <name>flightDataPacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="70" column="8" bodyfile="onboard/firmware/src/main.cpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" prot="public" static="no" mutable="no">
+        <type>Packet</type>
+        <definition>Packet telemetryDataPacket</definition>
+        <argsstring></argsstring>
+        <name>telemetryDataPacket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="71" column="8" bodyfile="onboard/firmware/src/main.cpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t loopFrequency</definition>
+        <argsstring></argsstring>
+        <name>loopFrequency</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="75" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t timeBetweenStandbyPackets</definition>
+        <argsstring></argsstring>
+        <name>timeBetweenStandbyPackets</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="76" column="15" bodyfile="onboard/firmware/src/main.cpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a2558023314c68944d06eda65359d6585" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t flightMode</definition>
+        <argsstring></argsstring>
+        <name>flightMode</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="78" column="9" bodyfile="onboard/firmware/src/main.cpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t loopCount</definition>
+        <argsstring></argsstring>
+        <name>loopCount</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="79" column="10" bodyfile="onboard/firmware/src/main.cpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8cpp_1a9f183f492a951adc3f1fa22be4f2cd87" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t loopStartTime</definition>
+        <argsstring></argsstring>
+        <name>loopStartTime</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="80" column="10" bodyfile="onboard/firmware/src/main.cpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="82" column="6" bodyfile="onboard/firmware/src/main.cpp" bodystart="82" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8cpp_1afe461d27b9c48d5921c00d521181f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/main.cpp" line="180" column="6" bodyfile="onboard/firmware/src/main.cpp" bodystart="180" bodyend="196"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/><sp/><sp/>onboard<sp/>-<sp/>main.cpp<sp/>of<sp/>the<sp/>board<sp/>computer<sp/>for<sp/>the<sp/>ASCENT<sp/>III<sp/>telemetry<sp/>system.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/><sp/><sp/><sp/>Spaceflight<sp/>Rocketry<sp/>Giessen<sp/>e.V.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/><sp/><sp/>Published<sp/>under<sp/>the<sp/>CERN<sp/>OHL-S<sp/>v2<sp/>license<sp/>at<sp/>https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="header_8h" kindref="compound">header.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utility_8h" kindref="compound">utility.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LED<sp/>Pins<sp/>Initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Pin<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1ae6ded050f125d902d50d592d80452ace" kindref="member">pinSLP</ref><sp/>=<sp/>PIN_PG0;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1afb7a2c40588234dddafa32187ac8c021" kindref="member">pinARM1</ref><sp/>=<sp/>PIN_PG1;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1ad8aeec4f4e2bca8e86a6e91a99b8290f" kindref="member">pinD26</ref><sp/>=<sp/>PIN_PF4;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a5783d0ae354604c81b254f7aa6b46800" kindref="member">pinD27</ref><sp/>=<sp/>PIN_PF5;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a795211da21f9097aa93cbd99cf39641b" kindref="member">pinD28</ref><sp/>=<sp/>PIN_PF6;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a313504cdcf9f5c2072eafcec9a7d3e54" kindref="member">pinD4</ref><sp/>=<sp/>PIN_PC6;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1ab6bed15e1fb1575b5613c0ae79f45ecc" kindref="member">pinD5</ref><sp/>=<sp/>PIN_PC7;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref><sp/>=<sp/>PIN_PB0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">HardwareSerial<sp/>*<ref refid="main_8cpp_1a3290a145f761c9a948a3a34b634f490a" kindref="member">SerialUSB</ref><sp/>=<sp/>&amp;Serial4;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">HardwareSerial<sp/>*<ref refid="main_8cpp_1ad6ad13ac2f87381aacdcf9519d3f0ac1" kindref="member">SerialUmbilical</ref><sp/>=<sp/>&amp;Serial1;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a718c5e182d214a2860fcf364a677d275" kindref="member">pinTX_USB</ref><sp/>=<sp/>PIN_PE4;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1abf6b26e0913dab4f41af6edf7ff093ac" kindref="member">pinRX_USB</ref><sp/>=<sp/>PIN_PE5;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1af5140927696a07d5797c8efe92f2bd1d" kindref="member">pinTX_Umbilical</ref><sp/>=<sp/>PIN_PC0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a338eb679086b8f34d7368848c421bffe" kindref="member">pinRX_Umbilical</ref><sp/>=<sp/>PIN_PC1;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initialize<sp/>Radio<sp/>Modules</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">RC17xxHP_RC232<sp/>rc1780hp(&amp;<ref refid="main_8cpp_1a8799752c844e1b5d827a7b3e26dda373" kindref="member">Serial0</ref>,<sp/>PIN_PA0,<sp/>PIN_PA1,<sp/>19200,<sp/>PIN_PA5,<sp/>PIN_PG7,<sp/>PIN_PA3,<sp/>PIN_PA4);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">RC17xxHP_RC232<sp/>rc1701hp(&amp;<ref refid="main_8cpp_1af0f6c706157cfe30bf400c91228ffa2f" kindref="member">Serial3</ref>,<sp/>PIN_PB4,<sp/>PIN_PB5,<sp/>19200,<sp/>PIN_PB3,<sp/>PIN_PG6,<sp/>PIN_PB1,<sp/>PIN_PB2);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Data<sp/>Arrays<sp/>Preparations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1aef9398b01f003dc5f6817e97a4566aaa" kindref="member">uint8CountPower</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">uint8_t<sp/>*<ref refid="main_8cpp_1ab4af7598d12f4f2a5958c9fcc936d66c" kindref="member">uint8ListPower</ref>[<ref refid="main_8cpp_1aef9398b01f003dc5f6817e97a4566aaa" kindref="member">uint8CountPower</ref>]<sp/>=<sp/>{&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kindref="member">statePower</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" kindref="member">stateUmbilical</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" kindref="member">temperatureBattery</ref>};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1a4f6058b3accac43f629bbb8e6ae5d725" kindref="member">floatCountPower</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*<ref refid="main_8cpp_1aea6158c3449bb539b149ba4da25b75fc" kindref="member">floatListPower</ref>[<ref refid="main_8cpp_1a4f6058b3accac43f629bbb8e6ae5d725" kindref="member">floatCountPower</ref>]<sp/>=<sp/>{&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" kindref="member">currentUmbilical</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" kindref="member">currentBattery</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" kindref="member">voltageBattery</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" kindref="member">voltageBatteryCOTS</ref>};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1ac47f3c77d9b6d645f829daee757b5905" kindref="member">uint8CountSens</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">uint8_t<sp/>*<ref refid="main_8cpp_1abe679a44814268a3c6e244e07a845760" kindref="member">uint8ListSens</ref>[<ref refid="main_8cpp_1ac47f3c77d9b6d645f829daee757b5905" kindref="member">uint8CountSens</ref>]<sp/>=<sp/>{&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kindref="member">stateSens</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" kindref="member">satCountGNSS</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" kindref="member">temperatureElectronics</ref>};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1aabf120ea2f566c102f96a65d99c5093a" kindref="member">floatCountSens</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*<ref refid="main_8cpp_1ae63363579d32cc6df894e351d2511492" kindref="member">floatListSens</ref>[<ref refid="main_8cpp_1aabf120ea2f566c102f96a65d99c5093a" kindref="member">floatCountSens</ref>]<sp/>=<sp/>{&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" kindref="member">latitude</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" kindref="member">longitude</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" kindref="member">heightPressure</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" kindref="member">acceleration</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" kindref="member">heightGNSS</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" kindref="member">hdopGNSS</ref>};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1ab0af612dc904ce381bf97f5edbd4aee6" kindref="member">uint8CountControl</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">uint8_t<sp/>*<ref refid="main_8cpp_1ac455e8d1c744ad1cfbd28be2038a135e" kindref="member">uint8ListControl</ref>[<ref refid="main_8cpp_1ab0af612dc904ce381bf97f5edbd4aee6" kindref="member">uint8CountControl</ref>]<sp/>=<sp/>{&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kindref="member">stateControl</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" kindref="member">flightEvents</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" kindref="member">stateCapacitors</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" kindref="member">pressureDecoupler</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1add8d871624e41aff468940f842a72515" kindref="member">ldrDecoupler</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" kindref="member">continuityPyros</ref>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1ad59433aa1804401ec828815a3aaa1eec" kindref="member">floatCountControl</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*<ref refid="main_8cpp_1a580a671425e68c341865ff0da0f32f96" kindref="member">floatListControl</ref>[<ref refid="main_8cpp_1ad59433aa1804401ec828815a3aaa1eec" kindref="member">floatCountControl</ref>]<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Subsystems<sp/>Initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/><ref refid="main_8cpp_1a7775bcf13d35ea33b2b55446a72ec29f" kindref="member">subsystemPower</ref>(0x50,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" kindref="member">Power</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kindref="member">statePower</ref>,<sp/><ref refid="main_8cpp_1ab4af7598d12f4f2a5958c9fcc936d66c" kindref="member">uint8ListPower</ref>,<sp/><ref refid="main_8cpp_1aef9398b01f003dc5f6817e97a4566aaa" kindref="member">uint8CountPower</ref>,<sp/><ref refid="main_8cpp_1aea6158c3449bb539b149ba4da25b75fc" kindref="member">floatListPower</ref>,<sp/><ref refid="main_8cpp_1a4f6058b3accac43f629bbb8e6ae5d725" kindref="member">floatCountPower</ref>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/><ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>(0x20,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" kindref="member">Sens</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kindref="member">stateSens</ref>,<sp/><ref refid="main_8cpp_1abe679a44814268a3c6e244e07a845760" kindref="member">uint8ListSens</ref>,<sp/><ref refid="main_8cpp_1ac47f3c77d9b6d645f829daee757b5905" kindref="member">uint8CountSens</ref>,<sp/><ref refid="main_8cpp_1ae63363579d32cc6df894e351d2511492" kindref="member">floatListSens</ref>,<sp/><ref refid="main_8cpp_1aabf120ea2f566c102f96a65d99c5093a" kindref="member">floatCountSens</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/><ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>(0x40,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" kindref="member">Control</ref>,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kindref="member">stateControl</ref>,<sp/><ref refid="main_8cpp_1ac455e8d1c744ad1cfbd28be2038a135e" kindref="member">uint8ListControl</ref>,<sp/><ref refid="main_8cpp_1ab0af612dc904ce381bf97f5edbd4aee6" kindref="member">uint8CountControl</ref>,<sp/><ref refid="main_8cpp_1a580a671425e68c341865ff0da0f32f96" kindref="member">floatListControl</ref>,<sp/><ref refid="main_8cpp_1ad59433aa1804401ec828815a3aaa1eec" kindref="member">floatCountControl</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>*<ref refid="main_8cpp_1af6e4dd5ba7c4ff04537ef9cc417a4996" kindref="member">subsystemList</ref>[<ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>]<sp/>=<sp/>{&amp;<ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>,<sp/>&amp;<ref refid="main_8cpp_1a7775bcf13d35ea33b2b55446a72ec29f" kindref="member">subsystemPower</ref>,<sp/>&amp;<ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Packet<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">Packet<sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Loop<sp/>Variables<sp/>Declaration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref><sp/>=<sp/>10;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>Hz<sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/>Hz<sp/>=<sp/>100<sp/>ms<sp/>interval</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" kindref="member">timeBetweenStandbyPackets</ref><sp/>=<sp/>5;<sp/></highlight><highlight class="comment">//<sp/>in<sp/>seconds.<sp/>In<sp/>standby,<sp/>data<sp/>packets<sp/>aren&apos;t<sp/>send<sp/>every<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">uint8_t<sp/><ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">uint32_t<sp/><ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">uint32_t<sp/><ref refid="main_8cpp_1a9f183f492a951adc3f1fa22be4f2cd87" kindref="member">loopStartTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">setup</ref>()</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref><sp/>=<sp/>PIN_PF0;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref><sp/>=<sp/>PIN_PE7;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref><sp/>=<sp/>PIN_PE6;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref><sp/>=<sp/>PIN_PF3;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref><sp/>=<sp/>PIN_PF2;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref><sp/>=<sp/>PIN_PF1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" kindref="member">Debug1</ref><sp/>=<sp/>PIN_PB6;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a292977a9742696f16fdfece498ede85f" kindref="member">Debug2</ref><sp/>=<sp/>PIN_PB7;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" kindref="member">Power</ref><sp/>=<sp/>PIN_PD3;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" kindref="member">Sens</ref><sp/>=<sp/>PIN_PD4;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" kindref="member">Control</ref><sp/>=<sp/>PIN_PD2;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t(0);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">pinMode</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1a768e7a0e1ea7342f47330b68a864224c" kindref="member">SETUPBEGIN</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>R<sp/>On</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>Initialisations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>pinMode(<ref refid="main_8cpp_1ae6ded050f125d902d50d592d80452ace" kindref="member">pinSLP</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>pinMode(<ref refid="main_8cpp_1afb7a2c40588234dddafa32187ac8c021" kindref="member">pinARM1</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>pinMode(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1ae6ded050f125d902d50d592d80452ace" kindref="member">pinSLP</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1afb7a2c40588234dddafa32187ac8c021" kindref="member">pinARM1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>UART<sp/>Declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a3290a145f761c9a948a3a34b634f490a" kindref="member">SerialUSB</ref>-&gt;pins(<ref refid="main_8cpp_1a718c5e182d214a2860fcf364a677d275" kindref="member">pinTX_USB</ref>,<sp/><ref refid="main_8cpp_1abf6b26e0913dab4f41af6edf7ff093ac" kindref="member">pinRX_USB</ref>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ad6ad13ac2f87381aacdcf9519d3f0ac1" kindref="member">SerialUmbilical</ref>-&gt;pins(<ref refid="main_8cpp_1af5140927696a07d5797c8efe92f2bd1d" kindref="member">pinTX_Umbilical</ref>,<sp/><ref refid="main_8cpp_1a338eb679086b8f34d7368848c421bffe" kindref="member">pinRX_Umbilical</ref>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a3290a145f761c9a948a3a34b634f490a" kindref="member">SerialUSB</ref>-&gt;begin(115200);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ad6ad13ac2f87381aacdcf9519d3f0ac1" kindref="member">SerialUmbilical</ref>-&gt;begin(115200);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>I2C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>Wire.pins(PIN_PC2,<sp/>PIN_PC3);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>Wire.begin();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>Radio<sp/>Modules</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga6046607d0fd0ac28b6c1f57385304c05" kindref="member">radioModulesSetup</ref>(&amp;rc1780hp,<sp/>&amp;rc1701hp,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1ab5d0dcb9a453c5ffed92aa8d86f3c876" kindref="member">SETUPRADIOMODULS</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>B<sp/>On</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Packet<sp/>Components<sp/>Initializations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>parity_Component());</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>char_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>cobs_Component(0xEE,<sp/>4));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>parity_Component());</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>const_Component(0,<sp/>1));</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" kindref="member">acceleration</ref>,<sp/>10,<sp/>-17,<sp/>17.1));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" kindref="member">heightPressure</ref>,<sp/>15,<sp/>0,<sp/>6553.4));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" kindref="member">flightEvents</ref>,<sp/>5,<sp/>0,<sp/>31));</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" kindref="member">latitude</ref>,<sp/>26,<sp/>-90,<sp/>90));</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" kindref="member">longitude</ref>,<sp/>26,<sp/>-180,<sp/>180));</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>const_Component(0xEE,<sp/>8,<sp/>255));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>cobs_Component(0xEE,<sp/>4));</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>parity_Component());</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>const_Component(1,<sp/>1));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(2));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" kindref="member">stateTelemetry</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kindref="member">stateControl</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kindref="member">statePower</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kindref="member">stateSens</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(1));</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" kindref="member">heightGNSS</ref>,<sp/>15,<sp/>0,<sp/>6553.4));</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" kindref="member">satCountGNSS</ref>,<sp/>4,<sp/>0,<sp/>15));</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" kindref="member">hdopGNSS</ref>,<sp/>4,<sp/>0,<sp/>7.5));</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" kindref="member">temperatureElectronics</ref>,<sp/>4,<sp/>0,<sp/>150));</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" kindref="member">temperatureBattery</ref>,<sp/>4,<sp/>0,<sp/>150));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" kindref="member">stateCapacitors</ref>,<sp/>4,<sp/>0,<sp/>15));</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" kindref="member">continuityPyros</ref>,<sp/>2,<sp/>0,<sp/>3));</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" kindref="member">pressureDecoupler</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1add8d871624e41aff468940f842a72515" kindref="member">ldrDecoupler</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(2));</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" kindref="member">voltageBattery</ref>,<sp/>6,<sp/>5,<sp/>8.15));</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" kindref="member">currentBattery</ref>,<sp/>3,<sp/>0,<sp/>1.75));</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" kindref="member">currentUmbilical</ref>,<sp/>3,<sp/>0,<sp/>1.75));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" kindref="member">stateUmbilical</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t_Component(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref>,<sp/>1,<sp/>0,<sp/>1));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>float_Component(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" kindref="member">voltageBatteryCOTS</ref>,<sp/>5,<sp/>5,<sp/>11.2));</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>empty_Component(11));</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>.addComponent(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>const_Component(0xEE,<sp/>8,<sp/>255));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Setup<sp/>Complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga53876b16f4099eeb1bf9bc422d4cd5dd" kindref="member">buzzerSound</ref>(<ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" kindref="member">stateTelemetry</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1ac88cc3b672d1f10c24d31e68eaf9a044" kindref="member">SETUPEND</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>G<sp/>On</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kindref="member">loop</ref>()</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><ref refid="i2c__connectivity_8h_1a6deef1afd4f5c7260f89686850f0436f" kindref="member">subsystemsConnCheck</ref>(<ref refid="main_8cpp_1af6e4dd5ba7c4ff04537ef9cc417a4996" kindref="member">subsystemList</ref>,<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="i2c__connectivity_8h_1a4989aa8fa220aae526eee4e396d86387" kindref="member">subsystemsDataGet</ref>(<ref refid="main_8cpp_1af6e4dd5ba7c4ff04537ef9cc417a4996" kindref="member">subsystemList</ref>,<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="i2c__connectivity_8h_1aceb2a629f34fbbd7273612006ffe5835" kindref="member">subsystemsLedUpdate</ref>(<ref refid="main_8cpp_1af6e4dd5ba7c4ff04537ef9cc417a4996" kindref="member">subsystemList</ref>,<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>,<sp/>*(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref>));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1gac93be4154e4e329795b3f20cdc150193" kindref="member">commandReceive</ref>(&amp;rc1701hp,<sp/>&amp;<ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga81781e5fca0b89284d535e761a870943" kindref="member">commandExecute</ref>(<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>.<ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>,<sp/>&amp;rc1780hp,<sp/>&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>&amp;<ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref>,<sp/><ref refid="main_8cpp_1af6e4dd5ba7c4ff04537ef9cc417a4996" kindref="member">subsystemList</ref>,<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>,<sp/>&amp;<ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>,<sp/>&amp;<ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>,<sp/>&amp;<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>&amp;<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>,<sp/><ref refid="main_8cpp_1afb7a2c40588234dddafa32187ac8c021" kindref="member">pinARM1</ref>,<sp/><ref refid="main_8cpp_1ae6ded050f125d902d50d592d80452ace" kindref="member">pinSLP</ref>);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>uint8_t<sp/>packetType<sp/>=<sp/><ref refid="group__onboard_1ga60aa040e4452389436b5be68b9933b25" kindref="member">packetSendCheck</ref>(&amp;<ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref>,<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>,<sp/><ref refid="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" kindref="member">timeBetweenStandbyPackets</ref>,<sp/><ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kindref="member">packetSend</ref>(&amp;rc1780hp,<sp/>packetType,<sp/>&amp;<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>&amp;<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1gae4db8f2ccf1d64901337cf90e1630c72" kindref="member">flashWrite</ref>(&amp;<ref refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kindref="member">dataVars</ref>);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8h_1ac2558c32fa879d85fe59f8c5f8dfbc04" kindref="member">UPDATE</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="group__onboard_1gac01e4dc28b2b2297b74fe0f79e1dc696" kindref="member">loopVariablesUpdate</ref>(&amp;<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>,<sp/>&amp;<ref refid="main_8cpp_1a9f183f492a951adc3f1fa22be4f2cd87" kindref="member">loopStartTime</ref>,<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>,<sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>.<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="onboard/firmware/src/main.cpp"/>
+  </compounddef>
+</doxygen>

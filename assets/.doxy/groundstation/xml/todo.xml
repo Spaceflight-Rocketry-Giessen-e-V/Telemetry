@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="todo" kind="page">
+    <compoundname>todo</compoundname>
+    <title>Todo List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kindref="member">buttonCheck</ref>  (<ref refid="classbuttonStruct" kindref="compound">buttonStruct</ref> pinButton)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000002"/>Has to be implemented in the future.</para>
+<para></para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kindref="member">controlBoxCheck</ref>  (uint8_t pin1, uint8_t pin2)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000003"/>Has to be implemented in the future.</para>
+<para></para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kindref="member">displayUpdate</ref>  (uint8_t address, <ref refid="classdataStruct" kindref="compound">dataStruct</ref> *dataVariables)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000001"/>Has to be implemented in the future.</para>
+<para></para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="todo"/>
+  </compounddef>
+</doxygen>

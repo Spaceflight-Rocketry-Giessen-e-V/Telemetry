@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_467a32ee08e77420135f1d1bd8b16993" kind="dir">
+    <compoundname>onboard/firmware/src</compoundname>
+    <innerfile refid="i2c__connectivity_8cpp">i2c_connectivity.cpp</innerfile>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <innerfile refid="utility_8cpp">utility.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="onboard/firmware/src/"/>
+  </compounddef>
+</doxygen>

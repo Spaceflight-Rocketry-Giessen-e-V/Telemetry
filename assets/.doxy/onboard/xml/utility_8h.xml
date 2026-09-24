@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="utility_8h" kind="file" language="C++">
+    <compoundname>utility.h</compoundname>
+    <includes refid="header_8h" local="yes">header.h</includes>
+    <includes refid="i2c__connectivity_8h" local="yes">i2c_connectivity.h</includes>
+    <includedby refid="main_8cpp" local="yes">onboard/firmware/src/main.cpp</includedby>
+    <includedby refid="utility_8cpp" local="yes">onboard/firmware/src/utility.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>onboard/firmware/include/utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="6">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="4">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>onboard/firmware/include/utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>onboard/firmware/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="3">
+        <label>onboard/firmware/src/utility.cpp</label>
+        <link refid="utility_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classledStruct" prot="public">ledStruct</innerclass>
+    <innerclass refid="classdataStruct" prot="public">dataStruct</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="utility_8h_1a768e7a0e1ea7342f47330b68a864224c" prot="public" static="no">
+        <name>SETUPBEGIN</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="9" column="9" bodyfile="onboard/firmware/include/utility.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8h_1ab5d0dcb9a453c5ffed92aa8d86f3c876" prot="public" static="no">
+        <name>SETUPRADIOMODULS</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="10" column="9" bodyfile="onboard/firmware/include/utility.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8h_1ac88cc3b672d1f10c24d31e68eaf9a044" prot="public" static="no">
+        <name>SETUPEND</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="11" column="9" bodyfile="onboard/firmware/include/utility.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8h_1ab75978ba540e0f974c1b4937f2a70e0a" prot="public" static="no">
+        <name>RADIOMODUL_ONE</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="12" column="9" bodyfile="onboard/firmware/include/utility.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8h_1af91f62521b98861d833a9735c97f0832" prot="public" static="no">
+        <name>RADIOMODUL_TWO</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="13" column="9" bodyfile="onboard/firmware/include/utility.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8h_1ac2558c32fa879d85fe59f8c5f8dfbc04" prot="public" static="no">
+        <name>UPDATE</name>
+        <initializer>255</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="14" column="9" bodyfile="onboard/firmware/include/utility.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__onboard_1ga53876b16f4099eeb1bf9bc422d4cd5dd" kind="function"><name>buzzerSound</name></member>
+      <member refid="group__onboard_1gaccd289abac63f0ec3f32881ee78848ff" kind="function"><name>buzzerSoundError</name></member>
+      <member refid="group__onboard_1ga6046607d0fd0ac28b6c1f57385304c05" kind="function"><name>radioModulesSetup</name></member>
+      <member refid="group__onboard_1gac93be4154e4e329795b3f20cdc150193" kind="function"><name>commandReceive</name></member>
+      <member refid="group__onboard_1ga81781e5fca0b89284d535e761a870943" kind="function"><name>commandExecute</name></member>
+      <member refid="group__onboard_1ga60aa040e4452389436b5be68b9933b25" kind="function"><name>packetSendCheck</name></member>
+      <member refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kind="function"><name>packetSend</name></member>
+      <member refid="group__onboard_1gae4db8f2ccf1d64901337cf90e1630c72" kind="function"><name>flashWrite</name></member>
+      <member refid="group__onboard_1gac01e4dc28b2b2297b74fe0f79e1dc696" kind="function"><name>loopVariablesUpdate</name></member>
+      <member refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kind="function"><name>ledUpdate</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="header_8h" kindref="compound">header.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="i2c__connectivity_8h" kindref="compound">i2c_connectivity.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LEDs<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="utility_8h_1a768e7a0e1ea7342f47330b68a864224c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETUPBEGIN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="utility_8h_1ab5d0dcb9a453c5ffed92aa8d86f3c876" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETUPRADIOMODULS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="utility_8h_1ac88cc3b672d1f10c24d31e68eaf9a044" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETUPEND<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="utility_8h_1ab75978ba540e0f974c1b4937f2a70e0a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RADIOMODUL_ONE<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="utility_8h_1af91f62521b98861d833a9735c97f0832" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RADIOMODUL_TWO<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="utility_8h_1ac2558c32fa879d85fe59f8c5f8dfbc04" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UPDATE<sp/>255</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classledStruct" kindref="compound">ledStruct</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classdataStruct" kindref="compound">dataStruct</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga53876b16f4099eeb1bf9bc422d4cd5dd" kindref="member">buzzerSound</ref>(uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gaccd289abac63f0ec3f32881ee78848ff" kindref="member">buzzerSoundError</ref>(uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga6046607d0fd0ac28b6c1f57385304c05" kindref="member">radioModulesSetup</ref>(RC17xxHP_RC232<sp/>*rc1780hp,<sp/>RC17xxHP_RC232<sp/>*rc1701hp,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a997395c52693bc9deb589535c3606a42" kindref="member">pinBuzzer</ref>);<sp/></highlight><highlight class="comment">//<sp/>Wenn<sp/>Error:<sp/>buzzerSoundError();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ledUpdate<sp/>aufrufen:<sp/>ledUpdate(4):<sp/>radiomodul<sp/>1<sp/>funktioniert:<sp/>D2<sp/>anschalten,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ledUpdate(5):<sp/>radiomodul<sp/>2<sp/>funktioniert:<sp/>D3<sp/>anschalten</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gac93be4154e4e329795b3f20cdc150193" kindref="member">commandReceive</ref>(RC17xxHP_RC232<sp/>*radioModule,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>);<sp/></highlight><highlight class="comment">//<sp/>Aufruf<sp/>Packet<sp/>Library<sp/>Function,<sp/>return<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wenn<sp/>kein<sp/>Command,<sp/>sonst<sp/>return<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga81781e5fca0b89284d535e761a870943" kindref="member">commandExecute</ref>(uint8_t<sp/><ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>,<sp/>RC17xxHP_RC232<sp/>*radioModule,<sp/><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a2558023314c68944d06eda65359d6585" kindref="member">flightMode</ref>,<sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>,<sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>*<ref refid="main_8cpp_1ae639b9bb68311123f908e03109bf1dba" kindref="member">subsystemSens</ref>,<sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>*<ref refid="main_8cpp_1a2184d5e9df271bf713fb684cfbad450b" kindref="member">subsystemControl</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>,<sp/>uint8_t<sp/>pinArm,<sp/>uint8_t<sp/>pinSleep);<sp/></highlight><highlight class="comment">//<sp/><sp/>Distribute<sp/>Data<sp/>To<sp/>Subsystems<sp/>etc..</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Check<sp/>for<sp/>0<sp/>(-&gt;<sp/>no<sp/>command)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">uint8_t<sp/><ref refid="group__onboard_1ga60aa040e4452389436b5be68b9933b25" kindref="member">packetSendCheck</ref>(uint8_t<sp/>*flightmode,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a755d5ca523ce6755df7c96b0bae1b937" kindref="member">timeBetweenStandbyPackets</ref>,<sp/>uint32_t<sp/><ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" kindref="member">packetSend</ref>(RC17xxHP_RC232<sp/>*radioModule,<sp/>uint8_t<sp/>packetType,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gae4db8f2ccf1d64901337cf90e1630c72" kindref="member">flashWrite</ref>(<ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1gac01e4dc28b2b2297b74fe0f79e1dc696" kindref="member">loopVariablesUpdate</ref>(uint32_t<sp/>*<ref refid="main_8cpp_1af16b430ed87bec4af0b7574e3d412697" kindref="member">loopCount</ref>,<sp/>uint32_t<sp/>*<ref refid="main_8cpp_1a9f183f492a951adc3f1fa22be4f2cd87" kindref="member">loopStartTime</ref>,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a6fe26f10c2fa65c43bf50717bcac67e7" kindref="member">loopFrequency</ref>,<sp/>uint8_t<sp/>pinLedLoop);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__onboard_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(uint8_t<sp/>state,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);<sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>Case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classledStruct" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classledStruct" kindref="compound">ledStruct</ref></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="136" refid="classledStruct_1aaab043841a499099efe90718c4f5983e" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>;</highlight></codeline>
+<codeline lineno="137" refid="classledStruct_1ade289f9167496e3c136712df9166737b" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>;</highlight></codeline>
+<codeline lineno="138" refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>;</highlight></codeline>
+<codeline lineno="139" refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref>;</highlight></codeline>
+<codeline lineno="140" refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>;</highlight></codeline>
+<codeline lineno="141" refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>;</highlight></codeline>
+<codeline lineno="142" refid="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" kindref="member">Debug1</ref>;</highlight></codeline>
+<codeline lineno="143" refid="classledStruct_1a292977a9742696f16fdfece498ede85f" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1a292977a9742696f16fdfece498ede85f" kindref="member">Debug2</ref>;</highlight></codeline>
+<codeline lineno="144" refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" kindref="member">Power</ref>;</highlight></codeline>
+<codeline lineno="145" refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" kindref="member">Sens</ref>;</highlight></codeline>
+<codeline lineno="146" refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" kindref="member">Control</ref>;</highlight></codeline>
+<codeline lineno="147" refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/>*<ref refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" kindref="member">lowPowerMode</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">pinMode</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classdataStruct" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/></highlight><highlight class="comment">//<sp/>:)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kindref="member">command</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Subsystem<sp/>States</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" kindref="member">stateTelemetry</ref>;</highlight></codeline>
+<codeline lineno="165" refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kindref="member">statePower</ref>;</highlight></codeline>
+<codeline lineno="166" refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kindref="member">stateSens</ref>;</highlight></codeline>
+<codeline lineno="167" refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kindref="member">stateControl</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Flight<sp/>Data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" kindref="member">acceleration</ref>;</highlight></codeline>
+<codeline lineno="172" refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" kindref="member">heightPressure</ref>;</highlight></codeline>
+<codeline lineno="173" refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" kindref="member">flightEvents</ref>;</highlight></codeline>
+<codeline lineno="174" refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" kindref="member">latitude</ref>;</highlight></codeline>
+<codeline lineno="175" refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" kindref="member">longitude</ref>;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Telemetry<sp/>Data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" kindref="member">heightGNSS</ref>;</highlight></codeline>
+<codeline lineno="180" refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" kindref="member">satCountGNSS</ref>;</highlight></codeline>
+<codeline lineno="181" refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" kindref="member">hdopGNSS</ref>;</highlight></codeline>
+<codeline lineno="182" refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" kindref="member">temperatureElectronics</ref>;</highlight></codeline>
+<codeline lineno="183" refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" kindref="member">temperatureBattery</ref>;</highlight></codeline>
+<codeline lineno="184" refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" kindref="member">stateCapacitors</ref>;</highlight></codeline>
+<codeline lineno="185" refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" kindref="member">continuityPyros</ref>;</highlight></codeline>
+<codeline lineno="186" refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" kindref="member">pressureDecoupler</ref>;</highlight></codeline>
+<codeline lineno="187" refid="classdataStruct_1add8d871624e41aff468940f842a72515" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1add8d871624e41aff468940f842a72515" kindref="member">ldrDecoupler</ref>;</highlight></codeline>
+<codeline lineno="188" refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" kindref="member">voltageBattery</ref>;</highlight></codeline>
+<codeline lineno="189" refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" kindref="member">currentBattery</ref>;</highlight></codeline>
+<codeline lineno="190" refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" kindref="member">currentUmbilical</ref>;</highlight></codeline>
+<codeline lineno="191" refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" kindref="member">stateUmbilical</ref>;</highlight></codeline>
+<codeline lineno="192" refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" kindref="member">voltageBatteryCOTS</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="onboard/firmware/include/utility.h"/>
+  </compounddef>
+</doxygen>

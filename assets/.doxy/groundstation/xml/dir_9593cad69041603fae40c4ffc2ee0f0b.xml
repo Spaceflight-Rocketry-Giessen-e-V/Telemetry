@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_9593cad69041603fae40c4ffc2ee0f0b" kind="dir">
+    <compoundname>groundstation/firmware</compoundname>
+    <innerdir refid="dir_1d15b8600b9877248c90fb083e3e8b18">groundstation/firmware/include</innerdir>
+    <innerdir refid="dir_378fe0f8ac021523c9dbb2c9a3fe9bca">groundstation/firmware/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="groundstation/firmware/"/>
+  </compounddef>
+</doxygen>

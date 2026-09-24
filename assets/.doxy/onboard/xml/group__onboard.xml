@@ -1,0 +1,588 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__onboard" kind="group">
+    <compoundname>onboard</compoundname>
+    <title>Onboard Firmware</title>
+    <innerclass refid="classledStruct" prot="public">ledStruct</innerclass>
+    <innerclass refid="classdataStruct" prot="public">dataStruct</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__onboard_1ga53876b16f4099eeb1bf9bc422d4cd5dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void buzzerSound</definition>
+        <argsstring>(uint8_t pinBuzzer)</argsstring>
+        <name>buzzerSound</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinBuzzer</declname>
+        </param>
+        <briefdescription>
+<para>Function to play a sound when the setup is completed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pinBuzzer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="25" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="296" bodyend="299" declfile="onboard/firmware/include/utility.h" declline="25" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1gaccd289abac63f0ec3f32881ee78848ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void buzzerSoundError</definition>
+        <argsstring>(uint8_t pinBuzzer)</argsstring>
+        <name>buzzerSoundError</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinBuzzer</declname>
+        </param>
+        <briefdescription>
+<para>Function to play a sound according to a error during setup. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pinBuzzer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="33" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="301" bodyend="310" declfile="onboard/firmware/include/utility.h" declline="33" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1ga6046607d0fd0ac28b6c1f57385304c05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void radioModulesSetup</definition>
+        <argsstring>(RC17xxHP_RC232 *rc1780hp, RC17xxHP_RC232 *rc1701hp, ledStruct *pinLed, uint8_t pinBuzzer)</argsstring>
+        <name>radioModulesSetup</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>rc1780hp</declname>
+        </param>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>rc1701hp</declname>
+        </param>
+        <param>
+          <type><ref refid="classledStruct" kindref="compound">ledStruct</ref> *</type>
+          <declname>pinLed</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinBuzzer</declname>
+        </param>
+        <briefdescription>
+<para>Configures both radio modules; lights each module&apos;s status LED on success and sounds buzzzer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rc1780hp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rc1701hp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinBuzzer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="44" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="41" bodyend="61" declfile="onboard/firmware/include/utility.h" declline="44" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1gac93be4154e4e329795b3f20cdc150193" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void commandReceive</definition>
+        <argsstring>(RC17xxHP_RC232 *radioModule, Packet *commandPacket)</argsstring>
+        <name>commandReceive</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>commandPacket</declname>
+        </param>
+        <briefdescription>
+<para>Returns the latest single-byte command from the uplink module (rc1701hp, on Serial3), or 0 if command is bad/unknown. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>radioModule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="55" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="64" bodyend="72" declfile="onboard/firmware/include/utility.h" declline="55" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1ga81781e5fca0b89284d535e761a870943" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void commandExecute</definition>
+        <argsstring>(uint8_t command, RC17xxHP_RC232 *radioModule, dataStruct *dataVariables, ledStruct *pinLed, uint8_t *flightMode, Subsystem **subsystemsList, uint8_t subsystemsCount, Subsystem *subsystemSens, Subsystem *subsystemControl, Packet *flightDataPacket, Packet *telemetryDataPacket, uint8_t pinArm, uint8_t pinSleep)</argsstring>
+        <name>commandExecute</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <param>
+          <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref> *</type>
+          <declname>dataVariables</declname>
+        </param>
+        <param>
+          <type><ref refid="classledStruct" kindref="compound">ledStruct</ref> *</type>
+          <declname>pinLed</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>flightMode</declname>
+        </param>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> *</type>
+          <declname>subsystemSens</declname>
+        </param>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> *</type>
+          <declname>subsystemControl</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>flightDataPacket</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>telemetryDataPacket</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinArm</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinSleep</declname>
+        </param>
+        <briefdescription>
+<para>Changes the values of the loop variables and therefore the state of flight computer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radioModule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataVariables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flightMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemSens</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemControl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinArm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinSleep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="74" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="74" bodyend="159" declfile="onboard/firmware/include/utility.h" declline="74" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1ga60aa040e4452389436b5be68b9933b25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t packetSendCheck</definition>
+        <argsstring>(uint8_t *flightmode, uint8_t loopFrequency, uint8_t timeBetweenStandbyPackets, uint32_t loopCount)</argsstring>
+        <name>packetSendCheck</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>flightmode</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>loopFrequency</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>timeBetweenStandbyPackets</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>loopCount</declname>
+        </param>
+        <briefdescription>
+<para>Function that handle the decision of sending a package depending on the timeBetweenStandbyPackets. In addition handles the decision of sending either the telemetry or flight package. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>flightmode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>loopFrequency</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenStandbyPackets</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>loopCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="87" column="9" bodyfile="onboard/firmware/src/utility.cpp" bodystart="165" bodyend="207" declfile="onboard/firmware/include/utility.h" declline="87" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1gacac3e151736dce71063f9f3d7b4c1b5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void packetSend</definition>
+        <argsstring>(RC17xxHP_RC232 *radioModule, uint8_t packetType, Packet *flightDataPacket, Packet *telemetryDataPacket)</argsstring>
+        <name>packetSend</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>packetType</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>flightDataPacket</declname>
+        </param>
+        <param>
+          <type>Packet *</type>
+          <declname>telemetryDataPacket</declname>
+        </param>
+        <briefdescription>
+<para>Function to build up the package depending on an identifyer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>radioModule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataVariables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>packetIdentifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="98" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="209" bodyend="227" declfile="onboard/firmware/include/utility.h" declline="98" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1gae4db8f2ccf1d64901337cf90e1630c72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void flashWrite</definition>
+        <argsstring>(dataStruct *dataVariables)</argsstring>
+        <name>flashWrite</name>
+        <param>
+          <type><ref refid="classdataStruct" kindref="compound">dataStruct</ref> *</type>
+          <declname>dataVariables</declname>
+        </param>
+        <briefdescription>
+<para>Function to write to the onbaord flash. f. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dataVariables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="106" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="161" bodyend="163" declfile="onboard/firmware/include/utility.h" declline="106" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1gac01e4dc28b2b2297b74fe0f79e1dc696" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loopVariablesUpdate</definition>
+        <argsstring>(uint32_t *loopCount, uint32_t *loopStartTime, uint8_t loopFrequency, uint8_t pinLedLoop)</argsstring>
+        <name>loopVariablesUpdate</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>loopCount</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>loopStartTime</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>loopFrequency</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinLedLoop</declname>
+        </param>
+        <briefdescription>
+<para>Function that update the loop variables. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loopCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>loopStartTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>loopFrequency</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLedLoop</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="117" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="229" bodyend="244" declfile="onboard/firmware/include/utility.h" declline="117" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__onboard_1ga52279c232fc1164df02e30117c8724e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ledUpdate</definition>
+        <argsstring>(uint8_t state, ledStruct *pinLed)</argsstring>
+        <name>ledUpdate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type><ref refid="classledStruct" kindref="compound">ledStruct</ref> *</type>
+          <declname>pinLed</declname>
+        </param>
+        <briefdescription>
+<para>Function to update LEDs to display different states of the system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinLed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="126" column="6" bodyfile="onboard/firmware/src/utility.cpp" bodystart="246" bodyend="294" declfile="onboard/firmware/include/utility.h" declline="126" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Functions and data structures used by the onboard firmware. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
