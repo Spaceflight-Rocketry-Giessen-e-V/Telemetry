@@ -8,7 +8,8 @@ This document provides an overview of the automated GitHub Actions workflows and
    - [Firmware Documentation](#firmware-documentation)
 - [Manuell](#manuell)
    - [Updating PCBs](#updating-pcbs)
-   - [Updating and Publishing Libraries](#updating-and-publishing-libraries)
+   - [Updating CAD Models](#updating-cad-models)
+   - [Updating Libraries](#updating-libraries)
 
 # Automatic
 
@@ -70,9 +71,19 @@ When updating anything related to PCBs, work through the follwing steps:
 2) Regenerate gerber files 
 3) Zip the gerber files
 4) Regenerate bom and ibom
-5) Check if all rendering are still right
+5) Check if all renderings are still right
 
-## Updating and Publishing Libraries
+Please always check that no custom third party symbols, footprints or 3D models are included in the custom libraries. Instead, substitutions should be handcrafted (KiCad objects can be used as a starting point as stated [here](https://www.kicad.org/libraries/license/)). Please also remove unused symbols, footprints and 3D models.
+
+## Updating CAD Models
+
+When updating a CAD model in Autodesk Fusion, the `.f3d`/`.f3z` file should be used as the starting point. 
+
+After the changes, the `.f3d`/`.f3z` file should be exported and placed in the `Original Design Files` folder. Also, every component should be exported separately as both `.stl` and `.step` files and both should be placed in the `Auxiliary Design Files` folder.
+
+It should always be checked, if all renderings are still right even after the changes.
+
+## Updating Libraries
 
 When one of the libraries is updated, the version number in the `library.json` file has to be incremented. This project adheres to Semantic Versioning with MAJOR.MINOR.PATCH as the version number. Please see the [Semantic Versioning v2.0.0 Specification](https://semver.org/spec/v2.0.0.html) for details.
 
