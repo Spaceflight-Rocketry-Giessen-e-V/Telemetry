@@ -6044,7 +6044,7 @@
 			(uuid "d05c90ca-54de-40f7-bf53-b1830571fcf1")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3D Models/RFPC-SMA27-F--3DModel-STEP-269445.STEP"
+		(model "${KIPRJMOD}/3D Models/GCT_RFPC-SMA27.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6052,7 +6052,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
