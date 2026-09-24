@@ -1,5 +1,5 @@
-site_name: ASCENT III Telemetry Firmware
-site_description: Firmware and library reference for the ASCENT III telemetry system
+site_name: ASCENT Rocket Telemetry Firmware
+site_description: Firmware and library reference for the ASCENT Rocket Telemetry System
 site_url: https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/
 repo_url: https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry
 repo_name: Spaceflight-Rocketry-Giessen-e-V/Telemetry
@@ -17,7 +17,6 @@ theme:
     - navigation.tabs.sticky
     - navigation.tabs.sticky
     - navigation.path
-
 
   font:
     text: Montserrat
@@ -69,7 +68,7 @@ plugins:
           full-doc: true
           template-dir: .github/mkdocs/templates
           doxy-cfg:
-            FILE_PATTERNS: "*.h *.hpp *.cpp"
+            FILE_PATTERNS: "*.h *.hpp *.c *.cpp"
             RECURSIVE: true
             EXTRACT_ALL: true
         groundstation:
@@ -77,7 +76,7 @@ plugins:
           full-doc: true
           template-dir: .github/mkdocs/templates
           doxy-cfg:
-            FILE_PATTERNS: "*.h *.hpp *.cpp"
+            FILE_PATTERNS: "*.h *.hpp *.c *.cpp"
             RECURSIVE: true
             EXTRACT_ALL: true
         packet:
@@ -85,7 +84,7 @@ plugins:
           full-doc: true
           template-dir: .github/mkdocs/templates
           doxy-cfg:
-            FILE_PATTERNS: "*.h *.hpp *.cpp"
+            FILE_PATTERNS: "*.h *.hpp *.c *.cpp"
             RECURSIVE: true
             EXTRACT_ALL: true
         radiocrafts:
@@ -93,7 +92,7 @@ plugins:
           full-doc: true
           template-dir: .github/mkdocs/templates
           doxy-cfg:
-            FILE_PATTERNS: "*.h *.hpp *.cpp"
+            FILE_PATTERNS: "*.h *.hpp *.c *.cpp"
             RECURSIVE: true
             EXTRACT_ALL: true
 
@@ -104,12 +103,12 @@ nav:
           - Functions: onboard/group__onboard.md
           - Classes: onboard/annotated.md
           - Files: onboard/files.md
-      - Ground station:
+      - Groundstation:
           - Functions: groundstation/group__groundstation.md
           - Classes: groundstation/annotated.md
           - Files: groundstation/files.md
   - Libraries:
-      - Packet:
+      - DynamicPacketCodec:
           - Class reference: packet/annotated.md
           - Files: packet/files.md
       - Radiocrafts RC17xxHP-RC232:
