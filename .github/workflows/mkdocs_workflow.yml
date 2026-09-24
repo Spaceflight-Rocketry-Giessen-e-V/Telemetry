@@ -1,4 +1,4 @@
-name: Documentation
+name: mkdocs_workflow
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - "groundstation/firmware/**"
       - "libraries/**"
       - ".github/mkdocs/**"
-      - ".github/workflows/ci.yml"
+      - ".github/workflows/mkdocs_workflow.yml"
 
 permissions: {}
 

@@ -13,46 +13,21 @@ theme:
   features:
     - navigation.instant
     - navigation.instant.prefetch
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.tabs.sticky
     - navigation.path
+  favicon: images/cropped-logo_sprog_normal-scaled-1-75x75.png
 
   font:
     text: Montserrat
 
   palette:
-
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      primary: red
-      accent: deep purple
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: red
-      accent: purple
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: red
       accent: deep purple
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
 
 extra:
   social:
-    - icon: fontawesome/solid/satellite-dish
-      link: https://sprog-ev.de/
+    - icon: material/earth
+      link: https://sprog-ev.de/en/
       name: Spaceflight Rocketry Gießen e.V.
 
 extra_javascript:

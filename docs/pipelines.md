@@ -49,7 +49,7 @@ The workflow runs after a push to the `main` branch when files in one of the fol
 - [`groundstation/firmware/`](/groundstation/firmware/)
 - [`libraries/`](/libraries/)
 - [`.github/mkdocs/`](/.github/mkdocs/)
-- [`.github/workflows/ci.yml`](/.github/workflows/ci.yml)
+- [`.github/workflows/mkdocs_workflow.yml`](/.github/workflows/mkdocs_workflow.yml)
 
 The GitHub Actions job performs these steps:
 
