@@ -1,13 +1,13 @@
 (footprint "Banana_CT3151-0"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -0.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "174af75f-58d9-4b2e-a47f-5001e24f5a1b")
+		(uuid "7cf0d96e-7db1-4a55-8411-6954ed622fdb")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "eeaffb19-2797-4c8f-bcbd-c49611d22bb1")
+		(uuid "989749af-8d01-406f-a243-70477403c8c7")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "5e070b2a-f0fd-4545-92ef-d6b0f7a03088")
+		(uuid "a8b66f34-f74d-405c-94c6-4e5054ed350d")
 		(effects
 			(font
 				(size 1 1)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "6d1a3a5d-78af-4423-a725-471f119e85ae")
+		(uuid "e111bfbf-02a2-4b23-bff0-303bd3010815")
 		(effects
 			(font
 				(size 1 1)
@@ -54,6 +54,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
 		(start -4 -6.5)
 		(end 24 6.5)
@@ -63,13 +64,13 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "413b75b5-8476-4748-b7ba-f90fce3dc9ad")
+		(uuid "78b18ac3-c86f-4027-833a-a9b9e82699af")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "389a80f6-a70b-4611-9a51-3aaea9b869f9")
+		(uuid "9d1f925e-e233-4954-859f-b386823dbe27")
 		(effects
 			(font
 				(size 1 1)
@@ -83,7 +84,7 @@
 		(drill 1.7)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c18688af-3acd-459d-834a-dd8ca338102e")
+		(uuid "ac745cfe-45ab-4be9-80a9-f290ca5b8dcc")
 	)
 	(pad "1" thru_hole circle
 		(at -2.55 2.55)
@@ -91,7 +92,7 @@
 		(drill 1.7)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "7400ffcc-9637-4a47-a752-029332b793c2")
+		(uuid "e1e2992c-1495-4663-9f3c-c15d84cb0eed")
 	)
 	(pad "1" thru_hole circle
 		(at 2.55 -2.55)
@@ -99,7 +100,7 @@
 		(drill 1.7)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "f82e1410-0a1a-4c2b-b30d-faf639b9422d")
+		(uuid "6158f0c7-2749-4eb9-b1b7-aee8080facaa")
 	)
 	(pad "1" thru_hole circle
 		(at 2.55 2.55)
@@ -107,18 +108,18 @@
 		(drill 1.7)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "190a5562-7585-49d3-9db2-ed289c2c9fe1")
+		(uuid "0ee0c138-4773-45da-a828-6e5fdd4e07a3")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3D Models/CT3151-0.STEP"
+	(model "${KIPRJMOD}/3D Models/CalTest_CT3151-0_Banana_Black.step"
 		(offset
-			(xyz 10.5 0 13)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -90 -0 180)
+			(xyz -0 -0 -90)
 		)
 	)
 )
