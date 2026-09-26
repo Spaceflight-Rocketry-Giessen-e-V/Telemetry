@@ -201,7 +201,7 @@ This step is very easy and should take about 5 minutes.
 
 **2. Trim the coil**
 
-Once fully seated, trim the copper tube flush at the last pacifier.
+Once fully seated, trim the copper tube flush at the last pacifier. This can be done with a small multitool or a metal saw
 
 |![Finished coil antenna assembly](images/helical_antenna_assembly/0403_finished_coil_antenna_assembly.png)|![Cut end](images/helical_antenna_assembly/0404_cut_end.png)|
 |---|---|
@@ -225,11 +225,11 @@ This is also a good time to drill the corner holes for the guy-wire string attac
 
 **2. Assemble the cones and connector**
 
-Install the SMA connector using the M2.5 screws. Pass the rod through the plate. Mount the [Top Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Top%20Cone.stl) from above and bolt it down with the M6 screws. Finally, attach the [Bottom Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Bottom%20Cone.stl) from below, by removing the nuts from the Top Cone, and using them to bolt the Bottom Cone to the Top Cone
+Install the SMA connector using the M2.5 screws. Pass the SMA conenctor from the Antenna side in, so it can be disassembled afterward.  Mount the [Top Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Top%20Cone.stl) from above and bolt it down with the M6 screws. Finally, attach the [Bottom Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Bottom%20Cone.stl) from below, by removing the nuts from the Top Cone, and using them to bolt the Bottom Cone to the Top Cone
 
-|![Top cone screwed on (top view)](images/helical_antenna_assembly/0502_top_cone_screwedon_top.png)|![Top cone screwed on (bottom view)](images/helical_antenna_assembly/0503_top_cone_screwedon_bottom.png)|
-|---|---|
-|![SMA connector bottom](images/helical_antenna_assembly/0504_SMA_connector_bottom.png)|![SMA connector top](images/helical_antenna_assembly/0504_SMA_connector_top.png)|
+| ![Top cone screwed on (top view)](images/helical_antenna_assembly/0502_top_cone_screwedon_top.png) | ![Top cone screwed on (bottom view)](images/helical_antenna_assembly/0503_top_cone_screwedon_bottom.png) |
+| --- | --- |
+| ![SMA connector bottom](images/helical_antenna_assembly/0504_SMA_connector_bottom.png) | ![SMA connector top](images/helical_antenna_assembly/0504_SMA_connector_top.png) |
 
 ![Finished assembly 1](../groundstation/antenna/helical/images/GroundstationAntenna_picture_2.png)
 ![Finished assembly 2](images/helical_antenna_assembly/0601_assembly_with_strings_attached.png)
@@ -296,6 +296,6 @@ Use a good amount of flux, a heat gun and a soldering iron to attach the end of 
 
 ### Phase 6 - Soldering
 - [ ] Trim the straight end of the tube
-- [ ] Squeeze the end with pliers
+- [ ] Squeeze the end with pliers or use a metal saw to cut it to length (WIP to determine which is better)
 - [ ] Prepare the surface with sandpaper and isopropyl alcohol
 - [ ] Use flux and an additional heat source like a heat gun and a soldering iron to solder the end to the SMA connector
