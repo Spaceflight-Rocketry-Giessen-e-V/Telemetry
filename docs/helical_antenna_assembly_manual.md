@@ -38,7 +38,7 @@ The mechanical design of the helical antenna is explained in the [design overvie
 |Fiberglass Rod|1 m length, 31 mm diameter|20|
 |Aluminum Plate|40 × 40 cm, 1.5 mm thickness|15|
 |Copper Tube|5 m length, 6 mm diameter, hollow|30|
-|[SMA Connector](https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA016-15-G/11624645)|TE Connectivity CONSMA016-15-G|7|
+|[SMA Connector](https://www.digikey.de/de/products/detail/te-connectivity-linx/CONSMA016-15-G/11624645)|WR-SMA Panel 4-Hole Flange|7|
 |[Pacifier](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier.stl)|7x (3D printed)|-|
 |[Pacifier Endcap](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier%20Endcap.stl)|1 (3D printed)|-|
 |[Pacifier Fixture](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Pacifier%20Fixture.stl)|1× (3D printed)|-|
