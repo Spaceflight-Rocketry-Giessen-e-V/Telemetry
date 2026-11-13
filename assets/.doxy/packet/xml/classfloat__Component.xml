@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classfloat__Component" kind="class" language="C++" prot="public">
+    <compoundname>float_Component</compoundname>
+    <basecompoundref refid="classComponent" prot="public" virt="non-virtual">Component</basecompoundref>
+    <includes refid="dataComponents_8h" local="no">dataComponents.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" prot="protected" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* float_Component::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>float_Component::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="24" column="7" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float float_Component::min</definition>
+        <argsstring></argsstring>
+        <name>min</name>
+        <qualifiedname>float_Component::min</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="25" column="7" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float float_Component::max</definition>
+        <argsstring></argsstring>
+        <name>max</name>
+        <qualifiedname>float_Component::max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="26" column="7" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float float_Component::resolution</definition>
+        <argsstring></argsstring>
+        <name>resolution</name>
+        <qualifiedname>float_Component::resolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="27" column="7" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classfloat__Component_1abe819c1547d102398ab6980c6b1e0519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>float_Component::float_Component</definition>
+        <argsstring>(float *value, uint8_t size, const float min, const float max, const uint8_t priority=0)</argsstring>
+        <name>float_Component</name>
+        <qualifiedname>float_Component::float_Component</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>const float</type>
+          <declname>max</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>priority</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="20" column="1" bodyfile="libraries/DynamicPacketCodec/src/dataComponents.cpp" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classfloat__Component_1a16966ae7f8b57abde49aea25c0ee79ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void float_Component::encode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>encode</name>
+        <qualifiedname>float_Component::encode</qualifiedname>
+        <reimplements refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b">encode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="21" column="6" bodyfile="libraries/DynamicPacketCodec/src/dataComponents.cpp" bodystart="45" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classfloat__Component_1afd3c417fecc8858d5eb2a5499c5d91dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t float_Component::decode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>decode</name>
+        <qualifiedname>float_Component::decode</qualifiedname>
+        <reimplements refid="classComponent_1a266439e9a03683a4e397b13390d00a3e">decode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="22" column="9" bodyfile="libraries/DynamicPacketCodec/src/dataComponents.cpp" bodystart="55" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+      </node>
+      <node id="1">
+        <label>float_Component</label>
+        <link refid="classfloat__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>packet</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Packet</label>
+        <link refid="classPacket"/>
+      </node>
+      <node id="1">
+        <label>float_Component</label>
+        <link refid="classfloat__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libraries/DynamicPacketCodec/include/dataComponents.h" line="17" column="1" bodyfile="libraries/DynamicPacketCodec/include/dataComponents.h" bodystart="18" bodyend="28"/>
+    <listofallmembers>
+      <member refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" prot="public" virt="non-virtual"><scope>float_Component</scope><name>bitPosition</name></member>
+      <member refid="classComponent_1aba2955099d2fb6620facf48393187239" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>bitReader</name></member>
+      <member refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>bitReset</name></member>
+      <member refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>bitWriter</name></member>
+      <member refid="classComponent_1a9aa87c9b2222a8b0f8687803cf1c8457" prot="public" virt="non-virtual"><scope>float_Component</scope><name>Component</name></member>
+      <member refid="classfloat__Component_1afd3c417fecc8858d5eb2a5499c5d91dd" prot="public" virt="virtual"><scope>float_Component</scope><name>decode</name></member>
+      <member refid="classfloat__Component_1a16966ae7f8b57abde49aea25c0ee79ab" prot="public" virt="virtual"><scope>float_Component</scope><name>encode</name></member>
+      <member refid="classfloat__Component_1abe819c1547d102398ab6980c6b1e0519" prot="public" virt="non-virtual"><scope>float_Component</scope><name>float_Component</name></member>
+      <member refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>max</name></member>
+      <member refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>min</name></member>
+      <member refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" prot="public" virt="non-virtual"><scope>float_Component</scope><name>packet</name></member>
+      <member refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" prot="public" virt="non-virtual"><scope>float_Component</scope><name>priority</name></member>
+      <member refid="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>resolution</name></member>
+      <member refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" prot="public" virt="non-virtual"><scope>float_Component</scope><name>size</name></member>
+      <member refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" prot="protected" virt="non-virtual"><scope>float_Component</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

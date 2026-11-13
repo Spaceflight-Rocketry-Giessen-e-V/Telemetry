@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_2b4e7e91317ac52720a224829badd460" kind="dir">
+    <compoundname>onboard</compoundname>
+    <innerdir refid="dir_ad9f2de7f5f8c5340cd53f6a1e630f0d">onboard/firmware</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="onboard/"/>
+  </compounddef>
+</doxygen>

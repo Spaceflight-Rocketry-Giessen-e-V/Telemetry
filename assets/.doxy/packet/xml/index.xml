@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="classchar__Component" kind="class"><name>char_Component</name>
+    <member refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kind="variable"><name>value</name></member>
+    <member refid="classchar__Component_1acfa5fbd3a18c869fb86f050fe4139269" kind="function"><name>char_Component</name></member>
+    <member refid="classchar__Component_1ad4deff23170cb52e3daab0ad1373ec7e" kind="function"><name>encode</name></member>
+    <member refid="classchar__Component_1a0b904fdecebb0c139f6e3b7a50fe7bb7" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classcobs__Component" kind="class"><name>cobs_Component</name>
+    <member refid="classcobs__Component_1ab46a6326cb3acab5aa444d180dfba8a5" kind="variable"><name>markerByte</name></member>
+    <member refid="classcobs__Component_1af5b7472be3c6ed4448cb63be6a788f5a" kind="variable"><name>size</name></member>
+    <member refid="classcobs__Component_1adb4757242adbec8abcc57ce8e8056ac6" kind="function"><name>cobs_Component</name></member>
+    <member refid="classcobs__Component_1a31db0056c870bad88690da978963a485" kind="function"><name>encode</name></member>
+    <member refid="classcobs__Component_1a6ee8eec1fc0f1fe07eaa6dae738e43e7" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classComponent" kind="class"><name>Component</name>
+    <member refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kind="variable"><name>size</name></member>
+    <member refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" kind="variable"><name>bitPosition</name></member>
+    <member refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kind="variable"><name>priority</name></member>
+    <member refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kind="variable"><name>packet</name></member>
+    <member refid="classComponent_1a9aa87c9b2222a8b0f8687803cf1c8457" kind="function"><name>Component</name></member>
+    <member refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b" kind="function"><name>encode</name></member>
+    <member refid="classComponent_1a266439e9a03683a4e397b13390d00a3e" kind="function"><name>decode</name></member>
+    <member refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" kind="function"><name>bitWriter</name></member>
+    <member refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" kind="function"><name>bitReset</name></member>
+    <member refid="classComponent_1aba2955099d2fb6620facf48393187239" kind="function"><name>bitReader</name></member>
+  </compound>
+  <compound refid="classconst__Component" kind="class"><name>const_Component</name>
+    <member refid="classconst__Component_1a96e83a97e9fa3eeae60c975c0a007439" kind="variable"><name>value</name></member>
+    <member refid="classconst__Component_1a6fa5f94291858f4ecb02e6b4b84b4ea5" kind="function"><name>const_Component</name></member>
+    <member refid="classconst__Component_1ab01c3e83be736bc3078efee1ae1a449f" kind="function"><name>encode</name></member>
+    <member refid="classconst__Component_1a0b477d651cce781029c2c2a5a77860a0" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classempty__Component" kind="class"><name>empty_Component</name>
+    <member refid="classempty__Component_1a6879b17356f1be0a2af0cc325e10e377" kind="function"><name>empty_Component</name></member>
+    <member refid="classempty__Component_1a490b3d61434fbdd04d9bcaf71adb8ae2" kind="function"><name>encode</name></member>
+    <member refid="classempty__Component_1a4d6c70ca0c670b9f1d14caf0c0578e68" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classfloat__Component" kind="class"><name>float_Component</name>
+    <member refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kind="variable"><name>value</name></member>
+    <member refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kind="variable"><name>min</name></member>
+    <member refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" kind="variable"><name>max</name></member>
+    <member refid="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" kind="variable"><name>resolution</name></member>
+    <member refid="classfloat__Component_1abe819c1547d102398ab6980c6b1e0519" kind="function"><name>float_Component</name></member>
+    <member refid="classfloat__Component_1a16966ae7f8b57abde49aea25c0ee79ab" kind="function"><name>encode</name></member>
+    <member refid="classfloat__Component_1afd3c417fecc8858d5eb2a5499c5d91dd" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classPacket" kind="class"><name>Packet</name>
+    <member refid="classPacket_1a191308267270493a700d57ce87cc3113" kind="variable"><name>components</name></member>
+    <member refid="classPacket_1a33371817b4c98a71304ab8e365ecddb2" kind="variable"><name>bitSize</name></member>
+    <member refid="classPacket_1aabcfb963c0d5bc0fa554668f92989622" kind="function"><name>Packet</name></member>
+    <member refid="classPacket_1af5a1ea5cbfe556a3d59deb408406e388" kind="function"><name>getBitSize</name></member>
+    <member refid="classPacket_1a48a204145719e39d6049b24a752d0a77" kind="function"><name>getByteSize</name></member>
+    <member refid="classPacket_1ac13017d5faae73ffd5fc3ad0ed9062e6" kind="function"><name>addComponent</name></member>
+    <member refid="classPacket_1ada62389e51b9e012997ed09a1911a98e" kind="function"><name>encode</name></member>
+    <member refid="classPacket_1a52e3ca4d1563e202aa631dc3e7056900" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classparity__Component" kind="class"><name>parity_Component</name>
+    <member refid="classparity__Component_1a4daac45d21838f12fe93dbc16103ee80" kind="function"><name>parity_Component</name></member>
+    <member refid="classparity__Component_1a8fb0210894a961e38cb7f104e9775a90" kind="function"><name>encode</name></member>
+    <member refid="classparity__Component_1a52f1e0bd54789d390b7fe2f06607bb10" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classuint8__t__Component" kind="class"><name>uint8_t_Component</name>
+    <member refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kind="variable"><name>value</name></member>
+    <member refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kind="variable"><name>min</name></member>
+    <member refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" kind="variable"><name>max</name></member>
+    <member refid="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" kind="variable"><name>resolution</name></member>
+    <member refid="classuint8__t__Component_1ae08d6fb5a164a08315cad93403dcaf19" kind="function"><name>uint8_t_Component</name></member>
+    <member refid="classuint8__t__Component_1aea7ba0eda40610180d01bbf98672a147" kind="function"><name>encode</name></member>
+    <member refid="classuint8__t__Component_1a738622f6af30a034cf9fe10c48d788b3" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="baseClasses_8h" kind="file"><name>baseClasses.h</name>
+  </compound>
+  <compound refid="dataComponents_8h" kind="file"><name>dataComponents.h</name>
+  </compound>
+  <compound refid="DynamicPacketCodec_8h" kind="file"><name>DynamicPacketCodec.h</name>
+  </compound>
+  <compound refid="frameComponents_8h" kind="file"><name>frameComponents.h</name>
+  </compound>
+  <compound refid="baseClasses_8cpp" kind="file"><name>baseClasses.cpp</name>
+  </compound>
+  <compound refid="dataComponents_8cpp" kind="file"><name>dataComponents.cpp</name>
+  </compound>
+  <compound refid="frameComponents_8cpp" kind="file"><name>frameComponents.cpp</name>
+  </compound>
+  <compound refid="dir_3b1e16a071e0cb7dba7bed78c84278d9" kind="dir"><name>libraries/DynamicPacketCodec</name>
+  </compound>
+  <compound refid="dir_d3910b10d935f2681f2ee83ac211d5ad" kind="dir"><name>libraries/DynamicPacketCodec/include</name>
+  </compound>
+  <compound refid="dir_bc0718b08fb2015b8e59c47b2805f60c" kind="dir"><name>libraries</name>
+  </compound>
+  <compound refid="dir_0e3c0571c94c2f89fbf113628d83e1ea" kind="dir"><name>libraries/DynamicPacketCodec/src</name>
+  </compound>
+</doxygenindex>

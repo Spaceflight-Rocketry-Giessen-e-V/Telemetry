@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classconst__Component" kind="class" language="C++" prot="public">
+    <compoundname>const_Component</compoundname>
+    <basecompoundref refid="classComponent" prot="public" virt="non-virtual">Component</basecompoundref>
+    <includes refid="frameComponents_8h" local="no">frameComponents.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classconst__Component_1a96e83a97e9fa3eeae60c975c0a007439" prot="protected" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t const_Component::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>const_Component::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="11" column="10" bodyfile="libraries/DynamicPacketCodec/include/frameComponents.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classconst__Component_1a6fa5f94291858f4ecb02e6b4b84b4ea5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>const_Component::const_Component</definition>
+        <argsstring>(uint32_t value, uint8_t size, const uint8_t priority=0)</argsstring>
+        <name>const_Component</name>
+        <qualifiedname>const_Component::const_Component</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>priority</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="7" column="1" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="6" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classconst__Component_1ab01c3e83be736bc3078efee1ae1a449f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void const_Component::encode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>encode</name>
+        <qualifiedname>const_Component::encode</qualifiedname>
+        <reimplements refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b">encode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="8" column="6" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classconst__Component_1a0b477d651cce781029c2c2a5a77860a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t const_Component::decode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>decode</name>
+        <qualifiedname>const_Component::decode</qualifiedname>
+        <reimplements refid="classComponent_1a266439e9a03683a4e397b13390d00a3e">decode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="9" column="9" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="16" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+      </node>
+      <node id="1">
+        <label>const_Component</label>
+        <link refid="classconst__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>packet</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Packet</label>
+        <link refid="classPacket"/>
+      </node>
+      <node id="1">
+        <label>const_Component</label>
+        <link refid="classconst__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="4" column="1" bodyfile="libraries/DynamicPacketCodec/include/frameComponents.h" bodystart="5" bodyend="12"/>
+    <listofallmembers>
+      <member refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" prot="public" virt="non-virtual"><scope>const_Component</scope><name>bitPosition</name></member>
+      <member refid="classComponent_1aba2955099d2fb6620facf48393187239" prot="protected" virt="non-virtual"><scope>const_Component</scope><name>bitReader</name></member>
+      <member refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" prot="protected" virt="non-virtual"><scope>const_Component</scope><name>bitReset</name></member>
+      <member refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" prot="protected" virt="non-virtual"><scope>const_Component</scope><name>bitWriter</name></member>
+      <member refid="classComponent_1a9aa87c9b2222a8b0f8687803cf1c8457" prot="public" virt="non-virtual"><scope>const_Component</scope><name>Component</name></member>
+      <member refid="classconst__Component_1a6fa5f94291858f4ecb02e6b4b84b4ea5" prot="public" virt="non-virtual"><scope>const_Component</scope><name>const_Component</name></member>
+      <member refid="classconst__Component_1a0b477d651cce781029c2c2a5a77860a0" prot="public" virt="virtual"><scope>const_Component</scope><name>decode</name></member>
+      <member refid="classconst__Component_1ab01c3e83be736bc3078efee1ae1a449f" prot="public" virt="virtual"><scope>const_Component</scope><name>encode</name></member>
+      <member refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" prot="public" virt="non-virtual"><scope>const_Component</scope><name>packet</name></member>
+      <member refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" prot="public" virt="non-virtual"><scope>const_Component</scope><name>priority</name></member>
+      <member refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" prot="public" virt="non-virtual"><scope>const_Component</scope><name>size</name></member>
+      <member refid="classconst__Component_1a96e83a97e9fa3eeae60c975c0a007439" prot="protected" virt="non-virtual"><scope>const_Component</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

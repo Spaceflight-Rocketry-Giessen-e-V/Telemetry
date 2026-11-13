@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="Radiocrafts__RC17xxHP__RC232_8h" kind="file" language="C++">
+    <compoundname>Radiocrafts_RC17xxHP_RC232.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includedby refid="Radiocrafts__RC17xxHP__RC232_8cpp" local="yes">libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp</includedby>
+    <includedby refid="initialization_8cpp" local="yes">libraries/Radiocrafts_RC17xxHP_RC232/examples/initialization.cpp</includedby>
+    <includedby refid="sending_8cpp" local="yes">libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h</label>
+        <link refid="Radiocrafts__RC17xxHP__RC232_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp</label>
+        <link refid="Radiocrafts__RC17xxHP__RC232_8cpp"/>
+      </node>
+      <node id="1">
+        <label>libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h</label>
+        <link refid="Radiocrafts__RC17xxHP__RC232_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>libraries/Radiocrafts_RC17xxHP_RC232/examples/initialization.cpp</label>
+        <link refid="initialization_8cpp"/>
+      </node>
+      <node id="4">
+        <label>libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp</label>
+        <link refid="sending_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classRC17xxHP__RC232" prot="public">RC17xxHP_RC232</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/><sp/><sp/>RC17xxHP-RC232<sp/>-<sp/>Library<sp/>for<sp/>using<sp/>Radiocrafts<sp/>RC17xxHP-RC232<sp/>RF<sp/>modules.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/><sp/><sp/><sp/>Spaceflight<sp/>Rocketry<sp/>Giessen<sp/>e.V.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/><sp/><sp/>Published<sp/>under<sp/>the<sp/>CERN<sp/>OHL-S<sp/>v2<sp/>license<sp/>at<sp/>https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>RC17xxHP_RC232_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RC17xxHP_RC232_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classRC17xxHP__RC232" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRC17xxHP__RC232" kindref="compound">RC17xxHP_RC232</ref></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRC17xxHP__RC232" kindref="compound">RC17xxHP_RC232</ref>(HardwareSerial<sp/>*serial,<sp/>uint8_t<sp/><ref refid="initialization_8cpp_1a4dbde3dffd259cf7e585ff0ef216f3b1" kindref="member">pinTX</ref>,<sp/>uint8_t<sp/><ref refid="initialization_8cpp_1a66e7296275a111b96053e6e7fac2cfa3" kindref="member">pinRX</ref>,<sp/>uint32_t<sp/><ref refid="initialization_8cpp_1ac4f06ea26ed6bd7ae83b92d64ac10b78" kindref="member">baudrate</ref>,<sp/>uint8_t<sp/><ref refid="initialization_8cpp_1ace01b019e8d95bd79457cef315869ebc" kindref="member">pinCFG</ref>,<sp/>uint8_t<sp/><ref refid="initialization_8cpp_1ace62eb9661e726551b85d55ebf2e9daf" kindref="member">pinRST</ref>,<sp/>uint8_t<sp/><ref refid="initialization_8cpp_1acbb407a2e32d99ea8fdc1ae3a9ab8f3e" kindref="member">pinCTS</ref>,<sp/>uint8_t<sp/><ref refid="initialization_8cpp_1abe9dc4ab33b934a18b4cfa2e7571732c" kindref="member">pinRTS</ref>);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRC17xxHP__RC232_1a98b9e018d748143c199cdd6827819180" kindref="member">begin</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a9bdf20a27555cf3771ff799b04cdf775" kindref="member">ping</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Serial<sp/>Functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRC17xxHP__RC232_1aa2d13dd73751ee9d27470bc99e779b93" kindref="member">flush</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classRC17xxHP__RC232_1a703f31f4457ec136d3876c516b9ba851" kindref="member">serialWait</ref>(uint32_t<sp/>delayMicroseconds);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRC17xxHP__RC232_1ad2a57f2b7279ff09fa4acde17e0815ce" kindref="member">send</ref>(uint8_t<sp/>*bytes,<sp/>uint8_t<sp/>length);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRC17xxHP__RC232_1ad2a57f2b7279ff09fa4acde17e0815ce" kindref="member">send</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRC17xxHP__RC232_1a4155351fab7610730321b210212bdb41" kindref="member">read</ref>(uint8_t<sp/>*bytes,<sp/>uint8_t<sp/>length);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a4155351fab7610730321b210212bdb41" kindref="member">read</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ad5776362f4c0f6e321a1d8118890a5a2" kindref="member">available</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>Functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a74662398781cfa783380856d94b7dda0" kindref="member">resetHard</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ad610f62c9f0f8596ace1651181aa0019" kindref="member">resetSoft</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a170b96ff2b25442dfd2f5ad220620742" kindref="member">memoryReset</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a5e43814569a705ebc03dc2bb2b4021fd" kindref="member">set_RF_CHANNEL</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a1582b3d55a93af1af7ecf241cdf6522a" kindref="member">set_RF_POWER</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a54f65edf3a494314c019d316847b79cb" kindref="member">set_RF_DATA_RATE</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a4381e4c87dde62f2580eb9fc07699e88" kindref="member">set_SLEEP_MODE</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a8fff7556eddec967413052a05fd74424" kindref="member">set_RSSI_MODE</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a4e9bafe1eb5cf29f1849627d23fe57df" kindref="member">set_PACKET_LENGTH</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a198846ab22e9c72a608de4592649b4e3" kindref="member">set_PACKET_TIMEOUT</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a472edfe2dc70cceb90fbc203633586f3" kindref="member">set_PACKET_END_CHARACTER</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a813e8fae023b6da72e271218d7dc34a4" kindref="member">set_ADDRESS_MODE</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1adc547f812d687cc2d99c31965b3f8199" kindref="member">set_CRC_MODE</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1af582ef0ad21148cf5a6a928526e2e458" kindref="member">set_UID</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1aa9468b3c408e1e4d933bc92e8385176b" kindref="member">set_SID</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1aedd8502628134d31eec924651e4e4e71" kindref="member">set_DID</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ad4d726863ad07fd4a84f54c902c471f6" kindref="member">set_BID</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a297c62bc87222573601be478daea8946" kindref="member">set_UART_BAUD_RATE</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1afea52b70e30c498a2019222930e0da2a" kindref="member">set_UART_FLOW_CONTROL</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ab06ccec968ad6ab5321284575f3ce6c0" kindref="member">set_LED_CONTROL</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a6e3eeeead8208cdd8ba4283cde40ba4d" kindref="member">get_RF_CHANNEL</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ace36e6462c6ecf26e199731718214cfb" kindref="member">get_RF_POWER</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1acbebdd40b238ca8b506bde43364a59ab" kindref="member">get_RF_DATA_RATE</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ac496e5d2090ddada1fb8f96ce1260443" kindref="member">get_SLEEP_MODE</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a1fa16bfa2ae8b59b1cdfb3c6cd617bd7" kindref="member">get_RSSI_MODE</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a240e8c90890a463e438acf5121a40a09" kindref="member">get_PACKET_LENGTH</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a61a7f55530022dbee9ca42218416ed87" kindref="member">get_PACKET_TIMEOUT</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a8c6084336863ee909031eb3f84589499" kindref="member">get_PACKET_END_CHARACTER</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a03ad0ea8ac8bbc03cc924f15c1e36ead" kindref="member">get_ADDRESS_MODE</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ad85e880b1c042eaba76aaa79789163ff" kindref="member">get_CRC_MODE</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a2c314f2913724f66cb04b7ba82e07ba4" kindref="member">get_UID</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a0f9ac8c9e9507f8605f7a784da2ac4ef" kindref="member">get_SID</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a94a9223604b10f16ed1d3d71469156ab" kindref="member">get_DID</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a702601649b998e650195334091f2555e" kindref="member">get_BID</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a8ae0d90e4bc1117555969c396b981251" kindref="member">get_UART_BAUD_RATE</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a232263008bb782b578749ccf6a3cced5" kindref="member">get_UART_FLOW_CONTROL</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1af8ff086fc3a82b9790d4207645ecd18a" kindref="member">get_LED_CONTROL</ref>(uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a3e22e015995379689742365e1f77a30f" kindref="member">read_RSSI</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*result);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1a2fc183d283a2c1ef199abc3cfd51322c" kindref="member">read_TEMPERATURE</ref>(int8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRC17xxHP__RC232_1ab6b8a0ad3d7205edfbf5f3da05a094b0" kindref="member">read_VOLTAGE</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*result);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>modes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint8_t<sp/>TEST_MODE_0();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint8_t<sp/>TEST_MODE_1();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint8_t<sp/>TEST_MODE_2();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint8_t<sp/>TEST_MODE_3();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint8_t<sp/>TEST_MODE_4();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_pinRST;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_pinCTS;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_pinCFG;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_pinRTS;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_pinTX;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_pinRX;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>_baudrate;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>HardwareSerial<sp/>*_serial;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>configEnter();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>configExit();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>configCommand(uint8_t<sp/>command);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>memoryRead(uint8_t<sp/>address,<sp/>uint8_t<sp/>*result);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>memoryWrite(uint8_t<sp/>address,<sp/>uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h"/>
+  </compounddef>
+</doxygen>

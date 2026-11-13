@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="i2c__connectivity_8cpp" kind="file" language="C++">
+    <compoundname>i2c_connectivity.cpp</compoundname>
+    <includes refid="i2c__connectivity_8h" local="yes">i2c_connectivity.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>onboard/firmware/src/i2c_connectivity.cpp</label>
+        <link refid="i2c__connectivity_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="6">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="7">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="5">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="i2c__connectivity_8cpp_1a6deef1afd4f5c7260f89686850f0436f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void subsystemsConnCheck</definition>
+        <argsstring>(Subsystem **subsystemsList, uint8_t subsystemsCount)</argsstring>
+        <name>subsystemsConnCheck</name>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <briefdescription>
+<para>Function to check if a system is connected. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/i2c_connectivity.cpp" line="100" column="6" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="100" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="i2c__connectivity_8cpp_1a4989aa8fa220aae526eee4e396d86387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void subsystemsDataGet</definition>
+        <argsstring>(Subsystem **subsystemsList, uint8_t subsystemsCount)</argsstring>
+        <name>subsystemsDataGet</name>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <briefdescription>
+<para>Function to request data from the Subsystems. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/i2c_connectivity.cpp" line="108" column="6" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="108" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="i2c__connectivity_8cpp_1aceb2a629f34fbbd7273612006ffe5835" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void subsystemsLedUpdate</definition>
+        <argsstring>(Subsystem **subsystemsList, uint8_t subsystemsCount, uint8_t lowPowerMode)</argsstring>
+        <name>subsystemsLedUpdate</name>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>lowPowerMode</declname>
+        </param>
+        <briefdescription>
+<para>Function to update the sub systems LEDs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lowPowerMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/src/i2c_connectivity.cpp" line="116" column="6" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="116" bodyend="122"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="i2c__connectivity_8h" kindref="compound">i2c_connectivity.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><ref refid="classSubsystem_1a5587fce51f4c89931f6fea1b807d3a75" kindref="member">Subsystem::Subsystem</ref>(uint8_t<sp/>i2cAddress,<sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>uint8_t<sp/>*subsystemStatus,<sp/>uint8_t<sp/>**uint8List,<sp/>uint8_t<sp/>uint8Count,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>**floatList,<sp/>uint8_t<sp/>floatCount)</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>_i2cAddress<sp/>=<sp/>i2cAddress;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>_pinLed<sp/>=<sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>_stateLed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>_subsystemState<sp/>=<sp/>subsystemStatus;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>*_subsystemState<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>_uint8List<sp/>=<sp/>uint8List;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>_uint8Count<sp/>=<sp/>uint8Count;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>_floatList<sp/>=<sp/>floatList;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>_floatCount<sp/>=<sp/>floatCount;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">Subsystem::write</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>Wire.beginTransmission(_i2cAddress);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>Wire.write(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>Wire.endTransmission();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1a30ba7efc514bf6f32954c401e4970920" kindref="member">Subsystem::connectionCheck</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Wire.beginTransmission(_i2cAddress);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>i2cStatus<sp/>=<sp/>(Wire.endTransmission()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>*_subsystemState<sp/>=<sp/>i2cStatus;<sp/></highlight><highlight class="comment">//<sp/>Success<sp/>-&gt;<sp/>1,<sp/>Failure<sp/>-&gt;<sp/>0<sp/>//<sp/>Will<sp/>get<sp/>overwritten<sp/>by<sp/>dataGet<sp/>function<sp/>through<sp/>pointer<sp/>to<sp/>state<sp/>variable<sp/>in<sp/>data<sp/>struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1ab409ad84bd9f9d22bc1ba928c5b979e6" kindref="member">Subsystem::dataGet</ref>()</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*_subsystemState<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>byteCount<sp/>=<sp/>_uint8Count<sp/>*<sp/>1<sp/>+<sp/>_floatCount<sp/>*<sp/>4;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Wire.requestFrom(_i2cAddress,<sp/>byteCount)<sp/>==<sp/>byteCount)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>receivedBytes[byteCount];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>byteCount;<sp/>i++)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Wire.available()<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>receivedBytes[i]<sp/>=<sp/>Wire.read();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Error:<sp/>Not<sp/>enough<sp/>bytes<sp/>received</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bytePointer<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>_uint8Count;<sp/>i++)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*_uint8List[i]<sp/>=<sp/>receivedBytes[bytePointer];</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytePointer<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>_floatCount;<sp/>i++)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*_floatList[i]<sp/>=<sp/>bytesToFloat(&amp;receivedBytes[bytePointer]);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytePointer<sp/>+=<sp/>4;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1a53d42c2f624e571fdf2cc47ebb0e4f57" kindref="member">Subsystem::ledUpdate</ref>(uint8_t<sp/>lowPowerMode)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lowPowerMode<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(*_pinLed,<sp/>LOW);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*_subsystemState<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_stateLed<sp/>=<sp/>1<sp/>-<sp/>_stateLed;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*_subsystemState<sp/>==<sp/>2<sp/>||<sp/>*_subsystemState<sp/>==<sp/>3)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_stateLed<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*_subsystemState<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_stateLed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(*_pinLed,<sp/>_stateLed);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">uint8_t<sp/><ref refid="classSubsystem_1a62d4cc10255a038ebb8ade36d0167f41" kindref="member">Subsystem::statusGet</ref>()</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*_subsystemState;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Subsystem::bytesToFloat(uint8_t<sp/>*bytes)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>combinedBytes<sp/>=<sp/>((uint32_t)bytes[3]<sp/>&lt;&lt;<sp/>24)<sp/>|<sp/>((uint32_t)bytes[2]<sp/>&lt;&lt;<sp/>16)<sp/>|<sp/>((uint32_t)bytes[1]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>((uint32_t)bytes[0]);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>*(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*)&amp;combinedBytes;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="i2c__connectivity_8cpp_1a6deef1afd4f5c7260f89686850f0436f" kindref="member">subsystemsConnCheck</ref>(<ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subsystemsList[i]-&gt;<ref refid="classSubsystem_1a30ba7efc514bf6f32954c401e4970920" kindref="member">connectionCheck</ref>();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="i2c__connectivity_8cpp_1a4989aa8fa220aae526eee4e396d86387" kindref="member">subsystemsDataGet</ref>(<ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subsystemsList[i]-&gt;<ref refid="classSubsystem_1ab409ad84bd9f9d22bc1ba928c5b979e6" kindref="member">dataGet</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="i2c__connectivity_8cpp_1aceb2a629f34fbbd7273612006ffe5835" kindref="member">subsystemsLedUpdate</ref>(<ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>,<sp/>uint8_t<sp/>lowPowerMode)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subsystemsList[i]-&gt;<ref refid="classSubsystem_1a53d42c2f624e571fdf2cc47ebb0e4f57" kindref="member">ledUpdate</ref>(lowPowerMode);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="onboard/firmware/src/i2c_connectivity.cpp"/>
+  </compounddef>
+</doxygen>

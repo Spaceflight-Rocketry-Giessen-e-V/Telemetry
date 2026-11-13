@@ -1,0 +1,1189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classRC17xxHP__RC232" kind="class" language="C++" prot="public">
+    <compoundname>RC17xxHP_RC232</compoundname>
+    <includes refid="Radiocrafts__RC17xxHP__RC232_8h" local="no">Radiocrafts_RC17xxHP_RC232.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a1b8ad2796579d4ca40491bd04e9640ce" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::_pinRST</definition>
+        <argsstring></argsstring>
+        <name>_pinRST</name>
+        <qualifiedname>RC17xxHP_RC232::_pinRST</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="136" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a5db533326b64a6ede25cf184b3687a13" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::_pinCTS</definition>
+        <argsstring></argsstring>
+        <name>_pinCTS</name>
+        <qualifiedname>RC17xxHP_RC232::_pinCTS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="137" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a9864adb7e04665affd4de82ddc9da787" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::_pinCFG</definition>
+        <argsstring></argsstring>
+        <name>_pinCFG</name>
+        <qualifiedname>RC17xxHP_RC232::_pinCFG</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="138" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1ab2879192ece6ed4557157700caf4797e" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::_pinRTS</definition>
+        <argsstring></argsstring>
+        <name>_pinRTS</name>
+        <qualifiedname>RC17xxHP_RC232::_pinRTS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="139" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a110452b761f172a2d767456aa1baebd7" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::_pinTX</definition>
+        <argsstring></argsstring>
+        <name>_pinTX</name>
+        <qualifiedname>RC17xxHP_RC232::_pinTX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="140" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a621897e24e5073b2c42e98101b848330" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::_pinRX</definition>
+        <argsstring></argsstring>
+        <name>_pinRX</name>
+        <qualifiedname>RC17xxHP_RC232::_pinRX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="141" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a9143b9a43b17cc2c4d619e3311c0e5f6" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t RC17xxHP_RC232::_baudrate</definition>
+        <argsstring></argsstring>
+        <name>_baudrate</name>
+        <qualifiedname>RC17xxHP_RC232::_baudrate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="142" column="14" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRC17xxHP__RC232_1a7dea86f8cb4935a55a2f5492d74adaf6" prot="private" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* RC17xxHP_RC232::_serial</definition>
+        <argsstring></argsstring>
+        <name>_serial</name>
+        <qualifiedname>RC17xxHP_RC232::_serial</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="143" column="20" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a120eee3607f97076e1d35c7fef8fa8c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RC17xxHP_RC232::RC17xxHP_RC232</definition>
+        <argsstring>(HardwareSerial *serial, uint8_t pinTX, uint8_t pinRX, uint32_t baudrate, uint8_t pinCFG, uint8_t pinRST, uint8_t pinCTS, uint8_t pinRTS)</argsstring>
+        <name>RC17xxHP_RC232</name>
+        <qualifiedname>RC17xxHP_RC232::RC17xxHP_RC232</qualifiedname>
+        <param>
+          <type>HardwareSerial *</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinTX</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinRX</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>baudrate</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinCFG</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinRST</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinCTS</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinRTS</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="15" column="5" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="9" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a98b9e018d748143c199cdd6827819180" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RC17xxHP_RC232::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>RC17xxHP_RC232::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="17" column="10" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="21" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a9bdf20a27555cf3771ff799b04cdf775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::ping</definition>
+        <argsstring>()</argsstring>
+        <name>ping</name>
+        <qualifiedname>RC17xxHP_RC232::ping</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="19" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="38" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1aa2d13dd73751ee9d27470bc99e779b93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RC17xxHP_RC232::flush</definition>
+        <argsstring>()</argsstring>
+        <name>flush</name>
+        <qualifiedname>RC17xxHP_RC232::flush</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="23" column="10" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="54" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a703f31f4457ec136d3876c516b9ba851" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t RC17xxHP_RC232::serialWait</definition>
+        <argsstring>(uint32_t delayMicroseconds)</argsstring>
+        <name>serialWait</name>
+        <qualifiedname>RC17xxHP_RC232::serialWait</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delayMicroseconds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="25" column="14" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="62" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ad2a57f2b7279ff09fa4acde17e0815ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RC17xxHP_RC232::send</definition>
+        <argsstring>(uint8_t *bytes, uint8_t length)</argsstring>
+        <name>send</name>
+        <qualifiedname>RC17xxHP_RC232::send</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>bytes</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="27" column="10" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ab35d559159d6dd7269fdd4c10614153d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RC17xxHP_RC232::send</definition>
+        <argsstring>(uint8_t byte)</argsstring>
+        <name>send</name>
+        <qualifiedname>RC17xxHP_RC232::send</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="28" column="10" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a4ebcf3dbfbef76727e7c39b0a7884c07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RC17xxHP_RC232::read</definition>
+        <argsstring>(uint8_t *bytes, uint8_t length)</argsstring>
+        <name>read</name>
+        <qualifiedname>RC17xxHP_RC232::read</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>bytes</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="30" column="10" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="82" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a4155351fab7610730321b210212bdb41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::read</definition>
+        <argsstring>()</argsstring>
+        <name>read</name>
+        <qualifiedname>RC17xxHP_RC232::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="31" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ad5776362f4c0f6e321a1d8118890a5a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::available</definition>
+        <argsstring>()</argsstring>
+        <name>available</name>
+        <qualifiedname>RC17xxHP_RC232::available</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="33" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a74662398781cfa783380856d94b7dda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::resetHard</definition>
+        <argsstring>()</argsstring>
+        <name>resetHard</name>
+        <qualifiedname>RC17xxHP_RC232::resetHard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="37" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="102" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ad610f62c9f0f8596ace1651181aa0019" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::resetSoft</definition>
+        <argsstring>()</argsstring>
+        <name>resetSoft</name>
+        <qualifiedname>RC17xxHP_RC232::resetSoft</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="39" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="111" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a170b96ff2b25442dfd2f5ad220620742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::memoryReset</definition>
+        <argsstring>()</argsstring>
+        <name>memoryReset</name>
+        <qualifiedname>RC17xxHP_RC232::memoryReset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="41" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="126" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a5e43814569a705ebc03dc2bb2b4021fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_RF_CHANNEL</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_RF_CHANNEL</name>
+        <qualifiedname>RC17xxHP_RC232::set_RF_CHANNEL</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="45" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="152" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a1582b3d55a93af1af7ecf241cdf6522a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_RF_POWER</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_RF_POWER</name>
+        <qualifiedname>RC17xxHP_RC232::set_RF_POWER</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="47" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="169" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a54f65edf3a494314c019d316847b79cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_RF_DATA_RATE</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_RF_DATA_RATE</name>
+        <qualifiedname>RC17xxHP_RC232::set_RF_DATA_RATE</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="49" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="186" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a4381e4c87dde62f2580eb9fc07699e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_SLEEP_MODE</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_SLEEP_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::set_SLEEP_MODE</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="51" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="203" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a8fff7556eddec967413052a05fd74424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_RSSI_MODE</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_RSSI_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::set_RSSI_MODE</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="53" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="220" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a4e9bafe1eb5cf29f1849627d23fe57df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_PACKET_LENGTH</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_PACKET_LENGTH</name>
+        <qualifiedname>RC17xxHP_RC232::set_PACKET_LENGTH</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="55" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="237" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a198846ab22e9c72a608de4592649b4e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_PACKET_TIMEOUT</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_PACKET_TIMEOUT</name>
+        <qualifiedname>RC17xxHP_RC232::set_PACKET_TIMEOUT</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="57" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="254" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a472edfe2dc70cceb90fbc203633586f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_PACKET_END_CHARACTER</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_PACKET_END_CHARACTER</name>
+        <qualifiedname>RC17xxHP_RC232::set_PACKET_END_CHARACTER</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="59" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="271" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a813e8fae023b6da72e271218d7dc34a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_ADDRESS_MODE</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_ADDRESS_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::set_ADDRESS_MODE</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="61" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="288" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1adc547f812d687cc2d99c31965b3f8199" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_CRC_MODE</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_CRC_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::set_CRC_MODE</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="63" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="305" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1af582ef0ad21148cf5a6a928526e2e458" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_UID</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_UID</name>
+        <qualifiedname>RC17xxHP_RC232::set_UID</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="65" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="322" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1aa9468b3c408e1e4d933bc92e8385176b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_SID</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_SID</name>
+        <qualifiedname>RC17xxHP_RC232::set_SID</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="67" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="339" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1aedd8502628134d31eec924651e4e4e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_DID</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_DID</name>
+        <qualifiedname>RC17xxHP_RC232::set_DID</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="69" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="356" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ad4d726863ad07fd4a84f54c902c471f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_BID</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_BID</name>
+        <qualifiedname>RC17xxHP_RC232::set_BID</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="71" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="373" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a297c62bc87222573601be478daea8946" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_UART_BAUD_RATE</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_UART_BAUD_RATE</name>
+        <qualifiedname>RC17xxHP_RC232::set_UART_BAUD_RATE</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="73" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="390" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1afea52b70e30c498a2019222930e0da2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_UART_FLOW_CONTROL</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_UART_FLOW_CONTROL</name>
+        <qualifiedname>RC17xxHP_RC232::set_UART_FLOW_CONTROL</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="75" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="407" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ab06ccec968ad6ab5321284575f3ce6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::set_LED_CONTROL</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>set_LED_CONTROL</name>
+        <qualifiedname>RC17xxHP_RC232::set_LED_CONTROL</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="77" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="424" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a6e3eeeead8208cdd8ba4283cde40ba4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_RF_CHANNEL</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_RF_CHANNEL</name>
+        <qualifiedname>RC17xxHP_RC232::get_RF_CHANNEL</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="81" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="445" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ace36e6462c6ecf26e199731718214cfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_RF_POWER</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_RF_POWER</name>
+        <qualifiedname>RC17xxHP_RC232::get_RF_POWER</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="83" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="450" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1acbebdd40b238ca8b506bde43364a59ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_RF_DATA_RATE</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_RF_DATA_RATE</name>
+        <qualifiedname>RC17xxHP_RC232::get_RF_DATA_RATE</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="85" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="455" bodyend="458"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ac496e5d2090ddada1fb8f96ce1260443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_SLEEP_MODE</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_SLEEP_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::get_SLEEP_MODE</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="87" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="460" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a1fa16bfa2ae8b59b1cdfb3c6cd617bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_RSSI_MODE</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_RSSI_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::get_RSSI_MODE</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="89" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="465" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a240e8c90890a463e438acf5121a40a09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_PACKET_LENGTH</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_PACKET_LENGTH</name>
+        <qualifiedname>RC17xxHP_RC232::get_PACKET_LENGTH</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="91" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="470" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a61a7f55530022dbee9ca42218416ed87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_PACKET_TIMEOUT</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_PACKET_TIMEOUT</name>
+        <qualifiedname>RC17xxHP_RC232::get_PACKET_TIMEOUT</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="93" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="475" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a8c6084336863ee909031eb3f84589499" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_PACKET_END_CHARACTER</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_PACKET_END_CHARACTER</name>
+        <qualifiedname>RC17xxHP_RC232::get_PACKET_END_CHARACTER</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="95" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="480" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a03ad0ea8ac8bbc03cc924f15c1e36ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_ADDRESS_MODE</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_ADDRESS_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::get_ADDRESS_MODE</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="97" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="485" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ad85e880b1c042eaba76aaa79789163ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_CRC_MODE</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_CRC_MODE</name>
+        <qualifiedname>RC17xxHP_RC232::get_CRC_MODE</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="99" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="490" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a2c314f2913724f66cb04b7ba82e07ba4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_UID</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_UID</name>
+        <qualifiedname>RC17xxHP_RC232::get_UID</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="101" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="495" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a0f9ac8c9e9507f8605f7a784da2ac4ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_SID</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_SID</name>
+        <qualifiedname>RC17xxHP_RC232::get_SID</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="103" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="500" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a94a9223604b10f16ed1d3d71469156ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_DID</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_DID</name>
+        <qualifiedname>RC17xxHP_RC232::get_DID</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="105" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="505" bodyend="508"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a702601649b998e650195334091f2555e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_BID</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_BID</name>
+        <qualifiedname>RC17xxHP_RC232::get_BID</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="107" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="510" bodyend="513"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a8ae0d90e4bc1117555969c396b981251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_UART_BAUD_RATE</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_UART_BAUD_RATE</name>
+        <qualifiedname>RC17xxHP_RC232::get_UART_BAUD_RATE</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="109" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="515" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a232263008bb782b578749ccf6a3cced5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_UART_FLOW_CONTROL</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_UART_FLOW_CONTROL</name>
+        <qualifiedname>RC17xxHP_RC232::get_UART_FLOW_CONTROL</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="111" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="520" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1af8ff086fc3a82b9790d4207645ecd18a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::get_LED_CONTROL</definition>
+        <argsstring>(uint8_t *result)</argsstring>
+        <name>get_LED_CONTROL</name>
+        <qualifiedname>RC17xxHP_RC232::get_LED_CONTROL</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="113" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="525" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a3e22e015995379689742365e1f77a30f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::read_RSSI</definition>
+        <argsstring>(float *result)</argsstring>
+        <name>read_RSSI</name>
+        <qualifiedname>RC17xxHP_RC232::read_RSSI</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="117" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="535" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a2fc183d283a2c1ef199abc3cfd51322c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::read_TEMPERATURE</definition>
+        <argsstring>(int8_t *result)</argsstring>
+        <name>read_TEMPERATURE</name>
+        <qualifiedname>RC17xxHP_RC232::read_TEMPERATURE</qualifiedname>
+        <param>
+          <type>int8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="119" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="560" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1ab6b8a0ad3d7205edfbf5f3da05a094b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::read_VOLTAGE</definition>
+        <argsstring>(float *result)</argsstring>
+        <name>read_VOLTAGE</name>
+        <qualifiedname>RC17xxHP_RC232::read_VOLTAGE</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="121" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="585" bodyend="608"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a63d2640ecd578e889f44d2cfaa28622f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::configEnter</definition>
+        <argsstring>()</argsstring>
+        <name>configEnter</name>
+        <qualifiedname>RC17xxHP_RC232::configEnter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="145" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="626" bodyend="640"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1acd4006414cd09d52322618a87b4ff1f7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::configExit</definition>
+        <argsstring>()</argsstring>
+        <name>configExit</name>
+        <qualifiedname>RC17xxHP_RC232::configExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="146" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="656" bodyend="666"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a4ec3217155839a4b30132d7e3ebd87ec" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::configCommand</definition>
+        <argsstring>(uint8_t command)</argsstring>
+        <name>configCommand</name>
+        <qualifiedname>RC17xxHP_RC232::configCommand</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="147" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="642" bodyend="654"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1a543079436a5641f9ea692856c4f29831" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::memoryRead</definition>
+        <argsstring>(uint8_t address, uint8_t *result)</argsstring>
+        <name>memoryRead</name>
+        <qualifiedname>RC17xxHP_RC232::memoryRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="148" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="668" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="classRC17xxHP__RC232_1af2d09c28140220ee473139a21877d30b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t RC17xxHP_RC232::memoryWrite</definition>
+        <argsstring>(uint8_t address, uint8_t value)</argsstring>
+        <name>memoryWrite</name>
+        <qualifiedname>RC17xxHP_RC232::memoryWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="149" column="13" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.cpp" bodystart="697" bodyend="723"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" line="12" column="1" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/Radiocrafts_RC17xxHP_RC232.h" bodystart="13" bodyend="150"/>
+    <listofallmembers>
+      <member refid="classRC17xxHP__RC232_1a9143b9a43b17cc2c4d619e3311c0e5f6" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_baudrate</name></member>
+      <member refid="classRC17xxHP__RC232_1a9864adb7e04665affd4de82ddc9da787" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_pinCFG</name></member>
+      <member refid="classRC17xxHP__RC232_1a5db533326b64a6ede25cf184b3687a13" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_pinCTS</name></member>
+      <member refid="classRC17xxHP__RC232_1a1b8ad2796579d4ca40491bd04e9640ce" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_pinRST</name></member>
+      <member refid="classRC17xxHP__RC232_1ab2879192ece6ed4557157700caf4797e" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_pinRTS</name></member>
+      <member refid="classRC17xxHP__RC232_1a621897e24e5073b2c42e98101b848330" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_pinRX</name></member>
+      <member refid="classRC17xxHP__RC232_1a110452b761f172a2d767456aa1baebd7" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_pinTX</name></member>
+      <member refid="classRC17xxHP__RC232_1a7dea86f8cb4935a55a2f5492d74adaf6" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>_serial</name></member>
+      <member refid="classRC17xxHP__RC232_1ad5776362f4c0f6e321a1d8118890a5a2" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>available</name></member>
+      <member refid="classRC17xxHP__RC232_1a98b9e018d748143c199cdd6827819180" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>begin</name></member>
+      <member refid="classRC17xxHP__RC232_1a4ec3217155839a4b30132d7e3ebd87ec" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>configCommand</name></member>
+      <member refid="classRC17xxHP__RC232_1a63d2640ecd578e889f44d2cfaa28622f" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>configEnter</name></member>
+      <member refid="classRC17xxHP__RC232_1acd4006414cd09d52322618a87b4ff1f7" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>configExit</name></member>
+      <member refid="classRC17xxHP__RC232_1aa2d13dd73751ee9d27470bc99e779b93" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>flush</name></member>
+      <member refid="classRC17xxHP__RC232_1a03ad0ea8ac8bbc03cc924f15c1e36ead" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_ADDRESS_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1a702601649b998e650195334091f2555e" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_BID</name></member>
+      <member refid="classRC17xxHP__RC232_1ad85e880b1c042eaba76aaa79789163ff" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_CRC_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1a94a9223604b10f16ed1d3d71469156ab" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_DID</name></member>
+      <member refid="classRC17xxHP__RC232_1af8ff086fc3a82b9790d4207645ecd18a" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_LED_CONTROL</name></member>
+      <member refid="classRC17xxHP__RC232_1a8c6084336863ee909031eb3f84589499" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_PACKET_END_CHARACTER</name></member>
+      <member refid="classRC17xxHP__RC232_1a240e8c90890a463e438acf5121a40a09" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_PACKET_LENGTH</name></member>
+      <member refid="classRC17xxHP__RC232_1a61a7f55530022dbee9ca42218416ed87" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_PACKET_TIMEOUT</name></member>
+      <member refid="classRC17xxHP__RC232_1a6e3eeeead8208cdd8ba4283cde40ba4d" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_RF_CHANNEL</name></member>
+      <member refid="classRC17xxHP__RC232_1acbebdd40b238ca8b506bde43364a59ab" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_RF_DATA_RATE</name></member>
+      <member refid="classRC17xxHP__RC232_1ace36e6462c6ecf26e199731718214cfb" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_RF_POWER</name></member>
+      <member refid="classRC17xxHP__RC232_1a1fa16bfa2ae8b59b1cdfb3c6cd617bd7" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_RSSI_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1a0f9ac8c9e9507f8605f7a784da2ac4ef" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_SID</name></member>
+      <member refid="classRC17xxHP__RC232_1ac496e5d2090ddada1fb8f96ce1260443" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_SLEEP_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1a8ae0d90e4bc1117555969c396b981251" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_UART_BAUD_RATE</name></member>
+      <member refid="classRC17xxHP__RC232_1a232263008bb782b578749ccf6a3cced5" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_UART_FLOW_CONTROL</name></member>
+      <member refid="classRC17xxHP__RC232_1a2c314f2913724f66cb04b7ba82e07ba4" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>get_UID</name></member>
+      <member refid="classRC17xxHP__RC232_1a543079436a5641f9ea692856c4f29831" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>memoryRead</name></member>
+      <member refid="classRC17xxHP__RC232_1a170b96ff2b25442dfd2f5ad220620742" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>memoryReset</name></member>
+      <member refid="classRC17xxHP__RC232_1af2d09c28140220ee473139a21877d30b" prot="private" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>memoryWrite</name></member>
+      <member refid="classRC17xxHP__RC232_1a9bdf20a27555cf3771ff799b04cdf775" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>ping</name></member>
+      <member refid="classRC17xxHP__RC232_1a120eee3607f97076e1d35c7fef8fa8c0" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>RC17xxHP_RC232</name></member>
+      <member refid="classRC17xxHP__RC232_1a4ebcf3dbfbef76727e7c39b0a7884c07" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>read</name></member>
+      <member refid="classRC17xxHP__RC232_1a4155351fab7610730321b210212bdb41" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>read</name></member>
+      <member refid="classRC17xxHP__RC232_1a3e22e015995379689742365e1f77a30f" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>read_RSSI</name></member>
+      <member refid="classRC17xxHP__RC232_1a2fc183d283a2c1ef199abc3cfd51322c" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>read_TEMPERATURE</name></member>
+      <member refid="classRC17xxHP__RC232_1ab6b8a0ad3d7205edfbf5f3da05a094b0" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>read_VOLTAGE</name></member>
+      <member refid="classRC17xxHP__RC232_1a74662398781cfa783380856d94b7dda0" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>resetHard</name></member>
+      <member refid="classRC17xxHP__RC232_1ad610f62c9f0f8596ace1651181aa0019" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>resetSoft</name></member>
+      <member refid="classRC17xxHP__RC232_1ad2a57f2b7279ff09fa4acde17e0815ce" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>send</name></member>
+      <member refid="classRC17xxHP__RC232_1ab35d559159d6dd7269fdd4c10614153d" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>send</name></member>
+      <member refid="classRC17xxHP__RC232_1a703f31f4457ec136d3876c516b9ba851" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>serialWait</name></member>
+      <member refid="classRC17xxHP__RC232_1a813e8fae023b6da72e271218d7dc34a4" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_ADDRESS_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1ad4d726863ad07fd4a84f54c902c471f6" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_BID</name></member>
+      <member refid="classRC17xxHP__RC232_1adc547f812d687cc2d99c31965b3f8199" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_CRC_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1aedd8502628134d31eec924651e4e4e71" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_DID</name></member>
+      <member refid="classRC17xxHP__RC232_1ab06ccec968ad6ab5321284575f3ce6c0" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_LED_CONTROL</name></member>
+      <member refid="classRC17xxHP__RC232_1a472edfe2dc70cceb90fbc203633586f3" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_PACKET_END_CHARACTER</name></member>
+      <member refid="classRC17xxHP__RC232_1a4e9bafe1eb5cf29f1849627d23fe57df" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_PACKET_LENGTH</name></member>
+      <member refid="classRC17xxHP__RC232_1a198846ab22e9c72a608de4592649b4e3" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_PACKET_TIMEOUT</name></member>
+      <member refid="classRC17xxHP__RC232_1a5e43814569a705ebc03dc2bb2b4021fd" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_RF_CHANNEL</name></member>
+      <member refid="classRC17xxHP__RC232_1a54f65edf3a494314c019d316847b79cb" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_RF_DATA_RATE</name></member>
+      <member refid="classRC17xxHP__RC232_1a1582b3d55a93af1af7ecf241cdf6522a" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_RF_POWER</name></member>
+      <member refid="classRC17xxHP__RC232_1a8fff7556eddec967413052a05fd74424" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_RSSI_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1aa9468b3c408e1e4d933bc92e8385176b" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_SID</name></member>
+      <member refid="classRC17xxHP__RC232_1a4381e4c87dde62f2580eb9fc07699e88" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_SLEEP_MODE</name></member>
+      <member refid="classRC17xxHP__RC232_1a297c62bc87222573601be478daea8946" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_UART_BAUD_RATE</name></member>
+      <member refid="classRC17xxHP__RC232_1afea52b70e30c498a2019222930e0da2a" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_UART_FLOW_CONTROL</name></member>
+      <member refid="classRC17xxHP__RC232_1af582ef0ad21148cf5a6a928526e2e458" prot="public" virt="non-virtual"><scope>RC17xxHP_RC232</scope><name>set_UID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

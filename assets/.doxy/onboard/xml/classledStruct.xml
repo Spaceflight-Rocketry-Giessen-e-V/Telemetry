@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classledStruct" kind="class" language="C++" prot="public">
+    <compoundname>ledStruct</compoundname>
+    <includes refid="utility_8h" local="no">utility.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classledStruct_1aaab043841a499099efe90718c4f5983e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::R</definition>
+        <argsstring></argsstring>
+        <name>R</name>
+        <qualifiedname>ledStruct::R</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="136" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ade289f9167496e3c136712df9166737b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::G</definition>
+        <argsstring></argsstring>
+        <name>G</name>
+        <qualifiedname>ledStruct::G</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="137" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1af84f56424c39c69af2339a2e75b181be" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::B</definition>
+        <argsstring></argsstring>
+        <name>B</name>
+        <qualifiedname>ledStruct::B</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="138" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a85534009833a31787af9b290b3b2ad16" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::D1</definition>
+        <argsstring></argsstring>
+        <name>D1</name>
+        <qualifiedname>ledStruct::D1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="139" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::D2</definition>
+        <argsstring></argsstring>
+        <name>D2</name>
+        <qualifiedname>ledStruct::D2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="140" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::D3</definition>
+        <argsstring></argsstring>
+        <name>D3</name>
+        <qualifiedname>ledStruct::D3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="141" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::Debug1</definition>
+        <argsstring></argsstring>
+        <name>Debug1</name>
+        <qualifiedname>ledStruct::Debug1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="142" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a292977a9742696f16fdfece498ede85f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::Debug2</definition>
+        <argsstring></argsstring>
+        <name>Debug2</name>
+        <qualifiedname>ledStruct::Debug2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="143" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::Power</definition>
+        <argsstring></argsstring>
+        <name>Power</name>
+        <qualifiedname>ledStruct::Power</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="144" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::Sens</definition>
+        <argsstring></argsstring>
+        <name>Sens</name>
+        <qualifiedname>ledStruct::Sens</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="145" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t ledStruct::Control</definition>
+        <argsstring></argsstring>
+        <name>Control</name>
+        <qualifiedname>ledStruct::Control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="146" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* ledStruct::lowPowerMode</definition>
+        <argsstring></argsstring>
+        <name>lowPowerMode</name>
+        <qualifiedname>ledStruct::lowPowerMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="147" column="11" bodyfile="onboard/firmware/include/utility.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ledStruct::pinMode</definition>
+        <argsstring>()</argsstring>
+        <name>pinMode</name>
+        <qualifiedname>ledStruct::pinMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/utility.h" line="148" column="8" bodyfile="onboard/firmware/src/utility.cpp" bodystart="312" bodyend="339"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Class for all LEDs. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="onboard/firmware/include/utility.h" line="133" column="1" bodyfile="onboard/firmware/include/utility.h" bodystart="134" bodyend="149"/>
+    <listofallmembers>
+      <member refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>B</name></member>
+      <member refid="classledStruct_1a82907dbac674ed7d9de7b4899ba2981f" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>Control</name></member>
+      <member refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>D1</name></member>
+      <member refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>D2</name></member>
+      <member refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>D3</name></member>
+      <member refid="classledStruct_1ae743725eb308c5f308a7f7e9adef915f" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>Debug1</name></member>
+      <member refid="classledStruct_1a292977a9742696f16fdfece498ede85f" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>Debug2</name></member>
+      <member refid="classledStruct_1ade289f9167496e3c136712df9166737b" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>G</name></member>
+      <member refid="classledStruct_1af6b5d04ee96a6f5cc2f2593f7d258d69" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>lowPowerMode</name></member>
+      <member refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>pinMode</name></member>
+      <member refid="classledStruct_1af0aaffe1558a83e91f211f576b39b24a" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>Power</name></member>
+      <member refid="classledStruct_1aaab043841a499099efe90718c4f5983e" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>R</name></member>
+      <member refid="classledStruct_1a613e73d5db6052151ab4205899cc6eb2" prot="public" virt="non-virtual"><scope>ledStruct</scope><name>Sens</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
