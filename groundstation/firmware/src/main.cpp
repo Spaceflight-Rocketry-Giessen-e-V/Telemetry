@@ -115,7 +115,7 @@ void setup()
   framePacket.addComponent(new empty_Component(32));
   framePacket.addComponent(new empty_Component(32));
   framePacket.addComponent(new const_Component(0xEE, 8, 255));
-  framePacket.addComponent(new float_Component(&dataVars.rssi, 8, -127.5, 0, 255));
+  framePacket.addComponent(new float_Component(&dataVars.rssi, 8, 0.0f, -127.5f, 255));
 
   flightDataPacket.addComponent(new empty_Component(6));
   flightDataPacket.addComponent(new float_Component(&dataVars.acceleration, 10, -17, 17.1));
