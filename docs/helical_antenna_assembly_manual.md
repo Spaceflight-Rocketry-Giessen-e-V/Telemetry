@@ -2,7 +2,7 @@
 
 This document describes how we built our helical groundstation antenna for receiving telemetry from our rockets. 
 
-The images were taken during the build of the much larger older version of the antenna but also apply to the updated small version.
+The images in Phases 1 and 2 and in the ground plane preparation step of Phase 5 were taken during the build of the much larger older version of the antenna but also apply to the updated small version. The remaining images in Phases 3–6 show the newer build.
 
 ---
 
@@ -165,26 +165,24 @@ Allow to cure fully before proceeding.
 
 Use the 3D-printed winding help form to shape the copper tube into the correct helix diameter. Printed winding clamps hold the tube against the form, secured with woodworking clamps.
 
+<p align="center">
+  <img src="images/helical_antenna_assembly/0302_winding_template_attachment.jpg" alt="Copper tube held against the winding template by a clamp" width="600">
+</p>
 
-|![Full template](images/helical_antenna_assembly/0303_winding_template_full.png)|![Template attachment](images/helical_antenna_assembly/0302_winding_template_attachement.png)|
-|---|---|
-|[Winding Help](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Help.stl)|[Winding Clamp](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Clamp.stl)|
+[Winding Help](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Help.stl) · [Winding Clamp](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Winding%20Clamp.stl)
 
 **2. Wind the coil**
 
 With the tube clamped to the template, rotate it around the mandrel in a continuous helical motion, and secure it after each turn with a clamp. The copper tube should more or less keep its shape.
 
-|![Winding 1](images/helical_antenna_assembly/0305_winding.png)|![Winding 2](images/helical_antenna_assembly/0306_winding_2.png)|
-|---|---|
-|![Winding 3](images/helical_antenna_assembly/0307_winding_3.png)|![Winding 4](images/helical_antenna_assembly/0308_winding_4.png)|
+<p align="center">
+  <img src="images/helical_antenna_assembly/0305_winding.jpg" alt="Winding the copper coil around the template with three clamps" width="600">
+</p>
 
 The coil may not seem be perfectly straight due to its springy behaviour, but this does not affect function since it will be hold by the pacifiers.
 
-|![Finished side](images/helical_antenna_assembly/0309_finished_side.png)|![Finished coil top](images/helical_antenna_assembly/0310_finished_coil_top.png)|
-|---|---|
-
 <p align="center">
-  <img src="images/helical_antenna_assembly/0311_finished_coil_angle.png" alt="Finished coil angle">
+  <img src="images/helical_antenna_assembly/0309_finished_coil_on_template.jpg" alt="Wound copper coil on the template with the clamps removed" width="600">
 </p>
 ---
 
@@ -194,17 +192,15 @@ The coil may not seem be perfectly straight due to its springy behaviour, but th
 
 Insert the finished coil into the pacifier assembly on the rod with a smooth rotating motion.
 
-|![Inserting coil](images/helical_antenna_assembly/0401_inserting_coil.png)|![Inserting coil 2](images/helical_antenna_assembly/0402_inserting_coil_2.png)|
-|---|---|
+<p align="center">
+  <img src="images/helical_antenna_assembly/0401_inserting_coil.jpg" alt="Inserting the copper coil through the orange pacifiers on the support rod" width="600">
+</p>
 
 This step is very easy and should take about 5 minutes.
 
 **2. Trim the coil**
 
 Once fully seated, trim the copper tube flush at the last pacifier. This can be done with a small multitool or a metal saw
-
-|![Finished coil antenna assembly](images/helical_antenna_assembly/0403_finished_coil_antenna_assembly.png)|![Cut end](images/helical_antenna_assembly/0404_cut_end.png)|
-|---|---|
 
 **3. Bend the end straight**
 
@@ -227,12 +223,8 @@ This is also a good time to drill the corner holes for the guy-wire string attac
 
 Install the SMA connector using the M2.5 screws. Pass the SMA conenctor from the Antenna side in, so it can be disassembled afterward.  Mount the [Top Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Top%20Cone.stl) from above and bolt it down with the M6 screws. Finally, attach the [Bottom Cone](../groundstation/antenna/helical/Auxiliary%20Design%20Files/Bottom%20Cone.stl) from below, by removing the nuts from the Top Cone, and using them to bolt the Bottom Cone to the Top Cone
 
-| ![Top cone screwed on (top view)](images/helical_antenna_assembly/0502_top_cone_screwedon_top.png) | ![Top cone screwed on (bottom view)](images/helical_antenna_assembly/0503_top_cone_screwedon_bottom.png) |
+| ![SMA connector mounted through the ground plane before fitting the cone](images/helical_antenna_assembly/0504_sma_connector_plate.jpg) | ![Mounted cone and SMA connector with the copper tube positioned before soldering](images/helical_antenna_assembly/0505_sma_connector_cone.jpg) |
 | --- | --- |
-| ![SMA connector bottom](images/helical_antenna_assembly/0504_SMA_connector_bottom.png) | ![SMA connector top](images/helical_antenna_assembly/0504_SMA_connector_top.png) |
-
-![Finished assembly 1](../groundstation/antenna/helical/images/GroundstationAntenna_picture_2.png)
-![Finished assembly 2](images/helical_antenna_assembly/0601_assembly_with_strings_attached.png)
 
 ---
 
@@ -242,16 +234,12 @@ Install the SMA connector using the M2.5 screws. Pass the SMA conenctor from the
 
 Trim the straight end of the tube to the correct length. Use sandpaper to rough the surface and remove the oxide layer. Clean with isopropyl alcohol.
 
-|![Copper Tube](images/helical_antenna_assembly/0602_copper_tube.png)|![Copper Tube Prepared](images/helical_antenna_assembly/0603_copper_tube_prepared.png)|
-|---|---|
-
 **2. Solder copper tube to SMA connector**
 
 Use a good amount of flux, a heat gun and a soldering iron to attach the end of the tube to the sma connector.
 
-<p align="center">
-  <img src="images/helical_antenna_assembly/0604_soldered.png" width = 600>
-</p>
+| ![Copper tube soldered to the SMA connector center pin](images/helical_antenna_assembly/0604_soldered.jpg) | ![Close-up of the solder joint at the copper tube end](images/helical_antenna_assembly/0605_soldered_detail.jpg) |
+| --- | --- |
 
 ---
 
