@@ -157,37 +157,37 @@ class dataStruct // :)
 {
 public:
 
-  uint8_t command;
+  uint8_t command = 0;
 
   // Subsystem States
 
-  uint8_t stateTelemetry;
-  uint8_t statePower;
-  uint8_t stateSens;
-  uint8_t stateControl;
+  uint8_t stateTelemetry = 0;
+  uint8_t statePower = 0;
+  uint8_t stateSens = 0;
+  uint8_t stateControl = 0;
 
   // Flight Data
 
-  float acceleration;
-  float heightPressure;
-  uint8_t flightEvents;
-  float latitude;
-  float longitude;
+  float acceleration = 0;
+  float heightPressure = 0;
+  uint8_t flightEvents = 0;
+  float latitude = 0;
+  float longitude = 0;
 
   // Telemetry Data
 
-  float heightGNSS;
-  uint8_t satCountGNSS;
-  float hdopGNSS;
-  uint8_t temperatureElectronics;
-  uint8_t temperatureBattery;
-  uint8_t stateCapacitors;
-  uint8_t continuityPyros;
-  uint8_t pressureDecoupler;
-  uint8_t ldrDecoupler;
-  float voltageBattery;
-  float currentBattery;
-  float currentUmbilical;
-  uint8_t stateUmbilical;
-  float voltageBatteryCOTS;
+  float heightGNSS = 0;
+  uint8_t satCountGNSS = 0;
+  float hdopGNSS = 0;
+  uint8_t temperatureElectronics = 0;
+  uint8_t temperatureBattery = 0;
+  uint8_t stateCapacitors = 0;
+  uint8_t continuityPyros = 0;
+  uint8_t pressureDecoupler = 0;
+  uint8_t ldrDecoupler = 0;
+  float voltageBattery = 0;
+  float currentBattery = 0;
+  float currentUmbilical = 0;
+  uint8_t stateUmbilical = 0;
+  float voltageBatteryCOTS = 0;
 };
