@@ -815,7 +815,7 @@
       {
         "filename": "TelemetryGroundstationMB.kicad_sch",
         "name": "TelemetryGroundstationMB",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
       }
     ],
     "used_designators": "",
@@ -824,7 +824,7 @@
   "sheets": [
     [
       "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
-      "Root"
+      "TelemetryGroundstationMB"
     ]
   ],
   "text_variables": {},
