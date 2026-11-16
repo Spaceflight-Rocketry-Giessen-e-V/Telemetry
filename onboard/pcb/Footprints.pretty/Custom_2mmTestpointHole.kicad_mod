@@ -1,27 +1,28 @@
-(footprint "Test Point"
-	(version 20241229)
+(footprint "Custom_2mmTestpointHole"
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "SMD pad as test Point, diameter 2.0mm")
-	(tags "test point SMD pad")
+	(descr "This footprint has been created by Spaceflight Rocketry Giessen e.V.")
 	(property "Reference" "REF**"
-		(at 0 0 0)
+		(at 0 -0.5 0)
+		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "73dbb00e-082b-4c47-a5e8-349b5d30d4ab")
+		(uuid "0e8920ea-8c2b-40af-b673-c3735c8a1446")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
+				(thickness 0.1)
 			)
 		)
 	)
-	(property "Value" "Test Point"
-		(at 0 0 0)
+	(property "Value" "Untitled"
+		(at 0 1 0)
+		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "8051e314-67a2-4b92-9ca0-f8a4708006a4")
+		(uuid "48c95557-7f84-4ab4-9493-74ef279c2280")
 		(effects
 			(font
 				(size 1 1)
@@ -34,10 +35,10 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "40ad42f5-e2d0-4e9e-be21-5e28f47c7f3d")
+		(uuid "24b52b57-6273-4487-b44d-203c8b35054c")
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -47,25 +48,26 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "64d104f9-2e74-41bc-b450-4d835f388b76")
+		(uuid "0d063f9d-43e6-4743-826a-f5deaaf7fd8b")
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
 	)
-	(attr exclude_from_pos_files exclude_from_bom)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_circle
 		(center 0 0)
-		(end 0 1.2)
+		(end 1.25 0)
 		(stroke
-			(width 0.12)
+			(width 0.1)
 			(type solid)
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "b5b6e09d-9944-4950-8fb1-281d00dc9306")
+		(uuid "a87f4cdd-8c05-4f05-b8e6-3cc893b19af6")
 	)
 	(fp_circle
 		(center 0 0)
@@ -76,13 +78,13 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "efb1b4c8-d2ab-4de8-a462-72ec395048a8")
+		(uuid "9940fd0b-dfe9-4f53-ac3e-6c1b3d880245")
 	)
 	(fp_text user "${NET_NAME(1)}"
-		(at 0 -1.998 0)
+		(at 0 -2.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "e336c09e-6298-4521-835b-d320f77e9b25")
+		(uuid "4f5a9114-13d2-48f1-9a2a-c8ff504fa923")
 		(effects
 			(font
 				(size 1 1)
@@ -90,11 +92,13 @@
 			)
 		)
 	)
-	(pad "1" smd circle
+	(pad "1" thru_hole circle
 		(at 0 0)
 		(size 2 2)
-		(layers "F.Cu" "F.Mask")
-		(uuid "66dd818e-46c3-4cc6-8165-861578cda9d2")
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c4ce380b-7ba3-4ad3-a747-21993bb1ce53")
 	)
 	(embedded_fonts no)
 )
