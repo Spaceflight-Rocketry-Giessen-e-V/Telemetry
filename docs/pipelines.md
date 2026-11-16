@@ -7,6 +7,7 @@ This document provides an overview of the automated GitHub Actions workflows and
 - [Automatic](#automatic)
    - [Firmware Documentation](#firmware-documentation)
 - [Manuell](#manuell)
+   - [Updating/Adding Images](#updatingadding-images)
    - [Updating PCBs](#updating-pcbs)
    - [Updating CAD Models](#updating-cad-models)
    - [Updating Libraries](#updating-libraries)
@@ -62,6 +63,12 @@ The GitHub Actions job performs these steps:
 The published firmware documentation is available at [spaceflight-rocketry-giessen-e-v.github.io/Telemetry](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/). If another documentation workflow starts while one is already running, the older run is cancelled so that only the newest version is deployed.
 
 # Manual
+
+## Updating/Adding Images
+
+To reduce the overall size of the repository, images should be preprocessed properly.
+
+A guideline will be developed in [#96](/../../issues/96) and updated here.
 
 ## Updating PCBs
 
