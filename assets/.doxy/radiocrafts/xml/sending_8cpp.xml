@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="sending_8cpp" kind="file" language="C++">
+    <compoundname>sending.cpp</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="Radiocrafts__RC17xxHP__RC232_8h" local="yes">../Radiocrafts_RC17xxHP_RC232.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>../Radiocrafts_RC17xxHP_RC232.h</label>
+        <link refid="Radiocrafts__RC17xxHP__RC232_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp</label>
+        <link refid="sending_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="sending_8cpp_1ace01b019e8d95bd79457cef315869ebc" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinCFG</definition>
+        <argsstring></argsstring>
+        <name>pinCFG</name>
+        <initializer>= PIN_PA5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="9" column="9" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1ace62eb9661e726551b85d55ebf2e9daf" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRST</definition>
+        <argsstring></argsstring>
+        <name>pinRST</name>
+        <initializer>= PIN_PG7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="10" column="9" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1acbb407a2e32d99ea8fdc1ae3a9ab8f3e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinCTS</definition>
+        <argsstring></argsstring>
+        <name>pinCTS</name>
+        <initializer>= PIN_PA3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="11" column="9" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1abe9dc4ab33b934a18b4cfa2e7571732c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRTS</definition>
+        <argsstring></argsstring>
+        <name>pinRTS</name>
+        <initializer>= PIN_PA4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="12" column="9" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1a4dbde3dffd259cf7e585ff0ef216f3b1" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinTX</definition>
+        <argsstring></argsstring>
+        <name>pinTX</name>
+        <initializer>= PIN_PA0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="15" column="9" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1a66e7296275a111b96053e6e7fac2cfa3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t pinRX</definition>
+        <argsstring></argsstring>
+        <name>pinRX</name>
+        <initializer>= PIN_PA1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="16" column="9" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1a975b45d6d314a6e352ccc2f4e7759249" prot="public" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* SerialModule</definition>
+        <argsstring></argsstring>
+        <name>SerialModule</name>
+        <initializer>= &amp;Serial0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="17" column="16" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1ac4f06ea26ed6bd7ae83b92d64ac10b78" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baudrate</definition>
+        <argsstring></argsstring>
+        <name>baudrate</name>
+        <initializer>= 19200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="18" column="10" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" prot="public" static="no" mutable="no">
+        <type><ref refid="classRC17xxHP__RC232" kindref="compound">RC17xxHP_RC232</ref></type>
+        <definition>RC17xxHP_RC232 rc1780hp(SerialModule, pinTX, pinRX, 19200, pinCFG, pinRST, pinCTS, pinRTS)</definition>
+        <argsstring>(SerialModule, pinTX, pinRX, 19200, pinCFG, pinRST, pinCTS, pinRTS)</argsstring>
+        <name>rc1780hp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="21" column="16"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="sending_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" line="23" column="5" bodyfile="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp" bodystart="23" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Radiocrafts_RC17xxHP_RC232.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>example<sp/>uses<sp/>an<sp/>unique<sp/>end<sp/>byte<sp/>to<sp/>trigger<sp/>the<sp/>transmission.<sp/>As<sp/>an<sp/>alternative,<sp/>the<sp/>PACKET_TIMEOUT<sp/>or<sp/>PACKET_LENGTH<sp/>parameters<sp/>can<sp/>be<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initialization<sp/>according<sp/>to<sp/>the<sp/>initalization<sp/>example</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Assigning<sp/>pins</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">uint8_t<sp/><ref refid="sending_8cpp_1ace01b019e8d95bd79457cef315869ebc" kindref="member">pinCFG</ref><sp/>=<sp/>PIN_PA5;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">uint8_t<sp/><ref refid="sending_8cpp_1ace62eb9661e726551b85d55ebf2e9daf" kindref="member">pinRST</ref><sp/>=<sp/>PIN_PG7;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">uint8_t<sp/><ref refid="sending_8cpp_1acbb407a2e32d99ea8fdc1ae3a9ab8f3e" kindref="member">pinCTS</ref><sp/>=<sp/>PIN_PA3;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">uint8_t<sp/><ref refid="sending_8cpp_1abe9dc4ab33b934a18b4cfa2e7571732c" kindref="member">pinRTS</ref><sp/>=<sp/>PIN_PA4;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Assigning<sp/>a<sp/>serial<sp/>port</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">uint8_t<sp/><ref refid="sending_8cpp_1a4dbde3dffd259cf7e585ff0ef216f3b1" kindref="member">pinTX</ref><sp/>=<sp/>PIN_PA0;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">uint8_t<sp/><ref refid="sending_8cpp_1a66e7296275a111b96053e6e7fac2cfa3" kindref="member">pinRX</ref><sp/>=<sp/>PIN_PA1;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">HardwareSerial<sp/>*<ref refid="sending_8cpp_1a975b45d6d314a6e352ccc2f4e7759249" kindref="member">SerialModule</ref><sp/>=<sp/>&amp;Serial0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">uint32_t<sp/><ref refid="sending_8cpp_1ac4f06ea26ed6bd7ae83b92d64ac10b78" kindref="member">baudrate</ref><sp/>=<sp/>19200;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Radio<sp/>module<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><ref refid="classRC17xxHP__RC232" kindref="compound">RC17xxHP_RC232</ref><sp/><ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>(<ref refid="sending_8cpp_1a975b45d6d314a6e352ccc2f4e7759249" kindref="member">SerialModule</ref>,<sp/><ref refid="sending_8cpp_1a4dbde3dffd259cf7e585ff0ef216f3b1" kindref="member">pinTX</ref>,<sp/><ref refid="sending_8cpp_1a66e7296275a111b96053e6e7fac2cfa3" kindref="member">pinRX</ref>,<sp/>19200,<sp/><ref refid="sending_8cpp_1ace01b019e8d95bd79457cef315869ebc" kindref="member">pinCFG</ref>,<sp/><ref refid="sending_8cpp_1ace62eb9661e726551b85d55ebf2e9daf" kindref="member">pinRST</ref>,<sp/><ref refid="sending_8cpp_1acbb407a2e32d99ea8fdc1ae3a9ab8f3e" kindref="member">pinCTS</ref>,<sp/><ref refid="sending_8cpp_1abe9dc4ab33b934a18b4cfa2e7571732c" kindref="member">pinRTS</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="sending_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(3.2<sp/>*<sp/>10);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>.<ref refid="classRC17xxHP__RC232_1a98b9e018d748143c199cdd6827819180" kindref="member">begin</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(3.2<sp/>*<sp/>10);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>.<ref refid="classRC17xxHP__RC232_1a9bdf20a27555cf3771ff799b04cdf775" kindref="member">ping</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>.<ref refid="classRC17xxHP__RC232_1a472edfe2dc70cceb90fbc203633586f3" kindref="member">set_PACKET_END_CHARACTER</ref>(0xEE)<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;<sp/></highlight><highlight class="comment">//<sp/>When<sp/>0xEE<sp/>is<sp/>send<sp/>to<sp/>the<sp/>radio<sp/>module,<sp/>the<sp/>whole<sp/>buffer<sp/>is<sp/>transmitted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>.<ref refid="classRC17xxHP__RC232_1a74662398781cfa783380856d94b7dda0" kindref="member">resetHard</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>.<ref refid="classRC17xxHP__RC232_1aa2d13dd73751ee9d27470bc99e779b93" kindref="member">flush</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>a<sp/>two<sp/>byte<sp/>packet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>packet[]<sp/>=<sp/>{0xA4,<sp/>0xEE};<sp/></highlight><highlight class="comment">//<sp/>Arbitrary<sp/>data<sp/>byte<sp/>with<sp/>the<sp/>unique<sp/>end<sp/>byte</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sending_8cpp_1aab98628f1268a7fa1bb9c4397ff3ef3f" kindref="member">rc1780hp</ref>.<ref refid="classRC17xxHP__RC232_1ad2a57f2b7279ff09fa4acde17e0815ce" kindref="member">send</ref>(packet,<sp/>2);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libraries/Radiocrafts_RC17xxHP_RC232/examples/sending.cpp"/>
+  </compounddef>
+</doxygen>

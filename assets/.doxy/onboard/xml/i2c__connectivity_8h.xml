@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="i2c__connectivity_8h" kind="file" language="C++">
+    <compoundname>i2c_connectivity.h</compoundname>
+    <includes refid="header_8h" local="yes">header.h</includes>
+    <includedby refid="utility_8h" local="yes">onboard/firmware/include/utility.h</includedby>
+    <includedby refid="i2c__connectivity_8cpp" local="yes">onboard/firmware/src/i2c_connectivity.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>onboard/firmware/include/i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="6">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="4">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>onboard/firmware/include/i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>onboard/firmware/include/utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>onboard/firmware/src/i2c_connectivity.cpp</label>
+        <link refid="i2c__connectivity_8cpp"/>
+      </node>
+      <node id="3">
+        <label>onboard/firmware/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="4">
+        <label>onboard/firmware/src/utility.cpp</label>
+        <link refid="utility_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classSubsystem" prot="public">Subsystem</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="i2c__connectivity_8h_1a6deef1afd4f5c7260f89686850f0436f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void subsystemsConnCheck</definition>
+        <argsstring>(Subsystem **subsystemsList, uint8_t subsystemsCount)</argsstring>
+        <name>subsystemsConnCheck</name>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <briefdescription>
+<para>Function to check if a system is connected. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="38" column="6" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="100" bodyend="106" declfile="onboard/firmware/include/i2c_connectivity.h" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="i2c__connectivity_8h_1a4989aa8fa220aae526eee4e396d86387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void subsystemsDataGet</definition>
+        <argsstring>(Subsystem **subsystemsList, uint8_t subsystemsCount)</argsstring>
+        <name>subsystemsDataGet</name>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <briefdescription>
+<para>Function to request data from the Subsystems. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="46" column="6" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="108" bodyend="114" declfile="onboard/firmware/include/i2c_connectivity.h" declline="46" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="i2c__connectivity_8h_1aceb2a629f34fbbd7273612006ffe5835" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void subsystemsLedUpdate</definition>
+        <argsstring>(Subsystem **subsystemsList, uint8_t subsystemsCount, uint8_t lowPowerMode)</argsstring>
+        <name>subsystemsLedUpdate</name>
+        <param>
+          <type><ref refid="classSubsystem" kindref="compound">Subsystem</ref> **</type>
+          <declname>subsystemsList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>subsystemsCount</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>lowPowerMode</declname>
+        </param>
+        <briefdescription>
+<para>Function to update the sub systems LEDs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subsystemsList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subsystemsCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lowPowerMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="55" column="6" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="116" bodyend="122" declfile="onboard/firmware/include/i2c_connectivity.h" declline="55" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="header_8h" kindref="compound">header.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classSubsystem" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classSubsystem" kindref="compound">Subsystem</ref></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Konstruktoren<sp/>Überladungen<sp/>möglich</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSubsystem" kindref="compound">Subsystem</ref>(uint8_t<sp/>i2cAddress,<sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>,<sp/>uint8_t<sp/>*subsystemStatus,<sp/>uint8_t<sp/>**uint8List,<sp/>uint8_t<sp/>uint8Count,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>**floatList,<sp/>uint8_t<sp/>floatCount);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" kindref="member">write</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1a30ba7efc514bf6f32954c401e4970920" kindref="member">connectionCheck</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1ab409ad84bd9f9d22bc1ba928c5b979e6" kindref="member">dataGet</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSubsystem_1a53d42c2f624e571fdf2cc47ebb0e4f57" kindref="member">ledUpdate</ref>(uint8_t<sp/>lowPowerMode);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classSubsystem_1a62d4cc10255a038ebb8ade36d0167f41" kindref="member">statusGet</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>bytesToFloat(uint8_t<sp/>*bytes);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_i2cAddress;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*_pinLed;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_stateLed;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*_subsystemState;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>**_uint8List;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_uint8Count;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>**_floatList;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>_floatCount;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="i2c__connectivity_8h_1a6deef1afd4f5c7260f89686850f0436f" kindref="member">subsystemsConnCheck</ref>(<ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="i2c__connectivity_8h_1a4989aa8fa220aae526eee4e396d86387" kindref="member">subsystemsDataGet</ref>(<ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="i2c__connectivity_8h_1aceb2a629f34fbbd7273612006ffe5835" kindref="member">subsystemsLedUpdate</ref>(<ref refid="classSubsystem" kindref="compound">Subsystem</ref><sp/>**subsystemsList,<sp/>uint8_t<sp/><ref refid="main_8cpp_1a168f91108cf8cefd5c196b25e6291ee5" kindref="member">subsystemsCount</ref>,<sp/>uint8_t<sp/>lowPowerMode);</highlight></codeline>
+    </programlisting>
+    <location file="onboard/firmware/include/i2c_connectivity.h"/>
+  </compounddef>
+</doxygen>

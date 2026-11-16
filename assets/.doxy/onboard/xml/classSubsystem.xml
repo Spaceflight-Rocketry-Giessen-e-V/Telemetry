@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classSubsystem" kind="class" language="C++" prot="public">
+    <compoundname>Subsystem</compoundname>
+    <includes refid="i2c__connectivity_8h" local="no">i2c_connectivity.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSubsystem_1adf789421aa67abf1f6907a23751d1e72" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Subsystem::_i2cAddress</definition>
+        <argsstring></argsstring>
+        <name>_i2cAddress</name>
+        <qualifiedname>Subsystem::_i2cAddress</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="22" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1a0317ba15e57abe3028c45a5fa16f9f29" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* Subsystem::_pinLed</definition>
+        <argsstring></argsstring>
+        <name>_pinLed</name>
+        <qualifiedname>Subsystem::_pinLed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="23" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1a72fe97f06ea67360f363c416e8e6046e" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Subsystem::_stateLed</definition>
+        <argsstring></argsstring>
+        <name>_stateLed</name>
+        <qualifiedname>Subsystem::_stateLed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="24" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1aa02b76319bd95ee67ef2dca4a336c24f" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* Subsystem::_subsystemState</definition>
+        <argsstring></argsstring>
+        <name>_subsystemState</name>
+        <qualifiedname>Subsystem::_subsystemState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="25" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1ae48b1cb87eca421b690c0feee4d77361" prot="private" static="no" mutable="no">
+        <type>uint8_t **</type>
+        <definition>uint8_t** Subsystem::_uint8List</definition>
+        <argsstring></argsstring>
+        <name>_uint8List</name>
+        <qualifiedname>Subsystem::_uint8List</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="26" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1a054c2a544e2e4e71d04dd2f7d8c1e926" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Subsystem::_uint8Count</definition>
+        <argsstring></argsstring>
+        <name>_uint8Count</name>
+        <qualifiedname>Subsystem::_uint8Count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="27" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1a0758d0bb283361438b18d6ee24438063" prot="private" static="no" mutable="no">
+        <type>float **</type>
+        <definition>float** Subsystem::_floatList</definition>
+        <argsstring></argsstring>
+        <name>_floatList</name>
+        <qualifiedname>Subsystem::_floatList</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="28" column="11" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSubsystem_1ad10eca9f2ab1dafef630b432e0113bb6" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Subsystem::_floatCount</definition>
+        <argsstring></argsstring>
+        <name>_floatCount</name>
+        <qualifiedname>Subsystem::_floatCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="29" column="13" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSubsystem_1a5587fce51f4c89931f6fea1b807d3a75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Subsystem::Subsystem</definition>
+        <argsstring>(uint8_t i2cAddress, uint8_t *pinLed, uint8_t *subsystemStatus, uint8_t **uint8List, uint8_t uint8Count, float **floatList, uint8_t floatCount)</argsstring>
+        <name>Subsystem</name>
+        <qualifiedname>Subsystem::Subsystem</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>i2cAddress</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>pinLed</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>subsystemStatus</declname>
+        </param>
+        <param>
+          <type>uint8_t **</type>
+          <declname>uint8List</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>uint8Count</declname>
+        </param>
+        <param>
+          <type>float **</type>
+          <declname>floatList</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>floatCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="11" column="5" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="3" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classSubsystem_1a471f5d85aedf07fb074167773522c607" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Subsystem::write</definition>
+        <argsstring>(uint8_t byte)</argsstring>
+        <name>write</name>
+        <qualifiedname>Subsystem::write</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="13" column="10" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="16" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classSubsystem_1a30ba7efc514bf6f32954c401e4970920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Subsystem::connectionCheck</definition>
+        <argsstring>()</argsstring>
+        <name>connectionCheck</name>
+        <qualifiedname>Subsystem::connectionCheck</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="14" column="10" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="23" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classSubsystem_1ab409ad84bd9f9d22bc1ba928c5b979e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Subsystem::dataGet</definition>
+        <argsstring>()</argsstring>
+        <name>dataGet</name>
+        <qualifiedname>Subsystem::dataGet</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="15" column="10" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="30" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classSubsystem_1a53d42c2f624e571fdf2cc47ebb0e4f57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Subsystem::ledUpdate</definition>
+        <argsstring>(uint8_t lowPowerMode)</argsstring>
+        <name>ledUpdate</name>
+        <qualifiedname>Subsystem::ledUpdate</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>lowPowerMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="16" column="10" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="64" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classSubsystem_1a62d4cc10255a038ebb8ade36d0167f41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Subsystem::statusGet</definition>
+        <argsstring>()</argsstring>
+        <name>statusGet</name>
+        <qualifiedname>Subsystem::statusGet</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="17" column="13" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="88" bodyend="91"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classSubsystem_1abc36c854d6ea9cc8e747b22e2c2715df" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Subsystem::bytesToFloat</definition>
+        <argsstring>(uint8_t *bytes)</argsstring>
+        <name>bytesToFloat</name>
+        <qualifiedname>Subsystem::bytesToFloat</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="onboard/firmware/include/i2c_connectivity.h" line="20" column="11" bodyfile="onboard/firmware/src/i2c_connectivity.cpp" bodystart="93" bodyend="98"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Class to dynamically initialise different subsystems. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="onboard/firmware/include/i2c_connectivity.h" line="7" column="1" bodyfile="onboard/firmware/include/i2c_connectivity.h" bodystart="8" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classSubsystem_1ad10eca9f2ab1dafef630b432e0113bb6" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_floatCount</name></member>
+      <member refid="classSubsystem_1a0758d0bb283361438b18d6ee24438063" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_floatList</name></member>
+      <member refid="classSubsystem_1adf789421aa67abf1f6907a23751d1e72" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_i2cAddress</name></member>
+      <member refid="classSubsystem_1a0317ba15e57abe3028c45a5fa16f9f29" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_pinLed</name></member>
+      <member refid="classSubsystem_1a72fe97f06ea67360f363c416e8e6046e" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_stateLed</name></member>
+      <member refid="classSubsystem_1aa02b76319bd95ee67ef2dca4a336c24f" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_subsystemState</name></member>
+      <member refid="classSubsystem_1a054c2a544e2e4e71d04dd2f7d8c1e926" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_uint8Count</name></member>
+      <member refid="classSubsystem_1ae48b1cb87eca421b690c0feee4d77361" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>_uint8List</name></member>
+      <member refid="classSubsystem_1abc36c854d6ea9cc8e747b22e2c2715df" prot="private" virt="non-virtual"><scope>Subsystem</scope><name>bytesToFloat</name></member>
+      <member refid="classSubsystem_1a30ba7efc514bf6f32954c401e4970920" prot="public" virt="non-virtual"><scope>Subsystem</scope><name>connectionCheck</name></member>
+      <member refid="classSubsystem_1ab409ad84bd9f9d22bc1ba928c5b979e6" prot="public" virt="non-virtual"><scope>Subsystem</scope><name>dataGet</name></member>
+      <member refid="classSubsystem_1a53d42c2f624e571fdf2cc47ebb0e4f57" prot="public" virt="non-virtual"><scope>Subsystem</scope><name>ledUpdate</name></member>
+      <member refid="classSubsystem_1a62d4cc10255a038ebb8ade36d0167f41" prot="public" virt="non-virtual"><scope>Subsystem</scope><name>statusGet</name></member>
+      <member refid="classSubsystem_1a5587fce51f4c89931f6fea1b807d3a75" prot="public" virt="non-virtual"><scope>Subsystem</scope><name>Subsystem</name></member>
+      <member refid="classSubsystem_1a471f5d85aedf07fb074167773522c607" prot="public" virt="non-virtual"><scope>Subsystem</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

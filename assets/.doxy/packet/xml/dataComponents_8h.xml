@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dataComponents_8h" kind="file" language="C++">
+    <compoundname>dataComponents.h</compoundname>
+    <includes refid="baseClasses_8h" local="yes">baseClasses.h</includes>
+    <includedby refid="DynamicPacketCodec_8h" local="yes">libraries/DynamicPacketCodec/include/DynamicPacketCodec.h</includedby>
+    <includedby refid="dataComponents_8cpp" local="yes">libraries/DynamicPacketCodec/src/dataComponents.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>baseClasses.h</label>
+        <link refid="baseClasses_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/include/dataComponents.h</label>
+        <link refid="dataComponents_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>libraries/DynamicPacketCodec/include/DynamicPacketCodec.h</label>
+        <link refid="DynamicPacketCodec_8h"/>
+      </node>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/include/dataComponents.h</label>
+        <link refid="dataComponents_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>libraries/DynamicPacketCodec/src/dataComponents.cpp</label>
+        <link refid="dataComponents_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classuint8__t__Component" prot="public">uint8_t_Component</innerclass>
+    <innerclass refid="classfloat__Component" prot="public">float_Component</innerclass>
+    <innerclass refid="classchar__Component" prot="public">char_Component</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baseClasses_8h" kindref="compound">baseClasses.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classuint8__t__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classuint8__t__Component" kindref="compound">uint8_t_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint8__t__Component" kindref="compound">uint8_t_Component</ref>(uint8_t*<sp/><ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref>,<sp/>uint8_t<sp/><ref refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kindref="member">size</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kindref="member">min</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" kindref="member">max</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classuint8__t__Component_1aea7ba0eda40610180d01bbf98672a147" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classuint8__t__Component_1a738622f6af30a034cf9fe10c48d788b3" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11" refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/><ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="12" refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kindref="member">min</ref>;</highlight></codeline>
+<codeline lineno="13" refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" kindref="member">max</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" kindref="member">resolution</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classfloat__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classfloat__Component" kindref="compound">float_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classfloat__Component" kindref="compound">float_Component</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/><ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref>,<sp/>uint8_t<sp/><ref refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kindref="member">size</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kindref="member">min</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" kindref="member">max</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1a16966ae7f8b57abde49aea25c0ee79ab" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classfloat__Component_1afd3c417fecc8858d5eb2a5499c5d91dd" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24" refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/><ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="25" refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kindref="member">min</ref>;</highlight></codeline>
+<codeline lineno="26" refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" kindref="member">max</ref>;</highlight></codeline>
+<codeline lineno="27" refid="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" kindref="member">resolution</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classchar__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classchar__Component" kindref="compound">char_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classchar__Component" kindref="compound">char_Component</ref>(uint8_t*<sp/><ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classchar__Component_1ad4deff23170cb52e3daab0ad1373ec7e" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classchar__Component_1a0b904fdecebb0c139f6e3b7a50fe7bb7" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37" refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/><ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="libraries/DynamicPacketCodec/include/dataComponents.h"/>
+  </compounddef>
+</doxygen>

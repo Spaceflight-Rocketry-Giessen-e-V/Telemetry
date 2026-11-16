@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_0e3c0571c94c2f89fbf113628d83e1ea" kind="dir">
+    <compoundname>libraries/DynamicPacketCodec/src</compoundname>
+    <innerfile refid="baseClasses_8cpp">baseClasses.cpp</innerfile>
+    <innerfile refid="dataComponents_8cpp">dataComponents.cpp</innerfile>
+    <innerfile refid="frameComponents_8cpp">frameComponents.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libraries/DynamicPacketCodec/src/"/>
+  </compounddef>
+</doxygen>

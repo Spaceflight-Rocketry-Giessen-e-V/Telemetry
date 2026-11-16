@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_c5ffbea36932c83eb1d4acc4d97a1afa" kind="dir">
+    <compoundname>libraries/Radiocrafts_RC17xxHP_RC232</compoundname>
+    <innerdir refid="dir_b3b07431d1f2dc23f8f90d7ee279ceb1">libraries/Radiocrafts_RC17xxHP_RC232/examples</innerdir>
+    <innerfile refid="Radiocrafts__RC17xxHP__RC232_8cpp">Radiocrafts_RC17xxHP_RC232.cpp</innerfile>
+    <innerfile refid="Radiocrafts__RC17xxHP__RC232_8h">Radiocrafts_RC17xxHP_RC232.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libraries/Radiocrafts_RC17xxHP_RC232/"/>
+  </compounddef>
+</doxygen>

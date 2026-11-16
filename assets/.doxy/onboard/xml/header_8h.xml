@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="header_8h" kind="file" language="C++">
+    <compoundname>header.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes local="yes">Wire.h</includes>
+    <includes local="yes">DynamicPacketCodec.h</includes>
+    <includes local="yes">Radiocrafts_RC17xxHP_RC232.h</includes>
+    <includedby refid="i2c__connectivity_8h" local="yes">onboard/firmware/include/i2c_connectivity.h</includedby>
+    <includedby refid="utility_8h" local="yes">onboard/firmware/include/utility.h</includedby>
+    <includedby refid="main_8cpp" local="yes">onboard/firmware/src/main.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>onboard/firmware/include/header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="5">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="3">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>onboard/firmware/include/header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>onboard/firmware/include/i2c_connectivity.h</label>
+        <link refid="i2c__connectivity_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>onboard/firmware/include/utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>onboard/firmware/src/i2c_connectivity.cpp</label>
+        <link refid="i2c__connectivity_8cpp"/>
+      </node>
+      <node id="4">
+        <label>onboard/firmware/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>onboard/firmware/src/utility.cpp</label>
+        <link refid="utility_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Wire.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;DynamicPacketCodec.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Radiocrafts_RC17xxHP_RC232.h&quot;</highlight></codeline>
+    </programlisting>
+    <location file="onboard/firmware/include/header.h"/>
+  </compounddef>
+</doxygen>

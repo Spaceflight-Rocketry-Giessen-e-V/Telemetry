@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="classbuttonStruct" kind="class"><name>buttonStruct</name>
+    <member refid="classbuttonStruct_1a0125ee06fce00f8266058d19d94a0b46" kind="variable"><name>sw1</name></member>
+    <member refid="classbuttonStruct_1ac4982a15463942a1b811e27d8fda6fa0" kind="variable"><name>sw2</name></member>
+    <member refid="classbuttonStruct_1ac609bda809a3b448841d3e54310071fe" kind="variable"><name>sw3</name></member>
+    <member refid="classbuttonStruct_1a69a4a610ca633b0f20d72bee18b29e46" kind="variable"><name>sw4</name></member>
+    <member refid="classbuttonStruct_1a5009585ca6eb1707b4636ad1efd2b3c3" kind="variable"><name>sw5</name></member>
+    <member refid="classbuttonStruct_1af050cb8f7581da3248af8d7afc573612" kind="variable"><name>sw6</name></member>
+    <member refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kind="function"><name>pinMode</name></member>
+  </compound>
+  <compound refid="classdataStruct" kind="class"><name>dataStruct</name>
+    <member refid="classdataStruct_1a1697c0d7ffd03c6986f20898e7236b5a" kind="variable"><name>rssi</name></member>
+    <member refid="classdataStruct_1af0e5f5e45596dbbfe25f3743218bce43" kind="variable"><name>timestampLastPacket</name></member>
+    <member refid="classdataStruct_1a06912c5b978b54ec46e2228dc1c132ed" kind="variable"><name>timeSinceLastPacket</name></member>
+    <member refid="classdataStruct_1ad67805065d078cc65fee16c66ed64ccb" kind="variable"><name>command</name></member>
+    <member refid="classdataStruct_1aa696a25ad59788191a23fd80f456c786" kind="variable"><name>packetIdentifier</name></member>
+    <member refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" kind="variable"><name>stateTelemetry</name></member>
+    <member refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kind="variable"><name>statePower</name></member>
+    <member refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kind="variable"><name>stateSens</name></member>
+    <member refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kind="variable"><name>stateControl</name></member>
+    <member refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" kind="variable"><name>acceleration</name></member>
+    <member refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" kind="variable"><name>heightPressure</name></member>
+    <member refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" kind="variable"><name>flightEvents</name></member>
+    <member refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" kind="variable"><name>latitude</name></member>
+    <member refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" kind="variable"><name>longitude</name></member>
+    <member refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" kind="variable"><name>heightGNSS</name></member>
+    <member refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" kind="variable"><name>satCountGNSS</name></member>
+    <member refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" kind="variable"><name>hdopGNSS</name></member>
+    <member refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" kind="variable"><name>temperatureElectronics</name></member>
+    <member refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" kind="variable"><name>temperatureBattery</name></member>
+    <member refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" kind="variable"><name>stateCapacitors</name></member>
+    <member refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" kind="variable"><name>continuityPyros</name></member>
+    <member refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" kind="variable"><name>pressureDecoupler</name></member>
+    <member refid="classdataStruct_1add8d871624e41aff468940f842a72515" kind="variable"><name>ldrDecoupler</name></member>
+    <member refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" kind="variable"><name>voltageBattery</name></member>
+    <member refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" kind="variable"><name>currentBattery</name></member>
+    <member refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" kind="variable"><name>currentUmbilical</name></member>
+    <member refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" kind="variable"><name>stateUmbilical</name></member>
+    <member refid="classdataStruct_1a6eb4316e73a8391f5e8897adb51a1aea" kind="variable"><name>lowPowerMode</name></member>
+    <member refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" kind="variable"><name>voltageBatteryCOTS</name></member>
+  </compound>
+  <compound refid="classledStruct" kind="class"><name>ledStruct</name>
+    <member refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kind="variable"><name>R</name></member>
+    <member refid="classledStruct_1ade289f9167496e3c136712df9166737b" kind="variable"><name>G</name></member>
+    <member refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kind="variable"><name>B</name></member>
+    <member refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kind="variable"><name>D1</name></member>
+    <member refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kind="variable"><name>D2</name></member>
+    <member refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kind="variable"><name>D3</name></member>
+    <member refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kind="variable"><name>rssi_1</name></member>
+    <member refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kind="variable"><name>rssi_2</name></member>
+    <member refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kind="variable"><name>rssi_3</name></member>
+    <member refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kind="variable"><name>rssi_4</name></member>
+    <member refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kind="variable"><name>rssi_5</name></member>
+    <member refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kind="variable"><name>rssi_6</name></member>
+    <member refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kind="variable"><name>rssi_7</name></member>
+    <member refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kind="variable"><name>rssi_8</name></member>
+    <member refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kind="function"><name>pinMode</name></member>
+  </compound>
+  <compound refid="header_8h" kind="file"><name>header.h</name>
+  </compound>
+  <compound refid="utility_8h" kind="file"><name>utility.h</name>
+    <member refid="utility_8h_1a768e7a0e1ea7342f47330b68a864224c" kind="define"><name>SETUPBEGIN</name></member>
+    <member refid="utility_8h_1ab5d0dcb9a453c5ffed92aa8d86f3c876" kind="define"><name>SETUPRADIOMODULS</name></member>
+    <member refid="utility_8h_1ac88cc3b672d1f10c24d31e68eaf9a044" kind="define"><name>SETUPEND</name></member>
+    <member refid="utility_8h_1ab75978ba540e0f974c1b4937f2a70e0a" kind="define"><name>RADIOMODUL_ONE</name></member>
+    <member refid="utility_8h_1af91f62521b98861d833a9735c97f0832" kind="define"><name>RADIOMODUL_TWO</name></member>
+    <member refid="group__groundstation_1ga14933904b9236b20415697dd034ab405" kind="function"><name>radioModulesSetup</name></member>
+    <member refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kind="function"><name>commandReceive</name></member>
+    <member refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kind="function"><name>commandExecute</name></member>
+    <member refid="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" kind="function"><name>packetReceive</name></member>
+    <member refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kind="function"><name>dataSendUsb</name></member>
+    <member refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kind="function"><name>ledUpdate</name></member>
+    <member refid="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" kind="function"><name>ledRssiUpdate</name></member>
+    <member refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kind="function"><name>displayUpdate</name></member>
+    <member refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kind="function"><name>buttonCheck</name></member>
+    <member refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kind="function"><name>controlBoxCheck</name></member>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kind="variable"><name>pinLed</name></member>
+    <member refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kind="variable"><name>pinButton</name></member>
+    <member refid="main_8cpp_1a709c1f8051214f5ab098ff89ffda61bc" kind="variable"><name>pinControlBox1</name></member>
+    <member refid="main_8cpp_1a2cfa4750e48b4fa0fe9ca93d047c43ff" kind="variable"><name>pinControlBox2</name></member>
+    <member refid="main_8cpp_1a5a5d37c4e0379680c2055263e48bbde1" kind="variable"><name>SerialUSB1</name></member>
+    <member refid="main_8cpp_1abc217b901b3ee9d5a61436347bdab224" kind="variable"><name>SerialUSB2</name></member>
+    <member refid="main_8cpp_1ae340c57ce2494bb8b3f613c471f419b9" kind="variable"><name>pinTX_USB1</name></member>
+    <member refid="main_8cpp_1a858b4741de7a53a9c329b8f92ac37a62" kind="variable"><name>pinRX_USB1</name></member>
+    <member refid="main_8cpp_1a2c7353ddfc51067e6c250257fb0fb2bf" kind="variable"><name>pinTX_USB2</name></member>
+    <member refid="main_8cpp_1abb479992ea310638e9e0329f9829ca0e" kind="variable"><name>pinRX_USB2</name></member>
+    <member refid="main_8cpp_1ad5ac0573f6084a979fd35d2102ee8576" kind="variable"><name>Serial4</name></member>
+    <member refid="main_8cpp_1a82352210c4f1925716baa382005eb8de" kind="variable"><name>Serial1</name></member>
+    <member refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kind="variable"><name>commandPacket</name></member>
+    <member refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kind="variable"><name>framePacket</name></member>
+    <member refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kind="variable"><name>flightDataPacket</name></member>
+    <member refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kind="variable"><name>telemetryDataPacket</name></member>
+    <member refid="main_8cpp_1a29265dae8ecc23526252a0df6b10eac7" kind="variable"><name>dataVars</name></member>
+    <member refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kind="variable"><name>packetBuffer</name></member>
+    <member refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kind="variable"><name>packetBufferIndex</name></member>
+    <member refid="main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
+    <member refid="main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kind="function"><name>loop</name></member>
+  </compound>
+  <compound refid="utility_8cpp" kind="file"><name>utility.cpp</name>
+    <member refid="utility_8cpp_1a768e7a0e1ea7342f47330b68a864224c" kind="define"><name>SETUPBEGIN</name></member>
+    <member refid="utility_8cpp_1ab5d0dcb9a453c5ffed92aa8d86f3c876" kind="define"><name>SETUPRADIOMODULS</name></member>
+    <member refid="utility_8cpp_1ac88cc3b672d1f10c24d31e68eaf9a044" kind="define"><name>SETUPEND</name></member>
+    <member refid="utility_8cpp_1ab75978ba540e0f974c1b4937f2a70e0a" kind="define"><name>RADIOMODUL_ONE</name></member>
+    <member refid="utility_8cpp_1af91f62521b98861d833a9735c97f0832" kind="define"><name>RADIOMODUL_TWO</name></member>
+    <member refid="utility_8cpp_1ad45c7e4bd81ad6c15ea7181fe7a43caf" kind="function"><name>radioModuleConfigure</name></member>
+    <member refid="group__groundstation_1ga14933904b9236b20415697dd034ab405" kind="function"><name>radioModulesSetup</name></member>
+    <member refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kind="function"><name>commandReceive</name></member>
+    <member refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kind="function"><name>commandExecute</name></member>
+    <member refid="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" kind="function"><name>packetReceive</name></member>
+    <member refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kind="function"><name>dataSendUsb</name></member>
+    <member refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kind="function"><name>ledUpdate</name></member>
+    <member refid="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" kind="function"><name>ledRssiUpdate</name></member>
+    <member refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kind="function"><name>displayUpdate</name></member>
+    <member refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kind="function"><name>buttonCheck</name></member>
+    <member refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kind="function"><name>controlBoxCheck</name></member>
+  </compound>
+  <compound refid="group__groundstation" kind="group"><name>groundstation</name>
+    <member refid="group__groundstation_1ga14933904b9236b20415697dd034ab405" kind="function"><name>radioModulesSetup</name></member>
+    <member refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kind="function"><name>commandReceive</name></member>
+    <member refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kind="function"><name>commandExecute</name></member>
+    <member refid="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" kind="function"><name>packetReceive</name></member>
+    <member refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kind="function"><name>dataSendUsb</name></member>
+    <member refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kind="function"><name>ledUpdate</name></member>
+    <member refid="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" kind="function"><name>ledRssiUpdate</name></member>
+    <member refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kind="function"><name>displayUpdate</name></member>
+    <member refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kind="function"><name>buttonCheck</name></member>
+    <member refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kind="function"><name>controlBoxCheck</name></member>
+  </compound>
+  <compound refid="todo" kind="page"><name>todo</name>
+  </compound>
+  <compound refid="dir_9593cad69041603fae40c4ffc2ee0f0b" kind="dir"><name>groundstation/firmware</name>
+  </compound>
+  <compound refid="dir_5f3342637bad9702a78d58913b974ded" kind="dir"><name>groundstation</name>
+  </compound>
+  <compound refid="dir_1d15b8600b9877248c90fb083e3e8b18" kind="dir"><name>groundstation/firmware/include</name>
+  </compound>
+  <compound refid="dir_378fe0f8ac021523c9dbb2c9a3fe9bca" kind="dir"><name>groundstation/firmware/src</name>
+  </compound>
+</doxygenindex>

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classparity__Component" kind="class" language="C++" prot="public">
+    <compoundname>parity_Component</compoundname>
+    <basecompoundref refid="classComponent" prot="public" virt="non-virtual">Component</basecompoundref>
+    <includes refid="frameComponents_8h" local="no">frameComponents.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classparity__Component_1a4daac45d21838f12fe93dbc16103ee80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>parity_Component::parity_Component</definition>
+        <argsstring>(const uint8_t priority=1)</argsstring>
+        <name>parity_Component</name>
+        <qualifiedname>parity_Component::parity_Component</qualifiedname>
+        <param>
+          <type>const uint8_t</type>
+          <declname>priority</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="25" column="1" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classparity__Component_1a8fb0210894a961e38cb7f104e9775a90" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void parity_Component::encode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>encode</name>
+        <qualifiedname>parity_Component::encode</qualifiedname>
+        <reimplements refid="classComponent_1a699a7b99d6f14aa2a59a1f4cfc45de5b">encode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="26" column="6" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="47" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classparity__Component_1a52f1e0bd54789d390b7fe2f06607bb10" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t parity_Component::decode</definition>
+        <argsstring>(uint8_t *packet) override</argsstring>
+        <name>decode</name>
+        <qualifiedname>parity_Component::decode</qualifiedname>
+        <reimplements refid="classComponent_1a266439e9a03683a4e397b13390d00a3e">decode</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="27" column="9" bodyfile="libraries/DynamicPacketCodec/src/frameComponents.cpp" bodystart="66" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+      </node>
+      <node id="1">
+        <label>parity_Component</label>
+        <link refid="classparity__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>packet</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Packet</label>
+        <link refid="classPacket"/>
+      </node>
+      <node id="1">
+        <label>parity_Component</label>
+        <link refid="classparity__Component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libraries/DynamicPacketCodec/include/frameComponents.h" line="22" column="1" bodyfile="libraries/DynamicPacketCodec/include/frameComponents.h" bodystart="23" bodyend="28"/>
+    <listofallmembers>
+      <member refid="classComponent_1a52b1f155dc244e5404dd79a3eda7d489" prot="public" virt="non-virtual"><scope>parity_Component</scope><name>bitPosition</name></member>
+      <member refid="classComponent_1aba2955099d2fb6620facf48393187239" prot="protected" virt="non-virtual"><scope>parity_Component</scope><name>bitReader</name></member>
+      <member refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" prot="protected" virt="non-virtual"><scope>parity_Component</scope><name>bitReset</name></member>
+      <member refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" prot="protected" virt="non-virtual"><scope>parity_Component</scope><name>bitWriter</name></member>
+      <member refid="classComponent_1a9aa87c9b2222a8b0f8687803cf1c8457" prot="public" virt="non-virtual"><scope>parity_Component</scope><name>Component</name></member>
+      <member refid="classparity__Component_1a52f1e0bd54789d390b7fe2f06607bb10" prot="public" virt="virtual"><scope>parity_Component</scope><name>decode</name></member>
+      <member refid="classparity__Component_1a8fb0210894a961e38cb7f104e9775a90" prot="public" virt="virtual"><scope>parity_Component</scope><name>encode</name></member>
+      <member refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" prot="public" virt="non-virtual"><scope>parity_Component</scope><name>packet</name></member>
+      <member refid="classparity__Component_1a4daac45d21838f12fe93dbc16103ee80" prot="public" virt="non-virtual"><scope>parity_Component</scope><name>parity_Component</name></member>
+      <member refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" prot="public" virt="non-virtual"><scope>parity_Component</scope><name>priority</name></member>
+      <member refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" prot="public" virt="non-virtual"><scope>parity_Component</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

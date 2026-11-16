@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_d3910b10d935f2681f2ee83ac211d5ad" kind="dir">
+    <compoundname>libraries/DynamicPacketCodec/include</compoundname>
+    <innerfile refid="baseClasses_8h">baseClasses.h</innerfile>
+    <innerfile refid="dataComponents_8h">dataComponents.h</innerfile>
+    <innerfile refid="DynamicPacketCodec_8h">DynamicPacketCodec.h</innerfile>
+    <innerfile refid="frameComponents_8h">frameComponents.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libraries/DynamicPacketCodec/include/"/>
+  </compounddef>
+</doxygen>

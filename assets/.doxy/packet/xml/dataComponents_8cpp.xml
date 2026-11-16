@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dataComponents_8cpp" kind="file" language="C++">
+    <compoundname>dataComponents.cpp</compoundname>
+    <includes refid="dataComponents_8h" local="yes">dataComponents.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>baseClasses.h</label>
+        <link refid="baseClasses_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>dataComponents.h</label>
+        <link refid="dataComponents_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/src/dataComponents.cpp</label>
+        <link refid="dataComponents_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dataComponents_8h" kindref="compound">dataComponents.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>uint8_t<sp/>DATA<sp/>COMPONENT<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><ref refid="classuint8__t__Component_1ae08d6fb5a164a08315cad93403dcaf19" kindref="member">uint8_t_Component::uint8_t_Component</ref>(uint8_t*<sp/>value,<sp/>uint8_t<sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>min,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>max,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>priority)<sp/>:<sp/><ref refid="classComponent" kindref="compound">Component</ref>(size,<sp/>priority)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;value<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;min<sp/>=<sp/>min;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;max<sp/>=<sp/>max;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>resolution<sp/>=<sp/>(max<sp/>-<sp/>min)<sp/>/<sp/>(pow(2,<sp/>size)<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>resolution<sp/>=<sp/>resolution<sp/>==<sp/>0<sp/>?<sp/>1<sp/>:<sp/>resolution;<sp/></highlight><highlight class="comment">//<sp/>Zero<sp/>Resolution<sp/>leads<sp/>to<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classuint8__t__Component_1aea7ba0eda40610180d01bbf98672a147" kindref="member">uint8_t_Component::encode</ref>(uint8_t*<sp/>packet)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref><sp/>=<sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref><sp/>&lt;<sp/><ref refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kindref="member">min</ref><sp/>?<sp/><ref refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kindref="member">min</ref><sp/>:<sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref><sp/>=<sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref><sp/>&gt;<sp/><ref refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" kindref="member">max</ref><sp/>?<sp/><ref refid="classuint8__t__Component_1a819e8afb7a5f83e3058e3d75ce265c4c" kindref="member">max</ref><sp/>:<sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>dataBits<sp/>=<sp/>(uint32_t)((*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref><sp/>-<sp/><ref refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kindref="member">min</ref>)<sp/>/<sp/><ref refid="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" kindref="member">resolution</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" kindref="member">bitWriter</ref>(dataBits,<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">uint8_t<sp/><ref refid="classuint8__t__Component_1a738622f6af30a034cf9fe10c48d788b3" kindref="member">uint8_t_Component::decode</ref>(uint8_t*<sp/>packet)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>dataBits<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1aba2955099d2fb6620facf48393187239" kindref="member">bitReader</ref>(&amp;dataBits,<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" kindref="member">bitReset</ref>(<ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="classuint8__t__Component_1aba8e23093eab76fc7144e5243b075e96" kindref="member">value</ref><sp/>=<sp/>(uint8_t)dataBits<sp/>*<sp/><ref refid="classuint8__t__Component_1a99a44f466a65fb7348a58fc3393d2c50" kindref="member">resolution</ref><sp/>+<sp/><ref refid="classuint8__t__Component_1a9bb460100930859379045396d87bc311" kindref="member">min</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>float<sp/>DATA<sp/>COMPONENT<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="classfloat__Component_1abe819c1547d102398ab6980c6b1e0519" kindref="member">float_Component::float_Component</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>value,<sp/>uint8_t<sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>priority)<sp/>:<sp/><ref refid="classComponent" kindref="compound">Component</ref>(size,<sp/>priority)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;value<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;min<sp/>=<sp/>min;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;max<sp/>=<sp/>max;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>resolution<sp/>=<sp/>(max<sp/>-<sp/>min)<sp/>/<sp/>(pow(2,<sp/>size)<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classfloat__Component_1a16966ae7f8b57abde49aea25c0ee79ab" kindref="member">float_Component::encode</ref>(uint8_t*<sp/>packet)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref><sp/>=<sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref><sp/>&lt;<sp/><ref refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kindref="member">min</ref><sp/>?<sp/><ref refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kindref="member">min</ref><sp/>:<sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref><sp/>=<sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref><sp/>&gt;<sp/><ref refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" kindref="member">max</ref><sp/>?<sp/><ref refid="classfloat__Component_1a951840fb1d782f9c994d3afc5e34a865" kindref="member">max</ref><sp/>:<sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>dataBits<sp/>=<sp/>(uint32_t)((*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref><sp/>-<sp/><ref refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kindref="member">min</ref>)<sp/>/<sp/><ref refid="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" kindref="member">resolution</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" kindref="member">bitWriter</ref>(dataBits,<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">uint8_t<sp/><ref refid="classfloat__Component_1afd3c417fecc8858d5eb2a5499c5d91dd" kindref="member">float_Component::decode</ref>(uint8_t*<sp/>packet)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>dataBits<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1aba2955099d2fb6620facf48393187239" kindref="member">bitReader</ref>(&amp;dataBits,<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" kindref="member">bitReset</ref>(<ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>*<ref refid="classfloat__Component_1afa4f90ed5ce6cad8081198a628b11750" kindref="member">value</ref><sp/>=<sp/>(float)dataBits<sp/>*<sp/><ref refid="classfloat__Component_1a68f8529a2f6e4bcbb1e3236ede387594" kindref="member">resolution</ref><sp/>+<sp/><ref refid="classfloat__Component_1ab0b5ac6d7beb233d674e4ae57ed5c0c5" kindref="member">min</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>char<sp/>DATA<sp/>COMPONENT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><ref refid="classchar__Component_1acfa5fbd3a18c869fb86f050fe4139269" kindref="member">char_Component::char_Component</ref>(uint8_t*<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>priority)<sp/>:<sp/><ref refid="classComponent" kindref="compound">Component</ref>(5,<sp/>priority)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;value<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classchar__Component_1ad4deff23170cb52e3daab0ad1373ec7e" kindref="member">char_Component::encode</ref>(uint8_t*<sp/>packet)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>dataBits<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;Z&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dataBits<sp/>=<sp/>*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>-<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal"><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;z&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dataBits<sp/>=<sp/>*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>-<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal"><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1a48376cc56eb636fa9fd3cc6f1bf840a1" kindref="member">bitWriter</ref>(dataBits,<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">uint8_t<sp/><ref refid="classchar__Component_1a0b904fdecebb0c139f6e3b7a50fe7bb7" kindref="member">char_Component::decode</ref>(uint8_t*<sp/>packet)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>dataBits<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1aba2955099d2fb6620facf48393187239" kindref="member">bitReader</ref>(&amp;dataBits,<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classComponent_1ad4c1d406a634f9aa1f041742f5177188" kindref="member">bitReset</ref>(<ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dataBits<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>=<sp/>dataBits<sp/>-<sp/>1<sp/>+<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classchar__Component_1ab675bc5b1a7e7145c8972e30181f8a23" kindref="member">value</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libraries/DynamicPacketCodec/src/dataComponents.cpp"/>
+  </compounddef>
+</doxygen>

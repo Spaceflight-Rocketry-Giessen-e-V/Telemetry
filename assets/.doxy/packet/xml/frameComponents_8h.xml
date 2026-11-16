@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="frameComponents_8h" kind="file" language="C++">
+    <compoundname>frameComponents.h</compoundname>
+    <includes refid="baseClasses_8h" local="yes">baseClasses.h</includes>
+    <includedby refid="DynamicPacketCodec_8h" local="yes">libraries/DynamicPacketCodec/include/DynamicPacketCodec.h</includedby>
+    <includedby refid="frameComponents_8cpp" local="yes">libraries/DynamicPacketCodec/src/frameComponents.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>baseClasses.h</label>
+        <link refid="baseClasses_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/include/frameComponents.h</label>
+        <link refid="frameComponents_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>libraries/DynamicPacketCodec/include/DynamicPacketCodec.h</label>
+        <link refid="DynamicPacketCodec_8h"/>
+      </node>
+      <node id="1">
+        <label>libraries/DynamicPacketCodec/include/frameComponents.h</label>
+        <link refid="frameComponents_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>libraries/DynamicPacketCodec/src/frameComponents.cpp</label>
+        <link refid="frameComponents_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classconst__Component" prot="public">const_Component</innerclass>
+    <innerclass refid="classempty__Component" prot="public">empty_Component</innerclass>
+    <innerclass refid="classparity__Component" prot="public">parity_Component</innerclass>
+    <innerclass refid="classcobs__Component" prot="public">cobs_Component</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baseClasses_8h" kindref="compound">baseClasses.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classconst__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classconst__Component" kindref="compound">const_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classconst__Component" kindref="compound">const_Component</ref>(uint32_t<sp/><ref refid="classconst__Component_1a96e83a97e9fa3eeae60c975c0a007439" kindref="member">value</ref>,<sp/>uint8_t<sp/><ref refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kindref="member">size</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classconst__Component_1ab01c3e83be736bc3078efee1ae1a449f" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classconst__Component_1a0b477d651cce781029c2c2a5a77860a0" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11" refid="classconst__Component_1a96e83a97e9fa3eeae60c975c0a007439" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="classconst__Component_1a96e83a97e9fa3eeae60c975c0a007439" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classempty__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classempty__Component" kindref="compound">empty_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classempty__Component" kindref="compound">empty_Component</ref>(uint8_t<sp/><ref refid="classComponent_1a3b99a8d7b65eccf15e7242ed03e8b042" kindref="member">size</ref>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classempty__Component_1a490b3d61434fbdd04d9bcaf71adb8ae2" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classempty__Component_1a4d6c70ca0c670b9f1d14caf0c0578e68" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classparity__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classparity__Component" kindref="compound">parity_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classparity__Component" kindref="compound">parity_Component</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>1);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classparity__Component_1a8fb0210894a961e38cb7f104e9775a90" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classparity__Component_1a52f1e0bd54789d390b7fe2f06607bb10" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classcobs__Component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classcobs__Component" kindref="compound">cobs_Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classComponent" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcobs__Component" kindref="compound">cobs_Component</ref>(uint8_t<sp/><ref refid="classcobs__Component_1ab46a6326cb3acab5aa444d180dfba8a5" kindref="member">markerByte</ref>,<sp/>uint8_t<sp/><ref refid="classcobs__Component_1af5b7472be3c6ed4448cb63be6a788f5a" kindref="member">size</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classComponent_1abb43ab6189a7cc14eb35d77843f314c4" kindref="member">priority</ref><sp/>=<sp/>127);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcobs__Component_1a31db0056c870bad88690da978963a485" kindref="member">encode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classcobs__Component_1a6ee8eec1fc0f1fe07eaa6dae738e43e7" kindref="member">decode</ref>(uint8_t*<sp/><ref refid="classComponent_1aea1f9aecfb805f2a969c733150e84a80" kindref="member">packet</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37" refid="classcobs__Component_1ab46a6326cb3acab5aa444d180dfba8a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classcobs__Component_1ab46a6326cb3acab5aa444d180dfba8a5" kindref="member">markerByte</ref>;</highlight></codeline>
+<codeline lineno="38" refid="classcobs__Component_1af5b7472be3c6ed4448cb63be6a788f5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classcobs__Component_1af5b7472be3c6ed4448cb63be6a788f5a" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="libraries/DynamicPacketCodec/include/frameComponents.h"/>
+  </compounddef>
+</doxygen>

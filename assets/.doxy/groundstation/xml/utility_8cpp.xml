@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="utility_8cpp" kind="file" language="C++">
+    <compoundname>utility.cpp</compoundname>
+    <includes refid="utility_8h" local="yes">utility.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>header.h</label>
+        <link refid="header_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>utility.h</label>
+        <link refid="utility_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>groundstation/firmware/src/utility.cpp</label>
+        <link refid="utility_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="6">
+        <label>DynamicPacketCodec.h</label>
+      </node>
+      <node id="7">
+        <label>Radiocrafts_RC17xxHP_RC232.h</label>
+      </node>
+      <node id="5">
+        <label>Wire.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="utility_8cpp_1a768e7a0e1ea7342f47330b68a864224c" prot="public" static="no">
+        <name>SETUPBEGIN</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/utility.cpp" line="4" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8cpp_1ab5d0dcb9a453c5ffed92aa8d86f3c876" prot="public" static="no">
+        <name>SETUPRADIOMODULS</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/utility.cpp" line="5" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8cpp_1ac88cc3b672d1f10c24d31e68eaf9a044" prot="public" static="no">
+        <name>SETUPEND</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/utility.cpp" line="6" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8cpp_1ab75978ba540e0f974c1b4937f2a70e0a" prot="public" static="no">
+        <name>RADIOMODUL_ONE</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/utility.cpp" line="7" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="utility_8cpp_1af91f62521b98861d833a9735c97f0832" prot="public" static="no">
+        <name>RADIOMODUL_TWO</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/utility.cpp" line="8" column="9" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="utility_8cpp_1ad45c7e4bd81ad6c15ea7181fe7a43caf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t radioModuleConfigure</definition>
+        <argsstring>(RC17xxHP_RC232 *radioModule)</argsstring>
+        <name>radioModuleConfigure</name>
+        <param>
+          <type>RC17xxHP_RC232 *</type>
+          <declname>radioModule</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="groundstation/firmware/src/utility.cpp" line="10" column="16" bodyfile="groundstation/firmware/src/utility.cpp" bodystart="10" bodyend="49"/>
+      </memberdef>
+      <member refid="group__groundstation_1ga14933904b9236b20415697dd034ab405" kind="function"><name>radioModulesSetup</name></member>
+      <member refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kind="function"><name>commandReceive</name></member>
+      <member refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kind="function"><name>commandExecute</name></member>
+      <member refid="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" kind="function"><name>packetReceive</name></member>
+      <member refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kind="function"><name>dataSendUsb</name></member>
+      <member refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kind="function"><name>ledUpdate</name></member>
+      <member refid="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" kind="function"><name>ledRssiUpdate</name></member>
+      <member refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kind="function"><name>displayUpdate</name></member>
+      <member refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kind="function"><name>buttonCheck</name></member>
+      <member refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kind="function"><name>controlBoxCheck</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utility_8h" kindref="compound">utility.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LEDs<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETUPBEGIN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETUPRADIOMODULS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SETUPEND<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RADIOMODUL_ONE<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RADIOMODUL_TWO<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>radioModuleConfigure(RC17xxHP_RC232<sp/>*radioModule)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;begin();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;resetHard();<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initial<sp/>reboot<sp/>to<sp/>clear<sp/>setting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;ping()<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>confirm<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_RF_DATA_RATE(0x05)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>radio<sp/>data<sp/>rate,<sp/>higher<sp/>than<sp/>documentation<sp/>until<sp/>flow<sp/>control<sp/>is<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_RSSI_MODE(0x01)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>append<sp/>signal<sp/>strength<sp/>to<sp/>packet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_PACKET_LENGTH(0x01)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>send<sp/>every<sp/>byte<sp/>when<sp/>it<sp/>arrives</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_PACKET_TIMEOUT(0x01)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>send<sp/>byte<sp/>32<sp/>ms<sp/>after<sp/>it<sp/>arrives<sp/>(backup<sp/>when<sp/>packet<sp/>length<sp/>fails)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_ADDRESS_MODE(0x00)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>addressing<sp/>off<sp/>(broadcast)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_CRC_MODE(0x00)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>CRC<sp/>off</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(radioModule-&gt;set_LED_CONTROL(0x01)<sp/>!=<sp/>0)<sp/></highlight><highlight class="comment">//<sp/>enable<sp/>the<sp/>module&apos;s<sp/>status<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;resetHard();<sp/></highlight><highlight class="comment">//<sp/>reboot<sp/>settings<sp/>take<sp/>effect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>radioModule-&gt;flush();<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>flush<sp/>serial<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configures<sp/>both<sp/>radio<sp/>modules;<sp/>lights<sp/>each<sp/>module&apos;s<sp/>status<sp/>LED<sp/>on<sp/>success<sp/>and<sp/>sounds<sp/>buzzzer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga14933904b9236b20415697dd034ab405" kindref="member">radioModulesSetup</ref>(RC17xxHP_RC232<sp/>*rc1780hp,<sp/>RC17xxHP_RC232<sp/>*rc1701hp,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fallback<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>error1780<sp/>=<sp/>radioModuleConfigure(rc1780hp);<sp/></highlight><highlight class="comment">//<sp/>module<sp/>1:<sp/>downlink<sp/>(TX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error1780<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8cpp_1ab75978ba540e0f974c1b4937f2a70e0a" kindref="member">RADIOMODUL_ONE</ref>,<sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>error1701<sp/>=<sp/>radioModuleConfigure(rc1701hp);<sp/></highlight><highlight class="comment">//<sp/>module<sp/>2:<sp/>uplink<sp/>(RX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error1701<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(<ref refid="utility_8cpp_1af91f62521b98861d833a9735c97f0832" kindref="member">RADIOMODUL_TWO</ref>,<sp/><ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error1780<sp/>!=<sp/>0<sp/>||<sp/>error1701<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">uint8_t<sp/><ref refid="group__groundstation_1ga066adee57d24b34e7deee34fc931eaa9" kindref="member">commandReceive</ref>(HardwareSerial<sp/>*serialUSB)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>availability</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serialUSB-&gt;available()<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>serialUSB-&gt;read();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga1600b74446942f2a4ff7e0389a40a98f" kindref="member">commandExecute</ref>(RC17xxHP_RC232<sp/>*radioModule,<sp/>uint8_t<sp/>command,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(command<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref><sp/>=<sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>-&gt;encode();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>radioModule-&gt;send(<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>,<sp/><ref refid="main_8cpp_1a34b0156ecee829d3b97f14ade06323e7" kindref="member">commandPacket</ref>-&gt;getByteSize());</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">uint8_t<sp/><ref refid="group__groundstation_1ga0dc061fab1b6850d62fac1f271dd9f58" kindref="member">packetReceive</ref>(RC17xxHP_RC232<sp/>*radioModule,<sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>,<sp/>uint8_t<sp/>*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref>,<sp/><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>,<sp/>Packet<sp/>*<ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((radioModule-&gt;available()<sp/>!=<sp/>0)<sp/>&amp;&amp;<sp/>(*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>&lt;<sp/>32))</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>[*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref>]<sp/>=<sp/>radioModule-&gt;read();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*packetBufferIndex)++;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>&gt;=<sp/>2)<sp/>&amp;&amp;<sp/>(<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>[*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>-<sp/>2]<sp/>==<sp/>0xEE))<sp/></highlight><highlight class="comment">//<sp/>-2<sp/>because<sp/>of<sp/>rssi</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>&gt;=<sp/>13)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dataVariables-&gt;<ref refid="classdataStruct_1a06912c5b978b54ec46e2228dc1c132ed" kindref="member">timeSinceLastPacket</ref><sp/>=<sp/>millis()<sp/>-<sp/>dataVariables-&gt;<ref refid="classdataStruct_1af0e5f5e45596dbbfe25f3743218bce43" kindref="member">timestampLastPacket</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dataVariables-&gt;<ref refid="classdataStruct_1af0e5f5e45596dbbfe25f3743218bce43" kindref="member">timestampLastPacket</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="main_8cpp_1a014c146ce6d85000dd220cc1911aead9" kindref="member">framePacket</ref>-&gt;decode(&amp;<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>[*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>-<sp/>13])<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(dataVariables-&gt;<ref refid="classdataStruct_1aa696a25ad59788191a23fd80f456c786" kindref="member">packetIdentifier</ref><sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a2d13b97d177b882dd9ba8625312d4e65" kindref="member">flightDataPacket</ref>-&gt;decode(&amp;<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>[*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>-<sp/>13]);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(dataVariables-&gt;<ref refid="classdataStruct_1aa696a25ad59788191a23fd80f456c786" kindref="member">packetIdentifier</ref><sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ac4bcec47699dd09cdbb92afce6b47d69" kindref="member">telemetryDataPacket</ref>-&gt;decode(&amp;<ref refid="main_8cpp_1a20a0216ef20fb672883747b78e190462" kindref="member">packetBuffer</ref>[*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>-<sp/>13]);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Serial5.print(&quot;nach<sp/>decode&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>&gt;<sp/>31)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="main_8cpp_1a67285cdac0e90acad12805711c0b40dc" kindref="member">packetBufferIndex</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga6fcb9b70bb0d54c1b73ac8774a6ee74d" kindref="member">dataSendUsb</ref>(HardwareSerial<sp/>*serialUSB,<sp/><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Acceleration:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1af2d99d7335a9e27c47cb470e302c3cd5" kindref="member">acceleration</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Height<sp/>(Pressure):<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1ac70dfdae4b181dcb595f71f4e3247fa5" kindref="member">heightPressure</ref>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Flight<sp/>Events:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1aaf3516b914458474480b1d2d390cb733" kindref="member">flightEvents</ref>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Latitude:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1ae4ae9d8c7ae6af154db1315a4cfdd2f8" kindref="member">latitude</ref>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Longitude:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a4e8ab6cf4ac16e515306a68468de5d6a" kindref="member">longitude</ref>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;State<sp/>Telemetry:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a9443517a7f7866854a725ffddc66ee1d" kindref="member">stateTelemetry</ref>);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;State<sp/>Power<sp/>Supply:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a6a38d5a032729237b95fe5c02d38497a" kindref="member">statePower</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;State<sp/>Sensorics:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a32348b6578ee9a8afdc2ba6e94482090" kindref="member">stateSens</ref>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;State<sp/>Flight<sp/>Control:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a0ca943219008872d5f81ab6088d5f63c" kindref="member">stateControl</ref>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Height<sp/>(GNSS):<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1ab57a0593288a017b8cb768c791dae756" kindref="member">heightGNSS</ref>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;GNSS<sp/>Satellite<sp/>Count:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a3931d7e5d4bcbac7a321fee28b3c4fdc" kindref="member">satCountGNSS</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;GNSS<sp/>HDOP:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a62c3b2ef0cbbeae4c86798ea494266f7" kindref="member">hdopGNSS</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Electronics<sp/>Temperature:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1afef453199523d4a075e9d35fb2118174" kindref="member">temperatureElectronics</ref>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Temperature:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a7baa3eeeae87f386ddfb38772cdb3e4a" kindref="member">temperatureBattery</ref>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Capacitors<sp/>State:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1acc9c47338aed66949a9e6a1511b1c243" kindref="member">stateCapacitors</ref>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Pyros<sp/>Continuity:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1ab535442d31f85c764fc004bebb4de19a" kindref="member">continuityPyros</ref>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Decoupler<sp/>Pressure:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a9593e23c193f6ae9d64d259d1f5f64f3" kindref="member">pressureDecoupler</ref>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Decoupler<sp/>LDR:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1add8d871624e41aff468940f842a72515" kindref="member">ldrDecoupler</ref>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Voltage:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a8d87bc115d793e94e02f2389feeb8041" kindref="member">voltageBattery</ref>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Current:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1aca78dd1573d66e7c7b52095c162668b2" kindref="member">currentBattery</ref>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Umbilical<sp/>Current:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a90829eb0985c3b7f4b33944bf42d3cce" kindref="member">currentUmbilical</ref>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Umbilical<sp/>State:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a5ab96a4cef0063cdf1efb52206cc216b" kindref="member">stateUmbilical</ref>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Low<sp/>Power<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a6eb4316e73a8391f5e8897adb51a1aea" kindref="member">lowPowerMode</ref>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;COTS<sp/>Battery<sp/>Voltage:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a3756f7dce1e4a691a7cfc25c4ccae944" kindref="member">voltageBatteryCOTS</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;RSSI:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a1697c0d7ffd03c6986f20898e7236b5a" kindref="member">rssi</ref>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Time<sp/>Since<sp/>Last<sp/>Packet:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1a06912c5b978b54ec46e2228dc1c132ed" kindref="member">timeSinceLastPacket</ref>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;print(</highlight><highlight class="stringliteral">&quot;Packet<sp/>Type:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>serialUSB-&gt;println(dataVariables-&gt;<ref refid="classdataStruct_1aa696a25ad59788191a23fd80f456c786" kindref="member">packetIdentifier</ref><sp/>==<sp/>0<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Flight<sp/>Data<sp/>Packet&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;Telemetry<sp/>Data<sp/>Packet&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga52279c232fc1164df02e30117c8724e3" kindref="member">ledUpdate</ref>(uint8_t<sp/>state,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(state)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8cpp_1a768e7a0e1ea7342f47330b68a864224c" kindref="member">SETUPBEGIN</ref>:</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8cpp_1ab5d0dcb9a453c5ffed92aa8d86f3c876" kindref="member">SETUPRADIOMODULS</ref>:</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8cpp_1ac88cc3b672d1f10c24d31e68eaf9a044" kindref="member">SETUPEND</ref>:</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8cpp_1ab75978ba540e0f974c1b4937f2a70e0a" kindref="member">RADIOMODUL_ONE</ref>:</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="utility_8cpp_1af91f62521b98861d833a9735c97f0832" kindref="member">RADIOMODUL_TWO</ref>:</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga5b4251ff2b4e6aaf268110a8c1c61f21" kindref="member">ledRssiUpdate</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rssi,<sp/><ref refid="classledStruct" kindref="compound">ledStruct</ref><sp/>*<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>RGB<sp/>LED<sp/>(RSSI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-40)<sp/></highlight><highlight class="comment">//<sp/>High<sp/>signal<sp/>strength</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-50)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-60)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-70)<sp/></highlight><highlight class="comment">//<sp/>Medium<sp/>signal<sp/>strength</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-80)</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-90)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-100)<sp/></highlight><highlight class="comment">//<sp/>Low<sp/>signal<sp/>strength</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&gt;<sp/>-110)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rssi<sp/>&lt;=<sp/>-110)</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="main_8cpp_1a9147c5aaf8d8be508943fa2c2af95598" kindref="member">pinLed</ref>-&gt;<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1gaeed1126c82b96494fc3bcebfd6897e6d" kindref="member">displayUpdate</ref>(uint8_t<sp/>address,<sp/><ref refid="classdataStruct" kindref="compound">dataStruct</ref><sp/>*dataVariables)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga2317be74a759c5492f92d5805b2ad1cc" kindref="member">buttonCheck</ref>(<ref refid="classbuttonStruct" kindref="compound">buttonStruct</ref><sp/><ref refid="main_8cpp_1a897ed6f046b6a37b369e410605c107e7" kindref="member">pinButton</ref>)</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__groundstation_1ga41be33997a41a076ba729e1dbd862fd9" kindref="member">controlBoxCheck</ref>(uint8_t<sp/>pin1,<sp/>uint8_t<sp/>pin2)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">ledStruct::pinMode</ref>()</highlight></codeline>
+<codeline lineno="342"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="classledStruct_1aaab043841a499099efe90718c4f5983e" kindref="member">R</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="classledStruct_1ade289f9167496e3c136712df9166737b" kindref="member">G</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(<ref refid="classledStruct_1af84f56424c39c69af2339a2e75b181be" kindref="member">B</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a85534009833a31787af9b290b3b2ad16" kindref="member">D1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ab950541f72c7a36633b294d4fde7e64b" kindref="member">D2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ab70faaaeb2d9c6ca0e67b77579332fb4" kindref="member">D3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ae7e5a0f38d5c00ec3f3258568461f58b" kindref="member">rssi_1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a936c594d11199fa91974d6b95630b19d" kindref="member">rssi_2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1ac8b5b2cd634460f5200a5164f3741b27" kindref="member">rssi_3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a2e5c376bf08436665aeed61e749ffa20" kindref="member">rssi_4</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a0b74ea16dabae6d6334c8446bec95c6a" kindref="member">rssi_5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a5de1944efdaacf408797e44206c29de2" kindref="member">rssi_6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1a761834d550f7a0ca4283b99499648411" kindref="member">rssi_7</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classledStruct_1ae63119f65b85cbdf0cd4a6ec44fe7da3" kindref="member">::pinMode</ref>(<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classledStruct_1afb4efcf1261a9df30241347833fdf366" kindref="member">rssi_8</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">buttonStruct::pinMode</ref>()</highlight></codeline>
+<codeline lineno="376"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">::pinMode</ref>(<ref refid="classbuttonStruct_1a0125ee06fce00f8266058d19d94a0b46" kindref="member">sw1</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classbuttonStruct_1a0125ee06fce00f8266058d19d94a0b46" kindref="member">sw1</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">::pinMode</ref>(<ref refid="classbuttonStruct_1ac4982a15463942a1b811e27d8fda6fa0" kindref="member">sw2</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classbuttonStruct_1ac4982a15463942a1b811e27d8fda6fa0" kindref="member">sw2</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">::pinMode</ref>(<ref refid="classbuttonStruct_1ac609bda809a3b448841d3e54310071fe" kindref="member">sw3</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classbuttonStruct_1ac609bda809a3b448841d3e54310071fe" kindref="member">sw3</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">::pinMode</ref>(<ref refid="classbuttonStruct_1a69a4a610ca633b0f20d72bee18b29e46" kindref="member">sw4</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classbuttonStruct_1a69a4a610ca633b0f20d72bee18b29e46" kindref="member">sw4</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">::pinMode</ref>(<ref refid="classbuttonStruct_1a5009585ca6eb1707b4636ad1efd2b3c3" kindref="member">sw5</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classbuttonStruct_1a5009585ca6eb1707b4636ad1efd2b3c3" kindref="member">sw5</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classbuttonStruct_1aa6f9520f691d7aa7e4aa9fbdfdda6f3c" kindref="member">::pinMode</ref>(<ref refid="classbuttonStruct_1af050cb8f7581da3248af8d7afc573612" kindref="member">sw6</ref>,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>::digitalWrite(<ref refid="classbuttonStruct_1af050cb8f7581da3248af8d7afc573612" kindref="member">sw6</ref>,<sp/>LOW);</highlight></codeline>
+<codeline lineno="389"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="groundstation/firmware/src/utility.cpp"/>
+  </compounddef>
+</doxygen>
