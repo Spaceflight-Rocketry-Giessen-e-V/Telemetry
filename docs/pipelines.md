@@ -41,7 +41,7 @@ uint8_t commandReceive(HardwareSerial *serialUSB);
 ```
 
 During the workflow, Doxygen converts these comments and the associated C/C++ declarations into Markdown/HTML files. 
-<p align="center"><img src="images/githubaction_workflow.svg" /></p>
+<p align="center"><img src="images/pipelines/githubaction_workflow.svg" /></p>
 
 
 The workflow runs after a push to the `main` branch when files in one of the following locations change:

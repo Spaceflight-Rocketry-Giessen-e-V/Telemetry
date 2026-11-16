@@ -57,13 +57,13 @@ Include the footprint and link the 3D model:
 - Choose the footprint from the download folder
 - Press "Save" and insert the desired name and choose the "Footprints" library:
 
-<p align="center"><img src="images/kicad_footprint.png" width ="400"/></p>
+<p align="center"><img src="images/user_manual/kicad_footprint.png" width ="400"/></p>
 
 - Press "OK"
 - Press "E" to open the footprint properties
 - Go to the "3D Models" tab (1), click the folder symbol (2), choose the project path (3), and choose the correcht 3d model (4)
 
-<p align="center"><img src="images/kicad_3dmodel.png" width ="400"/></p>
+<p align="center"><img src="images/user_manual/kicad_3dmodel.png" width ="400"/></p>
 
 - If the 3D model is not positioned correctly, it can be scaled, rotated, or moved
 - Press "OK" and then "Save"
@@ -77,7 +77,7 @@ Include the symbol and link the footprint:
 - Press "E" to open the symbol properties
 - Hover over the "Footprint" field and click the library symbol:
 
-<p align="center"><img src="images/kicad_symbol.png" width ="600"/></p>
+<p align="center"><img src="images/user_manual/kicad_symbol.png" width ="600"/></p>
 
 - Choose the footprint from the "Footprints" library
 - Press "OK" and then "Save"
@@ -98,11 +98,11 @@ We source most of our electronics components from Digikey. We included a Bills o
 First, the surface mounted components are soldered. We recommend the Chipquik TS391LT lead free, thermally stable, no-clean, low temperature solder paste, which also comes at a reasonable price. 
 To apply the solder paste, the PCB should be cleaned with isopropyl alcohol and then be fixated on a table using surplus PCBs and sticky tape as mechanical stop. 
 
-<p align="center"><img src="images/solder_jig.jpg" width ="400"/></p>
+<p align="center"><img src="images/user_manual/solder_jig.jpg" width ="400"/></p>
 
 Next, the solder paste stencil is exactly aligned and fixated with tape as well. 
 
-<p align="center"><img src="images/solder_stencil.jpg" width ="400"/></p>
+<p align="center"><img src="images/user_manual/solder_stencil.jpg" width ="400"/></p>
 
 A small amount of solder paste can be applied and spreaded out using a spatula or an old credit card. When completed, the stencil is removed and the components can be placed on the PCB with tweezers, starting with the smallest components.
 We recommend using a hot plate like the Uyue 946C to melt the solder, but a hot air station or a reflow oven can also be used.
@@ -126,7 +126,7 @@ The PCB can be gently cleaned using a soft toothbrush and isopropyl alcohol. The
 
 Our firmware is designed to be used with Visual Studio Code and the PlatformIO extension. The firmware folder of either the ground station or the onboard system can be directly opened in VSCode. 
 
-<p align="center"><img src="images/pio_open_folder.png" /></p>
+<p align="center"><img src="images/user_manual/pio_open_folder.png" /></p>
 
 ### Upload the firmware
 
@@ -162,13 +162,13 @@ The following procedure has to be applied:
 Press *Welcome*.
 When opening for the first time, a new project has to be created: Press *Start* next to the connected device and create the project (the project settings should not be changed). 
 
-<p align="center"><img src="images/simplicity_studio_2.png" width = 600/></p>
+<p align="center"><img src="images/user_manual/simplicity_studio_2.png" width = 600/></p>
 
 2) Open the Xpress Configurator by pressing *Open Perspective* in the top right toolbar.
 3) Import the current data from the device.
 4) Under *Port Configuration GPIO*, change the *Alternate Function* of GPIO2 and GPIO3 to *TX Toggle* and *RX Toggle* respectively.
 
-<p align="center"><img src="images/simplicity_studio_1.png" width = 600/></p>
+<p align="center"><img src="images/user_manual/simplicity_studio_1.png" width = 600/></p>
 
 5) Save the changes and program to the device.
 

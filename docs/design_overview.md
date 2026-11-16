@@ -2,7 +2,7 @@
 
 This document provides detailed information about our electronics, firmware, antenna, and GUI systems. It also covers rationales used during the design process.
 
-<p align="center"><img src="images/System_Block_Diagram.svg" /></p>
+<p align="center"><img src="images/README/System_Block_Diagram.svg" /></p>
 
 The whole system is designed for an effective range of 18 km. To accomplish this goal, the signal strength at the receiver must be strong enough to be processed. Our link budget calculation as outlined in [this document](linkbudget.ipynb) ensures that our system meets this requirement.
 
@@ -55,7 +55,7 @@ The whole system is designed for an effective range of 18 km. To accomplish this
 
 ### Groundstation MB/DB Approach
 
-| <img src="/groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="/groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" /> |
+| <img src="./../groundstation/pcb/Motherboard/images/Motherboard_PCB_Rendering.png" width="400" /> | <img src="./../groundstation/pcb/Daughterboard/images/Daughterboard_PCB_Rendering.png" width="400" /> |
 | :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
 | [Motherboard](/groundstation/pcb/Motherboard/)| [Daughterboard](/groundstation/pcb/Daughterboard/)|
 
@@ -74,11 +74,11 @@ The onboard PCB is based on the standard layout of our rocketry club, featuring 
 
 The system includes an RGB LED for status indication, three LEDs for subsystem status indication and five general-purpose LEDs. Additionally, all UART traces feature a LED indicator.
 
-<p align="center"><img src="../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
+<p align="center"><img src="./../onboard/pcb/images/Onboard_PCB_Rendering_1.png" width="600"/></p>
 
 ### Previous Design
 
-<p align="center"><img src="../onboard/pcb/images/Onboard_PCB_old.png" width="600"/></p>
+<p align="center"><img src="./../onboard/pcb/images/Onboard_PCB_old.png" width="600"/></p>
 
 ## Design Details
 
@@ -88,11 +88,11 @@ The license-free frequency bands in Germany are regulated by the Bundesnetzagent
 
 The frequency band between 169.4 MHz and 169.475 MHz can be used with an output power (EIRP) of up to 27 dBm or 500 mW, with a duty cycle of 1 %. This limits the radio transmission to 36 seconds total per (continous) hour.
 
-<p align="center"><img src="images/frequency_regulation_169.png" /></p>
+<p align="center"><img src="images/design_overview/frequency_regulation_169.png" /></p>
 
 The frequency band between 869.4 MHz and 869.65 MHz can be used with an output power (EIRP) of up to 27 dBm or 500 mW, with a duty cycle of 10 %. This limits the radio transmission to 6 minutes total per (continous) hour.
 
-<p align="center"><img src="images/frequency_regulation_869.png" /></p>
+<p align="center"><img src="images/design_overview/frequency_regulation_869.png" /></p>
 
 ### Radio Modules
 
@@ -178,11 +178,11 @@ For a 4 layer pcb like our onboard pcb: H = 0.2104 mm. For a 2 layer pcb like ou
 
 For the groundstation daughterboard, our goal was to use the width of the 0805 matching component pads as the trace width and thus a variable separation S. The result is S = 0.22 mm:
 
-<p align="center"><img src="images/coplanar_waveguide_groundstation.png" width="600"/></p>
+<p align="center"><img src="images/design_overview/coplanar_waveguide_groundstation.png" width="600"/></p>
 
 Due to the different height of the onboard pcb, a trace width of 1.2 mm would lead to large values for S. Thus, we used a fixed separation S = 0.22 mm (same value as for the groundstation daughterboard) and a variable trace width. The result is W = 0.37 mm. Due to the different width of the matching components, this is not an ideal trace and might have a slighty different impedance. Matching is advised.
 
-<p align="center"><img src="images/coplanar_waveguide_onboard.png" width="600"/></p>
+<p align="center"><img src="images/design_overview/coplanar_waveguide_onboard.png" width="600"/></p>
 
 In the signal trace, a T-matching network is included to be able to match the antenna's impedance to 50 Ohms. When no matching is used, a 0 Ohms resistor has to be connected in series and the parallel component has to be left open. More informations about antenna matching can be found in the [user manual](user_manual.md).
 
@@ -192,7 +192,7 @@ On the onboard and motherboard PCBs, onboard UPDI programmers and USB-UART bridg
 
 The following image shows the general schematic:
 
-<p align="center"><img src="images/updi_circuit.png" width = 600/></p>
+<p align="center"><img src="images/design_overview/updi_circuit.png" width = 600/></p>
 
 The design features a CP2102N USB to UART bridge, [whose datasheet](https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf) suggests the use of an ESD protection diode (D1) for the data lines, and a voltage divider (R1, R2) for the `VBUS` input.
 Not shown in the schematic is one LED (with a 560 Ohms resistor) each at `TXT` and `RXT` and decoupling capacitors (4.7 uF and 0.1 uF) at the `VREGIN` and `VDD`.
@@ -206,13 +206,13 @@ To fullfill this requirement, we use high-quality [Samtec ESQ pin sockets](https
 
 The pins are staggered to guarantee perfect alignment. A shift by 1/10" or 0.254 mm and a hole size of 1 mm is perfect for the Samtec ESQ pin sockets. The result looks like this:
 
-<p align="center"><img src="images/staggered_pins.png" width = 600/></p>
+<p align="center"><img src="images/design_overview/staggered_pins.png" width = 600/></p>
 
 ## Groundstation Electronics Casings
 
 Plastics enclosures for the motherboard and daughterboards, each with a bottom part, a shell, and an acrylic cover. The repository includes all the original Fusion and auxiliary (`.step`, `.stl`) design files.
 
-|![Motherboard Casing](../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Daughterboard Casing](../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_3.png)|
+|![Motherboard Casing](./../groundstation/casing/Motherboard/Images/MB_Casing_1.png)|![Daughterboard Casing](./../groundstation/casing/Daughterboard/Images/DaughterboardCasing_render_3.png)|
 |:---:|:---:|
 |[Motherboard Casing](/groundstation/casing/Motherboard/)|[Daughterboard Casing](/groundstation/casing/Daughterboard/)|
 
@@ -220,7 +220,7 @@ Plastics enclosures for the motherboard and daughterboards, each with a bottom p
 
 Attachment for onboard pcb, onboard QFH antenna and attachment point inside the rocket. Designed with generative design. The original and auxiliary design files can be found [here](../onboard/mounting%20structure/)
 
-<p align="center"><img src="../onboard/mounting structure/Images/MountingBracket_render1.png" width = 300/></p>
+<p align="center"><img src="./../onboard/mounting structure/Images/MountingBracket_render1.png" width = 300/></p>
 
 ---
 
@@ -234,7 +234,7 @@ An overview of all functions and classes is given in the [Firmware Code Referenc
 
 The firmware structure may be seen in the image below.
 
-<p align="center"><img src="images/Firmware_Block_Diagram.svg" /></p>
+<p align="center"><img src="images/design_overview/Firmware_Block_Diagram.svg" /></p>
 
 In the setup function, pin declarations and starting conditions are established. The radio module is initialized, and the desired configurations are applied after a configuration reset. Additionally, the flight computer initializes the I2C connection to the other subsystems of the flight computer (such as sensorics) and the ground station initializes the UART connection to the ground station computer.
 
@@ -280,7 +280,7 @@ D-Sub 9 from mission control, display, buttons.
 To achieve the highest possible range, we opted to use a low data rate, specifically 1.2 kbps. As a compromise between sampling rate and packet size, we chose a sampling rate of 10 Hz, resulting in 120 bits or 15 bytes per packet. Since the data link should not operate at full capacity, we allocate a buffer of 20%, leading to a final packet size of 12 bytes.
 
 The structure of each packet with its components is described [here](package_structure.md).
-<p align="center"><img src="images/packet_structure_diagram.png" width = 800/></p>
+<p align="center"><img src="images/packet_structure/packet_structure_diagram.png" width = 800/></p>
 
 To consider the 10 % duty cycle, the flight computer usually only transmits once every few seconds (the rate can be configured). The module starts to transmit continuously when the flight mode is toggled by a radio command. After a preset time, the continuous transmission stops and the standby transmission once every few seconds starts again.
 
@@ -345,7 +345,7 @@ The glass fibre rod sticks through the 40 cm round aluminium ground plane and is
 
 The following image shows the groundplane, the upper cone support, the GFK rod, the pacifiers and the copper cable:
 
-| ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_3.png)| ![Side View](../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png) |
+| ![Base Detail](./../groundstation/antenna/helical/images/GroundstationAntenna_render_3.png)| ![Side View](./../groundstation/antenna/helical/images/GroundstationAntenna_render_2.png) | ![Base Detail](./../groundstation/antenna/helical/images/GroundstationAntenna_render_1.png) |
 |---|---|---|
 
 The assembly informations can be found in the [user manual](user_manual.md).
@@ -354,7 +354,7 @@ The winding help is a mould for shaping the copper wire. Since the wire expands 
 
 ### Simulations
 
-<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width = 600/></p>
+<p align="center"><img src="./../groundstation/antenna/helical/images/GroundstationAntenna_simulation.png" width = 600/></p>
 
 The simulations are based on the Finite-Difference Time-Domain (FDTD) method provided by the [openEMS software](https://github.com/thliebig/openEMS-Project). This allows us to look at the performance of the antenna nefore we build it and home in during the design process regarding the geometry.
 The guide to the simulation can be found [here](helical_antenna_simulation_guide.md)
@@ -362,7 +362,7 @@ The guide to the simulation can be found [here](helical_antenna_simulation_guide
 
 Before the design process of the new helical antenna, we designed and built a much larger version, featuring a 1.5 m helix and a 70 cm x 70 cm x 2 mm ground plane. The resulting antenna was too large, heavy and expensive, which is why we settled on a 0.5 m helix with a round 40 cm x 1.5 mm ground plane. The new antenna can easily be mounted on a camera tripod.
 
-<p align="center"><img src="/groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width = 600/></p>
+<p align="center"><img src="./../groundstation/antenna/helical/images/GroundstationAntenna_picture_3.jpg" width = 600/></p>
 
 ## Groundstation 169 MHz Dipole Antenna
 
@@ -370,7 +370,7 @@ The groundstation antenna for the 169 MHz radio system consists of a simple [dip
 
 A male-to-male panel-mount sma connector connects the coaxial cable, the reflector and the dipole antenna.
 
-|![Antenna Assembly](images/antenna_169_gs_1.jpg)|![Antenna Components](images/antenna_169_gs_2.jpg)|
+|![Antenna Assembly](images/design_overview/antenna_169_gs_1.jpg)|![Antenna Components](images/design_overview/antenna_169_gs_2.jpg)|
 |---|---|
 
 ## Onboard 869 Mhz QFH Antenna
@@ -401,7 +401,7 @@ set of live windows, logs everything to disk, and lets the operator send radio
 commands back to the flight computer. The code lives in [/groundstation/gui/](/groundstation/gui/);
 see its [README](/groundstation/gui/README.md) for setup and run instructions.
 
-<p align="center"><img src="/groundstation/gui/example_images/main_view.png" /></p>
+<p align="center"><img src="./../groundstation/gui/example_images/main_view.png" /></p>
 
 ## Architecture
 

@@ -6,7 +6,7 @@
 - [Frame Components](#frame-components)
 - [Data Components](#data-components)
 
-<p align="center"><img src="images/packet_structure_diagram.png" width = 800/></p>
+<p align="center"><img src="images/packet_structure/packet_structure_diagram.png" width = 800/></p>
 
 ---
 
