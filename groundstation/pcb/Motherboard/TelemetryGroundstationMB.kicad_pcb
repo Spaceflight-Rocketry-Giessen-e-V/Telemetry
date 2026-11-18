@@ -174,7 +174,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -204,6 +204,12 @@
 		(path "/d04a8677-d088-41df-afc9-84e026213a18")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -224,7 +230,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "938087bd-5890-49d1-8a00-c6a494832da5")
 		)
@@ -235,7 +241,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "85516be8-2cad-4bb9-b777-a432c2dafa38")
 		)
@@ -246,7 +252,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "14c697ef-0681-454a-aa31-6be782fc5ede")
 		)
@@ -257,7 +263,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "af5db90c-cb1d-49a3-8fc1-11bea4b9e27d")
 		)
@@ -384,6 +390,12 @@
 		(path "/10d25e23-c14d-4f58-b9cd-f8842352c722")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -632,9 +644,31 @@
 				)
 			)
 		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e1d1363e-b9d6-45e8-acd8-575a4415efce")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "DSUB*Pins*")
 		(path "/1a80f022-511b-4c65-998f-a698cc7cebf6")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "5" "10" "4" "9" "3" "8" "2" "7" "1" "6" "SH" "15" "14" "13" "12"
+					"11"
+				)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -849,7 +883,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "TX3")
-			(pinfunction "1")
 			(pintype "passive")
 			(uuid "ad5baddc-d7d4-4fce-b280-26d42647e9f4")
 		)
@@ -860,7 +893,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RX3")
-			(pinfunction "2")
 			(pintype "passive")
 			(uuid "2f365a9f-a899-48a7-b43f-60a7c572b159")
 		)
@@ -871,7 +903,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D31")
-			(pinfunction "3")
 			(pintype "passive")
 			(uuid "b67e7ce5-4b47-47d3-9fa8-650e9e9ede67")
 		)
@@ -882,7 +913,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D32")
-			(pinfunction "4")
 			(pintype "passive")
 			(uuid "e1db644f-6900-4149-a203-a6a22cc11300")
 		)
@@ -893,7 +923,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D33")
-			(pinfunction "5")
 			(pintype "passive")
 			(uuid "295228a3-ad95-4f70-a2f8-e29b8b87d1dc")
 		)
@@ -904,7 +933,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D34")
-			(pinfunction "6")
 			(pintype "passive")
 			(uuid "b8131b14-49ed-46b5-bceb-7a22d00ef7c1")
 		)
@@ -915,7 +943,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "7")
 			(pintype "passive")
 			(uuid "377ae49e-015f-41d2-931c-5981a1cec19e")
 		)
@@ -926,7 +953,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "8")
 			(pintype "passive")
 			(uuid "93a0c0fa-ab91-4980-987d-e5c01c889fba")
 		)
@@ -937,7 +963,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "9")
 			(pintype "passive")
 			(uuid "8e752d6f-ebb9-4528-a561-47ed7eedfbdb")
 		)
@@ -948,7 +973,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "10")
 			(pintype "passive")
 			(uuid "508d05d0-0699-44e6-a8d7-cba04bf97c8e")
 		)
@@ -959,7 +983,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "11")
 			(pintype "passive")
 			(uuid "5a9a674f-4cb8-4532-936b-f233798f3f92")
 		)
@@ -970,7 +993,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "12")
 			(pintype "passive")
 			(uuid "d7a77a8d-e410-4cfe-8894-2682339370fb")
 		)
@@ -981,7 +1003,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "13")
 			(pintype "passive")
 			(uuid "31a50140-91a2-40a7-9629-b7d2b8991680")
 		)
@@ -992,7 +1013,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "14")
 			(pintype "passive")
 			(uuid "4e328273-5b78-4b7a-9833-8d85e75844a5")
 		)
@@ -1003,7 +1023,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "15")
 			(pintype "passive")
 			(uuid "90139b53-570f-4e57-9b99-ca57901633e8")
 		)
@@ -1014,7 +1033,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD__1")
 			(pintype "passive")
 			(uuid "95993dbd-3218-4b12-882f-ee521e556061")
 		)
@@ -1025,7 +1043,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD")
 			(pintype "passive")
 			(uuid "e3359c62-932b-4ed9-88aa-4701930ed5ec")
 		)
@@ -1138,6 +1155,12 @@
 		(path "/fff182cf-b706-4e91-9e8a-7e4f40d31332")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1378,7 +1401,13 @@
 		(path "/7de8ba81-5455-45ff-a6b6-44263e7f9e5b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
@@ -1618,7 +1647,13 @@
 		(path "/6a2e1a92-0eda-48a3-89a3-03cffeac0bb2")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -1858,6 +1893,12 @@
 		(path "/ed8d48ea-7375-48ae-a280-d7ad66bb1e47")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2011,7 +2052,7 @@
 		(property "Reference" "C1"
 			(at 2.712689 0 90)
 			(layer "F.SilkS")
-			(uuid "6aed6e85-dd7b-4e12-b437-767bc6040ee6")
+			(uuid "d5080fc6-084c-427c-8031-3974c4a4096f")
 			(effects
 				(font
 					(size 1 1)
@@ -2023,7 +2064,7 @@
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8696f12e-c16a-4c60-a581-62d9e7c37414")
+			(uuid "4f653711-7963-4824-873c-2125427c8bd7")
 			(effects
 				(font
 					(size 1 1)
@@ -2035,7 +2076,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9ed0162e-9c23-4c59-8e09-0ebd28d10ef1")
+			(uuid "3a543e67-ec74-4fa0-8f2f-b0b652458dc7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2047,7 +2088,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "aebdfdde-16eb-4968-acf2-4983a2f3bf1f")
+			(uuid "9777614e-ec22-4a39-9c61-b49110fff851")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2098,6 +2139,12 @@
 		(path "/78a19f06-e56f-4d27-a0d6-1f7d02eca159")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2338,6 +2385,12 @@
 		(path "/af385ccb-9353-42b5-b046-f40095a07334")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2578,6 +2631,12 @@
 		(path "/96355fe4-4c95-4228-bb37-ee99f92ae42b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2732,7 +2791,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "1da55031-0fea-4732-8102-b1217c0590ec")
+			(uuid "77383953-9348-4ee6-a51b-8cf9bf798926")
 			(effects
 				(font
 					(size 1 1)
@@ -2746,7 +2805,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "65fea615-b688-4d37-8f14-d146ece74b9a")
+			(uuid "50369675-702a-43a2-8dca-528366891688")
 			(effects
 				(font
 					(size 1 1)
@@ -2759,7 +2818,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3a9ea5b8-8d62-404e-8f4e-e5a60151f47c")
+			(uuid "1aa18571-be06-4960-86e5-65696b53edcf")
 			(effects
 				(font
 					(size 1 1)
@@ -2767,12 +2826,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "eaeccf42-9f4f-479f-8edc-8396a7a31d72")
+			(uuid "caa20277-f494-4e20-8a2c-f7995dd079ef")
 			(effects
 				(font
 					(size 1 1)
@@ -2823,6 +2882,12 @@
 		(path "/81ec6fb0-f057-4f21-b3c5-c3a06d2cdf41")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -2864,7 +2929,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "TX2")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "c76e320a-d4ec-48dd-9bed-f4ce15fb4d5b")
 		)
@@ -2913,7 +2978,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2943,6 +3008,12 @@
 		(path "/8e89e3d6-41d3-416d-a748-48db4217c2b8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -2963,7 +3034,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "c672ebbc-dc9d-4a39-b59f-ac8129b26611")
 		)
@@ -2974,7 +3045,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "cbfaa84d-6221-40c1-ae5c-59576e85b8f6")
 		)
@@ -2985,7 +3056,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "2c78cf8c-3157-4566-b0fb-251a4da0113b")
 		)
@@ -2996,7 +3067,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "aa7ed7b8-cf91-4bf5-bde6-451a64800f35")
 		)
@@ -3122,6 +3193,12 @@
 		(path "/a1b13a7d-d108-4205-b7d7-43da6b4a2a91")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3261,7 +3338,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D15-K)")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "c02a2901-f41f-4b7c-a419-0e9b0f3043cb")
 		)
@@ -3271,7 +3348,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "+3V3")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "42d41ce5-25b3-4f76-86fd-a75df425a70a")
 		)
@@ -3384,6 +3461,12 @@
 		(path "/d197d5a8-39e3-49c7-bb98-2f882cd150c1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3624,6 +3707,12 @@
 		(path "/6711deeb-ab4c-4560-8123-c2db8f0dafb5")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3866,6 +3955,12 @@
 		(path "/8c9ade12-04c7-4c05-9594-02b04752f2e7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4005,7 +4100,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "1bb15e96-5372-47ed-ae4e-6cf05c059942")
 		)
@@ -4015,7 +4110,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D12-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "39fc328d-79fd-48b0-84ab-3ceeb9dbd140")
 		)
@@ -4128,7 +4223,13 @@
 		(path "/08ea2e14-c83d-4013-ab2b-ba014002a685")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
@@ -4341,6 +4442,12 @@
 		(path "/a197e8f0-ad2a-48e4-af39-d0e4279c91dd")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4511,7 +4618,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Button6")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "9a45c9c3-693f-41ba-9f9d-397694eeb79b")
 		)
@@ -4522,7 +4629,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "279e89f6-d60c-4b5a-9856-e382bf124d41")
 		)
@@ -4635,7 +4742,13 @@
 		(path "/0cbb9eba-bfc0-4b94-aa91-2614b1aaced1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -4789,7 +4902,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "eb109c0d-a7f9-4d7e-8e6b-dddb33fbbb7b")
+			(uuid "a1a019cf-87b7-4bbe-a6e4-1bd664ba0d2f")
 			(effects
 				(font
 					(size 1 1)
@@ -4797,12 +4910,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5456c98a-0852-438b-811b-61d10e73b544")
+			(uuid "04501bb7-51f3-4841-bb41-83fe229304d7")
 			(effects
 				(font
 					(size 1 1)
@@ -4815,7 +4928,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5d80dbce-db94-4057-bb41-c922b979d6dc")
+			(uuid "2fdc3a5f-cef9-423e-bee5-a778d725a70d")
 			(effects
 				(font
 					(size 1 1)
@@ -4823,12 +4936,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c0a25ebf-67eb-47b6-a5ba-ef5d7a0a8ea1")
+			(uuid "06aaea4b-b6fa-4c7d-a4fb-8f13b6e4fd16")
 			(effects
 				(font
 					(size 1 1)
@@ -4879,6 +4992,12 @@
 		(path "/cb5a7cac-4f1c-4999-9ab2-cd51bfde8ff4")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -4899,7 +5018,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "8763e4d3-1a9f-4579-9047-fb622a79055d")
 		)
@@ -4914,7 +5033,7 @@
 		(property "Reference" "R5"
 			(at -3 0 180)
 			(layer "F.SilkS")
-			(uuid "67849d90-1ba0-46d4-8b93-2cf4216bc027")
+			(uuid "3decdf8a-534d-428a-9940-439ec1005823")
 			(effects
 				(font
 					(size 1 1)
@@ -4926,7 +5045,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5f065324-2813-47da-b330-fc30b1e01b96")
+			(uuid "67f04266-652e-4dfa-adfd-0db66d53d381")
 			(effects
 				(font
 					(size 1 1)
@@ -4938,7 +5057,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "51765a79-61d8-4fe5-8151-04070564b734")
+			(uuid "120c8b25-d09e-4113-a9ae-37de993fd9e3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4950,7 +5069,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d1f85b86-d3d1-42c9-8247-68038b70544c")
+			(uuid "6cf73a87-49cf-4fab-8d08-167746ca89bc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5001,7 +5120,13 @@
 		(path "/98bb222c-9623-4f5a-b5d3-11a89f037168")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -5154,7 +5279,7 @@
 		(property "Reference" "D1"
 			(at 3 0 180)
 			(layer "F.SilkS")
-			(uuid "de855cce-3915-444a-9a62-ddda957a3854")
+			(uuid "d7d66ad9-72f5-4794-ad71-b1faaaf09d02")
 			(effects
 				(font
 					(size 1 1)
@@ -5166,7 +5291,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fab2cbec-4db0-4809-9384-0cacd890c2f8")
+			(uuid "7cbf05af-a142-48ea-910e-3467c6e10850")
 			(effects
 				(font
 					(size 1 1)
@@ -5178,7 +5303,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6bf3d20d-fd81-4201-ae55-0a0e2fc054b0")
+			(uuid "5dabef64-acd7-4f7e-9abf-ae611ee324ec")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5190,7 +5315,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "750a1e72-ad86-459e-9f9a-d1d96762d110")
+			(uuid "e4ae3f2b-708f-4dc9-9879-ee2f478142e5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5254,6 +5379,12 @@
 		(path "/74984f7e-df7d-4353-a6cb-7207099b1c4c")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5393,7 +5524,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "185ceebf-7ba2-40a6-94da-70ce94180b5c")
 		)
@@ -5403,7 +5534,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D1-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "01ac2a56-38ab-4010-a8c8-eb8466b2b06e")
 		)
@@ -5608,6 +5739,12 @@
 		(path "/7a804686-f150-4a00-b6b0-733e0fff915a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5761,7 +5898,7 @@
 		(property "Reference" "D5"
 			(at -1 2.75 90)
 			(layer "F.SilkS")
-			(uuid "4d4c9756-1599-4e1b-a418-47ef6d5707e0")
+			(uuid "5548b6e2-b2f2-42de-a647-bdef3dae41ea")
 			(effects
 				(font
 					(size 1 1)
@@ -5773,7 +5910,7 @@
 			(at -0.28 2.48 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8231972c-a3d0-4873-80d4-1fb1689f988d")
+			(uuid "e65d5699-6a83-4044-82e3-f5505d4e2d3c")
 			(effects
 				(font
 					(size 1 1)
@@ -5786,7 +5923,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "222b9e20-e1ec-4411-8af7-e79643902aca")
+			(uuid "7e29d26b-9049-4056-b0f4-dba5c8b50fa1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5799,7 +5936,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0cc09e1b-e6a4-4b82-bd82-941382ceaafe")
+			(uuid "94142cdf-ffaf-4410-b93b-d2578d22c80f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5850,6 +5987,12 @@
 		(path "/5c47af3a-1f06-4c65-871f-0498fc6beb84")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "2" "3" "1" "4")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5991,7 +6134,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(uuid "79151372-341b-4daf-91f9-41ce2e1b39df")
 		)
@@ -6001,7 +6144,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "VBUS1")
-			(pinfunction "K")
+			(pinfunction "K_2")
 			(pintype "passive")
 			(uuid "669b5353-fc1b-44f7-9669-951fe3bb53bf")
 		)
@@ -6011,7 +6154,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D-1")
-			(pinfunction "K")
+			(pinfunction "K_3")
 			(pintype "passive")
 			(uuid "c73334d1-0056-4324-b457-f3f92897c60a")
 		)
@@ -6021,7 +6164,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D+1")
-			(pinfunction "K")
+			(pinfunction "K_4")
 			(pintype "passive")
 			(uuid "291ff432-7969-4728-b6d7-1ddf80715404")
 		)
@@ -6153,9 +6296,31 @@
 				)
 			)
 		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a5c9b206-572f-4429-a95c-8e72fe52dbbd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "DSUB*Pins*")
 		(path "/d940caa7-13c6-41a5-b0ea-1c2421ba8085")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "5" "10" "4" "9" "3" "8" "2" "7" "1" "6" "SH" "15" "14" "13" "12"
+					"11"
+				)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6370,7 +6535,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "TX0")
-			(pinfunction "1")
 			(pintype "passive")
 			(uuid "54218bf2-47bd-40da-877e-6876cd7203eb")
 		)
@@ -6381,7 +6545,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RX0")
-			(pinfunction "2")
 			(pintype "passive")
 			(uuid "6e83cdb3-dd44-494f-9273-715b96912f4b")
 		)
@@ -6392,7 +6555,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D01")
-			(pinfunction "3")
 			(pintype "passive")
 			(uuid "6d386ee2-7441-443f-bebe-d32766e9437e")
 		)
@@ -6403,7 +6565,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D02")
-			(pinfunction "4")
 			(pintype "passive")
 			(uuid "1cbb9cb0-2b96-4fe3-a75a-8448ee49fb62")
 		)
@@ -6414,7 +6575,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D03")
-			(pinfunction "5")
 			(pintype "passive")
 			(uuid "90dc8688-5f6a-4a9d-9035-148c6d93e3ec")
 		)
@@ -6425,7 +6585,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D04")
-			(pinfunction "6")
 			(pintype "passive")
 			(uuid "c5a17dcb-f632-4ef5-a448-8854f592696d")
 		)
@@ -6436,7 +6595,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "7")
 			(pintype "passive")
 			(uuid "cac36131-f8f8-401d-9b8b-d2c59e37b074")
 		)
@@ -6447,7 +6605,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "8")
 			(pintype "passive")
 			(uuid "6e67c7dc-4de5-4b41-86b4-ed07cf93c1c3")
 		)
@@ -6458,7 +6615,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "9")
 			(pintype "passive")
 			(uuid "d80cc274-123c-4ea8-94a7-834b956b11a9")
 		)
@@ -6469,7 +6625,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "10")
 			(pintype "passive")
 			(uuid "d75b565c-654e-4bf6-9181-c23fc9e33aa0")
 		)
@@ -6480,7 +6635,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "11")
 			(pintype "passive")
 			(uuid "382576f7-cf52-4da5-bc05-138645a67764")
 		)
@@ -6491,7 +6645,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "12")
 			(pintype "passive")
 			(uuid "f1151003-1da9-411c-b3c5-01d9b3a99859")
 		)
@@ -6502,7 +6655,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "13")
 			(pintype "passive")
 			(uuid "bba5e046-301c-4a09-b9e0-38c411474467")
 		)
@@ -6513,7 +6665,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "14")
 			(pintype "passive")
 			(uuid "79366585-2d11-4f0a-9713-71fc62d64275")
 		)
@@ -6524,7 +6675,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "15")
 			(pintype "passive")
 			(uuid "72f80dc3-d55a-4475-a315-3f6fb4b23daf")
 		)
@@ -6535,7 +6685,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD__1")
 			(pintype "passive")
 			(uuid "274be19e-f96d-47e7-8263-ff5832592745")
 		)
@@ -6546,7 +6695,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD")
 			(pintype "passive")
 			(uuid "58818e85-dc45-4392-972f-950d2c0457a4")
 		)
@@ -6664,7 +6812,7 @@
 		(property "Reference" "C2"
 			(at 2.712689 0 90)
 			(layer "F.SilkS")
-			(uuid "78c4bb13-a44d-4be9-9a88-9d6bfc9fa197")
+			(uuid "9d345479-5eeb-4f8e-84a7-3b04db74d33e")
 			(effects
 				(font
 					(size 1 1)
@@ -6676,7 +6824,7 @@
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8316ab01-cbe7-4fcf-b6e9-f192cb379eac")
+			(uuid "f4f8f72b-b02d-4b0b-926e-5f449f8d6c22")
 			(effects
 				(font
 					(size 1 1)
@@ -6688,7 +6836,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d7e13264-92f8-4441-841c-e300124f8155")
+			(uuid "116b3e83-a067-4839-90a4-aa2019161392")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6700,7 +6848,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "207d0681-a62a-49cf-85d5-90edcd531c3e")
+			(uuid "9eab4d2d-ce41-42ec-8cd8-b2242fc7fc4f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6751,6 +6899,12 @@
 		(path "/d3d87724-ab97-4806-a900-af5621e029a8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6991,6 +7145,12 @@
 		(path "/d25ed284-2df2-4d83-981a-721ad3926a8d")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7245,6 +7405,12 @@
 		(path "/eaf45f7f-72ab-4c0b-bccb-7ad4ddb0b396")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7645,6 +7811,14 @@
 		(path "/85e60bc9-f567-49d3-a7d1-c0aaed5d7ad8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "A5" "A6" "A7" "A8" "B4_A9" "A4_B9" "SH1" "SH2" "SH3" "SH4" "B8"
+					"B7" "B6" "B5" "B1_A12" "A1_B12"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7717,7 +7891,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_A")
+			(pinfunction "GND_A_A1_B12")
 			(pintype "power_in")
 			(uuid "674fa569-a828-4cae-af52-75ac3bcf22d1")
 		)
@@ -7726,7 +7900,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
-			(pinfunction "VBUS_A")
+			(pinfunction "VBUS_A_A4_B9")
 			(pintype "power_in")
 			(uuid "0c00043b-eea3-4ca6-92df-dc2e6089e3ad")
 		)
@@ -7735,7 +7909,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J12-CC1)")
-			(pinfunction "CC1")
+			(pinfunction "CC1_A5")
 			(pintype "bidirectional")
 			(uuid "6675682d-0521-4e08-b133-6d28a83552c4")
 		)
@@ -7744,7 +7918,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J12-DP1-PadA6)")
-			(pinfunction "DP1")
+			(pinfunction "DP1_A6")
 			(pintype "bidirectional+no_connect")
 			(uuid "5aeaea1b-4c19-4dc3-a583-3729e6cee31d")
 		)
@@ -7753,7 +7927,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J12-DN1-PadA7)")
-			(pinfunction "DN1")
+			(pinfunction "DN1_A7")
 			(pintype "bidirectional+no_connect")
 			(uuid "785a1508-8bcb-4117-9249-7bf6508c115d")
 		)
@@ -7762,7 +7936,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J12-SBU1-PadA8)")
-			(pinfunction "SBU1")
+			(pinfunction "SBU1_A8")
 			(pintype "bidirectional+no_connect")
 			(uuid "edcc78aa-49fa-4aed-a307-3aae89dd218f")
 		)
@@ -7771,7 +7945,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_B")
+			(pinfunction "GND_B_B1_A12")
 			(pintype "power_in")
 			(uuid "2d5adf48-a077-4563-932b-605d0e52f797")
 		)
@@ -7780,7 +7954,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
-			(pinfunction "VBUS_B")
+			(pinfunction "VBUS_B_B4_A9")
 			(pintype "power_in")
 			(uuid "66b317ff-159b-49a6-abe2-a2a55168a94a")
 		)
@@ -7789,7 +7963,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J12-CC2)")
-			(pinfunction "CC2")
+			(pinfunction "CC2_B5")
 			(pintype "bidirectional")
 			(uuid "dbe22dcc-d83d-4cf8-b27e-f20dc3c3601b")
 		)
@@ -7798,7 +7972,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J12-DP2-PadB6)")
-			(pinfunction "DP2")
+			(pinfunction "DP2_B6")
 			(pintype "bidirectional+no_connect")
 			(uuid "f1c554bd-004b-4eaa-8e24-b7fc04d66fe9")
 		)
@@ -7807,7 +7981,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J12-DN2-PadB7)")
-			(pinfunction "DN2")
+			(pinfunction "DN2_B7")
 			(pintype "bidirectional+no_connect")
 			(uuid "a770a8e3-e298-4fab-910b-2ae9675a0888")
 		)
@@ -7816,7 +7990,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J12-SBU2-PadB8)")
-			(pinfunction "SBU2")
+			(pinfunction "SBU2_B8")
 			(pintype "bidirectional+no_connect")
 			(uuid "4608955d-49b6-4d9b-baaa-b1324153eab5")
 		)
@@ -7825,7 +7999,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH1")
 			(pintype "passive")
 			(uuid "5d778fee-8e5c-4532-8017-03b8ecdf3a52")
 		)
@@ -7834,7 +8008,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH2")
 			(pintype "passive")
 			(uuid "59b9436d-3e58-467e-8c6f-80abdc99e101")
 		)
@@ -7843,7 +8017,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH3")
 			(pintype "passive")
 			(uuid "585d2f2c-d396-4f7d-a79a-b7a75314ccae")
 		)
@@ -7852,7 +8026,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH4")
 			(pintype "passive")
 			(uuid "49e40779-57ba-4fe5-8896-0dd227d7b2d1")
 		)
@@ -8030,6 +8204,12 @@
 		(path "/80c8d417-c4cc-4949-97be-9caf12f8ba40")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -8200,7 +8380,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "6a8bf0a0-cd01-489d-bdda-5bc77ac6b75c")
 		)
@@ -8211,7 +8391,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Net-(SW7-Pad2)")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "78734a0e-3883-4f7a-9d2d-c30e1e5e39ae")
 		)
@@ -8338,6 +8518,12 @@
 		(path "/41695016-2a44-4865-8c2a-6b2a7671612a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -8466,7 +8652,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "3dc0d0a9-2a48-4641-8dd3-df09442bf112")
 		)
@@ -8476,7 +8662,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D32-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "651d2f7b-a609-49cc-b850-839aeeee3229")
 		)
@@ -8503,7 +8689,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "eb495205-a934-480d-83fa-c415550109cd")
+			(uuid "811a9e18-dc18-435d-93ef-96a6583664d1")
 			(effects
 				(font
 					(size 1 1)
@@ -8511,12 +8697,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c89985a4-db61-445e-8bce-550656571ecd")
+			(uuid "6cc94416-99e1-4de0-9d70-4d81a38cc51e")
 			(effects
 				(font
 					(size 1 1)
@@ -8529,7 +8715,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5d058961-dafb-47e4-b961-a0427fcb8a54")
+			(uuid "c73755e7-e270-420e-b28b-4e18e82b8dc6")
 			(effects
 				(font
 					(size 1 1)
@@ -8537,12 +8723,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6064724c-384a-4016-aee4-a0a6110e3bd5")
+			(uuid "473a6d29-05fc-468f-9dfa-6137d0fabb7a")
 			(effects
 				(font
 					(size 1 1)
@@ -8593,6 +8779,12 @@
 		(path "/eb11f40c-f282-4188-82d4-ecf341398240")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -8613,7 +8805,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "64badc81-ea82-42a5-beed-089ce80e2b8d")
 		)
@@ -8729,6 +8921,12 @@
 		(path "/abd467ca-6341-4bb0-9394-236e5c124368")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -8857,7 +9055,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "6cf8fceb-d87a-4e31-93ec-209061123743")
 		)
@@ -8867,7 +9065,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D31-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "c912ea92-bb08-48f7-875a-27eef4466ac6")
 		)
@@ -8980,6 +9178,12 @@
 		(path "/81b957e3-7f18-4f79-9645-b77337abf00b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -9133,7 +9337,7 @@
 		(property "Reference" "R3"
 			(at -2.9875 0 0)
 			(layer "F.SilkS")
-			(uuid "14a831ab-1206-42f3-acbe-f456239f1397")
+			(uuid "cc779d34-0de9-48bc-a29c-3a6c8a5a9b40")
 			(effects
 				(font
 					(size 1 1)
@@ -9145,7 +9349,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b21f5c45-ffe2-4ca0-a49a-64398f8996a1")
+			(uuid "f911ccee-bb4e-44aa-a122-63230117ce1c")
 			(effects
 				(font
 					(size 1 1)
@@ -9157,7 +9361,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cf5582c1-dd97-45db-92e4-dd91d2d70629")
+			(uuid "75fdf49e-67cd-4acd-8a39-2813a6e62c79")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9169,7 +9373,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f8a6838c-e23d-4413-a00b-2668ff1fc93e")
+			(uuid "87d3b7d2-b967-4588-912a-392f76e4c965")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9220,7 +9424,13 @@
 		(path "/02f7968b-f1b0-4eae-97b9-efa68654e272")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -9474,6 +9684,12 @@
 		(path "/663087b4-c364-4bc6-8c18-b25f985863ed")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -9676,6 +9892,12 @@
 		(path "/de075be4-5478-4f94-8b39-337989f85533")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -9846,7 +10068,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Button2")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "8c99de74-2a13-45be-8577-0498b5e5f496")
 		)
@@ -9857,7 +10079,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "436fdd15-91e2-4b90-a510-bd9351724794")
 		)
@@ -9945,7 +10167,7 @@
 		(property "Reference" "R1"
 			(at -2.9875 0 0)
 			(layer "F.SilkS")
-			(uuid "ee1d93f6-171b-4f25-a558-d5d6590d7807")
+			(uuid "dde245f1-c7c8-4a82-9c82-532169bbfc7a")
 			(effects
 				(font
 					(size 1 1)
@@ -9957,7 +10179,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ac0476d2-311e-4230-a3ce-baea19b466d0")
+			(uuid "88ff28e3-5f35-4bff-894f-d61bd4855db3")
 			(effects
 				(font
 					(size 1 1)
@@ -9969,7 +10191,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "03517c1f-4f77-4804-921f-a33f02a7dbd6")
+			(uuid "e5d5aa6b-231f-45b2-b123-1cfe7f096426")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9981,7 +10203,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0ef8ece7-4bda-49a2-af57-352f7b50d9e3")
+			(uuid "fbd278af-ec82-4576-9be2-6c4f7586b368")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10032,7 +10254,13 @@
 		(path "/7864d29d-c6e4-44b8-9a75-75e6ceda04fd")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -10274,6 +10502,12 @@
 		(path "/f7192eda-09f9-41ce-b91b-5ed319d766e3")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "2" "3" "1" "4")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -10415,7 +10649,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(uuid "d0e23e4a-d550-4a61-b19d-5f4a50d13932")
 		)
@@ -10425,7 +10659,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "VBUS3")
-			(pinfunction "K")
+			(pinfunction "K_2")
 			(pintype "passive")
 			(uuid "c6843416-c72e-4915-b7a3-8d1443299ce3")
 		)
@@ -10435,7 +10669,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D-3")
-			(pinfunction "K")
+			(pinfunction "K_3")
 			(pintype "passive")
 			(uuid "d190a2f2-ae19-473d-9658-86a87e9139d6")
 		)
@@ -10445,7 +10679,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D+3")
-			(pinfunction "K")
+			(pinfunction "K_4")
 			(pintype "passive")
 			(uuid "9adc04c7-cf92-4e73-8b4b-6fe966ba0c79")
 		)
@@ -10471,7 +10705,7 @@
 		(property "Reference" "D2"
 			(at 3 0 180)
 			(layer "F.SilkS")
-			(uuid "160b7192-2f48-4723-9fc8-fdbd9a0dc21b")
+			(uuid "8cfce7d5-7f04-4619-b169-a349ff72d1e3")
 			(effects
 				(font
 					(size 1 1)
@@ -10483,7 +10717,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cc24c5d8-4b19-403c-97d6-00801aa55e0d")
+			(uuid "e2546a71-50ef-4d2b-8670-64187c6edda2")
 			(effects
 				(font
 					(size 1 1)
@@ -10495,7 +10729,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b5e2cf25-bc33-431f-ac7b-a857a18697a8")
+			(uuid "052ecef2-4ed6-4411-a11e-c32c630239de")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10507,7 +10741,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "709cfd39-6d63-4d08-b77c-b54c6399a646")
+			(uuid "8df709c3-b1b3-4ad7-90d4-c1d371398330")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10571,6 +10805,12 @@
 		(path "/338880bf-9653-484e-bfb9-b5e9f2597ba8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -10710,7 +10950,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "85967f46-bc39-4417-8861-3aa119df05d0")
 		)
@@ -10720,7 +10960,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D2-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "61e31138-2967-4403-925b-1d6bf7480863")
 		)
@@ -10833,7 +11073,13 @@
 		(path "/7db45216-520e-49e6-8826-1ca7f3964dcc")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -11075,6 +11321,12 @@
 		(path "/5f207688-9689-4fb6-b4f8-6f1a41f698e4")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "2" "3" "1" "4")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -11216,7 +11468,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(uuid "c1989f6f-da79-40d5-be94-f4e4d7643abc")
 		)
@@ -11226,7 +11478,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "VBUS2")
-			(pinfunction "K")
+			(pinfunction "K_2")
 			(pintype "passive")
 			(uuid "840d4776-f3ac-42c9-baba-d6415b23f8b7")
 		)
@@ -11236,7 +11488,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D-2")
-			(pinfunction "K")
+			(pinfunction "K_3")
 			(pintype "passive")
 			(uuid "a42b6b2e-563c-4e80-8334-cc0d54c2b7e7")
 		)
@@ -11246,7 +11498,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D+2")
-			(pinfunction "K")
+			(pinfunction "K_4")
 			(pintype "passive")
 			(uuid "0c4fd28e-b300-495b-be93-83ca2eee72cc")
 		)
@@ -11272,7 +11524,7 @@
 		(property "Reference" "R6"
 			(at -3 -0.1 180)
 			(layer "F.SilkS")
-			(uuid "356c9ed8-8101-4711-af5e-666c4cc71786")
+			(uuid "a56dd5dd-61c6-45df-ac16-080f3b82f5f7")
 			(effects
 				(font
 					(size 1 1)
@@ -11284,7 +11536,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e971bf0f-37f2-4c46-ae17-f849ed1235c9")
+			(uuid "6ff8e1ac-5901-4696-878f-abad2d7911d1")
 			(effects
 				(font
 					(size 1 1)
@@ -11296,7 +11548,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9178bd68-040f-40d1-af2c-4ce98067f7d7")
+			(uuid "e74cfef6-199f-4739-9794-ea232725401d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11308,7 +11560,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "450a92ff-c6ce-4d03-b3de-c39e7e7e1b87")
+			(uuid "8238a3de-d76e-47c4-a1de-6ec5d61d092c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11359,7 +11611,13 @@
 		(path "/c5f50bd3-2afa-4830-a8a1-c69bb693129b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -11599,7 +11857,13 @@
 		(path "/34296512-1f2c-4fe9-b531-d759e233038c")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -11839,6 +12103,12 @@
 		(path "/553330c2-d686-4d10-8bf7-d6a8667466e8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -12013,7 +12283,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "MIC29300-3.3WU-TR"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12052,10 +12322,15 @@
 				)
 			)
 		)
-		(property ki_fp_filters "TO-263-3_MCH TO-263-3_MCH-M TO-263-3_MCH-L")
 		(path "/be7c02de-b30d-4c2b-9700-f191e1e0cb90")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "4" "3")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -12295,7 +12570,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.227273)
 			(net "+5V")
-			(pinfunction "IN")
+			(pinfunction "IN_1")
 			(pintype "input")
 			(uuid "2283be33-ce21-4059-8c65-4e26a69e47ad")
 		)
@@ -12305,7 +12580,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.227273)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_2")
 			(pintype "power_in")
 			(uuid "8971fb87-9925-44e2-9d43-fdb4a1493c91")
 		)
@@ -12315,7 +12590,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.227273)
 			(net "+3V3")
-			(pinfunction "OUT")
+			(pinfunction "OUT_3")
 			(pintype "output")
 			(uuid "440912c9-562f-4c0b-bfbc-162abfceb0cd")
 		)
@@ -12325,7 +12600,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.15)
 			(net "GND")
-			(pinfunction "4")
+			(pinfunction "PAD_4")
 			(pintype "unspecified")
 			(uuid "50328343-4b7b-4b76-8479-95a3aaedfecd")
 		)
@@ -12335,7 +12610,7 @@
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.026596)
 			(net "GND")
-			(pinfunction "4")
+			(pinfunction "PAD_4")
 			(pintype "unspecified")
 			(uuid "30e13c53-fbf3-4a12-b4b3-4fab91fc6b4e")
 		)
@@ -12345,7 +12620,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.15)
 			(net "GND")
-			(pinfunction "4")
+			(pinfunction "PAD_4")
 			(pintype "unspecified")
 			(uuid "8da14df2-4687-41d3-91d0-82bd06c019c7")
 		)
@@ -12483,6 +12758,17 @@
 		(path "/67bb2729-2ea8-431f-9df0-c677ad3bb453")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "51" "52" "53" "54" "55" "58" "59" "60" "61" "44" "45" "46" "47"
+					"48" "49" "50" "36" "37" "38" "39" "40" "41" "42" "43" "34" "35" "6"
+					"56" "21" "57" "7" "20" "62" "63" "64" "1" "2" "3" "4" "5" "8" "9" "10"
+					"11" "12" "13" "14" "15" "16" "17" "18" "19" "22" "23" "24" "25" "26"
+					"27" "28" "29" "30" "31" "32" "33"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -12873,7 +13159,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D01")
-			(pinfunction "PA3")
+			(pinfunction "PA3_1")
 			(pintype "bidirectional")
 			(uuid "7daee7d9-dcb6-4489-8b2c-8103f7fd0124")
 		)
@@ -12883,7 +13169,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "TX0")
-			(pinfunction "PA4")
+			(pinfunction "PA4_2")
 			(pintype "bidirectional")
 			(uuid "1e8b6c28-6085-4b68-8900-045c2b82a153")
 		)
@@ -12893,7 +13179,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "RX0")
-			(pinfunction "PA5")
+			(pinfunction "PA5_3")
 			(pintype "bidirectional")
 			(uuid "82a47b01-89c7-46c2-8deb-3e6dd253ab43")
 		)
@@ -12903,7 +13189,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D04")
-			(pinfunction "PA6")
+			(pinfunction "PA6_4")
 			(pintype "bidirectional")
 			(uuid "f5b3d378-872a-4259-936c-2e69ed1936c5")
 		)
@@ -12913,7 +13199,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "unconnected-(U5-PA7-Pad5)")
-			(pinfunction "PA7")
+			(pinfunction "PA7_5")
 			(pintype "bidirectional+no_connect")
 			(uuid "3e01c8c1-e941-403e-bb05-3708b6de89dd")
 		)
@@ -12923,7 +13209,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+3V3")
-			(pinfunction "VDD")
+			(pinfunction "VDD_6")
 			(pintype "power_in")
 			(uuid "f4ac98e1-e09e-4b06-a915-dc7d7d5e4f83")
 		)
@@ -12933,7 +13219,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_7")
 			(pintype "power_in")
 			(uuid "e2c3e53b-132c-4d52-9909-8f8814233fed")
 		)
@@ -12943,7 +13229,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "TX3")
-			(pinfunction "PB0")
+			(pinfunction "PB0_8")
 			(pintype "bidirectional")
 			(uuid "7d27e629-e06d-41e6-a270-735244911b6d")
 		)
@@ -12953,7 +13239,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "RX3")
-			(pinfunction "PB1")
+			(pinfunction "PB1_9")
 			(pintype "bidirectional")
 			(uuid "099251f2-e15b-4556-9d1f-d3eb09503380")
 		)
@@ -12963,7 +13249,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D33")
-			(pinfunction "PB2")
+			(pinfunction "PB2_10")
 			(pintype "bidirectional")
 			(uuid "e29c27f0-317b-41b9-8692-75fa2b8ee886")
 		)
@@ -12973,7 +13259,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D32")
-			(pinfunction "PB3")
+			(pinfunction "PB3_11")
 			(pintype "bidirectional")
 			(uuid "4fac65bc-52c1-4c6e-96ec-ad3c35948842")
 		)
@@ -12983,7 +13269,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D31")
-			(pinfunction "PB4")
+			(pinfunction "PB4_12")
 			(pintype "bidirectional")
 			(uuid "7ac64abf-1601-4a36-b474-424f2e54e177")
 		)
@@ -12993,7 +13279,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D34")
-			(pinfunction "PB5")
+			(pinfunction "PB5_13")
 			(pintype "bidirectional")
 			(uuid "a97b4b87-98aa-4c4f-85aa-c9358c83ad57")
 		)
@@ -13003,7 +13289,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "unconnected-(U5-PB6-Pad14)")
-			(pinfunction "PB6")
+			(pinfunction "PB6_14")
 			(pintype "bidirectional+no_connect")
 			(uuid "9992281c-235f-4aac-8e47-7d6aad5ecec0")
 		)
@@ -13013,7 +13299,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "unconnected-(U5-PB7-Pad15)")
-			(pinfunction "PB7")
+			(pinfunction "PB7_15")
 			(pintype "bidirectional+no_connect")
 			(uuid "03f35ef4-66dc-4ac7-8917-269d28e8bf7e")
 		)
@@ -13023,7 +13309,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "TX1")
-			(pinfunction "PC0")
+			(pinfunction "PC0_16")
 			(pintype "bidirectional")
 			(uuid "e6ab8dd1-c8e3-4cb8-b5e4-9f2a75d4c75e")
 		)
@@ -13033,7 +13319,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "RX1")
-			(pinfunction "PC1")
+			(pinfunction "PC1_17")
 			(pintype "bidirectional")
 			(uuid "90eb23d1-9cb0-49dd-9e2c-3cb1c7b2d81e")
 		)
@@ -13043,7 +13329,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D13")
-			(pinfunction "PC2")
+			(pinfunction "PC2_18")
 			(pintype "bidirectional")
 			(uuid "a67cba3a-5716-406a-85fa-cfb76d89222e")
 		)
@@ -13053,7 +13339,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D12")
-			(pinfunction "PC3")
+			(pinfunction "PC3_19")
 			(pintype "bidirectional")
 			(uuid "ad080c14-cbe4-41ce-a7aa-ee9586fabecf")
 		)
@@ -13063,7 +13349,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+3V3")
-			(pinfunction "VDDIO2")
+			(pinfunction "VDDIO2_20")
 			(pintype "power_in")
 			(uuid "b7610347-5581-4ae6-888a-ea857a5def12")
 		)
@@ -13073,7 +13359,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_21")
 			(pintype "passive")
 			(uuid "1ed5a29a-f1d5-4821-836d-1d125e20e402")
 		)
@@ -13083,7 +13369,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D11")
-			(pinfunction "PC4")
+			(pinfunction "PC4_22")
 			(pintype "bidirectional")
 			(uuid "e75e13a3-1981-4ada-90c2-73f342a86fbf")
 		)
@@ -13093,7 +13379,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D14")
-			(pinfunction "PC5")
+			(pinfunction "PC5_23")
 			(pintype "bidirectional")
 			(uuid "9cc7ffe6-5c11-4b5d-9951-ae1335893170")
 		)
@@ -13103,7 +13389,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "SDA0")
-			(pinfunction "PC6")
+			(pinfunction "PC6_24")
 			(pintype "bidirectional")
 			(uuid "90d2f049-d183-4cf2-ba74-7ccf439233ed")
 		)
@@ -13113,7 +13399,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "SCL0")
-			(pinfunction "PC7")
+			(pinfunction "PC7_25")
 			(pintype "bidirectional")
 			(uuid "9539038f-0bb4-43b0-b665-f2f850955316")
 		)
@@ -13123,7 +13409,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD0)")
-			(pinfunction "PD0")
+			(pinfunction "PD0_26")
 			(pintype "bidirectional")
 			(uuid "d29fff2f-b458-413b-95d5-ac0bd8d68fc0")
 		)
@@ -13133,7 +13419,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD1)")
-			(pinfunction "PD1")
+			(pinfunction "PD1_27")
 			(pintype "bidirectional")
 			(uuid "7305434c-9e8e-4920-9887-af5a16d72f18")
 		)
@@ -13143,7 +13429,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD2)")
-			(pinfunction "PD2")
+			(pinfunction "PD2_28")
 			(pintype "bidirectional")
 			(uuid "c9e991bb-0248-4231-a85e-dddf82457527")
 		)
@@ -13153,7 +13439,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD3)")
-			(pinfunction "PD3")
+			(pinfunction "PD3_29")
 			(pintype "bidirectional")
 			(uuid "900473ed-d1e6-4290-ba2d-30046f1428f9")
 		)
@@ -13163,7 +13449,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD4)")
-			(pinfunction "PD4")
+			(pinfunction "PD4_30")
 			(pintype "bidirectional")
 			(uuid "12426df6-115a-495f-b8a4-0aa7e0c72596")
 		)
@@ -13173,7 +13459,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD5)")
-			(pinfunction "PD5")
+			(pinfunction "PD5_31")
 			(pintype "bidirectional")
 			(uuid "c4740e7e-c15f-4033-bf13-ad51228aade0")
 		)
@@ -13183,7 +13469,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-PD6)")
-			(pinfunction "PD6")
+			(pinfunction "PD6_32")
 			(pintype "bidirectional")
 			(uuid "44f66584-ac8b-4049-a206-29569035de4e")
 		)
@@ -13193,7 +13479,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(U5-VREFA{slash}PD7)")
-			(pinfunction "VREFA/PD7")
+			(pinfunction "VREFA/PD7_33")
 			(pintype "bidirectional")
 			(uuid "b5c9b72e-9498-4520-8381-e4fbe54c7177")
 		)
@@ -13203,7 +13489,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+3V3")
-			(pinfunction "AVDD")
+			(pinfunction "AVDD_34")
 			(pintype "power_in")
 			(uuid "95a17845-3d1d-4a06-9e68-d2619ed7198e")
 		)
@@ -13213,7 +13499,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "AGND")
+			(pinfunction "AGND_35")
 			(pintype "power_in")
 			(uuid "c4d869d1-4252-48e5-9b37-cf3598fcd1bc")
 		)
@@ -13223,7 +13509,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "TX4")
-			(pinfunction "PE0")
+			(pinfunction "PE0_36")
 			(pintype "bidirectional")
 			(uuid "611c68bb-42ff-4d48-b2f8-fce135e6b383")
 		)
@@ -13233,7 +13519,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "RX4")
-			(pinfunction "PE1")
+			(pinfunction "PE1_37")
 			(pintype "bidirectional")
 			(uuid "d0e9a7c5-a36a-4ee0-811d-2d31d82a6179")
 		)
@@ -13243,7 +13529,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D23")
-			(pinfunction "PE2")
+			(pinfunction "PE2_38")
 			(pintype "bidirectional")
 			(uuid "e005ecbd-34f3-417a-a849-6956a9867b3a")
 		)
@@ -13253,7 +13539,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D22")
-			(pinfunction "PE3")
+			(pinfunction "PE3_39")
 			(pintype "bidirectional")
 			(uuid "602926fa-2f2a-4fb6-a480-33bea0c50d77")
 		)
@@ -13263,7 +13549,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D21")
-			(pinfunction "PE4")
+			(pinfunction "PE4_40")
 			(pintype "bidirectional")
 			(uuid "fe30c357-8eac-4c96-86a5-46941339086f")
 		)
@@ -13273,7 +13559,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D24")
-			(pinfunction "PE5")
+			(pinfunction "PE5_41")
 			(pintype "bidirectional")
 			(uuid "93e2c9bc-f685-487f-81f6-429dfc9b7117")
 		)
@@ -13283,7 +13569,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Input2")
-			(pinfunction "PE6")
+			(pinfunction "PE6_42")
 			(pintype "bidirectional")
 			(uuid "1062362d-ed30-410f-817b-0c615fd48f0d")
 		)
@@ -13293,7 +13579,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Input1")
-			(pinfunction "PE7")
+			(pinfunction "PE7_43")
 			(pintype "bidirectional")
 			(uuid "3bc84c54-18c3-466e-a49b-6fd5c0fcaee8")
 		)
@@ -13303,7 +13589,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "TX2")
-			(pinfunction "XTAL32K1/PF0")
+			(pinfunction "XTAL32K1/PF0_44")
 			(pintype "bidirectional")
 			(uuid "d25629db-40fb-4ec3-b7c2-1c7fbaa39c50")
 		)
@@ -13313,7 +13599,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "RX2")
-			(pinfunction "XTAL32K2/PF1")
+			(pinfunction "XTAL32K2/PF1_45")
 			(pintype "bidirectional")
 			(uuid "89cbd232-c04a-49e0-82fa-6219929a8abb")
 		)
@@ -13323,7 +13609,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Button6")
-			(pinfunction "PF2")
+			(pinfunction "PF2_46")
 			(pintype "bidirectional")
 			(uuid "dec41c16-f8ab-4e07-b1d7-a85888cb5846")
 		)
@@ -13333,7 +13619,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Button5")
-			(pinfunction "PF3")
+			(pinfunction "PF3_47")
 			(pintype "bidirectional")
 			(uuid "fffa1d91-7b75-4626-9576-a72209fc1ede")
 		)
@@ -13343,7 +13629,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Button4")
-			(pinfunction "PF4")
+			(pinfunction "PF4_48")
 			(pintype "bidirectional")
 			(uuid "2dc0904c-0ae5-4493-8229-7c7249d41721")
 		)
@@ -13353,7 +13639,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Button3")
-			(pinfunction "PF5")
+			(pinfunction "PF5_49")
 			(pintype "bidirectional")
 			(uuid "9eab8947-dc96-423e-b8d4-c8587d90c958")
 		)
@@ -13363,7 +13649,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Button2")
-			(pinfunction "~{RESET}/PF6")
+			(pinfunction "~{RESET}/PF6_50")
 			(pintype "bidirectional")
 			(uuid "c25b2e1f-0d46-44ff-a006-b24507b33d1d")
 		)
@@ -13373,7 +13659,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "UPDI")
-			(pinfunction "UPDI")
+			(pinfunction "UPDI_51")
 			(pintype "input")
 			(uuid "0afa8169-0d99-445d-8848-6ad9d361934b")
 		)
@@ -13383,7 +13669,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "TX5")
-			(pinfunction "PG0")
+			(pinfunction "PG0_52")
 			(pintype "bidirectional")
 			(uuid "9384bbd0-513e-47ff-a224-d038af15ffc2")
 		)
@@ -13393,7 +13679,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "RX5")
-			(pinfunction "PG1")
+			(pinfunction "PG1_53")
 			(pintype "bidirectional")
 			(uuid "da37592f-90cb-4eea-b21a-4640cc1d85a1")
 		)
@@ -13403,7 +13689,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Button1")
-			(pinfunction "PG2")
+			(pinfunction "PG2_54")
 			(pintype "bidirectional")
 			(uuid "397f59d8-7302-4f89-8348-d3534805a4f1")
 		)
@@ -13413,7 +13699,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "LED B")
-			(pinfunction "PG3")
+			(pinfunction "PG3_55")
 			(pintype "bidirectional")
 			(uuid "80aad6ef-0974-46ed-aaea-e7a94f497ed3")
 		)
@@ -13423,7 +13709,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+3V3")
-			(pinfunction "VDD")
+			(pinfunction "VDD_56")
 			(pintype "passive")
 			(uuid "8adaba63-d9d8-41cf-a250-540cda4cfc88")
 		)
@@ -13433,7 +13719,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_57")
 			(pintype "passive")
 			(uuid "a4740874-8d51-4324-a761-2e05439e748a")
 		)
@@ -13443,7 +13729,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "LED G")
-			(pinfunction "PG4")
+			(pinfunction "PG4_58")
 			(pintype "bidirectional")
 			(uuid "a0bbd6fd-6b4f-4626-983d-44f97c173c23")
 		)
@@ -13453,7 +13739,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "LED R")
-			(pinfunction "PG5")
+			(pinfunction "PG5_59")
 			(pintype "bidirectional")
 			(uuid "3f1c2dd1-73cd-4d1a-9e1d-a5ce838d2237")
 		)
@@ -13463,7 +13749,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "LED 3")
-			(pinfunction "PG6")
+			(pinfunction "PG6_60")
 			(pintype "bidirectional")
 			(uuid "d2071e23-95e7-4585-8740-233d47df2ec1")
 		)
@@ -13473,7 +13759,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "LED 2")
-			(pinfunction "PG7")
+			(pinfunction "PG7_61")
 			(pintype "bidirectional")
 			(uuid "80748e6e-577f-49a7-b81a-ad0a2d3d2e1f")
 		)
@@ -13483,7 +13769,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "LED 1")
-			(pinfunction "XTALHF1/PA0")
+			(pinfunction "XTALHF1/PA0_62")
 			(pintype "bidirectional")
 			(uuid "abe762ad-8868-42a9-87c0-53e7125164c5")
 		)
@@ -13493,7 +13779,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D03")
-			(pinfunction "XTALHF2/PA1")
+			(pinfunction "XTALHF2/PA1_63")
 			(pintype "bidirectional")
 			(uuid "bd7ae58c-88a1-4c31-a570-902166ecc817")
 		)
@@ -13503,7 +13789,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "D02")
-			(pinfunction "PA2")
+			(pinfunction "PA2_64")
 			(pintype "bidirectional")
 			(uuid "b432d826-47d3-4815-bbfc-3020a55b8fa6")
 		)
@@ -13592,7 +13878,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "9e6d8ee3-23dd-4d77-843e-ac6730deecc5")
+			(uuid "17c39415-78f0-4c3d-9511-3619c6a19977")
 			(effects
 				(font
 					(size 1 1)
@@ -13600,12 +13886,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "06404109-0ceb-4e0c-a6e5-bc0cdfc0938b")
+			(uuid "b8f9a26c-6b91-41d7-a48e-be7b6033aaa1")
 			(effects
 				(font
 					(size 1 1)
@@ -13618,7 +13904,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5fbc9076-bab8-418e-b746-75f8451dbda6")
+			(uuid "eff3e29e-ac0e-41f0-83bb-6d8c84fd6dd7")
 			(effects
 				(font
 					(size 1 1)
@@ -13626,12 +13912,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a85e4714-74c8-47c6-9847-6a09fa0bad52")
+			(uuid "205c5bca-4c33-4e46-a362-989d76c5a8cd")
 			(effects
 				(font
 					(size 1 1)
@@ -13682,6 +13968,12 @@
 		(path "/81055b4c-4532-446c-997b-e29bae924764")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -13702,7 +13994,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "31f9f379-2fa7-4c3c-8611-25cb1e54e23f")
 		)
@@ -13718,7 +14010,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "421eda99-44c7-4a88-a4e9-905c261afbc6")
+			(uuid "39ef20a2-7c28-42cb-a162-bb9ce91a3eaf")
 			(effects
 				(font
 					(size 1 1)
@@ -13732,7 +14024,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "371d1027-d62b-4a6e-be58-0dfcc71391f5")
+			(uuid "6885fb10-9922-4945-a0be-ff2d95f9f083")
 			(effects
 				(font
 					(size 1 1)
@@ -13745,7 +14037,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c8772eed-ee4a-495e-a329-ad65d1bdeeb0")
+			(uuid "19f8c592-61a7-4088-ad30-c5c6aaebafe6")
 			(effects
 				(font
 					(size 1 1)
@@ -13753,12 +14045,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d9552908-2fb7-48e1-9878-3efe09ceab3d")
+			(uuid "f1bf0e0c-d14e-4cd9-b7f5-f662e05fb23b")
 			(effects
 				(font
 					(size 1 1)
@@ -13809,6 +14101,12 @@
 		(path "/bddc82b7-5b2e-4e45-99ad-e3aabe162729")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -13850,7 +14148,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RX5")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "a6665b52-1f9e-4689-b474-d5a29be34c5a")
 		)
@@ -13900,7 +14198,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13943,7 +14241,13 @@
 		(path "/c1b2d630-d928-4dbe-8f84-b8b2021787a5")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
 			(start -1.4 -1)
@@ -13974,7 +14278,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "Net-(JP3-A)")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -14010,7 +14314,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "GND")
-			(pinfunction "B")
+			(pinfunction "B_2")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -14153,6 +14457,12 @@
 		(path "/69b335fb-0d92-4a3b-896f-7435a4ac25d7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -14281,7 +14591,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "59fd8085-0507-4012-b50c-a791cf73cb3b")
 		)
@@ -14291,7 +14601,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D30-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "13abe45a-fc24-489c-bd53-db4fb6e699d4")
 		)
@@ -14404,6 +14714,12 @@
 		(path "/b259655b-db88-460b-90e5-6232c2069ad8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -14646,6 +14962,12 @@
 		(path "/f917f7af-95a7-4ee4-ad65-7a989ff5a575")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -14900,6 +15222,12 @@
 		(path "/681fa973-93f2-4cbe-a2b4-bb5773e575a5")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -15028,7 +15356,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "eb4d2b20-3f67-418c-9007-5f1e43bd7141")
 		)
@@ -15038,7 +15366,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D28-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "e743e48b-f0a7-4e75-9ffa-c485baa14956")
 		)
@@ -15164,6 +15492,12 @@
 		(path "/51829dfa-2e7f-47ee-990d-f42359f02abe")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -15303,7 +15637,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D7-K)")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "9f30d5c1-90c2-4d07-b15b-82ad946abd52")
 		)
@@ -15313,7 +15647,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "+3V3")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "f0a91563-648d-4e93-80f1-7fb9a58e81e1")
 		)
@@ -15373,7 +15707,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15403,6 +15737,12 @@
 		(path "/fe37c404-3236-49bb-9a1e-5a0b43e08bf9")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -15488,7 +15828,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "cf43e8d0-1317-4878-9ce4-636313bf83eb")
+			(uuid "e111195c-e03c-43ed-aba2-4a3653d35566")
 			(effects
 				(font
 					(size 1 1)
@@ -15496,12 +15836,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ec5bfe9f-a21e-4b75-b577-bac214d7c3ed")
+			(uuid "296a174c-fc7c-42f8-ae4d-1453ae736a3d")
 			(effects
 				(font
 					(size 1 1)
@@ -15514,7 +15854,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2870ff34-a4ff-49b8-8ef7-779d2db6e234")
+			(uuid "cdb413fc-9d93-44bd-9989-0ddf7a43f185")
 			(effects
 				(font
 					(size 1 1)
@@ -15522,12 +15862,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d6a5bbe4-1fe3-4b3f-9f5d-8c5989f0f188")
+			(uuid "3ac1219b-0ca7-45cf-8052-c20bb512e2db")
 			(effects
 				(font
 					(size 1 1)
@@ -15578,6 +15918,12 @@
 		(path "/0a010863-420a-4d99-a4b8-4b8480f02d64")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -15598,7 +15944,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "042784db-93d4-41f9-b5f9-e89256ad7025")
 		)
@@ -15673,6 +16019,12 @@
 		(path "/f82d05e3-32d9-4855-b2f3-1ade9d1ea467")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -15843,7 +16195,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Button3")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "d7055ed7-c060-4add-ba01-f81759aef56b")
 		)
@@ -15854,7 +16206,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "a9bf2f72-efee-438c-8361-b250c06c0c37")
 		)
@@ -15967,7 +16319,13 @@
 		(path "/5bf76f5a-0210-42a3-ad77-6dcce3ab8080")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -16207,7 +16565,13 @@
 		(path "/c3e57d87-083d-4f13-823c-972dae99b121")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -16447,6 +16811,12 @@
 		(path "/3e13baf8-996e-487a-a2f1-732009e57cd8")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -16601,7 +16971,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "f25e3bc7-7255-4675-83d2-037623f05a13")
+			(uuid "aa543845-224d-4007-98d2-dd5f9f10532b")
 			(effects
 				(font
 					(size 1 1)
@@ -16614,7 +16984,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "708cf614-5050-460f-aaa3-d9dc0dabf0b5")
+			(uuid "8c07a26e-6b7c-473a-a116-125b0d55e6f8")
 			(effects
 				(font
 					(size 1 1)
@@ -16627,7 +16997,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cfb6025f-efae-4deb-9eca-42c02b3b3de7")
+			(uuid "1e28f114-6374-4e46-941b-7c4f8f1898cd")
 			(effects
 				(font
 					(size 1 1)
@@ -16635,12 +17005,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "84c48e1d-a00e-4676-b403-d5176650e2ca")
+			(uuid "f9bbff31-dda4-4726-943f-3e76c7fdd8ed")
 			(effects
 				(font
 					(size 1 1)
@@ -16678,7 +17048,13 @@
 		(path "/1e8f5917-0430-4e0f-af53-790931693d44")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
 			(start -1.4 -1)
@@ -16709,7 +17085,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "Net-(JP2-A)")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -16745,7 +17121,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "GND")
-			(pinfunction "B")
+			(pinfunction "B_2")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -16874,7 +17250,13 @@
 		(path "/5384bc65-39a2-4f8b-b6c3-42cccb2e3e0b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -17133,9 +17515,31 @@
 				)
 			)
 		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d4d67d0f-07eb-4df1-bc71-9981aed9cb6e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "DSUB*Pins*")
 		(path "/768bfd7f-ecdb-44d4-9390-ed00dacdde38")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "5" "10" "4" "9" "3" "8" "2" "7" "1" "6" "SH" "15" "14" "13" "12"
+					"11"
+				)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -17350,7 +17754,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "TX1")
-			(pinfunction "1")
 			(pintype "passive")
 			(uuid "6cebb26e-dbbf-42bd-bf51-119798574929")
 		)
@@ -17361,7 +17764,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RX1")
-			(pinfunction "2")
 			(pintype "passive")
 			(uuid "2d46b1c0-a277-4099-b080-4ece8028ecfd")
 		)
@@ -17372,7 +17774,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D11")
-			(pinfunction "3")
 			(pintype "passive")
 			(uuid "bddebf63-2ea4-4aae-a891-3038a119140b")
 		)
@@ -17383,7 +17784,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D12")
-			(pinfunction "4")
 			(pintype "passive")
 			(uuid "5db208aa-df25-41bc-8030-9c30115659b0")
 		)
@@ -17394,7 +17794,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D13")
-			(pinfunction "5")
 			(pintype "passive")
 			(uuid "9d4dcf96-0ca4-4270-80bd-ecf7f37ba00a")
 		)
@@ -17405,7 +17804,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D14")
-			(pinfunction "6")
 			(pintype "passive")
 			(uuid "4ddfd736-601f-4465-b2ed-37adfec9e94b")
 		)
@@ -17416,7 +17814,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "7")
 			(pintype "passive")
 			(uuid "a6bdd764-ff7e-4708-9f87-7e388090e63a")
 		)
@@ -17427,7 +17824,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "8")
 			(pintype "passive")
 			(uuid "ce569fe5-4900-4f2e-bf75-328a87e25992")
 		)
@@ -17438,7 +17834,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "9")
 			(pintype "passive")
 			(uuid "1d5719df-529b-4f15-b0cb-59fae9c0e779")
 		)
@@ -17449,7 +17844,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "10")
 			(pintype "passive")
 			(uuid "8f26cdcc-0711-4abc-ad7f-231fa834e624")
 		)
@@ -17460,7 +17854,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "11")
 			(pintype "passive")
 			(uuid "b36ce2ae-baa2-4aba-9102-8361a1a0d033")
 		)
@@ -17471,7 +17864,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "12")
 			(pintype "passive")
 			(uuid "06107a64-1fee-4300-8bcb-ae14ea9ef905")
 		)
@@ -17482,7 +17874,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "13")
 			(pintype "passive")
 			(uuid "5396704c-0c57-465d-835d-c4237e6cba1f")
 		)
@@ -17493,7 +17884,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "14")
 			(pintype "passive")
 			(uuid "f855be47-6a23-40a8-a72c-8fd56703ab82")
 		)
@@ -17504,7 +17894,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "15")
 			(pintype "passive")
 			(uuid "8272146e-1f52-4fcc-b692-ebbbbfb60a9a")
 		)
@@ -17515,7 +17904,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD__1")
 			(pintype "passive")
 			(uuid "b86e44f9-7c0d-4ffc-b056-62422f094695")
 		)
@@ -17526,7 +17914,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD")
 			(pintype "passive")
 			(uuid "2608c63c-908d-41bb-8c7d-0a85a4e3f21a")
 		)
@@ -17744,6 +18131,12 @@
 		(path "/c447e08d-1037-4185-adf2-44ae34cd0787")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -17984,7 +18377,13 @@
 		(path "/2707b6cf-bb52-4c30-aac8-288a4a461b72")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
@@ -18138,7 +18537,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "a856d7bf-5006-4866-974f-a4f8a86ede70")
+			(uuid "4cfafca8-e229-421e-ac3c-b8b1071ac167")
 			(effects
 				(font
 					(size 1 1)
@@ -18151,7 +18550,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4fe883c2-8b1f-467f-8bb8-f7801b1702fd")
+			(uuid "0ddc09d9-9263-4275-a4d7-cda5a51c5ae6")
 			(effects
 				(font
 					(size 1 1)
@@ -18164,7 +18563,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d6ce2733-5cd4-4c28-a8bc-9a9120b088b9")
+			(uuid "1c1f613e-8222-44d3-97f5-7039177bdcdb")
 			(effects
 				(font
 					(size 1 1)
@@ -18172,12 +18571,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8cfb94d7-30ea-4874-a8b6-eec5519490f0")
+			(uuid "b7be0ac6-6c0e-4add-a41e-35e06414c78e")
 			(effects
 				(font
 					(size 1 1)
@@ -18215,7 +18614,13 @@
 		(path "/6b52c1e9-fc1b-4267-914a-669657884c8c")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
 			(start -1.4 -1)
@@ -18246,7 +18651,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "Net-(JP1-A)")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -18282,7 +18687,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "GND")
-			(pinfunction "B")
+			(pinfunction "B_2")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -18324,7 +18729,7 @@
 		(property "Reference" "R7"
 			(at 0 1.75 90)
 			(layer "F.SilkS")
-			(uuid "cc6b185f-0d15-4808-ae64-aa5b5c0883c9")
+			(uuid "2f9c9819-1ba4-471c-b79a-c85af731bacc")
 			(effects
 				(font
 					(size 1 1)
@@ -18336,7 +18741,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "de932f5d-83df-4af2-ae26-350106275eb9")
+			(uuid "a4f6fbef-c51c-4d9f-b1eb-899d749f74ee")
 			(effects
 				(font
 					(size 1 1)
@@ -18348,7 +18753,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8cb85ce7-2c87-4292-9c11-94ccb886785c")
+			(uuid "e681d2db-ab40-4fe6-99ac-c33152036c3b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18360,7 +18765,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6d5a088f-b53e-430a-bbb9-5a49774db42e")
+			(uuid "3bcc630a-89b9-479e-bea5-3623b5687d40")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18411,7 +18816,13 @@
 		(path "/863bb70f-7d61-49b2-8474-603a39616cd6")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -18651,7 +19062,13 @@
 		(path "/251063cf-b6fa-4ced-a161-31556ea4da1c")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -18896,7 +19313,7 @@
 		(property "Reference" "R2"
 			(at -2.9875 0 0)
 			(layer "F.SilkS")
-			(uuid "40433be6-3d1c-4f24-8170-a81591ff94c7")
+			(uuid "acacb63e-ebce-4922-afc5-58c34ed21e34")
 			(effects
 				(font
 					(size 1 1)
@@ -18908,7 +19325,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "7b4316a7-49de-485e-8cbe-ac9f2469f921")
+			(uuid "50dc9fb4-3f0b-4348-be88-e75889811745")
 			(effects
 				(font
 					(size 1 1)
@@ -18920,7 +19337,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4b49d433-37a3-4f87-a966-09aeb96e541a")
+			(uuid "d71c508a-1782-4ae7-b3c4-067b1c8f1f0e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18932,7 +19349,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3f310400-a466-4b57-944e-0043beb579d2")
+			(uuid "e914c091-7487-418a-a090-51ff28c77953")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18983,7 +19400,13 @@
 		(path "/316c35d8-9627-4db6-896e-86dbe3ef4a97")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -19197,6 +19620,12 @@
 		(path "/64183318-dd81-468b-981b-f126836d3273")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -19392,7 +19821,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "95749ba0-bd5e-4834-8c8f-f5968bd2cd02")
+			(uuid "89b8c50d-3402-44e7-8ad8-52103ef0e4cc")
 			(effects
 				(font
 					(size 1 1)
@@ -19406,7 +19835,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "300cf117-c480-4750-9c6a-5cec3eb83b5a")
+			(uuid "1c49fc5d-904c-44c5-af93-5e6e69120efd")
 			(effects
 				(font
 					(size 1 1)
@@ -19419,7 +19848,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9c6c62c4-b379-405d-9bf2-2e3615641bad")
+			(uuid "be7d8d9e-899e-4f8c-84bd-401cfaf361ff")
 			(effects
 				(font
 					(size 1 1)
@@ -19427,12 +19856,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b898dc6f-34e4-4d06-8f8c-1132731a8091")
+			(uuid "1365c159-027b-40c1-9929-47090abe8a9e")
 			(effects
 				(font
 					(size 1 1)
@@ -19483,6 +19912,12 @@
 		(path "/2a26f6c4-b801-4a5e-a338-0e2bea58f99a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -19524,7 +19959,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "UPDI")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "52f785ac-2331-469b-bfdb-bcf31707f624")
 		)
@@ -19560,7 +19995,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19573,7 +20008,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "USB to UART master bridge, QFN-20"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19629,6 +20064,14 @@
 		(path "/c1fcd3f9-69f2-4ade-9da2-9c28c176db2e")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "9" "8" "5" "4" "10" "7" "6" "3" "12" "21" "18" "17" "16" "15"
+					"13" "14" "11" "2" "1" "20" "19"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -19888,7 +20331,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-RS485{slash}GPIO.1-Pad1)")
-			(pinfunction "RS485/GPIO.1")
+			(pinfunction "RS485/GPIO.1_1")
 			(pintype "bidirectional+no_connect")
 			(uuid "d1ad9663-c9d8-40e7-8b3e-8192b95eac27")
 		)
@@ -19897,7 +20340,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-CLK{slash}GPIO.0-Pad2)")
-			(pinfunction "CLK/GPIO.0")
+			(pinfunction "CLK/GPIO.0_2")
 			(pintype "bidirectional+no_connect")
 			(uuid "c6e5e893-c35d-4ba1-92f6-764cf0c0aecc")
 		)
@@ -19906,7 +20349,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_3")
 			(pintype "power_in")
 			(uuid "9d7379b0-1822-48f3-9a36-eb2f3fa5c691")
 		)
@@ -19915,7 +20358,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+2")
-			(pinfunction "D+")
+			(pinfunction "D+_4")
 			(pintype "bidirectional")
 			(uuid "d45120f3-03c9-4f67-afd6-ca91b96d21b6")
 		)
@@ -19924,7 +20367,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-2")
-			(pinfunction "D-")
+			(pinfunction "D-_5")
 			(pintype "bidirectional")
 			(uuid "301c55cd-e70d-4360-8f1b-0e5ab5da2102")
 		)
@@ -19933,7 +20376,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+3V3")
-			(pinfunction "VDD")
+			(pinfunction "VDD_6")
 			(pintype "power_in")
 			(uuid "b978da8a-b7e2-4b42-9933-ed464eff8c0a")
 		)
@@ -19942,7 +20385,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+3V3")
-			(pinfunction "VREGIN")
+			(pinfunction "VREGIN_7")
 			(pintype "power_in")
 			(uuid "b016dd31-e3b6-4bb7-b1f9-8e7d7ebd1caf")
 		)
@@ -19951,7 +20394,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U2-VBUS)")
-			(pinfunction "VBUS")
+			(pinfunction "VBUS_8")
 			(pintype "input")
 			(uuid "e868c2b0-ba11-4327-8296-1c8210553941")
 		)
@@ -19960,7 +20403,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-~{RST}-Pad9)")
-			(pinfunction "~{RST}")
+			(pinfunction "~{RST}_9")
 			(pintype "input+no_connect")
 			(uuid "1c13606f-1648-4bea-8f64-fb65fc0eeebd")
 		)
@@ -19969,7 +20412,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-NC-Pad10)")
-			(pinfunction "NC")
+			(pinfunction "NC_10")
 			(pintype "no_connect")
 			(uuid "8107e0e1-f6b4-43ee-9c31-72f8efe982d6")
 		)
@@ -19978,7 +20421,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-~{SUSPEND}-Pad11)")
-			(pinfunction "~{SUSPEND}")
+			(pinfunction "~{SUSPEND}_11")
 			(pintype "output+no_connect")
 			(uuid "17ed6c9b-ea57-44ab-9941-e19e47f87cf5")
 		)
@@ -19987,7 +20430,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_12")
 			(pintype "passive")
 			(uuid "9a3ea081-695e-4c29-a602-9f8fa82810db")
 		)
@@ -19996,7 +20439,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-~{WAKEUP}-Pad13)")
-			(pinfunction "~{WAKEUP}")
+			(pinfunction "~{WAKEUP}_13")
 			(pintype "input+no_connect")
 			(uuid "b4b0c0dd-de96-4721-95e7-ba0fbeea2d72")
 		)
@@ -20005,7 +20448,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-SUSPEND-Pad14)")
-			(pinfunction "SUSPEND")
+			(pinfunction "SUSPEND_14")
 			(pintype "output+no_connect")
 			(uuid "66f0ea4b-389b-4d27-a726-4253181463de")
 		)
@@ -20014,7 +20457,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(JP2-A)")
-			(pinfunction "~{CTS}")
+			(pinfunction "~{CTS}_15")
 			(pintype "input")
 			(uuid "3b6dc7b1-8996-4473-9699-84adb4dee0c7")
 		)
@@ -20023,7 +20466,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-~{RTS}-Pad16)")
-			(pinfunction "~{RTS}")
+			(pinfunction "~{RTS}_16")
 			(pintype "output+no_connect")
 			(uuid "38bf8e70-edf4-4e3e-9db6-6b511304b535")
 		)
@@ -20032,7 +20475,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(D10-A)")
-			(pinfunction "RXD")
+			(pinfunction "RXD_17")
 			(pintype "input")
 			(uuid "02c86c1a-fac8-475b-b9c7-ea2d052479a4")
 		)
@@ -20041,7 +20484,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U2-TXD)")
-			(pinfunction "TXD")
+			(pinfunction "TXD_18")
 			(pintype "output")
 			(uuid "35fdabfe-ac32-4e6a-b5ec-4c3cbcee18a6")
 		)
@@ -20050,7 +20493,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U2-~{RXT}{slash}GPIO.3-Pad19)")
-			(pinfunction "~{RXT}/GPIO.3")
+			(pinfunction "~{RXT}/GPIO.3_19")
 			(pintype "bidirectional+no_connect")
 			(uuid "3b2baabe-705c-46f9-93ab-e6eb31ab1994")
 		)
@@ -20059,7 +20502,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U2-~{TXT}{slash}GPIO.2)")
-			(pinfunction "~{TXT}/GPIO.2")
+			(pinfunction "~{TXT}/GPIO.2_20")
 			(pintype "bidirectional")
 			(uuid "18194dab-bf81-447b-aa31-95e2bdde1f79")
 		)
@@ -20068,7 +20511,7 @@
 			(size 1.8 1.8)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_21")
 			(pintype "passive")
 			(uuid "465c26ae-12e1-4177-aab1-ac7a8bd4a623")
 		)
@@ -20155,6 +20598,12 @@
 		(path "/edff4f46-123b-4481-9ffb-2e5f16ae6c04")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -21699,7 +22148,13 @@
 		(path "/908e5a86-850d-4d0e-a097-749ce88b2b13")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -21912,6 +22367,12 @@
 		(path "/e27d53b4-8097-45ea-a4fe-dc481d4da1de")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -22082,7 +22543,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Button4")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "8c99eaf8-f856-451f-aa26-055a3ab40ae4")
 		)
@@ -22093,7 +22554,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "42ff9b16-a627-4318-91dd-aa815e8b261d")
 		)
@@ -22119,7 +22580,7 @@
 			(at 0 -5 90)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "89fde85b-3461-4b2e-a389-dbbf7f467eb0")
+			(uuid "b4d47a96-e0d4-45cc-8469-65c044fa8d9a")
 			(effects
 				(font
 					(size 1 1)
@@ -22132,7 +22593,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ed5003f5-5d04-4bf1-aacd-cea8241d5a07")
+			(uuid "fb728048-6759-4732-a9a4-1e13fa16639d")
 			(effects
 				(font
 					(size 1 1)
@@ -22145,7 +22606,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f9093076-c920-4f45-abf9-a029743fd944")
+			(uuid "c8797f1c-3d6f-489e-b7b9-e4c03cd1cef4")
 			(effects
 				(font
 					(size 1 1)
@@ -22158,7 +22619,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "429ece87-6a0d-4997-8282-fa2a5f89b7c0")
+			(uuid "ae0fde5d-e65d-4f05-b399-1ddaa983b9a9")
 			(effects
 				(font
 					(size 1 1)
@@ -22377,6 +22838,14 @@
 		(path "/5a455fd1-b7c7-4820-9826-163e7938680f")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "A5" "A6" "A7" "A8" "B4_A9" "A4_B9" "SH1" "SH2" "SH3" "SH4" "B8"
+					"B7" "B6" "B5" "B1_A12" "A1_B12"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -22449,7 +22918,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_A")
+			(pinfunction "GND_A_A1_B12")
 			(pintype "power_in")
 			(uuid "ffb27b2c-44db-4940-9b9c-c2da623e9351")
 		)
@@ -22458,7 +22927,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "VBUS1")
-			(pinfunction "VBUS_A")
+			(pinfunction "VBUS_A_A4_B9")
 			(pintype "power_in")
 			(uuid "c0130c58-106b-4bd2-96db-a74d87ac69d9")
 		)
@@ -22467,7 +22936,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J1-CC1)")
-			(pinfunction "CC1")
+			(pinfunction "CC1_A5")
 			(pintype "bidirectional")
 			(uuid "4b7e2c48-3e96-4a24-96cb-fe24dd6047d0")
 		)
@@ -22476,7 +22945,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+1")
-			(pinfunction "DP1")
+			(pinfunction "DP1_A6")
 			(pintype "bidirectional")
 			(uuid "3fa2efed-b750-49e4-ad73-50922135cce8")
 		)
@@ -22485,7 +22954,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-1")
-			(pinfunction "DN1")
+			(pinfunction "DN1_A7")
 			(pintype "bidirectional")
 			(uuid "4069afc5-d083-4bf3-b258-8ff930584139")
 		)
@@ -22494,7 +22963,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J1-SBU1-PadA8)")
-			(pinfunction "SBU1")
+			(pinfunction "SBU1_A8")
 			(pintype "bidirectional+no_connect")
 			(uuid "6bb77e9c-3706-443d-9e46-51dff92b1908")
 		)
@@ -22503,7 +22972,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_B")
+			(pinfunction "GND_B_B1_A12")
 			(pintype "power_in")
 			(uuid "b68c6e97-25ef-4b0d-b248-67d56741285d")
 		)
@@ -22512,7 +22981,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "VBUS1")
-			(pinfunction "VBUS_B")
+			(pinfunction "VBUS_B_B4_A9")
 			(pintype "power_in")
 			(uuid "e5be2fb0-4d56-4140-90c5-d5557cdddffa")
 		)
@@ -22521,7 +22990,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J1-CC2)")
-			(pinfunction "CC2")
+			(pinfunction "CC2_B5")
 			(pintype "bidirectional")
 			(uuid "cc168bdd-552b-4821-9757-50ef0dfe5f26")
 		)
@@ -22530,7 +22999,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+1")
-			(pinfunction "DP2")
+			(pinfunction "DP2_B6")
 			(pintype "bidirectional")
 			(uuid "67b68eee-ff11-4148-89a6-b15d39ca2f5a")
 		)
@@ -22539,7 +23008,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-1")
-			(pinfunction "DN2")
+			(pinfunction "DN2_B7")
 			(pintype "bidirectional")
 			(uuid "b06207bb-a82f-48b4-9488-6d4aad587a92")
 		)
@@ -22548,7 +23017,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J1-SBU2-PadB8)")
-			(pinfunction "SBU2")
+			(pinfunction "SBU2_B8")
 			(pintype "bidirectional+no_connect")
 			(uuid "7408e7bb-b789-4fb7-a2f3-760a265c1b09")
 		)
@@ -22557,7 +23026,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH1")
 			(pintype "passive")
 			(uuid "f484065d-27f4-4fca-aef6-4e8fce7f41f0")
 		)
@@ -22566,7 +23035,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH2")
 			(pintype "passive")
 			(uuid "187bbc63-4bfb-4cce-b2a5-f4e1878c5135")
 		)
@@ -22575,7 +23044,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH3")
 			(pintype "passive")
 			(uuid "4284fdfd-5a72-4d24-bccb-53303ba67ced")
 		)
@@ -22584,7 +23053,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH4")
 			(pintype "passive")
 			(uuid "6ef11eee-4767-44dc-8c3e-f4c2310e6449")
 		)
@@ -22697,6 +23166,12 @@
 		(path "/2ad2f442-e859-4eb8-a79c-88eb89a553cf")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -22850,7 +23325,7 @@
 			(at 2.75 0 90)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "eb7cf95a-9621-4951-a2e2-1827b8b7db7e")
+			(uuid "7dd878ab-9179-4cc8-9731-e6dc2cea08b3")
 			(effects
 				(font
 					(size 1 1)
@@ -22863,7 +23338,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cd2aa208-6489-4bc5-802d-2e7193ba3ac5")
+			(uuid "1416622a-83c2-47e3-92a1-5555ba5e6d6b")
 			(effects
 				(font
 					(size 1 1)
@@ -22871,12 +23346,12 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8bd84c07-736e-477e-9162-b32a759d3584")
+			(uuid "b55bc1d3-41f1-4048-8494-3bdcc93be63f")
 			(effects
 				(font
 					(size 1 1)
@@ -22884,12 +23359,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "USB to UART master bridge, QFN-20"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3ec3efd3-7160-41a0-971e-c3f0d3063726")
+			(uuid "b31a3768-c94b-4002-baa5-5879e0fce630")
 			(effects
 				(font
 					(size 1 1)
@@ -22940,6 +23415,14 @@
 		(path "/3830eabc-fa3d-4991-8204-0097ee943429")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "9" "8" "5" "4" "10" "7" "6" "3" "12" "21" "18" "17" "16" "15"
+					"13" "14" "11" "2" "1" "20" "19"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -23199,7 +23682,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-RS485{slash}GPIO.1-Pad1)")
-			(pinfunction "RS485/GPIO.1")
+			(pinfunction "RS485/GPIO.1_1")
 			(pintype "bidirectional+no_connect")
 			(uuid "0e0a4406-5f67-4404-87d2-8ca53a65667f")
 		)
@@ -23208,7 +23691,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-CLK{slash}GPIO.0-Pad2)")
-			(pinfunction "CLK/GPIO.0")
+			(pinfunction "CLK/GPIO.0_2")
 			(pintype "bidirectional+no_connect")
 			(uuid "ccb12f1d-5c1d-4254-899a-f4dfc1082186")
 		)
@@ -23217,7 +23700,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_3")
 			(pintype "power_in")
 			(uuid "be8b33f4-7993-43a3-86e5-e984e98fe28c")
 		)
@@ -23226,7 +23709,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+1")
-			(pinfunction "D+")
+			(pinfunction "D+_4")
 			(pintype "bidirectional")
 			(uuid "8fc3d5c9-5548-4122-9e39-2ef87af267e9")
 		)
@@ -23235,7 +23718,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-1")
-			(pinfunction "D-")
+			(pinfunction "D-_5")
 			(pintype "bidirectional")
 			(uuid "f0d917fd-ac88-4a92-b0d1-319dbbc7ed17")
 		)
@@ -23244,7 +23727,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+3V3")
-			(pinfunction "VDD")
+			(pinfunction "VDD_6")
 			(pintype "power_in")
 			(uuid "a4e6c8a0-0184-46ea-b558-dafba2f5097a")
 		)
@@ -23253,7 +23736,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+3V3")
-			(pinfunction "VREGIN")
+			(pinfunction "VREGIN_7")
 			(pintype "power_in")
 			(uuid "defe1a0c-5561-4884-b8e3-75828ceada82")
 		)
@@ -23262,7 +23745,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U1-VBUS)")
-			(pinfunction "VBUS")
+			(pinfunction "VBUS_8")
 			(pintype "input")
 			(uuid "e16f4174-36c1-4dbb-a72e-bd59d30d5977")
 		)
@@ -23271,7 +23754,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-~{RST}-Pad9)")
-			(pinfunction "~{RST}")
+			(pinfunction "~{RST}_9")
 			(pintype "input+no_connect")
 			(uuid "9e755a17-c5e7-4a5e-bdb5-eb51fc0ce83b")
 		)
@@ -23280,7 +23763,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-NC-Pad10)")
-			(pinfunction "NC")
+			(pinfunction "NC_10")
 			(pintype "no_connect")
 			(uuid "b791e800-1498-4504-8927-386c7e704d42")
 		)
@@ -23289,7 +23772,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-~{SUSPEND}-Pad11)")
-			(pinfunction "~{SUSPEND}")
+			(pinfunction "~{SUSPEND}_11")
 			(pintype "output+no_connect")
 			(uuid "6600ba3a-c04e-4f29-86d0-a0a1c169fd7f")
 		)
@@ -23298,7 +23781,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_12")
 			(pintype "passive")
 			(uuid "8bdd2620-fcbc-4f87-afef-c4968301b277")
 		)
@@ -23307,7 +23790,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-~{WAKEUP}-Pad13)")
-			(pinfunction "~{WAKEUP}")
+			(pinfunction "~{WAKEUP}_13")
 			(pintype "input+no_connect")
 			(uuid "d7fb1b64-ab72-492a-8a4c-958ac0e233e0")
 		)
@@ -23316,7 +23799,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-SUSPEND-Pad14)")
-			(pinfunction "SUSPEND")
+			(pinfunction "SUSPEND_14")
 			(pintype "output+no_connect")
 			(uuid "12bed9cc-3eda-42cf-bbdb-95413192257e")
 		)
@@ -23325,7 +23808,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(JP1-A)")
-			(pinfunction "~{CTS}")
+			(pinfunction "~{CTS}_15")
 			(pintype "input")
 			(uuid "3be73412-39e6-472a-b3ce-82007699564a")
 		)
@@ -23334,7 +23817,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U1-~{RTS}-Pad16)")
-			(pinfunction "~{RTS}")
+			(pinfunction "~{RTS}_16")
 			(pintype "output+no_connect")
 			(uuid "70180438-cf01-4c7a-b807-59fd33e6edbc")
 		)
@@ -23343,7 +23826,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "TX5")
-			(pinfunction "RXD")
+			(pinfunction "RXD_17")
 			(pintype "input")
 			(uuid "6ad8ae71-1235-4d75-b45d-34380d2ddeb7")
 		)
@@ -23352,7 +23835,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RX5")
-			(pinfunction "TXD")
+			(pinfunction "TXD_18")
 			(pintype "output")
 			(uuid "ac916850-8b1c-4266-9c5f-03d2508a5673")
 		)
@@ -23361,7 +23844,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U1-~{RXT}{slash}GPIO.3)")
-			(pinfunction "~{RXT}/GPIO.3")
+			(pinfunction "~{RXT}/GPIO.3_19")
 			(pintype "bidirectional")
 			(uuid "98e1ab17-cf21-4892-9fa0-bbe66daeb544")
 		)
@@ -23370,7 +23853,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U1-~{TXT}{slash}GPIO.2)")
-			(pinfunction "~{TXT}/GPIO.2")
+			(pinfunction "~{TXT}/GPIO.2_20")
 			(pintype "bidirectional")
 			(uuid "3d65008b-3989-4684-9afa-c332e655eb42")
 		)
@@ -23379,7 +23862,7 @@
 			(size 1.8 1.8)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_21")
 			(pintype "passive")
 			(uuid "d024fcbf-d759-4904-8a71-b0dde5ff91cf")
 		)
@@ -23663,6 +24146,14 @@
 		(path "/43bd2fe9-1931-4951-a5eb-027f023bfe7c")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "A5" "A6" "A7" "A8" "B4_A9" "A4_B9" "SH1" "SH2" "SH3" "SH4" "B8"
+					"B7" "B6" "B5" "B1_A12" "A1_B12"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -23735,7 +24226,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_A")
+			(pinfunction "GND_A_A1_B12")
 			(pintype "power_in")
 			(uuid "ba4f7e1a-2818-4ab2-8ac9-35ab56373b71")
 		)
@@ -23744,7 +24235,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "VBUS3")
-			(pinfunction "VBUS_A")
+			(pinfunction "VBUS_A_A4_B9")
 			(pintype "power_in")
 			(uuid "8bec4996-3e16-4f2f-bc91-0f43ce78e77a")
 		)
@@ -23753,7 +24244,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J4-CC1)")
-			(pinfunction "CC1")
+			(pinfunction "CC1_A5")
 			(pintype "bidirectional")
 			(uuid "686287ee-6d12-45a7-b461-df9e7708313b")
 		)
@@ -23762,7 +24253,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+3")
-			(pinfunction "DP1")
+			(pinfunction "DP1_A6")
 			(pintype "bidirectional")
 			(uuid "9343e1a2-5885-46dd-b531-7e13bbfa375d")
 		)
@@ -23771,7 +24262,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-3")
-			(pinfunction "DN1")
+			(pinfunction "DN1_A7")
 			(pintype "bidirectional")
 			(uuid "3c727fd4-076f-41ac-9fe0-0c20ae0ff4b6")
 		)
@@ -23780,7 +24271,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J4-SBU1-PadA8)")
-			(pinfunction "SBU1")
+			(pinfunction "SBU1_A8")
 			(pintype "bidirectional+no_connect")
 			(uuid "7297a18f-ee4c-4e2a-b93f-262c8cfa3098")
 		)
@@ -23789,7 +24280,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_B")
+			(pinfunction "GND_B_B1_A12")
 			(pintype "power_in")
 			(uuid "39a43dbe-de6a-4310-b301-e55a24abf73e")
 		)
@@ -23798,7 +24289,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "VBUS3")
-			(pinfunction "VBUS_B")
+			(pinfunction "VBUS_B_B4_A9")
 			(pintype "power_in")
 			(uuid "a6ce761b-d411-4d72-a881-2eb10656e5e6")
 		)
@@ -23807,7 +24298,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J4-CC2)")
-			(pinfunction "CC2")
+			(pinfunction "CC2_B5")
 			(pintype "bidirectional")
 			(uuid "67213b1b-28f0-4dcb-850d-0811dca425dc")
 		)
@@ -23816,7 +24307,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+3")
-			(pinfunction "DP2")
+			(pinfunction "DP2_B6")
 			(pintype "bidirectional")
 			(uuid "36f693f2-5831-4e8b-bee2-9121aad46a70")
 		)
@@ -23825,7 +24316,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-3")
-			(pinfunction "DN2")
+			(pinfunction "DN2_B7")
 			(pintype "bidirectional")
 			(uuid "18eb8ffa-f24b-4bc3-91ff-3131a341bbfb")
 		)
@@ -23834,7 +24325,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J4-SBU2-PadB8)")
-			(pinfunction "SBU2")
+			(pinfunction "SBU2_B8")
 			(pintype "bidirectional+no_connect")
 			(uuid "273f45ae-6523-4ff3-badc-297a77e3c429")
 		)
@@ -23843,7 +24334,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH1")
 			(pintype "passive")
 			(uuid "9283d426-a608-4554-b505-63f01463d863")
 		)
@@ -23852,7 +24343,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH2")
 			(pintype "passive")
 			(uuid "24ca052e-1130-4f76-af1e-9097a891d869")
 		)
@@ -23861,7 +24352,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH3")
 			(pintype "passive")
 			(uuid "d556da61-b3a0-430c-bed9-596991d03d0d")
 		)
@@ -23870,7 +24361,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH4")
 			(pintype "passive")
 			(uuid "0e3834cd-8c11-48e5-a17d-c875051dba12")
 		)
@@ -23996,6 +24487,12 @@
 		(path "/f8af85b5-bd1d-4d49-94ce-0ea1ced9a4b2")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -24135,7 +24632,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D16-K)")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "d79e5c39-921d-4e4d-994e-12f9fc837fb0")
 		)
@@ -24145,7 +24642,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "+3V3")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "400130b8-4a1f-404b-937d-374f880237cd")
 		)
@@ -24258,6 +24755,12 @@
 		(path "/6b83cb1a-e516-4503-b784-36615497f4c7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -24511,6 +25014,12 @@
 		(path "/c9f0cb3d-ea56-4f63-b8cf-26a613c80db3")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -24650,7 +25159,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D9-K)")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "621883ba-4a82-4a87-aa9b-a1e131ae8dd2")
 		)
@@ -24660,7 +25169,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "+3V3")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "249737dd-875d-47c9-8561-91dc38626d1c")
 		)
@@ -24786,6 +25295,12 @@
 		(path "/21658d24-693a-4979-acde-47b88af4f266")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -25026,6 +25541,12 @@
 		(path "/dae78e8f-c148-49f2-ae27-1544f01a20d1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -25266,7 +25787,13 @@
 		(path "/682fe34c-e732-4587-8b09-cb7941ca2134")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -25520,6 +26047,12 @@
 		(path "/8ec940ec-fe4c-49b5-9a31-9c93433a6bd1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -25648,7 +26181,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "665011e2-b4ee-461b-a7b6-e1ae8c8e7524")
 		)
@@ -25658,7 +26191,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D33-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "358ce078-a86f-4bac-b101-b71d5f76b046")
 		)
@@ -25771,7 +26304,13 @@
 		(path "/eb528159-87db-4aa5-b41d-7fc91381b3fe")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -26025,6 +26564,12 @@
 		(path "/3c79ee19-02c0-4f59-8f98-fe5fc9a241bf")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -26153,7 +26698,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "aa325eac-4ba3-4f99-a7a3-be6dac972f6a")
 		)
@@ -26163,7 +26708,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D34-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "8e5e1c62-2345-4954-a69c-0c53a6b11619")
 		)
@@ -26189,7 +26734,7 @@
 		(property "Reference" "R8"
 			(at 0 -1.75 90)
 			(layer "F.SilkS")
-			(uuid "34a5da94-3c81-4e9d-9c27-bdf3316bc80f")
+			(uuid "abda5e6b-8dd3-40b5-8210-8ddcad6215d9")
 			(effects
 				(font
 					(size 1 1)
@@ -26201,7 +26746,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "be1e73c0-a7b8-47e3-b6e2-10e387008435")
+			(uuid "0cedf5a4-a138-42a7-8fb2-a2f2119cd932")
 			(effects
 				(font
 					(size 1 1)
@@ -26213,7 +26758,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a1f5dcb1-abf3-4d31-82cb-122e2d6c916c")
+			(uuid "aa646c1f-f53c-433a-a272-f9109bbcb4b4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26225,7 +26770,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cd5308dd-6040-4874-9831-d488508f6e06")
+			(uuid "cd7fc5b7-2aa3-4dff-b764-9f5ec5fc04c9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26276,7 +26821,13 @@
 		(path "/34455bd1-a466-40be-93e6-5d1b56512017")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
@@ -26516,6 +27067,12 @@
 		(path "/c47495b5-328e-4d8c-b3c2-ec8a13d830fe")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -26670,7 +27227,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "55a98596-ff91-4fa2-88ef-c955b26b5c83")
+			(uuid "33bbeb99-6fe4-4bec-8785-7a6c75e8b0c3")
 			(effects
 				(font
 					(size 1 1)
@@ -26684,7 +27241,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "7a256039-3891-47bf-9e2e-b06b8f3fbf90")
+			(uuid "a8b83b90-10c3-46eb-82db-425fc83d7a84")
 			(effects
 				(font
 					(size 1 1)
@@ -26697,7 +27254,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "959ce7f6-e398-4584-9533-f4d9f6a496db")
+			(uuid "402dbc99-b02d-466c-a1db-1578a1d6da55")
 			(effects
 				(font
 					(size 1 1)
@@ -26705,12 +27262,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "088317c8-c45f-489e-b2c9-9a9f88c75c63")
+			(uuid "f8ce8a13-1733-4711-be49-edbd035cd67d")
 			(effects
 				(font
 					(size 1 1)
@@ -26761,6 +27318,12 @@
 		(path "/3bbc5d51-1577-4cc4-8552-efdaf965df5b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -26802,7 +27365,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "TX5")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "9b5c8433-925f-41a1-b1a7-0e1230cdf667")
 		)
@@ -26917,6 +27480,12 @@
 		(path "/0f2aa905-b324-4abb-85ae-e8400157f965")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -27056,7 +27625,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "eff063b8-afba-4f40-93d7-ab7dd30cf088")
 		)
@@ -27066,7 +27635,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D11-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "75a70d29-3736-419b-ad43-049aadaa2534")
 		)
@@ -27179,6 +27748,12 @@
 		(path "/652915b9-f25e-4f27-897b-47903086527d")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -27433,6 +28008,12 @@
 		(path "/df46624c-7269-4c64-be2a-2484603dd892")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -27575,7 +28156,7 @@
 		(property "Reference" "R4"
 			(at -3 0 180)
 			(layer "F.SilkS")
-			(uuid "6bc9618d-bacd-4d28-aa6a-972573716a70")
+			(uuid "53be4f62-f804-4bb3-8d75-1d6340032415")
 			(effects
 				(font
 					(size 1 1)
@@ -27587,7 +28168,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0214a0fa-35c2-4ffa-8069-97bec7d5ca52")
+			(uuid "72d791a5-59dd-40be-bc3e-ddcc0c1a6afa")
 			(effects
 				(font
 					(size 1 1)
@@ -27599,7 +28180,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e5b8fb32-c398-47eb-b583-17cb1c7f8a87")
+			(uuid "abffd6a4-b936-4e99-bee3-61455aeffa4f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27611,7 +28192,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5ffd29eb-97be-4a62-b833-9592505d03a7")
+			(uuid "1f5c1a66-2503-4931-814d-5a1ceee4bb70")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27662,7 +28243,13 @@
 		(path "/65707bcb-5bb1-4dae-a159-d06510d0b1b0")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -27815,7 +28402,7 @@
 			(at -4.9159 0 0)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "9c24946d-1772-4ea4-870a-3bd3379bf991")
+			(uuid "24e40384-3f9c-46be-9200-d0e25a3c3c4a")
 			(effects
 				(font
 					(size 1 1)
@@ -27823,12 +28410,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "Cree RGB LED"
 			(at 0 1 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e7bd2688-81de-4127-9508-d2005c692466")
+			(uuid "47a2eb3f-f6de-442a-9ecc-27a3aad8bf07")
 			(effects
 				(font
 					(size 1 1)
@@ -27841,7 +28428,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "56d9c3c3-9039-452d-acc5-dee3f94faea5")
+			(uuid "bdd02023-a94b-4ade-b014-9847d0f387c3")
 			(effects
 				(font
 					(size 1 1)
@@ -27854,7 +28441,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "1c4c1c27-fd6a-43ef-8d3b-6b2ac6eb7a75")
+			(uuid "17c37d25-4498-42df-bebd-ad8c5118b857")
 			(effects
 				(font
 					(size 1 1)
@@ -27904,6 +28491,12 @@
 		(path "/38449693-d1f7-454a-94a4-f960dac8a9df")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "6" "5" "4")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -28013,7 +28606,7 @@
 			(size 2.6 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(D4-AR)")
-			(pinfunction "AR")
+			(pinfunction "AR_1")
 			(pintype "passive")
 			(uuid "0b8c12eb-52a2-4d04-bf23-8838bf3f7216")
 		)
@@ -28022,7 +28615,7 @@
 			(size 2.6 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(D4-AG)")
-			(pinfunction "AG")
+			(pinfunction "AG_2")
 			(pintype "passive")
 			(uuid "9223970e-ed81-4661-abcd-2e28eb352dcf")
 		)
@@ -28031,7 +28624,7 @@
 			(size 2.6 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(D4-AB)")
-			(pinfunction "AB")
+			(pinfunction "AB_3")
 			(pintype "passive")
 			(uuid "5ff1d6de-5656-4a7e-bb63-135d0973834c")
 		)
@@ -28040,7 +28633,7 @@
 			(size 2.6 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "KB")
+			(pinfunction "KB_4")
 			(pintype "passive")
 			(uuid "16d15bc6-a75d-4be0-a553-643d9cc30796")
 		)
@@ -28049,7 +28642,7 @@
 			(size 2.6 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "KR")
+			(pinfunction "KG_5")
 			(pintype "passive")
 			(uuid "b5619347-79d4-48e9-9f0c-47e0bcb5b459")
 		)
@@ -28058,7 +28651,7 @@
 			(size 2.6 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "KR")
+			(pinfunction "KR_6")
 			(pintype "passive")
 			(uuid "8a8de24a-f7cd-4920-8380-cbadc3880e9c")
 		)
@@ -28171,7 +28764,13 @@
 		(path "/7b3afc72-1c7c-4c0a-b215-a24c5a43291a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -28360,7 +28959,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -28416,6 +29015,12 @@
 		(path "/7cfc5a22-1a4e-4ef2-8cab-9a4ce298461c")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -28457,7 +29062,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RX2")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "d936cfb0-08e6-4fa8-a9b6-deca8d0865c6")
 		)
@@ -28572,6 +29177,12 @@
 		(path "/eaa8eb6c-2c7c-4d80-96d7-ef7173bc6eda")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -28711,7 +29322,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D6-K)")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "e1052ff4-8659-4c47-b10b-3cfdff2cca90")
 		)
@@ -28721,7 +29332,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "+3V3")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "7ac200b8-0234-4e37-8c38-1888f208d3d8")
 		)
@@ -28848,6 +29459,12 @@
 		(path "/8604f348-013a-4912-8200-6201b5681bbc")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -29047,9 +29664,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/f1d86658-f856-4381-8744-cd27d65733d1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "3" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -29182,6 +29806,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+5V")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "3e9a7a0c-fa6f-45e3-8073-3e97a8b4f408")
 		)
@@ -29191,6 +29816,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+3V3")
+			(pinfunction "K_2")
 			(pintype "passive")
 			(uuid "9fc6e8f3-3c71-4dc7-a8cd-9b5b31b0d710")
 		)
@@ -29200,6 +29826,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
+			(pinfunction "A_3")
 			(pintype "passive")
 			(uuid "ca4c1999-ca60-4044-b07b-fadd3615e029")
 		)
@@ -29312,6 +29939,12 @@
 		(path "/3b7fcb85-503f-4b63-84b9-df5fd4ce13c0")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -29566,6 +30199,12 @@
 		(path "/bacdcc1b-8e01-44dd-9f10-be33b077b28a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -29694,7 +30333,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "9432c857-ade3-4e83-8034-6bd4af283ae4")
 		)
@@ -29704,7 +30343,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D29-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "16917e53-47a7-41f5-beae-84c03bd760a2")
 		)
@@ -29791,6 +30430,12 @@
 		(path "/cb2e87a2-b9c7-4f97-99eb-980d776e05ae")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "4")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -29950,7 +30595,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "SCL0")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "e934519e-7fa4-49bb-a7bf-2fe4d4d4d099")
 		)
@@ -29961,7 +30606,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "SDA0")
-			(pinfunction "Pin_2")
+			(pinfunction "Pin_2_2")
 			(pintype "passive")
 			(uuid "9ec7e6dd-5e98-4b3f-9dd0-2a6eec4f346e")
 		)
@@ -29972,7 +30617,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "Pin_3")
+			(pinfunction "Pin_3_3")
 			(pintype "passive")
 			(uuid "fb4fa5c1-2bb6-4b97-98d8-c6ee26716e75")
 		)
@@ -29983,7 +30628,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_4")
+			(pinfunction "Pin_4_4")
 			(pintype "passive")
 			(uuid "653f38dc-1517-4e09-935a-89dde6f5a542")
 		)
@@ -30098,6 +30743,12 @@
 		(path "/3db3ab88-7a3e-45c2-a865-d31bbb38e2f9")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -30286,7 +30937,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(D10-K)")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "f9483621-1b9d-49d7-a60e-afafb013f97f")
 		)
@@ -30296,7 +30947,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "Net-(D10-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "8dffe8d5-26f4-4423-b3cb-c189a8850aa5")
 		)
@@ -30423,6 +31074,12 @@
 		(path "/e725dcca-cf7f-45ca-8616-4d455161bbce")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -30625,6 +31282,12 @@
 		(path "/6b853968-6c77-43c0-8df6-0844103d5438")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -30795,7 +31458,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Button1")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "0fd81f31-4d0e-4afd-ad88-543103ed6edb")
 		)
@@ -30806,7 +31469,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "e8978215-d35a-45d4-a2c8-b9914ca2ccce")
 		)
@@ -30832,7 +31495,7 @@
 			(at 0 -5 90)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "4e2464e5-ce65-4e4b-9234-1a312064adc6")
+			(uuid "8d57def4-d1ac-47b9-84d8-fe4072394db1")
 			(effects
 				(font
 					(size 1 1)
@@ -30845,7 +31508,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "35cdf669-c2f8-4ad9-a5cf-5715ad292de9")
+			(uuid "21b1c37e-1bf2-419b-8bf2-55b1d79b5d67")
 			(effects
 				(font
 					(size 1 1)
@@ -30858,7 +31521,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a955acdc-8feb-47b4-aa04-1e729c42b17e")
+			(uuid "c980c079-fe9b-4b10-b889-4e89375bf6e5")
 			(effects
 				(font
 					(size 1 1)
@@ -30871,7 +31534,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "82c6108b-d370-469d-bac7-afe09b21f4fe")
+			(uuid "7b6a9019-1616-4452-b478-b12d00d58d9b")
 			(effects
 				(font
 					(size 1 1)
@@ -31090,6 +31753,14 @@
 		(path "/24dabaa0-a43a-4d64-8b82-d714db6f82cc")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "A5" "A6" "A7" "A8" "B4_A9" "A4_B9" "SH1" "SH2" "SH3" "SH4" "B8"
+					"B7" "B6" "B5" "B1_A12" "A1_B12"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -31162,7 +31833,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_A")
+			(pinfunction "GND_A_A1_B12")
 			(pintype "power_in")
 			(uuid "ed28cc6a-a70e-4884-a107-218c3f01b1d6")
 		)
@@ -31171,7 +31842,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "VBUS2")
-			(pinfunction "VBUS_A")
+			(pinfunction "VBUS_A_A4_B9")
 			(pintype "power_in")
 			(uuid "dfcb7166-0674-42e7-b640-4cfc8a3ab5f9")
 		)
@@ -31180,7 +31851,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J2-CC1)")
-			(pinfunction "CC1")
+			(pinfunction "CC1_A5")
 			(pintype "bidirectional")
 			(uuid "7c6567d0-03d6-46c8-ae59-337d319ccbea")
 		)
@@ -31189,7 +31860,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+2")
-			(pinfunction "DP1")
+			(pinfunction "DP1_A6")
 			(pintype "bidirectional")
 			(uuid "05418f2f-f0bb-4949-9279-cc8b405d3e2a")
 		)
@@ -31198,7 +31869,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-2")
-			(pinfunction "DN1")
+			(pinfunction "DN1_A7")
 			(pintype "bidirectional")
 			(uuid "d34fff62-9505-4f5f-b1b9-8fbf918da216")
 		)
@@ -31207,7 +31878,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J2-SBU1-PadA8)")
-			(pinfunction "SBU1")
+			(pinfunction "SBU1_A8")
 			(pintype "bidirectional+no_connect")
 			(uuid "371ccf74-673f-4291-8d1d-9357f3d51a7a")
 		)
@@ -31216,7 +31887,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND_B")
+			(pinfunction "GND_B_B1_A12")
 			(pintype "power_in")
 			(uuid "d9475933-3657-4c37-ba6b-5f3950fb8d78")
 		)
@@ -31225,7 +31896,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "VBUS2")
-			(pinfunction "VBUS_B")
+			(pinfunction "VBUS_B_B4_A9")
 			(pintype "power_in")
 			(uuid "74aeb059-ffa4-45c6-acf5-c160bf03e23f")
 		)
@@ -31234,7 +31905,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(J2-CC2)")
-			(pinfunction "CC2")
+			(pinfunction "CC2_B5")
 			(pintype "bidirectional")
 			(uuid "eebf1224-e385-4fe2-ad83-509eee5eb2d9")
 		)
@@ -31243,7 +31914,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+2")
-			(pinfunction "DP2")
+			(pinfunction "DP2_B6")
 			(pintype "bidirectional")
 			(uuid "7273a116-7fbe-413a-889f-97b7219fa9c8")
 		)
@@ -31252,7 +31923,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-2")
-			(pinfunction "DN2")
+			(pinfunction "DN2_B7")
 			(pintype "bidirectional")
 			(uuid "71459893-0aa9-438c-8b50-f7523b1c6f56")
 		)
@@ -31261,7 +31932,7 @@
 			(size 0.3 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(J2-SBU2-PadB8)")
-			(pinfunction "SBU2")
+			(pinfunction "SBU2_B8")
 			(pintype "bidirectional+no_connect")
 			(uuid "beb415ef-cf3a-41b9-ba26-95dd3ece107f")
 		)
@@ -31270,7 +31941,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH1")
 			(pintype "passive")
 			(uuid "2ebca712-a2be-4251-98b5-e720b27d5b76")
 		)
@@ -31279,7 +31950,7 @@
 			(size 1.55 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH2")
 			(pintype "passive")
 			(uuid "19e06294-a098-4384-957d-838139cfb6ed")
 		)
@@ -31288,7 +31959,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH3")
 			(pintype "passive")
 			(uuid "c80e13c4-b426-40cc-b1df-f692535a8709")
 		)
@@ -31297,7 +31968,7 @@
 			(size 1.55 1.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "SHIELD_SH4")
 			(pintype "passive")
 			(uuid "4bd35424-09ea-47c3-a086-b8fb34c06285")
 		)
@@ -31344,7 +32015,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31357,7 +32028,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "USB to UART master bridge, QFN-20"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31413,6 +32084,14 @@
 		(path "/d27ede26-260c-47e2-b285-006d4cd714cb")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "9" "8" "5" "4" "10" "7" "6" "3" "12" "21" "18" "17" "16" "15"
+					"13" "14" "11" "2" "1" "20" "19"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -31672,7 +32351,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-RS485{slash}GPIO.1-Pad1)")
-			(pinfunction "RS485/GPIO.1")
+			(pinfunction "RS485/GPIO.1_1")
 			(pintype "bidirectional+no_connect")
 			(uuid "e7466e51-dd01-4c83-a562-f1ab6f83c304")
 		)
@@ -31681,7 +32360,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-CLK{slash}GPIO.0-Pad2)")
-			(pinfunction "CLK/GPIO.0")
+			(pinfunction "CLK/GPIO.0_2")
 			(pintype "bidirectional+no_connect")
 			(uuid "40fcf284-62cd-4181-b545-a9a69f02f606")
 		)
@@ -31690,7 +32369,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_3")
 			(pintype "power_in")
 			(uuid "0ad1bfbe-2e06-44e1-abe8-fb8b7639ae7a")
 		)
@@ -31699,7 +32378,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D+3")
-			(pinfunction "D+")
+			(pinfunction "D+_4")
 			(pintype "bidirectional")
 			(uuid "1212a2a5-703c-45b7-98bb-eb99182fbb4b")
 		)
@@ -31708,7 +32387,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "D-3")
-			(pinfunction "D-")
+			(pinfunction "D-_5")
 			(pintype "bidirectional")
 			(uuid "5cfe14e7-51b4-414d-86c1-7d41a13cf5e8")
 		)
@@ -31717,7 +32396,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+3V3")
-			(pinfunction "VDD")
+			(pinfunction "VDD_6")
 			(pintype "power_in")
 			(uuid "7ef6932e-f76c-49ad-b8ea-a123a9d698cd")
 		)
@@ -31726,7 +32405,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+3V3")
-			(pinfunction "VREGIN")
+			(pinfunction "VREGIN_7")
 			(pintype "power_in")
 			(uuid "68511c34-e804-45fa-bc09-a8ab87a42f29")
 		)
@@ -31735,7 +32414,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U3-VBUS)")
-			(pinfunction "VBUS")
+			(pinfunction "VBUS_8")
 			(pintype "input")
 			(uuid "75e54fd3-21a0-41fa-bf22-a660352e6e1f")
 		)
@@ -31744,7 +32423,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-~{RST}-Pad9)")
-			(pinfunction "~{RST}")
+			(pinfunction "~{RST}_9")
 			(pintype "input+no_connect")
 			(uuid "a9a270e7-6d35-4a04-b300-d9f9b55de6dc")
 		)
@@ -31753,7 +32432,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-NC-Pad10)")
-			(pinfunction "NC")
+			(pinfunction "NC_10")
 			(pintype "no_connect")
 			(uuid "1e7eeccf-07c5-4389-95c8-7170fb51a7c7")
 		)
@@ -31762,7 +32441,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-~{SUSPEND}-Pad11)")
-			(pinfunction "~{SUSPEND}")
+			(pinfunction "~{SUSPEND}_11")
 			(pintype "output+no_connect")
 			(uuid "1973de67-15f2-4db7-856f-f01aff470040")
 		)
@@ -31771,7 +32450,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_12")
 			(pintype "passive")
 			(uuid "b0f05afb-8ec2-4ef1-b78e-14d7ee24a7f5")
 		)
@@ -31780,7 +32459,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-~{WAKEUP}-Pad13)")
-			(pinfunction "~{WAKEUP}")
+			(pinfunction "~{WAKEUP}_13")
 			(pintype "input+no_connect")
 			(uuid "9414ee7e-2270-48cb-a840-1850faa05b61")
 		)
@@ -31789,7 +32468,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-SUSPEND-Pad14)")
-			(pinfunction "SUSPEND")
+			(pinfunction "SUSPEND_14")
 			(pintype "output+no_connect")
 			(uuid "2821f9ba-e407-4d9d-90f7-008b0c5f2229")
 		)
@@ -31798,7 +32477,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(JP3-A)")
-			(pinfunction "~{CTS}")
+			(pinfunction "~{CTS}_15")
 			(pintype "input")
 			(uuid "ce33cca0-d07a-45d8-a067-a2f69d9903cd")
 		)
@@ -31807,7 +32486,7 @@
 			(size 0.3 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "unconnected-(U3-~{RTS}-Pad16)")
-			(pinfunction "~{RTS}")
+			(pinfunction "~{RTS}_16")
 			(pintype "output+no_connect")
 			(uuid "cf6c26e1-55b0-47ac-b24f-f6877c890414")
 		)
@@ -31816,7 +32495,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "TX2")
-			(pinfunction "RXD")
+			(pinfunction "RXD_17")
 			(pintype "input")
 			(uuid "b9df3b4a-5c1e-4f98-b0dc-9f6b0cb4a8ef")
 		)
@@ -31825,7 +32504,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RX2")
-			(pinfunction "TXD")
+			(pinfunction "TXD_18")
 			(pintype "output")
 			(uuid "9cdcda6b-fe73-4721-9b74-515d45904cdc")
 		)
@@ -31834,7 +32513,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U3-~{RXT}{slash}GPIO.3)")
-			(pinfunction "~{RXT}/GPIO.3")
+			(pinfunction "~{RXT}/GPIO.3_19")
 			(pintype "bidirectional")
 			(uuid "c0543ca2-7923-4feb-a0f8-715f61593b23")
 		)
@@ -31843,7 +32522,7 @@
 			(size 0.3 0.9)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Net-(U3-~{TXT}{slash}GPIO.2)")
-			(pinfunction "~{TXT}/GPIO.2")
+			(pinfunction "~{TXT}/GPIO.2_20")
 			(pintype "bidirectional")
 			(uuid "c9709808-9662-4120-bee5-ae2168ce18af")
 		)
@@ -31852,7 +32531,7 @@
 			(size 1.8 1.8)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_21")
 			(pintype "passive")
 			(uuid "7e4e79cd-a2b8-47a2-b487-91a91195e6fa")
 		)
@@ -31979,6 +32658,12 @@
 		(path "/10b4a7fa-efe4-47e2-91f1-b5adc113b0c1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -32222,6 +32907,12 @@
 		(path "/ff7e5bf9-e841-4529-81ca-a917fa1ee20e")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -32350,7 +33041,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "974a1b2e-671f-468a-b178-2f43da0b7862")
 		)
@@ -32360,7 +33051,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D27-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "797243ea-b2a4-4c98-a454-79dfbae3664a")
 		)
@@ -32487,6 +33178,12 @@
 		(path "/f9f82efe-5f79-4442-9d9e-26ef1eb5c8ba")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -32629,7 +33326,7 @@
 		(property "Reference" "D3"
 			(at 3 0 180)
 			(layer "F.SilkS")
-			(uuid "e0f0f9e2-9afd-401c-8081-55391fe75c5f")
+			(uuid "43ef17cc-0acb-4ddb-b80d-a8d37a81180f")
 			(effects
 				(font
 					(size 1 1)
@@ -32641,7 +33338,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a10c5c5c-743a-4782-bc85-bc014f1cec68")
+			(uuid "d6a6ed5c-abca-4054-8cb2-95d5b1ffa24c")
 			(effects
 				(font
 					(size 1 1)
@@ -32653,7 +33350,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "436cd11a-807b-4a2a-b74a-794496efb3e0")
+			(uuid "73806388-e35f-4d77-8bac-d025b4d89aa0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32665,7 +33362,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d7d2e692-0470-406a-afb1-d8ac8cc619b8")
+			(uuid "23ccd11d-4a40-4aaa-bf81-4e3fec25ff2b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32729,6 +33426,12 @@
 		(path "/42efccf9-004b-49a1-b753-0f9649d8727f")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -32868,7 +33571,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "bdc337d2-b7b1-43b3-a9f4-4db23e40e67a")
 		)
@@ -32878,7 +33581,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D3-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "a97079f6-c0f6-4bde-aa25-aa9963090408")
 		)
@@ -32991,7 +33694,13 @@
 		(path "/73b26746-95dd-4e7c-969c-d2f5eb5f9dc7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 -0.735)
@@ -33250,9 +33959,31 @@
 				)
 			)
 		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf019ab1-2851-46de-bdc1-08320d207e82")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "DSUB*Pins*")
 		(path "/0393ef66-945d-4eec-89d3-02a0614e11d4")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "5" "10" "4" "9" "3" "8" "2" "7" "1" "6" "SH" "15" "14" "13" "12"
+					"11"
+				)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -33467,7 +34198,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "TX4")
-			(pinfunction "1")
 			(pintype "passive")
 			(uuid "eac786ff-dd4c-4afe-b534-05cc9987bb7c")
 		)
@@ -33478,7 +34208,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RX4")
-			(pinfunction "2")
 			(pintype "passive")
 			(uuid "40d4479e-da6f-438c-94ff-b0698cd262b5")
 		)
@@ -33489,7 +34218,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D21")
-			(pinfunction "3")
 			(pintype "passive")
 			(uuid "5613a0c7-d464-419d-ab04-4c56898f2bed")
 		)
@@ -33500,7 +34228,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D22")
-			(pinfunction "4")
 			(pintype "passive")
 			(uuid "fc06ba84-6207-45bb-a591-a54ff543f37e")
 		)
@@ -33511,7 +34238,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D23")
-			(pinfunction "5")
 			(pintype "passive")
 			(uuid "07beb528-0b3f-4ae3-b4f3-b4ea00b14cbd")
 		)
@@ -33522,7 +34248,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "D24")
-			(pinfunction "6")
 			(pintype "passive")
 			(uuid "943f9e5d-2a8c-42b8-aa8c-2938cda49353")
 		)
@@ -33533,7 +34258,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "7")
 			(pintype "passive")
 			(uuid "7b0b17ee-2441-43c0-af90-1eb360ced875")
 		)
@@ -33544,7 +34268,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "8")
 			(pintype "passive")
 			(uuid "0bd56b67-b1cd-41a9-9ed9-dd84d296e741")
 		)
@@ -33555,7 +34278,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "9")
 			(pintype "passive")
 			(uuid "9e7674cb-6f8b-4dce-a959-a2323c15aa65")
 		)
@@ -33566,7 +34288,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "10")
 			(pintype "passive")
 			(uuid "8ff760a9-9176-43cc-8d13-f3512217454d")
 		)
@@ -33577,7 +34298,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "11")
 			(pintype "passive")
 			(uuid "a085f333-f492-4ecb-bd73-f5c314a6c2f8")
 		)
@@ -33588,7 +34308,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "12")
 			(pintype "passive")
 			(uuid "50b65a96-da53-4087-bf6f-87b701e8e30f")
 		)
@@ -33599,7 +34318,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "13")
 			(pintype "passive")
 			(uuid "103b4ccb-29bd-452f-9945-38cdc05bae08")
 		)
@@ -33610,7 +34328,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "14")
 			(pintype "passive")
 			(uuid "1e30431d-0e43-4d84-a027-5074f13a3a7a")
 		)
@@ -33621,7 +34338,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "15")
 			(pintype "passive")
 			(uuid "470609db-1e23-494f-99b2-69415996515e")
 		)
@@ -33632,7 +34348,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD__1")
 			(pintype "passive")
 			(uuid "3d884279-2367-4833-af76-f9618a4f9d90")
 		)
@@ -33643,7 +34358,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD")
 			(pintype "passive")
 			(uuid "1b06c588-0506-4cb4-82a2-1a0542972b41")
 		)
@@ -33755,6 +34469,12 @@
 		(path "/38a12e4c-beaa-4b4d-8ca6-2f06e82a40da")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -33968,6 +34688,12 @@
 		(path "/f52e69a7-30a6-45d8-99e0-a103621a18a6")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -34138,7 +34864,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Button5")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "85739a2e-b20a-4800-857b-26bf54d73f60")
 		)
@@ -34149,7 +34875,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "MasterButton")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive")
 			(uuid "a6eb9bf1-519f-4095-b116-83435850b3ec")
 		)
@@ -34275,6 +35001,12 @@
 		(path "/05ef22b7-50c1-4111-9de3-81003dd0e0c7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -34515,7 +35247,13 @@
 		(path "/2e46815c-09a7-4971-8342-ff1d67ee6823")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.227064 0.735)
@@ -34774,9 +35512,29 @@
 				)
 			)
 		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdfd8e76-5d5f-4a94-adde-f2a4f29556c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "DSUB*Pins*")
 		(path "/cbccfbce-b1e9-4cb0-b4ab-aa39d37411b0")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "5" "9" "4" "8" "3" "7" "2" "6" "1" "SH")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -34991,7 +35749,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "unconnected-(J8-Pad1)")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive+no_connect")
 			(uuid "dbcfccfd-7be6-4bf2-94aa-4a01f909beb8")
 		)
@@ -35002,7 +35760,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "unconnected-(J8-Pad2)")
-			(pinfunction "2")
+			(pinfunction "2_2")
 			(pintype "passive+no_connect")
 			(uuid "4dc30330-718c-404d-b79f-66f9628955d4")
 		)
@@ -35013,7 +35771,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Input1")
-			(pinfunction "3")
+			(pinfunction "3_3")
 			(pintype "passive")
 			(uuid "93de0e20-27d2-495c-badc-f613260541a8")
 		)
@@ -35024,7 +35782,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Input2")
-			(pinfunction "4")
+			(pinfunction "4_4")
 			(pintype "passive")
 			(uuid "8f7f6946-c520-4144-8ee1-fa0a5d9236c1")
 		)
@@ -35035,7 +35793,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "5")
+			(pinfunction "5_5")
 			(pintype "passive")
 			(uuid "bc608f31-bc8a-454a-be68-1fe25c39bbdc")
 		)
@@ -35046,7 +35804,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "unconnected-(J8-Pad6)")
-			(pinfunction "6")
+			(pinfunction "6_6")
 			(pintype "passive+no_connect")
 			(uuid "a59be9b6-e3b1-41f4-835c-5c08304b8f58")
 		)
@@ -35057,7 +35815,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "unconnected-(J8-Pad7)")
-			(pinfunction "7")
+			(pinfunction "7_7")
 			(pintype "passive+no_connect")
 			(uuid "5aa538f2-bb5b-44e5-b2bc-ec4c689ab999")
 		)
@@ -35068,7 +35826,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "unconnected-(J8-Pad8)")
-			(pinfunction "8")
+			(pinfunction "8_8")
 			(pintype "passive+no_connect")
 			(uuid "3df1f7b6-88a1-4d00-9956-b8d792c774e6")
 		)
@@ -35079,7 +35837,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "unconnected-(J8-Pad9)")
-			(pinfunction "9")
+			(pinfunction "9_9")
 			(pintype "passive+no_connect")
 			(uuid "f21f371a-152a-4799-82c7-10cb97a601fc")
 		)
@@ -35090,7 +35848,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD__1")
+			(pinfunction "PAD_SH")
 			(pintype "passive")
 			(uuid "0ff115e4-6f5b-4d77-bc56-588f514f863d")
 		)
@@ -35101,7 +35859,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD")
+			(pinfunction "PAD_SH")
 			(pintype "passive")
 			(uuid "ec2f18b6-0147-42b5-89e0-f69baa807bb8")
 		)
@@ -35214,6 +35972,12 @@
 		(path "/41dbbcf3-37bd-4bcf-9f9e-c53fcaa0dc18")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationMB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -66004,211 +66768,6 @@
 		(uuid "f68fa87f-ec71-485e-a4f5-611d31f7fd8c")
 	)
 	(segment
-		(start 207.9375 111.162689)
-		(end 208.7645 111.162689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "14f00811-7b5e-4714-8151-803be2b1798d")
-	)
-	(segment
-		(start 207.9375 111.162689)
-		(end 204.45 111.162689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "400914d0-a903-4206-b442-00503e088d5a")
-	)
-	(segment
-		(start 208.7645 111.162689)
-		(end 208.9375 110.989689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "4aebedc7-1c81-4b46-9763-f70122dc9a5d")
-	)
-	(segment
-		(start 208.9375 110.989689)
-		(end 208.9375 110.335689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "5761594e-5dd4-4cb5-804b-2436ffccaea3")
-	)
-	(segment
-		(start 202.950189 112.6625)
-		(end 204.25 111.362689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "792b8cc1-5b6c-43d4-ba16-61d4bcc27de4")
-	)
-	(segment
-		(start 208.7645 110.162689)
-		(end 207.9375 110.162689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "acdde481-4c25-492b-9f9c-ee3f26fc543f")
-	)
-	(segment
-		(start 208.9375 110.335689)
-		(end 208.7645 110.162689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "aced9541-9cee-4a04-afd2-aae099c63eea")
-	)
-	(segment
-		(start 204.45 111.162689)
-		(end 204.25 111.362689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "aee30d99-17ed-45cd-a496-9672dd8fe79c")
-	)
-	(segment
-		(start 200.647 112.6625)
-		(end 202.950189 112.6625)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D-1")
-		(uuid "d076b0a3-49f7-486a-b7cb-33fbf2ded1c4")
-	)
-	(segment
-		(start 206.9375 109.835689)
-		(end 207.1105 109.662689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "01b78a63-c026-4dc7-8a62-28c534a15a4e")
-	)
-	(segment
-		(start 204.45 109.662689)
-		(end 204.25 109.462689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "1163fec7-082f-4451-8a60-4607ca666e4e")
-	)
-	(segment
-		(start 207.9375 110.662689)
-		(end 207.1105 110.662689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "19cb5843-a679-4a4e-95b9-0938f224b69e")
-	)
-	(segment
-		(start 203.5 113.162689)
-		(end 200.647063 113.162689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "1a511e94-21af-483e-882c-979ebeb80e7d")
-	)
-	(segment
-		(start 204.25 109.462689)
-		(end 204.25 110.412689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "31a96436-77c0-4982-a37c-33f048015645")
-	)
-	(segment
-		(start 207.1105 110.662689)
-		(end 206.9375 110.489689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "460976ae-f68f-46da-a517-a14294b943fc")
-	)
-	(segment
-		(start 203.5 113.162689)
-		(end 203.499937 113.162626)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "4635ef60-abeb-40bb-ae0a-cc6073172503")
-	)
-	(segment
-		(start 200.647063 113.162689)
-		(end 200.647 113.162626)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "cf523add-e658-4fec-aa86-d7246a7aadd0")
-	)
-	(segment
-		(start 207.9375 109.662689)
-		(end 204.45 109.662689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "d5006a34-5496-4658-84ad-74a413559e48")
-	)
-	(segment
-		(start 206.9375 110.489689)
-		(end 206.9375 109.835689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "D+1")
-		(uuid "fb823d5e-099f-4707-be72-051ac1d4673a")
-	)
-	(via
-		(at 204.25 110.412689)
-		(size 0.6)
-		(drill 0.3)
-		(layers "F.Cu" "B.Cu")
-		(capping no)
-		(covering
-			(front no)
-			(back no)
-		)
-		(plugging
-			(front no)
-			(back no)
-		)
-		(filling no)
-		(net "D+1")
-		(uuid "add7ab63-8a6e-4608-a652-ab5982dcbf42")
-	)
-	(via
-		(at 203.5 113.162689)
-		(size 0.6)
-		(drill 0.3)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(capping no)
-		(covering
-			(front no)
-			(back no)
-		)
-		(plugging
-			(front no)
-			(back no)
-		)
-		(filling no)
-		(net "D+1")
-		(uuid "b6118b6b-1efb-4b2c-9a14-6d18d6003330")
-	)
-	(segment
-		(start 204.25 112.412689)
-		(end 204.25 110.412689)
-		(width 0.2)
-		(layer "B.Cu")
-		(net "D+1")
-		(uuid "19af7c32-f1c5-4d06-bdae-8f65c15c3e41")
-	)
-	(segment
-		(start 203.5 113.162689)
-		(end 204.25 112.412689)
-		(width 0.2)
-		(layer "B.Cu")
-		(net "D+1")
-		(uuid "cf23e771-87b0-452d-80d9-f9346642581e")
-	)
-	(segment
 		(start 196.225 73.01)
 		(end 197.90164 73.01)
 		(width 0.25)
@@ -67712,14 +68271,6 @@
 		(layer "F.Cu")
 		(net "LED B")
 		(uuid "f32f4776-9ff2-4c02-95cb-f724b45f3aba")
-	)
-	(segment
-		(start 130.6056 128.3284)
-		(end 130.6056 132.9659)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(D4-AB)")
-		(uuid "1e6c94c2-9cac-441e-abd9-f884e46f0e15")
 	)
 	(segment
 		(start 206.475 120.912689)
@@ -69407,46 +69958,6 @@
 		(uuid "f19a9320-168b-4e60-a56d-01f229e73fb5")
 	)
 	(segment
-		(start 197.217726 114.162878)
-		(end 197.853 114.162878)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(JP1-A)")
-		(uuid "130fd288-5155-47fb-91e4-57d575ea0d2e")
-	)
-	(segment
-		(start 194.25 109.665189)
-		(end 194.25 111.195152)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(JP1-A)")
-		(uuid "39180dd4-592e-4bca-9016-5d499b7e5f43")
-	)
-	(segment
-		(start 194.25 111.195152)
-		(end 197.217726 114.162878)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(JP1-A)")
-		(uuid "cd4c3c4a-8a91-437e-a734-b25e08e40713")
-	)
-	(segment
-		(start 207.0875 111.662689)
-		(end 205.75 113.000189)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(J1-CC1)")
-		(uuid "246b6900-2abf-4d46-9cb6-2e70e9763270")
-	)
-	(segment
-		(start 207.9375 111.662689)
-		(end 207.0875 111.662689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(J1-CC1)")
-		(uuid "8b27a1c7-53a1-42bc-adc1-958f35ac2d74")
-	)
-	(segment
 		(start 200.3375 88.000189)
 		(end 199.111689 89.226)
 		(width 0.2)
@@ -69511,22 +70022,6 @@
 		(uuid "48b8be49-2977-4ce8-bcbc-7b72ce5ced9e")
 	)
 	(segment
-		(start 207.9375 108.662689)
-		(end 206.5875 108.662689)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(J1-CC2)")
-		(uuid "19852b4e-07e4-4b19-add4-ccbf2c5d94ac")
-	)
-	(segment
-		(start 206.5875 108.662689)
-		(end 205.75 107.825189)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(J1-CC2)")
-		(uuid "7bf7c578-3e88-47f8-a27c-e8a774dbf0ac")
-	)
-	(segment
 		(start 206.475 102.912689)
 		(end 203.4125 102.912689)
 		(width 0.2)
@@ -69583,14 +70078,6 @@
 		(uuid "4e11f79e-caf8-46d9-a3e8-554de8989faf")
 	)
 	(segment
-		(start 134.8056 128.3284)
-		(end 134.8056 132.9659)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(D4-AR)")
-		(uuid "d1e00068-fc94-4266-942f-c5129cdef289")
-	)
-	(segment
 		(start 163.5 136.3784)
 		(end 163.5 133.4034)
 		(width 0.25)
@@ -69621,6 +70108,283 @@
 		(layer "F.Cu")
 		(net "Net-(D10-K)")
 		(uuid "9e2bceca-7e89-45a2-9a8b-4243351dde49")
+	)
+	(segment
+		(start 134.8056 128.3284)
+		(end 134.8056 132.9659)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(D4-AR)")
+		(uuid "d1e00068-fc94-4266-942f-c5129cdef289")
+	)
+	(segment
+		(start 207.9375 108.662689)
+		(end 206.5875 108.662689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(J1-CC2)")
+		(uuid "19852b4e-07e4-4b19-add4-ccbf2c5d94ac")
+	)
+	(segment
+		(start 206.5875 108.662689)
+		(end 205.75 107.825189)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(J1-CC2)")
+		(uuid "7bf7c578-3e88-47f8-a27c-e8a774dbf0ac")
+	)
+	(segment
+		(start 207.0875 111.662689)
+		(end 205.75 113.000189)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(J1-CC1)")
+		(uuid "246b6900-2abf-4d46-9cb6-2e70e9763270")
+	)
+	(segment
+		(start 207.9375 111.662689)
+		(end 207.0875 111.662689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(J1-CC1)")
+		(uuid "8b27a1c7-53a1-42bc-adc1-958f35ac2d74")
+	)
+	(segment
+		(start 197.217726 114.162878)
+		(end 197.853 114.162878)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(JP1-A)")
+		(uuid "130fd288-5155-47fb-91e4-57d575ea0d2e")
+	)
+	(segment
+		(start 194.25 109.665189)
+		(end 194.25 111.195152)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(JP1-A)")
+		(uuid "39180dd4-592e-4bca-9016-5d499b7e5f43")
+	)
+	(segment
+		(start 194.25 111.195152)
+		(end 197.217726 114.162878)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(JP1-A)")
+		(uuid "cd4c3c4a-8a91-437e-a734-b25e08e40713")
+	)
+	(segment
+		(start 130.6056 128.3284)
+		(end 130.6056 132.9659)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "Net-(D4-AB)")
+		(uuid "1e6c94c2-9cac-441e-abd9-f884e46f0e15")
+	)
+	(segment
+		(start 206.9375 109.835689)
+		(end 207.1105 109.662689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "01b78a63-c026-4dc7-8a62-28c534a15a4e")
+	)
+	(segment
+		(start 204.45 109.662689)
+		(end 204.25 109.462689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "1163fec7-082f-4451-8a60-4607ca666e4e")
+	)
+	(segment
+		(start 207.9375 110.662689)
+		(end 207.1105 110.662689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "19cb5843-a679-4a4e-95b9-0938f224b69e")
+	)
+	(segment
+		(start 203.5 113.162689)
+		(end 200.647063 113.162689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "1a511e94-21af-483e-882c-979ebeb80e7d")
+	)
+	(segment
+		(start 204.25 109.462689)
+		(end 204.25 110.412689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "31a96436-77c0-4982-a37c-33f048015645")
+	)
+	(segment
+		(start 207.1105 110.662689)
+		(end 206.9375 110.489689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "460976ae-f68f-46da-a517-a14294b943fc")
+	)
+	(segment
+		(start 203.5 113.162689)
+		(end 203.499937 113.162626)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "4635ef60-abeb-40bb-ae0a-cc6073172503")
+	)
+	(segment
+		(start 200.647063 113.162689)
+		(end 200.647 113.162626)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "cf523add-e658-4fec-aa86-d7246a7aadd0")
+	)
+	(segment
+		(start 207.9375 109.662689)
+		(end 204.45 109.662689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "d5006a34-5496-4658-84ad-74a413559e48")
+	)
+	(segment
+		(start 206.9375 110.489689)
+		(end 206.9375 109.835689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D+1")
+		(uuid "fb823d5e-099f-4707-be72-051ac1d4673a")
+	)
+	(via
+		(at 204.25 110.412689)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "D+1")
+		(uuid "add7ab63-8a6e-4608-a652-ab5982dcbf42")
+	)
+	(via
+		(at 203.5 113.162689)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(free yes)
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "D+1")
+		(uuid "b6118b6b-1efb-4b2c-9a14-6d18d6003330")
+	)
+	(segment
+		(start 204.25 112.412689)
+		(end 204.25 110.412689)
+		(width 0.2)
+		(layer "B.Cu")
+		(net "D+1")
+		(uuid "19af7c32-f1c5-4d06-bdae-8f65c15c3e41")
+	)
+	(segment
+		(start 203.5 113.162689)
+		(end 204.25 112.412689)
+		(width 0.2)
+		(layer "B.Cu")
+		(net "D+1")
+		(uuid "cf23e771-87b0-452d-80d9-f9346642581e")
+	)
+	(segment
+		(start 207.9375 111.162689)
+		(end 208.7645 111.162689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "14f00811-7b5e-4714-8151-803be2b1798d")
+	)
+	(segment
+		(start 207.9375 111.162689)
+		(end 204.45 111.162689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "400914d0-a903-4206-b442-00503e088d5a")
+	)
+	(segment
+		(start 208.7645 111.162689)
+		(end 208.9375 110.989689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "4aebedc7-1c81-4b46-9763-f70122dc9a5d")
+	)
+	(segment
+		(start 208.9375 110.989689)
+		(end 208.9375 110.335689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "5761594e-5dd4-4cb5-804b-2436ffccaea3")
+	)
+	(segment
+		(start 202.950189 112.6625)
+		(end 204.25 111.362689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "792b8cc1-5b6c-43d4-ba16-61d4bcc27de4")
+	)
+	(segment
+		(start 208.7645 110.162689)
+		(end 207.9375 110.162689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "acdde481-4c25-492b-9f9c-ee3f26fc543f")
+	)
+	(segment
+		(start 208.9375 110.335689)
+		(end 208.7645 110.162689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "aced9541-9cee-4a04-afd2-aae099c63eea")
+	)
+	(segment
+		(start 204.45 111.162689)
+		(end 204.25 111.362689)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "aee30d99-17ed-45cd-a496-9672dd8fe79c")
+	)
+	(segment
+		(start 200.647 112.6625)
+		(end 202.950189 112.6625)
+		(width 0.2)
+		(layer "F.Cu")
+		(net "D-1")
+		(uuid "d076b0a3-49f7-486a-b7cb-33fbf2ded1c4")
 	)
 	(zone
 		(net "GND")

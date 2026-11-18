@@ -7060,6 +7060,17 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/w%C3%BCrth-elektronik/824021/3900544"
+			(at 140.97 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "dbd3730f-f66e-4d99-a614-a1f44f2a1476")
 		)
