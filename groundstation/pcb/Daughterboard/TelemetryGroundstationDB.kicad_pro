@@ -789,7 +789,7 @@
         "uuid": "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
       }
     ],
-    "used_designators": "",
+    "used_designators": "J1,J3-4,D6,#PWR4-5,#PWR32-34,#PWR40-49",
     "variants": []
   },
   "sheets": [

@@ -141,7 +141,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "60d22121-4ef1-409d-b698-f93b6d3ed300")
+			(uuid "e1a8ac71-4d57-4898-b15e-4c1c9b373ec5")
 			(effects
 				(font
 					(size 1 1)
@@ -149,12 +149,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f6f6322d-60f8-47e7-a909-d40b0d8b0c14")
+			(uuid "6489753b-c589-4150-9ec5-c7f438d16d98")
 			(effects
 				(font
 					(size 1 1)
@@ -167,7 +167,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fc763884-24af-44c7-b2da-0ba8fd9dc974")
+			(uuid "79fc0acb-9adb-49d1-8163-e2931876dfd6")
 			(effects
 				(font
 					(size 1 1)
@@ -175,12 +175,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f06f55ef-9493-4baa-aac1-c880b757bb1f")
+			(uuid "a4abe60f-5de1-4802-ae0b-44e723610946")
 			(effects
 				(font
 					(size 1 1)
@@ -214,10 +214,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f65c7978-3655-4819-8094-09bc9c0c20bb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fd55d7ea-067c-48cb-a649-bb7b4c38ca5a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8fe4206-481a-4a9e-b593-116e3df93bef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aecae826-1796-4977-9e01-cf4df40a92ec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "af6a7d18-9cfd-47e1-89c2-8fb0b20a7bfd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "444bed3d-ac92-4dc7-922f-1e024e852a9f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5557b65e-5ec4-4fa7-88a9-6c5f45d4115f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef58be6f-9562-4912-96ea-3e68be9ed9a6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "730d7b8f-d098-4377-bea8-214c2c7355be")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3d365acf-a6ff-46fd-a27d-a15e9bd24610")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6d60e3b7-af84-4fc2-9aec-c1740dfbf11d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3881d1c9-89f2-4dff-b8e7-4ae1784c1009")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/cb5a7cac-4f1c-4999-9ab2-cd51bfde8ff4")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -238,7 +400,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "c4e0a90e-c963-4fec-b59e-b2d41dfb4abf")
 		)
@@ -254,7 +416,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "9e3381be-6b5f-4d48-9054-07f10f4c9458")
+			(uuid "e6bcc6cf-fe23-4b9f-b4cd-07a5a271fec2")
 			(effects
 				(font
 					(size 1 1)
@@ -268,7 +430,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e8fba4a5-55d2-4378-bc54-242f20d2e899")
+			(uuid "1e0c5527-f361-4779-b90a-6040b751535d")
 			(effects
 				(font
 					(size 1 1)
@@ -281,7 +443,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "13c6b560-b1d8-433a-a9d6-0acfdb454792")
+			(uuid "235f6819-8707-49b0-afc1-9be385b81fb2")
 			(effects
 				(font
 					(size 1 1)
@@ -289,12 +451,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c00d2b17-c089-47f1-a485-9aa181b57720")
+			(uuid "9360448f-e9cd-4342-9dd8-1d85162abc67")
 			(effects
 				(font
 					(size 1 1)
@@ -328,10 +490,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d2b37fa4-9396-461e-89f7-522d4fde199e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8ea2d857-50f8-42b6-9930-cc0810418ff9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1dd9b5a9-cd27-41a8-8ec4-240aa52e5bae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aa20de8a-3878-4a25-bb31-97f17c8a860b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4fb3de93-a3f9-4049-b8ce-7de616bed1d6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b187097b-05ae-4af8-8df7-12ef50855b79")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ecddd4d-751a-49c8-aa6e-ccf2bc47457d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "de8a0407-0093-40c7-b700-b5646c4510f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c027d42-f4b2-4cea-aeb2-125071768a68")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7d1af675-adee-4e7a-b8a5-14ee7ee3e6f3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "999c7749-523e-4047-a5c2-a25757fe2701")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d54de3ec-ca99-4f17-97cc-70330d644da4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Pin* Test*")
 		(path "/ea12e7e1-55a9-48cb-9156-82e900d7accc")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -374,7 +698,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RST")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "0c572fc1-2a9d-4b76-83d8-98403fec4d41")
 		)
@@ -389,7 +713,7 @@
 		(property "Reference" "D2"
 			(at -3.2 -0.05 270)
 			(layer "F.SilkS")
-			(uuid "4e31ddb2-8164-4c54-985b-b44f62d306a8")
+			(uuid "90a44bd0-77be-4db9-b2b4-2507940981d2")
 			(effects
 				(font
 					(size 1 1)
@@ -401,7 +725,7 @@
 			(at 0 2 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "161f9b27-05fa-432a-bbf9-e1e0e833e2a8")
+			(uuid "750810c4-88d3-4b19-9fda-c2a0dbb2fd0e")
 			(effects
 				(font
 					(size 1 1)
@@ -409,11 +733,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2deeac9a-faff-4f4d-82c5-dae3679155b4")
+			(uuid "f0131a6b-1efc-4948-be3e-f71400421ae9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -425,7 +749,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9ed647ee-7455-4f9f-86f8-88c729097535")
+			(uuid "b6d2e44b-101d-4d39-a94f-bcad6d3233ec")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -446,7 +770,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171YKT/386807"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C170KSKT/386781"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -485,10 +809,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ea6a52b-b631-41e2-83a2-57902bb2c8d7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ac4d3c13-0338-4b92-80fe-8ed884a94850")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c3d3bba6-5867-49ba-95ca-207596725588")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd2b8a54-5af0-4760-a216-e808f300e6c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d26370a0-3b4d-4be2-a85c-ecfe343e96ee")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1d0ba94e-ee5d-48fa-88af-1b6fdf0dd0d3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "293c5269-088c-45da-af98-b1e1e0d91a88")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "adc0cea9-9e8a-45e9-8e9f-9aaae8857ea4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d41ae576-8479-4021-ad75-ffb2990f3927")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "662070ae-e1f7-445b-8c42-9be9794bbb08")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4c368041-629b-4acd-a6e0-86a7aba8557e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/65ac98f3-9726-4ef0-a972-727e80160908")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -628,7 +1101,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "d490566d-5278-489b-8c55-b5ac218ab567")
 		)
@@ -638,7 +1111,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D2-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "d49c90fd-35d9-48dd-9240-340ba41c5025")
 		)
@@ -665,7 +1138,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "51912801-7330-4bed-b659-d7257197e093")
+			(uuid "6eb580ba-7cf1-4607-98e7-ae7a39340a00")
 			(effects
 				(font
 					(size 1 1)
@@ -673,12 +1146,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "1c8451cb-b9e2-4c12-a15d-a83b2873fa88")
+			(uuid "2c43fd0a-2a67-49ef-918d-00e6941ebb37")
 			(effects
 				(font
 					(size 1 1)
@@ -691,7 +1164,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "48572a1f-3a65-4fb4-b0fd-b834d665f4c1")
+			(uuid "f2fa014c-0b7e-4328-8842-f8ff50a93cce")
 			(effects
 				(font
 					(size 1 1)
@@ -699,12 +1172,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f491a174-d863-4888-9ad8-58f020c0ac14")
+			(uuid "5debe3f4-02b9-403b-85f8-48356aaf4b87")
 			(effects
 				(font
 					(size 1 1)
@@ -738,10 +1211,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c81c4cdc-d520-4991-9e19-c94244096c9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "caea7377-733a-4f74-b7b9-0209087ce05a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "10e3b6e5-8675-4158-9780-0e2d2c7826e2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ef435fa-6b47-4dbc-9aae-9b1570822bbb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ae73291-3993-4b8f-bc5a-539ba8a14c21")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f35ea366-c91b-460a-8f8f-7bd7d3f8d399")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9c55ca80-4660-4fb6-9c78-65b7771f48fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6a5c8d9b-b061-453b-8801-bee12fd811a0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "618f98cf-1129-400f-a462-dcfb6db0daa8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b88c927b-4887-4d63-86f3-ad449a571d59")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f8d82c94-2178-4de9-9a0a-cd0f491336d0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "723fa9f1-2cc9-477d-9a3d-dc3fa7ea6868")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/0a010863-420a-4d99-a4b8-4b8480f02d64")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -762,7 +1397,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "7e8c9216-6581-47bd-af58-ec4120b5ea4c")
 		)
@@ -778,7 +1413,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "14b9976f-749f-4460-99d6-39ef7880c78e")
+			(uuid "be53afb6-2425-46e2-80cf-be2d133ed102")
 			(effects
 				(font
 					(size 1 1)
@@ -791,7 +1426,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "51c77796-c0ca-4231-a318-19f95c65a595")
+			(uuid "2f8205f5-1ecc-4b93-9b7a-b507ac1b6800")
 			(effects
 				(font
 					(size 1 1)
@@ -804,7 +1439,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e133976c-6b58-4283-b82a-5b3c3541eac4")
+			(uuid "766592c9-9971-41c8-842d-d699cffdc26b")
 			(effects
 				(font
 					(size 1 1)
@@ -812,12 +1447,155 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "db2196f4-219d-4585-97d2-3b2249d75ec3")
+			(uuid "5a9eccbe-4084-453f-b2ef-49e6d320d0b2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b4e8545-c8c3-4d73-aab1-83bb41afe421")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "393f01c5-b73b-4bab-babd-f782e41031f4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1a662728-fc62-43a3-b837-8fc25c39af15")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4072569-2a4e-44a3-8027-a48d30d374de")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "023f49f3-4cb2-4298-8e1e-b31e38379dda")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d51c7e54-8101-454f-ad40-77272a1f4387")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "74e8becf-ea44-471f-8693-e96dbb260549")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4aa2bba1-27bc-4e92-8489-2cc5bfca4ef5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4b8f0d6a-ce0e-4c2f-9a1f-767b75298f27")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dcb1f402-a18c-4abc-a199-7512e75c1cc7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8455c65f-9986-44a6-8fdd-29f5f905a60e")
 			(effects
 				(font
 					(size 1 1)
@@ -829,7 +1607,13 @@
 		(path "/430c945e-ed31-42db-a4d1-574eaa5b0710")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
 			(start -1.4 -1)
@@ -873,7 +1657,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "+3V3")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -909,7 +1693,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "Net-(JP1-B)")
-			(pinfunction "B")
+			(pinfunction "B_2")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -952,7 +1736,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "ea48a0b0-63ac-4d00-9690-344fdff8bf42")
+			(uuid "909ab7a9-c1e7-4803-9189-085b8641015c")
 			(effects
 				(font
 					(size 1 1)
@@ -960,12 +1744,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "14eb48b5-1d8c-4941-8300-e60595949d16")
+			(uuid "d64bfe08-a89b-4feb-93db-f3b7f8c8d1c8")
 			(effects
 				(font
 					(size 1 1)
@@ -978,7 +1762,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "50062be3-3046-4ded-9bf6-747f360f2784")
+			(uuid "d6e4746b-ac71-4c3f-9acf-f128288cef8b")
 			(effects
 				(font
 					(size 1 1)
@@ -986,12 +1770,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "aef41e2a-b4c3-40f6-8a57-ec455c6acd77")
+			(uuid "200792cf-fc23-49db-8946-f9c75482eb6e")
 			(effects
 				(font
 					(size 1 1)
@@ -1025,10 +1809,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d75d4ccc-b5b6-4fd0-9a6b-62e4571fee44")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7380f0b6-f5d2-481e-9809-adcf7d06b56d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "022a2215-1429-497e-861e-6aeca137a5e0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f197aca4-f54c-402e-99f4-1807adf53a66")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdbe963d-1100-4486-9bf9-e4e15e81759b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3bd276f5-06f1-43f6-ae50-edfb22ff4daa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b69d5c7-fa23-46ab-a12c-d7d5d8a5db8c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "772fabd4-429b-4193-922f-4989b80d03c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c8ca1018-3418-4637-a771-fa48ce3aa93d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bfb836ea-095f-4555-8350-fcdf6bc3d774")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "35aed277-0910-4ba9-927c-4bf788cd7b55")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ebd1e81-2eca-4514-bd47-97ae9dc7366d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/81055b4c-4532-446c-997b-e29bae924764")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -1049,7 +1995,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "0a420227-248e-4483-bc16-857161687fb0")
 		)
@@ -1064,7 +2010,7 @@
 		(property "Reference" "R2"
 			(at 2.925 0 270)
 			(layer "F.SilkS")
-			(uuid "c5bc6056-36cb-49da-b9f2-4d77b3800f7f")
+			(uuid "e6e9d4e7-3617-4cc9-84b5-e56560859a46")
 			(effects
 				(font
 					(size 1 1)
@@ -1076,7 +2022,7 @@
 			(at 0 -1.75 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9eb01199-ba95-4b08-b2af-6e3fa51a2e7f")
+			(uuid "6e69917c-3a7c-4940-89c3-5384d7345c6e")
 			(effects
 				(font
 					(size 1 1)
@@ -1084,11 +2030,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "050074a2-4aa5-480a-b0e9-e7f694ae2b04")
+			(uuid "74ff9973-8639-48c0-a0d0-2363edaef4a8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1100,7 +2046,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "1267d806-4d75-49d4-94a3-38fb2d47ebe5")
+			(uuid "680997f3-9d7c-44ad-a349-c17ae3e22fa3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1121,7 +2067,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1160,10 +2106,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "891ac38e-27c7-49ef-9e7b-6ec2f97cd16d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6ad3e495-be3f-4466-b0ac-fece0b1cf944")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9ae04173-8e2e-44a4-a7a8-15a5129e4b15")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f3ca235e-165c-4664-aff6-14d0faf07bc1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "09eb2503-47aa-4acb-8b90-80124e17c790")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "03a1150c-be1a-42ae-9ad1-9b99d6b2c0bc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b16134ec-6b02-422d-ae76-bdf0c98ebc96")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "25151334-63bb-4794-a548-c890b8162f4b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3dfd3fa-daaf-41aa-b7bf-b4ac2c3ea8df")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9bd98e9b-7540-4aa8-8a9d-2fcb8ac1d278")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1228d656-c3bf-43df-bc62-044fff5684c5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/c9d126e0-db75-4a2f-8787-7f4894c3f5a7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1317,7 +2412,7 @@
 		(property "Reference" "C2"
 			(at 2.7575 0 90)
 			(layer "F.SilkS")
-			(uuid "60386908-8351-4c79-8f6b-e0e9f37e94ef")
+			(uuid "be484f50-755b-4470-be87-c2078dc57261")
 			(effects
 				(font
 					(size 1 1)
@@ -1325,11 +2420,11 @@
 				)
 			)
 		)
-		(property "Value" "1 uf"
+		(property "Value" "1u"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5a4096aa-257e-4103-8eb3-886f9fb9ad50")
+			(uuid "35532df2-be7c-4036-8092-f5799cb6498c")
 			(effects
 				(font
 					(size 1 1)
@@ -1337,11 +2432,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "102f5da1-fcb3-4db2-a34d-2cbd069b8f96")
+			(uuid "863fa25b-68f9-4a34-8019-0fc39153c9fa")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1353,7 +2448,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3260c7e6-3405-4f44-9458-93e7769409e6")
+			(uuid "62033146-fc35-46f9-89ca-160ef3ed92d6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1387,10 +2482,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KCANNNC/3886827"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "782a89fd-d469-497d-988a-544006dce0b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "516b370d-8582-478e-b84b-90e815a964bf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "75e3c04e-530d-4a63-943a-b4e1cc40f661")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85e1eb90-bb0e-41ab-b52a-c7576454261f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8c40a71-c64a-4ba1-afd0-5a6faa95499f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b9f3c564-a56a-4482-8c0c-b222c3c26a35")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a1c24700-a474-4b39-b510-3786141e3978")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "15acab4d-88ce-423c-9496-e5d3f37bd408")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7ae4259f-0d71-46fb-82ee-602f7881d391")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "620e1fd8-0ea9-427e-84f2-e4caf7efae27")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3768f1e6-ab33-4786-a76e-bcdfd8bc4a57")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6c61e532-253f-4b13-bcea-724ade8ff785")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/e4f9de8d-f9c6-4ae6-b3b6-ced34b65721b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1544,7 +2801,7 @@
 		(property "Reference" "R1"
 			(at -0.05 -2 270)
 			(layer "F.SilkS")
-			(uuid "fa9050dd-209d-46c8-88f7-ef75caf1f90b")
+			(uuid "7466328a-b273-4e4d-b004-5cf180ea3fc5")
 			(effects
 				(font
 					(size 1 1)
@@ -1556,7 +2813,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c04233d3-0803-4697-91e6-0a70b0e7c94d")
+			(uuid "766def64-c678-4d41-86d1-0dd7ac8e498a")
 			(effects
 				(font
 					(size 1 1)
@@ -1564,11 +2821,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3d96a63b-d71a-4a6e-b403-2447a234f107")
+			(uuid "0b1d2fa4-46bb-4b99-b101-52b369a00674")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1580,7 +2837,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b19e73f9-7b77-4214-8c8e-d3561237f29e")
+			(uuid "15fcd7ac-d43f-4a60-8df1-5d4bda2ffe60")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1601,7 +2858,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-072K7L/728277"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT2K70/1757901"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1640,10 +2897,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4ea58b8-0ff8-4548-8efe-3c532416f3d6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "56219228-187b-4ecf-964a-243c5155429b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad750678-145b-49b7-84e2-bf07dd0a2dfd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9c8c888e-38f2-40b8-a714-0102273256f2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c306e1f4-80af-4956-ab6e-675a81a68801")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "330ffcbf-084c-48a5-8af8-3187ab59f17d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9501b74c-ead0-4782-a81e-9d8a9b398add")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c88adce7-5b3d-450d-8706-b52757ba5d3d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eaadae19-c36a-4d41-b375-1f35ee097703")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2063fa9f-b9ed-4339-93fe-e1ff922ccccc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85bfaa47-f447-45b9-8d07-5a691007de1d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/fd589e4a-4e97-4789-a581-a41c75e284d9")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1828,7 +3234,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "15-pin male plug socket D-SUB connector, High density (3 columns), Triple Row, Generic, VGA-connector, Mounting Hole"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -1851,7 +3257,7 @@
 				)
 			)
 		)
-		(property "PARTREV" "G"
+		(property "PARTREV" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1864,7 +3270,7 @@
 				)
 			)
 		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "12.96mm"
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1877,7 +3283,7 @@
 				)
 			)
 		)
-		(property "MANUFACTURER" "Amphenol"
+		(property "MANUFACTURER" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1890,9 +3296,44 @@
 				)
 			)
 		)
-		(path "/d940caa7-13c6-41a5-b0ea-1c2421ba8085")
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/amphenol-cs-fci/ICD15S13E4GV00LF/1536418"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5677dff1-0a42-474d-bb27-99cae42e7241")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4f8391c3-718b-474f-adc3-f323d51c5a0d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "DSUB*Pins*")
+		(path "/508855a6-a0ff-4960-83ee-8380141305e6")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "5" "10" "4" "9" "3" "8" "2" "7" "1" "6" "SH" "15" "14" "13" "12"
+					"11"
+				)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2107,7 +3548,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "TX")
-			(pinfunction "1")
 			(pintype "passive")
 			(uuid "d675cfde-28bb-4fc7-b1a8-84e8320910c5")
 		)
@@ -2118,7 +3558,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RX")
-			(pinfunction "2")
 			(pintype "passive")
 			(uuid "b6c01795-0ded-447f-89bc-198ed5727bcb")
 		)
@@ -2129,7 +3568,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "CFG")
-			(pinfunction "3")
 			(pintype "passive")
 			(uuid "7307ac1e-aeaf-4564-883a-748471ea0ae3")
 		)
@@ -2140,7 +3578,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RTS")
-			(pinfunction "4")
 			(pintype "passive")
 			(uuid "da38b30b-9eff-4508-9a83-96374c1f7272")
 		)
@@ -2151,7 +3588,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "CTS")
-			(pinfunction "5")
 			(pintype "passive")
 			(uuid "3911b0f4-cf47-4ec2-b345-05ffa20d5649")
 		)
@@ -2162,7 +3598,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "RST")
-			(pinfunction "6")
 			(pintype "passive")
 			(uuid "e90a8659-8c29-4d08-94bb-15ea4d2c7a11")
 		)
@@ -2173,7 +3608,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "7")
 			(pintype "passive")
 			(uuid "a9a411c0-19aa-46d5-82aa-7e0cc8ee7a6a")
 		)
@@ -2184,7 +3618,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "8")
 			(pintype "passive")
 			(uuid "2f243fc8-31fe-4802-86d0-193d741100d8")
 		)
@@ -2195,7 +3628,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "9")
 			(pintype "passive")
 			(uuid "97107cf0-035e-4a4f-abb8-fa6dc77fd31e")
 		)
@@ -2206,7 +3638,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+3V3")
-			(pinfunction "10")
 			(pintype "passive")
 			(uuid "3a263a14-5e8d-47ba-8d95-aed98b7d7cca")
 		)
@@ -2217,7 +3648,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "11")
 			(pintype "passive")
 			(uuid "d6889131-f3cb-478d-a342-086d95ac5d0e")
 		)
@@ -2228,7 +3658,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "12")
 			(pintype "passive")
 			(uuid "debec546-aa0a-46ac-89f2-efbb8ec0a4ba")
 		)
@@ -2239,7 +3668,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "13")
 			(pintype "passive")
 			(uuid "c186108b-db97-490a-8189-fb365438af65")
 		)
@@ -2250,7 +3678,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "14")
 			(pintype "passive")
 			(uuid "600a341d-e5fd-4849-8e63-90aa1fd78f09")
 		)
@@ -2261,7 +3688,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
-			(pinfunction "15")
 			(pintype "passive")
 			(uuid "6b51fc28-f5a3-4400-8e10-981a90f03b74")
 		)
@@ -2272,7 +3698,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD__1")
 			(pintype "passive")
 			(uuid "7d63048b-1fc4-4cc3-aa74-ce17e6d90db4")
 		)
@@ -2283,7 +3708,6 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "SHIELD")
 			(pintype "passive")
 			(uuid "5fb16168-0d92-4f22-b4c1-2f835620ac72")
 		)
@@ -2353,9 +3777,16 @@
 				)
 			)
 		)
-		(path "/f1d86658-f856-4381-8744-cd27d65733d1")
+		(property ki_fp_filters "SOT?23*")
+		(path "/2ebfff41-6673-46a8-a0c3-33da5e4f17fd")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "3" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2559,6 +3990,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+5V")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "ae654859-fc70-46e3-ad03-8487d0e9e1a7")
 		)
@@ -2568,6 +4000,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "+3V3")
+			(pinfunction "K_2")
 			(pintype "passive")
 			(uuid "f2e3744d-f6d9-4f26-be59-f6d35e2a1f9b")
 		)
@@ -2577,6 +4010,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
+			(pinfunction "A_3")
 			(pintype "passive")
 			(uuid "4db30de6-dadb-44c0-ba5b-afc380c978fc")
 		)
@@ -2602,7 +4036,7 @@
 		(property "Reference" "C1"
 			(at 2.7575 0.04 90)
 			(layer "F.SilkS")
-			(uuid "d6bfbc9e-d79b-442e-a443-e4d0b1de5aae")
+			(uuid "c6286a05-0ec0-4023-82fe-31b2e7a8cc4a")
 			(effects
 				(font
 					(size 1 1)
@@ -2610,11 +4044,11 @@
 				)
 			)
 		)
-		(property "Value" "1 nF"
+		(property "Value" "1n"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "36805560-d159-40b3-9f27-55d86eda7569")
+			(uuid "52b961d7-e487-4951-a217-649c56a34f94")
 			(effects
 				(font
 					(size 1 1)
@@ -2622,11 +4056,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "552b844c-6218-4274-9c8a-d5167038b4ea")
+			(uuid "21804dcd-5b19-44ca-92e5-c5e03d191376")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2638,7 +4072,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "086aaefa-2b38-4850-ac05-e4bb4c8aad40")
+			(uuid "104e0652-6e77-4611-9f17-448fbeef6ca9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2659,7 +4093,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/samsung-electro-mechanics/CL21B102KCANNNC/3886827"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2698,10 +4132,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4bb14bc2-95ba-4573-87ed-f32a7d28aa22")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5780ace9-40b2-4806-bfd9-023ef8088758")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ae2e9ff1-e05d-48ba-be80-70694489f99f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2d99996d-fc8a-436e-bf86-49c25b17bb35")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a471d210-f233-4905-839b-236ba2b0babe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f184abbf-17ab-4e31-9b7e-6fb5708bbe1e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "74bd2881-4e39-4624-8b33-6d153832b3f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b956c71-850e-4a2d-b70d-30dae7cc690e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "586fcbec-d126-4d4e-a6bf-8fa991ae7728")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1c5e412c-dc6d-4ba6-92ec-1b2d6d34fbbf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a33da2aa-cdca-4d98-a3be-fd10cea7a2cc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/b75c3adb-09f7-4076-851a-6779f419fd95")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2855,7 +4438,7 @@
 		(property "Reference" "D4"
 			(at -3.2 0 270)
 			(layer "F.SilkS")
-			(uuid "444b8102-93dc-4bbe-8a8a-9ad87d749d6e")
+			(uuid "26e75789-bf46-494e-a81e-5b4f614ae58d")
 			(effects
 				(font
 					(size 1 1)
@@ -2867,7 +4450,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "22fd0c15-dac3-48cf-9903-3848f7fc3f5c")
+			(uuid "e83217d2-3526-448e-8e75-6dca687eb607")
 			(effects
 				(font
 					(size 1 1)
@@ -2875,11 +4458,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "27d5affe-9af1-43b5-9091-ec92f6ce8e1b")
+			(uuid "fdceeaa7-76f6-4ba3-a9b4-018c2e2242ba")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2891,7 +4474,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "dfc401ff-4e8d-4bd3-a5b5-87347a3baa87")
+			(uuid "00f102db-7e21-4325-b28e-5a14702a4d94")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2938,10 +4521,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KGKT/386799"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5dc6fe51-2971-4498-b8b8-d78c2773d5bd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f839370c-e660-4f3e-a336-91982fd377a3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7a95647b-5c93-4211-997b-846f69ec6a55")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "271730a8-f3a8-4efd-b2c9-664ee859dda1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b6487b3d-e799-4876-9b65-fd8f997273c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3b59906b-2426-454c-a4cf-7a8959b6c828")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7843bbb0-3ef3-4e4f-8940-f3fa0725a43b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fbd65f6c-aeae-49a5-a5d5-66ddf3ee8846")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b8325730-d2fd-4f93-88c3-76f9bead62a5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3731a39-b296-42a3-8dfd-4e5dbc82dbd1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "976cc847-8ad7-4557-9685-936f465816e3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1643cde2-6845-4f6a-a31d-59abcf0457ac")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/8c9ade12-04c7-4c05-9594-02b04752f2e7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3081,7 +4826,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "3fd71a2c-d10b-4598-a635-56cb58611656")
 		)
@@ -3091,7 +4836,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D4-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "a96f8d0d-9598-4f3b-9b09-116d2c2bca49")
 		)
@@ -3117,7 +4862,7 @@
 		(property "Reference" "R3"
 			(at 2.925 0.15 270)
 			(layer "F.SilkS")
-			(uuid "06a5847a-338d-41b1-bb17-255f20bccfe1")
+			(uuid "daed0bbe-8ca3-4918-a6ad-a3bd7614fddb")
 			(effects
 				(font
 					(size 1 1)
@@ -3129,7 +4874,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "01fdb41c-9a41-49ca-b639-1ea6daf03f98")
+			(uuid "6220974a-b6f4-425c-aad1-2831c4904770")
 			(effects
 				(font
 					(size 1 1)
@@ -3137,11 +4882,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3768f67d-13e3-4393-846b-bdab800e4048")
+			(uuid "6a7cd136-cb1d-42d4-871e-6d32658041f8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3153,7 +4898,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b83dd4d9-3d87-40bd-b441-c21206bdd60b")
+			(uuid "f975c225-cf64-4862-b7ea-ab06d6ed4093")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3174,7 +4919,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-07270RL/728291"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3213,10 +4958,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3d1e81f8-1965-44cc-b2da-aadb5f60d31b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a4bad14f-590c-4eac-812e-6a227dfe0040")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7c4fb7a0-d52c-4c7e-a624-bf1f3fb2eedd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c5decbf4-50ca-41c4-a59d-b39f89cf4b38")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b709ee8a-1b29-42d9-8d8c-7cd3980ab9fc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9991f9f3-c3c5-44c8-bb11-a9b2cc217bdf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d2f65075-6f34-49bf-8018-ee0c469ea7eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "97e0f8d7-8cb0-4ccc-b53f-954e736f96c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e9bd4522-651e-49c7-b4fb-bd214a43af76")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c528efad-fa1d-4bd7-a713-12bf6c95f2f6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a6b7168c-41db-4c5a-9535-b627bac52f82")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/c7cb5350-7a4f-4f1d-9c44-e6fa929dc84b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3371,7 +5265,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "127587ab-5b6c-420d-8876-727b1dbc538e")
+			(uuid "5d7e57e1-0ed2-430d-bebc-cb6ea243660f")
 			(effects
 				(font
 					(size 1 1)
@@ -3385,7 +5279,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ee6d3bc7-92f6-4a09-b82d-d1969e81653f")
+			(uuid "d2e744f4-90ba-4196-ab69-f37946671a13")
 			(effects
 				(font
 					(size 1 1)
@@ -3398,7 +5292,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "bc6f10fd-2edc-481e-be16-aaa5b62e415b")
+			(uuid "d70c4304-afd2-4325-b08c-914d83219279")
 			(effects
 				(font
 					(size 1 1)
@@ -3406,12 +5300,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ee19a43a-2679-4559-9bb1-412b277c33b1")
+			(uuid "289e1296-40ce-4217-bad8-58a64f07397a")
 			(effects
 				(font
 					(size 1 1)
@@ -3445,10 +5339,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c0743302-4c82-46da-adcd-c4ce251b5998")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b66caf5-6be2-4aed-8c00-6e44fb0ec84c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "376e8cdd-b71e-4b4a-98ab-4a5a77703d89")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cea2022-0667-4a83-aa08-8f9a615697b8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5ae174ac-0fed-4e5c-83b3-162c3f1c632e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "abc8b9a6-e6f0-416b-9656-39ed5d403f72")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f4d01490-4180-4b0c-8252-8a35a4c4997e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "547ae0e3-4905-43b1-bde9-9976787f3714")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f781af26-6d48-4189-a538-83e62859f028")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0351322f-d15e-4c1e-9457-4f472867a194")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c8f5d99f-3b37-4c9c-9ed2-ba86b7b67577")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aac8db0c-434a-4ac3-83b1-b9b6c7cbb2e0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Pin* Test*")
 		(path "/7e739553-b9e2-4712-aa0b-385c331a4f75")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -3491,7 +5547,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "TX")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "9c5ed7e0-0f2b-4fae-aed7-dc2dae9c6be4")
 		)
@@ -3507,7 +5563,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "8903d1d2-c33f-4b3a-8b8b-08d1c1485d6c")
+			(uuid "e190315d-eaf5-4a18-99bd-9928c73b70c8")
 			(effects
 				(font
 					(size 1 1)
@@ -3520,7 +5576,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c644ba92-4e45-48c5-888b-c2d946640a77")
+			(uuid "7708a4b4-bdb5-4561-a7fa-657009dc048a")
 			(effects
 				(font
 					(size 1 1)
@@ -3533,7 +5589,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b320c818-6da7-4581-9944-ff52c1eb3836")
+			(uuid "48ded9ab-8c22-4e40-b9eb-769c18bcc983")
 			(effects
 				(font
 					(size 1 1)
@@ -3541,12 +5597,155 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Solder Jumper, 2-pole, open"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e749f395-c736-45f6-ad1a-25f948c849e0")
+			(uuid "1b6e2880-2a9b-41c3-abe1-626bd2521bfb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "468fc774-a4cb-4814-bee0-909a26b8aef7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f22df46d-5372-4290-93ef-4fcb0e74aa1d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f222ec13-7d4e-49e7-ab36-bf685dce621e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "513e63bd-5c89-498c-94bd-b4b9c7fa97bb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "678da3e2-b45a-4f30-9107-626c5718b4a4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9293d4dc-ec50-45cc-9e91-953af8322edf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9e99b299-fe7e-4a1e-b459-86f89efa3cd2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c2ad8862-4601-4cff-8507-0699809a69df")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e99a591-cbff-4a48-ac56-99e3a182e835")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c5246e8a-a253-465d-b10b-e120cd38a90f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7cb39a00-face-4788-920d-db61885d996c")
 			(effects
 				(font
 					(size 1 1)
@@ -3558,7 +5757,13 @@
 		(path "/665f6fde-3f1e-4653-bbc6-cd41ded0df49")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
-		(attr smd)
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
+		(attr smd exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
 			(start -1.4 -1)
@@ -3602,7 +5807,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "+5V")
-			(pinfunction "A")
+			(pinfunction "A_1")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -3638,7 +5843,7 @@
 			(size 1 0.5)
 			(layers "F.Cu" "F.Mask")
 			(net "Net-(JP1-B)")
-			(pinfunction "B")
+			(pinfunction "B_2")
 			(pintype "passive")
 			(zone_connect 2)
 			(thermal_bridge_angle 45)
@@ -3681,7 +5886,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "28429348-efe5-4474-a5fc-746574c3308e")
+			(uuid "078544db-698e-4d93-830d-707207dbe73f")
 			(effects
 				(font
 					(size 1 1)
@@ -3695,7 +5900,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "00e5bfd1-ad96-4619-a059-b2f9fe200087")
+			(uuid "a4a5f33c-2581-4218-9fc0-d6888cf115a6")
 			(effects
 				(font
 					(size 1 1)
@@ -3708,7 +5913,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ee67ed40-f67a-4dd0-8237-600331139a59")
+			(uuid "ef72f6a2-02d7-4677-9533-4ee615f3b711")
 			(effects
 				(font
 					(size 1 1)
@@ -3716,12 +5921,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6b126385-4ebf-4fe1-ab85-5f5edbca3fa7")
+			(uuid "9d284430-3587-49ea-85ae-f1c6044631ed")
 			(effects
 				(font
 					(size 1 1)
@@ -3755,10 +5960,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c986eefc-630c-4438-8d9c-321f6ff7154b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9879d805-a980-4cbe-957d-ba96db67ecb2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8f1cfdb0-961e-416b-b140-3a36e5888ad1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a2d04155-03e3-4413-88f5-4f1b3e3f9ea2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a30a4fb2-4d76-4d84-9225-72db56b1399e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0f51499c-b9f7-4de0-bb76-198c914cb359")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "53db6100-12e1-40cc-9c42-16a6cec5f1b8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47fac33a-ad77-4a39-8693-f14640369bb8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b2f5819-f391-4688-b6c3-46042c02bc89")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf869226-d458-4ec1-9ef5-0417d0d27d83")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9a74c7dc-71ec-4b53-823b-73599311ea70")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce15a62c-b27d-4a77-9f38-23151a1a789d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Pin* Test*")
 		(path "/d179da42-883c-4108-9347-341c3f33acd3")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -3801,7 +6168,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "CFG")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "dc13971d-0926-4e1e-ada5-ae67812230c9")
 		)
@@ -3816,7 +6183,7 @@
 			(at -12.1 -7.635 90)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "92db78fa-5e04-4628-b542-2912b332cad5")
+			(uuid "aeb6f080-e8d1-47d2-ba94-36790ad2f324")
 			(effects
 				(font
 					(size 1 1)
@@ -3829,7 +6196,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f11a8fe3-4432-4c61-bda6-f287dd28c28c")
+			(uuid "ec795b9c-cbd2-4760-afad-21919e41c698")
 			(effects
 				(font
 					(size 1 1)
@@ -3842,7 +6209,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "7ddb8a12-80f1-4813-a8a1-e654266caa2a")
+			(uuid "437b02d4-6ac0-4124-82e5-086c06d517dc")
 			(effects
 				(font
 					(size 1 1)
@@ -3850,12 +6217,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "This symbol has been created by Spaceflight Rocketry Giessen e.V."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f17655c0-427c-45af-8e40-ac5cd7550e1f")
+			(uuid "b93a51ae-746b-4cc6-a3d6-6ea1230d6e3e")
 			(effects
 				(font
 					(size 1 1)
@@ -3915,9 +6282,161 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87f44572-7907-448f-a612-24504cb17c11")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "51b562db-a17b-4b4b-ab51-68af7b3fabb1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4646698-ffee-4757-9f62-6e78f1fba0d0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "450f4ac1-a190-4e9c-8479-bc5630ecc95d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "29b9cd55-8927-4b44-ab5a-9df3dfb23802")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66552c2d-0d59-4948-a763-1fdebfb568a9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6191281d-ac31-4932-9db9-0a80fdace1e0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d686f282-c2ce-41e9-abb9-6deba95a33bb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5c9dcce4-3656-4abe-8f5e-dc805cd5e082")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "786c3d5f-95cb-4eb5-a5b6-57b1627b3370")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e392cfcc-dc5c-4287-800f-7090b9c8ef38")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/1b2f6a62-7d1c-4f1c-a8f0-70319f89e80a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "4" "5" "6" "7" "30" "15" "29" "16" "28" "17" "27"
+					"18" "26" "19" "25" "20" "24" "21" "23" "22" "31" "32" "33" "34" "35"
+					"36" "37" "38" "39" "40" "41" "42" "14" "13" "12" "11" "10" "9" "8"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4060,7 +6579,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_1")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "e835b612-1dae-4bf7-825c-592890409262")
@@ -4071,7 +6590,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "CTS")
-			(pinfunction "CTS/RXTX")
+			(pinfunction "CTS/RXTX_2")
 			(pintype "output")
 			(thermal_bridge_angle 45)
 			(uuid "b15744f6-81f0-4c50-8e15-b1894e4dc13c")
@@ -4082,7 +6601,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "RTS")
-			(pinfunction "RTS/SLEEP")
+			(pinfunction "RTS/SLEEP_3")
 			(pintype "input")
 			(thermal_bridge_angle 45)
 			(uuid "b035278c-c187-4baa-9fdd-6081f4895c78")
@@ -4093,7 +6612,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "CFG")
-			(pinfunction "CONFIG")
+			(pinfunction "CONFIG_4")
 			(pintype "input")
 			(thermal_bridge_angle 45)
 			(uuid "d61c00f9-8ea2-458f-980a-e796190b9e36")
@@ -4104,7 +6623,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "RX")
-			(pinfunction "TXD")
+			(pinfunction "TXD_5")
 			(pintype "output")
 			(thermal_bridge_angle 45)
 			(uuid "ef69b19c-63f7-4423-a10c-c901a977981d")
@@ -4115,7 +6634,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "TX")
-			(pinfunction "RXD")
+			(pinfunction "RXD_6")
 			(pintype "input")
 			(thermal_bridge_angle 45)
 			(uuid "9400f58c-bd0d-48a1-a091-fe6b5817492c")
@@ -4126,7 +6645,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_7")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "ee7427c1-0680-4276-b250-ed1087af4873")
@@ -4137,7 +6656,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_8")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "833b4d37-42d7-4ed3-827d-e12f80497c83")
@@ -4148,7 +6667,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "Net-(U1-RF)")
-			(pinfunction "RF")
+			(pinfunction "RF_9")
 			(pintype "output")
 			(thermal_bridge_angle 45)
 			(uuid "60cb5e43-ab45-46ce-a438-eead7d28fd89")
@@ -4159,7 +6678,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_10")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "134e76cc-412f-4de7-b787-89cf5fdb7dc2")
@@ -4180,7 +6699,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "Net-(U1-RESET)")
-			(pinfunction "RESET")
+			(pinfunction "RESET_12")
 			(pintype "input")
 			(thermal_bridge_angle 45)
 			(uuid "6a72c30a-cb47-4fe9-83c7-4a3ed234da87")
@@ -4191,7 +6710,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "+3V3")
-			(pinfunction "VCC")
+			(pinfunction "VCC_13")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "188ca470-6098-46b9-b8b1-977cb752a6c0")
@@ -4202,7 +6721,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "GND")
-			(pinfunction "GND")
+			(pinfunction "GND_14")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "822dfda9-65b0-42c9-a465-6e6222483e72")
@@ -4253,7 +6772,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "unconnected-(U1-DD-Pad19)")
-			(pinfunction "DD")
+			(pinfunction "DD_19")
 			(pintype "input+no_connect")
 			(thermal_bridge_angle 45)
 			(uuid "e241ffaa-7e76-4f73-8d4d-662255b30b8c")
@@ -4264,7 +6783,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "unconnected-(U1-DC-Pad20)")
-			(pinfunction "DC")
+			(pinfunction "DC_20")
 			(pintype "input+no_connect")
 			(thermal_bridge_angle 45)
 			(uuid "acafb37d-6c6d-4ea6-bef2-40c282b1abf1")
@@ -4355,7 +6874,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "Net-(U1-D1)")
-			(pinfunction "D1")
+			(pinfunction "D1_29")
 			(pintype "output")
 			(thermal_bridge_angle 45)
 			(uuid "6bb5282b-fac6-4ad4-aacb-9364e9deda30")
@@ -4366,7 +6885,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "Net-(U1-D2)")
-			(pinfunction "D2")
+			(pinfunction "D2_30")
 			(pintype "output")
 			(thermal_bridge_angle 45)
 			(uuid "1b3e89e8-5cb0-487e-a7e6-730285e657d3")
@@ -4477,7 +6996,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.5)
 			(net "Net-(JP1-B)")
-			(pinfunction "VCC_PA")
+			(pinfunction "VCC_PA_41")
 			(pintype "power_in")
 			(thermal_bridge_angle 45)
 			(uuid "c364dc03-28cf-4c1c-b9fe-93fcb1f9f212")
@@ -4514,7 +7033,7 @@
 		(property "Reference" "D1"
 			(at -3.2 0 270)
 			(layer "F.SilkS")
-			(uuid "450c211a-b709-4ca7-8521-51a34566c3c9")
+			(uuid "6c9d1ae6-5fb2-454e-b30e-060e743504f5")
 			(effects
 				(font
 					(size 1 1)
@@ -4526,7 +7045,7 @@
 			(at -0.025 -1.75 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "004471c2-c860-4206-aef8-03ef14d2d9bc")
+			(uuid "86f819ea-1bfb-40eb-8043-4748625e0536")
 			(effects
 				(font
 					(size 1 1)
@@ -4534,11 +7053,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3c8305b8-fdee-46bd-9550-4428168d29fe")
+			(uuid "c76b951e-8ab7-49c3-8d2b-babf1bee55be")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4550,7 +7069,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ba9cb909-9ec3-4459-b152-cb573e37b2f8")
+			(uuid "88d5f6a2-37e3-406e-8214-6c0c91900c9f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4571,7 +7090,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171GKT/386793"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KGKT/386799"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4610,10 +7129,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "227638de-a3f8-41c1-bdaf-57234d4e5034")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f36f49d1-5981-4362-b486-9a6989e5777a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5772c580-e1ca-4a55-932c-596228216253")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "82776217-843c-4f6e-936e-571a03906585")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bea6909c-b7e3-44ae-a4e5-7133bf75eecf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c840a88c-122c-4e29-acef-b7e2cd8e1c82")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef6933b0-f681-4a45-b28e-efebb80e31c7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "77ebf168-02a1-41fc-8bbf-3819e18d4652")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b551721b-8b81-4b8f-831f-fac9c15c652e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e95f8653-fbb5-49cd-9aea-3ffa526bffc5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "638f407b-2091-4b9b-94d6-7550317c8152")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/1ad90c3e-bbd5-49cf-8784-5624940b853b")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4753,7 +7421,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "b7c1b99b-c93c-4f38-90f5-30b442f1943f")
 		)
@@ -4763,7 +7431,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D1-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "fc981b09-4469-4b5f-ad32-0f8a4ac7311c")
 		)
@@ -4790,7 +7458,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "a8a8b63f-54fe-4a00-9416-2c267491769d")
+			(uuid "1b2a53e6-facf-4ce3-9727-f89d9ed4960c")
 			(effects
 				(font
 					(size 1 1)
@@ -4798,12 +7466,12 @@
 				)
 			)
 		)
-		(property "Value" "Untitled"
+		(property "Value" "M4 Mounting Hole"
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "7c2388cf-36a4-47e0-a6ee-edc6ffd67c06")
+			(uuid "b0a35206-0b99-4372-8e08-8cc1e2fb6fa8")
 			(effects
 				(font
 					(size 1 1)
@@ -4816,7 +7484,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "026aae22-c93c-40b9-af6a-b66a8e1f327e")
+			(uuid "d48929f4-2529-4dfa-91c1-3a8d35ba00de")
 			(effects
 				(font
 					(size 1 1)
@@ -4824,12 +7492,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x01, script generated"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "809d2d86-76c5-451e-9702-bf9f53e69b00")
+			(uuid "7816ce73-a158-457f-9a22-35521eacc2db")
 			(effects
 				(font
 					(size 1 1)
@@ -4863,10 +7531,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fe924c27-1f55-4ba4-8fa6-71e871738fed")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b8217b6b-b91a-48c7-ad83-52516913d4fb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1209a1f5-254b-4932-ba2f-ad25db422cb9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c5fbbef-d1b2-4fe3-b476-06ed55ead515")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c58da699-cad6-4996-8768-86abc376091e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cbe1b36e-c426-4055-8e0c-f1ad8ed0c6f6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "722da548-f10d-47ad-8529-1da5e210554f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f378ce77-3cb3-4736-ab6e-a5acc363e89b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8d9b3059-f696-43e6-bbac-e0a2ae0404ef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "462aa7ef-d888-4348-84d1-4be246205eb0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3a7a92d-ded1-4965-87d6-ddf7f4377466")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "96a8f7f6-d750-4432-91ef-1c42a91d84b8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/eb11f40c-f282-4188-82d4-ecf341398240")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -4887,7 +7717,7 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
-			(pinfunction "Pin_1")
+			(pinfunction "Pin_1_1")
 			(pintype "passive")
 			(uuid "0dbf28b2-ec2c-4fe5-891d-5ba3acf333ee")
 		)
@@ -4902,7 +7732,7 @@
 		(property "Reference" "D3"
 			(at -3.2 0 270)
 			(layer "F.SilkS")
-			(uuid "0977518f-4d1c-44e9-bbf7-681d487647f7")
+			(uuid "d5b0b7bb-604f-4644-804e-7790af0fdd54")
 			(effects
 				(font
 					(size 1 1)
@@ -4914,7 +7744,7 @@
 			(at 0 1.15 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "79a43bf4-87fc-4edf-9d95-886967bedd42")
+			(uuid "de598e68-d4dc-49f9-8277-38fe93de12a2")
 			(effects
 				(font
 					(size 1 1)
@@ -4922,11 +7752,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a2d0663e-df2c-49cf-8605-e9c90d2ed0d9")
+			(uuid "14b6c305-24bf-426f-a180-0c8af489b13b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4938,7 +7768,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a45f26fe-b94b-40b1-ab86-fbb301e4b333")
+			(uuid "3689c48f-f1c5-45ba-bf51-3a7a5122c5bf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4985,10 +7815,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/liteon/LTST-C171KGKT/386799"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "200a7251-cffb-49df-9de7-72f0ddd67554")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5139f5aa-c9af-4a60-9c3e-a6a7727e01b0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7bd1adbb-20e2-4dfe-9592-c100ab36c8b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "49553b46-62c4-4857-80aa-00fb4b1226e2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "74e8d2d3-abd0-49f5-9058-59aadf5d514f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e8fad934-c17e-41ab-9d9b-f009072448cb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bf6c30b6-9068-468e-a99f-0344c0bbbaac")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3742c7d2-cc31-4ad8-a500-2bc4c32ab180")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ebb1593c-26ba-4ec1-a648-7c76848f36b2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7434367f-c7aa-4c38-bd27-36c484c13717")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed7e651e-9986-4a10-b793-bb3ca03ab67d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b427c2f9-a029-42de-92b5-ffdf05fbabd8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/0f2aa905-b324-4abb-85ae-e8400157f965")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5128,7 +8120,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "GND")
-			(pinfunction "K")
+			(pinfunction "K_1")
 			(pintype "passive")
 			(uuid "69f1dd1b-0bfc-4d20-bb13-8e34fe9222b9")
 		)
@@ -5138,7 +8130,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.217391)
 			(net "Net-(D3-A)")
-			(pinfunction "A")
+			(pinfunction "A_2")
 			(pintype "passive")
 			(uuid "137ff4d9-bb7c-4bae-81d9-10515125618e")
 		)
@@ -5164,7 +8156,7 @@
 		(property "Reference" "R8"
 			(at -2.925 0.1 270)
 			(layer "F.SilkS")
-			(uuid "bad4cb1e-fdb3-497c-a64b-1a5b0ea35837")
+			(uuid "ff5b8718-1d98-417f-b2fc-f24f6ded5329")
 			(effects
 				(font
 					(size 1 1)
@@ -5172,11 +8164,11 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 11.625 7.665 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "51eebf3c-c8aa-4b2f-821e-0d3f715942c1")
+			(uuid "571cadec-53a5-42ab-aad1-7dc92f1dca36")
 			(effects
 				(font
 					(size 1 1)
@@ -5184,11 +8176,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "897b8843-428a-417a-97f1-e39af94d001e")
+			(uuid "427800fd-e971-40e1-ad1a-23bedcb57096")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5200,7 +8192,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8a4c63b8-c39a-42ed-8034-2532357ec228")
+			(uuid "8f1bad93-72d5-4833-bbd6-e9e744ebdb64")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5234,10 +8226,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b571668-75f2-4672-9d2c-96d3959358d3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a9ed35ea-618c-41dc-8fb5-aac1d8009ce2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d00c8cca-a5a3-460f-9c8c-f8db054ff96e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9d8d8cd0-1c51-4dee-b3b5-d9981f0b7a4b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dc54b3f6-ff69-40b0-946e-5e72141cda73")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3cae3c6-179e-480d-b25f-80d83fad0591")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a1c31513-f4dd-4f80-8b36-6895baf3a8d1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c2832988-febc-4522-bb10-f95dbdaec907")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ecda1b5-40ce-48ae-8908-75f779d0b3a0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a06fdecc-efb2-464c-b5cc-c364c2058395")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9ce37057-fc6e-4c00-b82c-12c72e94ede8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "68d8009f-8136-439d-adaa-dd61a6191c8f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/dae78e8f-c148-49f2-ae27-1544f01a20d1")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5399,7 +8553,7 @@
 				)
 			)
 		)
-		(property "Value" "RFPC-SMA27-F"
+		(property "Value" "RFPC_SMA27_F"
 			(at 0 5 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5424,7 +8578,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5437,7 +8591,7 @@
 				)
 			)
 		)
-		(property "DigiKey_Part_Number" "2073-RFPC-SMA27-F-ND"
+		(property "DigiKey_Part_Number" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5450,7 +8604,7 @@
 				)
 			)
 		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/RFPC-SMA27-F/GradConn/view-part/?ref=snap"
+		(property "SnapEDA_Link" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5463,7 +8617,7 @@
 				)
 			)
 		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "10.3mm"
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5476,7 +8630,7 @@
 				)
 			)
 		)
-		(property "Package" "None"
+		(property "Package" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5489,7 +8643,7 @@
 				)
 			)
 		)
-		(property "Check_prices" "https://www.snapeda.com/parts/RFPC-SMA27-F/GradConn/view-part/?ref=eda"
+		(property "Check_prices" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5502,7 +8656,7 @@
 				)
 			)
 		)
-		(property "STANDARD" "Manufacturer Recommendations"
+		(property "STANDARD" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5515,7 +8669,7 @@
 				)
 			)
 		)
-		(property "PARTREV" "1.0"
+		(property "PARTREV" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5528,7 +8682,7 @@
 				)
 			)
 		)
-		(property "MF" "GradConn"
+		(property "MF" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5541,7 +8695,7 @@
 				)
 			)
 		)
-		(property "MP" "RFPC-SMA27-F"
+		(property "MP" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5554,7 +8708,7 @@
 				)
 			)
 		)
-		(property "Description_1" "SMA Connector Jack, Female Socket 50 Ohms Panel Mount, Through Hole, Right Angle Solder"
+		(property "Description_1" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5567,7 +8721,7 @@
 				)
 			)
 		)
-		(property "MANUFACTURER" "GradConn"
+		(property "MANUFACTURER" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5580,9 +8734,29 @@
 				)
 			)
 		)
-		(path "/ff1621d7-e7d9-4c7e-b6b2-77f2149356e8")
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/gct/RFPC-SMA27-F/22162144"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "31bd447d-1985-4b64-903a-2d1a27634b01")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*")
+		(path "/3b4b337f-c33e-44d6-b2dd-b13ecbf3670e")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5885,7 +9059,8 @@
 			(keep_end_layers yes)
 			(zone_layer_connections)
 			(roundrect_rratio 0.087)
-			(net "Net-(J1-Pad1)")
+			(net "Net-(J1-In)")
+			(pinfunction "In_1")
 			(pintype "passive")
 			(uuid "3fbbf854-4cbd-4447-8dc5-e7d4f2f37457")
 		)
@@ -5898,7 +9073,8 @@
 			(keep_end_layers yes)
 			(zone_layer_connections)
 			(net "GND")
-			(pintype "power_in")
+			(pinfunction "Ext_2")
+			(pintype "passive")
 			(uuid "3ebc63f4-5b05-435c-86b4-d77bf859288e")
 		)
 		(pad "2" thru_hole circle
@@ -5910,7 +9086,8 @@
 			(keep_end_layers yes)
 			(zone_layer_connections)
 			(net "GND")
-			(pintype "power_in")
+			(pinfunction "Ext_2")
+			(pintype "passive")
 			(uuid "ac2f69c4-ea12-48fd-b031-acfd812eb379")
 		)
 		(pad "2" thru_hole circle
@@ -5922,7 +9099,8 @@
 			(keep_end_layers yes)
 			(zone_layer_connections)
 			(net "GND")
-			(pintype "power_in")
+			(pinfunction "Ext_2")
+			(pintype "passive")
 			(uuid "999bd632-3d45-457e-af0d-ec406df65595")
 		)
 		(pad "2" thru_hole circle
@@ -5934,11 +9112,12 @@
 			(keep_end_layers yes)
 			(zone_layer_connections)
 			(net "GND")
-			(pintype "power_in")
+			(pinfunction "Ext_2")
+			(pintype "passive")
 			(uuid "d05c90ca-54de-40f7-bf53-b1830571fcf1")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/SMA_Amphenol_901-143_Horizontal.step"
+		(model "${KIPRJMOD}/3D Models/GCT_RFPC-SMA27.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5946,7 +9125,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -180)
 			)
 		)
 	)
@@ -5960,7 +9139,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "dc232b3f-728b-4406-bb34-cdb677aeea0a")
+			(uuid "64b8c575-6dc1-4917-9ef1-936ec00e5c01")
 			(effects
 				(font
 					(size 1 1)
@@ -5974,7 +9153,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b474ab53-05d7-4cfe-9b5e-7a65c3703d80")
+			(uuid "d61b4d75-a66c-4393-9220-0966e96b3deb")
 			(effects
 				(font
 					(size 1 1)
@@ -5987,7 +9166,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "33551a99-296e-440e-825b-7f4a0c5e2a9a")
+			(uuid "07008e35-d838-4fd9-9a38-9ec3961e2d67")
 			(effects
 				(font
 					(size 1 1)
@@ -5995,12 +9174,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "28d1f875-3b5a-49e3-b2d0-7bde95edbddc")
+			(uuid "44359b7b-6881-4753-bb73-9930f9ff96c9")
 			(effects
 				(font
 					(size 1 1)
@@ -6034,10 +9213,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8db0b22-ad45-48df-baa3-ded7e389ea6b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "de32dc16-8113-4b96-b404-07948bb6713a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b5855f3c-a68f-43d9-bae5-2fbaa642ce00")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "964e80d7-ad35-4c81-9cb6-6e2c261a0e03")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d1b6da68-39f8-42ca-898a-a343e8ab99c9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b8172b44-8956-46d6-a131-b4e400c15b57")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "80848050-b665-4878-a661-bf0d204e787d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eb3a6f20-cd37-429a-8f4f-87a58c8ae7d3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4cae29d6-7ccd-4c80-8cd9-cc1225b20960")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e74938d6-ac2f-477a-9e7c-bbc87519c1b7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "05c11084-3d6d-4e7e-b17e-82acebee2a63")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48690c82-3860-40fe-a8eb-b7441691c824")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Pin* Test*")
 		(path "/d22ed0bd-bce4-495c-9c4d-f93b2eea74e2")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -6080,7 +9421,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RX")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "a4bda52a-b403-430b-aae1-54f3525820c1")
 		)
@@ -6095,7 +9436,7 @@
 		(property "Reference" "ZP1"
 			(at 3.125 0 90)
 			(layer "F.SilkS")
-			(uuid "c1a2e245-5753-4598-b687-a760f96e96fe")
+			(uuid "3b145142-672f-43a6-875b-1637c8ce494c")
 			(effects
 				(font
 					(size 1 1)
@@ -6107,7 +9448,7 @@
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "36173a26-baf6-454c-91e0-5c191e730a85")
+			(uuid "ba250c87-c820-42b1-886a-86e59080b3df")
 			(effects
 				(font
 					(size 1 1)
@@ -6115,11 +9456,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c92f0b57-fb57-41d8-8f71-f82e450e7ec0")
+			(uuid "daccd7ea-080f-4872-bfea-3e3d3cb79803")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6131,7 +9472,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a879e68d-5971-4ebd-b6cf-6cc0798420b7")
+			(uuid "5ff98ef3-17d3-472c-9b61-eff8fcdee807")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6139,7 +9480,7 @@
 				)
 			)
 		)
-		(property "Digikey Link" "~"
+		(property "Digikey Link" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6152,7 +9493,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "~"
+		(property "Purchase-URL" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6191,10 +9532,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b7f73893-bdc8-44b3-b5c2-849f43f2ed2d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7c8ee1b8-983f-431f-bc1f-8523617c8897")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "be4cf082-4382-47eb-9ea7-4d79fc42f1c0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e1472361-2fe5-4c6c-8f78-d0478999b5e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d88b2f13-655b-4067-8af9-9f53702b0f59")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b8d3c97-5d46-4c15-9fca-43563580a0ad")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "14e24696-eb22-4cb3-affc-26d8cabfb33c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "900cfa3e-3ac5-4e45-a918-5710c94c4ee2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2be8f16c-0921-4f97-a63f-9637685f287e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d4631954-ed20-48f2-8a99-e782afe2cb58")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "98ce54c4-52ad-4a2c-972c-a47323bdb4a9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/a8e856d4-d35e-42d1-89f4-35a974d1195a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6313,7 +9803,7 @@
 			(size 1.2 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.208333)
-			(net "Net-(J1-Pad1)")
+			(net "Net-(J1-In)")
 			(pintype "passive")
 			(uuid "5021c221-4444-470a-accd-0d95a5c68372")
 		)
@@ -6348,7 +9838,7 @@
 		(property "Reference" "R4"
 			(at 3 0 90)
 			(layer "F.SilkS")
-			(uuid "e6bbeb18-22dd-4e93-952c-01cb4225240f")
+			(uuid "7d251338-29e2-4323-99f5-bce5cc7e80af")
 			(effects
 				(font
 					(size 1 1)
@@ -6360,7 +9850,7 @@
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4c7663ff-5c91-4513-9765-0898d055fbc9")
+			(uuid "232a2510-015a-4ea5-a6d2-6fa6ce813419")
 			(effects
 				(font
 					(size 1 1)
@@ -6368,11 +9858,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "1f67252c-e414-4b16-aec8-b16de996ac15")
+			(uuid "e26f30e3-e11b-46c7-a54c-821a702c5366")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6384,7 +9874,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "aab6f54f-ed63-456e-b7dc-6f53898bf067")
+			(uuid "f211ecb9-4d7b-4616-ace1-b308838ce31e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6418,10 +9908,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT5K60/1757920"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3c98d042-0e9a-400f-bf53-3861c756e316")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e377a94d-d6f4-47f4-8d14-b158f928c139")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a9d3a674-f303-4d59-b1e4-00a3bae601bf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "83cb4af5-aad5-4005-bebc-f3b1b214d271")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3fc83f02-5f42-4d28-adbc-25fa7f3f6ced")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "79f6a80b-778c-41d1-a07e-976fb02d3e31")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9dffdc7c-ecbe-49e1-aa72-7204903e8bef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47e1fb8c-5b7e-4713-b1c7-2fd501274ce9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a5d7a212-1cf6-4739-9b10-4c39874271ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bb9f1b0a-0c21-499c-9e99-c890569a5033")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1f0205be-020a-4ccd-a401-3fdf2a08bc81")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e247becc-c72f-4803-9821-e8b7d6a35597")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/15dab9af-54ea-4687-897e-a122bcecda39")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6576,7 +10228,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "03c4a697-c7dd-4358-8985-dc5c16945539")
+			(uuid "fefaa30e-c15f-4f75-a226-f53eb8db6639")
 			(effects
 				(font
 					(size 1 1)
@@ -6590,7 +10242,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f3a6657c-f786-403e-adf5-1a82d0ed7151")
+			(uuid "4045c5cb-2207-454f-9789-c180c5d56263")
 			(effects
 				(font
 					(size 1 1)
@@ -6603,7 +10255,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4fccdd7b-f330-4f70-b6f1-c26a8c29b077")
+			(uuid "0eee2162-f575-4c02-bf62-9e026a553e6c")
 			(effects
 				(font
 					(size 1 1)
@@ -6611,12 +10263,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "29f7e0b8-1ce3-4dd0-8493-1be92e24c08e")
+			(uuid "723fc54c-ba1d-40cc-8da2-b66624510a29")
 			(effects
 				(font
 					(size 1 1)
@@ -6650,10 +10302,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66237488-2809-4d6e-bdc3-bb33a571ad92")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4258e9ac-a14a-4bdb-ae3e-6f6597280acd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dc930bb7-2e13-4125-9665-acb73b1735c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "236707a4-0144-42b5-a424-eb2a149daf16")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "46d959cb-30eb-4e2d-8be0-4724f24b2d7e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5306b9f6-1f6c-4ec8-850d-8f001c81d3ca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "03ea2260-36e1-4060-b76a-daa52b38acad")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9b0ccb1-ae88-4e7a-a7f8-b66bbf1a3e0a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8101c42-306d-48e7-a6c2-3b96339ec117")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4afb9493-4fae-4cf7-9271-6bd76fb60ed6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c9beec29-2598-490d-b52c-f486222cf217")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "283ec91a-b4f4-4bd2-a982-e0c0125a3cce")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Pin* Test*")
 		(path "/e31eae6b-ff24-481d-b327-a22a799882c7")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -6696,7 +10510,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "CTS")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "638841c8-c0ff-479e-b6e3-5b9e55305db6")
 		)
@@ -6711,7 +10525,7 @@
 		(property "Reference" "R5"
 			(at 0.05 2 270)
 			(layer "F.SilkS")
-			(uuid "4ddbc28c-5574-4248-8780-df9295f9deaf")
+			(uuid "e4913a05-35ea-4212-8cce-8900e2a5cffb")
 			(effects
 				(font
 					(size 1 1)
@@ -6723,7 +10537,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8c2ecdd7-4ba1-40e6-82c6-1369b93e3412")
+			(uuid "7aae9763-829e-46ec-8f9f-1a69da9259bd")
 			(effects
 				(font
 					(size 1 1)
@@ -6731,11 +10545,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "92bb302d-2769-4fd4-a45e-fbddd932ae15")
+			(uuid "62bff130-8156-40c0-bcb3-f04c6edeb528")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6747,7 +10561,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6dada810-e5ba-4446-9967-31fe72ed889f")
+			(uuid "36f51f2c-870a-44a1-af4d-6e144ae970a9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6768,7 +10582,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/yageo/RC0805JR-075K6L/728341"
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT5K60/1757920"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6807,10 +10621,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8dc39af7-8894-4c36-8c87-ce37bf4516fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2339ac97-e293-4c18-aa36-6e09f6935e2d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9fc3d21d-607f-46ff-92cb-c801c69d23e1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cd81b249-1c81-49ec-ae7c-7f30b47303ef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "119e1a68-1e02-4cd8-83bd-51bee5387ea8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c21ac37e-03bd-4d5e-b2d0-e38670710cc7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f43e7cea-9e3c-49ac-9f7b-851ba8368f9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "569129a8-6e7d-4164-8c59-f6a90fe54f6d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "56cd4132-514b-4bc8-a9d7-94655a586e17")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "546b8844-be8a-4957-92ce-f4a886d9d8bb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a9678d02-ebc9-495f-8d3e-61bd658739f2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/347a7a5a-35f6-47d4-a3a2-3e5d8e682eb5")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6964,7 +10927,7 @@
 		(property "Reference" "R7"
 			(at -2.925 0.05 270)
 			(layer "F.SilkS")
-			(uuid "0911e402-208b-42cb-9a77-433144564a82")
+			(uuid "acec1ce7-bbe3-45c7-82e3-17ceb360df20")
 			(effects
 				(font
 					(size 1 1)
@@ -6972,11 +10935,11 @@
 				)
 			)
 		)
-		(property "Value" "560 Ohm"
+		(property "Value" "560R"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cd9a6e56-89f7-4ee8-b47f-0eaf47cdbfc7")
+			(uuid "0c7a20ea-209e-4d91-8cce-dfba96baa8ca")
 			(effects
 				(font
 					(size 1 1)
@@ -6984,11 +10947,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "60ddf324-aad4-4a34-b179-0f9673cd4859")
+			(uuid "49318f13-7a81-4f3d-b89c-37d5b35f0de9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7000,7 +10963,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4c6375d3-e788-4885-a4cf-987125f1d34a")
+			(uuid "b8a0892d-8547-455e-86e1-c8e843a921b4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7034,10 +10997,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT560R/1757876"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4022ddd0-2c95-4f27-943f-15262c129abc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "11c65699-3bd8-423f-ad81-e8f7fe1bf563")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "640c12b4-d019-48da-b451-24f7c8342b4c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "150fabdd-eed3-4fa9-be03-86c9e3857a51")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "83798ce8-1147-4f04-9b2b-e7b014bf037f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "225cd090-a773-407c-860e-f19ea9d8b6c3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ebebbc05-92dd-4d12-b4ec-fb1c5340e414")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "05491471-2976-4f1c-bd39-8c3bdf01fff2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "847a16ae-8eac-4fba-a098-8cd8ef566bd0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e67d2258-bba6-4365-88f9-25c6cdadab3f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e15b83af-0adc-45ed-83e4-5cb3421ed0eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "13378daa-fb84-4f60-8e9a-166d24a05a24")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/7a804686-f150-4a00-b6b0-733e0fff915a")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7191,7 +11316,7 @@
 		(property "Reference" "R6"
 			(at -3 0 90)
 			(layer "F.SilkS")
-			(uuid "ef529af4-5822-49d4-8f83-ba8618aea0bb")
+			(uuid "5525a184-a659-4385-a5be-16a0dba28c7e")
 			(effects
 				(font
 					(size 1 1)
@@ -7203,7 +11328,7 @@
 			(at 0.04 -2.75 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3fae7250-8285-4f83-9f9b-68528964aeb1")
+			(uuid "c6925143-968f-4fe3-927a-0d99dc66e263")
 			(effects
 				(font
 					(size 1 1)
@@ -7211,11 +11336,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4a68a6b3-04c2-44e3-8c5e-de6e6c6e7183")
+			(uuid "5217349e-152d-451b-ab09-bef7c228ea6a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7227,7 +11352,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d5134627-4d72-482b-855f-9d135a61647d")
+			(uuid "761c626b-b2f9-4beb-b73d-a076a9bcf381")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7261,10 +11386,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" "https://www.digikey.de/de/products/detail/stackpole-electronics-inc/RMCF0805JT5K60/1757920"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b97a205d-6e19-4ef6-8e3f-1fcec869502a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7439b09a-ce3a-4e74-b19e-5d2809e2d0e3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "693b3e71-9578-4495-9c4f-8c582d3d76bf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a2a7ddac-cb51-451f-a0b4-e774018eecf9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7d6de81b-6399-410d-8876-323dc1b55bf0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "38d8a7e3-2c68-4bbf-960a-637fcebb5d75")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cc2cc17-c033-4491-8793-382b7f1d2a1c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "26f64eaa-340e-4eaf-aeba-3f0b97801509")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "01252a6e-1ed9-4f2f-a649-13601bda5377")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dcd03831-e650-446a-bb84-78686216610f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "91bb6b4f-8866-494f-a40c-c50f8a28d8c8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "986600fa-b9d8-4c55-aa90-2c92187f667d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/5d2324ac-7a89-4720-aa45-c6784bbe9923")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7419,7 +11706,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "b90ab990-97d3-45e4-a46e-85376d0f515b")
+			(uuid "6b144d01-b1cb-43cd-b6f8-7a3528c27a43")
 			(effects
 				(font
 					(size 1 1)
@@ -7433,7 +11720,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2354dc99-0407-4ff0-9024-73db71455017")
+			(uuid "d3abf503-e7ad-405c-8857-d1023e0023b1")
 			(effects
 				(font
 					(size 1 1)
@@ -7446,7 +11733,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "14691dc9-196b-4e3d-8436-547544b3589a")
+			(uuid "5f660336-e4a4-4096-b00d-93f49c57ef32")
 			(effects
 				(font
 					(size 1 1)
@@ -7454,12 +11741,12 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "test point"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "17732d58-b03b-4909-ac1a-96896b266af0")
+			(uuid "02252cf4-aa73-43be-8508-0cd7f230bebe")
 			(effects
 				(font
 					(size 1 1)
@@ -7493,10 +11780,172 @@
 				)
 			)
 		)
+		(property "Purchase-URL" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d1c2f0dd-c310-4c36-bd8d-31cc9c145800")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bf0f49a1-9574-46b3-8f3e-98c956691aa8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7816f86c-4e00-4459-8d28-2aede5d31b54")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0bc24c21-eefb-4229-8f0a-a21ac9510747")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ba92f70-bcc4-48ea-9621-1d70e50a65f0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b2ec2ed8-e729-4ce9-9d8b-e5b9c54cc468")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "461f6bba-368d-415b-9774-ba194670c745")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c75fd9d-8813-46c1-bd70-b7a56d33b899")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9afe45e3-3c40-479a-b9a8-450f795c1911")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f65382f7-2c9f-49a9-976a-550052f0e4a2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "543f7285-8d5b-4be4-9843-d591f350d784")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "93c6ba3c-896d-4b65-b4f6-777f60dcfcab")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Pin* Test*")
 		(path "/328aad59-933e-42e9-a628-0ea65ef4eefd")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -7539,7 +11988,7 @@
 			(size 2 2)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "RTS")
-			(pinfunction "1")
+			(pinfunction "1_1")
 			(pintype "passive")
 			(uuid "cb8e5212-bd89-4914-a311-0859a9d899ab")
 		)
@@ -7554,7 +12003,7 @@
 		(property "Reference" "ZS1"
 			(at 0 2.625 270)
 			(layer "F.SilkS")
-			(uuid "57537729-4609-45db-b7d7-1cb4816290d8")
+			(uuid "cf6ced49-6184-4153-a65a-4879043d8cc7")
 			(effects
 				(font
 					(size 1 1)
@@ -7566,7 +12015,7 @@
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3a932854-5d5b-4f13-ad74-1c2ddbacc8f7")
+			(uuid "31b8e1a6-27bd-4400-ad26-0e40f0aadb5c")
 			(effects
 				(font
 					(size 1 1)
@@ -7574,11 +12023,11 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "818693f8-623b-443b-b67c-6ffdb96bd800")
+			(uuid "d11c51a3-d921-4277-af05-4dd31997f4c1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7590,7 +12039,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4e96aaf2-43a4-4733-87ca-2b6a04231441")
+			(uuid "9cf86a5c-6284-4396-84ff-1c3292c11e98")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7598,7 +12047,7 @@
 				)
 			)
 		)
-		(property "Digikey Link" "~"
+		(property "Digikey Link" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7611,7 +12060,7 @@
 				)
 			)
 		)
-		(property "Purchase-URL" "~"
+		(property "Purchase-URL" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7650,10 +12099,159 @@
 				)
 			)
 		)
+		(property "Check_prices" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ef802a2-212c-42d7-813c-f0efbc2aa32b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "035c24f7-4a5d-4206-b2dc-7b156d808874")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_Part_Number" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "794851a2-90d0-4a58-878d-01e3a265f4b5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "196ef563-ab77-446c-9af2-8f76d9bb993d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7dd2e979-eedf-4458-a301-6ac8894f0cf8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f1227799-694d-4cee-ac31-9c54321cd091")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "56ce9b2c-c98f-415d-b137-6eee484c74f2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3fb5ccbc-5e79-48a8-810a-b943a8048029")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85a53c55-2859-4730-8342-977bb58df823")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a4c489c1-417f-47bf-ae1d-a488e1fd747e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f39b26fb-ea81-4ec1-9dcb-e49b959a150b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/7be61aa3-965a-46df-94df-1ac5a197c276")
 		(sheetname "/")
 		(sheetfile "TelemetryGroundstationDB.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -7781,7 +12379,7 @@
 			(size 1.2 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.208333)
-			(net "Net-(J1-Pad1)")
+			(net "Net-(J1-In)")
 			(pintype "passive")
 			(uuid "3c9ce6f3-3496-4383-8e01-e2742f2a9737")
 		)
@@ -36542,7 +41140,7 @@
 		(end 14.125 -10.2)
 		(width 1.2)
 		(layer "F.Cu")
-		(net "Net-(J1-Pad1)")
+		(net "Net-(J1-In)")
 		(uuid "3c60dd45-fef5-4639-ba9b-f6d3e357981b")
 	)
 	(segment
@@ -36550,7 +41148,7 @@
 		(end 14.125 -4.7)
 		(width 1.2)
 		(layer "F.Cu")
-		(net "Net-(J1-Pad1)")
+		(net "Net-(J1-In)")
 		(uuid "3fea7159-64f5-4fda-99ad-38be6cb580e3")
 	)
 	(zone
