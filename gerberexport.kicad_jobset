@@ -1,0 +1,50 @@
+{
+  "jobs": [
+    {
+      "id": "c27813d6-92a5-44cf-80eb-1cc074884c35",
+      "settings": {
+        "check_zones": true,
+        "create_gerber_job_file": true,
+        "include_netlist_attributes": true,
+        "layers": [
+          "F.Cu", "In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu", "In5.Cu", "In6.Cu", "In7.Cu", "In8.Cu",
+          "In9.Cu", "In10.Cu", "In11.Cu", "In12.Cu", "In13.Cu", "In14.Cu", "In15.Cu", "In16.Cu",
+          "In17.Cu", "In18.Cu", "In19.Cu", "In20.Cu", "In21.Cu", "In22.Cu", "In23.Cu", "In24.Cu",
+          "In25.Cu", "In26.Cu", "In27.Cu", "In28.Cu", "In29.Cu", "In30.Cu", "B.Cu",
+          "F.Mask", "B.Mask", "F.Paste", "B.Paste", "F.SilkS", "B.SilkS", "Edge.Cuts"
+        ],
+        "plot_drawing_sheet": false,
+        "precision": 6,
+        "subtract_solder_mask_from_silk": false,
+        "use_drill_origin": false,
+        "use_protel_file_extension": false,
+        "use_x2_format": true
+      },
+      "type": "pcb_export_gerbers"
+    },
+    {
+      "id": "cabf272b-8730-4276-8518-f96de3124510",
+      "settings": {
+        "drill_origin": "abs",
+        "excellon.combine_pth_npth": false,
+        "format": "excellon",
+        "units": "mm",
+        "zero_format": "decimal"
+      },
+      "type": "pcb_export_drill"
+    }
+  ],
+  "meta": {
+    "version": 1
+  },
+  "outputs": [
+    {
+      "id": "d4356873-f1a8-48e5-92e7-4fa93803a2d6",
+      "only": [],
+      "settings": {
+        "output_path": "${KIPRJMOD}/Production Files/${PROJECTNAME}.zip"
+      },
+      "type": "archive"
+    }
+  ]
+}

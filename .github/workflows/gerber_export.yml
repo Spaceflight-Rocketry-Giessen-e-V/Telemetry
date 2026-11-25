@@ -1,0 +1,50 @@
+name: Gerber export
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'onboard/pcb/**/*.kicad_*'
+      - 'groundstation/pcb/Motherboard/**/*.kicad_*'
+      - 'groundstation/pcb/Daughterboard/**/*.kicad_*'
+      - 'gerberexport.kicad_jobset'
+      - '.github/workflows/gerber_export.yml'
+
+permissions: {}
+
+concurrency:
+  group: gerber-export-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    container:
+      image: kicad/kicad:10.0.7
+      options: --user root
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Export Gerbers and drill files
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          kicad-cli jobset run --stop-on-error -f gerberexport.kicad_jobset 'onboard/pcb/TelemetryOnboard.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f gerberexport.kicad_jobset 'groundstation/pcb/Motherboard/TelemetryGroundstationMB.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f gerberexport.kicad_jobset 'groundstation/pcb/Daughterboard/TelemetryGroundstationDB.kicad_pro'
+          git add -- \
+            'onboard/pcb/Production Files/TelemetryOnboard.zip' \
+            'groundstation/pcb/Motherboard/Production Files/TelemetryGroundstationMB.zip' \
+            'groundstation/pcb/Daughterboard/Production Files/TelemetryGroundstationDB.zip'
+
+      - name: Publish Gerber archives
+        run: |
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Update Gerber exports'
+            git push
+          fi
