@@ -93,10 +93,9 @@ Please note that radio systems may be subject to local regulations. Ensure that 
 
 <p align="center"><img src="https://github.com/OSHW/logo/blob/master/oshw-logo.svg" width="200"/></p>
 
-Copyright 2026 Spaceflight Rocketry Giessen e.V. \<elektronik@sprog-ev.de\><br><br>
-
 This source describes Open Hardware and is licensed under the CERN-OHL-S v2.<br>
 You may redistribute and modify this source and make products using it under the terms of the [CERN-OHL-S v2 or any later version](LICENSE).<br>
 This source is distributed without any express or implied warranty, including of merchantability, satifactory quality and fitness for a particular purpose. Please see the CERN-OHL-S v2 for applicable conditions.<br>
 Source location: https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry<br>
-As per CERN-OHL-S v2 section 4, should you produce hardware based on this source, you must where practicable maintain the Source Location in its documentation or license information.<br>
+As per CERN-OHL-S v2 section 4, should you produce hardware based on this source, you must where practicable maintain the Source Location in its documentation or license information.<br><br>
+Copyright 2026 Spaceflight Rocketry Giessen e.V. \<elektronik@sprog-ev.de\>
