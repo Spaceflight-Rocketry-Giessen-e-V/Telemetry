@@ -815,16 +815,16 @@
       {
         "filename": "TelemetryGroundstationMB.kicad_sch",
         "name": "TelemetryGroundstationMB",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
       }
     ],
-    "used_designators": "",
+    "used_designators": "J13,D17,#PWR1,#PWR3,#PWR20-24,#PWR56,#PWR70,#PWR73,#PWR78-88,#PWR91-94,#PWR109-125,#PWR136",
     "variants": []
   },
   "sheets": [
     [
       "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
-      "Root"
+      "TelemetryGroundstationMB"
     ]
   ],
   "text_variables": {},

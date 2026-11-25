@@ -1,15 +1,14 @@
 (footprint "JL4"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "Through hole straight socket strip, 1x08, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
-	(tags "Through hole socket strip THT 1x08 2.54mm single row")
+	(descr "This footprint has been created by Spaceflight Rocketry Giessen e.V.")
 	(property "Reference" "JL4"
 		(at 0 -2.77 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "443c5830-a1df-418b-9509-f1d21ba6d334")
+		(uuid "73b15588-ae65-458c-b2b8-a541a632a2c9")
 		(effects
 			(font
 				(size 1 1)
@@ -21,7 +20,7 @@
 		(at 0 20.55 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "16df8702-a848-41f9-95f3-5c833382940a")
+		(uuid "f2088b24-dc8f-43c0-b883-9a8adb5c4b33")
 		(effects
 			(font
 				(size 1 1)
@@ -33,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "c639ec3c-6a2d-4f52-b311-4fb8a237ed0d")
+		(uuid "63aaf063-4631-440a-ab27-3788934cc4f0")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +44,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "1be3e183-dbf6-4b10-bcd1-2e6fef4ca99b")
+		(uuid "9422512d-46f3-4b20-a582-05bc1e20ec8c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -54,13 +53,14 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(pad "9" thru_hole circle
 		(at 0 0)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "9a7150d0-5768-4cf5-805d-4caf50e646df")
+		(uuid "b2518915-bad4-4f07-a654-4630b84ccb1f")
 	)
 	(pad "10" thru_hole circle
 		(at 0 2.54)
@@ -68,7 +68,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "e09191ee-1acd-4450-9e96-3a5f57c1bfd5")
+		(uuid "0149d34e-ed68-4bc6-be1d-8c55633414b5")
 	)
 	(pad "11" thru_hole circle
 		(at 0 5.08)
@@ -76,7 +76,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "4c3c18ef-3193-46c5-a71b-7674bfef8407")
+		(uuid "945feea0-56e7-4315-9fa7-b6d96799bd7a")
 	)
 	(pad "12" thru_hole circle
 		(at 0 7.62)
@@ -84,7 +84,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "442ad3a0-a3fe-412e-908d-93e2b2fe498f")
+		(uuid "cb8b173d-90b2-4f5d-85a5-8a1efc296e4d")
 	)
 	(pad "13" thru_hole circle
 		(at 0 10.16)
@@ -92,7 +92,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "1cb560e5-28aa-4968-9007-167306f60fcc")
+		(uuid "2e2ad389-10eb-4f20-94d2-9cc32d1640fa")
 	)
 	(pad "14" thru_hole circle
 		(at 0 12.7)
@@ -100,7 +100,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d8cc9ecb-35a3-40a7-bd23-c6df99a1effc")
+		(uuid "0ab951da-2cd6-4827-9679-1e10b8f11753")
 	)
 	(pad "15" thru_hole circle
 		(at 0 15.24)
@@ -108,7 +108,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "1343a56f-6fe7-465e-ba0d-560855dc5a37")
+		(uuid "8d319262-c878-4f61-ab65-08e7db7794c1")
 	)
 	(pad "16" thru_hole circle
 		(at 0 17.78)
@@ -116,7 +116,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "e719f9ea-82e7-430f-a9a0-28b998de2655")
+		(uuid "09698005-91a0-40ef-8ea0-5d0db89de47a")
 	)
 	(embedded_fonts no)
 )

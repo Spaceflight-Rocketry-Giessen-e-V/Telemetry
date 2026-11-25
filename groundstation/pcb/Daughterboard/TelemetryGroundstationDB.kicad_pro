@@ -39,9 +39,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 4.1,
-          "height": 8.0,
-          "width": 8.0
+          "drill": 0.0,
+          "height": 2.0,
+          "width": 2.0
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -470,11 +470,14 @@
       "duplicate_sheet_names": "error",
       "endpoint_off_grid": "warning",
       "extra_units": "error",
+      "field_name_whitespace": "warning",
       "footprint_filter": "ignore",
       "footprint_link_issues": "warning",
       "four_way_junction": "ignore",
       "global_label_dangling": "warning",
+      "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
+      "isolated_pin_label": "warning",
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
@@ -497,6 +500,7 @@
       "similar_power": "warning",
       "simulation_model_issue": "error",
       "single_global_label": "ignore",
+      "stacked_pin_name": "warning",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
       "undefined_netclass": "error",
@@ -565,6 +569,10 @@
   },
   "schematic": {
     "annotate_start_num": 0,
+    "annotation": {
+      "method": 0,
+      "sort_order": 0
+    },
     "bom_export_filename": "TelemetryGroundstationDB_BOM.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
@@ -740,6 +748,7 @@
       "default_line_thickness": 6.0,
       "default_text_size": 50.0,
       "field_names": [],
+      "hop_over_size_choice": 0,
       "intersheets_ref_own_page": false,
       "intersheets_ref_prefix": "",
       "intersheets_ref_short": false,
@@ -763,6 +772,7 @@
     "net_format_name": "KiCad",
     "page_layout_descr_file": "",
     "plot_directory": "",
+    "reuse_designators": true,
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
@@ -776,14 +786,16 @@
       {
         "filename": "TelemetryGroundstationDB.kicad_sch",
         "name": "TelemetryGroundstationDB",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9"
       }
-    ]
+    ],
+    "used_designators": "J1,J3-4,D6,#PWR4-5,#PWR32-34,#PWR40-49",
+    "variants": []
   },
   "sheets": [
     [
       "a51e9d97-2dc7-47e6-bab2-df98d7ad5ab9",
-      "Root"
+      "TelemetryGroundstationDB"
     ]
   ],
   "text_variables": {},

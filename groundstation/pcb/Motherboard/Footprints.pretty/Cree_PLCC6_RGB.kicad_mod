@@ -1,0 +1,210 @@
+(footprint "Cree_PLCC6_RGB"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "This footprint has been created by Spaceflight Rocketry Giessen e.V.")
+	(property "Reference" "REF**"
+		(at 0 -4.25 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a74e2e76-ffbe-4173-ace3-152722ffb001")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Untitled"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "490620db-c186-4445-b63c-035335b6cc30")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "467403f1-2b15-4d2c-982b-485af4cb3f8b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4a6ff4ac-3efa-4756-bc5c-a6a73a821351")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -4.05 -3.15)
+		(end 4 -3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a04243a8-7818-459f-9e75-1735c1f6ffc4")
+	)
+	(fp_line
+		(start -4.05 -2.15)
+		(end -4.05 -3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bd96bae3-5105-4405-a01d-814f1e465897")
+	)
+	(fp_line
+		(start -4.05 3.15)
+		(end 4 3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "1650b6a1-4792-4e72-ac1d-4f4ac93250f4")
+	)
+	(fp_rect
+		(start -4 -3.25)
+		(end 4 3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "7c3772dc-5d26-4020-951a-28c55046d915")
+	)
+	(fp_line
+		(start -2.5 -1.9)
+		(end -1.5 -3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a02860f4-619e-4d7a-aade-4a5999081b11")
+	)
+	(fp_line
+		(start -2.5 3)
+		(end -2.5 -1.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5e0d2818-a7bb-4094-90de-89e7a8663021")
+	)
+	(fp_line
+		(start -1.5 -3)
+		(end 2.5 -3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "54721a8f-6113-469c-8a40-fb02884882f4")
+	)
+	(fp_line
+		(start 2.5 -3)
+		(end 2.5 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "31c9f1a8-cbf9-4ba6-92ac-38f9edf43016")
+	)
+	(fp_line
+		(start 2.5 3)
+		(end -2.5 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ddd16982-1c3a-4f9f-9c3b-5acf5c780e07")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 0 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "0febc46d-d640-437c-8873-6923590e941c")
+	)
+	(pad "1" smd rect
+		(at -2.45 -2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "587c328b-9bdb-4026-9407-5bb381a96f2a")
+	)
+	(pad "2" smd rect
+		(at -2.45 0)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "59c5c3ee-cebe-4595-9182-13a698ff558f")
+	)
+	(pad "3" smd rect
+		(at -2.45 2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "52c679cb-5f69-49b7-899d-22d0b5831f5a")
+	)
+	(pad "4" smd rect
+		(at 2.45 2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1dacfee9-f101-4ea3-a22b-e753a7d7b8dc")
+	)
+	(pad "5" smd rect
+		(at 2.45 0)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dffee0e0-4a43-47b9-a5cf-cc3621323b3e")
+	)
+	(pad "6" smd rect
+		(at 2.45 -2.1)
+		(size 2.6 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e61d6ad0-266a-4117-8a37-bb27e64b8c5a")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D Models/Cree_PLCC6_RGB.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

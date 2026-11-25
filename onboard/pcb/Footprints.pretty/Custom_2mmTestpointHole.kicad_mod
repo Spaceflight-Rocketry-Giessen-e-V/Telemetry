@@ -1,0 +1,104 @@
+(footprint "Custom_2mmTestpointHole"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "This footprint has been created by Spaceflight Rocketry Giessen e.V.")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "0e8920ea-8c2b-40af-b673-c3735c8a1446")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Untitled"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "48c95557-7f84-4ab4-9493-74ef279c2280")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "24b52b57-6273-4487-b44d-203c8b35054c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0d063f9d-43e6-4743-826a-f5deaaf7fd8b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center 0 0)
+		(end 1.25 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "a87f4cdd-8c05-4f05-b8e6-3cc893b19af6")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.5 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "9940fd0b-dfe9-4f53-ac3e-6c1b3d880245")
+	)
+	(fp_text user "${NET_NAME(1)}"
+		(at 0 -2.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4f5a9114-13d2-48f1-9a2a-c8ff504fa923")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 2 2)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c4ce380b-7ba3-4ad3-a747-21993bb1ce53")
+	)
+	(embedded_fonts no)
+)
