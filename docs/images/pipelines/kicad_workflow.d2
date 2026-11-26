@@ -1,0 +1,60 @@
+# KiCad exports workflow (.github/workflows/kicad_export.yml)
+# Render from repo root: d2 --pad=40 docs/images/pipelines/kicad_workflow.d2 docs/images/pipelines/kicad_workflow.svg
+direction: right
+
+vars: {
+  dark: "#1f2933"
+  mid: "#52606d"
+  light: "#f5f7fa"
+  d2-config: {
+    layout-engine: elk
+    data: {
+      elk-nodeNodeBetweenLayers: 60
+    }
+  }
+}
+
+classes: {
+  stage: {
+    style: {
+      fill: ${dark}
+      stroke: ${dark}
+      font-color: "#ffffff"
+      border-radius: 10
+      font-size: 16
+    }
+    width: 250
+    height: 90
+  }
+  edge: {
+    style: {
+      stroke: ${mid}
+      stroke-width: 2
+      font-size: 14
+      font-color: ${dark}
+    }
+  }
+}
+
+src: "Matching changes pushed to main\nor manual run" {class: stage}
+
+runner: GitHub Actions {
+  label.near: outside-top-left
+  style: {
+    fill: ${light}
+    stroke: ${mid}
+    stroke-dash: 4
+    border-radius: 12
+    font-color: ${mid}
+    font-size: 16
+  }
+
+  export: "Run KiCad jobset\nOnboard, Motherboard,\nand Daughterboard" {class: stage}
+  stage: "Stage generated exports files" {class: stage}
+  publish: "Commit and push exports\nback to repository" {class: stage}
+
+  export -> stage: {class: edge}
+  stage -> publish: Only if exports changed {class: edge}
+}
+
+src -> runner.export: {class: edge}

@@ -9,7 +9,7 @@ on:
       - 'groundstation/pcb/Motherboard/**/*.kicad_*'
       - 'groundstation/pcb/Daughterboard/**/*.kicad_*'
       - '.github/kicad-workflow/gerberexport.kicad_jobset'
-      - '.github/workflows/gerber_export.yml'
+      - '.github/workflows/kicad_export.yml'
 
 permissions: {}
 
