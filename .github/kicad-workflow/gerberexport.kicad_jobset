@@ -42,7 +42,7 @@
       "id": "d4356873-f1a8-48e5-92e7-4fa93803a2d6",
       "only": [],
       "settings": {
-        "output_path": "${KIPRJMOD}/Production Files/${PROJECTNAME}.zip"
+        "output_path": "${KIPRJMOD}/${PROJECTNAME}_gerbers.zip"
       },
       "type": "archive"
     }

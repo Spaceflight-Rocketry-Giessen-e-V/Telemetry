@@ -8,7 +8,7 @@ on:
       - 'onboard/pcb/**/*.kicad_*'
       - 'groundstation/pcb/Motherboard/**/*.kicad_*'
       - 'groundstation/pcb/Daughterboard/**/*.kicad_*'
-      - 'gerberexport.kicad_jobset'
+      - '.github/kicad-workflow/gerberexport.kicad_jobset'
       - '.github/workflows/gerber_export.yml'
 
 permissions: {}
@@ -32,13 +32,13 @@ jobs:
       - name: Export Gerbers and drill files
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          kicad-cli jobset run --stop-on-error -f gerberexport.kicad_jobset 'onboard/pcb/TelemetryOnboard.kicad_pro'
-          kicad-cli jobset run --stop-on-error -f gerberexport.kicad_jobset 'groundstation/pcb/Motherboard/TelemetryGroundstationMB.kicad_pro'
-          kicad-cli jobset run --stop-on-error -f gerberexport.kicad_jobset 'groundstation/pcb/Daughterboard/TelemetryGroundstationDB.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerberexport.kicad_jobset' 'onboard/pcb/TelemetryOnboard.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerberexport.kicad_jobset' 'groundstation/pcb/Motherboard/TelemetryGroundstationMB.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerberexport.kicad_jobset' 'groundstation/pcb/Daughterboard/TelemetryGroundstationDB.kicad_pro'
           git add -- \
-            'onboard/pcb/Production Files/TelemetryOnboard.zip' \
-            'groundstation/pcb/Motherboard/Production Files/TelemetryGroundstationMB.zip' \
-            'groundstation/pcb/Daughterboard/Production Files/TelemetryGroundstationDB.zip'
+            'onboard/pcb/TelemetryOnboard_gerbers.zip' \
+            'groundstation/pcb/Motherboard/TelemetryGroundstationMB_gerbers.zip' \
+            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_gerbers.zip'
 
       - name: Publish Gerber archives
         run: |
