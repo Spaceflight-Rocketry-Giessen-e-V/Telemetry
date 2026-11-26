@@ -6,6 +6,7 @@ This document provides an overview of the automated GitHub Actions workflows and
 
 - [Automatic](#automatic)
    - [Firmware Documentation](#firmware-documentation)
+    - [KICad Export](#kicad-export)
 - [Manuell](#manuell)
    - [Updating/Adding Images](#updatingadding-images)
    - [Updating PCBs](#updating-pcbs)
@@ -42,7 +43,7 @@ uint8_t commandReceive(HardwareSerial *serialUSB);
 
 During the workflow, Doxygen converts these comments and the associated C/C++ declarations into Markdown/HTML files. 
 <p align="center"><img src="images/pipelines/githubaction_workflow.svg" /></p>
-
+Flowchart for the workflow
 
 The workflow runs after a push to the `main` branch when files in one of the following locations change:
 
@@ -61,6 +62,30 @@ The GitHub Actions job performs these steps:
 5. Publishes the generated website to the [`gh-pages` branch](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/).
 
 The published firmware documentation is available at [spaceflight-rocketry-giessen-e-v.github.io/Telemetry](https://spaceflight-rocketry-giessen-e-v.github.io/Telemetry/). If another documentation workflow starts while one is already running, the older run is cancelled so that only the newest version is deployed.
+
+## KICad Export
+
+The KiCad export workflow automatically generates production files, schematic PDFs, and bills of materials for the onboard PCB, ground-station motherboard, and ground-station daughterboard. The exports are saved alongside each KiCad project.
+
+<p align="center"><img src="images/pipelines/kicad_workflow.svg" /></p>
+Flowchart for the workflow
+
+The workflow runs after a push to the `main` branch when KiCad files change in one of the following project folders, or when the jobset or workflow file changes:
+
+- [`onboard/pcb/`](/onboard/pcb/)
+- [`groundstation/pcb/Motherboard/`](/groundstation/pcb/Motherboard/)
+- [`groundstation/pcb/Daughterboard/`](/groundstation/pcb/Daughterboard/)
+- [`.github/kicad-workflow/gerberexport.kicad_jobset`](/.github/kicad-workflow/gerberexport.kicad_jobset)
+- [`.github/workflows/kicad_export.yml`](/.github/workflows/kicad_export.yml)
+
+The workflow can also be run manually from the GitHub Actions tab.
+
+The GitHub Actions job performs these steps:
+
+1. Checks out the repository in a KiCad 10.0.7 container.
+2. Runs the shared jobset for each KiCad project and stops if an export fails.
+3. Stages the Gerber and drill file archive (`<project>_gerbers.zip`), schematic PDF (`<project>_Schematic.pdf`), and bill of materials (`<project>_BOM.csv`) for each project.
+4. Commits and pushes the generated files as the GitHub Actions bot only if at least one export changed.
 
 # Manual
 
