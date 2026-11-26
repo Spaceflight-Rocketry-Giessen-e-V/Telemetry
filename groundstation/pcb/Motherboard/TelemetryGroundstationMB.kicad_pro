@@ -590,7 +590,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "TelemetryOnboard_BOM.csv",
+    "bom_export_filename": "TelemetryGroundstationMB_BOM.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",

@@ -32,6 +32,38 @@
         "zero_format": "decimal"
       },
       "type": "pcb_export_drill"
+    },
+    {
+      "id": "4f5dcee6-e88b-45b6-8aec-c52c786f536c",
+      "settings": {
+        "black_and_white": false,
+        "color_theme": "KiCad Classic",
+        "format": "pdf",
+        "min_pen_width": 847,
+        "output_filename": "${PROJECTNAME}_Schematic.pdf",
+        "page_size": "auto",
+        "pdf_hierarchical_links": true,
+        "pdf_metadata": true,
+        "pdf_property_popups": true,
+        "plot_all": true,
+        "plot_drawing_sheet": true,
+        "show_hop_over": false,
+        "use_background_color": true
+      },
+      "type": "sch_export_plot_pdf"
+    },
+    {
+      "id": "23c1e82b-c7b6-42da-ad55-eba76922550e",
+      "settings": {
+        "bom_format_preset_name": "CSV",
+        "fields_group_by": ["Value", "Footprint", "${DNP}", "Purchase-URL"],
+        "fields_labels": ["Reference", "Qty", "Value", "Footprint", "DNP", "Purchase-URL"],
+        "fields_ordered": ["Reference", "${QUANTITY}", "Value", "Footprint", "${DNP}", "Purchase-URL"],
+        "group_symbols": true,
+        "output_filename": "${PROJECTNAME}_BOM.csv",
+        "sort_field": "Reference"
+      },
+      "type": "sch_export_bom"
     }
   ],
   "meta": {
@@ -39,12 +71,28 @@
   },
   "outputs": [
     {
+      "description": "Gerbers and drill files",
       "id": "d4356873-f1a8-48e5-92e7-4fa93803a2d6",
-      "only": [],
+      "only": [
+        "c27813d6-92a5-44cf-80eb-1cc074884c35",
+        "cabf272b-8730-4276-8518-f96de3124510"
+      ],
       "settings": {
         "output_path": "${KIPRJMOD}/${PROJECTNAME}_gerbers.zip"
       },
       "type": "archive"
+    },
+    {
+      "description": "Schematic and BOM",
+      "id": "b49aed7c-950b-40d2-b312-93641c6f442e",
+      "only": [
+        "4f5dcee6-e88b-45b6-8aec-c52c786f536c",
+        "23c1e82b-c7b6-42da-ad55-eba76922550e"
+      ],
+      "settings": {
+        "output_path": "${KIPRJMOD}"
+      },
+      "type": "folder"
     }
   ]
 }

@@ -1,4 +1,4 @@
-name: Gerber export
+name: KiCad exports
 
 on:
   workflow_dispatch:
@@ -29,7 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Export Gerbers and drill files
+      - name: Export Gerbers, drill files, schematics, and BOMs
+        id: export
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerberexport.kicad_jobset' 'onboard/pcb/TelemetryOnboard.kicad_pro'
@@ -37,14 +38,24 @@ jobs:
           kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerberexport.kicad_jobset' 'groundstation/pcb/Daughterboard/TelemetryGroundstationDB.kicad_pro'
           git add -- \
             'onboard/pcb/TelemetryOnboard_gerbers.zip' \
+            'onboard/pcb/TelemetryOnboard_Schematic.pdf' \
+            'onboard/pcb/TelemetryOnboard_BOM.csv' \
             'groundstation/pcb/Motherboard/TelemetryGroundstationMB_gerbers.zip' \
-            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_gerbers.zip'
+            'groundstation/pcb/Motherboard/TelemetryGroundstationMB_Schematic.pdf' \
+            'groundstation/pcb/Motherboard/TelemetryGroundstationMB_BOM.csv' \
+            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_gerbers.zip' \
+            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_Schematic.pdf' \
+            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_BOM.csv'
+          {
+            echo 'changed_files<<EOF'
+            git diff --cached --name-only
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
 
-      - name: Publish Gerber archives
+      - name: Publish KiCad exports
+        if: steps.export.outputs.changed_files != ''
         run: |
-          if ! git diff --cached --quiet; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'Update Gerber exports'
-            git push
-          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update KiCad exports'
+          git push
