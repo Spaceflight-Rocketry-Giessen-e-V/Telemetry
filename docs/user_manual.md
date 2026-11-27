@@ -1,8 +1,10 @@
-# ASCENT II Telemetry System User Manual
+# User Manual
 
 Please see the [Operation Advices](#operation-advices) before using the system!
 
 - [Repository Usage](#repository-usage)
+    - [Cloning](#cloning)
+    - [Contributing](#contributing)
 - [Electronics](#electronics)
     - [EDA Usage](#eda-usage)
     - [Ordering](#ordering)
@@ -27,10 +29,16 @@ Please see the [Operation Advices](#operation-advices) before using the system!
 
 # Repository usage
 
+## Cloning
+
 The usual process for locally cloning the repository applies:
 1. Install [Git](https://git-scm.com/install/)
 2. Open the desired destination folder in the terminal
-3. Clone the repository: `git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry` 
+3. Clone the repository: `git clone https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry`
+
+## Contributing
+
+The repository includes a [separate document](./pipelines.md) which describes the manual processing pipelines necessary when updating parts of the projects. Automatic GitHub workflows are describes as well.
 
 ---
 
@@ -85,11 +93,11 @@ Include the symbol and link the footprint:
 ## Ordering
 
 ### Sourcing PCBs
-The PCBs can be sourced from any PCB manufacturing service like JLCPCB or PCBWAY. We included the Gerber Production Files in the repository. We recommend ordering a solder paste stencil as well, as it simplifies the soldering process.
+The PCBs can be sourced from any PCB manufacturing service. We include the Gerber Production Files in the repository. We recommend ordering a solder paste stencil as well, as it simplifies the soldering process.
 
 ### Sourcing components
 
-We source most of our electronics components from Digikey. We included a Bills of Materials where a direct link to Digikey is provided. Most of the components are also available at similar sellers like Mouser. Interactive BOMs are also included to assist in placing the components.
+We source most of our electronics components from Digikey. We include Bills of Materials where direct links to Digikey are provided. Most of the components are also available at similar sellers like Mouser. Interactive BOMs are also included to assist in placing the components.
 
 ## Assembly
 
@@ -130,7 +138,7 @@ Our firmware is designed to be used with Visual Studio Code and the PlatformIO e
 
 ### Upload the firmware
 
-To upload, the UPDI USB port can be used. The corresponding COM port has to be selected in VSCode in the status bar.
+To upload, the UPDI USB port can be used. The corresponding COM port has to be selected in VSCode in the status bar. When using the integrated USB circuit or an USB adapter based on the CP2102N, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
 
 ## Libraries Usage
 
@@ -198,8 +206,6 @@ The simulation has four main parts:
 
 A more detailed guide can be found [here](helical_antenna_simulation_guide.md).
 
-
-
 ## Measurements
 
 When measuring self-built or bought antennas, vector network analyzers (VNA) like the NanoVNA-H4 or the LiteVNA 64 are necessary tools and can be bought for cheap.
@@ -234,17 +240,29 @@ There are many articles and videos explaining the impedance matching concept. [T
 
 ---
 
+# GUI
+
+> Missing, see [#102](/../../issues/102)
+
+---
+
 # Operation Advices
 
 ## Powering The System
 
+### Onboard
+
 For the system to be operational, both the 3.3 V and the 5 V lines have to be connected. Any of the respective positions on the pin sockets can be used. To allow the full output power with a safe margin, the power supply should be able to provide 1 A at 5 V and 0.5 A at 3.3 V.
 
-Note: When using an external power supply, the 3.3 V lines of UPDI programmers or UART to USB adapters should never be connected.
+Note: The 3.3 V lines of UPDI programmers or UART to USB adapters should never be connected.
+
+### Groundstation (Motherboard)
+
+The motherboard can be powered either via the dedicated USB-C power plug or the 4 mm banana plugs. The input voltage has to be exactly 5 V in the latter case.
 
 ## Serial Communication
 
-For the serial communication with the system, an UART to USB adapter has to be used. When using the (planned) integrated USB circuit or an USB adapter based on the CP2102N, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
+For the serial communication with the system, an UART to USB adapter has to be used. When using the integrated USB circuit or an USB adapter based on the CP2102N, the [CP210x VCP driver](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads) has to be installed.
 
 We recommend using a dedicated serial monitor like the excellent project [Coolterm](https://freeware.the-meiers.org/), for which we included our [settings file](../groundstation/Coolterm_SerialMonitor_Settings.CoolTermSettings). The settings can be opened via "File" -> "Open".
 
