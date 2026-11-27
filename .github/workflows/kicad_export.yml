@@ -23,7 +23,7 @@ jobs:
   export:
     runs-on: ubuntu-24.04
     container:
-      image: kicad/kicad:10.0.7
+      image: kicad/kicad:10.0.7-full
       options: --user root
     permissions:
       contents: write
