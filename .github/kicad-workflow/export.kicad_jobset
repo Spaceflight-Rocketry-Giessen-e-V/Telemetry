@@ -1,4 +1,4 @@
-{
+    {
   "jobs": [
     {
       "description": "",
@@ -206,6 +206,60 @@
     },
     {
       "description": "",
+      "id": "119627dd-77a9-495b-8984-7a2a0f8dd5aa",
+      "settings": {
+        "anti_alias": true,
+        "bg_style": "transparent",
+        "description": "",
+        "floor": false,
+        "format": "png",
+        "height": 1169,
+        "light_bottom_intensity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "light_camera_intensity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "light_side_elevation": 60,
+        "light_side_intensity": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "light_top_intensity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "output_filename": "${PROJECTNAME}_render.png",
+        "pan_x": 0.0,
+        "pan_y": 0.0,
+        "pan_z": 0.0,
+        "perspective": false,
+        "pivot_x": 33.0,
+        "pivot_y": 0.0,
+        "pivot_z": 41.0,
+        "post_process": false,
+        "preset": "",
+        "procedural_textures": false,
+        "quality": "basic",
+        "rotation_x": 0.0,
+        "rotation_y": 0.0,
+        "rotation_z": 0.0,
+        "side": "top",
+        "use_board_stackup_colors": true,
+        "variant": "",
+        "width": 1800,
+        "zoom": 0.8
+      },
+      "type": "pcb_render"
+    },
+    {
+      "description": "",
       "id": "917768e6-7355-4fbd-99df-05255d9bb049",
       "settings": {
         "command": "INTERACTIVE_HTML_BOM_NO_DISPLAY=1 python3 \"${IBOM_SCRIPT}\" --no-browser --dest-dir \"${JOBSET_OUTPUT_WORK_PATH}\" --name-format \"${PROJECTNAME}_iBOM\" \"${KIPRJMOD}/${PROJECTNAME}.kicad_pcb\"",
@@ -241,6 +295,7 @@
         "4f5dcee6-e88b-45b6-8aec-c52c786f536c",
         "23c1e82b-c7b6-42da-ad55-eba76922550e",
         "92836909-9d37-41cd-be31-c28d367edeb3",
+        "119627dd-77a9-495b-8984-7a2a0f8dd5aa",
         "917768e6-7355-4fbd-99df-05255d9bb049"
       ],
       "settings": {

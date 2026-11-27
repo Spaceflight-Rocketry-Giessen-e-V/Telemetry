@@ -84,7 +84,7 @@ The GitHub Actions job performs these steps:
 
 1. Checks out the repository in a KiCad 10.0.7 container.
 2. Runs the shared jobset for each KiCad project and stops if an export fails.
-3. Stages the Gerber and drill file archive (`<project>_gerbers.zip`), schematic PDF (`<project>_schematic.pdf`), BOM CSV (`<project>_bom.csv`), STEP model (`<project>.step`), and interactive HTML BOM (`<project>_iBOM.html`) for each project.
+3. Stages the Gerber and drill file archive (`<project>_gerbers.zip`), schematic PDF (`<project>_schematic.pdf`), BOM CSV (`<project>_bom.csv`), STEP model (`<project>.step`), angled PNG render (`<project>_render.png`), and interactive HTML BOM (`<project>_iBOM.html`) for each project.
 4. Commits and pushes the generated files as the GitHub Actions bot only if at least one export changed.
 
 # Manual
