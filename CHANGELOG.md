@@ -3,9 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+Every release contains the following sections:
+- `Added` for new features.
+- `Changed` for changes in existing functionality.
+- `Removed` for now removed features.
+- `Fixed` for any bug fixes.
 
-Since our projects include multiple subsytems, which are developed more or less seperately (hardware, firmware, gui software), we decided to NOT use semantic versioning. The major versions of the whole project can be identified by their release date. However, the pcb designs include revision indications.
-
+Since our project includes multiple subsytems, which are developed more or less seperately (hardware, firmware, gui software), we decided to NOT use semantic versioning for the project. The major versions of the whole project can be identified by their release date. However, the pcb designs include revision indications, and the firmware libraries adhere to the [semantic versioning specification](https://semver.org/spec/v2.0.0.html).
 
 ## [UNRELEASED]:
 
@@ -17,6 +21,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 - QFH Antenna CAD Tutorial
 - Dynamic Packet Codec Library
 - Firmware/Libraries Code Reference (GitHub Pages) incl. automatic deployment
+- Pipelines documentation as an internal repository guide
 
 ### Changed
 - Complete firmware rework
@@ -30,9 +35,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 ### Fixed
 - Several GUI issues
 
-### Deprecated
-
-## 2026-06-02:
+## [2026-06-02](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/releases/tag/v2026-06-02)
 
 ### Added
 - New purpose-built groundstation electronics (motherboard/daughterboard design)
@@ -51,7 +54,7 @@ Since our projects include multiple subsytems, which are developed more or less 
 - Flight data simulations
 - Groundstation Casing
 
-## 2026-01-04
+## [2026-01-04](https://github.com/Spaceflight-Rocketry-Giessen-e-V/Telemetry/releases/tag/v2026-01-04)
 
 ### Added
 
