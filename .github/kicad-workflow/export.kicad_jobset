@@ -40,7 +40,7 @@
         "color_theme": "KiCad Classic",
         "format": "pdf",
         "min_pen_width": 847,
-        "output_filename": "${PROJECTNAME}_Schematic.pdf",
+        "output_filename": "${PROJECTNAME}_schematic.pdf",
         "page_size": "auto",
         "pdf_hierarchical_links": true,
         "pdf_metadata": true,
@@ -60,7 +60,7 @@
         "fields_labels": ["Reference", "Qty", "Value", "Footprint", "DNP", "Purchase-URL"],
         "fields_ordered": ["Reference", "${QUANTITY}", "Value", "Footprint", "${DNP}", "Purchase-URL"],
         "group_symbols": true,
-        "output_filename": "${PROJECTNAME}_BOM.csv",
+        "output_filename": "${PROJECTNAME}_bom.csv",
         "sort_field": "Reference"
       },
       "type": "sch_export_bom"

@@ -1,4 +1,4 @@
-name: KiCad exports
+name: KiCad Export
 
 on:
   workflow_dispatch:
@@ -9,14 +9,14 @@ on:
       - 'onboard/pcb/**/*.kicad_*'
       - 'groundstation/pcb/Motherboard/**/*.kicad_*'
       - 'groundstation/pcb/Daughterboard/**/*.kicad_*'
-      - '.github/kicad-workflow/gerber_export.kicad_jobset'
+      - '.github/kicad-workflow/export.kicad_jobset'
       - '.github/kicad-workflow/pdf_bom_export.kicad_jobset'
       - '.github/workflows/kicad_export.yml'
 
 permissions: {}
 
 concurrency:
-  group: gerber-export-${{ github.ref }}
+  group: kicad-export-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -35,19 +35,10 @@ jobs:
         id: export
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerber_export.kicad_jobset' 'onboard/pcb/TelemetryOnboard.kicad_pro'
-          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerber_export.kicad_jobset' 'groundstation/pcb/Motherboard/TelemetryGroundstationMB.kicad_pro'
-          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/gerber_export.kicad_jobset' 'groundstation/pcb/Daughterboard/TelemetryGroundstationDB.kicad_pro'
-          git add -- \
-            'onboard/pcb/TelemetryOnboard_gerbers.zip' \
-            'onboard/pcb/TelemetryOnboard_schematic.pdf' \
-            'onboard/pcb/TelemetryOnboard_bom.csv' \
-            'groundstation/pcb/Motherboard/TelemetryGroundstationMB_gerbers.zip' \
-            'groundstation/pcb/Motherboard/TelemetryGroundstationMB_schematic.pdf' \
-            'groundstation/pcb/Motherboard/TelemetryGroundstationMB_bom.csv' \
-            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_gerbers.zip' \
-            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_schematic.pdf' \
-            'groundstation/pcb/Daughterboard/TelemetryGroundstationDB_bom.csv'
+          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/export.kicad_jobset' 'onboard/pcb/TelemetryOnboard.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/export.kicad_jobset' 'groundstation/pcb/Motherboard/TelemetryGroundstationMB.kicad_pro'
+          kicad-cli jobset run --stop-on-error -f '.github/kicad-workflow/export.kicad_jobset' 'groundstation/pcb/Daughterboard/TelemetryGroundstationDB.kicad_pro'
+          git add --all
           {
             echo 'changed_files<<EOF'
             git diff --cached --name-only
