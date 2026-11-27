@@ -208,7 +208,7 @@
       "description": "",
       "id": "917768e6-7355-4fbd-99df-05255d9bb049",
       "settings": {
-        "command": "INTERACTIVE_HTML_BOM_NO_DISPLAY=1 python3 \"${IBOM_SCRIPT}\" --no-browser --dest-dir \"${JOBSET_OUTPUT_WORK_PATH}\" --name-format \"${PROJECTNAME}_ibom\" \"${KIPRJMOD}/${PROJECTNAME}.kicad_pcb\"",
+        "command": "INTERACTIVE_HTML_BOM_NO_DISPLAY=1 python3 \"${IBOM_SCRIPT}\" --no-browser --dest-dir \"${JOBSET_OUTPUT_WORK_PATH}\" --name-format \"${PROJECTNAME}_iBOM\" \"${KIPRJMOD}/${PROJECTNAME}.kicad_pcb\"",
         "description": "",
         "ignore_exit_code": false,
         "output_filename": "",
@@ -239,7 +239,9 @@
       "id": "b49aed7c-950b-40d2-b312-93641c6f442e",
       "only": [
         "4f5dcee6-e88b-45b6-8aec-c52c786f536c",
-        "23c1e82b-c7b6-42da-ad55-eba76922550e"
+        "23c1e82b-c7b6-42da-ad55-eba76922550e",
+        "92836909-9d37-41cd-be31-c28d367edeb3",
+        "917768e6-7355-4fbd-99df-05255d9bb049"
       ],
       "settings": {
         "output_path": "${KIPRJMOD}"

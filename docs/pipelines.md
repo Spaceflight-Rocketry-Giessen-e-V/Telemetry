@@ -75,7 +75,7 @@ The workflow runs after a push to the `main` branch when KiCad files change in o
 - [`onboard/pcb/`](/onboard/pcb/)
 - [`groundstation/pcb/Motherboard/`](/groundstation/pcb/Motherboard/)
 - [`groundstation/pcb/Daughterboard/`](/groundstation/pcb/Daughterboard/)
-- [`.github/kicad-workflow/gerberexport.kicad_jobset`](/.github/kicad-workflow/gerberexport.kicad_jobset)
+- [`.github/kicad-workflow/export.kicad_jobset`](/.github/kicad-workflow/export.kicad_jobset)
 - [`.github/workflows/kicad_export.yml`](/.github/workflows/kicad_export.yml)
 
 The workflow can also be run manually from the GitHub Actions tab.
@@ -84,7 +84,7 @@ The GitHub Actions job performs these steps:
 
 1. Checks out the repository in a KiCad 10.0.7 container.
 2. Runs the shared jobset for each KiCad project and stops if an export fails.
-3. Stages the Gerber and drill file archive (`<project>_gerbers.zip`), schematic PDF (`<project>_Schematic.pdf`), and bill of materials (`<project>_BOM.csv`) for each project.
+3. Stages the Gerber and drill file archive (`<project>_gerbers.zip`), schematic PDF (`<project>_schematic.pdf`), BOM CSV (`<project>_bom.csv`), STEP model (`<project>.step`), and interactive HTML BOM (`<project>_iBOM.html`) for each project.
 4. Commits and pushes the generated files as the GitHub Actions bot only if at least one export changed.
 
 # Manual
