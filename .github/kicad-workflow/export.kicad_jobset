@@ -235,7 +235,7 @@
           0.0,
           0.0
         ],
-        "output_filename": "${PROJECTNAME}_render.png",
+        "output_filename": "images/${PROJECTNAME}_render_kicad.png",
         "pan_x": 0.0,
         "pan_y": 0.0,
         "pan_z": 0.0,
