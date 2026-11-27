@@ -3,7 +3,7 @@ name: KiCad Export
 on:
   workflow_dispatch:
   push:
-    branches: 
+    branches:
       - main
     paths:
       - 'onboard/pcb/**/*.kicad_*'
@@ -31,7 +31,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Export Gerbers, drill files, schematics, and BOMs
+      - name: Set up InteractiveHtmlBom
+        run: |
+          git clone --depth 1 --branch v2.12.0 \
+            https://github.com/openscopeproject/InteractiveHtmlBom.git \
+            "$RUNNER_TEMP/interactive-html-bom"
+          echo "IBOM_SCRIPT=$RUNNER_TEMP/interactive-html-bom/InteractiveHtmlBom/generate_interactive_bom.py" >> "$GITHUB_ENV"
+
+      - name: Export KICad FIles
         id: export
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
